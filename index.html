@@ -1,12 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inicio de Sesion</title>
+    <script src="https://kit.fontawesome.com/abc2d718a6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="/assets/css/normalize.css">
 </head>
+
 <body>
-    
+    <header>
+        <header>
+            <div class="container-header">
+
+                <div class="logo">
+                    <img src="/assets/svg/Inovatec Logo - Original with Transparent Background-svg.svg" alt="logo">
+                    <!-- <img src="/assets/svg/Inovatec 2000 Logo - Original-svg.svg" alt="logo"> -->
+                </div>
+
+                <div class="container-nav">
+                    <nav>
+                        <a href="">Inicio</a>
+                        <a href="">Servicios</a>
+                        <a href="">Nosotros</a>
+                        <a href="">Contacto</a>
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </header>
+    </header>
+
+    <section class="waves">
+        <div class="bgcolor"></div>
+        <div class="wave w1"></div>
+    </section>
+
+    <section class="container-all">
+        
+        <article class="login">
+            <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
+            <div class="card-login">
+                <h1>INICIO DE SESION</h2>
+
+                <p class="subcabecera">Es <span>rápido</span>, <span>fácil</span> y <span>sencillo</span>.</p>
+
+                <div class="input-group">
+                    <input type="email" name="email" id="email" placeholder="" required class="input">
+                    <label for="email" class="input-label">Correo Electronico</label>
+                </div>
+
+                <div class="input-group-2">
+                    <input type="password" name="password" id="password" required class="input">
+                    <label for="password" class="input-label">Contraseña</label>
+                </div>
+
+                <input type="submit" value="Iniciar Sesion" class="btn-login">
+
+                <p>¿No tienes una cuenta? <a href="">Registrate</a></p>
+            </div>
+        </article>
+
+        <!-- Este article es para la implementación del vector svg animado -->
+        <article class="image">
+            <img src="/assets/svg/Mobile login-pana.svg" alt="logo">
+        </article>
+
+    </section>
 </body>
+
 </html>
