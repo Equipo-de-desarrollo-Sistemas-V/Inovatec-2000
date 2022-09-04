@@ -92,7 +92,7 @@ article img {
     height: 40%;
     position: absolute;
     top: 5px;
-    background-image: url(/assets/svg/wave.svg);
+    background-image: url(wave.svg);
     background-repeat: repeat-x;
 }
 
