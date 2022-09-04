@@ -46,23 +46,25 @@
         <article class="login">
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
-                <h1>INICIO DE SESION</h2>
+                <form method ="POST" action="controller.php"> <!--llama a la accion de logear--> 
+                    <h1>INICIO DE SESION</h2>
 
-                <p class="subcabecera">Es <span>rápido</span>, <span>fácil</span> y <span>sencillo</span>.</p>
+                    <p class="subcabecera">Es <span>rápido</span>, <span>fácil</span> y <span>sencillo</span>.</p>
 
-                <div class="input-group">
-                    <input type="email" name="email" id="email" placeholder="" required class="input">
-                    <label for="email" class="input-label">Correo Electronico</label>
-                </div>
+                    <div class="input-group">
+                        <input type="email" name="email" id="email" placeholder="" required class="input">
+                        <label for="email" class="input-label">Correo Electronico</label>
+                    </div>
 
-                <div class="input-group-2">
-                    <input type="password" name="password" id="password" required class="input">
-                    <label for="password" class="input-label">Contraseña</label>
-                </div>
+                    <div class="input-group-2">
+                        <input type="password" name="password" id="password" required class="input">
+                        <label for="password" class="input-label">Contraseña</label>
+                    </div>
 
-                <input type="submit" value="Iniciar Sesion" class="btn-login">
+                    <input type="submit" value="Iniciar Sesion" class="btn-login">
 
-                <p>¿No tienes una cuenta? <a href="">Registrate</a></p>
+                    <p>¿No tienes una cuenta? <a href="">Registrate</a></p>
+                </form>
             </div>
         </article>
 
