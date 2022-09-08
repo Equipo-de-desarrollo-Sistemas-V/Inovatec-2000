@@ -232,3 +232,10 @@ article img {
 .recuperar {
     margin-top: -5px;
 }
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
