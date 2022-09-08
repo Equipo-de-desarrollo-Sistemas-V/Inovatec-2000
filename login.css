@@ -7,7 +7,6 @@
 html {
     font-family: 'Montserrat', sans-serif;
     scroll-behavior: smooth;
-
 }
 
 body {
@@ -166,7 +165,7 @@ article img {
     flex-direction: column;
     width: 65vh;
     height: 55vh;
-    background-color: rgba(184, 184, 184, 0.25);
+    background-color: rgba(182, 182, 182, 0.25);
     box-shadow: 0 0 10px rgba(253, 151, 43, 0.75);
     backdrop-filter: blur(10px);
     border-radius: 20px;
