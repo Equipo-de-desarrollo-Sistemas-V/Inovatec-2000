@@ -1,6 +1,6 @@
 <?php
 //modelo
-class Model{
+class model{
     var $id;
     var $usua;
     var $contra;
@@ -12,7 +12,7 @@ class Model{
         //variables conexion
         $cadenmaCnx="sqlsrv:Server=DESKTOP-PGR8IDD;Database=pruebasProyecto";
         $user="sa";
-        $pass="12345";
+        $pass="";
 
         $cnx=new PDO($cadenmaCnx,$user,$pass);
         try{
