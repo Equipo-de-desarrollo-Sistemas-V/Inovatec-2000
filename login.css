@@ -228,3 +228,7 @@ article img {
     font-weight: bolder;
     transition: 300ms all;
 }
+
+.recuperar {
+    margin-top: -5px;
+}
