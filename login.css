@@ -57,7 +57,7 @@ header a {
     color: black;
     margin: 0 10px 0 10px;
     font-weight: 600;
-    background-color: rgb(225, 163, 101);
+    background-color: #e6b323;
     padding: 10px 20px;
     border-radius: 30px;
     font-size: 16px;
@@ -67,13 +67,13 @@ header a {
 }
 
 header a:hover {
-    background-color: #fd972b;
+    background-color: #ffd527;
     color: #fff;
     transition: 300ms;
 }
 
 article img {
-    width: 550px;
+    width: 700px;
     padding-top: 50px;
     rotate: -2.5deg;
 }
@@ -81,7 +81,7 @@ article img {
 .bgcolor {
     width: 100%;
     height: 15vh;
-    background-color: #b86c0f;
+    background-color: #ffc727;
     position: absolute;
     top: 0;
 }
@@ -91,7 +91,7 @@ article img {
     height: 40%;
     position: absolute;
     top: 5px;
-    background-image: url(assets/wave.svg);
+    background-image: url(assets/wave_yellow.svg);
     background-repeat: repeat-x;
 }
 
@@ -122,8 +122,8 @@ article img {
 }
 
 .container-all {
-    height: 88.5vh;
-    margin-top: 80px;
+    height: 83.5vh;
+    margin-top: 120px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -155,7 +155,7 @@ article img {
 }
 
 .card-login span {
-    color: #fd972b;
+    color: #ffc727;
 }
 
 .card-login {
@@ -165,8 +165,8 @@ article img {
     flex-direction: column;
     width: 65vh;
     height: 55vh;
-    background-color: rgba(182, 182, 182, 0.25);
-    box-shadow: 0 0 10px rgba(253, 151, 43, 0.75);
+    background-color: rgba(214, 214, 214, 0.25);
+    box-shadow: 0 0 10px rgba(255, 199, 39, 0.75);
     backdrop-filter: blur(10px);
     border-radius: 20px;
 }
@@ -188,7 +188,7 @@ article img {
     font: inherit;
     color: #000;
     background-color: transparent;
-    outline: 2px solid #fd972b;
+    outline: 2px solid #e6b323;
 }
 
 .input-label {
@@ -202,15 +202,15 @@ article img {
 
 .input:focus~.input-label, .input:valid~.input-label {
     transform: translate(0, -30px) scale(.8);
-    color: #fd972b;
+    color: #e6b323;
 }
 
 .input:is(:focus, :valid) {
-    outline-color: #fd972b;
+    outline-color: #e6b323;
 }
 
 .btn-login {
-    background-color: #fd972b;
+    background-color: #e6b323;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -223,7 +223,7 @@ article img {
 }
 
 .btn-login:hover {
-    background-color: #ca7822;
+    background-color: #e6b323;
     color: #fff;
     font-weight: bolder;
     transition: 300ms all;
@@ -238,4 +238,13 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.metodos-recuperacion {
+    text-decoration: none;
+}
+
+.metodos-recuperacion:hover {
+    text-decoration: none;
+    color: #e6b323;
 }
