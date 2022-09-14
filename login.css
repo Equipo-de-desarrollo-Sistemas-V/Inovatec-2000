@@ -107,6 +107,7 @@ article img {
     0% {
         background-position: 0;
     }
+
     100% {
         background-position: -1600px;
     }
@@ -116,6 +117,7 @@ article img {
     0% {
         background-position: 0;
     }
+
     100% {
         background-position: -1600px;
     }
@@ -148,7 +150,8 @@ article img {
     margin-top: 15px;
     margin-bottom: -10px;
 }
-.subcabecera{
+
+.subcabecera {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 20px;
@@ -200,7 +203,8 @@ article img {
     transition: transform .25s;
 }
 
-.input:focus~.input-label, .input:valid~.input-label {
+.input:focus~.input-label,
+.input:valid~.input-label {
     transform: translate(0, -30px) scale(.8);
     color: #e6b323;
 }
