@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1600" height="203" viewBox="0 0 1600 203" xml:space="preserve">
+<desc>Created with Fabric.js 4.6.0</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 800 99)" id="5idLmdX0_lFQA3M9Dmehc" clip-path="url(#CLIPPATH_1)"  >
+<clipPath id="CLIPPATH_1" >
+	<path transform="matrix(1 0 0 1 0 201) translate(-800, -300)" id="cp1" d="M 0 0 L 1600 0 L 1600 600 L 0 600 z" stroke-linecap="round" />
+</clipPath>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(41,43,64); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-800, -99)" d="M 1600 77 C 1289 77 1190.1 198.3 789 198 C 389 198 289 77 0 77 L 0 0 L 1600 0 C 1600 0 1600 48 1600 77 z" stroke-linecap="round" />
+</g>
+</svg>
