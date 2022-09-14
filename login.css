@@ -73,27 +73,14 @@ header a:hover {
     transition: 300ms;
 }
 
-article img {
-    width: 573px;
-    padding-top: 50px;
-    /* rotate: -2.5deg; */
-}
-
-.bgcolor {
-    width: 100%;
-    height: 15vh;
-    background-color: #63cc94;
-    position: absolute;
-    top: 0;
-}
-
 .wave {
     width: 100%;
     height: 40%;
-    position: absolute;
+    position: fixed;
     top: 5px;
     background-image: url(assets/wave-green2.svg);
     background-repeat: repeat-x;
+    z-index: -1;
 }
 
 .w1 {
@@ -122,6 +109,20 @@ article img {
     100% {
         background-position: -1600px;
     }
+}
+
+article img {
+    width: 573px;
+    padding-top: 50px;
+    /* rotate: -2.5deg; */
+}
+
+.bgcolor {
+    width: 100%;
+    height: 15vh;
+    background-color: #63cc94;
+    position: absolute;
+    top: 0;
 }
 
 .container-all {
