@@ -35,12 +35,12 @@ header {
 }
 
 .logo img {
-    width: 80px;
+    width: 70px;
     margin-top: 20px;
 }
 
 .logo .imagen_2 {
-    width: 180px;
+    width: 165px;
     margin-left: 15px;
 }
 
@@ -76,12 +76,6 @@ header a:hover {
     background-color: #ffd527;
     color: #fff;
     transition: 300ms;
-}
-
-article img {
-    width: 700px;
-    padding-top: 50px;
-    rotate: -2.5deg;
 }
 
 .bgcolor {
@@ -133,8 +127,8 @@ article img {
     height: 83.5vh;
     margin-top: 120px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
 
 
@@ -172,12 +166,36 @@ article img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 65vh;
-    height: 55vh;
+    width: 105vh;
+    height: 65vh;
     background-color: rgba(214, 214, 214, 0.25);
     box-shadow: 0 0 10px rgba(255, 199, 39, 0.75);
     backdrop-filter: blur(10px);
     border-radius: 20px;
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.metodos-recuperacion {
+    text-decoration: none;
+}
+
+.metodos-recuperacion:hover {
+    text-decoration: none;
+    color: #e6b323;
+}
+
+.cajas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 20px;
+    align-items: center;
 }
 
 .input-group {
@@ -240,21 +258,6 @@ article img {
 }
 
 .recuperar {
-    margin-top: -5px;
+    margin-top: 15px;
 }
 
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.metodos-recuperacion {
-    text-decoration: none;
-}
-
-.metodos-recuperacion:hover {
-    text-decoration: none;
-    color: #e6b323;
-}
