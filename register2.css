@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+
+/* Contiene todos los elementos que se encuentran dentro del header */
+.container-header {
+    max-width: 1000px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin: auto;
+}
+
+/* Contiene el logo y el menu */
+.logo img {
+    width: 80px;
+    margin-top: 20px;
+}
+
+.logo .imagen_2 {
+    width: 180px;
+    margin-left: 15px;
+}
+
+/* Contiene el menu */
+header .logo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+header .container-nav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contiene los elementos del menu y los estiliza*/
+header a {
+    text-decoration: none;
+    color: black;
+    margin: 0 10px 0 10px;
+    font-weight: 600;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 300ms;
+}
+
+header a:hover {
+    background-color: #ffd527;
+    color: #fff;
+    transition: 300ms;
+}
+
+/* Establece los colores de fondo que tendrá el menu */
+.bgcolor {
+    width: 100%;
+    height: 15vh;
+    background-color: #ffc727;
+    position: absolute;
+    top: 0;
+}
+
+/* Establece el tamaño de las olas de fondo */
+.wave {
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 5px;
+    background-image: url(assets/wave_yellow.svg);
+    background-repeat: repeat-x;
+}
+
+.w1 {
+    animation: w1 7s linear infinite;
+}
+
+.w2 {
+    animation: w2 7s linear infinite;
+}
+
+@keyframes w1 {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: -1600px;
+    }
+}
+
+@keyframes w2 {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: -1600px;
+    }
+}
+
+/* Contiene los estilos que se usan para poder mostar las dos cards */
+.container-all {
+    height: 83.5vh;
+    margin-top: 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+/* Establece la estructrura del registo */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos del titulo */
+.card-login h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: -10px;
+}
+
+/* Estilo del subtirulo */
+.subcabecera {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* color de los span */
+.card-login span {
+    color: #e6b323;
+}
+
+/* Estilos de los inputs */
+.card-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 85vh;
+    height: 65vh;
+    background-color: rgba(214, 214, 214, 0.25);
+    box-shadow: 0 0 10px rgba(255, 199, 39, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-group-2 {
+    position: relative;
+    margin: 18px 0;
+}
+
+.input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    color: #000;
+    background-color: transparent;
+    outline: 2px solid #e6b323;
+}
+
+.input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(10px, 10px);
+    transform-origin: left;
+    transition: transform .25s;
+}
+
+.input:focus~.input-label,
+.input:valid~.input-label {
+    transform: translate(0, -30px) scale(.8);
+    color: #e6b323;
+}
+
+.input:is(:focus, :valid) {
+    outline-color: #e6b323;
+}
+
+.btn-login {
+    background-color: #e6b323;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.50);
+    transition: box-shadow 300ms;
+    margin-top: 20px;
+}
+
+.btn-login:hover {
+    background-color: #e6b323;
+    color: #fff;
+    font-weight: bolder;
+    transition: 300ms all;
+}
+
+.recuperar {
+    margin-top: -5px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.metodos-recuperacion {
+    text-decoration: none;
+}
+
+.metodos-recuperacion:hover {
+    text-decoration: none;
+    color: #e6b323;
+}
+
+.cajas {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    column-gap: 20px;
+}
+
+#numero-tarjeta, #nombre-propietario {
+    width: 70vh;
+}
+
+.container-fechas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    column-gap: 15px;
+}
+
+#mes, #anio, #cvv {
+    width: 22vh;
+}
+
+.tarjeta-diseño {
+    width: 90%;
+    height: 90%;
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Estilos generales de las tarjetas */
+.tarjeta {
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+    color: #fff;
+    transition: .3s ease all;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.tarjeta.active {
+    transform: rotateY(180deg);
+}
+
+.tarjeta > div {
+    padding: 30px;
+    border-radius: 25px;
+    min-height: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 10px 0 rgba(90, 116, 148, 0.3);
+}
+
+.tarjeta .delantera {
+    width: 100%;
+    background-color: #173e7d;
+}
+
+.delantera .logo-marca {
+    text-align: right;
+    min-height: 50px;
+}
+
+.delantera .logo-marca img {
+    width: 100%;
+    height: 100%;
+    max-width: 100px;
+    object-fit: cover;
+}
+
+.delantera .chip {
+    width: 100%;
+    max-width: 50px;
+    margin-bottom: 20px;
+}
+
+.delantera .grupo .label {
+    font-size: 16px;
+    color: #7d8994;
+    margin-bottom: 5px;
+}
+
+.delantera .grupo .numero-tarjeta,
+.delantera .grupo .nombre-tarjeta ,
+.delantera .grupo .expiracion {
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.delantera .flexbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

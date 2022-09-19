@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="register2.css">
     <link rel="stylesheet" href="normalize.css">
 </head>
 
@@ -50,42 +50,77 @@
                     <div class="cajas">
                         <!-- Caja para el nombre -->
                         <div class="input-group">
-                            <input type="text" name="calle" id="calle" required class="input">
-                            <label for="calle" class="input-label">Calle</label>
+                            <input type="text" name="numero-tarjeta" id="numero-tarjeta" required class="input">
+                            <label for="numero-tarjeta" class="input-label">Numero de tarjeta</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="number" name="numero" id="numero" required class="input">
-                            <label for="numero" class="input-label">Numero</label>
+                            <input type="text" name="nombre-propietario" id="nombre-propietario" required class="input">
+                            <label for="nombre-propietario" class="input-label">Nombre del propietario</label>
                         </div>
 
-                        <div class="input-group">
-                            <input type="text" name="colonia" id="colonia" required class="input">
-                            <label for="colonia" class="input-label">Colonia</label>
-                        </div>
+                        <div class="container-fechas">
+                            <div class="input-group">
+                                <input type="number" name="mes" id="mes" required class="input">
+                                <label for="mes" class="input-label">Mes de expiración</label>
+                            </div>
 
-                        <div class="input-group-2">
-                            <input type="text" name="ciudad" id="ciudad" required class="input">
-                            <label for="ciudad" class="input-label">Ciudad</label>
-                        </div>
+                            <div class="input-group-2">
+                                <input type="number" name="anio" id="anio" required class="input">
+                                <label for="anio" class="input-label">Año de expiración</label>
+                            </div>
 
-                        <div class="input-group">
-                            <input type="text" name="estado" id="estado" required class="input">
-                            <label for="estado" class="input-label">Estado</label>
-                        </div>
-
-                        <div class="input-group-2">
-                            <input type="number" name="codigo-postal" id="codigo-postal" required class="input">
-                            <label for="codigo-postal" class="input-label">Código Postal</label>
+                            <div class="input-group">
+                                <input type="number" name="cvv" id="cvv" required class="input">
+                                <label for="cvv" class="input-label">CVV</label>
+                            </div>
                         </div>
 
                     </div>
                     <input type="submit" value="Siguiente ->" class="btn-login">
-                    <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="">Recuperar
-                            contraseña</a></p>
                 </form>
             </div>
         </article>
+
+        <article class="tarjeta-diseño">
+
+            <section class="tarjeta" id="tarjera">
+
+                <div class="delantera">
+
+                    <div class="logo-marca">
+                        <img src="assets/logos-banco/visa.png" alt="" class="marca">
+                    </div>
+
+                    <img src="assets/logos-banco/chip-tarjeta.png" alt="" class="chip">
+
+                    <div class="grupo">
+                        <p class="label">Numero de tarjeta</p>
+                        <p class="numero-tarjeta">XXXX - XXXX - XXXX - XXXX</p>
+                    </div>
+
+                    <div class="flexbox">
+
+                        <div class="grupo" id="nombre">
+                            <p class="label">Nombre del propietario</p>
+                            <p class="nombre-tarjeta">CLIENTE</p>
+                        </div>
+
+                        <div class="grupo" id="expiracion">
+                            <p class="label">Expiración</p>
+                            <p class="expiracion"><span class="month">MM</span>/<span class="year">AA</span></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="trasera">
+
+                </div>
+            
+            </section>
+        </article>
+
     </section>
 </body>
 
