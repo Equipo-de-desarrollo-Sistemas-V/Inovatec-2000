@@ -284,7 +284,8 @@ form {
 .tarjeta-diseño {
     width: 90%;
     height: 90%;
-    margin-top: 150px;
+    margin-top: 45px;
+    margin-left: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -312,16 +313,19 @@ form {
 .tarjeta > div {
     padding: 30px;
     border-radius: 25px;
-    min-height: 15px;
+    min-height: 395px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 10px 10px 0 rgba(90, 116, 148, 0.3);
+    box-shadow: 0 10px 10px 0 rgba(61, 73, 117, 0.64);
 }
 
 .tarjeta .delantera {
     width: 100%;
-    background-color: #173e7d;
+    /* Make a degraded whit #475bb9 and #173e7d */
+    background: linear-gradient(45deg, #475ec8 -5%, #103572);
+    /* background-color: #173e7d; */
+    /* background-color: #6f0606; */
 }
 
 .delantera .logo-marca {
@@ -346,6 +350,7 @@ form {
     font-size: 16px;
     color: #7d8994;
     margin-bottom: 5px;
+    /* margin-top: -2px; */
 }
 
 .delantera .grupo .numero-tarjeta,
