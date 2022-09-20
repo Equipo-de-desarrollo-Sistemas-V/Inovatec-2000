@@ -266,7 +266,7 @@ form {
     column-gap: 20px;
 }
 
-#numero-tarjeta, #nombre-propietario {
+#numeroTarjeta, #nombrePropietario {
     width: 70vh;
 }
 
@@ -336,13 +336,16 @@ form {
 }
 
 .delantera .logo-marca {
-	text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;;
 	min-height: 50px;
 }
 
 .delantera .logo-marca img {
 	width: 100%;
-	height: 100%;
+	height: 125%;
 	object-fit: cover;
 	max-width: 80px;
 }
@@ -355,7 +358,7 @@ form {
 
 .delantera .grupo .label {
 	font-size: 16px;
-	color: #7d8994;
+	color: #cccccc;
 	margin-bottom: 5px;
 }
 
