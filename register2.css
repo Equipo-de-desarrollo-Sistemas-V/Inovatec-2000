@@ -277,7 +277,7 @@ form {
     column-gap: 15px;
 }
 
-#mes, #anio, #cvv {
+#mesCaja, #yearCaja, #ccvCaja {
     width: 22vh;
 }
 

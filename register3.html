@@ -50,7 +50,8 @@
                     <div class="cajas">
                         <!-- Caja para el nombre -->
                         <div class="input-group">
-                            <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="19" >
+                            <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input"
+                                maxlength="19">
                             <label for="numeroTarjeta" class="input-label">Numero de tarjeta</label>
                         </div>
 
@@ -61,18 +62,19 @@
 
                         <div class="container-fechas">
                             <div class="input-group">
-                                <input type="number" name="mes" id="mes" required class="input">
-                                <label for="mes" class="input-label">Mes de expiración</label>
+                                <input type="text" name="mesCaja" id="mesCaja" required class="input" maxlength="2">
+                                <label for="mesCaja" class="input-label">Mes de expiración</label>
                             </div>
 
                             <div class="input-group-2">
-                                <input type="number" name="anio" id="anio" required class="input">
-                                <label for="anio" class="input-label">Año de expiración</label>
+                                <input type="text" name="yearCaja" id="yearCaja" required class="input" maxlength="2">
+                                <label for="yearCaja" class="input-label">Año de expiracion</label>
                             </div>
 
+
                             <div class="input-group">
-                                <input type="number" name="cvv" id="cvv" required class="input">
-                                <label for="cvv" class="input-label">CVV</label>
+                                <input type="text" name="ccvCaja" id="ccvCaja" required class="input" maxlength="3" minlength="3">
+                                <label for="ccvCaja" class="input-label">CCV</label>
                             </div>
                         </div>
 
@@ -82,14 +84,13 @@
             </div>
         </article>
 
-        <article class="contenedor"T
+        <article class="contenedor">
             <!-- Tarjeta -->
             <article class="tarjeta" id="tarjeta">
 
                 <div class="delantera">
 
-                    <div class="logo-marca" id="logo-marca">
-                    </div>
+                    <div class="logo-marca" id="logo-marca"></div>
 
                     <img src="assets/logos-banco/chip-tarjeta.png" class="chip" alt="">
 
@@ -114,7 +115,7 @@
                             <div class="grupo" id="expiracion">
 
                                 <p class="label">Expiracion</p>
-                                <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
+                                <p class="expiracion"><span class="mes" id="mes">MM</span> / <span class="year" id="year">AA</span></p>
 
                             </div>
                         </div>
@@ -131,9 +132,7 @@
 
                             <p class="label">Firma</p>
 
-                            <div class="firma">
-                                <p></p>
-                            </div>
+                            <div class="firma"><p></p></div>
                         </div>
 
                         <div class="grupo" id="ccv" style="margin-top: 14px;">
@@ -150,14 +149,9 @@
                     <a href="#" class="link-banco" style="margin-top: 38px;">www.tubanco.com</a>
                 </div>
             </article>
-
         </article>
-
-        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
         <script src="js/main.js"></script>
-
-
-        </article>
+    </section>
 </body>
 
 </html>
