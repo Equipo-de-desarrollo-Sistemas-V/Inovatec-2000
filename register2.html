@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesion</title>
-    <link rel="stylesheet" href="register.css">
-    <link rel="stylesheet" href="normalize.css">
+    <title>Registrar tu cuenta</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/normalize.css">
 </head>
 
 <body>
@@ -16,8 +16,8 @@
             <div class="container-header">
 
                 <div class="logo">
-                    <img src="assets/Logo_Raudel.svg" required class="imagen_1">
-                    <img src="assets/Nombre.svg" required class="imagen_2">
+                    <img src="css/assets/Logo_Raudel.svg" required class="imagen_1">
+                    <img src="css/assets/Nombre.svg" required class="imagen_2">
                 </div>
 
                 <div class="container-nav">
@@ -44,44 +44,19 @@
                     <!--llama a la accion de logear-->
                     <h2>CREA TU CUENTA</h2>
 
-                    <p class="subcabecera">Continuemos agregando tu <span>dirección</span>.</p>
+                    <p class="subcabecera">Creemos una <span>contraseña</span> para tu <span>cuenta</span>.</p>
 
-                    <div class="cajas">
+                    <div class="passwords">
                         <!-- Caja para el nombre -->
                         <div class="input-group">
-                            <input type="text" name="calle" id="calle" required class="input">
-                            <label for="calle" class="input-label">Calle</label>
+                            <input type="password" name="contraseña" id="contraseña" required class="input">
+                            <label for="contraseña" class="input-label">Contraseña</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="number" name="numero" id="numero" required class="input">
-                            <label for="numero" class="input-label">Numero</label>
+                            <input type="password" name="confirmar-contraseña" id="confirmar-contraseña" required class="input">
+                            <label for="confirmar-contraseña" class="input-label">Confirmar contraseña</label>
                         </div>
-
-                        <div class="input-group">
-                            <input type="text" name="colonia" id="colonia" required class="input">
-                            <label for="colonia" class="input-label">Colonia</label>
-                        </div>
-
-                        <div class="input-group-2">
-                            <input type="text" name="ciudad" id="ciudad" required class="input">
-                            <label for="ciudad" class="input-label">Ciudad</label>
-                        </div>
-
-                        <div class="input-group">
-                            <input type="text" name="estado" id="estado" required class="input">
-                            <label for="estado" class="input-label">Estado</label>
-                        </div>
-
-                        <div class="input-group-2">
-                            <input type="number" name="codigo-postal" id="codigo-postal" required class="input">
-                            <label for="codigo-postal" class="input-label">Código Postal</label>
-                        </div>
-
-                    </div>
-                    <input type="submit" value="Siguiente ->" class="btn-login">
-                    <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="">Recuperar
-                            contraseña</a></p>
                 </form>
             </div>
         </article>

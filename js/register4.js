@@ -23,6 +23,7 @@ let banderaNumero = 0
 let banderaNombre = 0
 let banderaMes = 0
 let banderaYear = 0
+let banderaCCV = 0
 
 
 // * Volteamos la tarjeta para mostrar el frente.
@@ -47,7 +48,13 @@ tarjeta.addEventListener('click', () => {
 formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.numeroTarjeta.value = valorInput.replace(/\s/g, '').replace(/\D/g, '').replace(/([0-9]{4})/g, '$1 ').trim();
+	formulario.numeroTarjeta.value = valorInput
+	/* Replacing all spaces with nothing. */
+	.replace(/\s/g, '')
+
+	.replace(/\D/g, '')
+	.replace(/([0-9]{4})/g, '$1 ')
+	.trim();
 
 	numeroTarjeta.textContent = valorInput;
 
@@ -92,7 +99,7 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	else if (valorInput[0] == 3) {
 		logoMarca.innerHTML = ''
 		const imagen = document.createElement('img');
-		imagen.src = 'assets/logos-banco/amex.png';
+		imagen.src = 'assets/logos-banco/amex.svg';
 		logoMarca.appendChild(imagen);
 		fondoTarjetaDelantera.style.backgroundImage = 'linear-gradient(45deg, #006ecf -5%, #9dd7f5)';
 		fondoTarjetaTrasera.style.backgroundImage = 'linear-gradient(-45deg, #006ecf 5%, #9dd7f5)';
@@ -233,7 +240,7 @@ formulario.ccvCaja.addEventListener('keyup', (e) => {
 
 
 function desbloquearBoton(){
-	if(banderaNumero == 1 && banderaNombre == 1 && banderaMes == 1 && banderaYear == 1 && banderaCCV == 1) {
+	if(banderaNumero == 1 && banderaNombre == 1 && banderaMes == 1 && banderaYear == 1 && banderaCCV == 1 ) {
 		botonEnviar.style.display = 'flex'
 	}
 	else {
