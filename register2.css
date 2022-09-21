@@ -219,7 +219,7 @@ header a:hover {
     outline-color: #e6b323;
 }
 
-.btn-login {
+.btn-enviar {
     background-color: #e6b323;
     color: #fff;
     padding: 10px 20px;
@@ -232,11 +232,19 @@ header a:hover {
     margin-top: 20px;
 }
 
-.btn-login:hover {
+.btn-enviar:hover {
     background-color: #e6b323;
     color: #fff;
     font-weight: bolder;
     transition: 300ms all;
+}
+
+.btn-enviar.bloqueado {
+    background-color: #e6b323;
+    color: #fff;
+    font-weight: bolder;
+    transition: 300ms all;
+    cursor: not-allowed;
 }
 
 .recuperar {

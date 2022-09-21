@@ -51,23 +51,23 @@
                         <!-- Caja para el nombre -->
                         <div class="input-group">
                             <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input"
-                                maxlength="19">
+                                maxlength="19" minlength="19">
                             <label for="numeroTarjeta" class="input-label">Numero de tarjeta</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="text" name="nombrePropietario" id="nombrePropietario" required class="input">
+                            <input type="text" name="nombrePropietario" id="nombrePropietario" required class="input" autocomplete="off" minlength="3">
                             <label for="nombrePropietario" class="input-label">Nombre del propietario</label>
                         </div>
 
                         <div class="container-fechas">
                             <div class="input-group">
-                                <input type="text" name="mesCaja" id="mesCaja" required class="input" maxlength="2">
+                                <input type="text" name="mesCaja" id="mesCaja" required class="input" maxlength="2" minlength="2">
                                 <label for="mesCaja" class="input-label">Mes de expiración</label>
                             </div>
 
                             <div class="input-group-2">
-                                <input type="text" name="yearCaja" id="yearCaja" required class="input" maxlength="2">
+                                <input type="text" name="yearCaja" id="yearCaja" required class="input" maxlength="2" minlength="2">
                                 <label for="yearCaja" class="input-label">Año de expiracion</label>
                             </div>
 
@@ -79,7 +79,7 @@
                         </div>
 
                     </div>
-                    <input type="submit" value="Siguiente ->" class="btn-login">
+                    <input type="submit" value="Finalizar" class="btn-enviar" id="btn-enviar">
                 </form>
             </div>
         </article>
@@ -150,7 +150,7 @@
                 </div>
             </article>
         </article>
-        <script src="js/main.js"></script>
+        <script src="js/register3.js"></script>
     </section>
 </body>
 
