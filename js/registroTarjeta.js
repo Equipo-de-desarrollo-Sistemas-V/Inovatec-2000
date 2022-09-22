@@ -69,7 +69,7 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	if (valorInput[0] == 4) {
 		logoMarca.innerHTML = ''
 		const imagen = document.createElement('img');
-		imagen.src = 'assets/logos-banco/visa.png';
+		imagen.src = 'css/assets/logos-banco/visa.png';
 		logoMarca.appendChild(imagen);
 		fondoTarjetaDelantera.style.backgroundImage = 'linear-gradient(45deg, #5a75e3 5%, #173e7d)';
 		fondoTarjetaTrasera.style.backgroundImage = 'linear-gradient(-45deg, #5a75e3 -5%, #173e7d)';
@@ -84,7 +84,7 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	else if (valorInput[0] == 5) {
 		logoMarca.innerHTML = ''
 		const imagen = document.createElement('img');
-		imagen.src = 'assets/logos-banco/mastercard.png';
+		imagen.src = 'css/assets/logos-banco/mastercard.png';
 		logoMarca.appendChild(imagen);
 		fondoTarjetaDelantera.style.backgroundImage = 'linear-gradient(45deg, #ea2315 5%, #80140c)';
 		fondoTarjetaTrasera.style.backgroundImage = 'linear-gradient(-45deg, #ea2315 -5%, #80140c)';
@@ -99,7 +99,7 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	else if (valorInput[0] == 3) {
 		logoMarca.innerHTML = ''
 		const imagen = document.createElement('img');
-		imagen.src = 'assets/logos-banco/amex.svg';
+		imagen.src = 'css/assets/logos-banco/amex.svg';
 		logoMarca.appendChild(imagen);
 		fondoTarjetaDelantera.style.backgroundImage = 'linear-gradient(45deg, #006ecf -5%, #9dd7f5)';
 		fondoTarjetaTrasera.style.backgroundImage = 'linear-gradient(-45deg, #006ecf 5%, #9dd7f5)';
@@ -113,7 +113,7 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	else if (valorInput[0] == 6) {
 		logoMarca.innerHTML = ''
 		const imagen = document.createElement('img');
-		imagen.src = 'assets/logos-banco/discover.png';
+		imagen.src = 'css/assets/logos-banco/discover.png';
 		logoMarca.appendChild(imagen);
 		fondoTarjetaDelantera.style.backgroundImage = 'linear-gradient(45deg, #c14a0d 5%, #ec9e24)';
 		fondoTarjetaTrasera.style.backgroundImage = 'linear-gradient(-45deg, #c14a0d -5%, #ec9e24)';
