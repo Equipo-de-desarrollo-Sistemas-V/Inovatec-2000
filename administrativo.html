@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página del administrador</title>
-    <link rel="stylesheet" href="administrativo.css">
+	<meta charset="utf-8">
+	<title>Inovatec Admin</title>
+
+        <link rel="stylesheet" href="administrativo.css">
 </head>
 
 <body>
-    <header>
-        <div class="container-header">
+	
+	<header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">ADMINISTRATIVO</span>
+			<img src="assets-administrativo/Nombre.svg" alt="">
+		</a> <!-- / #logo-header -->
 
-            <div class="logo">
-                <img src="Inovatec Logo - Original with Transparent Background-svg.svg" alt="logo">
-            </div>
+		<nav>
+			<ul class="menu-horizontal">
+				<li>
+					<a href="#"><span></span> Inventario</a>
+					<ul class="menu-vertical">
+						<li><a href="#">Nuevo producto</a></li>
+						<li><a href="#">Lista producto</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Sucursales</a>
+					<ul class="menu-vertical">
+						<li><a href="#">Nueva sucursal</a></li>
+						<li><a href="#">Lista sucursas</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Trabajadores</a>
+					<ul class="menu-vertical">
+						<li><a href="#">Nuevo trabajador</a></li>
+						<li><a href="#">Lista trabajador</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Proveedores</a>
+					<ul class="menu-vertical">
+						<li><a href="#">Nuevo proveedor</a></li>
+						<li><a href="#">Lista Proveedores</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Ventas</a>
+					<ul class="menu-vertical">
+						<li><a href="#">Nueva venta</a></li>
+						<li><a href="#">Lista Ventas</a></li>
+					</ul>
+				</li>
 
-            <div class="container-nav">
-                <nav>
-                    <a href="">Inventarios</a>
-                    <a href="">Registro de personal</a>
-                    <a href="">Sucursales</a>
-                    <a href="">Reportes de ventas</a>
-                    <a href="">Publicidad</a>
-                    
-                </nav>
+				<li>
+					<a href="#">Promociones</a>
+					<ul class="menu-vertical">
+						<li><a href="#">Nueva promocion</a></li>
+						<li><a href="#">Lista promociones</a></li>
+					</ul>
+				</li>
 
-            </div>
+				<li>
+					<a href="#">Cerrar Session</a>
+				</li>
+				
+			</ul>
+		</nav>
 
-        </div>
-    </header>
 
-    <section class="container-inventarios">
-        <article class="container-input">
-            <form action="" method="get">
-                <h2>INVENTARIOS</h2>
-
-                <div class="input-group">
-                    <input type="text" name="nombre" id="nombre"  required class="input">
-                    <label for="nombre" class="input-label">Nombre del producto</label>
-                </div>
-                
-                <div class="input-group">
-                    <input type="text" name="id-producto" id="id-producto"  required class="input">
-                    <label for="id-producto" class="input-label">ID</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="number" name="precio-producto" id="precio-producto"  required class="input">
-                    <label for="precio-producto" class="input-label">Precio al cliente</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="number" name="precio-proveedor" id="precio-proveedor"  required class="input">
-                    <label for="precio-proveedor" class="input-label">Precio del proveedor</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="number" name="cantidad" id="cantidad"  required class="input">
-                    <label for="cantidad" class="input-label">Cantidad</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="sucursal" id="sucursal"  required class="input">
-                    <label for="sucursal" class="input-label">Sucursal</label>
-                </div>
-            </form>
-        </article>
-    </section>
+	</header><!-- / #main-header -->
 </body>
-
 </html>
