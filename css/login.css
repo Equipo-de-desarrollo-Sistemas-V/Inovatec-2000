@@ -14,6 +14,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    background-color: #ebebeb;
 }
 
 header {
@@ -134,7 +135,7 @@ article img {
     margin-top: 120px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
 }
 
 
@@ -257,4 +258,66 @@ form {
 .metodos-recuperacion:hover {
     text-decoration: none;
     color: #e6b323;
+}
+
+@media (max-width: 415px) {
+    .container-header{
+        padding: 0px 10px;
+    }
+
+    .logo img {
+        width: 30px;
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+    .logo .imagen_2 {
+        width: 100px;
+        margin-left: 5px;
+    }
+
+    .container-all {
+        display: grid;
+        grid-template-rows: 1fr, 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .image {
+        margin-top: -10px;
+    }
+
+    .image img {
+        width: 250px;
+        padding-top: 0px;
+        rotate: 0deg;
+    }
+
+    .card-login {
+        width: 45vh;
+        height: 55vh;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .subcabecera {
+        font-size: 15px;
+    }
+    
+    .input-group, .input-group-2 {
+        font-size: 14px;
+    }
+
+    .metodos-recuperacion {
+        font-size: 14px;
+    }
+    .recuperar {
+        font-size: 12px;
+    }
+
+    .btn-login {
+        margin-top: 5px;
+    }
 }
