@@ -23,39 +23,71 @@ header {
     top: 0;
     right: 0;
     z-index: 100;
+    padding: 0 45px 0 45px;
 }
 
-.container-header {
-    max-width: 1000px;
-    height: 100%;
+.navbar{
     display: flex;
+    flex-wrap: wrap; 
+    align-items: center; 
     justify-content: space-between;
-    padding: 0px 20px;
-    margin: auto;
+    background-color: #ffc727;
+    padding-block: 5px; 
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+    margin: 0 10px 0 10px;
+    font-weight: 600;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 300ms; /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
 }
 
-.logo img {
-    width: 70px;
-    margin-top: 20px;
-}
+.navbar a:hover{
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
 
-.logo .imagen_2 {
-    width: 165px;
-    margin-left: 15px;
 }
-
-header .logo {
-    height: 100%;
+.logo{
+    margin-right: 50px;
+    width: 200px;
+    padding-left: 15px;
+}
+.list{
+    list-style: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 25px; 
+}
+#toggler,
+.navbar label{
+    display: none;
 }
 
-header .container-nav {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media screen and 
+(max-width: 765px){
+    .menu{
+        width: 100%;
+        max-height: 0; /*Makes the max-height 0 to side the expanded menu.*/
+        overflow: hidden; /*Hides the overflowing content.*/
+    }
+    .list{
+        flex-direction: column; /*Chances the direction of the flex container. By default it is a row so we change it to column in small screens.*/
+        align-items: center;
+        padding: 20px;
+    }
+    .navbar label{
+        display: inline-flex; /*Makes it an inline flex container for the icon. Used for centering the icon inside this box.*/
+        align-items: center;
+        cursor: pointer;
+    }
+
+    #toggler:checked ~ .menu{
+        max-height: 100%;
+    }
 }
 
 header a {
