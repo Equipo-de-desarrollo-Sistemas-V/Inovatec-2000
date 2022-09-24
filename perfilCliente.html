@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del usuario</title>
+</head>
+<body>
+    <header>
+        <header>
+            <div class="container-header">
+
+                <div class="logo">
+                    <img src="css/assets/Logo_Raudel.svg" required class="imagen_1">
+                    <img src="css/assets/Nombre.svg" required class="imagen_2">
+                </div>
+
+                <div class="container-nav">
+                    <nav>
+                        <a href="">Inicio</a>
+                        <a href="">Nosotros</a>
+                        <a href="">Contacto</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </header>
+
+    <section class="waves">
+        <div class="bgcolor"></div>
+        <div class="wave w1"></div>
+    </section>
+
+    <section class="container-all">
+        <h1>Perfil del usuario</h1>
+
+        <article class="container-datos-usuario">
+
+            <h3>Mis datos</h3>
+
+            <form action="" method="post">
+
+                <div class="input-group">
+                    <input type="text" name="nombre-cliente" id="nombre-cliente" required class="input">
+                    <label for="nombre-cliente" class="input-label">Nombre</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
+                    <label for="apellido-materno" class="input-label">Apellido materno</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
+                    <label for="apellido-paterno" class="input-label">Apellido paterno</label>
+                </div>
+
+                <input type="submit" value="Actualizar datos" class="btn-login">
+            </form>
+        </article>
+
+        <article class="container-datos-direccion">
+            <h3>Mi direccion</h3>
+
+            <form action="" method="post">
+                    
+                    <div class="input-group">
+                        <input type="text" name="calle" id="calle" required class="input">
+                        <label for="calle" class="input-label">Calle</label>
+                    </div>
+    
+                    <div class="input-group">
+                        <input type="text" name="numero" id="numero" required class="input">
+                        <label for="numero" class="input-label">Numero</label>
+                    </div>
+    
+                    <div class="input-group">
+                        <input type="text" name="colonia" id="colonia" required class="input">
+                        <label for="colonia" class="input-label">Colonia</label>
+                    </div>
+    
+                    <div class="input-group">
+                        <input type="text" name="municipio" id="municipio" required class="input">
+                        <label for="municipio" class="input-label">Municipio</label>
+                    </div>
+    
+                    <div class="input-group">
+                        <input type="text" name="estado" id="estado" required class="input">
+                        <label for="estado" class="input-label">Estado</label>
+                    </div>
+    
+                    <div class="input-group">
+                        <input type="text" name="codigo-postal" id="codigo-postal" required class="input">
+                        <label for="codigo-postal" class="input-label">Codigo postal</label>
+                    </div>
+    
+                    <input type="submit" value="Actualizar mi direccón" class="btn-login">
+            </form>
+        </article>
+
+        <article class="container-passwords">
+            <h3>Cambiar contraseña</h3>
+
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="password" name="password" id="password" required class="input">
+                    <label for="password" class="input-label">Contraseña actual</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="new-password" id="new-password" required class="input">
+                    <label for="new-password" class="input-label">Nueva contraseña</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="confirm-password" id="confirm-password" required class="input">
+                    <label for="confirm-password" class="input-label">Confirmar contraseña</label>
+                </div>
+
+                <input type="submit" value="Actualizar contraseña" class="btn-login">
+            </form>
+        </article>
+
+        <article class="container-datos-bancarios">
+            <h3>Mis datos bancarios</h3>
+
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="text" name="nombre-tarjeta" id="nombre-tarjeta" required class="input">
+                    <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="numero-tarjeta" id="numero-tarjeta" required class="input">
+                    <label for="numero-tarjeta" class="input-label">Numero de tarjeta</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="fecha-expiracion" id="fecha-expiracion" required class="input">
+                    <label for="fecha-expiracion" class="input-label">Fecha de expiracion</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="ccv" id="ccv" required class="input">
+                    <label for="ccv" class="input-label">CCV</label>
+                </div>
+
+                <input type="submit" value="Actualizar tarjeta" class="btn-login">
+            </form>
+        </article>
+
+        <article class="container-eliminar-cuenta">
+            <h3>Eliminar cuenta</h3>
+
+            <p>¿Deseas <span>eliminar</span> todos los datos asociados a esta <span>cuenta</span>? <br> Se <span>perderán</span> para siempre. Eso es mucho <span>tiempo</span></p>
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="password" name="password" id="password" required class="input">
+                    <label for="password" class="input-label">Contraseña</label>
+                </div>
+            
+                <div class="input-group">
+                    <input type="password" name="confirm-password" id="confirm-password" required class="input">
+                    <label for="confirm-password" class="input-label">Confirmar contraseña</label>
+                </div>
+
+                <input type="submit" value="Eliminar cuenta" class="btn-login">
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>
