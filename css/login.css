@@ -174,7 +174,7 @@ article img {
     align-items: center;
     flex-direction: column;
     width: 65vh;
-    height: 55vh;
+    height: 65vh;
     background-color: rgba(214, 214, 214, 0.25);
     box-shadow: 0 0 10px rgba(255, 199, 39, 0.75);
     backdrop-filter: blur(10px);
@@ -260,6 +260,14 @@ form {
     color: #e6b323;
 }
 
+.label-1 {
+    margin-top: 10px;
+}
+
+.label-2 {
+    margin-top: 0;
+}
+
 @media (max-width: 415px) {
     .container-header{
         padding: 0px 10px;
@@ -293,7 +301,7 @@ form {
     }
 
     .card-login {
-        width: 45vh;
+        width: 40vh;
         height: 55vh;
         margin-bottom: 20px;
     }
@@ -311,13 +319,21 @@ form {
     }
 
     .metodos-recuperacion {
-        font-size: 14px;
-    }
-    .recuperar {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .btn-login {
         margin-top: 5px;
     }
+
+    .label-1 {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    
+    .label-2 {
+        margin-top: 0;
+        font-size: 12px;
+    }
+
 }
