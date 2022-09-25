@@ -137,7 +137,7 @@ header a:active {
 }
 
 span {
-    color: #ffc727;
+    color: #e6b323;
 }
 
 /* Estilos del contenedor del titulo y el menu */
@@ -269,8 +269,11 @@ a:hover {
     outline-color: #e6b323;
 }
 
+
+
 /* Estilos para el boton */
 .btn {
+    font-family: 'Montserrat', sans-serif;
     background-color: #e6b323;
     color: #fff;
     padding: 10px 20px;
@@ -280,7 +283,7 @@ a:hover {
     cursor: pointer;
     box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.50);
     transition: box-shadow 300ms;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .btn:hover {
@@ -288,4 +291,19 @@ a:hover {
     color: #fff;
     font-weight: bolder;
     transition: 300ms all;
+}
+
+/* Estilos de las etiquetas p */
+.leyenda-1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin-top: -5px;
+}
+
+.leyenda-2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin-top: -5px;
 }
