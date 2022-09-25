@@ -14,6 +14,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    background-color: #ebebeb;
 }
 
 header {
@@ -23,39 +24,71 @@ header {
     top: 0;
     right: 0;
     z-index: 100;
+    padding: 0 45px 0 45px;
 }
 
-.container-header {
-    max-width: 1000px;
-    height: 100%;
+.navbar{
     display: flex;
+    flex-wrap: wrap; 
+    align-items: center; 
     justify-content: space-between;
-    padding: 0px 20px;
-    margin: auto;
+    background-color: #ffc727;
+    padding-block: 5px; 
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+    margin: 0 10px 0 10px;
+    font-weight: 600;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 300ms; /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
 }
 
-.logo img {
-    width: 80px;
-    margin-top: 20px;
-}
+.navbar a:hover{
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
 
-.logo .imagen_2 {
-    width: 180px;
-    margin-left: 15px;
 }
-
-header .logo {
-    height: 100%;
+.logo{
+    margin-right: 50px;
+    width: 200px;
+    padding-left: 15px;
+}
+.list{
+    list-style: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 25px; 
+}
+#toggler,
+.navbar label{
+    display: none;
 }
 
-header .container-nav {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media screen and 
+(max-width: 765px){
+    .menu{
+        width: 100%;
+        max-height: 0; /*Makes the max-height 0 to side the expanded menu.*/
+        overflow: hidden; /*Hides the overflowing content.*/
+    }
+    .list{
+        flex-direction: column; /*Chances the direction of the flex container. By default it is a row so we change it to column in small screens.*/
+        align-items: center;
+        padding: 20px;
+    }
+    .navbar label{
+        display: inline-flex; /*Makes it an inline flex container for the icon. Used for centering the icon inside this box.*/
+        align-items: center;
+        cursor: pointer;
+    }
+
+    #toggler:checked ~ .menu{
+        max-height: 100%;
+    }
 }
 
 header a {
@@ -134,7 +167,7 @@ article img {
     margin-top: 120px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
 }
 
 
@@ -173,7 +206,7 @@ article img {
     align-items: center;
     flex-direction: column;
     width: 65vh;
-    height: 55vh;
+    height: 65vh;
     background-color: rgba(214, 214, 214, 0.25);
     box-shadow: 0 0 10px rgba(255, 199, 39, 0.75);
     backdrop-filter: blur(10px);
@@ -257,4 +290,86 @@ form {
 .metodos-recuperacion:hover {
     text-decoration: none;
     color: #e6b323;
+}
+
+.label-1 {
+    margin-top: 10px;
+}
+
+.label-2 {
+    margin-top: 0;
+}
+
+@media (max-width: 415px) {
+    header {
+        padding: 0;
+    }
+
+    .container-header{
+        padding: 0px 10px;
+    }
+
+    .logo img {
+        width: 30px;
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+    .logo .imagen_2 {
+        width: 100px;
+        margin-left: 5px;
+    }
+
+    .container-all {
+        display: grid;
+        grid-template-rows: 1fr, 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .image {
+        margin-top: -10px;
+    }
+
+    .image img {
+        width: 250px;
+        padding-top: 0px;
+        rotate: 0deg;
+    }
+
+    .card-login {
+        width: 40vh;
+        height: 55vh;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .subcabecera {
+        font-size: 15px;
+    }
+    
+    .input-group, .input-group-2 {
+        font-size: 14px;
+    }
+
+    .metodos-recuperacion {
+        font-size: 13px;
+    }
+
+    .btn-login {
+        margin-top: 5px;
+    }
+
+    .label-1 {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    
+    .label-2 {
+        margin-top: 0;
+        font-size: 12px;
+    }
+
 }

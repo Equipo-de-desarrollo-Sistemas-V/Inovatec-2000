@@ -8,27 +8,23 @@
     <title>Registrar tu cuenta</title>
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <header>
-            <div class="container-header">
-
-                <div class="logo">
-                    <img src="css/assets/Logo_Raudel.svg" required class="imagen_1">
-                    <img src="css/assets/Nombre.svg" required class="imagen_2">
-                </div>
-
-                <div class="container-nav">
-                    <nav>
-                        <a href="">Inicio</a>
-                        <a href="">Nosotros</a>
-                        <a href="">Contacto</a>
-                    </nav>
-                </div>
+        <nav class="navbar container">
+            <img src="css/assets/Logo_Integrado.svg" required class="logo">
+            <input type="checkbox" id="toggler">
+            <label for="toggler"><i class="ri-menu-line"></i></label>
+            <div class="menu">
+                <ul class="list">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
             </div>
-        </header>
+        </nav>
     </header>
 
     <section class="waves">
@@ -79,7 +75,7 @@
                         </div>
 
                     </div>
-                    <input type="submit" value="Siguiente ->" class="btn-login">
+                    <input type="submit" value="Siguiente" class="btn-login">
                     <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="">Recuperar
                             contraseña</a></p>
                 </form>
