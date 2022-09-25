@@ -71,7 +71,7 @@
 
                 //Nota: los html se corren desde donde se les invoca, por eso las rutas de los siguientes 
                 //formularios de registro deben estar adapradas en base a las rutas de los archivos php que las invocan
-                include("../register2.html");
+                include("../registroContrasea.html");
 
             }
             
