@@ -150,9 +150,15 @@ span {
     flex-direction: column;
     justify-content: center;
     background-color: #fff;
-    margin: 15px 30px -15px 30px;
+    margin: 15px 60px -15px 60px;
     border-radius: 25px;
     padding: 15px;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
+}
+
+.contenedor-titulos:hover {
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
+    transition: 300ms all;
 }
 
 .menu {
@@ -186,12 +192,18 @@ a:hover {
 .contenedor {
     background-color: #fff;
     border-radius: 30px;
-    margin: 30px 60px -15px 60px;
+    margin: 30px 60px -5px 60px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
+}
+
+.contenedor:hover {
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
+    transition: 300ms all;
 }
 
 #subtitulo {
