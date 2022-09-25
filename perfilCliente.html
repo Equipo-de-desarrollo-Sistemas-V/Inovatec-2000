@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil del usuario</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/prefilcCliente.css">
 </head>
 
 <body>
@@ -31,144 +32,166 @@
     </section>
 
     <section class="container-all">
-        <h1>Perfil del usuario</h1>
+        <article id="datos-pagina" class="contenedor-titulos">
+            <h1 id="subtitulo">Perfil del usuario</h1>
+            <p>Gestiona todos los <span>datos</span> de tu <span>cuenta</span> desde aquí</p>
+            <article class="menu">
+                <a href="#container-datos-usuario">Mis datos</a>
+                <a href="#container-datos-direccion">Mi direccion</a>
+                <a href="#container-passwords">Mi contraseña</a>
+                <a href="#container-datos-bancarios">Mis tarjetas</a>
+                <a href="#container-eliminar-cuenta">Eliminar mi cuenta</a>
+            </article>
+        </article>
 
-        <article class="container-datos-usuario">
+        <article id="container-datos-usuario" class="contenedor">
 
-            <h3>Mis datos</h3>
+            <h3 id="subtitulo">Mis datos</h3>
 
-            <form action="" method="post">
+            <form action="" method="post" class="formulario">
 
-                <div class="input-group">
-                    <input type="text" name="nombre-cliente" id="nombre-cliente" required class="input">
-                    <label for="nombre-cliente" class="input-label">Nombre</label>
+                <div class="entrada-1">
+                    <div class="input-group">
+                        <input type="text" name="nombre-cliente" id="nombre-cliente" required class="input">
+                        <label for="nombre-cliente" class="input-label">Nombre</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
+                        <label for="apellido-materno" class="input-label">Apellido materno</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
+                        <label for="apellido-paterno" class="input-label">Apellido paterno</label>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
-                    <label for="apellido-materno" class="input-label">Apellido materno</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
-                    <label for="apellido-paterno" class="input-label">Apellido paterno</label>
-                </div>
-
-                <input type="submit" value="Actualizar datos" class="btn-login">
+                <input type="submit" value="Actualizar datos" class="btn">
             </form>
         </article>
 
-        <article class="container-datos-direccion">
-            <h3>Mi direccion</h3>
+        <article id="container-datos-direccion" class="contenedor">
+            <h3 id="subtitulo">Mi direccion</h3>
 
-            <form action="" method="post">
+            <form action="" method="post" class="formulario">
 
-                <div class="input-group">
-                    <input type="text" name="calle" id="calle" required class="input">
-                    <label for="calle" class="input-label">Calle</label>
+                <div class="entrada-2">
+                    <div class="input-group">
+                        <input type="text" name="calle" id="calle" required class="input">
+                        <label for="calle" class="input-label">Calle</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="numero" id="numero" required class="input">
+                        <label for="numero" class="input-label">Numero</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="colonia" id="colonia" required class="input">
+                        <label for="colonia" class="input-label">Colonia</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="municipio" id="municipio" required class="input">
+                        <label for="municipio" class="input-label">Municipio</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="estado" id="estado" required class="input">
+                        <label for="estado" class="input-label">Estado</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="codigo-postal" id="codigo-postal" required class="input">
+                        <label for="codigo-postal" class="input-label">Codigo postal</label>
+                    </div>
+
                 </div>
 
-                <div class="input-group">
-                    <input type="text" name="numero" id="numero" required class="input">
-                    <label for="numero" class="input-label">Numero</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="colonia" id="colonia" required class="input">
-                    <label for="colonia" class="input-label">Colonia</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="municipio" id="municipio" required class="input">
-                    <label for="municipio" class="input-label">Municipio</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="estado" id="estado" required class="input">
-                    <label for="estado" class="input-label">Estado</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="codigo-postal" id="codigo-postal" required class="input">
-                    <label for="codigo-postal" class="input-label">Codigo postal</label>
-                </div>
-
-                <input type="submit" value="Actualizar mi direccón" class="btn-login">
+                <input type="submit" value="Actualizar mi direccón" class="btn">
             </form>
         </article>
 
-        <article class="container-passwords">
-            <h3>Cambiar contraseña</h3>
+        <article id="container-passwords" class="contenedor">
+            <h3 id="subtitulo">Cambiar contraseña</h3>
 
-            <form action="" method="post">
-                <div class="input-group">
-                    <input type="password" name="password" id="password" required class="input">
-                    <label for="password" class="input-label">Contraseña actual</label>
+            <form action="" method="post" class="formulario">
+                <div class="entrada-1">
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" required class="input">
+                        <label for="password" class="input-label">Contraseña actual</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="new-password" id="new-password" required class="input">
+                        <label for="new-password" class="input-label">Nueva contraseña</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="confirm-password" id="confirm-password" required class="input">
+                        <label for="confirm-password" class="input-label">Confirmar contraseña</label>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <input type="password" name="new-password" id="new-password" required class="input">
-                    <label for="new-password" class="input-label">Nueva contraseña</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="password" name="confirm-password" id="confirm-password" required class="input">
-                    <label for="confirm-password" class="input-label">Confirmar contraseña</label>
-                </div>
-
-                <input type="submit" value="Actualizar contraseña" class="btn-login">
+                <input type="submit" value="Actualizar contraseña" class="btn">
             </form>
         </article>
 
-        <article class="container-datos-bancarios">
-            <h3>Mis datos bancarios</h3>
+        <article id="container-datos-bancarios" class="contenedor">
+            <h3 id="subtitulo">Mis datos bancarios</h3>
 
-            <form action="" method="post">
-                <div class="input-group">
-                    <input type="text" name="nombre-tarjeta" id="nombre-tarjeta" required class="input">
-                    <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
-                </div>
+            <form action="" method="post" class="formulario">
 
-                <div class="input-group">
-                    <input type="text" name="numero-tarjeta" id="numero-tarjeta" required class="input">
-                    <label for="numero-tarjeta" class="input-label">Numero de tarjeta</label>
-                </div>
+                <div class="entrada-2">
+                    <div class="input-group">
+                        <input type="text" name="nombre-tarjeta" id="nombre-tarjeta" required class="input">
+                        <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
+                    </div>
 
-                <div class="input-group">
-                    <input type="text" name="month-expiracion" id="month-expiracion" required class="input">
-                    <label for="month-expiracion" class="input-label">Mes de expiracion</label>
-                </div>
+                    <div class="input-group">
+                        <input type="text" name="numero-tarjeta" id="numero-tarjeta" required class="input">
+                        <label for="numero-tarjeta" class="input-label">Numero de tarjeta</label>
+                    </div>
 
-                <div class="input-group">
-                    <input type="text" name="year-expiracion" id="year-expiracion" required class="input">
-                    <label for="year-expiracion" class="input-label">Año de expiracion</label>
+                    <div class="input-group">
+                        <input type="text" name="month-expiracion" id="month-expiracion" required class="input">
+                        <label for="month-expiracion" class="input-label">Mes de expiracion</label>
+                    </div>
 
+                    <div class="input-group">
+                        <input type="text" name="year-expiracion" id="year-expiracion" required class="input">
+                        <label for="year-expiracion" class="input-label">Año de expiracion</label>
+                    </div>
                     <div class="input-group">
                         <input type="text" name="ccv" id="ccv" required class="input">
                         <label for="ccv" class="input-label">CCV</label>
                     </div>
+                </div>
 
-                    <input type="submit" value="Actualizar tarjeta" class="btn-login">
+                <input type="submit" value="Actualizar tarjeta" class="btn">
             </form>
         </article>
 
-        <article class="container-eliminar-cuenta">
-            <h3>Eliminar cuenta</h3>
+        <article id="container-eliminar-cuenta" class="contenedor">
+            <h3 id="subtitulo">Eliminar cuenta</h3>
 
-            <p>¿Deseas <span>eliminar</span> todos los datos asociados a esta <span>cuenta</span>? <br> Se
-                <span>perderán</span> para siempre. Eso es mucho <span>tiempo</span></p>
-            <form action="" method="post">
-                <div class="input-group">
-                    <input type="password" name="password" id="password" required class="input">
-                    <label for="password" class="input-label">Contraseña</label>
+            <p>¿Deseas <span>eliminar</span> todos los datos asociados a esta <span>cuenta</span>? </p>
+            <p>Se<span>perderán</span> para siempre. Eso es mucho <span>tiempo</span>.</p>
+            <form action="" method="post" class="formulario">
+                <div class="entrada-3">
+                    <div class="input-group">
+                        <input type="delete-password" name="delete-password" id="delete-password" required class="input">
+                        <label for="delete-password" class="input-label">Contraseña</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="confirm-delete-password" name="confirm-delete-password" id="confirm-delete-password" required class="input">
+                        <label for="confirm-delete-password" class="input-label">Confirmar contraseña</label>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <input type="password" name="confirm-password" id="confirm-password" required class="input">
-                    <label for="confirm-password" class="input-label">Confirmar contraseña</label>
-                </div>
-
-                <input type="submit" value="Eliminar cuenta" class="btn-login">
+                <input type="submit" value="Eliminar cuenta" class="btn">
             </form>
         </article>
     </section>
