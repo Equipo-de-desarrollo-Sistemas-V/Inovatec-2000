@@ -1,3 +1,4 @@
+<!-- Interfaz para INGRESAR EL CORREO Y PODER RECUPERAR LA CUENTA-->
 <!DOCTYPE html>
 <html lang="es">
 

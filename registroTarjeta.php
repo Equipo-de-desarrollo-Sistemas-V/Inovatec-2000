@@ -1,3 +1,4 @@
+<!-- Interfaz para REGISTRO DE LA TARJETA -->
 <!DOCTYPE html>
 <html lang="es">
 

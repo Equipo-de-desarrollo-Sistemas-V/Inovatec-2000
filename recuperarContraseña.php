@@ -1,3 +1,4 @@
+<!-- Interfaz para RECUPERAR CONTRASEÑA -->
 <!DOCTYPE html>
 <html lang="es">
 

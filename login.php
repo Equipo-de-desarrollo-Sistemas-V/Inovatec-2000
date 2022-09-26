@@ -1,3 +1,4 @@
+<!-- Interfaz para login -->
 <!DOCTYPE html>
 <html lang="es">
 
