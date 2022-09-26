@@ -19,7 +19,7 @@
     //validación de la contraseña
     if($contra != $confrimacion){
         echo '<script>alert("La contraseña y la confirmación no coinciden")</script>';
-        include("../register2.html");
+        include("../registroContrasea.html");
     }
     else{
 
@@ -56,14 +56,14 @@
 
             if($bandn == 0 or $bandc == 0 or $bandm == 0 or $bandM == 0){
                 echo '<script>alert("La contraseña debe contener números, mayúsculas, minúsculas y caracteres especiales")</script>';
-                include("../register2.html");
+                include("../registroContrasea.html");
             }
 
             else{
                 //la contraseña pasó las verificaciones (FALTA ENCRIPTAR)
                 $salt = "";
                 $clave = password_hash($contra, PASSWORD_DEFAULT, [15]);
-                echo '<script>alert("La clave es: $'.$clave.'")</script>';
+                //echo '<script>alert("La clave es: $'.$clave.'")</script>';
 
                 //$binario = str2bin($clave);
 
@@ -72,14 +72,14 @@
                 fclose($file);
 
                 //llamar al tercer formulario
-                include("../register3.html");
+                include("../registroDireccion.html");
             }
 
         }
 
         else {
             echo '<script>alert("La contraseña debe contener al menos 8 caracteres")</script>';
-            include("../register2.html");
+            include("../registroContrasea.html");
         }
     
     }

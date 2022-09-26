@@ -21,7 +21,7 @@
     $ntarjeta = $auxiliar;
     echo $ntarjeta. '<br>';
 
-    //verificar que el numero de tarjeta tenga los 16 dijitos
+    //verificar que el numero de tarjeta tenga los 16 digitos
     if(strlen($ntarjeta) != 16){
         echo '<script>alert("El número de tarjeta debe tener 16 díigitos")</script>';
         echo 'No. de digitos: '. strlen($ntarjeta).'<br>';
