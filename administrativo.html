@@ -1,75 +1,81 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Inovatec Admin</title>
-
-        <link rel="stylesheet" href="administrativo.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menu Administrativo</title>
+	<link rel="stylesheet" href="administrativo.css">
 </head>
-
 <body>
+	<header>
+		<div class="header_superior">
+			<div class="titulo">
+				<h1>Administrativo</h1>
+				<div class="logo">
+					<img src="assets-administrativo/Nombre.svg" alt="">
+				</div>
+			</div>
+
+			<div class="btn-header">
+				<button class="btn-cerrar-session" type="button">Cerrar Session</button>
+			</div>
+		</div>
+
+		<div class="container_menu">
+
+			<div class="menu">
+				<nav>
+					<ul>
+
+						<li><a href="#">Inventario</a>
+							<ul>
+								<li><a href="#">Nuevo Producto</a></li>
+								<li><a href="#">Eliminar Producto</a></li>
+								<li><a href="#">Consultar</a></li>
+							</ul>
+						</li>
+
+						<li><a href="#">Sucursales</a>
+							<ul>
+								<li><a href="#">Nueva Sucursal</a></li>
+								<li><a href="#">Eliminar Sucursal</a></li>
+								<li><a href="#">Consultar</a></li>
+							</ul>
+						
+						</li>
+
+						<li><a href="#">Trabajadores</a>
+							<ul>
+								<li><a href="#">Nuevo Trabajador</a></li>
+								<li><a href="#">Eliminar Trabajador</a></li>
+								<li><a href="#">Consultar</a></li>
+							</ul>
+						</li>
+
+						<li><a href="#">Proveedores</a>
+							<ul>
+								<li><a href="#">Nuevo Proveedor</a></li>
+								<li><a href="#">Eliminar Proveedor</a></li>
+								<li><a href="#">Consultar</a></li>
+							</ul>
+						</li>
+
+						<li><a href="#">Ventas</a>
+							<ul>
+								<li><a href="#">Nueva Venta</a></li>
+								<li><a href="#">Eliminar Venta</a></li>
+								<li><a href="#">Consultar</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</div>
+
+	</header>
 	
-	<header id="main-header">
-		
-		<a id="logo-header" href="#">
-			<span class="site-name">ADMINISTRATIVO</span>
-			<img src="assets-administrativo/Nombre.svg" alt="">
-		</a> <!-- / #logo-header -->
-
-		<nav>
-			<ul class="menu-horizontal">
-				<li>
-					<a href="#"><span></span> Inventario</a>
-					<ul class="menu-vertical">
-						<li><a href="#">Nuevo producto</a></li>
-						<li><a href="#">Lista producto</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Sucursales</a>
-					<ul class="menu-vertical">
-						<li><a href="#">Nueva sucursal</a></li>
-						<li><a href="#">Lista sucursas</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Trabajadores</a>
-					<ul class="menu-vertical">
-						<li><a href="#">Nuevo trabajador</a></li>
-						<li><a href="#">Lista trabajador</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Proveedores</a>
-					<ul class="menu-vertical">
-						<li><a href="#">Nuevo proveedor</a></li>
-						<li><a href="#">Lista Proveedores</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Ventas</a>
-					<ul class="menu-vertical">
-						<li><a href="#">Nueva venta</a></li>
-						<li><a href="#">Lista Ventas</a></li>
-					</ul>
-				</li>
-
-				<li>
-					<a href="#">Promociones</a>
-					<ul class="menu-vertical">
-						<li><a href="#">Nueva promocion</a></li>
-						<li><a href="#">Lista promociones</a></li>
-					</ul>
-				</li>
-
-				<li>
-					<a href="#">Cerrar Session</a>
-				</li>
-				
-			</ul>
-		</nav>
-
-
-	</header><!-- / #main-header -->
 </body>
 </html>
