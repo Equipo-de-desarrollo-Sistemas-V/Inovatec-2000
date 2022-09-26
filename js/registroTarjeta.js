@@ -49,10 +49,15 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.numeroTarjeta.value = valorInput
-	.replace(/\s/g, '')
-	.replace(/\D/g, '')
-	.replace(/([0-9]{4})/g, '$1 ')
-	.trim();
+		// Eliminar espacios en blanco
+		.replace(/\s/g, '')
+		// Eliminar letras
+		.replace(/\D/g, '')
+		// Poner espacios cada 4 numeros
+		.replace(/([0-9]{4})/g, '$1 ')
+		// Eliminar el ultimo espaciado
+		.trim();
+
 
 	numeroTarjeta.textContent = valorInput;
 
