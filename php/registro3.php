@@ -11,13 +11,13 @@
     //verificar que el código postal este completo
     if(strlen($cp) != 5){
         echo '<script>alert("El código postal debe tener 5 cifras")</script>';
-        include("../register3.html");
+        include("../registroDireccion.html");
     }
 
     else{
         if($numero <= 0 or $cp <= 0) {
             echo '<script>alert("No puedes poner números negativos")</script>';
-            include("../register3.html");
+            include("../registroDireccion.html");
         }
 
         else{
@@ -33,7 +33,7 @@
             fclose($file);
 
             //llamar al ultimo formulario de registro
-            include("../register4.html");
+            include("../registroTarjeta.html");
 
         }
         
