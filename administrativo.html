@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="administrativo.css">
 </head>
 <body>
+	<script src="funcionamiento.js"></script>
 	<header>
 		<div class="header_superior">
 			<div class="titulo">
@@ -23,6 +24,7 @@
 			</div>
 		</div>
 
+		<!-- Menu Desplegable -->
 		<div class="container_menu">
 
 			<div class="menu">
@@ -32,20 +34,17 @@
 				</label>
 				<nav>
 					<ul>
-
 						<li><a href="#">Inventario</a>
 							<ul>
-								<li><a href="#">Nuevo Producto</a></li>
-								<li><a href="#">Eliminar Producto</a></li>
-								<li><a href="#">Consultar</a></li>
+								<li><a id="menu-producto-uno" href="#" onclick="show('agrega-pod')">Nuevo Producto</a></li>
+								<li><a href="#">Lista de Productos</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Sucursales</a>
 							<ul>
 								<li><a href="#">Nueva Sucursal</a></li>
-								<li><a href="#">Eliminar Sucursal</a></li>
-								<li><a href="#">Consultar</a></li>
+								<li><a href="#">Lista de Sucursales</a></li>
 							</ul>
 						
 						</li>
@@ -53,31 +52,38 @@
 						<li><a href="#">Trabajadores</a>
 							<ul>
 								<li><a href="#">Nuevo Trabajador</a></li>
-								<li><a href="#">Eliminar Trabajador</a></li>
-								<li><a href="#">Consultar</a></li>
+								<li><a href="#">Lista de Trabajadores</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Proveedores</a>
 							<ul>
 								<li><a href="#">Nuevo Proveedor</a></li>
-								<li><a href="#">Eliminar Proveedor</a></li>
-								<li><a href="#">Consultar</a></li>
+								<li><a href="#">Lista de Proveedores</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Ventas</a>
 							<ul>
 								<li><a href="#">Nueva Venta</a></li>
-								<li><a href="#">Eliminar Venta</a></li>
-								<li><a href="#">Consultar</a></li>
+								<li><a href="#">Ventas</a></li>
 							</ul>
 						</li>
-
 					</ul>
 				</nav>
 			</div>
 		</div>
 	</header>
+	<main>
+		<div class="agregar-Producto" align="center" id="agrega-pod">
+			<div>
+				<h3>Administrativo Agregar Producto</h3>
+			</div>
+		</div>
+	</main>
+
+	
+
+
 </body>
 </html>
