@@ -97,10 +97,8 @@
                             </div>
                         </div>
 
-                        <p class="leyenda">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ex, atque qui
-                            adipisci consequuntur impedit delectus harum dolor eaque assumenda iure odio magnam tempore
-                            error nisi? Illo quisquam aperiam alias.</p>
-                        <a href="#" class="link-banco" style="margin-top: 38px;">www.tubanco.com</a>
+                        <p class="leyenda">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullamex, atque qui adipisci consequuntur impedit delectus harum dolor eaque assumenda iure odio magnam tempore error nisi? Illo quisquam aperiam alias.</p>
+                        <a href="#" class="link-banco">www.tubanco.com</a>
                     </div>
                 </article>
             </div>

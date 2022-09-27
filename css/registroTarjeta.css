@@ -24,6 +24,7 @@ header {
     right: 0;
     z-index: 100;
     padding: 0 45px 0 45px;
+    background-color: #ffc727;
 }
 
 /* Contiene todos los elementos que se encuentran dentro del header */
@@ -394,7 +395,6 @@ form {
     justify-content: flex-end;
     align-content: center;
     align-items: center;
-    ;
     min-height: 50px;
 }
 
@@ -497,7 +497,10 @@ form {
 .trasera .link-banco {
     font-size: 14px;
     color: #fff;
+    margin-top: 38px;
 }
+
+
 
 @media (max-width: 415px) {
     .container-all {
@@ -538,5 +541,67 @@ form {
         width: 30vh;
     }
 
+    .tarjeta .delantera {
+        padding: 25px;
+    }
 
+    .pruebaContenedor {
+        width: 135%;
+    }
+
+    .delantera .chip {
+        max-width: 40px;
+        margin-bottom: 0px;
+    }
+
+    .grupo {
+        height: 30px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .delantera .grupo .label {
+        font-size: 12px;
+        color: #cccccc;
+        margin-bottom: 40px;
+    }
+
+    .delantera .grupo .numero {
+        font-size: 15px;
+        margin-bottom: -10px;
+    }
+
+    .delantera .grupo .nombre {
+        font-size: 15px;
+        margin-bottom: -10px;
+    }
+
+    .delantera .grupo .expiracion {
+        font-size: 15px;
+        margin-bottom: -10px;
+    }
+
+    #firma {
+        margin-top: 25px;
+    }
+
+    .trasera .datos #ccv .ccv {
+        margin-top: 30px;
+    }
+
+    .trasera .datos .firma p {
+        font-size: 20px;
+        margin-bottom: -5px;
+    }
+
+    .trasera .leyenda {
+        font-size: 12px;
+        margin-top: 25px;
+        line-height: 16px;
+    }
+
+    .trasera .link-banco {
+        margin-top: 5px;
+    }
 }
