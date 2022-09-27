@@ -27,15 +27,16 @@ header {
 }
 
 /* Contiene todos los elementos que se encuentran dentro del header */
-.navbar{
+.navbar {
     display: flex;
-    flex-wrap: wrap; 
-    align-items: center; 
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     background-color: #ffc727;
-    padding-block: 5px; 
+    padding-block: 5px;
 }
-.navbar a{
+
+.navbar a {
     text-decoration: none;
     color: black;
     margin: 0 10px 0 10px;
@@ -46,47 +47,56 @@ header {
     font-size: 16px;
     cursor: pointer;
     box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 300ms; /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
+    transition: box-shadow 300ms;
+    /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
 }
 
-.navbar a:hover{
+.navbar a:hover {
     box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
 
 }
-.logo{
+
+.logo {
     margin-right: 50px;
     width: 200px;
     padding-left: 15px;
 }
-.list{
+
+.list {
     list-style: none;
     display: flex;
-    gap: 25px; 
+    gap: 25px;
 }
+
 #toggler,
-.navbar label{
+.navbar label {
     display: none;
 }
 
-@media screen and 
-(max-width: 765px){
-    .menu{
+@media screen and (max-width: 765px) {
+    .menu {
         width: 100%;
-        max-height: 0; /*Makes the max-height 0 to side the expanded menu.*/
-        overflow: hidden; /*Hides the overflowing content.*/
+        max-height: 0;
+        /*Makes the max-height 0 to side the expanded menu.*/
+        overflow: hidden;
+        /*Hides the overflowing content.*/
     }
-    .list{
-        flex-direction: column; /*Chances the direction of the flex container. By default it is a row so we change it to column in small screens.*/
+
+    .list {
+        flex-direction: column;
+        /*Chances the direction of the flex container. By default it is a row so we change it to column in small screens.*/
         align-items: center;
         padding: 20px;
     }
-    .navbar label{
-        display: inline-flex; /*Makes it an inline flex container for the icon. Used for centering the icon inside this box.*/
+
+    .navbar label {
+        display: inline-flex;
+        /*Makes it an inline flex container for the icon. Used for centering the icon inside this box.*/
         align-items: center;
         cursor: pointer;
     }
 
-    #toggler:checked ~ .menu{
+    #toggler:checked~.menu {
         max-height: 100%;
     }
 }
@@ -203,7 +213,7 @@ header a:hover {
     flex-direction: column;
     width: 85vh;
     height: 65vh;
-    background-color: rgba(214, 214, 214, 0.25);
+    background-color: rgba(145, 145, 145, 0.2);
     box-shadow: 0 0 10px rgba(255, 199, 39, 0.75);
     backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -303,7 +313,8 @@ form {
     column-gap: 20px;
 }
 
-#numeroTarjeta, #nombrePropietario {
+#numeroTarjeta,
+#nombrePropietario {
     width: 70vh;
 }
 
@@ -314,7 +325,9 @@ form {
     column-gap: 15px;
 }
 
-#mesCaja, #yearCaja, #ccvCaja {
+#mesCaja,
+#yearCaja,
+#ccvCaja {
     width: 22vh;
 }
 
@@ -329,154 +342,201 @@ form {
 }
 
 .contenedor {
-	width: 90%;
-	max-width: 1000px;
-	padding: 40px 20px;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ---------- Estilos Generales de las Tarjetas ----------*/
+.pruebaContenedor {
+    width: 100%;
+}
+
 .tarjeta {
-	width: 100%;
-	max-width: 650px;
-	position: relative;
-	color: #fff;
-	transition: .3s ease all;
-	transform: rotateY(0deg);
-	transform-style: preserve-3d;
-	cursor: pointer;
-	z-index: 2;
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+    color: #fff;
+    transition: .3s ease all;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    z-index: 2;
 }
 
 .tarjeta.active {
-	transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
-.tarjeta > div {
-	padding: 30px;
-	border-radius: 15px;
-	min-height: 315px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	box-shadow: 0 10px 10px 0 rgba(90,116,148,0.3);
+.tarjeta>div {
+    padding: 30px;
+    border-radius: 15px;
+    min-height: 315px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 10px 0 rgba(90, 116, 148, 0.3);
 }
 
 /* ---------- Tarjeta Delantera ----------*/
 
 .tarjeta .delantera {
-	width: 100%;
-	background: linear-gradient(45deg, #cdcdcd 5%, #4d4d4d);
+    width: 100%;
+    background: linear-gradient(45deg, #cdcdcd 5%, #4d4d4d);
 }
 
 .delantera .logo-marca {
     display: flex;
     justify-content: flex-end;
     align-content: center;
-    align-items: center;;
-	min-height: 50px;
+    align-items: center;
+    ;
+    min-height: 50px;
 }
 
 .delantera .logo-marca img {
-	width: 100%;
-	height: 125%;
-	object-fit: cover;
-	max-width: 80px;
+    width: 100%;
+    height: 125%;
+    object-fit: cover;
+    max-width: 80px;
 }
 
 .delantera .chip {
-	width: 100%;
-	max-width: 50px;
-	margin-bottom: 20px;
+    width: 100%;
+    max-width: 50px;
+    margin-bottom: 20px;
 }
 
 .delantera .grupo .label {
-	font-size: 16px;
-	color: #cccccc;
-	margin-bottom: 5px;
+    font-size: 16px;
+    color: #cccccc;
+    margin-bottom: 5px;
 }
 
 .delantera .grupo .numero,
 .delantera .grupo .nombre,
 .delantera .grupo .expiracion {
-	color: #fff;
-	font-size: 22px;
-	text-transform: uppercase;
+    color: #fff;
+    font-size: 22px;
+    text-transform: uppercase;
 }
 
 .delantera .flexbox {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 /* ---------- Tarjeta Trasera ----------*/
 .trasera {
-	background: linear-gradient(-45deg, #cdcdcd -5%, #4d4d4d);
-	position: absolute;
-	top: 0;
-	transform: rotateY(180deg);
-	backface-visibility: hidden;
+    background: linear-gradient(-45deg, #cdcdcd -5%, #4d4d4d);
+    position: absolute;
+    top: 0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 
 .trasera .barra-magnetica {
-	height: 40px;
-	background: #000;
-	width: 100%;
-	position: absolute;
-	top: 30px;
-	left: 0;
+    height: 40px;
+    background: #000;
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
 }
 
 .trasera .datos {
-	margin-top: 60px;
-	display: flex;
-	justify-content: space-between;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .trasera .datos p {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .trasera .datos #firma {
-	width: 70%;
+    width: 70%;
 }
 
 .trasera .datos #firma .firma {
-	height: 40px;
-	background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
+    height: 40px;
+    background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
 }
 
 .trasera .datos #firma .firma p {
-	line-height: 40px;
-	font-family: 'Liu Jian Mao Cao', cursive;
-	color: #000;
-	font-size: 30px;
-	padding: 0 10px;
-	text-transform: capitalize;
+    line-height: 40px;
+    font-family: 'Liu Jian Mao Cao', cursive;
+    color: #000;
+    font-size: 30px;
+    padding: 0 10px;
+    text-transform: capitalize;
 }
 
 .trasera .datos #ccv {
-	width: 20%;
+    width: 20%;
 }
 
 .trasera .datos #ccv .ccv {
-	background: #fff;
-	height: 40px;
-	color: #000;
-	padding: 10px;
-	text-align: center;
+    background: #fff;
+    height: 40px;
+    color: #000;
+    padding: 10px;
+    text-align: center;
 }
 
 .trasera .leyenda {
-	font-size: 14px;
-	line-height: 24px;
+    font-size: 14px;
+    line-height: 24px;
 }
 
 .trasera .link-banco {
-	font-size: 14px;
-	color: #fff;
+    font-size: 14px;
+    color: #fff;
+}
+
+@media (max-width: 415px) {
+    .container-all {
+        margin-top: 50px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 0.5fr;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-login {
+        width: 40vh;
+        height: 65vh;
+        margin-bottom: 25px;
+    }
+
+    .subcabecera {
+        font-size: 15px;
+        margin-top: -10px;
+    }
+
+    #numeroTarjeta,
+    #nombrePropietario {
+        width: 30vh;
+    }
+
+    .container-fechas {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        column-gap: 15px;
+    }
+
+    #mesCaja,
+    #yearCaja,
+    #ccvCaja {
+        width: 30vh;
+    }
+
+
 }

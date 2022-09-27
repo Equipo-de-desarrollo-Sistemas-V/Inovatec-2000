@@ -34,6 +34,78 @@
     </section>
 
     <section class="container-all">
+        <article class="contenedor">
+            <div class="pruebaContenedor">
+                <!-- Tarjeta -->
+                <article class="tarjeta" id="tarjeta">
+
+                    <div class="delantera">
+
+                        <div class="logo-marca" id="logo-marca"></div>
+
+                        <img src="css/assets/logos-banco/chip-tarjeta.png" class="chip" alt="">
+
+                        <div class="datos">
+
+                            <div class="grupo" id="numero">
+
+                                <p class="label">Número de Tarjeta</p>
+                                <p class="numero">XXXX - XXXX - XXXX - XXXX</p>
+
+                            </div>
+
+                            <div class="flexbox">
+
+                                <div class="grupo" id="nombre">
+
+                                    <p class="label">Nombre del propietario</p>
+                                    <p class="nombre">NOMBRE Y APELLIDO</p>
+
+                                </div>
+
+                                <div class="grupo" id="expiracion">
+
+                                    <p class="label">Expiracion</p>
+                                    <p class="expiracion"><span class="mes" id="mes">MM</span> / <span class="year"
+                                            id="year">AA</span></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trasera">
+
+                        <div class="barra-magnetica"></div>
+
+                        <div class="datos">
+
+                            <div class="grupo" id="firma">
+
+                                <p class="label">Firma</p>
+
+                                <div class="firma">
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="grupo" id="ccv" style="margin-top: 14px;">
+
+                                <p class="label">CCV</p>
+                                <p class="ccv"></p>
+
+                            </div>
+                        </div>
+
+                        <p class="leyenda">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ex, atque qui
+                            adipisci consequuntur impedit delectus harum dolor eaque assumenda iure odio magnam tempore
+                            error nisi? Illo quisquam aperiam alias.</p>
+                        <a href="#" class="link-banco" style="margin-top: 38px;">www.tubanco.com</a>
+                    </div>
+                </article>
+            </div>
+        </article>
+
         <article class="login">
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
@@ -82,76 +154,6 @@
                     <input type="submit" value="Finalizar" class="btn-enviar" id="btn-enviar">
                 </form>
             </div>
-        </article>
-
-        <article class="contenedor">
-            <!-- Tarjeta -->
-            <article class="tarjeta" id="tarjeta">
-
-                <div class="delantera">
-
-                    <div class="logo-marca" id="logo-marca"></div>
-
-                    <img src="css/assets/logos-banco/chip-tarjeta.png" class="chip" alt="">
-
-                    <div class="datos">
-
-                        <div class="grupo" id="numero">
-
-                            <p class="label">Número de Tarjeta</p>
-                            <p class="numero">XXXX - XXXX - XXXX - XXXX</p>
-
-                        </div>
-
-                        <div class="flexbox">
-
-                            <div class="grupo" id="nombre">
-
-                                <p class="label">Nombre del propietario</p>
-                                <p class="nombre">NOMBRE Y APELLIDO</p>
-
-                            </div>
-
-                            <div class="grupo" id="expiracion">
-
-                                <p class="label">Expiracion</p>
-                                <p class="expiracion"><span class="mes" id="mes">MM</span> / <span class="year"
-                                        id="year">AA</span></p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="trasera">
-
-                    <div class="barra-magnetica"></div>
-
-                    <div class="datos">
-
-                        <div class="grupo" id="firma">
-
-                            <p class="label">Firma</p>
-
-                            <div class="firma">
-                                <p></p>
-                            </div>
-                        </div>
-
-                        <div class="grupo" id="ccv" style="margin-top: 14px;">
-
-                            <p class="label">CCV</p>
-                            <p class="ccv"></p>
-
-                        </div>
-                    </div>
-
-                    <p class="leyenda">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ex, atque qui
-                        adipisci consequuntur impedit delectus harum dolor eaque assumenda iure odio magnam tempore
-                        error nisi? Illo quisquam aperiam alias.</p>
-                    <a href="#" class="link-banco" style="margin-top: 38px;">www.tubanco.com</a>
-                </div>
-            </article>
         </article>
         <script src="js/registroTarjeta.js"></script>
     </section>

@@ -1,4 +1,4 @@
-<!-- Interfaz para RECUPERAR CONTRASEÑA -->
+<!-- Interfaz para GUARDAR CONTRASEÑA -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,7 +37,7 @@
         <article class="login">
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
-                <form method="POST" action="">
+                <form method="POST" action="registro2.php">
                     <!--llama a la accion de logear-->
                     <h2>CREA TU CUENTA</h2>
 

@@ -26,15 +26,16 @@ header {
     padding: 0 45px 0 45px;
 }
 
-.navbar{
+.navbar {
     display: flex;
-    flex-wrap: wrap; 
-    align-items: center; 
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     background-color: #ffc727;
-    padding-block: 5px; 
+    padding-block: 5px;
 }
-.navbar a{
+
+.navbar a {
     text-decoration: none;
     color: black;
     margin: 0 10px 0 10px;
@@ -45,47 +46,56 @@ header {
     font-size: 16px;
     cursor: pointer;
     box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 300ms; /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
+    transition: box-shadow 300ms;
+    /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
 }
 
-.navbar a:hover{
+.navbar a:hover {
     box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
 
 }
-.logo{
+
+.logo {
     margin-right: 50px;
     width: 200px;
     padding-left: 15px;
 }
-.list{
+
+.list {
     list-style: none;
     display: flex;
-    gap: 25px; 
+    gap: 25px;
 }
+
 #toggler,
-.navbar label{
+.navbar label {
     display: none;
 }
 
-@media screen and 
-(max-width: 765px){
-    .menu{
+@media screen and (max-width: 765px) {
+    .menu {
         width: 100%;
-        max-height: 0; /*Makes the max-height 0 to side the expanded menu.*/
-        overflow: hidden; /*Hides the overflowing content.*/
+        max-height: 0;
+        /*Makes the max-height 0 to side the expanded menu.*/
+        overflow: hidden;
+        /*Hides the overflowing content.*/
     }
-    .list{
-        flex-direction: column; /*Chances the direction of the flex container. By default it is a row so we change it to column in small screens.*/
+
+    .list {
+        flex-direction: column;
+        /*Chances the direction of the flex container. By default it is a row so we change it to column in small screens.*/
         align-items: center;
         padding: 20px;
     }
-    .navbar label{
-        display: inline-flex; /*Makes it an inline flex container for the icon. Used for centering the icon inside this box.*/
+
+    .navbar label {
+        display: inline-flex;
+        /*Makes it an inline flex container for the icon. Used for centering the icon inside this box.*/
         align-items: center;
         cursor: pointer;
     }
 
-    #toggler:checked ~ .menu{
+    #toggler:checked~.menu {
         max-height: 100%;
     }
 }
@@ -205,6 +215,7 @@ header a:hover {
     backdrop-filter: blur(10px);
     border-radius: 20px;
 }
+
 form {
     display: flex;
     justify-content: center;
@@ -293,3 +304,90 @@ form {
     margin-top: 15px;
 }
 
+@media (max-width: 415px) {
+    header {
+        padding: 0;
+    }
+
+    .container-header {
+        padding: 0px 10px;
+    }
+
+    .logo img {
+        width: 30px;
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+    .logo .imagen_2 {
+        width: 100px;
+        margin-left: 5px;
+    }
+
+    .container-all {
+        display: grid;
+        grid-template-rows: 1fr, 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .image {
+        margin-top: -10px;
+    }
+
+    .image img {
+        width: 250px;
+        padding-top: 0px;
+        rotate: 0deg;
+    }
+
+    .card-login {
+        width: 40vh;
+        height: 80vh;
+        margin-bottom: -15px;
+    }
+
+    .cajas {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr;
+        margin-top: 20px;
+        align-items: center;
+        grid-gap: 0px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .subcabecera {
+        font-size: 15px;
+    }
+
+    .input-group,
+    .input-group-2 {
+        font-size: 14px;
+    }
+
+    .metodos-recuperacion {
+        font-size: 13px;
+    }
+
+    .btn-login {
+        margin-top: 5px;
+    }
+
+    .label-1 {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .label-2 {
+        margin-top: 0;
+        font-size: 12px;
+    }
+
+    .recuperar {
+        font-size: 12px;
+    }
+
+}
