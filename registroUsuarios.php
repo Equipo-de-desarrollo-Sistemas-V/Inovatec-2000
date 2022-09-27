@@ -35,7 +35,7 @@
         <article class="login">
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
-                <form method="POST" action="php/registro1.php">
+                <form method="POST" action="registro1.php">
                     <!--llama a la accion de logear-->
                     <h2>CREA TU CUENTA</h2>
 
@@ -49,13 +49,13 @@
                         </div>
 
                         <div class="input-group-2">
-                            <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
-                            <label for="apellido-materno" class="input-label">Apellido materno</label>
+                            <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
+                            <label for="apellido-materno" class="input-label">Apellido paterno</label>
                         </div>
 
                         <div class="input-group">
-                            <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
-                            <label for="apellido-paterno" class="input-label">Apellido paterno</label>
+                            <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
+                            <label for="apellido-paterno" class="input-label">Apellido materno</label>
                         </div>
 
                         <div class="input-group-2">
@@ -81,6 +81,12 @@
             </div>
         </article>
     </section>
+
+    <?php 
+        /*$usuario = $_POST["usuario"];
+        echo $usuario;
+        echo '<script>alert("El usuario '. $usuario . ' está a punto de ser registrado")</script>';*/
+    ?>
 </body>
 
 </html>

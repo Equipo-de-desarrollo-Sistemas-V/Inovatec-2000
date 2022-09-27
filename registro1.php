@@ -27,17 +27,23 @@
     //veificar que el correo exista
 
     echo $usuario. ' '. $correo. '<br>';
-    $querry="Select * from Usuarios where usuario = '". $usuario."'";
+    $querry="SELECT * FROM Usuarios WHERE usuario = '$usuario'";
     $resultados = sqlsrv_query($con, $querry);
     if($resultados === false){
         die (print_r(sqlsrv_errors(), true));
     }
     //mostrar las tuplas
     if($r = sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)){
+
+        include("registroUsuarios.php");
+        
+        echo '<script>alert("Este usuario ya esta registrado")</script>';
+        
+        
         
         while($r = sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)){
             echo "usuario encontrado".'<br>';
-            include("../register.html");
+            
         }
 
     }    
@@ -72,7 +78,7 @@
 
                 //Nota: los html se corren desde donde se les invoca, por eso las rutas de los siguientes 
                 //formularios de registro deben estar adapradas en base a las rutas de los archivos php que las invocan
-                include("../registroContrasea.html");
+                include("registroContrasea.php");
 
             }
             

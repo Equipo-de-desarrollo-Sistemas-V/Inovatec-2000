@@ -20,7 +20,7 @@
     //validación de la contraseña
     if($contra != $confrimacion){
         echo '<script>alert("La contraseña y la confirmación no coinciden")</script>';
-        include("../registroContrasea.html");
+        include("registroContrasea.php");
     }
     else{
 
@@ -57,7 +57,7 @@
 
             if($bandn == 0 or $bandc == 0 or $bandm == 0 or $bandM == 0){
                 echo '<script>alert("La contraseña debe contener números, mayúsculas, minúsculas y caracteres especiales")</script>';
-                include("../registroContrasea.html");
+                include("registroContrasea.php");
             }
 
             else{
@@ -73,14 +73,14 @@
                 fclose($file);
 
                 //llamar al tercer formulario
-                include("../registroDireccion.html");
+                include("registroDireccion.php");
             }
 
         }
 
         else {
             echo '<script>alert("La contraseña debe contener al menos 8 caracteres")</script>';
-            include("../registroContrasea.html");
+            include("registroContrasea.php");
         }
     
     }
