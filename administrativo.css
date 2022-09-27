@@ -156,3 +156,88 @@ nav ul li ul li a:hover{
 	padding-left: 30px;
 	font-size: 14px;
 }
+
+/*Responsive*/
+.icon__menu{
+	font-size: 40px;
+	color: #fff;
+	cursor: pointer;
+	width: 26px;
+	height: 100%;
+	display: none;
+	align-items: center;
+}
+
+.label__check{
+	width: 26px;
+	height: 100%;
+	display: none;
+}
+
+#check__menu{
+	display: none;
+}
+
+@media screen and (max-width: 720px){
+	.btn-cerrar-session{
+		display: flex;
+	}
+
+	.header_superior{
+		padding: 10px;
+	}
+	.titulo{
+		font-size: 8px;
+	}
+	.logo{
+		width: 125px;
+	}
+
+	nav > ul{
+		flex-direction: column;
+		background-color: #023877;
+		position: fixed;
+		left: 0;
+		top: 135px;
+		width: 100%;
+		height: 0px;
+		transition: all 300ms ease;
+		z-index: 100;
+		opacity: 0;
+		*visibility: hidden;
+	}
+	
+	nav > ul > li > a:hover{
+		transform: scale(1);
+	}
+	
+	nav ul li ul{
+		left: 90px;
+
+	}
+
+	nav > ul > li:hover ul{
+		top: 90px;
+	}
+
+	nav > ul > li:first-child a{
+		background-position: 20px;
+	}
+
+	#selected{
+		transform: scale(1);
+
+	}
+
+
+
+	.icon__menu{
+		display: flex;
+	}
+
+	#check__menu:checked ~ nav > ul{
+		height: 300px;
+		visibility: visible;
+		opacity: 1;
+	}
+}
