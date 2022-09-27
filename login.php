@@ -60,7 +60,7 @@
 
           <input type="submit" value="Iniciar Sesion" class="btn-login">
 
-          <p class="label-1">¿No tienes una cuenta? <a class="metodos-recuperacion" href="registroUsuarios.html">Registrate</a>
+          <p class="label-1">¿No tienes una cuenta? <a class="metodos-recuperacion" href="registroUsuarios.php">Registrate</a>
           </p>
 
           <p class="label-2">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="">Recuperar

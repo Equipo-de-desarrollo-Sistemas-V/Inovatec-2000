@@ -27,6 +27,7 @@
         echo '<script>alert("El número de tarjeta debe tener 16 díigitos")</script>';
         echo 'No. de digitos: '. strlen($ntarjeta).'<br>';
         echo $ntarjeta;
+        include("registroTarjeta.php");
     }
 
     else{
@@ -81,8 +82,9 @@
         if ($con){
             echo "Conexion exitosa".'<br>';
         }else{
-            echo "no se pudo conectar";
             die (print_r(sqlsrv_errors(), true));
+            echo '<script>alert("no se pudo conectar")</script>';
+            include("registroUsuarios.php");
         }
 
         //consulta para insertar a la base
