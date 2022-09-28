@@ -34,6 +34,7 @@ header{
 }
 
 .btn-cerrar-session{
+	align-items: right;
 	text-decoration: none;
 	color: #ffffff;
 	margin: 0 20px 0 20px;
@@ -157,6 +158,23 @@ nav ul li ul li a:hover{
 	font-size: 14px;
 }
 
+/*COntenedores*/
+
+main{
+	padding: 40px 20px;
+	margin-top:120px;
+	align-content: center;
+
+}
+
+article{
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 40px;
+}
+
+
+
 /*Responsive*/
 .icon__menu{
 	font-size: 40px;
@@ -228,8 +246,6 @@ nav ul li ul li a:hover{
 		transform: scale(1);
 
 	}
-
-
 
 	.icon__menu{
 		display: flex;
