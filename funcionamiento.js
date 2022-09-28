@@ -7,7 +7,7 @@ window.onload=function(){
 
     document.getElementById('menuProducto1').className = 'desactivate';
     document.getElementById('menuProducto2').className = 'desactivate';
-
+ 
 }
 
 function show(param_div_id){

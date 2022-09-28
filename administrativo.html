@@ -9,7 +9,10 @@
 	<link rel="stylesheet" href="administrativo.css">
 </head>
 <body>
+	<!--Script de funcionaminto del menu desplegable-->
 	<script src="funcionamiento.js"></script>
+
+	<!--Estructura Header Superior-->
 	<header>
 		<div class="header_superior">
 			<div class="titulo">
@@ -43,30 +46,30 @@
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a href="#">Nueva Sucursal</a></li>
-								<li><a href="#">Lista de Sucursales</a></li>
+								<li><a id="menuSucursal1" href="#" onclick="show('contenidoAgregaSuc')">Nueva Sucursal</a></li>
+								<li><a id="menuSucursal2" href="#" onclick="show('contenidoListaSuc')">Lista de Sucursales</a></li>
 							</ul>
 						
 						</li>
 
 						<li><a href="#">Trabajadores</a>
 							<ul>
-								<li><a href="#">Nuevo Trabajador</a></li>
-								<li><a href="#">Lista de Trabajadores</a></li>
+								<li><a id="menuTrabajador1" href="#" onclick="show('contenidoAgregaTrab')">Nuevo Trabajador</a></li>
+								<li><a id="menuTrabajador2" href="#" onclick="show('contenidoListaTrab')">Lista de Trabajadores</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Proveedores</a>
 							<ul>
-								<li><a href="#">Nuevo Proveedor</a></li>
-								<li><a href="#">Lista de Proveedores</a></li>
+								<li><a id="menuProveedor1" href="#"onclick="show('contenidoAgregaProv')">Nuevo Proveedor</a></li>
+								<li><a id="menuProveedor2" href="#" onclick="show('contenidoListaProv')">Lista de Proveedores</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a href="#">Nueva Venta</a></li>
-								<li><a href="#">Ventas</a></li>
+								<li><a id="menuVentas1" href="#" onclick="show('contenidoAgregaVenta')">Nueva Venta</a></li>
+								<li><a id="menuVentas2" href="#" onclick="show('contenidoListaVenta')">Ventas</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -74,7 +77,11 @@
 			</div>
 		</div>
 	</header>
+
+	<!--Main General-->
 	<main>
+
+		<!--Contenido de la parte Productos-->
 		<div class="contenidoAgregaProd" id="contenidoAgregaProd">
 			<article>
 				<h1>Parte de agregar Productos</h1>
@@ -86,6 +93,24 @@
 				<h1>Parte de Lista Productos</h1>
 			</article>
 		</div>
+
+		<div class="contenidoAgregaSuc" id="contenidoAgregaSuc">
+			<article>
+				<h1>Parte de agregar Sucursal</h1>
+			</article>
+		</div>
+	
+		<div class="contenidoListaSuc" id="contenidoListaSuc">
+			<article>
+				<h1>Parte de Lista Productos</h1>
+			</article>
+		</div>
+
+		
+
+
+
+
 	</main>
 
 	
