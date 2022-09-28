@@ -1,5 +1,5 @@
-<!-- Interfaz para RECUPERAR CONTRASEÑA -->
 <!DOCTYPE html>
+<!-- Interfaz para RECUPERAR CONTRASEÑA -->
 <html lang="es">
 
 <head>
@@ -35,16 +35,11 @@
 
     <section class="container-all">
         <article class="login">
-            <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
-                <form method="POST" action="registro2.php">
-                    <!--llama a la accion de logear-->
+                <form id="formulario">
                     <h2>ACTUALIZA TU CONTRASEÑA</h2>
-
                     <p class="subcabecera">Ingresa la nueva <span>contraseña</span>. Guardala muy <span>bien</span>.</p>
-
                     <div class="passwords">
-                        <!-- Caja para el nombre -->
                         <div class="input-group">
                             <input type="password" name="contraseña" id="contraseña" required class="input">
                             <label for="contraseña" class="input-label">Contraseña</label>
@@ -55,11 +50,11 @@
                                 class="input">
                             <label for="confirmar-contraseña" class="input-label">Confirmar contraseña</label>
                         </div>
-                        <input type="submit" value="Siguiente ->" class="btn-login">
+                        <input type="submit" value="Actualizar ->" class="btn-login">
                 </form>
             </div>
         </article>
+        <script src="js/alertaContraseña.js"></script>
     </section>
 </body>
-
 </html>

@@ -1,6 +1,6 @@
-<!-- Logica para verificar la existencia de un email -->
-<?php
 
+<?php
+// <!-- Logica para verificar la existencia de un email -->
 /**
  * Class to check up e-mail
  *
