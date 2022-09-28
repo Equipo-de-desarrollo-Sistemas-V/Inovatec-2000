@@ -28,16 +28,12 @@ class Recuperar{
                 $bandM = 0;
                 $bandm = 0;
                 for($i=0;$i<strlen($contra);$i++){
-                    //verificar que no tenga espacios
-                    if(ord($contra[$i])===32){
-                        $bandE ++;
-                    } 
                     //verificar que tenga numeros
                     if(ord($contra[$i])>=48 and ord($contra[$i])<=57){
                         $bandn ++;
                     }
                     //verificar que tenga caracteres especiales
-                    if((ord($contra[$i]) >=33) and (ord($contra[$i]) <=47 or ord($contra[$i])>=58) and (ord($contra[$i])<=64 or ord($contra[$i])>=91) and (ord($contra[$i])<=96 or ord($contra[$i])>=123)){
+                    if((ord($contra[$i]) >=32) and (ord($contra[$i]) <=47 or ord($contra[$i])>=58) and (ord($contra[$i])<=64 or ord($contra[$i])>=91) and (ord($contra[$i])<=96 or ord($contra[$i])>=123)){
                         $bandc ++;
                     }
                     //verificar que tenga mayusculas
