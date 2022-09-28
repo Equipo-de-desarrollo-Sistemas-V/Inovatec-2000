@@ -63,7 +63,7 @@
           <p class="label-1">¿No tienes una cuenta? <a class="metodos-recuperacion" href="registroUsuarios.php">Registrate</a>
           </p>
 
-          <p class="label-2">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="">Recuperar
+          <p class="label-2">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="recuperarCorreo.php">Recuperar
               contraseña</a></p>
         </form>
       </div>

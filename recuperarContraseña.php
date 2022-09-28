@@ -1,5 +1,5 @@
-<!-- Interfaz para RECUPERAR CONTRASEÑA -->
 <!DOCTYPE html>
+<!-- Interfaz para RECUPERAR CONTRASEÑA -->
 <html lang="es">
 
 <head>
@@ -62,5 +62,4 @@
     </article>
   </section>
 </body>
-
 </html>
