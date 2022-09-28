@@ -285,6 +285,8 @@ form {
 
 .metodos-recuperacion {
     text-decoration: none;
+    color: #297cc0;
+    font-weight: 600;
 }
 
 .metodos-recuperacion:hover {
@@ -365,11 +367,13 @@ form {
     .label-1 {
         margin-top: 15px;
         font-size: 14px;
+        color: #297cc0;
     }
     
     .label-2 {
         margin-top: 0;
         font-size: 12px;
+        color:#297cc0
     }
 
 }

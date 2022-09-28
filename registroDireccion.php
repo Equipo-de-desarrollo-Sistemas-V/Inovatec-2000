@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar tu cuenta</title>
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/registroUsuarios.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
@@ -46,32 +46,32 @@
                     <div class="cajas">
                         <!-- Caja para el nombre -->
                         <div class="input-group">
-                            <input type="text" name="calle" id="calle" required class="input">
+                            <input type="text" name="calle" id="calle" required class="input" autocomplete="off">
                             <label for="calle" class="input-label">Calle</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="number" name="numero" id="numero" required class="input">
+                            <input type="number" name="numero" id="numero" required class="input" autocomplete="off">
                             <label for="numero" class="input-label">Numero</label>
                         </div>
 
                         <div class="input-group">
-                            <input type="text" name="colonia" id="colonia" required class="input">
+                            <input type="text" name="colonia" id="colonia" required class="input" autocomplete="off">
                             <label for="colonia" class="input-label">Colonia</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="text" name="ciudad" id="ciudad" required class="input">
+                            <input type="text" name="ciudad" id="ciudad" required class="input" autocomplete="off">
                             <label for="ciudad" class="input-label">Ciudad</label>
                         </div>
 
                         <div class="input-group">
-                            <input type="text" name="estado" id="estado" required class="input">
+                            <input type="text" name="estado" id="estado" required class="input" autocomplete="off">
                             <label for="estado" class="input-label">Estado</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="number" name="codigo-postal" id="codigo-postal" required class="input">
+                            <input type="number" name="codigo-postal" id="codigo-postal" required class="input" autocomplete="off">
                             <label for="codigo-postal" class="input-label">Código Postal</label>
                         </div>
 

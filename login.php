@@ -49,12 +49,12 @@
           <p class="subcabecera">Es <span>rápido</span>, <span>fácil</span> y <span>sencillo</span>.</p>
 
           <div class="input-group">
-            <input type="email" name="email" id="email" required class="input">
+            <input type="email" name="email" id="email" required class="input" autocomplete="off">
             <label for="email" class="input-label">Correo Electronico</label>
           </div>
 
           <div class="input-group-2">
-            <input type="password" name="password" id="password" required class="input">
+            <input type="password" name="password" id="password" required class="input" autocomplete="off">
             <label for="password" class="input-label">Contraseña</label>
           </div>
 

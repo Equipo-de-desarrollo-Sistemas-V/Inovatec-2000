@@ -1,5 +1,3 @@
-
-
 <?php
 //<!-- Logica para RECUPERAR ENVIAR CORREO Y PODER RECUPERAR CONTRASEÑA -->
 //<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -11,8 +9,8 @@ class Envio{
         $serverName='localhost';
         $connectionInfo=array("Database"=>"ClientePrueba", "UID"=>"Admin", "PWD"=>"12345", "CharacterSet"=>"UTF-8");
         try{
-           $this->con = sqlsrv_connect($serverName, $connectionInfo); 
-           $this->varConectado=true;
+            $this->con = sqlsrv_connect($serverName, $connectionInfo); 
+            $this->varConectado=true;
         }catch (Exception $e){
             echo json_encode('conR');
         }  
