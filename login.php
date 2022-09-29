@@ -68,7 +68,7 @@
         </form>
       </div>
     </article>
-    <script src="js/aalertasLogin.js"></script>
+    <script src="js/alertasLogin.js"></script>
   </section>
 </body>
 
