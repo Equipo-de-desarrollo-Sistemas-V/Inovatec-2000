@@ -15,15 +15,7 @@
     <header>
         <nav class="navbar container">
             <img src="css/assets/Logo_Integrado.svg" required class="logo">
-            <input type="checkbox" id="toggler">
-            <label for="toggler"><i class="ri-menu-line"></i></label>
-            <div class="menu">
-                <ul class="list">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </div>
+            
         </nav>
     </header>
 
@@ -149,7 +141,7 @@
         <article id="container-datos-bancarios" class="contenedor">
             <h3 id="subtitulo">Mis datos bancarios</h3>
 
-            <p class="leyenda-1"><span>Actualiza</span> los campos de tu <span>tarjeta</span> para que todo proceda correctamente.</p>
+            <p class="leyenda-1"><span>Actualiza</span> los campos de tu poderosa <span>tarjeta</span>.</p>
             
             <form action="" method="post" class="formulario">
 
