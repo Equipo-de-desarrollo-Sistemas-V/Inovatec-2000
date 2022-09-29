@@ -2,13 +2,13 @@
 <!-- Interfaz para INGRESAR EL CORREO Y PODER RECUPERAR LA CUENTA-->
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar tu cuenta</title>
-    <link rel="stylesheet" href="css/recuperar.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar tu cuenta</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,10 +28,10 @@
         </nav>
     </header>
 
-    <section class="waves">
-        <div class="bgcolor"></div>
-        <div class="wave w1"></div>
-    </section>
+  <section class="waves">
+    <div class="bgcolor"></div>
+    <div class="wave w1"></div>
+  </section>
 
     <section class="container-all">
         <article class="login">

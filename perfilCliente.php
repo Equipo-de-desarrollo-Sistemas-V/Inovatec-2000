@@ -15,15 +15,7 @@
     <header>
         <nav class="navbar container">
             <img src="css/assets/Logo_Integrado.svg" required class="logo">
-            <input type="checkbox" id="toggler">
-            <label for="toggler"><i class="ri-menu-line"></i></label>
-            <div class="menu">
-                <ul class="list">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </div>
+            
         </nav>
     </header>
 
@@ -51,7 +43,7 @@
 
             <p class="leyenda-1">Modifica tu <span>nombre</span> o apellidos por si tienes algún error.</p>
 
-            <form action="" method="post" class="formulario">
+            <form action="logicaPerfil.php" method="post" class="formulario">
 
                 <div class="entrada-1">
                     <div class="input-group">
@@ -60,17 +52,17 @@
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
-                        <label for="apellido-materno" class="input-label">Apellido materno</label>
-                    </div>
-
-                    <div class="input-group">
                         <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
                         <label for="apellido-paterno" class="input-label">Apellido paterno</label>
                     </div>
+
+                    <div class="input-group">
+                        <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
+                        <label for="apellido-materno" class="input-label">Apellido materno</label>
+                    </div>
                 </div>
 
-                <input type="submit" value="Actualizar datos" class="btn">
+                <input type="submit" name="boton1" value="Actualizar datos" class="btn">
             </form>
         </article>
 
@@ -79,7 +71,7 @@
 
             <p class="leyenda-1">Actualiza tu <span>direccion</span> para saber a donde enviar tus <span>pedidos</span>.</p>
 
-            <form action="" method="post" class="formulario">
+            <form action="logicaPerfil.php" method="post" class="formulario">
 
                 <div class="entrada-2">
                     <div class="input-group">
@@ -114,7 +106,7 @@
 
                 </div>
 
-                <input type="submit" value="Actualizar mi direccón" class="btn">
+                <input type="submit" name="boton2" value="Actualizar mi direccón" class="btn">
             </form>
         </article>
 
@@ -124,7 +116,7 @@
             <p class="leyenda-1">Manten tu <span>contraseña</span> actualizada en todo <span>momento</span>.</p>
             <p class="leyenda-2">Evita ser <span>víctima</span> del robo de tu <span>cuenta</span>.</p>
 
-            <form action="" method="post" class="formulario">
+            <form action="logicaPerfil.php" method="post" class="formulario">
                 <div class="entrada-1">
                     <div class="input-group">
                         <input type="password" name="password" id="password" required class="input">
@@ -142,16 +134,16 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Actualizar contraseña" class="btn">
+                <input type="submit" name="boton3" value="Actualizar contraseña" class="btn">
             </form>
         </article>
 
         <article id="container-datos-bancarios" class="contenedor">
             <h3 id="subtitulo">Mis datos bancarios</h3>
 
-            <p class="leyenda-1"><span>Actualiza</span> los campos de tu <span>tarjeta</span> para que todo proceda correctamente.</p>
+            <p class="leyenda-1"><span>Actualiza</span> los campos de tu poderosa <span>tarjeta</span>.</p>
             
-            <form action="" method="post" class="formulario">
+            <form action="logicaPerfil.php" method="post" class="formulario">
 
                 <div class="entrada-2">
                     <div class="input-group">
@@ -179,7 +171,7 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Actualizar tarjeta" class="btn">
+                <input type="submit" name="boton4" value="Actualizar tarjeta" class="btn">
             </form>
         </article>
 
