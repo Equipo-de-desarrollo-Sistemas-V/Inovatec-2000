@@ -16,15 +16,6 @@
   <header>
     <nav class="navbar container">
       <img src="css/assets/Logo_Integrado.svg" required class="logo">
-      <input type="checkbox" id="toggler">
-      <label for="toggler"><i class="ri-menu-line"></i></label>
-      <div class="menu">
-        <ul class="list">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </div>
     </nav>
   </header>
 
@@ -42,19 +33,19 @@
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form method="POST" action="php/controller.php">
+        <form method="POST" action="logicaLogin.php">
           <!--llama a la accion de logear-->
           <h2>INICIO DE SESION</h2>
 
           <p class="subcabecera">Es <span>rápido</span>, <span>fácil</span> y <span>sencillo</span>.</p>
 
           <div class="input-group">
-            <input type="email" name="email" id="email" required class="input" autocomplete="off">
+            <input type="email" name="email" id="email" required class="input">
             <label for="email" class="input-label">Correo Electronico</label>
           </div>
 
           <div class="input-group-2">
-            <input type="password" name="password" id="password" required class="input" autocomplete="off">
+            <input type="password" name="password" id="password" required class="input">
             <label for="password" class="input-label">Contraseña</label>
           </div>
 
@@ -68,6 +59,7 @@
         </form>
       </div>
     </article>
+    <script src="js/alertasLogin.js"></script>
   </section>
 </body>
 
