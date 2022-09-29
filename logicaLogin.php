@@ -25,24 +25,24 @@ class login{
             #Se verifica si hay datos de empleados, si no se manda a los clientes
             if ($conta===1){
                 #Si esta registrado el empleado, se verifica la contraseña
-                $palabra_secreta = $_POST["palabra_secreta"];
-                $query1="SELECT contra_em FROM Empleados WHERE contra_em='$palabra_secreta'";
+                $query1="SELECT contra_em FROM Empleados WHERE email='$usuario'";
                 $res1= sqlsrv_query($conn_sis, $query1);
                 if( $res1 === false) {
                     die( print_r( sqlsrv_errors(), true) );
                 }
                 $conta1=0;
                 while( $row1 = sqlsrv_fetch_array($res1) ) {
-                    $conta1++;
+                    $conta++;
+                    $hash=$row1['contra_em'];
+                    if (password_verify($palabra_secreta, $hash)) {
+                        session_start();
+                        $_SESSION["usuario"] = $usuario;
+                        echo 'Bienvenido empleado';
+                    } else {
+                        echo 'Invalid password.';
+                    }
                 }
                 #Si hay contraseña entonces ya se entra al sistema, si no el empleado no esta registrado
-                if ($conta1===1){
-                    #Sesion Iniciada como empleado
-                    session_start();
-                    $_SESSION["email"] = $usuario;
-                } else {
-                    echo json_encode('registro');
-                }
             } else{
                 #Si no esta regitrado como cliente, entonces se busca como cliente
                 $usuario = $_POST["email"];
@@ -60,7 +60,7 @@ class login{
                 #Si esta registrado el cliente entonces se verifica junto con la contraseña
                 if ($conta2===1){
                     $palabra_secreta = $_POST["password"];
-                    $query3="SELECT Contra_us FROM Persona WHERE Contra_us='$palabra_secreta'";
+                    $query3="SELECT Contra_us FROM Persona WHERE email='$usuario'";
                     $res3= sqlsrv_query($conn_sis, $query3);
                     if( $res3 === false) {
                         die( print_r( sqlsrv_errors(), true) );
@@ -68,17 +68,18 @@ class login{
                     $conta3=0;
                     while( $row3 = sqlsrv_fetch_array($res3) ) {
                         $conta3++;
-                    }
-                    #Entra al sistema como cliente, pero si no esta, entonces no esta registrado
-                    if ($conta3===1){
-                        #Sesion Iniciada como cliente
-                        session_start();
-                        $_SESSION["email"] = $usuario;
-                    } else {
-                        echo json_encode('registro');
+                        $hash1=$row3['Contra_us'];
+                        if (password_verify($palabra_secreta, $hash1)) {
+                            session_start();
+                            $_SESSION["usuario"] = $usuario;
+                            echo 'Bienvenido cliente';
+                        } else {
+                            echo 'Invalid password.';
+                        }
+                }
             }
             }
-            }
+            
                 
             }catch (Exception $e){
                 sqlsrv_close($conn_sis);
