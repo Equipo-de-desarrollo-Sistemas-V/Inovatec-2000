@@ -19,13 +19,6 @@ class Envio{
     function verificarCorreo(){
         $correo_destino=$_POST["email"];
 
-        //verificar si el correo existe
-        //include_once("VerifyEmail.php");
-
-        //$vmail = new verifyEmail();
-
-        //if ($vmail->check($correo_destino)) {
-            //echo json_encode('correo');
             self::conexion();
                     if ($this->varConectado===true){
                         try{
@@ -55,16 +48,6 @@ class Envio{
                             sqlsrv_close($this->con);
                         }        
                     }
-        /*} else if ($vmail->isValid($correo_destino)) {
-            echo json_encode('correoInvalido');
-            // echo 'email &lt;' . $correo . '&gt; valid, but not exist!';
-            // echo '<script>alert("Por favor inserte un correo válido")</script>';
-            
-        } else {
-            echo json_encode('correoInvalido');
-            // echo 'email &lt;' . $correo . '&gt; not valid and not exist!';
-            // echo '<script>alert("Por favor inserte un correo válido")</script>';
-        }*/ 
     }
 
     //funcion para enviar el email junto con el link para ingresar un nueva contraseña
