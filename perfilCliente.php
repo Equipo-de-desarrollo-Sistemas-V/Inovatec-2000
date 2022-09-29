@@ -1,6 +1,7 @@
 <!-- Interfaz para PERFIL CLIENTE -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +15,13 @@
     <header>
         <nav class="navbar container">
             <img src="css/assets/Logo_Integrado.svg" required class="logo">
+            <input type="checkbox" id="toggler">
+            <label for="toggler"><i class="ri-menu-line"></i></label>
+            <div class="menu">
+                <ul class="list">
+                    <li><input type="button" value="Cerrar sesión" class="btn-2 "></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -43,7 +51,7 @@
 
             <form action="logicaPerfil.php" method="post" class="formulario">
 
-                <div class="entrada-1">
+                <div class="entrada-2">
                     <div class="input-group">
                         <input type="text" name="nombre-cliente" id="nombre-cliente" required class="input">
                         <label for="nombre-cliente" class="input-label">Nombre</label>
@@ -58,44 +66,20 @@
                         <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
                         <label for="apellido-paterno" class="input-label">Apellido paterno</label>
                     </div>
+
+                    <div class="input-group">
+                        <input type="text" name="telefono" id="telefono" required class="input">
+                        <label for="telefono" class="input-label">Telefono</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" name="correo" id="correo" required class="input">
+                        <label for="correo" class="input-label">Correo</label>
+                    </div>
+
                 </div>
 
                 <input type="submit" name="boton1" value="Actualizar datos" class="btn">
-            </form>
-        </article>
-
-        <article id="container-telefono" class="contenedor">
-
-            <h3 id="subtitulo">Mi telefono</h3>
-
-            <p class="leyenda-1">Modifica tu <span>telefono</span> por si tienes algún error.</p>
-
-            <form action="" method="post" class="formulario">
-
-                    <div class="input-group">
-                        <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
-                        <label for="apellido-materno" class="input-label">Apellido materno</label>
-                    </div>
-                </div>
-
-                <input type="submit" value="Actualizar telefono" class="btn">
-            </form>
-        </article>
-
-        <article id="container-telefono" class="contenedor">
-
-            <h3 id="subtitulo">Mi telefono</h3>
-
-            <p class="leyenda-1">Modifica tu <span>telefono</span> por si tienes algún error.</p>
-
-            <form action="" method="post" class="formulario">
-
-                <div class="input-group">
-                    <input type="text" name="telefono" id="telefono" required class="input">
-                    <label for="telefono" class="input-label">Telefono</label>
-                </div>
-
-                <input type="submit" value="Actualizar telefono" class="btn">
             </form>
         </article>
 
@@ -176,7 +160,7 @@
             <h3 id="subtitulo">Mis datos bancarios</h3>
 
             <p class="leyenda-1"><span>Actualiza</span> los campos de tu poderosa <span>tarjeta</span>.</p>
-            
+
             <form action="logicaPerfil.php" method="post" class="formulario">
 
                 <div class="entrada-2">
