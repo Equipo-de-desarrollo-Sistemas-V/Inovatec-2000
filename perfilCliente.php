@@ -15,7 +15,6 @@
     <header>
         <nav class="navbar container">
             <img src="css/assets/Logo_Integrado.svg" required class="logo">
-            
         </nav>
     </header>
 
@@ -66,10 +65,28 @@
             </form>
         </article>
 
+        <article id="container-telefono" class="contenedor">
+
+            <h3 id="subtitulo">Mi telefono</h3>
+
+            <p class="leyenda-1">Modifica tu <span>telefono</span> por si tienes algún error.</p>
+
+            <form action="" method="post" class="formulario">
+
+                <div class="input-group">
+                    <input type="text" name="telefono" id="telefono" required class="input">
+                    <label for="telefono" class="input-label">Telefono</label>
+                </div>
+
+                <input type="submit" value="Actualizar telefono" class="btn">
+            </form>
+        </article>
+
         <article id="container-datos-direccion" class="contenedor">
             <h3 id="subtitulo">Mi direccion</h3>
 
-            <p class="leyenda-1">Actualiza tu <span>direccion</span> para saber a donde enviar tus <span>pedidos</span>.</p>
+            <p class="leyenda-1">Actualiza tu <span>direccion</span> para saber a donde enviar tus <span>pedidos</span>.
+            </p>
 
             <form action="" method="post" class="formulario">
 
@@ -142,7 +159,7 @@
             <h3 id="subtitulo">Mis datos bancarios</h3>
 
             <p class="leyenda-1"><span>Actualiza</span> los campos de tu poderosa <span>tarjeta</span>.</p>
-            
+
             <form action="" method="post" class="formulario">
 
                 <div class="entrada-2">
@@ -178,18 +195,21 @@
         <article id="container-eliminar-cuenta" class="contenedor">
             <h3 id="subtitulo">Eliminar cuenta</h3>
 
-            <p class="leyenda-1">¿Deseas <span>eliminar</span> todos los datos asociados a esta <span>cuenta</span>? </p>
+            <p class="leyenda-1">¿Deseas <span>eliminar</span> todos los datos asociados a esta <span>cuenta</span>?
+            </p>
             <p class="leyenda-2">Se <span>perderán</span> para siempre. Eso es mucho <span>tiempo</span>.</p>
-            
+
             <form action="" method="post" class="formulario">
                 <div class="entrada-3">
                     <div class="input-group">
-                        <input type="delete-password" name="delete-password" id="delete-password" required class="input">
+                        <input type="delete-password" name="delete-password" id="delete-password" required
+                            class="input">
                         <label for="delete-password" class="input-label">Contraseña</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="confirm-delete-password" name="confirm-delete-password" id="confirm-delete-password" required class="input">
+                        <input type="confirm-delete-password" name="confirm-delete-password"
+                            id="confirm-delete-password" required class="input">
                         <label for="confirm-delete-password" class="input-label">Confirmar contraseña</label>
                     </div>
                 </div>
