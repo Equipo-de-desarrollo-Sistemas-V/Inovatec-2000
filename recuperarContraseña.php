@@ -37,7 +37,7 @@
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form method="POST" action="registro2.php">
+        <form id="formulario">
           <!--llama a la accion de logear-->
           <h2>ACTUALIZA TU CONTRASEÑA</h2>
 
@@ -60,6 +60,7 @@
         </form>
       </div>
     </article>
+    <script src="js/alertaContraseña.js"></script>
   </section>
 </body>
 </html>

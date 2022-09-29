@@ -20,16 +20,16 @@ class Envio{
         $correo_destino=$_POST["email"];
 
         //verificar si el correo existe
-        include_once("VerifyEmail.php");
+        //include_once("VerifyEmail.php");
 
-        $vmail = new verifyEmail();
+        //$vmail = new verifyEmail();
 
-        if ($vmail->check($correo_destino)) {
+        //if ($vmail->check($correo_destino)) {
             //echo json_encode('correo');
             self::conexion();
                     if ($this->varConectado===true){
                         try{
-                            $query= "SELECT email FROM Usuarios where email ='".$correo_destino."'";
+                            $query= "SELECT email FROM Persona where email ='".$correo_destino."'";
                             $resultado=sqlsrv_query( $this->con, $query);
                             $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
                             if (empty($arreResul)){
@@ -55,7 +55,7 @@ class Envio{
                             sqlsrv_close($this->con);
                         }        
                     }
-        } else if ($vmail->isValid($correo_destino)) {
+        /*} else if ($vmail->isValid($correo_destino)) {
             echo json_encode('correoInvalido');
             // echo 'email &lt;' . $correo . '&gt; valid, but not exist!';
             // echo '<script>alert("Por favor inserte un correo válido")</script>';
@@ -64,7 +64,7 @@ class Envio{
             echo json_encode('correoInvalido');
             // echo 'email &lt;' . $correo . '&gt; not valid and not exist!';
             // echo '<script>alert("Por favor inserte un correo válido")</script>';
-        } 
+        }*/ 
     }
 
     //funcion para enviar el email junto con el link para ingresar un nueva contraseña

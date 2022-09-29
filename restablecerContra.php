@@ -50,8 +50,8 @@ class Recuperar{
                     echo json_encode('validacion');
                 }else{
                     //la contraseña pasó las verificaciones (FALTA ENCRIPTAR)
-                    //$clave = password_hash($contra, PASSWORD_DEFAULT);
-                    $clave=$contra;
+                    $clave = password_hash($contra, PASSWORD_DEFAULT);
+                    //$clave=$contra;
                     self::conexion();
                     if ($this->varConectado===true){
                         try{
@@ -71,7 +71,7 @@ class Recuperar{
                             }
                             //verificar si es sliente o un empleado y actualizar
                             if ($tipo==="cliente"){
-                                $query= "UPDATE Usuarios set contra_us = '".$clave."'where email='".$correo_destino."'" ;
+                                $query= "UPDATE Persona set Contra_us = '".$clave."'where email='".$correo_destino."'" ;
                                 $resultado=sqlsrv_query( $this->con, $query);
                             }else{
                                 $query= "UPDATE Empleados set contra_em = '".$clave."'where email='".$correo_destino."'" ;
