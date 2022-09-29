@@ -37,7 +37,7 @@ class login{
                     if (password_verify($palabra_secreta, $hash)) {
                         session_start();
                         $_SESSION["usuario"] = $usuario;
-                        echo 'Bienvenido empleado';
+                        include_once "administrativo.html";
                     } else {
                         echo 'Invalid password.';
                     }
@@ -74,15 +74,15 @@ class login{
                             $_SESSION["usuario"] = $usuario;
                             echo 'Bienvenido cliente';
                         } else {
-                            echo 'Invalid password.';
+                            echo json_encode('registro');
                         }
                 }
             }
             }
-            
                 
             }catch (Exception $e){
                 sqlsrv_close($conn_sis);
+                echo json_encode('registro');
             }
 }
 }

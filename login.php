@@ -16,15 +16,6 @@
   <header>
     <nav class="navbar container">
       <img src="css/assets/Logo_Integrado.svg" required class="logo">
-      <input type="checkbox" id="toggler">
-      <label for="toggler"><i class="ri-menu-line"></i></label>
-      <div class="menu">
-        <ul class="list">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </div>
     </nav>
   </header>
 
@@ -68,7 +59,7 @@
         </form>
       </div>
     </article>
-    <script src="js/aalertasLogin.js"></script>
+    <script src="js/alertasLogin.js"></script>
   </section>
 </body>
 
