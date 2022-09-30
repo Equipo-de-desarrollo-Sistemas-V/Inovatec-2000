@@ -28,7 +28,7 @@
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form method="POST" action="registro2.php">
+        <form method="POST" action="" id="formulario">
           <!--llama a la accion de logear-->
           <h2>CREA TU CUENTA</h2>
 
@@ -40,8 +40,7 @@
           </div>
 
           <div class="input-group">
-            <input type="password" name="confirmar-contraseña" id="confirmar-contraseña" required class="input"
-              autocomplete="off">
+            <input type="password" name="confirmar-contraseña" id="confirmar-contraseña" required class="input" autocomplete="off">
             <label for="confirmar-contraseña" class="input-label">Confirmar contraseña</label>
           </div>
 
@@ -50,6 +49,8 @@
       </div>
     </article>
   </section>
+
+  <script src="js/alertasContra.js"></script>
 </body>
 
 </html>
