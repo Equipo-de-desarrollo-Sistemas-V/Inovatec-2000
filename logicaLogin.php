@@ -93,7 +93,7 @@ class login{
                                 $_SESSION["nombres"] = $row011['nombres'];
                                 include_once "perfilCliente.php";
                             }
-                            } else {
+                        } else {
                                 echo json_encode('registro');
                             }
                 }

@@ -19,7 +19,9 @@
             <label for="toggler"><i class="ri-menu-line"></i></label>
             <div class="menu">
                 <ul class="list">
-                    <li><input type="button" value="Cerrar sesión" class="btn-2 "></li>
+            <?php 
+			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['nombres']);?>
+                    <a class="btn-cerrar-session" href="cerrar.php" type="button">Cerrar Sesión</a>
                 </ul>
             </div>
         </nav>
