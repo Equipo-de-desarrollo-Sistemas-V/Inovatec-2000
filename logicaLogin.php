@@ -35,9 +35,21 @@ class login{
                     $conta++;
                     $hash=$row1['contra_em'];
                     if (password_verify($palabra_secreta, $hash)) {
-                        session_start();
-                        $_SESSION["usuario"] = $usuario;
-                        include_once "administrativo.html";
+                        $query0="SELECT nombres, ap_paterno FROM Empleados WHERE email='$usuario'";
+                        $res0= sqlsrv_query($conn_sis, $query0);
+                        if( $res0 === false) {
+                            die( print_r( sqlsrv_errors(), true) );
+                        }
+                        #Inicalizamos un contador con un ciclo para los datos
+                        $conta0=0;
+                        while( $row0 = sqlsrv_fetch_array($res0) ) {
+                            $conta0++;
+                            session_start();
+                            $_SESSION["nombres"] = $row0['nombres'];
+                            
+                            include_once "administrativo.php";
+                        }
+                        
                     } else {
                         echo 'Invalid password.';
                     }
@@ -71,7 +83,7 @@ class login{
                         $hash1=$row3['Contra_us'];
                         if (password_verify($palabra_secreta, $hash1)) {
                             session_start();
-                            $_SESSION["usuario"] = $usuario;
+                            $_SESSION["email"] = $usuario;
                             echo 'Bienvenido cliente';
                         } else {
                             echo json_encode('registro');

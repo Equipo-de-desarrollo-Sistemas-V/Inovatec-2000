@@ -23,6 +23,8 @@
 			</div>
 
 			<div class="btn-header">
+			<?php 
+			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['nombres']);?>
 				<button class="btn-cerrar-session" type="button">Cerrar Sesión</button>
 			</div>
 		</div>
