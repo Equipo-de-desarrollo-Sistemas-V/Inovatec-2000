@@ -35,7 +35,7 @@ class login{
                     $conta++;
                     $hash=$row1['contra_em'];
                     if (password_verify($palabra_secreta, $hash)) {
-                        $query0="SELECT nombres, ap_paterno FROM Empleados WHERE email='$usuario'";
+                        $query0="SELECT nombres FROM Empleados WHERE email='$usuario'";
                         $res0= sqlsrv_query($conn_sis, $query0);
                         if( $res0 === false) {
                             die( print_r( sqlsrv_errors(), true) );
@@ -46,7 +46,6 @@ class login{
                             $conta0++;
                             session_start();
                             $_SESSION["nombres"] = $row0['nombres'];
-                            
                             include_once "administrativo.php";
                         }
                         
@@ -82,16 +81,24 @@ class login{
                         $conta3++;
                         $hash1=$row3['Contra_us'];
                         if (password_verify($palabra_secreta, $hash1)) {
-                            session_start();
-                            $_SESSION["email"] = $usuario;
-                            echo 'Bienvenido cliente';
-                        } else {
-                            echo json_encode('registro');
-                        }
+                            $query011="SELECT nombres FROM Persona WHERE email='$usuario'";
+                            $res011= sqlsrv_query($conn_sis, $query011);
+                            if( $res011 === false) {
+                                die( print_r( sqlsrv_errors(), true) );
+                            }
+                            $conta011=0;
+                            while( $row011 = sqlsrv_fetch_array($res011) ) {
+                                $conta011++;
+                                session_start();
+                                $_SESSION["nombres"] = $row011['nombres'];
+                                include_once "perfilCliente.php";
+                            }
+                            } else {
+                                echo json_encode('registro');
+                            }
                 }
             }
             }
-                
             }catch (Exception $e){
                 sqlsrv_close($conn_sis);
                 echo json_encode('registro');
