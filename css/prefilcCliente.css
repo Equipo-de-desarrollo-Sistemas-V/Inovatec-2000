@@ -36,6 +36,36 @@ header {
     padding-block: 5px;
 }
 
+
+.btn-2 {
+    background-color: #fff;
+    color: #000;
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.15);
+    margin-top: -75px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-2:hover {
+    background-color: #ff7400   ;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
+    margin-top: -75px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 300ms all;
+}
+
 .navbar a {
     text-decoration: none;
     color: black;
@@ -165,7 +195,6 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -33,6 +33,7 @@
     else{
         //obtener los datos del resto de formularios desde el fichero
         $file = fopen("archivo_campos.txt", "r");
+
         $nombre = fgets($file);
         $paterno = fgets($file);
         $materno = fgets($file);
@@ -43,8 +44,7 @@
         $calle = fgets($file);
         $numero = fgets($file);
         $colonia = fgets($file);
-        $ciudad = fgets($file);
-        $estado = fgets($file);
+        $estado_municipio = fgets($file);
         $cp = fgets($file);
 
         //quiterle el salto de linea al telefono
@@ -81,21 +81,27 @@
         //verificar que la conexion se hizo bien
         if ($con){
             echo "Conexion exitosa".'<br>';
+
+            //inserta los datos en la tabla personas
+            $querry_user = "INSERT INTO Persona
+            values('$usuario', '$contra', '$nombre', '$paterno', '$materno', '$correo)";
+            $consulta_user = sqlsrv_query($con, $querry_user);
+
+            //inserta los datos en la tabla direccion
+            $querry_direccion = "INSERT INTO Direccion
+            values('$usuario', $estado_municipio, '$colonia', '$calle', '$numero', '$telefono', '$cp')";
+            $consulta_direccion = sqlsrv_query($con, $querry_user);
+
+            //inserta los datos en la tabla tarjetas
+            $querry_tarjeta = "INSERT INTO Tarjetas
+            values('$usuario', '$ntarjeta', '$mes', '$year')";
+            $consulta_tarjeta = sqlsrv_query($con, $querry_user);
+
         }else{
             die (print_r(sqlsrv_errors(), true));
             echo '<script>alert("no se pudo conectar")</script>';
             include("registroUsuarios.php");
         }
 
-        //consulta para insertar a la base
-        $query = "INSERT INTO Usuarios VALUES('$nombre', '$paterno', '$materno', '$usuario', '$contra', '$ciudad', '$estado', '$colonia', '$calle', '$numero', '$telefono', '$cp', '$correo', '$ntarjeta', '$mes', '$year')";
-        $res=sqlsrv_prepare($con, $query);
-
-        if (sqlsrv_execute($res)){
-            echo "<br>Datos insertado correctamente";
-        }else{
-            echo "<br>Error al insertar los datos";
-            die (print_r(sqlsrv_errors(), true));
-        }
     }
 ?>

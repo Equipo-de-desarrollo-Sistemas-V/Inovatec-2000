@@ -54,10 +54,10 @@ class PerfilCliente{
         $nombreCliente=$_POST["nombre-cliente"];
         $apellidoPaterno=$_POST["apellido-paterno"];
         $apellidoMaterno=$_POST["apellido-materno"];
-        //$correoPersona=$_POST["apellido-paterno"];
-        //$telefonoPersona=$_POST["apellido-materno"];
-        $correoPersona="1correoleo2@gmail.com";
-        $telefonoPersona="1234567890";
+        $correoPersona=$_POST["correo"];
+        $telefonoPersona=$_POST["telefono"];
+        //$correoPersona="1correoleo2@gmail.com";
+        //$telefonoPersona="1234567890";
 
 
         $ban1=false;
@@ -103,6 +103,7 @@ class PerfilCliente{
                     }        
             }
             if ($ban1===true){
+                echo "Datos actualizados";
                 $this->varConectado=false;
                 sqlsrv_close($this->con);
             }
@@ -164,6 +165,7 @@ class PerfilCliente{
                     }        
             }
             if ($ban1===true){
+                echo "Dirección actualizada";
                 $this->varConectado=false;
                 sqlsrv_close($this->con);
             }
@@ -207,7 +209,7 @@ class PerfilCliente{
                 }else{
                     $clave = password_hash($contra, PASSWORD_DEFAULT);
                     //$clave=$contra;
-                    $banq=false;
+                    $ban1=false;
                     self::conexion();
                     if ($this->varConectado===true){
                         try{
@@ -220,6 +222,7 @@ class PerfilCliente{
                             sqlsrv_close($this->con);
                         }
                         if ($ban1===true){
+                            echo "Contraseña actualizada";
                             $this->varConectado=false;
                             sqlsrv_close($this->con);
                         }
@@ -262,7 +265,24 @@ class PerfilCliente{
                         if((strlen($ccvTar)>4) or (is_numeric($ccvTar)===false)){
                             echo "El año de expiración debe ser totalmente númerico de 3 dígitos.";
                         }else{
-                            
+                            $ban1=false;
+                            self::conexion();
+                            if ($this->varConectado===true){
+                                try{
+                                    $query= "UPDATE Tarjetas set no_tarjeta = '".$numTar."'where Usuario='".$ingreso."'" ;
+                                    $resultado=sqlsrv_query( $this->con, $query);
+                                    $ban1=true;
+
+                                }catch(Exception $e){
+                                    $this->varConectado=false;
+                                    sqlsrv_close($this->con);
+                                }
+                                if ($ban1===true){
+                                    echo "Contraseña actualizada";
+                                    $this->varConectado=false;
+                                    sqlsrv_close($this->con);
+                                }
+                             } 
                         } 
                     }
                 }

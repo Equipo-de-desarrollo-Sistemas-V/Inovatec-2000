@@ -28,7 +28,7 @@
         <article class="login">
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
-                <form method="POST" action="registro3.php">
+                <form method="POST" action="" id="formulario">
                     <!--llama a la accion de logear-->
                     <h2>CREA TU CUENTA</h2>
 
@@ -74,6 +74,8 @@
             </div>
         </article>
     </section>
+
+    <script src="js/alertasDireccion.js"></script>
 </body>
 
 </html>
