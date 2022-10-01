@@ -14,7 +14,8 @@ class login{
         $query="SELECT email FROM Empleados WHERE email='$usuario'";
         $res= sqlsrv_query($conn_sis, $query);
         if( $res === false) {
-            die( print_r( sqlsrv_errors(), true) );
+            // die( print_r( sqlsrv_errors(), true) );
+            echo json_encode('conn');
         }
         #Inicalizamos un contador con un ciclo para los datos
         $conta=0;
@@ -28,7 +29,8 @@ class login{
             $query1="SELECT contra_em FROM Empleados WHERE email='$usuario'";
             $res1= sqlsrv_query($conn_sis, $query1);
             if( $res1 === false) {
-                die( print_r( sqlsrv_errors(), true) );
+                // die( print_r( sqlsrv_errors(), true) );
+                echo json_encode('conn');
             }
             $conta1=0;
             while( $row1 = sqlsrv_fetch_array($res1) ) {
@@ -38,7 +40,8 @@ class login{
                     $query0="SELECT nombres FROM Empleados WHERE email='$usuario'";
                     $res0= sqlsrv_query($conn_sis, $query0);
                     if( $res0 === false) {
-                        die( print_r( sqlsrv_errors(), true) );
+                        // die( print_r( sqlsrv_errors(), true) );
+                        echo json_encode('conn');
                     }
                     #Inicalizamos un contador con un ciclo para los datos
                     $conta0=0;
@@ -46,7 +49,7 @@ class login{
                         $conta0++;
                         session_start();
                         $_SESSION["nombres"] = $row0['nombres'];
-                        include_once "administrativo.php";
+                        include "administrativo.php";
             }
             } else {
                 echo json_encode('error');
@@ -61,7 +64,8 @@ class login{
             $query2="SELECT email FROM Persona WHERE email='$usuario'";
             $res2= sqlsrv_query($conn_sis, $query2);
             if( $res2 === false) {
-                die( print_r( sqlsrv_errors(), true) );
+                // die( print_r( sqlsrv_errors(), true) );
+                echo json_encode('conn');
             }
             $conta2=0;
             while( $row2 = sqlsrv_fetch_array($res2) ) {
@@ -73,7 +77,8 @@ class login{
                 $query3="SELECT Contra_us FROM Persona WHERE email='$usuario'";
                 $res3= sqlsrv_query($conn_sis, $query3);
                 if( $res3 === false) {
-                    die( print_r( sqlsrv_errors(), true) );
+                    // die( print_r( sqlsrv_errors(), true) );
+                    echo json_encode('conn');
                 }
                 $conta3=0;
                 while( $row3 = sqlsrv_fetch_array($res3) ) {
@@ -83,14 +88,15 @@ class login{
                         $query011="SELECT nombres FROM Persona WHERE email='$usuario'";
                         $res011= sqlsrv_query($conn_sis, $query011);
                         if( $res011 === false) {
-                            die( print_r( sqlsrv_errors(), true) );
+                            // die( print_r( sqlsrv_errors(), true) );
+                            echo json_encode('conn');
                         }
                         $conta011=0;
                         while( $row011 = sqlsrv_fetch_array($res011) ) {
                             $conta011++;
                             session_start();
                             $_SESSION["nombres"] = $row011['nombres'];
-                            include_once "perfilCliente.php";
+                            include "perfilCliente.php";
                         }
                     } else {
                         echo json_encode('error');

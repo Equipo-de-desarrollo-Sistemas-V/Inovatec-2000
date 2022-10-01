@@ -33,7 +33,7 @@
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form method="POST" action="logicaLogin.php">
+        <form id="formulario" method="POST" action="logicaLogin.php">
           <!--llama a la accion de logear-->
           <h2>INICIO DE SESIÓN</h2>
 

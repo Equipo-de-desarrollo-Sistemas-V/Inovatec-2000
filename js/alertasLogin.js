@@ -13,12 +13,12 @@ formulario.addEventListener('submit', function(e){
         if (data==='conn'){
             alert("Fallo al conectar a la base de datos");
         } else if(data==='error'){
-            alert("Correo o contraseña invalidos");
+            alert("Correo o contraseña incorrectos");
         } else if(data==='registro'){
-            alert("Correo y contraseña no registrados");
+            alert("Correo no registrado");
         } else {
             alert("Iniciado sesion")
-            location.href="login.php";
+            //location.href="login.php";
         }
     })
 })
