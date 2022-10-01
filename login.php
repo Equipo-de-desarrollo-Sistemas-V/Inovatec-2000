@@ -35,13 +35,13 @@
       <div class="card-login">
         <form method="POST" action="logicaLogin.php">
           <!--llama a la accion de logear-->
-          <h2>INICIO DE SESION</h2>
+          <h2>INICIO DE SESIÓN</h2>
 
           <p class="subcabecera">Es <span>rápido</span>, <span>fácil</span> y <span>sencillo</span>.</p>
 
           <div class="input-group">
             <input type="email" name="email" id="email" required class="input">
-            <label for="email" class="input-label">Correo Electronico</label>
+            <label for="email" class="input-label">Correo Electrónico</label>
           </div>
 
           <div class="input-group-2">
@@ -49,9 +49,9 @@
             <label for="password" class="input-label">Contraseña</label>
           </div>
 
-          <input type="submit" value="Iniciar Sesion" class="btn-login">
+          <input type="submit" value="Iniciar Sesión" class="btn-login">
 
-          <p class="label-1">¿No tienes una cuenta? <a class="metodos-recuperacion" href="registroUsuarios.php">Registrate</a>
+          <p class="label-1">¿No tienes una cuenta? <a class="metodos-recuperacion" href="registroUsuarios.php">Regístrate</a>
           </p>
 
           <p class="label-2">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="recuperarCorreo.php">Recuperar

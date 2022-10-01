@@ -27,11 +27,11 @@ formulario.addEventListener('submit', function(e){
         }
         
         else if(data === 'estado'){
-            alert("Este estado no está registrado en la base de datos");
+            alert("El estado no existe");
         }
 
         else if(data === 'municipio'){
-            alert("La ciudad no se encuentra en la base de datos");
+            alert("La ciudad no existe");
         }
         
         else{

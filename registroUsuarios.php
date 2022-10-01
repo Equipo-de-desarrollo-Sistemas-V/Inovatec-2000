@@ -58,7 +58,7 @@
 
             <div class="input-group">
               <input type="text" name="Teléfono" id="Teléfono" required class="input" autocomplete="off">
-              <label for="Teléfono" class="input-label">Telefono</label>
+              <label for="Teléfono" class="input-label">Teléfono</label>
             </div>
 
             <div class="input-group-2">

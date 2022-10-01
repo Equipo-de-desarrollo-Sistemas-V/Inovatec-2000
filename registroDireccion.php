@@ -43,7 +43,7 @@
 
                         <div class="input-group-2">
                             <input type="number" name="numero" id="numero" required class="input" autocomplete="off">
-                            <label for="numero" class="input-label">Numero</label>
+                            <label for="numero" class="input-label">Número</label>
                         </div>
 
                         <div class="input-group">
