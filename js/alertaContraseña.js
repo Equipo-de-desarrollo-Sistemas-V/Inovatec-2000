@@ -17,7 +17,7 @@ formulario.addEventListener('submit', function(e){
         }else if(data==='validacion'){
             alert("La contraseña debe contener números, mayúsculas, minúsculas, caracteres especiales (sin incluir espacios)");
         }else if(data==='longitud'){
-            alert("La contraseña debe contener al menos 8 caracteres");
+            alert("La contraseña debe tener un mínimo de 8 caracteres");
         }else{
             alert('Contraseña actualizada, ya puede iniciar sesión.');
             location.href="login.php";
