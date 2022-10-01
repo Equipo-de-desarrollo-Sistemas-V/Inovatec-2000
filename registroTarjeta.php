@@ -99,7 +99,7 @@
                         <div class="input-group">
                             <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input"
                                 maxlength="19" minlength="19">
-                            <label for="numeroTarjeta" class="input-label">Numero de tarjeta</label>
+                            <label for="numeroTarjeta" class="input-label">Número de tarjeta</label>
                         </div>
 
                         <div class="input-group-2">
@@ -118,7 +118,7 @@
                             <div class="input-group-2">
                                 <input type="text" name="yearCaja" id="yearCaja" required class="input" maxlength="2"
                                     minlength="2">
-                                <label for="yearCaja" class="input-label">Año de expiracion</label>
+                                <label for="yearCaja" class="input-label">Año de expiración</label>
                             </div>
 
 

@@ -15,7 +15,7 @@ formulario.addEventListener('submit', function(e){
         }else  if (data==='nomTar'){
             alert('El nombre de la tarjeta solo debe contener letras (a-z / A-Z)')
         }else if (data==='numTar'){
-            alert('El número de tarjeta debe tener 16 díigitos (0-9)')
+            alert('El número de tarjeta debe tener 16 dígitos (0-9)')
         }else if (data==='mes'){
             alert('El mes de expiración debe ser númerico (1-12), máximo 2 dígitos')
         }else if (data==='anio'){

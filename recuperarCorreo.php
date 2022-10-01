@@ -35,7 +35,7 @@
             <div class="card-login">
                 <form id="formulario">
                     <h2>RECUPERAR CONTRASEÑA</h2>
-                    <p class="subcabecera">Ingesemos tu <span>correo</span> para enviarte un <span>enlace</span>.</p>
+                    <p class="subcabecera">Ingresemos tu <span>correo</span> para enviarte un <span>enlace</span>.</p>
                     <!-- Caja para el email -->
                     <div class="input-group">
                         <input type="email" name="email" id="email" required class="input">
