@@ -23,7 +23,9 @@
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar Sesión</button>
+			<?php 
+			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['nombres']);?>
+				<a class="btn-cerrar-session" href="cerrar.php" type="button">Cerrar Sesión</a>
 			</div>
 		</div>
 
