@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <!-- Interfaz para INGRESAR EL CORREO Y PODER RECUPERAR LA CUENTA-->
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registrar tu cuenta</title>
-  <link rel="stylesheet" href="css/login.css">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar tu cuenta</title>
+    <link rel="stylesheet" href="css/resetPassword.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,6 +27,10 @@
     </section>
 
     <section class="container-all">
+        <article class="image">
+            <img src="css/assets/sent-message-animate.svg" alt="logo">
+        </article>
+
         <article class="login">
             <div class="card-login">
                 <form id="formulario">
