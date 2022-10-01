@@ -253,7 +253,7 @@ $anio=$row['fecha_ven_anio'];
             </p>
             <p class="leyenda-2">Se <span>perderán</span> para siempre. Eso es mucho <span>tiempo</span>.</p>
 
-            <form action="" method="post" class="formulario">
+            <form id="formularioE" action="logicaPerfil.php" method="post" class="formulario">
                 <div class="entrada-3">
                     <div class="input-group">
                         <input type="delete-password" name="delete-password" id="delete-password" required
@@ -275,6 +275,7 @@ $anio=$row['fecha_ven_anio'];
         <script src="js/alertasPerfilDir.js"></script>
         <script src="js/alertasPerfilContra.js"></script>
         <script src="js/alertasPerfilBanco.js"></script>
+        <script src="js/alertasPerfilElim.js"></script>
     </section>
 </body>
 
