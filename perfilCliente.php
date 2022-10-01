@@ -1,3 +1,54 @@
+<?php
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$con = sqlsrv_connect($serverName, $connectionInfo); 
+$ingreso="Retzat";
+$query= "SELECT* FROM Persona where usuario ='".$ingreso."'";
+$resultado=sqlsrv_query($con, $query);
+$row = sqlsrv_fetch_array($resultado);
+$nombre=$row['nombres'];
+$aP=$row['ap_paterno'];
+$aM=$row['ap_materno'];
+$email=$row['email'];
+$contra=$row['Contra_us'];
+
+$query= "SELECT* FROM Direccion where usuario ='".$ingreso."'";
+$resultado=sqlsrv_query($con, $query);
+$row = sqlsrv_fetch_array($resultado);
+$colonia=$row['colonia'];
+$calle=$row['calle'];
+$no_calle=$row['no_calle'];
+$telefono=$row['telefono'];
+$cp=$row['codigo_postal'];
+$auxRela=$row['Ciudad_Estado'];
+echo $auxRela;
+
+$query= "SELECT* FROM estados_municipios where id ='".$auxRela."'";
+$resultado=sqlsrv_query($con, $query);
+$row = sqlsrv_fetch_array($resultado);
+$auxMun=$row['municipios_id'];
+$auxEst=$row['estados_id'];
+
+$query= "SELECT* FROM municipios where Id_Municipios ='".$auxMun."'";
+$resultado=sqlsrv_query($con, $query);
+$row = sqlsrv_fetch_array($resultado);
+$municipio=$row['municipio'];
+
+$query= "SELECT* FROM estados where id ='".$auxEst."'";
+$resultado=sqlsrv_query($con, $query);
+$row = sqlsrv_fetch_array($resultado);
+$estado=$row['Estado'];
+
+$query= "SELECT* FROM Tarjetas where usuario ='".$ingreso."'";
+$resultado=sqlsrv_query($con, $query);
+$row = sqlsrv_fetch_array($resultado);
+$nombreTar=$row['Nombre_Tar'];
+$noTar=$row['no_tarjeta'];
+$mes=$row['fecha_ven_mes'];
+$anio=$row['fecha_ven_anio'];
+?>
+
+
 <!-- Interfaz para PERFIL CLIENTE -->
 <!DOCTYPE html>
 <html lang="en">
@@ -51,31 +102,31 @@
 
             <p class="leyenda-1">Modifica tu <span>nombre</span> o apellidos por si tienes algún error.</p>
 
-            <form action="logicaPerfil.php" method="post" class="formulario">
+            <form id="formulario" action="logPerfilUsua.php" method="post" class="formulario">
 
                 <div class="entrada-2">
                     <div class="input-group">
-                        <input type="text" name="nombre-cliente" id="nombre-cliente" required class="input">
+                        <input type="text" name="nombre-cliente" id="nombre-cliente" required class="input" value=<?php echo $nombre;?>>
                         <label for="nombre-cliente" class="input-label">Nombre</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input">
+                        <input type="text" name="apellido-paterno" id="apellido-paterno" required class="input" value=<?php echo $aP;?>>
                         <label for="apellido-paterno" class="input-label">Apellido paterno</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="apellido-materno" id="apellido-materno" required class="input">
+                        <input type="text" name="apellido-materno" id="apellido-materno" required class="input" value=<?php echo $aM;?>>
                         <label for="apellido-paterno" class="input-label">Apellido paterno</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="telefono" id="telefono" required class="input">
+                        <input type="text" name="telefono" id="telefono" required class="input" value=<?php echo $telefono;?>>
                         <label for="telefono" class="input-label">Teléfono</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="email" name="correo" id="correo" required class="input">
+                        <input type="email" name="correo" id="correo" required class="input" value=<?php echo $email;?>>
                         <label for="correo" class="input-label">Correo</label>
                     </div>
 
@@ -91,36 +142,36 @@
             <p class="leyenda-1">Actualiza tu <span>dirección</span> para saber a donde enviar tus <span>pedidos</span>.
             </p>
 
-            <form action="logicaPerfil.php" method="post" class="formulario">
+            <form id="formularioD" action="logPerfilDir.php" method="post" class="formulario">
 
                 <div class="entrada-2">
                     <div class="input-group">
-                        <input type="text" name="calle" id="calle" required class="input">
+                        <input type="text" name="calle" id="calle" required class="input" value=<?php echo $calle;?>>
                         <label for="calle" class="input-label">Calle</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="numero" id="numero" required class="input">
+                        <input type="text" name="numero" id="numero" required class="input" value=<?php echo $no_calle;?>>
                         <label for="numero" class="input-label">Número</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="colonia" id="colonia" required class="input">
+                        <input type="text" name="colonia" id="colonia" required class="input" value=<?php echo $colonia;?>>
                         <label for="colonia" class="input-label">Colonia</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="municipio" id="municipio" required class="input">
+                        <input type="text" name="municipio" id="municipio" required class="input" value=<?php echo $municipio;?>>
                         <label for="municipio" class="input-label">Municipio</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="estado" id="estado" required class="input">
+                        <input type="text" name="estado" id="estado" required class="input" value=<?php echo $estado;?>>
                         <label for="estado" class="input-label">Estado</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="codigo-postal" id="codigo-postal" required class="input">
+                        <input type="text" name="codigo-postal" id="codigo-postal" required class="input" value=<?php echo $cp;?>>
                         <label for="codigo-postal" class="input-label">Código postal</label>
                     </div>
 
@@ -136,10 +187,10 @@
             <p class="leyenda-1">Manten tu <span>contraseña</span> actualizada en todo <span>momento</span>.</p>
             <p class="leyenda-2">Evita ser <span>víctima</span> del robo de tu <span>cuenta</span>.</p>
 
-            <form action="logicaPerfil.php" method="post" class="formulario">
+            <form id="formularioC" action="logPerfilContra.php" method="post" class="formulario">
                 <div class="entrada-1">
                     <div class="input-group">
-                        <input type="password" name="password" id="password" required class="input">
+                        <input type="password" name="password" id="password" required class="input" value=<?php echo $contra;?>>
                         <label for="password" class="input-label">Contraseña actual</label>
                     </div>
 
@@ -163,26 +214,26 @@
 
             <p class="leyenda-1"><span>Actualiza</span> los campos de tu poderosa <span>tarjeta</span>.</p>
 
-            <form action="logicaPerfil.php" method="post" class="formulario">
+            <form id="formularioB" action="logPerfilBanco.php" method="post" class="formulario">
 
                 <div class="entrada-2">
                     <div class="input-group">
-                        <input type="text" name="nombre-tarjeta" id="nombre-tarjeta" required class="input">
+                        <input type="text" name="nombre-tarjeta" id="nombre-tarjeta" required class="input" value=<?php echo $nombreTar;?>>
                         <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="numero-tarjeta" id="numero-tarjeta" required class="input">
+                        <input type="text" name="numero-tarjeta" id="numero-tarjeta" required class="input" value=<?php echo $noTar;?>>
                         <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="month-expiracion" id="month-expiracion" required class="input">
+                        <input type="text" name="month-expiracion" id="month-expiracion" required class="input" value=<?php echo $mes;?>>
                         <label for="month-expiracion" class="input-label">Mes de expiración</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="year-expiracion" id="year-expiracion" required class="input">
+                        <input type="text" name="year-expiracion" id="year-expiracion" required class="input" value=<?php echo $anio;?>>
                         <label for="year-expiracion" class="input-label">Año de expiración</label>
                     </div>
                     <div class="input-group">
@@ -220,6 +271,10 @@
                 <input type="submit" value="Eliminar cuenta" class="btn">
             </form>
         </article>
+        <script src="js/alertasPerfilUsua.js"></script>
+        <script src="js/alertasPerfilDir.js"></script>
+        <script src="js/alertasPerfilContra.js"></script>
+        <script src="js/alertasPerfilBanco.js"></script>
     </section>
 </body>
 
