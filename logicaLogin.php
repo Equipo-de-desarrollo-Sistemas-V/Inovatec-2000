@@ -9,7 +9,6 @@ class login{
         #Informacion ingresada en las cajas de texto
         $usuario = $_POST["email"];
         $palabra_secreta = $_POST["password"];
-
         #Instruccion en la base de datos
         $query="SELECT email FROM Empleados WHERE email='$usuario'";
         $res= sqlsrv_query($conn_sis, $query);
@@ -49,7 +48,7 @@ class login{
                         $conta0++;
                         session_start();
                         $_SESSION["nombres"] = $row0['nombres'];
-                        include "administrativo.php";
+                        include_once "administrativo.php";
             }
             } else {
                 echo json_encode('error');
@@ -85,7 +84,7 @@ class login{
                     $conta3++;
                     $hash1=$row3['Contra_us'];
                     if (password_verify($palabra_secreta, $hash1)) {
-                        $query011="SELECT nombres FROM Persona WHERE email='$usuario'";
+                        $query011="SELECT Usuario FROM Persona WHERE email='$usuario'";
                         $res011= sqlsrv_query($conn_sis, $query011);
                         if( $res011 === false) {
                             // die( print_r( sqlsrv_errors(), true) );
@@ -94,9 +93,10 @@ class login{
                         $conta011=0;
                         while( $row011 = sqlsrv_fetch_array($res011) ) {
                             $conta011++;
+                            include_once "perfilCliente.php";
                             session_start();
-                            $_SESSION["nombres"] = $row011['nombres'];
-                            include "perfilCliente.php";
+                            $_SESSION["Usuario"] = $row011['Usuario'];
+                            
                         }
                     } else {
                         echo json_encode('error');

@@ -71,7 +71,7 @@ $anio=$row['fecha_ven_anio'];
             <div class="menu">
                 <ul class="list">
             <?php 
-			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['nombres']);?>
+			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['Usuario']);?>
                     <a class="btn-cerrar-session" href="cerrar.php" type="button">Cerrar Sesión</a>
                 </ul>
             </div>

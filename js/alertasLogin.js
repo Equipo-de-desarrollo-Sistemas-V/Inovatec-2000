@@ -11,14 +11,14 @@ formulario.addEventListener('submit', function(e){
     .then(res=>res.json())
     .then(data=>{
         if (data==='conn'){
-            alert("Fallo al conectar a la base de datos");
+            alert('Fallo al conectar a la base de datos');
         } else if(data==='error'){
-            alert("Correo o contraseña incorrectos");
+            alert('Correo o contraseña incorrectos');
         } else if(data==='registro'){
-            alert("Correo no registrado");
+            alert('Correo no registrado');
         } else {
-            alert("Iniciado sesion")
-            //location.href="login.php";
+            alert('Iniciado sesion')
+            location.href="login.php";
         }
     })
 })
