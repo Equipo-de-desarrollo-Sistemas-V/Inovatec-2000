@@ -22,6 +22,7 @@
 
         //Comprueba que la contraseña cumpla con los requerimientos de seguridad
         function validar(){
+            $in=new Contra;
             $contra = $_POST["contraseña"];
             $confirmacion = $_POST["confirmar-contraseña"];
             $bandn = 0;
@@ -53,34 +54,91 @@
                     }
     
                     if($bandn == 0){
-                        echo json_encode("numeros");
+                        // echo json_encode("numeros");
+                        $in->alertas("validacion", 'Datos inválidos', 'La contraseña debe contener números');
                     }
     
                     else if($bandM == 0 or $bandm == 0){
-                        echo json_encode("mayusculas");
+                        // echo json_encode("mayusculas");
+                        $in->alertas("validacion", 'Datos inválidos', 'La contraseña debe contener mayúsculas y minúsculas');
                     }
     
                     else if($bandc == 0){
-                        echo json_encode("caracteres");
+                        // echo json_encode("caracteres");
+                        $in->alertas("validacion", 'Datos inválidos', 'La contraseña debe tener al menos un carácter especial');
                     }
 
                     else{
                         
                         $clave = $this -> encriptar($contra);
-                        echo json_encode("todo chido");
+                        // echo json_encode("todo chido");
+                        $in->alertas("aceptado", 'Listo!!!', 'La contraseña ha sido aceptada');
                         //$this -> guardar($clave);
                     }
                 }
     
                 else{
-                    echo json_encode("longitud");
+                    // echo json_encode("longitud");
+                    $in->alertas("validacion", 'Datos inválidos', 'La contraseña debe tener un mínimo de 8 caracteres');
                 }
             }
 
             else {
-                echo json_encode("coincidencia");
+                // echo json_encode("coincidencia");
+                $in->alertas("validacion", 'Datos inválidos', 'La contraseña y la confirmación no coinciden');
             }
         }
+        function alertas($valor, $titulo, $mensaje){
+            ?>
+            <html>
+            <body>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <?php
+            if($valor=='validacion'){
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'error',
+                title: '<?=$titulo?>',
+                text: '<?=$mensaje?>',
+                confirmButtonText: 'Ok',
+                timer:5000,
+                timerProgressBar: true,
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        location.href='registroContrasea.php';
+                    }else{
+                        location.href='registroContrasea.php';
+                    }
+                })
+            </script>
+            </body>
+            </html>
+            <?php
+            }else if($valor=='aceptado'){
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'success',
+                title: '<?=$titulo?>',
+                text: '<?=$mensaje?>',
+                confirmButtonText: 'Ok',
+                timer:5000,
+                timerProgressBar: true,
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        location.href="registroDireccion.php"
+                    }else{
+                        location.href="registroDireccion.php"
+                    }
+                })
+            </script>
+            </body>
+            </html>
+            <?php
+            }
+        }
+
             
             
         

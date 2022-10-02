@@ -33,7 +33,7 @@
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form method="POST" action="" id="formulario">
+        <form method="POST" action="validacionesContra.php" id="formulario">
           <!--llama a la accion de logear-->
           <h2>CREA TU CUENTA</h2>
 
@@ -54,8 +54,6 @@
       </div>
     </article>
   </section>
-
-  <script src="js/alertasContra.js"></script>
 </body>
 
 </html>
