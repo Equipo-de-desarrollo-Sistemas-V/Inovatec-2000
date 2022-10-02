@@ -59,7 +59,6 @@
         </form>
       </div>
     </article>
-    <script src="js/alertasLogin.js"></script>
   </section>
 </body>
 
