@@ -10,7 +10,8 @@ $nombre=$row['nombres'];
 $aP=$row['ap_paterno'];
 $aM=$row['ap_materno'];
 $email=$row['email'];
-$contra=$row['Contra_us'];
+echo $nombre;
+//$nombre=strtr($auxNombre, " ", "_");
 
 $query= "SELECT* FROM Direccion where usuario ='".$ingreso."'";
 $resultado=sqlsrv_query($con, $query);
@@ -21,7 +22,6 @@ $no_calle=$row['no_calle'];
 $telefono=$row['telefono'];
 $cp=$row['codigo_postal'];
 $auxRela=$row['Ciudad_Estado'];
-echo $auxRela;
 
 $query= "SELECT* FROM estados_municipios where id ='".$auxRela."'";
 $resultado=sqlsrv_query($con, $query);
@@ -48,8 +48,6 @@ $mes=$row['fecha_ven_mes'];
 $anio=$row['fecha_ven_anio'];
 ?>
 
-
-<!-- Interfaz para PERFIL CLIENTE -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,6 +58,7 @@ $anio=$row['fecha_ven_anio'];
     <title>Perfil del usuario</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="css/prefilcCliente.css">
+    
 </head>
 
 <body>
@@ -103,11 +102,12 @@ $anio=$row['fecha_ven_anio'];
             <p class="leyenda-1">Modifica tu <span>nombre</span> o apellidos por si tienes algún error.</p>
 
             <form id="formulario" action="logPerfilUsua.php" method="post" class="formulario">
-
+                
                 <div class="entrada-2">
                     <div class="input-group">
                         <input type="text" name="nombre-cliente" id="nombre-cliente" required class="input" value=<?php echo $nombre;?>>
                         <label for="nombre-cliente" class="input-label">Nombre</label>
+                        
                     </div>
 
                     <div class="input-group">
@@ -190,7 +190,7 @@ $anio=$row['fecha_ven_anio'];
             <form id="formularioC" action="logPerfilContra.php" method="post" class="formulario">
                 <div class="entrada-1">
                     <div class="input-group">
-                        <input type="password" name="password" id="password" required class="input" value=<?php echo $contra;?>>
+                        <input type="password" name="password" id="password" required class="input">
                         <label for="password" class="input-label">Contraseña actual</label>
                     </div>
 
@@ -256,13 +256,13 @@ $anio=$row['fecha_ven_anio'];
             <form id="formularioE" action="logicaPerfil.php" method="post" class="formulario">
                 <div class="entrada-3">
                     <div class="input-group">
-                        <input type="delete-password" name="delete-password" id="delete-password" required
+                        <input type="password" name="delete-password" id="delete-password" required
                             class="input">
                         <label for="delete-password" class="input-label">Contraseña</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="confirm-delete-password" name="confirm-delete-password"
+                        <input type="password" name="confirm-delete-password"
                             id="confirm-delete-password" required class="input">
                         <label for="confirm-delete-password" class="input-label">Confirmar contraseña</label>
                     </div>
@@ -271,11 +271,6 @@ $anio=$row['fecha_ven_anio'];
                 <input type="submit" value="Eliminar cuenta" class="btn">
             </form>
         </article>
-        <script src="js/alertasPerfilUsua.js"></script>
-        <script src="js/alertasPerfilDir.js"></script>
-        <script src="js/alertasPerfilContra.js"></script>
-        <script src="js/alertasPerfilBanco.js"></script>
-        <script src="js/alertasPerfilElim.js"></script>
     </section>
 </body>
 
