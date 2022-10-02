@@ -6,25 +6,26 @@ class PerfilUsuario{
     
     //conexion a la base de datoss
     function conexion(){
+        $in=new PerfilUsuario;
         $serverName='localhost';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         try{
             $this->con = sqlsrv_connect($serverName, $connectionInfo); 
             $this->varConectado=true;
         }catch (Exception $e){
-            echo json_encode('registro');
+            $in->alertas("validacion", 'Vaya...', 'Fallo al conectar a la base de datos');
             //echo "No se puedo conectar";
         }  
     }
     function actualizarDatos(){
+        $in=new PerfilUsuario;
         $ingreso="Retzat";
-        $nombreCliente=$_POST['nombre-cliente'];
+        $nombreCliente=$_REQUEST['nombre-cliente'];
         $apellidoPaterno=$_POST["apellido-paterno"];
         $apellidoMaterno=$_POST["apellido-materno"];
         $correoPersona=$_POST["correo"];
         $telefonoPersona=$_POST["telefono"];
-        //$correoPersona="1correoleo2@gmail.com";
-        //$telefonoPersona="1234567890";
+        echo $nombreCliente;  
 
         $ban1=false;
         self::conexion();
@@ -32,18 +33,17 @@ class PerfilUsuario{
            try{
                 $validarNombre=self::letras($nombreCliente);
                 if ((strlen($nombreCliente)>40) or ($validarNombre===false)){
-                    echo json_encode('nombre');
-                    //echo "El nombre debe ser igual o menor a 40 carácteres (a-z / A-Z)";
+                    $in->alertas("validacion", 'Datos inválidos', 'El nombre no debe contener más de 40 caracteres (a-z / A-Z)');
                 }else{
                     $validarAP=self::letras($apellidoPaterno);
                     $validarAM=self::letras($apellidoMaterno);
                     if ((strlen($apellidoPaterno)>20) or ($validarAP===false) or (strlen($apellidoMaterno)>20) or ($validarAM===false)){
-                        echo json_encode('apellidos');
-                        //echo "Los apellidos debe contener igual o menos de 20 carácteres, cada uno. (a-z / A-Z)";
+                        $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener más de 20 caracteres (a-z / A-Z)');
                     }else{
+                        echo $telefonoPersona;
+                        echo is_numeric($telefonoPersona);
                         if((strlen($telefonoPersona)!=10) or (is_numeric($telefonoPersona)===false)){
-                            echo json_encode('telefono');
-                            //echo "El teléfono debe tener 10 dígitos (0-9)";
+                            $in->alertas("validacion", 'Datos inválidos', 'El teléfono debe tener 10 dígitos (0-9)');
                         }else{
                             $query= "SELECT email FROM Persona where usuario ='".$ingreso."'";
                             $resultado=sqlsrv_query( $this->con, $query);
@@ -59,8 +59,7 @@ class PerfilUsuario{
                                 $resultado=sqlsrv_query( $this->con, $query);
                                 $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
                                 if (!empty($arreResul)){
-                                    echo json_encode('correo');
-                                    //echo "El correo ya se encuentra registrado en el sistema.";
+                                    $in->alertas("validacion", 'Datos inválidos', 'El correo ya se encuentra registrado');
                                 }else{
                                     $b1=true;
                                     $b2=true;
@@ -81,11 +80,10 @@ class PerfilUsuario{
                                 }
                             }
                             if ($b1===true and $b2===true){
-                                $query= "UPDATE Persona set nombres = '".$nombreCliente."'where Usuario='".$ingreso."'" ;
-                                $resultado=sqlsrv_query( $this->con, $query);
-                                $query= "UPDATE Persona set ap_paterno = '".$apellidoPaterno."'where Usuario='".$ingreso."'" ;
-                                $resultado=sqlsrv_query( $this->con, $query);
-                                $query= "UPDATE Persona set ap_materno = '".$apellidoMaterno."'where Usuario='".$ingreso."'" ;
+                                $query= "UPDATE Persona set nombres = '".$nombreCliente."',
+                                ap_paterno = '".$apellidoPaterno."', 
+                                ap_materno = '".$apellidoMaterno."'
+                                where Usuario='".$ingreso."'" ;
                                 $resultado=sqlsrv_query( $this->con, $query);
                                 $query= "UPDATE Direccion set telefono = '".$telefonoPersona."'where Usuario='".$ingreso."'" ;
                                 $resultado=sqlsrv_query( $this->con, $query);
@@ -101,8 +99,7 @@ class PerfilUsuario{
                     }        
             }
             if ($ban1===true){
-                echo json_encode('datAct');
-                // echo "Datos actualizados";
+                $in->alertas("aceptado", 'Listo!!!', 'Datos actualizados correctamente');
                 $this->varConectado=false;
                 sqlsrv_close($this->con);
             }
@@ -118,17 +115,68 @@ class PerfilUsuario{
             if(ord($cadena[$i])>=97 and ord($cadena[$i])<=122){
                 $ban ++;
             }
+            if(ord($cadena[$i])==32){
+                $ban ++;
+            }
             if(ord($cadena[$i])>=160 and ord($cadena[$i])<=165){
                 $ban+=2;
-            }/*if((ord($cadena[$i])==130) or (ord($cadena[$i])==181)or (ord($cadena[$i])==144)or (ord($cadena[$i])==214) or 
-            (ord($cadena[$i])==224)or (ord($cadena[$i])==233)){
-                $ban+=2;
-            }*/
+            }
         }
         if ($ban===$longi){
             return true;
         }else{
             return false;
+        }
+    }
+    
+    function alertas($valor, $titulo, $mensaje){
+        ?>
+        <html>
+        <body>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>s
+        <?php
+        if($valor=='validacion'){
+            ?>
+            <script>
+            Swal.fire({
+            icon: 'error',
+            title: '<?=$titulo?>',
+            text: '<?=$mensaje?>',
+            confirmButtonText: 'Ok',
+            timer:5000,
+            timerProgressBar: true,
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    location.href='perfilCliente.php';
+                }else{
+                    location.href='perfilCliente.php';
+                }
+            })
+        </script>
+        </body>
+        </html>
+        <?php
+        }else if($valor=='aceptado'){
+            ?>
+            <script>
+            Swal.fire({
+            icon: 'success',
+            title: '<?=$titulo?>',
+            text: '<?=$mensaje?>',
+            confirmButtonText: 'Ok',
+            timer:5000,
+            timerProgressBar: true,
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    location.href='perfilCliente.php';
+                }else{
+                    location.href='perfilCliente.php';
+                }
+            })
+        </script>
+        </body>
+        </html>
+        <?php
         }
     }
 }
