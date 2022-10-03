@@ -6,6 +6,7 @@
         //verifica que el codigo postal tenga 5 digitos
         function validar()
         {
+            $in=new Direccion;
             $calle = $_POST["calle"];
             $numero = $_POST["numero"];
             $colonia = $_POST["colonia"];
@@ -55,26 +56,33 @@
 
                                         //la informacion paso todos los filtros
                                         $this -> guardar($estado_municipio);
-                                        echo json_encode("todo chido");
+                                        // echo json_encode("todo chido");
+                                        $in->alertas("aceptado", 'Listo!!!', 'La información ha sido aceptada');
 
 
                                     } else {
-                                        echo json_encode("negativo calle");
+                                        // echo json_encode("negativo calle");
+                                        $in->alertas("validacion", 'Datos inválidos', '"El número de la calle no puede ser negativo');
                                     }
                                 } else {
-                                    echo json_encode("negativoCP");
+                                    // echo json_encode("negativoCP");
+                                    $in->alertas("validacion", 'Datos inválidos', '"El código postal debe ser positivo');
                                 }
                             } else {
-                                echo json_encode("digitosCP");
+                                // echo json_encode("digitosCP");
+                                $in->alertas("validacion", 'Datos inválidos', '"El código postal debe tener 5 dígitos');
                             }
                         } else {
-                            echo json_encode("estado-municipio");
+                            // echo json_encode("estado-municipio");
+                            $in->alertas("validacion", 'Datos inválidos', '"El municipio no se encuentra en el estado indicado');
                         }
                     } else {
-                        echo json_encode("municipio");
+                        // echo json_encode("municipio");
+                        $in->alertas("validacion", 'Datos inválidos', '"La ciudad no existe');
                     }
                 } else {
-                    echo json_encode("estado");
+                    // echo json_encode("estado");
+                    $in->alertas("validacion", 'Datos inválidos', '"El estado no existe');
                 }
             } else {
                 die(print_r(sqlsrv_errors(), true));
@@ -96,6 +104,56 @@
             fwrite($file, $estado_municipio.PHP_EOL);
             fwrite($file, $cp . PHP_EOL);
             fclose($file);
+        }
+        function alertas($valor, $titulo, $mensaje){
+            ?>
+            <html>
+            <body>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <?php
+            if($valor=='validacion'){
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'error',
+                title: '<?=$titulo?>',
+                text: '<?=$mensaje?>',
+                confirmButtonText: 'Ok',
+                timer:5000,
+                timerProgressBar: true,
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        location.href='registroDireccion.php';
+                    }else{
+                        location.href='registroDireccion.php';
+                    }
+                })
+            </script>
+            </body>
+            </html>
+            <?php
+            }else if($valor=='aceptado'){
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'success',
+                title: '<?=$titulo?>',
+                text: '<?=$mensaje?>',
+                confirmButtonText: 'Ok',
+                timer:5000,
+                timerProgressBar: true,
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        location.href="registroTarjeta.php"
+                    }else{
+                        location.href="registroTarjeta.php"
+                    }
+                })
+            </script>
+            </body>
+            </html>
+            <?php
+            }
         }
 
     }

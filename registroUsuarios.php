@@ -28,7 +28,7 @@
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form method="POST" action="" id="formulario">
+        <form method="POST" action="validacionesUsuario.php" id="formulario">
           <!--llama a la accion de logear-->
           <h2>CREA TU CUENTA</h2>
 
@@ -58,7 +58,7 @@
 
             <div class="input-group">
               <input type="text" name="Teléfono" id="Teléfono" required class="input" autocomplete="off">
-              <label for="Teléfono" class="input-label">Telefono</label>
+              <label for="Teléfono" class="input-label">Teléfono</label>
             </div>
 
             <div class="input-group-2">
@@ -68,14 +68,12 @@
 
           </div>
           <input type="submit" value="Siguiente" class="btn-login">
-          <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="">Recuperar
+          <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="recuperarCorreo.php">Recuperar
               contraseña</a></p>
         </form>
       </div>
     </article>
   </section>
-
-  <script src="js/alertasUsuario.js"></script>
 </body>
 
 </html>

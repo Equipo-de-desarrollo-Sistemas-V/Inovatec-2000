@@ -1,6 +1,7 @@
 <?php
     class Usuario{
         function validar(){
+            $in=new Usuario;
             //obtener los datos del fomulario 1
             $nombre=$_POST["nombre-cliente"];
             $paterno=$_POST["apellido-paterno"];
@@ -27,6 +28,7 @@
                     if($resultados === false){
                         die(print_r(sqlsrv_errors(), true));
                     }
+<<<<<<< HEAD
 
                     else{
 
@@ -41,6 +43,19 @@
                                 //verificar que el nombre no tenga numeros
                                 $numn = $this -> numeros($nombre);
                                 $carn = $this -> caracteres($nombre);
+=======
+                    //verificar si el usuario esta disponible
+                    if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
+                        // echo json_encode("usuario existente");
+                        $in->alertas("validacion", 'Datos inválidos', 'Este usuario no está disponible');
+                    } else {
+                        //verificar que el correo sea real
+                        //include_once("VerifyEmail.php");
+
+                        //$vmail = new verifyEmail();
+
+                        //if ($vmail->check($correo)) {
+>>>>>>> 55518fc2daea447fac829472b1747cf4adbb701a
 
                                 if($numn == 0 and $carn == 0){
                                     
@@ -117,6 +132,7 @@
                                         }
                                     }
 
+<<<<<<< HEAD
                                     else{
                                         echo json_encode("apellidos largos");
                                     }
@@ -132,6 +148,45 @@
                             }
                         }
                     }
+=======
+                                    if ($contador >= 1) {
+                                        //echo json_encode("letras");
+                                        $in->alertas("validacion", 'Datos inválidos', 'El teléfono no debe contener letras ni símbolos especiales');
+                                    } else {
+                                        if (strlen($telefono) == 10) {
+                                            $this->guardar();
+                                            // echo json_encode("todo chido");
+                                            $in->alertas("aceptado", 'Listo!!!', 'La información ha sido registrada correctamente');
+                                        } else {
+                                            // echo json_encode("longitud");
+                                            $in->alertas("validacion", 'Datos inválidos', 'El teléfono debe tener 10 dígitos');
+                                        }
+                                    }
+                                } else {
+                                    // echo json_encode("apellidos largos");
+                                    $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben tener más de 20 caracteres');
+                                }
+                            } else {
+                                // echo json_encode("nombres largos");
+                                $in->alertas("validacion", 'Datos inválidos', 'Los nombres no deben sumar más de 40 caracteres');
+                            }
+                        /*} else if ($vmail->isValid($correo)) {
+                            // echo json_encode("inexistente");
+                            $in->alertas("validacion", 'Datos inválidos', 'El correo ingresado no es válido, por favor ingresa un correo existente');
+                        } else {
+                            // echo json_encode("invalido");
+                            $in->alertas("validacion", 'Datos inválidos', 'Por favor ingresa un correo válido');
+                        }*/
+                    }
+                } else {
+                    // echo json_encode("usuario largo");
+                    $in->alertas("validacion", 'Datos inválidos', 'El nombre de usuario no debe contener más de 20 caracteres');
+                }
+                }else{
+                    //echo "no se pudo conectar";
+                    //die (print_r(sqlsrv_errors(), true));
+                    $in->alertas("validacion", 'Vaya...', 'Fallo al conectar a la base de datos');
+>>>>>>> 55518fc2daea447fac829472b1747cf4adbb701a
                 }
 
                 else {
@@ -167,6 +222,7 @@
             //include ("registroContrasea.php");
 
         }
+<<<<<<< HEAD
 
         //devuelve la cantidad de numeros encontrados en una cadena
         function numeros($cadena){
@@ -198,10 +254,61 @@
             }
 
             return $conta;
+=======
+        function alertas($valor, $titulo, $mensaje){
+            ?>
+            <html>
+            <body>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <?php
+            if($valor=='validacion'){
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'error',
+                title: '<?=$titulo?>',
+                text: '<?=$mensaje?>',
+                confirmButtonText: 'Ok',
+                timer:5000,
+                timerProgressBar: true,
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        location.href='registroUsuarios.php';
+                    }else{
+                        location.href='registroUsuarios.php';
+                    }
+                })
+            </script>
+            </body>
+            </html>
+            <?php
+            }else if($valor=='aceptado'){
+                ?>
+                <script>
+                Swal.fire({
+                icon: 'success',
+                title: '<?=$titulo?>',
+                text: '<?=$mensaje?>',
+                confirmButtonText: 'Ok',
+                timer:5000,
+                timerProgressBar: true,
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        location.href="registroContrasea.php"
+                    }else{
+                        location.href="registroContrasea.php"
+                    }
+                })
+            </script>
+            </body>
+            </html>
+            <?php
+            }
+>>>>>>> 55518fc2daea447fac829472b1747cf4adbb701a
         }
 
     }
 
-    $obj = new Usuario;
-    $obj->validar(); 
+$obj = new Usuario;
+$obj->validar(); 
 ?>

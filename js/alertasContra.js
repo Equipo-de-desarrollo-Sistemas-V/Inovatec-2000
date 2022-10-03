@@ -15,7 +15,7 @@ formulario.addEventListener('submit', function(e){
         }
         
         else if(data==='caracteres'){
-            alert("La contraseña debe tener al menos un caracter especial");
+            alert("La contraseña debe tener al menos un carácter especial");
         }
         
         else if(data==='mayusculas'){

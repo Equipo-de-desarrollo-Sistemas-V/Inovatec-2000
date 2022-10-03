@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrar tu cuenta</title>
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/crearAcount.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
@@ -25,10 +25,15 @@
   </section>
 
   <section class="container-all">
+
+    <article class="image">
+      <img src="css/assets/my-password-animate.svg" alt="logo">
+    </article>
+    
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form method="POST" action="" id="formulario">
+        <form method="POST" action="validacionesContra.php" id="formulario">
           <!--llama a la accion de logear-->
           <h2>CREA TU CUENTA</h2>
 
@@ -49,8 +54,6 @@
       </div>
     </article>
   </section>
-
-  <script src="js/alertasContra.js"></script>
 </body>
 
 </html>

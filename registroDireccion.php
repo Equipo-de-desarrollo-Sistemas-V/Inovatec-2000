@@ -28,7 +28,7 @@
         <article class="login">
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
-                <form method="POST" action="" id="formulario">
+                <form method="POST" action="validacionesDireccion.php" id="formulario">
                     <!--llama a la accion de logear-->
                     <h2>CREA TU CUENTA</h2>
 
@@ -43,7 +43,7 @@
 
                         <div class="input-group-2">
                             <input type="number" name="numero" id="numero" required class="input" autocomplete="off">
-                            <label for="numero" class="input-label">Numero</label>
+                            <label for="numero" class="input-label">Número</label>
                         </div>
 
                         <div class="input-group">
@@ -68,14 +68,12 @@
 
                     </div>
                     <input type="submit" value="Siguiente ->" class="btn-login">
-                    <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="">Recuperar
+                    <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="recuperarCorreo.php">Recuperar
                             contraseña</a></p>
                 </form>
             </div>
         </article>
     </section>
-
-    <script src="js/alertasDireccion.js"></script>
 </body>
 
 </html>
