@@ -20,7 +20,14 @@ class PerfilContra{
     }
 
     function actualizarContra(){
-        $ingreso="Retzat";
+        $file = fopen("archivo_correo.txt", "r");
+        $auxIngreso = fgets($file);
+        fclose($file);
+
+        $ingreso ="";
+        for ($i=0;$i<strlen($auxIngreso)-2;$i++){
+            $ingreso= $ingreso.$auxIngreso[$i];
+        }
         $actual=$_POST["password"];
         $contra=$_POST["new-password"];
         $confirmacion=$_POST["confirm-password"];
@@ -102,7 +109,7 @@ class PerfilContra{
         ?>
         <html>
         <body>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>s
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <?php
         if($valor=='validacion'){
             ?>

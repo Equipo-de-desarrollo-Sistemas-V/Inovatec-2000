@@ -1,8 +1,17 @@
 <?php
+$file = fopen("archivo_correo.txt", "r");
+$auxIngreso = fgets($file);
+fclose($file);
+
+$ingreso ="";
+for ($i=0;$i<strlen($auxIngreso)-2;$i++){
+    $ingreso= $ingreso.$auxIngreso[$i];
+}
+
 $serverName='localhost';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $con = sqlsrv_connect($serverName, $connectionInfo); 
-$ingreso="Retzat";
+
 $query= "SELECT* FROM Persona where usuario ='".$ingreso."'";
 $resultado=sqlsrv_query($con, $query);
 $row = sqlsrv_fetch_array($resultado);
@@ -10,7 +19,7 @@ $nombre=$row['nombres'];
 $aP=$row['ap_paterno'];
 $aM=$row['ap_materno'];
 $email=$row['email'];
-echo $nombre;
+//echo $nombre;
 //$nombre=strtr($auxNombre, " ", "_");
 
 $query= "SELECT* FROM Direccion where usuario ='".$ingreso."'";
@@ -68,11 +77,11 @@ $anio=$row['fecha_ven_anio'];
             <input type="checkbox" id="toggler">
             <label for="toggler"><i class="ri-menu-line"></i></label>
             <div class="menu">
-                <ul class="list">
+                <!-- <ul class="list"> -->
             <?php 
 			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['Usuario']);?>
                     <a class="btn-cerrar-session" href="cerrar.php" type="button">Cerrar Sesión</a>
-                </ul>
+                <!-- </ul> -->
             </div>
         </nav>
     </header>
@@ -163,6 +172,7 @@ $anio=$row['fecha_ven_anio'];
                     <div class="input-group">
                         <input type="text" name="municipio" id="municipio" required class="input" value=<?php echo $municipio;?>>
                         <label for="municipio" class="input-label">Municipio</label>
+
                     </div>
 
                     <div class="input-group">

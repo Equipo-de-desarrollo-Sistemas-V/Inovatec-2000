@@ -19,13 +19,20 @@ class PerfilUsuario{
     }
     function actualizarDatos(){
         $in=new PerfilUsuario;
-        $ingreso="Retzat";
+        
+        $file = fopen("archivo_correo.txt", "r");
+        $auxIngreso = fgets($file);
+        fclose($file);
+
+        $ingreso ="";
+        for ($i=0;$i<strlen($auxIngreso)-2;$i++){
+            $ingreso= $ingreso.$auxIngreso[$i];
+        }
         $nombreCliente=$_REQUEST['nombre-cliente'];
         $apellidoPaterno=$_POST["apellido-paterno"];
         $apellidoMaterno=$_POST["apellido-materno"];
         $correoPersona=$_POST["correo"];
-        $telefonoPersona=$_POST["telefono"];
-        echo $nombreCliente;  
+        $telefonoPersona=$_POST["telefono"]; 
 
         $ban1=false;
         self::conexion();
@@ -40,8 +47,6 @@ class PerfilUsuario{
                     if ((strlen($apellidoPaterno)>20) or ($validarAP===false) or (strlen($apellidoMaterno)>20) or ($validarAM===false)){
                         $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener más de 20 caracteres (a-z / A-Z)');
                     }else{
-                        echo $telefonoPersona;
-                        echo is_numeric($telefonoPersona);
                         if((strlen($telefonoPersona)!=10) or (is_numeric($telefonoPersona)===false)){
                             $in->alertas("validacion", 'Datos inválidos', 'El teléfono debe tener 10 dígitos (0-9)');
                         }else{
@@ -99,7 +104,7 @@ class PerfilUsuario{
                     }        
             }
             if ($ban1===true){
-                $in->alertas("aceptado", 'Listo!!!', 'Datos actualizados correctamente');
+                $in->alertas("aceptado", '¡Enhorabuena!', 'Datos actualizados correctamente');
                 $this->varConectado=false;
                 sqlsrv_close($this->con);
             }
@@ -133,7 +138,7 @@ class PerfilUsuario{
         ?>
         <html>
         <body>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>s
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <?php
         if($valor=='validacion'){
             ?>
@@ -168,9 +173,9 @@ class PerfilUsuario{
             timerProgressBar: true,
             }).then((result)=>{
                 if(result.isConfirmed){
-                    location.href='perfilCliente.php';
+                    location.href="perfilCliente.php"
                 }else{
-                    location.href='perfilCliente.php';
+                    location.href="perfilCliente.php"
                 }
             })
         </script>
