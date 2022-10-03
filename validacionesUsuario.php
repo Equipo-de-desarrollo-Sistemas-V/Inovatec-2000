@@ -18,68 +18,131 @@
             if ($con){
             //verifica que el usuario no exeda los 20 caracteres
                 if (strlen($usuario) <= 20) {
+                    //verifica que el usuario no exista en la base de  datos
+                    $querry = "SELECT Usuario FROM Persona
+                    WHERE Usuario = '$usuario'";
 
-                    //verifica que el usuario no este registrado ya
-                    $querry = "SELECT * FROM Persona WHERE Usuario = '$usuario'";
                     $resultados = sqlsrv_query($con, $querry);
-                    if ($resultados === false) {
+
+                    if($resultados === false){
                         die(print_r(sqlsrv_errors(), true));
                     }
-                    //verificar si el usuario esta disponible
-                    if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
+
+                    else{
+
+                        if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
                         echo json_encode("usuario existente");
-                    } else {
-                        //verificar que el correo sea real
-                        include_once("VerifyEmail.php");
+                        }
 
-                        $vmail = new verifyEmail();
+                        else{
+                            //verificar que los nombres no pasen los 40 caracteres
+                            if(strlen($nombre) <= 40){
 
-                        if ($vmail->check($correo)) {
+                                //verificar que el nombre no tenga numeros
+                                $numn = $this -> numeros($nombre);
+                                $carn = $this -> caracteres($nombre);
 
-                            //verifica que los nombres no tengan mas de 40 caracteres
-                            if (strlen($nombre) <= 40) {
+                                if($numn == 0 and $carn == 0){
+                                    
+                                    //verificar que los apellidos no pasen los 20 caracterse cada uno
+                                    if(strlen($paterno) <= 20 and strlen($materno) <= 20){
 
-                                //verifica que los apellidos no tengan mas de 20 caracteres
-                                if (strlen($paterno) <= 20 and strlen($materno) <= 20) {
-                                    $contador = 0;
+                                        //verificar que los apellidos no tengan numeros
+                                        $nump = $this -> numeros($paterno);
+                                        $numm = $this -> numeros($materno);
+                                        $carp = $this -> caracteres($paterno);
+                                        $carm = $this -> caracteres($materno);
 
-                                    for ($i = 0; $i < strlen($telefono); $i++) {
-                                        if (ord($telefono[$i]) <= 47 or ord($telefono[$i]) >= 59) {
-                                            $contador++;
+                                        if($nump == 0 and $numm == 0 and $carp == 0 and $carm == 0){
+
+                                            //verificar que el correo sea real
+                                            include_once("VerifyEmail.php");
+
+                                            $vmai = new verifyEmail();
+
+                                            if($vmai -> check($correo)){
+
+                                                //verificar que el correo no este registrdado en la base de datos
+                                                $querry = "SELECT email from Persona
+                                                where email = '$correo'";
+
+                                                $resultados = sqlsrv_query($con, $querry);
+
+                                                if ($resultados === false) {
+                                                    die(print_r(sqlsrv_errors(), true));
+                                                }
+
+                                                else{
+
+                                                    if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
+                                                        echo json_encode("correo existente");
+                                                    }
+
+                                                    else{
+                                                        //verificar que el telefono tenga 10 digitos
+                                                        if (strlen($telefono) == 10) {
+
+                                                            //verificar que el telefono tenga solo numeros
+                                                            $numt = $this->numeros($telefono);
+                                                            if ($numt == 10) {
+
+                                                                //los datos pasaron todas las verificaciones
+                                                                $this->guardar();
+                                                                echo json_encode("todo chido");
+                                                            } 
+                                                            
+                                                            else {
+                                                                echo json_encode("letras telefono");
+                                                            }
+                                                        } 
+                                                        
+                                                        else {
+                                                            echo json_encode("longitud");
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            else if($vmai -> isValid($correo)){
+                                                echo json_encode("inexistente");
+                                            }
+
+                                            else{
+                                                echo json_encode("invalido");
+                                            }
+                                        }
+
+                                        else{
+                                            echo json_encode("numeros apellidos");
                                         }
                                     }
 
-                                    if ($contador >= 1) {
-                                        echo json_encode("letras");
-                                    } else {
-                                        if (strlen($telefono) == 10) {
-                                            $this->guardar();
-                                            echo json_encode("todo chido");
-                                        } else {
-                                            echo json_encode("longitud");
-                                        }
+                                    else{
+                                        echo json_encode("apellidos largos");
                                     }
-                                } else {
-                                    echo json_encode("apellidos largos");
                                 }
-                            } else {
+
+                                else{
+                                    echo json_encode("numeros nombre");
+                                }
+                            }
+
+                            else{
                                 echo json_encode("nombres largos");
                             }
-                        } else if ($vmail->isValid($correo)) {
-                            echo json_encode("inexistente");
-                        } else {
-                            echo json_encode("invalido");
                         }
                     }
-                } else {
-                    echo json_encode("usuario largo");
-                }
-                }else{
-                    //echo "no se pudo conectar";
-                    die (print_r(sqlsrv_errors(), true));
                 }
 
-            
+                else {
+                    echo json_encode("usuario largo");
+                }
+            }
+                
+            else{
+                die (print_r(sqlsrv_errors(), true));
+            }
+
         }
 
         function guardar(){
@@ -104,6 +167,39 @@
             //include ("registroContrasea.php");
 
         }
+
+        //devuelve la cantidad de numeros encontrados en una cadena
+        function numeros($cadena){
+            $conta = 0;
+
+            for($i=0; $i< strlen($cadena); $i++){
+                if(ord($cadena[$i]) >= 48 and ord($cadena[$i]) <= 57){
+                    $conta ++;
+                }
+            }
+
+            return $conta;
+        }
+
+        function caracteres($cadena)
+        {
+            $conta = 0;
+
+            for ($i = 0; $i < strlen($cadena); $i++) {
+                //verifica que el caracter no sea numero, letra o espacio (ya admite acentos y ñ)
+                if ((ord($cadena[$i]) <= 47 or ord($cadena[$i]) >= 58) and (ord($cadena[$i])<=64 or ord($cadena[$i]) >=91) and (ord($cadena[$i]) <= 96 or ord($cadena[$i])
+                 >= 123) and ord($cadena[$i]) != 32 and ord($cadena[$i]) != 195 and ord($cadena[$i]) != 161 and ord($cadena[$i]) != 169 and ord($cadena[$i]) != 173 and
+                 ord($cadena[$i]) != 179 and ord($cadena[$i]) != 186 and ord($cadena[$i]) != 129 and ord($cadena[$i]) != 137 and ord($cadena[$i]) != 141 and ord($cadena[$i]) != 147
+                 and ord($cadena[$i]) != 154 and ord($cadena[$i]) != 177 and ord($cadena[$i]) != 145) {
+                    $conta ++;
+                    //echo json_encode(ord($cadena[$i]));
+                }
+
+            }
+
+            return $conta;
+        }
+
     }
 
     $obj = new Usuario;
