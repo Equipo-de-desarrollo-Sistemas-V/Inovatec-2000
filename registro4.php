@@ -160,7 +160,9 @@
                     $consulta_tarjeta = sqlsrv_query($con, $querry_tarjeta);
                     $in->alertas("aceptado", '¡Felicidades!', 'Tu cuenta ha sido creada.');
 
-                }else{
+                }
+                
+                else{
                     $in->alertas("validacion", 'Ups...', 'Fallo al conectar a la base de datos');
                     //die (print_r(sqlsrv_errors(), true));
                     //echo '<script>alert("no se pudo conectar")</script>';
