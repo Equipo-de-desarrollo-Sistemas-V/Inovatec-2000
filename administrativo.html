@@ -84,13 +84,82 @@
 		<!--Contenido de la parte PRODUCTOS-->
 		<div class="contenidoAgregaProd" id="contenidoAgregaProd">
 			<article>
-				<h1>Parte de agregar Productos</h1>
+				<h1 align="center">Agregar Productos</h1>
+				<section class="formularios">
+					<form action="" method="post" enctype="multipart/form-data">
+						<br>
+	
+						<label for="idProducto">ID</label>
+						<input type="text" name="idProducto" id="idProd">
+						<br>
+	
+						<label for="nombreProd">NOMBRE</label>
+						<input type="text" name="nombreProd" id="nombreProd">
+						<br>
+	
+						<label for="descripcion">DESCRIPCION</label>
+						<input type="text" name="descripcion"id="descripcion"></input>
+						<br>
+	
+						<label for="categoria">CATEGORIA</label>
+						<input type="text" name="categoria" id="categoria">
+						<br>
+	
+						<label for="precioCompra">PRECIO DE COMPRA</label>
+						<input type="text" name="precioProd" id="precioProd">
+						<br>
+	
+						<label for="precioVenta">PRECIO DE VENTA</label>
+						<input type="text" name="precioVenta" id="precioVenta">
+						<br>
+	
+						<label for="sucursal">SUCURSAL</label>
+						<input type="text" name="sucursal" id="sucursal">
+	
+						<div class="photo">
+							<label for="foto">Foto</label>
+								<div class="prevPhoto">
+								<span class="delPhoto notBlock">X</span>
+								<label for="foto"></label>
+								</div>
+								<div class="upimg">
+								<input type="file" name="foto" id="foto">
+								</div>
+								<div id="form_alert"></div>
+						</div>
+	
+						<button type="submit" class="btn_guardar">Guardar</button>
+	
+					</form>
+
+				</section>
+		
 			</article>
 		</div>
 	
 		<div class="contenidoListaProd" id="contenidoListaProd">
 			<article>
-				<h1>Parte de Lista Productos</h1>
+				<h1 align="center">Parte de Lista Productos</h1>
+				<br>
+				<section class="tablas">
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th> 
+								<th>NOMBRE</th> 
+								<th>DESCRIPCION</th> 
+								<th>CATEGORIA</th> 
+								<th>PRECIO COMPRA</th> 
+								<th>PRECIO VENTA</th> 
+								<th>SUCURSAL</th>
+							</tr>
+							
+						</thead>
+					</table>
+
+				</section>
+				
+				
 			</article>
 		</div>
 

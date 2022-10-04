@@ -170,7 +170,7 @@ main{
 article{
 	max-width: 1200px;
 	margin: 20px auto;
-	padding: 40px;
+	padding: 10px;
 }
 
 
@@ -256,4 +256,98 @@ article{
 		visibility: visible;
 		opacity: 1;
 	}
+}
+
+/* Estilos para las tablas*/
+table{
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+	border-collapse: collapse;
+	
+}
+
+th,td{
+	padding: 8px 20px;
+}
+
+thead{
+	background-color:#0558b8;
+	color: #FFF;
+	font-size: 15px;
+	border-bottom: solid 5px #023877;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+/*Estilos para agregar la foto en el formulario en productos*/
+.prevPhoto {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    height: 150px;
+    border: 1px solid #CCC;
+    position: relative;
+    cursor: pointer;
+    background: url(../images/uploads/user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: auto;
+}
+
+.prevPhoto label{
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+
+.prevPhoto img{
+	width: 100%;
+	height: 100%;
+}
+
+.upimg, .notBlock{
+	display: none !important;
+}
+
+.errorArchivo{
+	font-size: 16px;
+	font-family: arial;
+	color: #cc0000;
+	text-align: center;
+	font-weight: bold; 
+	margin-top: 10px;
+}
+
+.delPhoto{
+	color: #FFF;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	background: red;
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	z-index: 10;
+}
+
+#tbl_list_productos img{
+	width: 50px;
+}
+.imgProductoDelete{
+	width: 175px;
 }
