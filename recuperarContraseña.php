@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrar tu cuenta</title>
-  <link rel="stylesheet" href="css/recuperarPasword.css">
+  <link rel="stylesheet" href="css/resetPassword.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>

@@ -75,7 +75,7 @@
     </article>
   </section>
 
-  <script src="js/alertasUsuario.js"></script>
+  
 </body>
 
 </html>
