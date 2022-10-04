@@ -13,45 +13,53 @@ class login{
         //Verficar si es un empleado
         $query="SELECT nombres, email FROM Empleados WHERE email='$usuario'";
         $res= sqlsrv_query($conn_sis, $query);
-        $arreEmpl = sqlsrv_fetch_array( $res, SQLSRV_FETCH_ASSOC);
-        if (!empty($arreEmpl)){
-            $query1="SELECT contra_em FROM Empleados WHERE email='$usuario'";
-            $res= sqlsrv_query($conn_sis, $query1);
-            $row = sqlsrv_fetch_array($res);
-            $contraHash=$row['contra_em'];
-            if (password_verify($palabra_secreta, $contraHash)) {
-                //echo $arreEmpl['nombres'];
-                session_start();
-                $_SESSION["nombres"] = $arreEmpl['nombres'];
-                include "administrativo.php";
-            }else{
-                $in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
-            }
+        //echo $res . 'hola' . '<br>';
 
-        }else {
-            $query="SELECT Usuario, email FROM Persona WHERE email='$usuario'";
-            $res= sqlsrv_query($conn_sis, $query);
-            $arreClien = sqlsrv_fetch_array( $res, SQLSRV_FETCH_ASSOC);
-            if (!empty($arreClien)){
-                $query1="SELECT Contra_us FROM Persona WHERE email='$usuario'";
-                $res= sqlsrv_query($conn_sis, $query1);
+        if($res === false){
+            die(print_r(sqlsrv_errors(), true));
+        }
+
+        else{
+            $arreEmpl = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC);
+            if (!empty($arreEmpl)) {
+                $query1 = "SELECT contra_em FROM Empleados WHERE email='$usuario'";
+                $res = sqlsrv_query($conn_sis, $query1);
                 $row = sqlsrv_fetch_array($res);
-                $contraHash=$row['Contra_us'];
+                $contraHash = $row['contra_em'];
                 if (password_verify($palabra_secreta, $contraHash)) {
-                    //echo $arreClien['Usuario'];
-                    $file = fopen("archivo_correo.txt", "w");
-                    fwrite($file, $arreClien['Usuario']. PHP_EOL);
-                    fclose($file);
+                    //echo $arreEmpl['nombres'];
                     session_start();
-                    $_SESSION["Usuario"] = $arreClien['Usuario'];
-                    include "perfilCliente.php";
-                }else{
+                    $_SESSION["nombres"] = $arreEmpl['nombres'];
+                    include "administrativo.php";
+                } else {
                     $in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
                 }
-            }else{
-                $in->alertas("validacion", 'Error', 'Correo no registrado');
+            } else {
+                $query = "SELECT Usuario, email FROM Persona WHERE email='$usuario'";
+                $res = sqlsrv_query($conn_sis, $query);
+                $arreClien = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC);
+                if (!empty($arreClien)) {
+                    $query1 = "SELECT Contra_us FROM Persona WHERE email='$usuario'";
+                    $res = sqlsrv_query($conn_sis, $query1);
+                    $row = sqlsrv_fetch_array($res);
+                    $contraHash = $row['Contra_us'];
+                    if (password_verify($palabra_secreta, $contraHash)) {
+                        //echo $arreClien['Usuario'];
+                        $file = fopen("archivo_correo.txt", "w");
+                        fwrite($file, $arreClien['Usuario'] . PHP_EOL);
+                        fclose($file);
+                        session_start();
+                        $_SESSION["Usuario"] = $arreClien['Usuario'];
+                        include "perfilCliente.php";
+                    } else {
+                        $in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
+                    }
+                } else {
+                    $in->alertas("validacion", 'Error', 'Correo no registrado');
+                }
             }
         }
+        
         sqlsrv_close($conn_sis);
 
 

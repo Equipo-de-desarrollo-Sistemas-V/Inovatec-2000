@@ -33,8 +33,8 @@ class Usuario
 
                     if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
 
-                        //echo json_encode("usuario existente");
-                        $in->alertas("validacion", 'Datos inválidos', 'Este usuario no está disponible');
+                        echo json_encode("usuario existente");
+                        //$in->alertas("validacion", 'Datos inválidos', 'Este usuario no está disponible');
                     } 
                     
                     else {
@@ -79,8 +79,8 @@ class Usuario
                                             else {
 
                                                 if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
-                                                    //echo json_encode("correo existente");
-                                                    $in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
+                                                    echo json_encode("correo existente");
+                                                    //$in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
                                                 } 
                                                 
                                                 else {
@@ -93,64 +93,64 @@ class Usuario
 
                                                             //los datos pasaron todas las verificaciones
                                                             $this->guardar();
-                                                            //echo json_encode("todo chido");
-                                                            $in->alertas("aceptado", 'Listo!!!', 'Los datos se han registrado con éxito');
+                                                            echo json_encode("todo chido");
+                                                            //$in->alertas("aceptado", 'Listo!!!', 'Los datos se han registrado con éxito');
                                                         } 
                                                         
                                                         else {
-                                                            //echo json_encode("letras telefono");
-                                                            $in->alertas("validacion", 'Datos inválidos', 'El número de teléfono no debe contener letras ni caracteres especiales');
+                                                            echo json_encode("letras telefono");
+                                                            //$in->alertas("validacion", 'Datos inválidos', 'El número de teléfono no debe contener letras ni caracteres especiales');
                                                         }
                                                     } 
                                                     
                                                     else {
-                                                        //echo json_encode("longitud");
-                                                        $in->alertas("validacion", 'Datos inválidos', 'El número de teléfono debe contener 10 caracteres');
+                                                        echo json_encode("longitud");
+                                                        //$in->alertas("validacion", 'Datos inválidos', 'El número de teléfono debe contener 10 caracteres');
                                                     }
                                                 }
                                             }
                                         } 
                                         
                                         else if ($vmai->isValid($correo)) {
-                                            //echo json_encode("inexistente");
-                                            $in->alertas("validacion", 'Datos inválidos', 'El correo ingresado no existe');
+                                            echo json_encode("inexistente");
+                                            //$in->alertas("validacion", 'Datos inválidos', 'El correo ingresado no existe');
                                         } 
                                         
                                         else {
-                                            // echo json_encode("invalido");
-                                            $in->alertas("validacion", 'Datos inválidos', 'El correo no es válido');
+                                            echo json_encode("invalido");
+                                            //$in->alertas("validacion", 'Datos inválidos', 'El correo no es válido');
                                         }
                                     }
                                     
                                     else {
-                                        //echo json_encode("numeros apellidos");
-                                        $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener números ni caracteres especiales');
+                                        echo json_encode("numeros apellidos");
+                                        //$in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener números ni caracteres especiales');
                                     }
                                 } 
                                 
                                 else {
-                                    //echo json_encode("apellidos largos");
-                                    $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener más de 20 caracteres cada uno');
+                                    echo json_encode("apellidos largos");
+                                    //$in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener más de 20 caracteres cada uno');
                                 }
                             } 
                             
                             else {
-                                //echo json_encode("numeros nombre");
-                                $in->alertas("validacion", 'Datos inválidos', 'El usuario no debe contener números ni caracteres especiales');
+                                echo json_encode("numeros nombre");
+                                //$in->alertas("validacion", 'Datos inválidos', 'El usuario no debe contener números ni caracteres especiales');
                             }
                         } 
                         
                         else {
-                            //echo json_encode("nombres largos");
-                            $in->alertas("validacion", 'Datos inválidos', 'El nombre de usuario no debe contener más de 40 caracteres');
+                            echo json_encode("nombres largos");
+                            //$in->alertas("validacion", 'Datos inválidos', 'El nombre de usuario no debe contener más de 40 caracteres');
                         }
                     }
                 }
             } 
             
             else {
-                //echo json_encode("usuario largo");
-                $in -> alertas("validacion", 'Datos inválidos', 'El usuario no debe contener más de 20 caracteres');
+                echo json_encode("usuario largo");
+                //$in -> alertas("validacion", 'Datos inválidos', 'El usuario no debe contener más de 20 caracteres');
             }
         } 
         

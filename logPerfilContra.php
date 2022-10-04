@@ -5,7 +5,7 @@ class PerfilContra{
     public $in;
     
     
-    //conexion a la base de datoss
+    //conexion a la base de datos
     function conexion(){
         $this->in=new PerfilContra;
         $serverName='localhost';

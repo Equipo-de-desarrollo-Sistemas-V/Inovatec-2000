@@ -29,7 +29,7 @@
     <article class="image">
       <img src="css/assets/my-password-animate.svg" alt="logo">
     </article>
-    
+
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
@@ -54,6 +54,8 @@
       </div>
     </article>
   </section>
+
+  <script src="js/alertasContra.js"> </script>
 </body>
 
 </html>

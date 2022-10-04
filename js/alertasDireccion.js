@@ -34,6 +34,22 @@ formulario.addEventListener('submit', function(e){
             alert("La ciudad no existe");
         }
         
+        else if(data === 'numeros colonia'){
+            alert("El nombre de la colonia no debe contener números ni caracteres especiales");
+        }
+            
+        else if(data === 'colonia largo'){
+            alert("El nombre de la colonia no debe tener más de 20 caracteres");
+        }
+            
+        else if(data === 'numeros calle'){
+            alert("El nombre de la calle no debe contener números ni caracteres especiales");
+        }
+            
+        else if(data === 'calle largo'){
+            alert("El nombre de la calle no debe tener más de 20 caracteres");
+        }
+            
         else{
             alert("La información ha sido aceptada");
             location.href = "registroTarjeta.php";

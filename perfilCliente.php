@@ -48,13 +48,24 @@ $resultado=sqlsrv_query($con, $query);
 $row = sqlsrv_fetch_array($resultado);
 $estado=$row['Estado'];
 
-$query= "SELECT* FROM Tarjetas where usuario ='".$ingreso."'";
+$query= "SELECT * FROM Tarjetas where usuario ='".$ingreso."'";
 $resultado=sqlsrv_query($con, $query);
 $row = sqlsrv_fetch_array($resultado);
-$nombreTar=$row['Nombre_Tar'];
-$noTar=$row['no_tarjeta'];
-$mes=$row['fecha_ven_mes'];
-$anio=$row['fecha_ven_anio'];
+
+if($row != null){
+    $nombreTar = $row['Nombre_Tar'];
+    $noTar = $row['no_tarjeta'];
+    $mes = $row['fecha_ven_mes'];
+    $anio = $row['fecha_ven_anio'];
+}
+
+else{
+    $nombreTar = "";
+    $noTar = "";
+    $mes = "";
+    $anio = "";
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -48,8 +48,7 @@
 
                                 <div class="grupo" id="expiracion">
                                     <p class="label">Expiracion</p>
-                                    <p class="expiracion"><span class="mes" id="mes">MM</span> / <span class="year"
-                                            id="year">AA</span>
+                                    <p class="expiracion"><span class="mes" id="mes">MM</span> / <span class="year" id="year">AA</span>
                                     </p>
                                 </div>
                             </div>
@@ -88,7 +87,7 @@
         <article class="login">
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
-                <form method="POST" action="registro4.php" id="formulario">
+                <form method="POST" action="" id="formulario">
                     <!--llama a la accion de logear-->
                     <h2>CREA TU CUENTA</h2>
 
@@ -97,34 +96,29 @@
                     <div class="cajas">
                         <!-- Caja para el nombre -->
                         <div class="input-group">
-                            <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input"
-                                maxlength="19" minlength="19">
+                            <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="19" minlength="19">
                             <label for="numeroTarjeta" class="input-label">Número de tarjeta</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="text" name="nombrePropietario" id="nombrePropietario" required class="input"
-                                autocomplete="off" minlength="3">
+                            <input type="text" name="nombrePropietario" id="nombrePropietario" required class="input" autocomplete="off" minlength="3">
                             <label for="nombrePropietario" class="input-label">Nombre del propietario</label>
                         </div>
 
                         <div class="container-fechas">
                             <div class="input-group">
-                                <input type="text" name="mesCaja" id="mesCaja" required class="input" maxlength="2"
-                                    minlength="2">
+                                <input type="text" name="mesCaja" id="mesCaja" required class="input" maxlength="2" minlength="2">
                                 <label for="mesCaja" class="input-label">Mes de expiración</label>
                             </div>
 
                             <div class="input-group-2">
-                                <input type="text" name="yearCaja" id="yearCaja" required class="input" maxlength="2"
-                                    minlength="2">
+                                <input type="text" name="yearCaja" id="yearCaja" required class="input" maxlength="2" minlength="2">
                                 <label for="yearCaja" class="input-label">Año de expiración</label>
                             </div>
 
 
                             <div class="input-group">
-                                <input type="text" name="ccvCaja" id="ccvCaja" required class="input" maxlength="3"
-                                    minlength="3">
+                                <input type="text" name="ccvCaja" id="ccvCaja" required class="input" maxlength="3" minlength="3">
                                 <label for="ccvCaja" class="input-label">CCV</label>
                             </div>
                         </div>
@@ -135,7 +129,8 @@
             </div>
         </article>
         <script src="js/registroTarjeta.js"></script>
-    </section>
+        <script src="js/alertasTarjeta.js"></script>
+        </section>
 </body>
 
 </html>
