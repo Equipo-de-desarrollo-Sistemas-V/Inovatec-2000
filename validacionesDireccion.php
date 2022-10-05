@@ -98,7 +98,7 @@
 
                                         else{
                                             echo json_encode("numeros colonia");
-                                            $in->alertas("validacion", 'Datos inválidos', 'El nombre de la colonia no debe contener números ni caracteres especiales');
+                                            // $in->alertas("validacion", 'Datos inválidos', 'El nombre de la colonia no debe contener números ni caracteres especiales');
                                         }
                                         
                                     }
