@@ -49,9 +49,9 @@ formulario.addEventListener('submit', function(e){
         else if(data === 'calle largo'){
             alert("El nombre de la calle no debe tener más de 20 caracteres");
         }
-            
+        
         else{
-            alert("La información ha sido aceptada");
+            alert("Información aceptada");
             location.href = "registroTarjeta.php";
         }
     })

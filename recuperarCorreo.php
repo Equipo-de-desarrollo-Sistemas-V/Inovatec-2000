@@ -45,7 +45,7 @@
                 </form>
             </div>
         </article>
-        <script src="js/alertas.js"></script>
+        <script src="js/alertasCorreo.js"></script>
     </section>
 </body>
 
