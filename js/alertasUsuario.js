@@ -58,6 +58,10 @@ formulario.addEventListener('submit', function(e){
             alert("Información aceptada");
             location.href = "registroContrasea.php";
         }
+
+        else {
+            alert(data);
+        }
         
     })
 })
