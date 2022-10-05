@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menu Administrativo</title>
+
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 </head>
@@ -29,7 +30,6 @@
 
 		<!-- Menu Desplegable -->
 		<div class="container_menu">
-
 			<div class="menu">
 				<input type="checkbox" id="check__menu">
 				<label id="label__check" for="check__menu">
@@ -84,53 +84,48 @@
 		<!--Contenido de la parte PRODUCTOS-->
 		<div class="contenidoAgregaProd" id="contenidoAgregaProd">
 			<article>
+
 				<h1 align="center">Agregar Productos</h1>
-				<section class="formularios">
-					<form action="" method="post" enctype="multipart/form-data">
-						<br>
-	
-						<label for="idProducto">ID</label>
-						<input type="text" name="idProducto" id="idProd">
-						<br>
-	
-						<label for="nombreProd">NOMBRE</label>
-						<input type="text" name="nombreProd" id="nombreProd">
-						<br>
-	
-						<label for="descripcion">DESCRIPCION</label>
-						<input type="text" name="descripcion"id="descripcion"></input>
-						<br>
-	
-						<label for="categoria">CATEGORIA</label>
-						<input type="text" name="categoria" id="categoria">
-						<br>
-	
-						<label for="precioCompra">PRECIO DE COMPRA</label>
-						<input type="text" name="precioProd" id="precioProd">
-						<br>
-	
-						<label for="precioVenta">PRECIO DE VENTA</label>
-						<input type="text" name="precioVenta" id="precioVenta">
-						<br>
-	
-						<label for="sucursal">SUCURSAL</label>
-						<input type="text" name="sucursal" id="sucursal">
-	
-						<div class="photo">
-							<label for="foto">Foto</label>
-								<div class="prevPhoto">
-								<span class="delPhoto notBlock">X</span>
-								<label for="foto"></label>
-								</div>
-								<div class="upimg">
-								<input type="file" name="foto" id="foto">
-								</div>
-								<div id="form_alert"></div>
-						</div>
-	
-						<button type="submit" class="btn_guardar">Guardar</button>
-	
-					</form>
+				<br>
+				<form action="" class="formularios" method="post" enctype="multipart/form-data">
+					<p for="idProducto">ID</p> 
+					<input type="text" name="idProducto" id="idProd" class="field"><br>
+
+					<p for="nombreProd">NOMBRE</p> 
+					<input type="text" name="nombreProd" id="nombreProd" class="field"><br>
+
+					<p for="descripcion">DESCRIPCION</p> 
+					<textarea type="text" name="descripcion"id="descripcion" class="field"></textarea><br>
+
+					<p for="categoria">CATEGORIA</p>
+					<input type="text" name="categoria" id="categoria" class="field"><br>
+
+					<p for="precioCompra">PRECIO DE COMPRA</p> 
+					<input type="text" name="precioProd" id="precioProd" class="field"><br>
+
+					<p for="precioVenta">PRECIO DE VENTA</p>
+					<input type="text" name="precioVenta" id="precioVenta" class="field"> <br>
+
+					<p for="proveedor">PROVEEDOR</p> 
+					<select name="proveedor" id="sucursal" class="field"></select><br>
+
+					<div class="photo">
+						<label for="foto">FOTO</label><br>
+							<div class="prevPhoto">
+							<span class="delPhoto notBlock">X</span>
+							<label for="foto"></label>
+							</div>
+							<div class="upimg">
+							<input type="file" name="foto" id="foto"  class="field">
+							</div>
+							<div id="form_alert"></div>
+					</div><br>
+
+					<p class="center-content">
+						<input type="submit" class="btn_submit" value="Guardar">
+					</p>
+
+				</form>
 
 				</section>
 		
@@ -151,7 +146,7 @@
 								<th>CATEGORIA</th> 
 								<th>PRECIO COMPRA</th> 
 								<th>PRECIO VENTA</th> 
-								<th>SUCURSAL</th>
+								<th>PROVEEDOR</th>
 							</tr>
 							
 						</thead>
