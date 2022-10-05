@@ -150,3 +150,8 @@
 	</main>
 </body>
 </html>
+<?php
+			if (!isset($_SESSION['nombres'])){
+				header("../Inovatec-2000/login.php");
+			}
+			?>

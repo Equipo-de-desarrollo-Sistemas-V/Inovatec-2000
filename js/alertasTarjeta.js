@@ -22,7 +22,7 @@ formulario.addEventListener('submit', function(e){
         }
             
         else{
-            alert("La información ha sido aceptada");
+            alert("¡Felicidades!  Tu cuenta ha sido creada");
             location.href = "login.php";
         }
     })

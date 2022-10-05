@@ -47,7 +47,7 @@ formulario.addEventListener('submit', function(e){
         }
 
         else if (data === 'longitud') {
-            alert("El teléfono debe contener 10 dígitos");
+            alert("El teléfono debe contener 10 dígitos (0-9)");
         }
 
         else if (data === 'letras telefono') {
@@ -55,7 +55,7 @@ formulario.addEventListener('submit', function(e){
         }
 
         else if (data === 'todo chido') {
-            alert("La información se ha guardado correctamente");
+            alert("Información aceptada");
             location.href = "registroContrasea.php";
         }
 
