@@ -28,11 +28,13 @@ class login{
                 $contraHash = $row['contra_em'];
                 if (password_verify($palabra_secreta, $contraHash)) {
                     //echo $arreEmpl['nombres'];
+                    echo json_encode("todo bien");
                     session_start();
                     $_SESSION["nombres"] = $arreEmpl['nombres'];
                     include "administrativo.php";
                 } else {
-                    $in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
+                    echo json_encode("usuario error");
+                    //$in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
                 }
             } else {
                 $query = "SELECT Usuario, email FROM Persona WHERE email='$usuario'";
@@ -48,14 +50,17 @@ class login{
                         $file = fopen("archivo_correo.txt", "w");
                         fwrite($file, $arreClien['Usuario'] . PHP_EOL);
                         fclose($file);
+                        echo json_encode("todo bien");
                         session_start();
                         $_SESSION["Usuario"] = $arreClien['Usuario'];
                         include "perfilCliente.php";
                     } else {
-                        $in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
+                        echo json_encode("usuario error");
+                        //$in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
                     }
                 } else {
-                    $in->alertas("validacion", 'Error', 'Correo no registrado');
+                    echo json_encode("usuario no registrado");
+                    //$in->alertas("validacion", 'Error', 'Correo no registrado');
                 }
             }
         }
@@ -175,7 +180,7 @@ class login{
         //     sqlsrv_close($conn_sis);
     }
 
-    function alertas($valor, $titulo, $mensaje){
+    /*function alertas($valor, $titulo, $mensaje){
         ?>
         <html>
         <body>
@@ -222,10 +227,9 @@ class login{
         </script>
         </body>
         </html>
-        <?php
+        <?php*/
         }
-    }
-}
+
 $log=new login();
 $log->verifica();
 ?>
