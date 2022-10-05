@@ -156,7 +156,7 @@
 
                     //inserta los datos en la tabla tarjetas
                     $querry_tarjeta = "INSERT INTO Tarjetas
-                    values('$usuario', '$ntarjeta', '$mes', '$year')";
+                    values('$usuario', '$ntarjeta', '$mes', '$year', '$nombreProp')";
                     $consulta_tarjeta = sqlsrv_query($con, $querry_tarjeta);
 
                     echo json_encode("todo chido");

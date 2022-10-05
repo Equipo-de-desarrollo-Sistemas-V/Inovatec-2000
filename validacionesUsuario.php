@@ -81,11 +81,11 @@ class Usuario
                                             if ($nump == 0 and $numm == 0 and $carp == 0 and $carm == 0) {
 
                                                 //verificar que el correo sea real
-                                                include_once("VerifyEmail.php");
+                                                /*include_once("VerifyEmail.php");
 
                                                 $vmai = new verifyEmail();
 
-                                                if ($vmai->check($correo)) {
+                                                if ($vmai->check($correo)) {*/
 
                                                     //verificar que el correo no este registrdado en la base de datos
                                                     $querry_cliente = "SELECT email from Persona
@@ -148,13 +148,13 @@ class Usuario
 
                                                         }
                                                     }
-                                                } else if ($vmai->isValid($correo)) {
+                                                /*} else if ($vmai->isValid($correo)) {
                                                     echo json_encode("inexistente");
                                                     //$in->alertas("validacion", 'Datos inválidos', 'El correo ingresado no existe');
                                                 } else {
                                                     echo json_encode("invalido");
                                                     //$in->alertas("validacion", 'Datos inválidos', 'El correo no es válido');
-                                                }
+                                                }*/
                                             } else {
                                                 echo json_encode("numeros apellidos");
                                                 //$in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener números ni caracteres especiales');
