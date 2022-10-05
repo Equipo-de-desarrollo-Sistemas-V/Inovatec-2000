@@ -1,5 +1,43 @@
-<!-- Interfaz para login -->
+<?php
+ $file = fopen("archivo_elim.txt", "r");
+ $valor = fgets($file);
+ $user = fgets($file);
+ fclose($file);
+
+ $auxiliar ="";
+ for ($i=0;$i<strlen($valor)-2;$i++){
+     $auxiliar = $auxiliar.$valor[$i];
+ }
+ $valor = $auxiliar;
+
+  $auxiliar ="";
+  for ($i=0;$i<strlen($user)-2;$i++){
+      $auxiliar = $auxiliar.$user[$i];
+  }
+  $ingreso = $auxiliar;
+  if ($valor=="Si"){
+    $serverName='localhost';
+    $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+    $con = sqlsrv_connect($serverName, $connectionInfo); 
+
+    $query= "SELECT Usuario FROM Persona where Usuario ='".$ingreso."'";
+    $resultado=sqlsrv_query( $con, $query);
+    $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
+    if (!empty($arreResul)){
+      $query= "DELETE FROM Tarjetas WHERE Usuario='$ingreso'";
+      $resultado=sqlsrv_query($con, $query);
+      $query= "DELETE FROM Direccion WHERE Usuario='$ingreso'";
+      $resultado=sqlsrv_query( $con, $query);
+      $query= "DELETE FROM Persona WHERE Usuario='$ingreso'";
+      $resultado=sqlsrv_query( $con, $query);
+      }
+  }
+
+
+
+?>
 <!DOCTYPE html>
+<!-- Interfaz para login -->
 <html lang="es">
 
 <head>
@@ -59,7 +97,7 @@
         </form>
       </div>
     </article>
-    <script src="js/alertaLogin.js"></script>
+    <script src="js/alertasLogin.js"></script>
   </section>
 </body>
 

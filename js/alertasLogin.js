@@ -18,9 +18,17 @@ formulario.addEventListener('submit', function(e){
             alert("El usuario no esta registrado");
         }
 
-        else if (data === 'todo bien') {
-            alert("Iniciado sesion correctamente");
+        else if (data === 'admin') {
+            //alert("Iniciado sesion correctamente");
+            //session_start();
+            //$_SESSION["Usuario"] = $arreClien['Usuario'];
             location.href="administrativo.php";
         }
+
+        else if (data === 'cliente') {
+            //alert("Iniciado sesion correctamente");
+            location.href="perfilCliente.php";
+        }
+        
     })
 })

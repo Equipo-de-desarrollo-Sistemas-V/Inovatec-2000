@@ -81,6 +81,7 @@ else{
     
 </head>
 
+
 <body>
     <header>
         <nav class="navbar container">
@@ -90,6 +91,8 @@ else{
             <div class="menu">
                 <!-- <ul class="list"> -->
             <?php 
+            session_start();
+             //$_SESSION["Usuario"] = $arreClien['Usuario'];
 			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['Usuario']);?>
                     <a class="btn-cerrar-session" href="cerrar.php" type="button">Cerrar Sesión</a>
                 <!-- </ul> -->
@@ -103,17 +106,6 @@ else{
     </section>
 
     <section class="container-all">
-        <article id="datos-pagina" class="contenedor-titulos">
-            <h1 id="subtitulo">Perfil del usuario</h1>
-            <p>Gestiona todos los <span>datos</span> de tu <span>cuenta</span> desde aquí</p>
-            <article class="menu">
-                <a href="#container-datos-usuario">Mis datos</a>
-                <a href="#container-datos-direccion">Mi dirección</a>
-                <a href="#container-passwords">Mi contraseña</a>
-                <a href="#container-datos-bancarios">Mis tarjetas</a>
-                <a href="#container-eliminar-cuenta">Eliminar mi cuenta</a>
-            </article>
-        </article>
 
         <article id="container-datos-usuario" class="contenedor">
 
@@ -121,7 +113,7 @@ else{
 
             <p class="leyenda-1">Modifica tu <span>nombre</span> o apellidos por si tienes algún error.</p>
 
-            <form id="formulario" action="logPerfilUsua.php" method="post" class="formulario">
+            <form id="formulario" action="" method="post" class="formulario">
                 
                 <div class="entrada-2">
                     <div class="input-group">
@@ -152,17 +144,14 @@ else{
 
                 </div>
 
-                <input type="submit" name="boton1" value="Actualizar datos" class="btn">
-            </form>
-        </article>
+                <br>
+                <br>
+                <br>
+                <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
 
-        <article id="container-datos-direccion" class="contenedor">
             <h3 id="subtitulo">Mi dirección</h3>
 
-            <p class="leyenda-1">Actualiza tu <span>dirección</span> para saber a donde enviar tus <span>pedidos</span>.
-            </p>
-
-            <form id="formularioD" action="logPerfilDir.php" method="post" class="formulario">
+            <p class="leyenda-1">Actualiza tu <span>dirección</span> para saber a donde enviar tus <span>pedidos</span>.</p>
 
                 <div class="entrada-2">
                     <div class="input-group">
@@ -198,44 +187,40 @@ else{
 
                 </div>
 
-                <input type="submit" name="boton2" value="Actualizar mi direccón" class="btn">
-            </form>
-        </article>
+                <!-- <input type="submit" name="boton2" value="Actualizar mi direccón" class="btn"> -->
+                <br>
+                <br>
+                <br>
 
-        <article id="container-passwords" class="contenedor">
             <h3 id="subtitulo">Cambiar contraseña</h3>
 
             <p class="leyenda-1">Manten tu <span>contraseña</span> actualizada en todo <span>momento</span>.</p>
             <p class="leyenda-2">Evita ser <span>víctima</span> del robo de tu <span>cuenta</span>.</p>
 
-            <form id="formularioC" action="logPerfilContra.php" method="post" class="formulario">
                 <div class="entrada-1">
                     <div class="input-group">
-                        <input type="password" name="password" id="password" required class="input">
+                        <input type="password" name="password" id="password" class="input">
                         <label for="password" class="input-label">Contraseña actual</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="password" name="new-password" id="new-password" required class="input">
+                        <input type="password" name="new-password" id="new-password" class="input">
                         <label for="new-password" class="input-label">Nueva contraseña</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="password" name="confirm-password" id="confirm-password" required class="input">
+                        <input type="password" name="confirm-password" id="confirm-password" class="input">
                         <label for="confirm-password" class="input-label">Confirmar contraseña</label>
                     </div>
                 </div>
 
-                <input type="submit" name="boton3" value="Actualizar contraseña" class="btn">
-            </form>
-        </article>
+                <!-- <input type="submit" name="boton3" value="Actualizar contraseña" class="btn"> -->
+                <br>
+                <br>
+                <br>
 
-        <article id="container-datos-bancarios" class="contenedor">
             <h3 id="subtitulo">Mis datos bancarios</h3>
-
             <p class="leyenda-1"><span>Actualiza</span> los campos de tu poderosa <span>tarjeta</span>.</p>
-
-            <form id="formularioB" action="logPerfilBanco.php" method="post" class="formulario">
 
                 <div class="entrada-2">
                     <div class="input-group">
@@ -258,40 +243,41 @@ else{
                         <label for="year-expiracion" class="input-label">Año de expiración</label>
                     </div>
                     <div class="input-group">
-                        <input type="text" name="ccv" id="ccv" required class="input">
+                        <input type="text" name="ccv" id="ccv" class="input">
                         <label for="ccv" class="input-label">CCV</label>
                     </div>
                 </div>
 
-                <input type="submit" name="boton4" value="Actualizar tarjeta" class="btn">
-            </form>
-        </article>
+                <input type="submit" name="boton4" value="Actualizar" class="btn">
+                <br>
+                <br>
+                <br>
 
-        <article id="container-eliminar-cuenta" class="contenedor">
             <h3 id="subtitulo">Eliminar cuenta</h3>
 
             <p class="leyenda-1">¿Deseas <span>eliminar</span> todos los datos asociados a esta <span>cuenta</span>?
             </p>
             <p class="leyenda-2">Se <span>perderán</span> para siempre. Eso es mucho <span>tiempo</span>.</p>
 
-            <form id="formularioE" action="logicaPerfil.php" method="post" class="formulario">
-                <div class="entrada-3">
+            <div class="entrada-3">
                     <div class="input-group">
-                        <input type="password" name="delete-password" id="delete-password" required
+                        <input type="password" name="delete-password" id="delete-password"
                             class="input">
                         <label for="delete-password" class="input-label">Contraseña</label>
                     </div>
 
                     <div class="input-group">
                         <input type="password" name="confirm-delete-password"
-                            id="confirm-delete-password" required class="input">
+                            id="confirm-delete-password" class="input">
                         <label for="confirm-delete-password" class="input-label">Confirmar contraseña</label>
                     </div>
                 </div>
 
                 <input type="submit" value="Eliminar cuenta" class="btn">
+
             </form>
         </article>
+        <script src="js/alertasPerfil.js"></script>
     </section>
 </body>
 
