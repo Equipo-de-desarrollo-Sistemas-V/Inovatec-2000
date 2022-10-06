@@ -92,7 +92,7 @@ class Usuario
                                                         where email = '$correo'";
 
                                                     $resultados_cliente = sqlsrv_query($con, $querry_cliente);
-
+                                                    $arreResul = sqlsrv_fetch_array( $resultados_cliente, SQLSRV_FETCH_ASSOC);
                                                     if ($resultados_cliente === false) {
                                                         //die(print_r(sqlsrv_errors(), true));
                                                         echo json_encode(sqlsrv_errors(), true);
@@ -100,7 +100,8 @@ class Usuario
                                                     
                                                     else {
 
-                                                        if (sqlsrv_fetch_array($resultados_cliente, SQLSRV_FETCH_ASSOC)) {
+                                                        //if (sqlsrv_fetch_array($resultados_cliente, SQLSRV_FETCH_ASSOC)) {
+                                                        if (!empty($arreResul)){
                                                             echo json_encode("correo existente");
                                                             //$in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
                                                         } 
@@ -111,7 +112,7 @@ class Usuario
                                                             $querry_empleado = "SELECT email FROM Empleados
                                                             WHERE email = '$correo'";
 
-                                                            $resultados_cliente = sqlsrv_query($con, $querry_cliente);
+                                                            $resultados_cliente = sqlsrv_query($con, $querry_empleado);
 
                                                             if($resultados_empleado === false){
                                                                 echo json_encode(sqlsrv_errors(), true);
