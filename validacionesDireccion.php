@@ -74,65 +74,69 @@
 
                                                         //la informacion paso todos los filtros
                                                         $this->guardar($estado_municipio);
-                                                        // echo json_encode("todo chido");
-                                                        $in->alertas("aceptado", 'Listo!!!', 'La información ha sido aceptada');
+                                                        echo json_encode("todo chido");
+                                                        //$in->alertas("aceptado", 'Listo!!!', 'La información ha sido aceptada');
                                                     }
                                                      
                                                     else {
-                                                        // echo json_encode("negativo calle");
-                                                        $in->alertas("validacion", 'Datos inválidos', '"El número de la calle no puede ser menor que 1');
+                                                        echo json_encode("negativo calle");
+                                                        //$in->alertas("validacion", 'Datos inválidos', '"El número de la calle no puede ser menor que 1');
                                                     }
                                                 } 
                                                 
                                                 else {
-                                                    // echo json_encode("negativoCP");
-                                                    $in->alertas("validacion", 'Datos inválidos', '"El código postal debe ser positivo');
+                                                    echo json_encode("negativoCP");
+                                                    //$in->alertas("validacion", 'Datos inválidos', '"El código postal debe ser positivo');
                                                 }
                                             } 
                                             
                                             else {
-                                                // echo json_encode("digitosCP");
-                                                $in->alertas("validacion", 'Datos inválidos', '"El código postal debe tener 5 dígitos');
+                                                echo json_encode("digitosCP");
+                                                //$in->alertas("validacion", 'Datos inválidos', '"El código postal debe tener 5 dígitos');
                                             }
                                         }
 
                                         else{
-                                            $in->alertas("validacion", 'Datos inválidos', 'El nombre de la colonia no debe contener números ni caracteres especiales');
+                                            echo json_encode("numeros colonia");
+                                            // $in->alertas("validacion", 'Datos inválidos', 'El nombre de la colonia no debe contener números ni caracteres especiales');
                                         }
                                         
                                     }
                                     
                                     else{
-                                        $in->alertas("validacion", 'Datos inválidos', '"La colonia no debe tener más de 20 dígitos');
+                                        echo json_encode("colonia largo");
+                                        //$in->alertas("validacion", 'Datos inválidos', '"La colonia no debe tener más de 20 dígitos');
                                     }
                                 }
 
                                 else{
-                                    $in->alertas("validacion", 'Datos inválidos', '"La calle no debe contener números ni caracteres especiales');
+                                    echo json_encode("numeros calle");
+                                    //$in->alertas("validacion", 'Datos inválidos', '"La calle no debe contener números ni caracteres especiales');
                                 }
                                 
                             }  
 
                             else{
-                                $in->alertas("validacion", 'Datos inválidos', '"La calle no debe tener más de 20 dígitos');
+                                echo json_encode("calle largo");
+                                //$in->alertas("validacion", 'Datos inválidos', '"La calle no debe tener más de 20 dígitos');
                             }
                         } 
                         
                         else {
-                            // echo json_encode("estado-municipio");
-                            $in->alertas("validacion", 'Datos inválidos', '"El municipio no se encuentra en el estado indicado');
+                            echo json_encode("estado-municipio");
+                            //$in->alertas("validacion", 'Datos inválidos', '"El municipio no se encuentra en el estado indicado');
                         }
                     } 
                     
                     else {
-                        // echo json_encode("municipio");
-                        $in->alertas("validacion", 'Datos inválidos', '"La ciudad no existe');
+                        echo json_encode("municipio");
+                        //$in->alertas("validacion", 'Datos inválidos', '"La ciudad no existe');
                     }
                 } 
                 
                 else {
-                    // echo json_encode("estado");
-                    $in->alertas("validacion", 'Datos inválidos', '"El estado no existe');
+                    echo json_encode("estado");
+                    //$in->alertas("validacion", 'Datos inválidos', '"El estado no existe');
                 }
             } 
             

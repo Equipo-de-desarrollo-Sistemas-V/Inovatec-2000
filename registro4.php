@@ -1,6 +1,5 @@
-<!-- Logica para guadar datos de tarjeta y guardar los datos en BD -->
 <?php
-
+    // <!-- Logica para guadar datos de tarjeta y guardar los datos en BD -->
     class Tarjeta{
         function registro(){
             $in=new Tarjeta;
@@ -27,11 +26,12 @@
 
             //verificar que el numero de tarjeta tenga los 16 digitos
             if(strlen($ntarjeta) != 16){
-                $in->alertas("validacion", 'Datos inválidos', 'El número de tarjeta debe tener 16 dígitos');
+                //$in->alertas("validacion", 'Datos inválidos', 'El número de tarjeta debe tener 16 dígitos');
                 /*echo '<script>alert("El número de tarjeta debe tener 16 díigitos")</script>';
                 echo 'No. de digitos: '. strlen($ntarjeta).'<br>';
                 echo $ntarjeta;*/
                 //include("registroTarjeta.php");
+                echo json_encode("digitos tarjeta");
             }
 
             else{
@@ -158,15 +158,18 @@
                     $querry_tarjeta = "INSERT INTO Tarjetas
                     values('$usuario', '$ntarjeta', '$mes', '$year', '$nombreProp')";
                     $consulta_tarjeta = sqlsrv_query($con, $querry_tarjeta);
-                    $in->alertas("aceptado", '¡Felicidades!', 'Tu cuenta ha sido creada.');
+
+                    echo json_encode("todo chido");
+                    //$in->alertas("aceptado", '¡Felicidades!', 'Tu cuenta ha sido creada.');
 
                 }
                 
                 else{
-                    $in->alertas("validacion", 'Ups...', 'Fallo al conectar a la base de datos');
+                    //$in->alertas("validacion", 'Ups...', 'Fallo al conectar a la base de datos');
                     //die (print_r(sqlsrv_errors(), true));
                     //echo '<script>alert("no se pudo conectar")</script>';
                     //include("registroUsuarios.php");
+                    echo json_encode("fallo db");
                 }
             }
         }

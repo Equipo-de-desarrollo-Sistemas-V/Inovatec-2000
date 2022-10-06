@@ -11,7 +11,7 @@ class Envio{
         try{
             $this->con = sqlsrv_connect($serverName, $connectionInfo); 
             $this->varConectado=true;
-        }catch (Exception $e){
+        }catch (Exception $e){ 
             echo json_encode('conR');
         }  
     }

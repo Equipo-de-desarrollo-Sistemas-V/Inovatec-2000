@@ -31,7 +31,7 @@ formulario.addEventListener('submit', function(e){
         }
         
         else{
-            alert("La contraseña ha sido aceptada");  
+            alert("Contraseña aceptada");  
             location.href = "registroDireccion.php";
         }
     })

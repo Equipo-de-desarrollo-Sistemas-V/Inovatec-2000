@@ -22,140 +22,174 @@ class Usuario
             //verifica que el usuario no exeda los 20 caracteres
             if (strlen($usuario) <= 20) {
                 //verifica que el usuario no exista en la base de  datos
-                $querry = "SELECT Usuario FROM Persona
+                $querry_cliente = "SELECT Usuario FROM Persona
                     WHERE Usuario = '$usuario'";
 
-                $resultados = sqlsrv_query($con, $querry);
+                $resultados_cliente = sqlsrv_query($con, $querry_cliente);
 
-                if ($resultados === false) {
-                    die(print_r(sqlsrv_errors(), true));
-                } else {
+                if ($resultados_cliente === false) {
+                    //die(print_r(sqlsrv_errors(), true));
+                    echo json_encode(sqlsrv_errors(), true);
+                } 
+                
+                else {
 
-                    if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
+                    if (sqlsrv_fetch_array($resultados_cliente, SQLSRV_FETCH_ASSOC)) {
 
-                        //echo json_encode("usuario existente");
-                        $in->alertas("validacion", 'Datos inválidos', 'Este usuario no está disponible');
+                        echo json_encode("usuario existente");
+                        //$in->alertas("validacion", 'Datos inválidos', 'Este usuario no está disponible');
                     } 
                     
                     else {
 
-                        //verificar que los nombres no pasen los 40 caracteres
-                        if (strlen($nombre) <= 40) {
+                        //verifica que el usuario tampoco exista en la tabla empleados
+                        $querry_empleado = "SELECT id_empleado FROM Empleados
+                        WHERE id_empleado = '$usuario'";
 
-                            //verificar que el nombre no tenga numeros
-                            $numn = $this->numeros($nombre);
-                            $carn = $this->caracteres($nombre);
+                        $resultados_empleado = sqlsrv_query($con, $querry_empleado);
 
-                            if ($numn == 0 and $carn == 0) {
+                        if ($resultados_empleado === false) {
+                            echo json_encode(sqlsrv_errors(), true);
+                        }
 
-                                //verificar que los apellidos no pasen los 20 caracterse cada uno
-                                if (strlen($paterno) <= 20 and strlen($materno) <= 20) {
+                        else{
+                            if (sqlsrv_fetch_array($resultados_empleado, SQLSRV_FETCH_ASSOC)) {
 
-                                    //verificar que los apellidos no tengan numeros
-                                    $nump = $this->numeros($paterno);
-                                    $numm = $this->numeros($materno);
-                                    $carp = $this->caracteres($paterno);
-                                    $carm = $this->caracteres($materno);
+                                echo json_encode("usuario existente");
+                                //$in->alertas("validacion", 'Datos inválidos', 'Este usuario no está disponible');
+                            } 
 
-                                    if ($nump == 0 and $numm == 0 and $carp == 0 and $carm == 0) {
+                            else{
+                                //verificar que los nombres no pasen los 40 caracteres
+                                if (strlen($nombre) <= 40) {
 
-                                        //verificar que el correo sea real
-                                        include_once("VerifyEmail.php");
+                                    //verificar que el nombre no tenga numeros
+                                    $numn = $this->numeros($nombre);
+                                    $carn = $this->caracteres($nombre);
 
-                                        $vmai = new verifyEmail();
+                                    if ($numn == 0 and $carn == 0) {
 
-                                        if ($vmai->check($correo)) {
+                                        //verificar que los apellidos no pasen los 20 caracterse cada uno
+                                        if (strlen($paterno) <= 20 and strlen($materno) <= 20) {
 
-                                            //verificar que el correo no este registrdado en la base de datos
-                                            $querry = "SELECT email from Persona
-                                                where email = '$correo'";
+                                            //verificar que los apellidos no tengan numeros
+                                            $nump = $this->numeros($paterno);
+                                            $numm = $this->numeros($materno);
+                                            $carp = $this->caracteres($paterno);
+                                            $carm = $this->caracteres($materno);
 
-                                            $resultados = sqlsrv_query($con, $querry);
+                                            if ($nump == 0 and $numm == 0 and $carp == 0 and $carm == 0) {
 
-                                            if ($resultados === false) {
-                                                die(print_r(sqlsrv_errors(), true));
-                                            } 
-                                            
-                                            else {
+                                                //verificar que el correo sea real
+                                                /*include_once("VerifyEmail.php");
 
-                                                if (sqlsrv_fetch_array($resultados, SQLSRV_FETCH_ASSOC)) {
-                                                    //echo json_encode("correo existente");
-                                                    $in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
-                                                } 
-                                                
-                                                else {
-                                                    //verificar que el telefono tenga 10 digitos
-                                                    if (strlen($telefono) == 10) {
+                                                $vmai = new verifyEmail();
 
-                                                        //verificar que el telefono tenga solo numeros
-                                                        $numt = $this->numeros($telefono);
-                                                        if ($numt == 10) {
+                                                if ($vmai->check($correo)) {*/
 
-                                                            //los datos pasaron todas las verificaciones
-                                                            $this->guardar();
-                                                            //echo json_encode("todo chido");
-                                                            $in->alertas("aceptado", 'Listo!!!', 'Los datos se han registrado con éxito');
-                                                        } 
-                                                        
-                                                        else {
-                                                            //echo json_encode("letras telefono");
-                                                            $in->alertas("validacion", 'Datos inválidos', 'El número de teléfono no debe contener letras ni caracteres especiales');
-                                                        }
+                                                    //verificar que el correo no este registrdado en la base de datos
+                                                    $querry_cliente = "SELECT email from Persona
+                                                        where email = '$correo'";
+
+                                                    $resultados_cliente = sqlsrv_query($con, $querry_cliente);
+                                                    $arreResul = sqlsrv_fetch_array( $resultados_cliente, SQLSRV_FETCH_ASSOC);
+                                                    if ($resultados_cliente === false) {
+                                                        //die(print_r(sqlsrv_errors(), true));
+                                                        echo json_encode(sqlsrv_errors(), true);
                                                     } 
                                                     
                                                     else {
-                                                        //echo json_encode("longitud");
-                                                        $in->alertas("validacion", 'Datos inválidos', 'El número de teléfono debe contener 10 caracteres');
+
+                                                        //if (sqlsrv_fetch_array($resultados_cliente, SQLSRV_FETCH_ASSOC)) {
+                                                        if (!empty($arreResul)){
+                                                            echo json_encode("correo existente");
+                                                            //$in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
+                                                        } 
+                                                        
+                                                        else {
+
+                                                            //verifica que el correo no este registrado en empleados
+                                                            $querry_empleado = "SELECT email FROM Empleados
+                                                            WHERE email = '$correo'";
+
+                                                            $resultados_cliente = sqlsrv_query($con, $querry_empleado);
+
+                                                            if($resultados_empleado === false){
+                                                                echo json_encode(sqlsrv_errors(), true);
+                                                            }
+
+                                                            else{
+                                                                if (sqlsrv_fetch_array($resultados_empleado, SQLSRV_FETCH_ASSOC)) {
+                                                                    echo json_encode("correo existente");
+                                                                    //$in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
+                                                                } 
+
+                                                                else{
+                                                                    //verificar que el telefono tenga 10 digitos
+                                                                    if (strlen($telefono) == 10) {
+
+                                                                        //verificar que el telefono tenga solo numeros
+                                                                        $numt = $this->numeros($telefono);
+                                                                        if ($numt == 10) {
+
+                                                                            //los datos pasaron todas las verificaciones
+                                                                            $this->guardar();
+                                                                            echo json_encode("todo chido");
+                                                                            //$in->alertas("aceptado", 'Listo!!!', 'Los datos se han registrado con éxito');
+                                                                        } else {
+                                                                            echo json_encode("letras telefono");
+                                                                            //$in->alertas("validacion", 'Datos inválidos', 'El número de teléfono no debe contener letras ni caracteres especiales');
+                                                                        }
+                                                                    } else {
+                                                                        echo json_encode("longitud");
+                                                                        //$in->alertas("validacion", 'Datos inválidos', 'El número de teléfono debe contener 10 caracteres');
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        }
                                                     }
-                                                }
+                                                /*} else if ($vmai->isValid($correo)) {
+                                                    echo json_encode("inexistente");
+                                                    //$in->alertas("validacion", 'Datos inválidos', 'El correo ingresado no existe');
+                                                } else {
+                                                    echo json_encode("invalido");
+                                                    //$in->alertas("validacion", 'Datos inválidos', 'El correo no es válido');
+                                                }*/
+                                            } else {
+                                                echo json_encode("numeros apellidos");
+                                                //$in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener números ni caracteres especiales');
                                             }
-                                        } 
-                                        
-                                        else if ($vmai->isValid($correo)) {
-                                            //echo json_encode("inexistente");
-                                            $in->alertas("validacion", 'Datos inválidos', 'El correo ingresado no existe');
-                                        } 
-                                        
-                                        else {
-                                            // echo json_encode("invalido");
-                                            $in->alertas("validacion", 'Datos inválidos', 'El correo no es válido');
+                                        } else {
+                                            echo json_encode("apellidos largos");
+                                            //$in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener más de 20 caracteres cada uno');
                                         }
+                                    } else {
+                                        echo json_encode("numeros nombre");
+                                        //$in->alertas("validacion", 'Datos inválidos', 'El usuario no debe contener números ni caracteres especiales');
                                     }
-                                    
-                                    else {
-                                        //echo json_encode("numeros apellidos");
-                                        $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener números ni caracteres especiales');
-                                    }
-                                } 
-                                
-                                else {
-                                    //echo json_encode("apellidos largos");
-                                    $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener más de 20 caracteres cada uno');
+                                } else {
+                                    echo json_encode("nombres largos");
+                                    //$in->alertas("validacion", 'Datos inválidos', 'El nombre de usuario no debe contener más de 40 caracteres');
                                 }
-                            } 
-                            
-                            else {
-                                //echo json_encode("numeros nombre");
-                                $in->alertas("validacion", 'Datos inválidos', 'El usuario no debe contener números ni caracteres especiales');
                             }
-                        } 
-                        
-                        else {
-                            //echo json_encode("nombres largos");
-                            $in->alertas("validacion", 'Datos inválidos', 'El nombre de usuario no debe contener más de 40 caracteres');
+                    
                         }
+
+                        
                     }
                 }
             } 
             
             else {
-                //echo json_encode("usuario largo");
-                $in -> alertas("validacion", 'Datos inválidos', 'El usuario no debe contener más de 20 caracteres');
+                echo json_encode("usuario largo");
+                //$in -> alertas("validacion", 'Datos inválidos', 'El usuario no debe contener más de 20 caracteres');
             }
         } 
         
         else {
-            die(print_r(sqlsrv_errors(), true));
+            //die(print_r(sqlsrv_errors(), true));
+            echo json_encode(sqlsrv_errors(), true);
         }
     }
 

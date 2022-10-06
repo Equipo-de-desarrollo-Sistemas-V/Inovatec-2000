@@ -74,6 +74,8 @@
             </div>
         </article>
     </section>
+
+    <script src="js/alertasDireccion.js"> </script>
 </body>
 
 </html>

@@ -24,6 +24,7 @@
 
 			<div class="btn-header">
 			<?php 
+			session_start();
 			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['nombres']);?>
 				<a class="btn-cerrar-session" href="cerrar.php" type="button">Cerrar Sesión</a>
 			</div>
@@ -149,4 +150,11 @@
 		</div>
 	</main>
 </body>
+ <?php
+			if (!isset($_SESSION['nombres'])){
+				//include_once("login.php");
+				header("location: ../Inovatec-2000/login.php");
+			}
+			?> 
 </html>
+
