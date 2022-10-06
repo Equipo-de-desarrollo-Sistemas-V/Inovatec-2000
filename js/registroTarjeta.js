@@ -44,6 +44,10 @@ tarjeta.addEventListener('click', () => {
 	tarjeta.classList.toggle('active');
 });
 
+formulario.inputNumero.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+})
+
 /* Entada y verificacion de la tarjeta */
 formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
