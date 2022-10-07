@@ -84,54 +84,85 @@
 		<!--Contenido de la parte PRODUCTOS-->
 		<div class="contenidoAgregaProd" id="contenidoAgregaProd">
 			<article>
-
 				<h1 align="center">Agregar Productos</h1>
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data">
-					<p for="idProducto">ID</p> 
-					<input type="text" name="idProducto" id="idProd" class="field"><br>
+					<div class="formulario_grupo-input">
+						<label for="idProducto" class="formulario_label">ID</label> 
+						<div class="formulario_grupo-input">
+							<input type="text" name="idProducto" id="idProd" class="formulario_input">
+						</div>
+					</div>
 
-					<p for="nombreProd">NOMBRE</p> 
-					<input type="text" name="nombreProd" id="nombreProd" class="field"><br>
+					<div class="formulario_grupo-input">
+						<label for="nombreProd" class="formulario_label">NOMBRE</label> 
+						<div class="formulario_grupo-input">
+							<input type="text" name="nombreProd" id="nombreProd" class="formulario_input">
+						</div>
+					</div>
 
-					<p for="descripcion">DESCRIPCION</p> 
-					<textarea type="text" name="descripcion"id="descripcion" class="field"></textarea><br>
+					<div class="formulario_grupo-input">
+						<label for="categoria" class="formulario_label">CATEGORIA</label>
 
-					<p for="categoria">CATEGORIA</p>
-					<select type="text" name="categoria" id="categoria" class="field"></select><br>
+						<div class="formulario_grupo-input">
+							<select type="text" name="categoria" id="categoria" class="formulario_input"></select>
+ 						</div>
+					</div>
 
-					<p for="subcategoria">SUBCATEGORIA</p>
-					<select type="text" name="subcategoria" id="categoria" class="field"></select><br>
+					<div class="formulario_grupo-input">
+						<label for="subcategoria" class="formulario_label">SUBCATEGORIA</label>
 
-					<p for="precioCompra">PRECIO DE COMPRA</p> 
-					<input type="text" name="precioProd" id="precioProd" class="field"><br>
+						<div class="formulario_grupo-input">
+							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input"></select>
+ 						</div>
+					</div>
 
-					<p for="precioVenta">PRECIO DE VENTA</p>
-					<input type="text" name="precioVenta" id="precioVenta" class="field"> <br>
+					<div class="formulario_grupo-input">
+						<label for="precioCompra" class="formulario_label">PRECIO DE COMPRA</label> 
+						<div class="formulario_grupo-input">
+							<input type="text" name="precioProd" id="precioProd" class="formulario_input">
+ 						</div>
+					</div>
 
-					<p for="proveedor">PROVEEDOR</p> 
-					<select name="proveedor" id="sucursal" class="field"></select><br>
+					<div class="formulario_grupo-input">
+						<label for="precioVenta" class="formulario_label">PRECIO DE VENTA</label>
+						<div class="formulario_grupo-input">
+							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input"> 
+						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="descripcion" class="formulario_label">DESCRIPCION</label> 
+
+						<div class="formulario_grupo-input">
+							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input"></textarea>
+ 						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="proveedor" class="formulario_label">PROVEEDOR</label> 
+						<div class="formulario_grupo-input">
+							<select name="proveedor" id="sucursal" class="formulario_input"></select>
+						</div>
+					</div>
 
 					<div class="photo">
-						<label for="foto">FOTO</label><br>
+						<label for="foto" class="formulario_label">FOTO</label>
 							<div class="prevPhoto">
 							<span class="delPhoto notBlock">X</span>
 							<label for="foto"></label>
 							</div>
 							<div class="upimg">
-							<input type="file" name="foto" id="foto"  class="field">
+							<input type="file" name="foto" id="foto"  class="formulario_input">
 							</div>
 							<div id="form_alert"></div>
-					</div><br>
+					</div>
 
-					<p class="center-content">
-						<input type="submit" class="btn_submit" value="Guardar">
-					</p>
+					<div class="btn_enviar">
+						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
+					</div>
 
-				</form>
-
-				</section>
-		
+				</form>		
 			</article>
 		</div>
 	
@@ -151,13 +182,9 @@
 								<th>PRECIO VENTA</th> 
 								<th>PROVEEDOR</th>
 							</tr>
-							
 						</thead>
 					</table>
-
 				</section>
-				
-				
 			</article>
 		</div>
 
