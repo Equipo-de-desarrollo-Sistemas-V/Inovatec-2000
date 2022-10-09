@@ -79,7 +79,7 @@
 
           <div class="input-group">
             <input type="email" name="email" id="email" required class="input">
-            <label for="email" class="input-label">Correo Electrónico</label>
+            <label for="email" class="input-label">Correo electrónico</label>
           </div>
 
           <div class="input-group-2">
