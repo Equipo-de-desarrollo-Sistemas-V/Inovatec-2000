@@ -146,17 +146,17 @@
 
                     //inserta los datos en la tabla personas
                     $querry_user = "INSERT INTO Persona
-                    values('$usuario', '$contra', '$nombre', '$paterno', '$materno', '$correo')";
+                    values('$usuario', '$contra', '$nombre', '$paterno', '$materno', '$correo',  '$telefono')";
                     $consulta_user = sqlsrv_query($con, $querry_user);
 
                     //inserta los datos en la tabla direccion
                     $querry_direccion = "INSERT INTO Direccion
-                    values('$usuario', $estado_municipio, '$colonia', '$calle', '$numero', '$telefono', '$cp')";
+                    values('$usuario', $estado_municipio, '$colonia', '$calle', '$numero', '$cp')";
                     $consulta_direccion = sqlsrv_query($con, $querry_direccion);
 
                     //inserta los datos en la tabla tarjetas
                     $querry_tarjeta = "INSERT INTO Tarjetas
-                    values('$usuario', '$ntarjeta', '$mes', '$year')";
+                    values('$usuario', '$ntarjeta', '$mes', '$year', '$nombreProp')";
                     $consulta_tarjeta = sqlsrv_query($con, $querry_tarjeta);
 
                     echo json_encode("todo chido");
