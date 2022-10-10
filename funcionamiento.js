@@ -7,6 +7,8 @@ window.onload=function(){
     var trab2= document.getElementById("contenidoListaTrab");
     var prov1= document.getElementById("contenidoAgregaProv");
     var prov2= document.getElementById("contenidoListaProv");
+    var inv1= document.getElementById("contenidoInventario");
+    var inv2= document.getElementById("contenidoListaInventario");
     var vent1= document.getElementById("contenidoAgregaVenta");
     var vent2= document.getElementById("contenidoListaVenta");
 
@@ -19,6 +21,8 @@ window.onload=function(){
     trab2.style.display = "none";
     prov1.style.display = "none";
     prov2.style.display = "none";
+    inv1.style.display = "none";
+    inv2.style.display = "none" 
     vent1.style.display = "none";
     vent2.style.display = "none";
 
@@ -30,6 +34,8 @@ window.onload=function(){
     document.getElementById('menuTrabajador2').className = 'desactivate';
     document.getElementById('menuProveedor1').className = 'desactivate';
     document.getElementById('menuProveedor2').className = 'desactivate';
+    document.getElementById('menuInventario1').className = 'desactivate';
+    document.getElementById('menuInventario2').className = 'desactivate';
     document.getElementById('menuVentas1').className = 'desactivate';
     document.getElementById('menuVentas2').className = 'desactivate';
  
@@ -44,11 +50,13 @@ function show(param_div_id){
     var trab2= document.getElementById("contenidoListaTrab");
     var prov1= document.getElementById("contenidoAgregaProv");
     var prov2= document.getElementById("contenidoListaProv");
+    var inv1= document.getElementById("contenidoInventario");
+    var inv2= document.getElementById("contenidoListaInventario");
     var vent1= document.getElementById("contenidoAgregaVenta");
     var vent2= document.getElementById("contenidoListaVenta");
 
     if(param_div_id === "contenidoAgregaProd"){
-        prod1.style.display='flex';
+        prod1.style.display='block';
         prod2.style.display='none';
         prod2.style.display='none';
         suc1.style.display='none';
@@ -57,6 +65,8 @@ function show(param_div_id){
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -68,19 +78,23 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
     }
 
     else if(param_div_id == ("contenidoListaProd")){
         prod1.style.display='none';
-        prod2.style.display='flex';
+        prod2.style.display='block';
         suc1.style.display='none';
         suc2.style.display='none';
         trab1.style.display='none';
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -92,6 +106,8 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
 
@@ -100,12 +116,14 @@ function show(param_div_id){
     else if(param_div_id == ("contenidoAgregaSuc")){
         prod1.style.display='none';
         prod2.style.display='none';
-        suc1.style.display='flex';
+        suc1.style.display='block';
         suc2.style.display='none';
         trab1.style.display='none';
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -117,6 +135,8 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
 
@@ -126,11 +146,13 @@ function show(param_div_id){
         prod1.style.display='none';
         prod2.style.display='none';
         suc1.style.display='none';
-        suc2.style.display='flex';
+        suc2.style.display='block';
         trab1.style.display='none';
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -142,6 +164,8 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
 
@@ -156,6 +180,8 @@ function show(param_div_id){
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -167,9 +193,10 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
-
     }
 
     else if(param_div_id == ("contenidoListaTrab")){
@@ -181,6 +208,8 @@ function show(param_div_id){
         trab2.style.display='flex';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -192,9 +221,10 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'activate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
-
     }
 
     else if(param_div_id == ("contenidoAgregaProv")){
@@ -206,6 +236,8 @@ function show(param_div_id){
         trab2.style.display='none';
         prov1.style.display='flex';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -217,6 +249,8 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'activate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
 
@@ -231,6 +265,8 @@ function show(param_div_id){
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='flex';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='none';
 
@@ -242,6 +278,66 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'activate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
+        document.getElementById('menuVentas1').className = 'desactivate';
+        document.getElementById('menuVentas2').className = 'desactivate';
+
+    }
+
+    else if(param_div_id == ("contenidoInventario")){
+        prod1.style.display='none';
+        prod2.style.display='none';
+        suc1.style.display='none';
+        suc2.style.display='none';
+        trab1.style.display='none';
+        trab2.style.display='none';
+        prov1.style.display='none';
+        prov2.style.display='none';
+        inv1.style.display = "flex";
+        inv2.style.display = "none";
+        vent1.style.display='none';
+        vent2.style.display='none';
+
+        document.getElementById('menuProducto1').className='desactivate';
+        document.getElementById('menuProducto2').className='desactivate';
+        document.getElementById('menuSucursal1').className = 'desactivate';
+        document.getElementById('menuSucursal2').className = 'desactivate';
+        document.getElementById('menuTrabajador1').className = 'desactivate';
+        document.getElementById('menuTrabajador2').className = 'desactivate';
+        document.getElementById('menuProveedor1').className = 'desactivate';
+        document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'activate';
+        document.getElementById('menuInventario2').className = 'desactivate';
+        document.getElementById('menuVentas1').className = 'desactivate';
+        document.getElementById('menuVentas2').className = 'desactivate';
+
+    }
+
+    else if(param_div_id == ("contenidoListaInventario")){
+        prod1.style.display='none';
+        prod2.style.display='none';
+        suc1.style.display='none';
+        suc2.style.display='none';
+        trab1.style.display='none';
+        trab2.style.display='none';
+        prov1.style.display='none';
+        prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "flex";
+        vent1.style.display='none';
+        vent2.style.display='none';
+
+        document.getElementById('menuProducto1').className='desactivate';
+        document.getElementById('menuProducto2').className='desactivate';
+        document.getElementById('menuSucursal1').className = 'desactivate';
+        document.getElementById('menuSucursal2').className = 'desactivate';
+        document.getElementById('menuTrabajador1').className = 'desactivate';
+        document.getElementById('menuTrabajador2').className = 'desactivate';
+        document.getElementById('menuProveedor1').className = 'desactivate';
+        document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'activate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'desactivate';
 
@@ -256,6 +352,8 @@ function show(param_div_id){
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='flex';
         vent2.style.display='none';
 
@@ -267,6 +365,8 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'activate';
         document.getElementById('menuVentas2').className = 'desactivate';
 
@@ -281,6 +381,8 @@ function show(param_div_id){
         trab2.style.display='none';
         prov1.style.display='none';
         prov2.style.display='none';
+        inv1.style.display = "none";
+        inv2.style.display = "none";
         vent1.style.display='none';
         vent2.style.display='flex';
 
@@ -292,6 +394,8 @@ function show(param_div_id){
         document.getElementById('menuTrabajador2').className = 'desactivate';
         document.getElementById('menuProveedor1').className = 'desactivate';
         document.getElementById('menuProveedor2').className = 'desactivate';
+        document.getElementById('menuInventario1').className = 'desactivate';
+        document.getElementById('menuInventario2').className = 'desactivate';
         document.getElementById('menuVentas1').className = 'desactivate';
         document.getElementById('menuVentas2').className = 'activate';
 

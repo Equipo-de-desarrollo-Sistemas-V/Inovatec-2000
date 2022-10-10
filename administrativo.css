@@ -12,7 +12,7 @@ body{
 	text-decoration: none;
 }
 h1{
-	font-weight: 800;
+	font-weight: 700;
 }
 p{
 	font-weight: 500;
@@ -29,11 +29,11 @@ header{
 /*HEADER SUPERIOR*/
 
 .header_superior{
-	max-width: 2000px;
+	max-width: 1200px;
 	margin: auto;
 	display: flex;
 	align-items: center;
-	justify-content:space-around
+	justify-content:space-between
 
 }
 .titulo{
@@ -55,7 +55,7 @@ header{
 	border-radius: 1rem;
 	font-size: 14px;
 	cursor: pointer;
-	transition: 0.3s ease-in-out all;  
+	transition: 0.2s ease-in-out all;  
 }
 
 .btn-cerrar-session:hover {
@@ -74,7 +74,7 @@ header{
   }
 
 .menu{
-	max-width: 600px;
+	max-width: 800px;
 	margin: auto;
 	height: 100%;
 	
@@ -180,7 +180,7 @@ main{
 article{
 	margin: 20px auto;
 	padding: 10px;
-	width: 1000px;
+	width: 1100px;
     background-color: rgba(145, 145, 145, 0.2);
     box-shadow: 0 0 10px #0575FF;
     border-radius: 20px;
@@ -195,21 +195,48 @@ article{
 }
 
 .formulario_label{
+	color: #0567e0;
+	font-size: 18px;
+	text-align: center;
 	display: block;
-	font-weight: 700;
+	font-weight: 550;
 	padding: 10px;
 	cursor: pointer;
 }
 
 .formulario_input{
+	font-size: 16px;
+	font-weight: 450;
 	width: 100%;
 	background: #fff;
 	border: 3px solid #CCC;
 	border-radius: 3px;
 	height: 45px;
 	line-height: 45px;
-	padding: 0 40px 0 10px;
 	transition: .3s ease all;
+}
+.formulario_label-checkbox1{
+	display: block;
+	text-align: right;
+	font-size: 16px;
+	font-weight: 350;
+	width: 100%;
+	height: 10px;
+	line-height: 10px;
+	cursor: pointer;
+
+}
+
+.formulario_label-checkbox2{
+	display: block;
+	text-align: left;
+	font-size: 16px;
+	font-weight: 350;
+	width: 100%;
+	height: 10px;
+	line-height: 10px;
+	cursor: pointer;
+
 }
 
 .formulario_input:focus{
@@ -219,7 +246,7 @@ article{
 
 }
 
-.btn_enviar,.photo{
+.btn_enviar,.photo,.formulario_grupo-input2{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -236,7 +263,7 @@ article{
     font-size: 1.3rem;
     background-color: #F25C05;
     color: #ffffff;
-    transition: 0.3s ease-in-out all;
+    transition: 0.2s ease-in-out all;
     font-weight: 500;
 }
 
@@ -256,7 +283,6 @@ article{
     border: 1px solid #CCC;
     position: relative;
     cursor: pointer;
-    background: url(../images/uploads/user.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -310,9 +336,7 @@ article{
 	z-index: 10;
 }
 
-#tbl_list_productos img{
-	width: 50px;
-}
+
 .imgProductoDelete{
 	width: 175px;
 }
@@ -327,6 +351,7 @@ table{
 }
 
 th,td{
+	width: 80px;
 	padding: 8px 20px;
 }
 
@@ -362,7 +387,7 @@ tr:nth-child(even){
 	display: none;
 }
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 800px){
 	.btn-cerrar-session{
 		display: flex;
 	}
@@ -396,12 +421,11 @@ tr:nth-child(even){
 	}
 	
 	nav ul li ul{
-		left: 90px;
-
+		left: 80px;
 	}
 
 	nav > ul > li:hover ul{
-		top: 90px;
+		top: 60px;
 	}
 
 	nav > ul > li:first-child a{
@@ -421,5 +445,14 @@ tr:nth-child(even){
 		height: 300px;
 		visibility: visible;
 		opacity: 1;
+	}
+
+	.formularios{
+		display: block;
+		gap: 20px;
+	}
+
+	.btn_enviar,.photo{
+		gap: 20px;
 	}
 }
