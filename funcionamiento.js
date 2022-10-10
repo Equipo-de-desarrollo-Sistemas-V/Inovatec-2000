@@ -56,7 +56,7 @@ function show(param_div_id){
     var vent2= document.getElementById("contenidoListaVenta");
 
     if(param_div_id === "contenidoAgregaProd"){
-        prod1.style.display='block';
+        prod1.style.display='flex';
         prod2.style.display='none';
         prod2.style.display='none';
         suc1.style.display='none';
@@ -86,7 +86,7 @@ function show(param_div_id){
 
     else if(param_div_id == ("contenidoListaProd")){
         prod1.style.display='none';
-        prod2.style.display='block';
+        prod2.style.display='flex';
         suc1.style.display='none';
         suc2.style.display='none';
         trab1.style.display='none';
@@ -116,7 +116,7 @@ function show(param_div_id){
     else if(param_div_id == ("contenidoAgregaSuc")){
         prod1.style.display='none';
         prod2.style.display='none';
-        suc1.style.display='block';
+        suc1.style.display='flex';
         suc2.style.display='none';
         trab1.style.display='none';
         trab2.style.display='none';
@@ -146,7 +146,7 @@ function show(param_div_id){
         prod1.style.display='none';
         prod2.style.display='none';
         suc1.style.display='none';
-        suc2.style.display='block';
+        suc2.style.display='flex';
         trab1.style.display='none';
         trab2.style.display='none';
         prov1.style.display='none';
