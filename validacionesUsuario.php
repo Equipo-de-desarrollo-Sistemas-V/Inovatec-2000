@@ -5,9 +5,9 @@ class Usuario
     {
         $in = new Usuario;
         //obtener los datos del fomulario 1
-        $nombre = $_POST["nombre-cliente"];
-        $paterno = $_POST["apellido-paterno"];
-        $materno = $_POST["apellido-materno"];
+        $nombre = $_POST["nombreCliente"];
+        $paterno = $_POST["apellidoPaterno"];
+        $materno = $_POST["apellidoMaterno"];
         $correo = $_POST["email"];
         $telefono = $_POST["Teléfono"];
         $usuario = $_POST["usuario"];
@@ -102,7 +102,7 @@ class Usuario
 
                                                         //if (sqlsrv_fetch_array($resultados_cliente, SQLSRV_FETCH_ASSOC)) {
                                                         if (!empty($arreResul)){
-                                                            echo json_encode("correo existente");
+                                                            echo json_encode("El correo ya está registrado");
                                                             //$in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
                                                         } 
                                                         
@@ -112,7 +112,7 @@ class Usuario
                                                             $querry_empleado = "SELECT email FROM Empleados
                                                             WHERE email = '$correo'";
 
-                                                            $resultados_cliente = sqlsrv_query($con, $querry_empleado);
+                                                            $resultados_empleado = sqlsrv_query($con, $querry_empleado);
 
                                                             if($resultados_empleado === false){
                                                                 echo json_encode(sqlsrv_errors(), true);
@@ -120,7 +120,7 @@ class Usuario
 
                                                             else{
                                                                 if (sqlsrv_fetch_array($resultados_empleado, SQLSRV_FETCH_ASSOC)) {
-                                                                    echo json_encode("correo existente");
+                                                                    echo json_encode("El correo ya está registrado");
                                                                     //$in->alertas("validacion", 'Datos inválidos', 'Este correo ya está registrado en la base de datos');
                                                                 } 
 
@@ -195,9 +195,9 @@ class Usuario
 
     function guardar()
     {
-        $nombre = $_POST["nombre-cliente"];
-        $paterno = $_POST["apellido-paterno"];
-        $materno = $_POST["apellido-materno"];
+        $nombre = $_POST["nombreCliente"];
+        $paterno = $_POST["apellidoPaterno"];
+        $materno = $_POST["apellidoMaterno"];
         $correo = $_POST["email"];
         $telefono = $_POST["Teléfono"];
         $usuario = $_POST["usuario"];

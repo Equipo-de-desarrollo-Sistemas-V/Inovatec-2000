@@ -55,7 +55,7 @@ formulario.addEventListener('submit', function(e){
         }
 
         else if (data === 'todo chido') {
-            alert("Información aceptada");
+            //alert("Información aceptada");
             location.href = "registroContrasea.php";
         }
 
