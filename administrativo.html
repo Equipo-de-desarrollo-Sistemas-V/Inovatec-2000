@@ -180,55 +180,17 @@
 				<section class="tablas">
 					<table>
 						<thead>
-						<?php
-							$serverName='localhost';
-							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
-							?>
 							<tr>
 								<th>Id</th> 
 								<th>Nombre</th> 
 								<th>Descripcion</th> 
 								<th>Categoria</th> 
-								<th>Subcategoria</th> 
 								<th>Precio compra</th> 
 								<th>Precio venta</th> 
 								<th>Proveedor</th>
 								<th>Imagen</th>
-								<th>Acciones</th>
 							</tr>
 						</thead>
-						<?php
-						$query="SELECT * FROM Productos";
-						$res= sqlsrv_query($conn_sis, $query);
-						if( $res === false) {
-							die( print_r( sqlsrv_errors(), true) );
-						}
-						while( $row = sqlsrv_fetch_array($res) ) {
-							$id=$row["id_producto"];
-							$nombre=$row["nombre"];
-							$descri=$row["descripcion"];
-							$cate=$row["Apartado"];
-							$pre_com=$row["precio_com"];
-							$pre_ven=$row["precio_ven"];
-							$prove=$row["id_proveedor"];
-							$edi='Editar';
-							$eli='Eliminar';
-							echo '<tr>
-									<td>'.$id.'</td>
-									<td>'.$nombre.'</td>
-									<td>'.$descri.'</td>
-									<td>'.$cate.'</td>
-									<td>'.'</td>
-									<td>'.$pre_com.'</td>
-									<td>'.$pre_ven.'</td>
-									<td>'.$prove.'</td>
-									<td>'.'</td>
-									<td>'.'<a href="#">'.$edi. '</a>'.'</td>
-									<td>'.'<a href="#">'.$eli. '</a>'.'</td>
-									</tr>';
-						}
-						?>
 					</table>
 				</section>
 			</article>
