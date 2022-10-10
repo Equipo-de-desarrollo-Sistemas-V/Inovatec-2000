@@ -51,7 +51,7 @@ formulario.addEventListener('submit', function(e){
         }
         
         else{
-            alert("Información aceptada");
+            //alert("Información aceptada");
             location.href = "registroTarjeta.php";
         }
     })

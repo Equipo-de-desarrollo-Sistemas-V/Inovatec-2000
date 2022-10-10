@@ -12,7 +12,7 @@
             $colonia = $_POST["colonia"];
             $ciudad = $_POST["ciudad"];
             $estado = $_POST["estado"];
-            $cp = $_POST["codigo-postal"];
+            $cp = $_POST["codigoPostal"];
 
             //informacion de la conexion a BD
             $servername = "localhost";
@@ -151,7 +151,7 @@
             $calle = $_POST["calle"];
             $numero = $_POST["numero"];
             $colonia = $_POST["colonia"];
-            $cp = $_POST["codigo-postal"];
+            $cp = $_POST["codigoPostal"];
 
             $file = fopen("archivo_campos.txt", "a");
             fwrite($file, $calle . PHP_EOL);

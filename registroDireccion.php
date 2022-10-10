@@ -37,32 +37,40 @@
                     <div class="cajas">
                         <!-- Caja para el nombre -->
                         <div class="input-group">
-                            <input type="text" name="calle" id="calle" required class="input" autocomplete="off">
+                            <input type="text" name="calle" id="calle" required class="input" autocomplete="off"  maxlength="20">
                             <label for="calle" class="input-label">Calle</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="number" name="numero" id="numero" required class="input" autocomplete="off">
+                            <input type="text" name="numero" id="numero" required class="input" autocomplete="off"  maxlength="10">
                             <label for="numero" class="input-label">Número</label>
                         </div>
 
                         <div class="input-group">
-                            <input type="text" name="colonia" id="colonia" required class="input" autocomplete="off">
+                            <input type="text" name="colonia" id="colonia" required class="input" autocomplete="off"  maxlength="20">
                             <label for="colonia" class="input-label">Colonia</label>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="text" name="ciudad" id="ciudad" required class="input" autocomplete="off">
-                            <label for="ciudad" class="input-label">Ciudad</label>
+                            <!-- <input type="text" name="ciudad" id="ciudad" required class="input" autocomplete="off">
+                            <label for="ciudad" class="input-label">Ciudad</label> -->
+                            <select name="ciudad" id="ciudad" class="ciudad">
+                                <option value="0">Ciudad</option>
+                                <!-- Generar aquí el contenido de las ciudades -->
+                            </select>
                         </div>
 
                         <div class="input-group">
-                            <input type="text" name="estado" id="estado" required class="input" autocomplete="off">
-                            <label for="estado" class="input-label">Estado</label>
+                            <!-- <input type="text" name="estado" id="estado" required class="input" autocomplete="off">
+                            <label for="estado" class="input-label">Estado</label> -->
+                            <select name="estado" id="estado" class="estado">
+                                <option value="0">Estado</option>
+                                <!-- Generar el contenido aquí -->
+                            </select>
                         </div>
 
                         <div class="input-group-2">
-                            <input type="number" name="codigo-postal" id="codigo-postal" required class="input" autocomplete="off">
+                            <input type="text" name="codigoPostal" id="codigoPostal" required class="input" autocomplete="off" maxlength="5" minlength="5">
                             <label for="codigo-postal" class="input-label">Código Postal</label>
                         </div>
 
@@ -74,7 +82,7 @@
             </div>
         </article>
     </section>
-
+    <script src="js/validRegDir.js"> </script>
     <script src="js/alertasDireccion.js"> </script>
 </body>
 
