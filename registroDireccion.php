@@ -1,3 +1,16 @@
+<?php
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$con = sqlsrv_connect($serverName, $connectionInfo); 
+
+$query = "SELECT Id, Estado FROM estados";
+$resultado = sqlsrv_query($con, $query);
+//$arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
+
+
+?>
+
+
 <!-- Interfaz para REGISTRO DE DIRECCION -->
 <!DOCTYPE html>
 <html lang="es">
@@ -10,6 +23,23 @@
     <link rel="stylesheet" href="css/registroUsuarios.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- <script src=”https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js”></script> -->
+    <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script>
+    <script languaje="javascript">
+        $(document).ready(function(){
+            $("#estado").change(function(){
+                $("#estado option:selected").each(function(){
+                    Id=$(this).val();
+                    $.post("getMunicipio.php", {Id: Id}, function(data){
+                        $("#municipio").html(data);
+                    });
+                });
+            })
+        });
+
+    </script>
+
+
 </head>
 
 <body>
@@ -51,21 +81,25 @@
                             <label for="colonia" class="input-label">Colonia</label>
                         </div>
 
-                        <div class="input-group-2">
-                            <!-- <input type="text" name="ciudad" id="ciudad" required class="input" autocomplete="off">
-                            <label for="ciudad" class="input-label">Ciudad</label> -->
-                            <select name="ciudad" id="ciudad" class="ciudad">
-                                <option value="0">Ciudad</option>
-                                <!-- Generar aquí el contenido de las ciudades -->
-                            </select>
-                        </div>
+                        
 
                         <div class="input-group">
                             <!-- <input type="text" name="estado" id="estado" required class="input" autocomplete="off">
                             <label for="estado" class="input-label">Estado</label> -->
-                            <select name="estado" id="estado" class="estado">
+                            <select name="estado" id="estado" name="estado" class="estado">
                                 <option value="0">Estado</option>
-                                <!-- Generar el contenido aquí -->
+                                <?php
+                                    while($row = sqlsrv_fetch_array($resultado)){?>
+                                        <option value="<?php echo $row['Id'];?>"><?php echo $row['Estado'];?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="input-group-2">
+                            <!-- <input type="text" name="ciudad" id="ciudad" required class="input" autocomplete="off">
+                            <label for="ciudad" class="input-label">Ciudad</label> -->
+                            <select name="municipio" id="municipio" class="ciudad">
+                                <option value="0">Municipio</option>
+                                <!-- Generar aquí el contenido de las ciudades -->
                             </select>
                         </div>
 
