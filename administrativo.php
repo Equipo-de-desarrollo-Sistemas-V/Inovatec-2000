@@ -202,8 +202,8 @@
 								<th>Precio venta</th> 
 								<th>Proveedor</th>
 								<th>Imagen</th>
-								<th> </th>
-								<th> </th>
+								<th></th>
+								<th></th>
 							</tr>
 						</thead>
 						<?php
