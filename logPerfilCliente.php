@@ -98,9 +98,9 @@ class PerfilUsuario{
         for ($i=0;$i<strlen($auxIngreso)-2;$i++){
             $ingreso= $ingreso.$auxIngreso[$i];
         }
-        $nombreCliente=$_REQUEST['nombre-cliente'];
-        $apellidoPaterno=$_POST["apellido-paterno"];
-        $apellidoMaterno=$_POST["apellido-materno"];
+        $nombreCliente=$_REQUEST['nombreCliente'];
+        $apellidoPaterno=$_POST["apellidoPaterno"];
+        $apellidoMaterno=$_POST["apellidoMaterno"];
         $correoPersona=$_POST["correo"];
         $telefonoPersona=$_POST["telefono"]; 
 
@@ -212,8 +212,9 @@ class PerfilUsuario{
         $coloniaPersona=$_POST["colonia"];
         $municipioPersona=$_POST["municipio"];
         $estadoPersona=$_POST["estado"];
-        $cpPersona=$_POST["codigo-postal"];
+        $cpPersona=$_POST["codigoPostal"];
         $ban1=false;
+        //echo $municipioPersona."fwef";
         self::conexion();
         if ($this->varConectado===true){
            try{
@@ -237,29 +238,9 @@ class PerfilUsuario{
                                 // $this->in->alertas("validacion", 'Datos inválidos', 'El código postal debe ser totalmente númerico (0-9), de 5 dígitos');
                                 echo json_encode('codigo');
                             }else{
-                                if ((strlen($municipioPersona)>100) or (strlen($estadoPersona)>100)){
-                                    // $this->in->alertas("validacion", 'Datos inválidos', 'El nombre del municipio y/o estado no debe contener más de 100 caracteres (a-z / A-Z)');
-                                    echo json_encode('munEst');
-                                }else{
-                                    $query = "SELECT Id FROM estados where estado = '$estadoPersona'";
-                                    $resultado = sqlsrv_query($this->con, $query);
-                                    $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
-                                    if (empty($arreResul)){
-                                        // $this->in->alertas("validacion", 'Datos inválidos', 'El estado no existe');
-                                        echo json_encode('estado');
-                                    }else{   
-                                        $query= "SELECT Id_Municipios FROM municipios where municipio = '$municipioPersona'";
-                                        $resultado = sqlsrv_query($this->con, $query);
-                                        $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
-                                        if (empty($arreResul)){
-                                            // $this->in->alertas("validacion", 'Datos inválidos', 'El municipio no existe');
-                                            echo json_encode('municipio');
-                                        }else{
-                                            $query = "SELECT  estados_municipios.id FROM estados_municipios, estados, municipios
-                                            where estados.Estado = '$estadoPersona'
-                                            and municipios.municipio = '$municipioPersona' and 
-                                            estados_municipios.estados_id = estados.id and 
-                                            estados_municipios.municipios_id = municipios.id_Municipios";
+                                            $query = "SELECT  id FROM estados_municipios
+                                            where estados_id = '$estadoPersona'
+                                            and municipios_id = '$municipioPersona'";
                                             $resultado = sqlsrv_query($this->con, $query);
 
                                             if ($r = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
@@ -277,9 +258,6 @@ class PerfilUsuario{
                                                 //  $this->in->alertas("validacion", 'Datos inválidos', 'El municipio no se encuentra en el estado indicado');
                                                 echo json_encode('munEstaExi');
                                             }
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
@@ -405,10 +383,10 @@ class PerfilUsuario{
         for ($i=0;$i<strlen($auxIngreso)-2;$i++){
             $ingreso= $ingreso.$auxIngreso[$i];
         }
-        $nombreTar=$_POST["nombre-tarjeta"];
-        $numTar=$_POST["numero-tarjeta"];
-        $mesTar=$_POST["month-expiracion"];
-        $añoTar=$_POST["year-expiracion"];
+        $nombreTar=$_POST["nombreTarjeta"];
+        $numTar=$_POST["numeroTarjeta"];
+        $mesTar=$_POST["monthExpiracion"];
+        $añoTar=$_POST["yearExpiracion"];
         $ccvTar=$_POST["ccv"];
 
         

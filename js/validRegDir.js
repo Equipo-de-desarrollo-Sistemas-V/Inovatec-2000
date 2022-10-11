@@ -1,13 +1,11 @@
 /* Declara una variable global */
-let bandNom = false
+let bandCalle = false
 let bandNum = false
 let bandCol = false
 let bandCP = false
 
 const expresiones = {
     cadenas:/^[a-zA-ZÁ-ý\s]{2,20}$/,
-    apellidos:/^[a-zA-ZÁ-ý\s]{3,20}$/,
-    usuario:/^[a-zA-ZÁ-ý0-9\s_@.]{3,20}$/,
     numero:/^[0-9]{1,10}$/,
     cp:/^[0-9]{5}$/
 }
