@@ -87,7 +87,7 @@
             <label for="password" class="input-label">Contraseña</label>
           </div>
 
-          <input type="submit" value="Iniciar Sesión" class="btn-login">
+          <input type="submit" value="Iniciar sesión" class="btn-login">
 
           <p class="label-1">¿No tienes una cuenta? <a class="metodos-recuperacion" href="registroUsuarios.php">Regístrate</a>
           </p>
