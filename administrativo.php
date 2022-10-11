@@ -175,7 +175,14 @@
 	
 		<div class="contenidoListaProd" id="contenidoListaProd">
 			<article>
-				<h1 align="center">Lista de productos</h1>
+				<h1 align="center">Productos</h1>
+				<div class="contenido-barra-buscar">
+					<input type="text" placeholder="Buscar" required />
+					<button class="btn-buscar">
+						<i class="fas fa-search icon"></i>
+
+					</button>
+				</div>
 				<br>
 				<section class="tablas">
 					<table>
@@ -273,7 +280,14 @@
 		<div class="contenidoListaSuc" id="contenidoListaSuc">
 			<article>
 				<h1 align="center">Lista de sucursales</h1>
+				<div class="contenido-barra-buscar">
+					<input type="text" placeholder="Buscar" required />
+					<button class="btn-buscar">
+						<i class="fas fa-search icon"></i>
+					</button>
+				</div>
 				<br>
+
 				<section class="tablas">
 					<table>
 						<thead>
@@ -393,7 +407,15 @@
 		<div class="contenidoListaTrab" id="contenidoListaTrab">
 			<article>
 				<h1 align="center">Lista de trabajadores</h1>
+				<div class="contenido-barra-buscar">
+					<input type="text" placeholder="Buscar" required />
+					<button class="btn-buscar">
+						<i class="fas fa-search icon"></i>
+
+					</button>
+				</div>
 				<br>
+
 				<section class="tablas">
 					<table>
 						<thead>
@@ -458,7 +480,15 @@
 		<div class="contenidoListaProv" id="contenidoListaProv">
 			<article>
 				<h1 align="center">Lista de proveedores</h1>
+				<div class="contenido-barra-buscar">
+					<input type="text" placeholder="Buscar" required />
+					<button class="btn-buscar">
+						<i class="fas fa-search icon"></i>
+
+					</button>
+				</div>
 				<br>
+
 				<section class="tablas">
 					<table>
 						<thead>
@@ -485,7 +515,15 @@
 		<div class="contenidoListaInventario" id="contenidoListaInventario">
 			<article>
 				<h1 align="center">Lista de inventario</h1>
+				<div class="contenido-barra-buscar">
+					<input type="text" placeholder="Buscar" required />
+					<button class="btn-buscar">
+						<i class="fas fa-search icon"></i>
+
+					</button>
+				</div>
 				<br>
+
 				<section class="tablas">
 					<table>
 						<thead>
