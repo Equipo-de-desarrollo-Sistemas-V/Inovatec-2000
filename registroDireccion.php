@@ -23,8 +23,10 @@ $resultado = sqlsrv_query($con, $query);
     <link rel="stylesheet" href="css/registroUsuarios.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- <script src=”https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js”></script> -->
-    <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script languaje="javascript">
         $(document).ready(function(){
             $("#estado").change(function(){
@@ -121,3 +123,12 @@ $resultado = sqlsrv_query($con, $query);
 </body>
 
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#estado').select2();
+    });
+    $(document).ready(function(){
+        $('#municipio').select2();
+    });
+</script>
