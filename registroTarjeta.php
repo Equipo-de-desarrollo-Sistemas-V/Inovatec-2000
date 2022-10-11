@@ -124,7 +124,7 @@
                         </div>
 
                     </div>
-                    <input type="submit" value="Finalizar" class="btn-enviar" id="btn-enviar">
+                    <input type="submit" name="siguiente" id="siguiente" value="Finalizar" class="btn-enviar" id="btn-enviar">
                 </form>
             </div>
         </article>

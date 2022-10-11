@@ -27,6 +27,8 @@ $resultado = sqlsrv_query($con, $query);
     <!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    
     <script languaje="javascript">
         $(document).ready(function(){
             $("#estado").change(function(){
@@ -111,7 +113,7 @@ $resultado = sqlsrv_query($con, $query);
                         </div>
 
                     </div>
-                    <input type="submit" value="Siguiente ->" class="btn-login">
+                    <input type="submit" value="Siguiente ->" id="siguiente" value="Siguiente" class="btn-login" diabled>
                     <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="recuperarCorreo.php">Recuperar
                             contraseña</a></p>
                 </form>

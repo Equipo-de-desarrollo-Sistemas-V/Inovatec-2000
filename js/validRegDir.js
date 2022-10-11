@@ -1,9 +1,7 @@
 /* Declara una variable global */
-let bandCalle = false
+let bandNom = false
 let bandNum = false
 let bandCol = false
-let bandMun = false
-let bandEst = false
 let bandCP = false
 
 const expresiones = {
@@ -33,7 +31,7 @@ formulario.calle.addEventListener('keyup', (e) => {
         calle.removeAttribute("style");
         bandCalle = true
     }
-    //validar();
+    validar();
 })
 
 /* Input numero */
@@ -55,7 +53,7 @@ formulario.numero.addEventListener('keyup', (e) => {
         numero.removeAttribute("style");
         bandNum = true
     }
-    //validar();
+    validar();
 })
 
 /* Input colonia */
@@ -77,10 +75,10 @@ formulario.colonia.addEventListener('keyup', (e) => {
         colonia.removeAttribute("style");
         bandCol = true
     }
-    //validar();
+    validar();
 })
 
-/* Input numero */
+/* Input CP */
 formulario.codigoPostal.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -99,5 +97,16 @@ formulario.codigoPostal.addEventListener('keyup', (e) => {
         codigoPostal.removeAttribute("style");
         bandCP = true
     }
-    //validar();
+    validar();
 })
+
+function validar(){
+    const siguiente = document.getElementById('siguiente');
+    if(bandCalle == true && bandNum == true && bandCol == true && bandCP == true){
+        siguiente.disabled=false;
+    }
+    else{
+        siguiente.disabled=true;
+    }
+
+}
