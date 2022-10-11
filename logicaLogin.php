@@ -28,10 +28,10 @@ class login{
                 $contraHash = $row['contra_em'];
                 if (password_verify($palabra_secreta, $contraHash)) {
                     //echo $arreEmpl['nombres'];
-                    echo json_encode("todo bien");
                     session_start();
                     $_SESSION["nombres"] = $arreEmpl['nombres'];
-                    include "administrativo.php";
+                    echo json_encode("admin");
+                    //include "administrativo.php";
                 } else {
                     echo json_encode("usuario error");
                     //$in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
@@ -50,10 +50,11 @@ class login{
                         $file = fopen("archivo_correo.txt", "w");
                         fwrite($file, $arreClien['Usuario'] . PHP_EOL);
                         fclose($file);
-                        echo json_encode("todo bien");
+                        //echo json_encode("todo bien");
                         session_start();
                         $_SESSION["Usuario"] = $arreClien['Usuario'];
-                        include "perfilCliente.php";
+                        echo json_encode("cliente");
+                        //include "perfilCliente.php";
                     } else {
                         echo json_encode("usuario error");
                         //$in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
@@ -64,6 +65,7 @@ class login{
                 }
             }
         }
+        
         
         sqlsrv_close($conn_sis);
 
