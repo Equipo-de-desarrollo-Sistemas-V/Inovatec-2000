@@ -239,6 +239,7 @@ form {
     grid-gap: 10px;
     margin-top: 20px;
     align-items: center;
+    justify-items: center;
 }
 
 .input-group {
@@ -390,4 +391,14 @@ form {
         font-size: 12px;
     }
 
+}
+
+.estado, .municipio {
+    background: transparent;
+    background: transparent;
+    width: 13rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border-color: #e6b323;
+    border-width: 2px;
 }

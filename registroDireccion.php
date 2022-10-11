@@ -97,7 +97,7 @@ $resultado = sqlsrv_query($con, $query);
                         <div class="input-group-2">
                             <!-- <input type="text" name="ciudad" id="ciudad" required class="input" autocomplete="off">
                             <label for="ciudad" class="input-label">Ciudad</label> -->
-                            <select name="municipio" id="municipio" class="ciudad">
+                            <select name="municipio" id="municipio" class="municipio">
                                 <option value="0">Municipio</option>
                                 <!-- Generar aquí el contenido de las ciudades -->
                             </select>
