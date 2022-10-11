@@ -209,6 +209,7 @@
 							$nombre=$row["nombre"];
 							$descri=$row["descripcion"];
 							$cate=$row["Apartado"];
+							$subcate=$row["Subapartado"];
 							$pre_com=$row["precio_com"];
 							$pre_ven=$row["precio_ven"];
 							$prove=$row["id_proveedor"];
@@ -219,7 +220,7 @@
 									<td>'.$nombre.'</td>
 									<td>'.$descri.'</td>
 									<td>'.$cate.'</td>
-									<td>'.'</td>
+									<td>'.$subcate.'</td>
 									<td>'.$pre_com.'</td>
 									<td>'.$pre_ven.'</td>
 									<td>'.$prove.'</td>
