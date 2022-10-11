@@ -233,7 +233,7 @@
 									<td>'.$pre_ven.'</td>
 									<td>'.$prove.'</td>
 									<td>'.'</td>
-									<td>'.'<a href="#">'.$edi. '</a>'.'</td>
+									<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
 									<td>'.'<a href="#">'.$eli. '</a>'.'</td>
 									</tr>';
 						}
