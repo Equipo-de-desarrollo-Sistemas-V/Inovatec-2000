@@ -88,7 +88,7 @@ $resultado = sqlsrv_query($con, $query);
                         <div class="input-group">
                             <!-- <input type="text" name="estado" id="estado" required class="input" autocomplete="off">
                             <label for="estado" class="input-label">Estado</label> -->
-                            <select name="estado" id="estado" name="estado" class="estado">
+                            <select name="estado" id="estado" name="estado" class="estado" style="background: transparent;">
                                 <option value="0">Estado</option>
                                 <?php
                                     while($row = sqlsrv_fetch_array($resultado)){?>
@@ -97,8 +97,6 @@ $resultado = sqlsrv_query($con, $query);
                             </select>
                         </div>
                         <div class="input-group-2">
-                            <!-- <input type="text" name="ciudad" id="ciudad" required class="input" autocomplete="off">
-                            <label for="ciudad" class="input-label">Ciudad</label> -->
                             <select name="municipio" id="municipio" class="municipio">
                                 <option value="0">Municipio</option>
                                 <!-- Generar aquí el contenido de las ciudades -->
