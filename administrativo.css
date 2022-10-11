@@ -351,8 +351,8 @@ table{
 }
 
 th,td{
-	width: 80px;
-	padding: 8px 20px;
+	width: auto;
+	padding: 8px 8px;
 }
 
 thead{
