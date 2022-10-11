@@ -164,6 +164,7 @@ header a:active {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 0.5fr);
     padding-bottom: 40px;
+    height: 92rem;
 }
 
 span {
@@ -403,4 +404,13 @@ a:hover {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     }
+}
+
+.estado, .municipio {
+    background: transparent;
+    width: 13.4rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border-color: #e6b323;
+    border-width: 2px;
 }
