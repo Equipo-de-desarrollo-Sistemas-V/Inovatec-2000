@@ -24,6 +24,7 @@ let banderaNombre = 0
 let banderaMes = 0
 let banderaYear = 0
 let banderaCCV = 0
+let banNom=false
 
 
 // * Volteamos la tarjeta para mostrar el frente.
@@ -133,10 +134,27 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
 	/* desbloquearBoton() */
 })
 
+
+const expresiones = {
+    cadenas:/^[a-zA-ZÁ-ý\s]{3,100}$/
+}
+
 formulario.nombrePropietario.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.nombrePropietario.value = valorInput.replace(/[0-9]/g, '');
+	formulario.nombrePropietario.value = valorInput
+	// Eliminar numeros
+    .replace(/[0-9]/g, '')
+     // Eliminar caracteres especiales
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+
+	if (!expresiones.cadenas.test(valorInput)) {
+        nombrePropietario.style.border = "3px solid red";
+        banNom = false
+	}else{
+        nombrePropietario.removeAttribute("style");
+        banNom = true
+    }
 	nombreTarjeta.textContent = valorInput;
 	
 
@@ -154,6 +172,7 @@ formulario.nombrePropietario.addEventListener('keyup', (e) => {
 	}
 	mostrarFrente()
 	/* desbloquearBoton() */
+	validar();
 })
 
 formulario.mesCaja.addEventListener('keyup', (e) => {
@@ -249,4 +268,15 @@ function desbloquearBoton(){
 	else {
 		botonEnviar.style.display = 'none'
 	}
+}
+
+function validar(){
+    const siguiente = document.getElementById('siguiente');
+    if(banNom == true){
+        siguiente.disabled=false;
+    }
+    else{
+        siguiente.disabled=true;
+    }
+
 }

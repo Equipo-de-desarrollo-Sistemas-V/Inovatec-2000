@@ -4,13 +4,12 @@
     class Direccion{
 
         //verifica que el codigo postal tenga 5 digitos
-        function validar()
-        {
+        function validar(){
             $in=new Direccion;
             $calle = $_POST["calle"];
             $numero = $_POST["numero"];
             $colonia = $_POST["colonia"];
-            $ciudad = $_POST["ciudad"];
+            $ciudad = $_POST["municipio"];
             $estado = $_POST["estado"];
             $cp = $_POST["codigoPostal"];
 
@@ -20,26 +19,10 @@
             $con = sqlsrv_connect($servername, $info);
 
             if ($con) {
-                //verificar que el estado exista en la base de datos
-                $querry_estado = "SELECT Id FROM estados where estado = '$estado'";
-
-                $resultados_estado = sqlsrv_query($con, $querry_estado);
-
-                if (sqlsrv_fetch_array($resultados_estado, SQLSRV_FETCH_ASSOC)) {
-
-                    //verifica que el municipio exista en la base de datos
-                    $querry_municipio = "SELECT Id_Municipios FROM municipios where municipio = '$ciudad'";
-
-                    $resultados_municipio = sqlsrv_query($con, $querry_municipio);
-
-                    if (sqlsrv_fetch_array($resultados_municipio, SQLSRV_FETCH_ASSOC)) {
-
                         //verifica que el municipio si este en el estado
-                        $querry_relacion = "SELECT  estados_municipios.id FROM estados_municipios, estados, municipios
-                        where estados.Estado = '$estado'
-                        and municipios.municipio = '$ciudad' and 
-                        estados_municipios.estados_id = estados.id and 
-                        estados_municipios.municipios_id = municipios.id_Municipios";
+                        $querry_relacion = "SELECT  id FROM estados_municipios
+                        where estados_id= '$estado'
+                        and municipios_id = '$ciudad'";
 
                         $resultados_relacion = sqlsrv_query($con, $querry_relacion);
 
@@ -120,23 +103,6 @@
                                 echo json_encode("calle largo");
                                 //$in->alertas("validacion", 'Datos inválidos', '"La calle no debe tener más de 20 dígitos');
                             }
-                        } 
-                        
-                        else {
-                            echo json_encode("estado-municipio");
-                            //$in->alertas("validacion", 'Datos inválidos', '"El municipio no se encuentra en el estado indicado');
-                        }
-                    } 
-                    
-                    else {
-                        echo json_encode("municipio");
-                        //$in->alertas("validacion", 'Datos inválidos', '"La ciudad no existe');
-                    }
-                } 
-                
-                else {
-                    echo json_encode("estado");
-                    //$in->alertas("validacion", 'Datos inválidos', '"El estado no existe');
                 }
             } 
             
