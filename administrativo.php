@@ -217,21 +217,37 @@
 							$nombre=$row["nombre"];
 							$descri=$row["descripcion"];
 							$cate=$row["Apartado"];
+							$query1="SELECT Nombre FROM Apartados WHERE ID_ap='$cate'";
+							$res1= sqlsrv_query($conn_sis, $query1);
+							if( $res1 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row1 = sqlsrv_fetch_array($res1) ) {
+								$categoria=$row1["Nombre"];
+							}
 							$subcate=$row["Subapartado"];
 							$pre_com=$row["precio_com"];
 							$pre_ven=$row["precio_ven"];
 							$prove=$row["id_proveedor"];
+							$query2="SELECT nombre_empresa FROM Proveedores WHERE id_proveedor='$prove'";
+							$res2= sqlsrv_query($conn_sis, $query2);
+							if( $res2 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row2 = sqlsrv_fetch_array($res2) ) {
+								$proveedor=$row2["nombre_empresa"];
+							}
 							$edi='Editar';
 							$eli='Eliminar';
 							echo '<tr>
 									<td>'.$id.'</td>
 									<td>'.$nombre.'</td>
 									<td>'.$descri.'</td>
-									<td>'.$cate.'</td>
+									<td>'.$categoria.'</td>
 									<td>'.$subcate.'</td>
 									<td>'.$pre_com.'</td>
 									<td>'.$pre_ven.'</td>
-									<td>'.$prove.'</td>
+									<td>'.$proveedor.'</td>
 									<td>'.'</td>
 									<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
 									<td>'.'<a href="#">'.$eli. '</a>'.'</td>

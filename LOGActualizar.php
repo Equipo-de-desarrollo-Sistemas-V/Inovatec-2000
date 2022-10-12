@@ -114,14 +114,14 @@
                                     $pre_ven=$row["precio_ven"];
                                     $prove=$row["id_proveedor"];
                                     //echo $id.$nombre;
-                                    $getApartado ="select * from"
                                     }
-                                        ?>
-				<form action="" class="formularios" method="POST" enctype="multipart/form-data">
+                                    ?>
+                                
+                                <form action="LogUpdate.php" class="formularios" method="POST" enctype="multipart/form-data">
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProducto" id="idProd" class="formulario_input" value="<?php echo $id;?>">
+							<input type="text" name="idProducto" id="idProd" class="formulario_input" readonly="readonly" value="<?php echo $id;?>">
 						</div>
 					</div>
 
@@ -136,7 +136,29 @@
 						<label for="categoria" class="formulario_label">Categoria</label>
 
 						<div class="formulario_grupo-input">
-							<select type="text" name="categoria" id="categoria" class="formulario_input" value="<?php echo $Apartado;?>"></select>
+							<select type="text" name="categoria" id="categoria" class="formulario_input">
+                                                        <?php
+                                                            $serverName='localhost';
+                                                            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+                                                            $getApartado ="select * from Apartados";
+                                                            $getApartado2 = sqlsrv_query($conn_sis, $getApartado);
+                                                            if( $getApartado2 === false) {
+                                                                die( print_r( sqlsrv_errors(), true) );
+                                                            }
+                                                            while ($rowApartado = sqlsrv_fetch_array($getApartado2)){
+                                                                $id_ap=$rowApartado['ID_ap'];
+                                                                $apartado=$rowApartado['Nombre'];
+                                                                if ($id_ap==$cate){?>
+                                                                    <option value="<?php echo $id_ap;?>" selected><?php echo $apartado;?></option>
+                                                            <?php
+                                                            }else{
+                                                                ?>
+                                                                <option value="<?php echo $id_ap;?>"><?php echo $apartado;?></option>
+                                                                <?php
+                                                            }}
+                                                        ?>
+                                                        </select>
  						</div>
 					</div>
 
@@ -144,7 +166,35 @@
 						<label for="subcategoria" class="formulario_label">Subcategoria</label>
 
 						<div class="formulario_grupo-input">
-							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" value="<?php echo $subcate;?>"></select>
+							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input">
+                                                        <?php
+                                                            $mostrarCate=$_POST['categoria'];
+                                                            $serverName='localhost';
+                                                            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+                                                            $getSubApartado ="select * from SubApartados where id_ap=$mostraCate";
+                                                            $getSubApartado2 = sqlsrv_query($conn_sis, $getSubApartado);
+                                                            if( $getSubApartado2 === false) {
+                                                                die( print_r( sqlsrv_errors(), true) );
+                                                            }
+                                                            while ($rowSubApartado = sqlsrv_fetch_array($getSubApartado2))
+                                                            {
+                                                                $id_sap=$rowSubApartado['Id_subap'];
+                                                                $ap=$rowSubApartado['id_ap'];
+                                                                $subapartado=$rowSubApartado['SubApartado'];
+                                                                if($id_sap==$subcate){
+                                                                ?>
+                                                                    <option value="<?php echo $id_sap;?>" selected><?php echo $subapartado;?></option>
+                                                                <?php    
+                                                                }else{
+                                                                ?>
+                                                                <option value="<?php echo $id_sap;?>"><?php echo $subapartado;?></option>
+                                                                <?php
+                                                                }                                                                
+                                                            }
+
+                                                        ?>                          
+                                                        </select>
  						</div>
 					</div>
 
@@ -166,14 +216,41 @@
 						<label for="descripcion" class="formulario_label">Descripcion</label> 
 
 						<div class="formulario_grupo-input">
-							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input" value="<?php echo $descri;?>"></textarea>
+							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input" ><?php echo $descri;?></textarea>
  						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="proveedor" class="formulario_label">Proveedor</label> 
 						<div class="formulario_grupo-input">
-							<select name="proveedor" id="sucursal" class="formulario_input" value="<?php echo $prove;?>"></select>
+							<select type="text" name="proveedor" id="proveedor" class="formulario_input">
+                                                        <?php
+                                                            $serverName='localhost';
+                                                            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+                                                            $getProveedor ="select * from Proveedores";
+                                                            $getProv = sqlsrv_query($conn_sis, $getProveedor);
+                                                            if( $getProv === false) {
+                                                                die( print_r( sqlsrv_errors(), true) );
+                                                            }
+                                                            while ($rowProv = sqlsrv_fetch_array($getProv))
+                                                            {
+                                                                $id_Pro=$rowProv['Id_proveedor'];
+                                                                $nomEmp=$rowProv['nombre_empresa'];
+                                                                $rfc=$rowProv['RFC'];
+                                                                $email=$rowProv['email_empresa'];                                                                
+                                                                if($id_Pro==$prove){
+                                                                ?>
+                                                                    <option value="<?php echo $id_Pro;?>" selected><?php echo $nomEmp;?></option>
+                                                                <?php    
+                                                                }else{
+                                                                ?>
+                                                                <option value="<?php echo $id_Pro;?>"><?php echo $nomEmp;?></option>
+                                                                <?php
+                                                                }                                                                
+                                                            }
+                                                        ?> 
+                                                        </select>
 						</div>
 					</div>
 
@@ -190,7 +267,7 @@
 					</div>
 
 					<div class="btn_enviar">
-						<button type="submit" name="actualizar" class="btn_submit" value="Actualizar">Actualizar</button>
+						<button on click="" type="submit" name="actualizar" class="btn_submit" value="Actualizar">Actualizar</button>
 					</div>
                                         
 				</form>		
