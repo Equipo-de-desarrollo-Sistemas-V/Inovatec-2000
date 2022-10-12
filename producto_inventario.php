@@ -87,8 +87,42 @@
     <main>
         <!--Contenido de la parte INVENTARIO-->
 		<div class="contenidoInventario" id="contenidoInventario">
-			<article>
-				<h1>Inventario</h1>
+		<h1 align="center">Producto inventario</h1>
+				<br>
+				<form action="" class="formularios" method="post" enctype="multipart/form-data">
+					<div class="formulario_grupo-input">
+						<label for="idProveedor" class="formulario_label">Id producto</label> 
+						<div class="formulario_grupo-input">
+							<select type="text" name="idProveedor" id="idProv" class="formulario_input"></select>
+						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="empresa" class="formulario_label">Nombre de empresa</label> 
+						<div class="formulario_grupo-input">
+							<select type="text" name="empresa" id="empresaProv" class="formulario_input"></select>
+						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="rfcProv" class="formulario_label">Existentes</label>
+						<div class="formulario_grupo-input">
+							<input type="text" name="rfcProv" id="rfcProv" class="formulario_input"></input>
+ 						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="correoProv" class="formulario_label">Stock mínimo</label>
+						<div class="formulario_grupo-input">
+							<input type="email" name="correoProv" id="correoProv" class="formulario_input"></input>
+ 						</div>
+					</div><br>
+
+					<div class="btn_enviar">
+						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
+					</div>
+					
+				</form>		
 			</article>
 		</div>
     </main>

@@ -111,6 +111,8 @@
 								<th>Puesto</th> 
 								<th>Usuario</th>
 								<th>Permisos</th>
+								<th>Acciones</th>
+								<th></th>
 							</tr>
 						</thead>
 					</table>

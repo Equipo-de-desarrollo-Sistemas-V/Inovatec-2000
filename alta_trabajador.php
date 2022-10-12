@@ -132,13 +132,12 @@
 					<div class="formulario_grupo-input">
 						<label for="puesto" class="formulario_label">Puesto</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="puesto" id="puesto" class="formulario_input"> 
+							<select type="text" name="puesto" id="puesto" class="formulario_input"></select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="usuario" class="formulario_label">Usuario</label> 
-
 						<div class="formulario_grupo-input">
 							<input type="text" name="usuario"id="usuario" class="formulario_input"></input>
  						</div>
