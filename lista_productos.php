@@ -8,6 +8,8 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/consulProductos.js"></script>
 </head>
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
@@ -92,14 +94,14 @@
 			<article>
 				<h1 align="center">Productos</h1>
 				<div class="contenido-barra-buscar">
-					<input type="text" placeholder="Buscar" required />
+					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required >
 					<button class="btn-buscar">
 						<i class="fas fa-search icon"></i>
 
 					</button>
 				</div>
 				<br>
-				<section class="tablas">
+				<section class="tablas" id="tabla_resultado">
 					<table>
 						<thead>
 						<?php
@@ -117,7 +119,7 @@
 								<th>Precio venta</th> 
 								<th>Proveedor</th>
 								<th>Imagen</th>
-								<th></th>
+								<th>Acciones</th>
 								<th></th>
 							</tr>
 						</thead>
