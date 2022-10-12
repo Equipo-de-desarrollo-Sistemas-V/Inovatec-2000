@@ -105,6 +105,8 @@
                                 <th>RFC</th> 
                                 <th>Correo</th> 
                                 <th>Acciones</th>
+								<th>Acciones</th>
+								<th></th>
                             </tr>
                         </thead>
                     </table>

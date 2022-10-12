@@ -103,10 +103,13 @@
 							<tr>
 								<th>Id producto</th> 
 								<th>Nombre producto</th> 
-								<th>Id sucursal</th> 
+								<th>Sucursal</th> 
+								<th>Existentes</th> 
 								<th>Stock mínimo</th> 
 								<th>Inversión</th>
-								<th>ULTIMA VENTA</th>
+								<th>Valor</th>
+								<th>Acciones</th>
+								<th></th>
 							</tr>
 						</thead>
 					</table>

@@ -87,7 +87,7 @@
 		<!--Contenido de la parte PRODUCTOS-->
 		<div class="contenidoAgregaProd" id="contenidoAgregaProd">
 			<article>
-				<h1 align="center">Nuevo productos</h1>
+				<h1 align="center">Nuevo producto</h1>
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data">
 					<div class="formulario_grupo-input">
