@@ -189,7 +189,7 @@
 						<thead>
 						<?php
 							$serverName='localhost';
-							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"sa", "PWD"=>"lebronjames23", "CharacterSet"=>"UTF-8");
 							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 							?>
 							<tr>
@@ -207,7 +207,24 @@
 							</tr>
 						</thead>
 						<?php
-						$query="SELECT * FROM Productos";
+						$query0="SELECT COUNT(*) AS total_registro FROM Productos";
+						$res0= sqlsrv_query($conn_sis, $query0);
+						if( $res0 === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row0 = sqlsrv_fetch_array($res0) ) {
+							$total_registro=$row0["total_registro"];
+						}
+						$por_pagina=3;
+						if (empty($_GET['pagina'])){
+							$pagina=1;
+						}else{
+							$pagina=$_GET['pagina'];
+						}
+						$desde=($pagina-1)*$por_pagina;
+						$total_paginas=ceil($total_registro/$por_pagina);
+						
+						$query="SELECT * FROM Productos ORDER BY id_producto OFFSET $desde ROWS FETCH NEXT $por_pagina ROWS ONLY";
 						$res= sqlsrv_query($conn_sis, $query);
 						if( $res === false) {
 							die( print_r( sqlsrv_errors(), true) );
@@ -255,6 +272,33 @@
 						}
 						?>
 					</table>
+					<div class="paginador">
+						<ul>
+						<?php
+							if($pagina!=1)
+							{
+						?>
+							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
+							<li><a href="?pagina=<?php echo $pagina-1; ?>"><<</a><li>
+						<?php
+							}
+							for ($i=1;$i<=$total_paginas; $i++){
+								if($i==$pagina)
+								{
+									echo '<li class="pageSelected">'.$i.'</li>';
+								}else{
+									echo '<li><a href="?pagina='.$i.'">'.$i.'</a></li>';
+								}
+							}
+
+							if($pagina!=$total_paginas)
+							{
+						?>
+							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
+						<?php } ?>
+						</ul>
+					</div>
 				</section>
 			</article>
 		</div>

@@ -9,12 +9,8 @@
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="js/consulProductos.js"></script>
 </head>
 <body>
-	<!--Script de funcionaminto del menu desplegable-->
-	<script src="funcionamiento.js"></script>
-
 	<!--Estructura Header Superior-->
 	<header>
 		<div class="header_superior">
@@ -106,7 +102,7 @@
 						<thead>
 						<?php
 							$serverName='localhost';
-							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"sa", "PWD"=>"lebronjames23", "CharacterSet"=>"UTF-8");
 							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 							?>
 							<tr>
@@ -124,7 +120,24 @@
 							</tr>
 						</thead>
 						<?php
-						$query="SELECT * FROM Productos";
+						$query0="SELECT COUNT(*) AS total_registro FROM Productos";
+						$res0= sqlsrv_query($conn_sis, $query0);
+						if( $res0 === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row0 = sqlsrv_fetch_array($res0) ) {
+							$total_registro=$row0["total_registro"];
+						}
+						$por_pagina=3;
+						if (empty($_GET['pagina'])){
+							$pagina=1;
+						}else{
+							$pagina=$_GET['pagina'];
+						}
+						$desde=($pagina-1)*$por_pagina;
+						$total_paginas=ceil($total_registro/$por_pagina);
+						
+						$query="SELECT * FROM Productos ORDER BY id_producto OFFSET $desde ROWS FETCH NEXT $por_pagina ROWS ONLY";
 						$res= sqlsrv_query($conn_sis, $query);
 						if( $res === false) {
 							die( print_r( sqlsrv_errors(), true) );
@@ -134,28 +147,71 @@
 							$nombre=$row["nombre"];
 							$descri=$row["descripcion"];
 							$cate=$row["Apartado"];
+							$query1="SELECT Nombre FROM Apartados WHERE ID_ap='$cate'";
+							$res1= sqlsrv_query($conn_sis, $query1);
+							if( $res1 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row1 = sqlsrv_fetch_array($res1) ) {
+								$categoria=$row1["Nombre"];
+							}
 							$subcate=$row["Subapartado"];
 							$pre_com=$row["precio_com"];
 							$pre_ven=$row["precio_ven"];
 							$prove=$row["id_proveedor"];
+							$query2="SELECT nombre_empresa FROM Proveedores WHERE id_proveedor='$prove'";
+							$res2= sqlsrv_query($conn_sis, $query2);
+							if( $res2 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row2 = sqlsrv_fetch_array($res2) ) {
+								$proveedor=$row2["nombre_empresa"];
+							}
 							$edi='Editar';
 							$eli='Eliminar';
 							echo '<tr>
-									<td>'.$id.'</td>
-									<td>'.$nombre.'</td>
-									<td>'.$descri.'</td>
-									<td>'.$cate.'</td>
-									<td>'.$subcate.'</td>
-									<td>'.$pre_com.'</td>
-									<td>'.$pre_ven.'</td>
-									<td>'.$prove.'</td>
-									<td>'.'</td>
-									<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
-									<td>'.'<a href="#">'.$eli. '</a>'.'</td>
-									</tr>';
-						}
+								<td>'.$id.'</td>
+								<td>'.$nombre.'</td>
+								<td>'.$descri.'</td>
+								<td>'.$categoria.'</td>
+								<td>'.$subcate.'</td>
+								<td>'.$pre_com.'</td>
+								<td>'.$pre_ven.'</td>
+								<td>'.$proveedor.'</td>
+								<td>'.'</td>
+								<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
+								<td>'.'<a href="#">'.$eli. '</a>'.'</td>
+								</tr>';
+							}
 						?>
 					</table>
+					<div class="paginador">
+						<ul>
+						<?php
+							if($pagina!=1)
+							{
+						?>
+							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
+							<li><a href="?pagina=<?php echo $pagina-1; ?>"><<</a><li>
+						<?php
+							}
+							for ($i=1;$i<=$total_paginas; $i++){
+								if($i==$pagina)
+								{
+									echo '<li class="pageSelected">'.$i.'</li>';
+								}else{
+									echo '<li><a href="?pagina='.$i.'">'.$i.'</a></li>';
+								}
+							}
+
+							if($pagina!=$total_paginas)
+							{
+						?>
+							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
+						<?php } ?>
+						</ul>
+					</div>
 				</section>
 			</article>
 		</div>
