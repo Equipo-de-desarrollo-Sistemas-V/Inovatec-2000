@@ -98,6 +98,7 @@ formulario.precioVenta.addEventListener('keyup', (e) => {
         precioVenta.style.border = "3px solid red";
         bPrV = false
 	}else{
+        console.log("hool");
         if(precio=="."){
             precioVenta.style.border = "3px solid red";
             bPrV = false

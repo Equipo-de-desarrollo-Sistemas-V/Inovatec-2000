@@ -123,18 +123,18 @@
                                 })
                                 } 
                                 </script>
-                                <form action="" class="formularios" method="POST" enctype="multipart/form-data">
+                                <form action="" class="formularios" method="POST" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProducto" id="idProd" class="formulario_input" readonly="readonly" value="<?php echo $id;?>">
+							<input type="text" name="idProducto" id="idProducto" class="formulario_input" readonly="readonly" value="<?php echo $id;?>">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="nombreProd" class="formulario_label">Nombre</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="nombreProd" id="nombreProd" class="formulario_input" value="<?php echo $nombre;?>">
+							<input type="text" name="nombreProd" id="nombreProd" class="formulario_input" required maxlength="50" value="<?php echo $nombre;?>">
 						</div>
 					</div>
 
@@ -142,7 +142,7 @@
 						<label for="categoria" class="formulario_label">Categoria</label>
 
 						<div class="formulario_grupo-input">
-							<select type="text" name="categoria" id="categoria" class="formulario_input">
+							<select type="text" name="categoria" id="categoria" class="formulario_input" required>
                                                         <?php
                                                             $serverName='localhost';
                                                             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
@@ -172,7 +172,7 @@
 						<label for="subcategoria" class="formulario_label">Subcategoria</label>
 
 						<div class="formulario_grupo-input">
-							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input">
+							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" required>
                                                         <?php                                                            
                                                             $serverName='localhost';
                                                             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
@@ -206,14 +206,14 @@
 					<div class="formulario_grupo-input">
 						<label for="precioCompra" class="formulario_label">Precio de compra</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="precioProd" id="precioProd" class="formulario_input" value="<?php echo $pre_com;?>">
+							<input type="text" name="precioProd" id="precioProd" class="formulario_input" required value="<?php echo $pre_com;?>">
  						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="precioVenta" class="formulario_label">Precio de venta</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input" value="<?php echo $pre_ven;?>"> 
+							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input" required value="<?php echo $pre_ven;?>"> 
 						</div>
 					</div>
 
@@ -221,7 +221,7 @@
 						<label for="descripcion" class="formulario_label">Descripcion</label> 
 
 						<div class="formulario_grupo-input">
-							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input" ><?php echo $descri;?></textarea>
+							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input" required><?php echo $descri;?></textarea>
  						</div>
 					</div>
 
@@ -277,6 +277,7 @@
                                         
 				</form>		
 			</article>
+			<script src="js/validProductos.js"></script>
 		</div>
 		
 </body>
