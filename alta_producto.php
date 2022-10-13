@@ -1,5 +1,18 @@
+<?php
+$servername = "localhost";
+$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$con = sqlsrv_connect($servername, $info);
+
+$query = "SELECT ID_ap, Nombre FROM Apartados";
+$resultados = sqlsrv_query($con, $query);
+
+$query_proveedores = "SELECT id_proveedor, nombre_empresa FROM Proveedores";
+$resultados_proveedores = sqlsrv_query($con, $query_proveedores);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +21,29 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+	<!-- llama al archivo getSubApartados para obtener solo los suabpartados correspondientes a la categoria seleccionada-->
+	<script languaje="javascript">
+		$(document).ready(function() {
+			$("#categoria").change(function() {
+				$("#categoria option:selected").each(function() {
+					Id = $(this).val();
+					$.post("getSubApartados.php", {
+						Id: Id
+					}, function(data) {
+						$("#subcategoria").html(data);
+					});
+				});
+			})
+		});
+	</script>
 </head>
+
 <body>
 
 	<!--Estructura Header Superior-->
@@ -44,8 +79,8 @@
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php">Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php">Lista de sucursales</a></li>
 							</ul>
 						</li>
 
@@ -72,7 +107,7 @@
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php">Registro de ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
 							</ul>
 						</li>
@@ -82,23 +117,23 @@
 		</div>
 	</header>
 
-    <!--Main General-->
+	<!--Main General-->
 	<main>
 		<!--Contenido de la parte PRODUCTOS-->
 		<div class="contenidoAgregaProd" id="contenidoAgregaProd">
 			<article>
 				<h1 align="center">Nuevo producto</h1>
 				<br>
-				<form action="" class="formularios" method="post" enctype="multipart/form-data">
+				<form action="logAltaProductos.php" class="formularios" method="post" enctype="multipart/form-data">
 					<div class="formulario_grupo-input">
-						<label for="idProducto" class="formulario_label">Id</label> 
+						<label for="idProducto" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="idProducto" id="idProd" class="formulario_input">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="nombreProd" class="formulario_label">Nombre</label> 
+						<label for="nombreProd" class="formulario_label">Nombre</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="nombreProd" id="nombreProd" class="formulario_input">
 						</div>
@@ -107,66 +142,94 @@
 					<div class="formulario_grupo-input">
 						<label for="categoria" class="formulario_label">Categoria</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="categoria" id="categoria" class="formulario_input"></select>
- 						</div>
+							<select type="text" name="categoria" id="categoria" class="formulario_input">
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados)) { ?>
+									<option value=" <?php echo $row['ID_ap']; ?>"> <?php echo $row['Nombre']; ?> </option>
+
+								<?php }
+								?>
+							</select>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="subcategoria" class="formulario_label">Subcategoria</label>
 
 						<div class="formulario_grupo-input">
-							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input"></select>
- 						</div>
+							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input">
+								<option value="0">Subcategoría</option>
+							</select>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="precioCompra" class="formulario_label">Precio de compra</label> 
+						<label for="precioCompra" class="formulario_label">Precio de compra</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="precioProd" id="precioProd" class="formulario_input">
- 						</div>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="precioVenta" class="formulario_label">Precio de venta</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input"> 
+							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="descripcion" class="formulario_label">Descripcion</label> 
+						<label for="descripcion" class="formulario_label">Descripcion</label>
 
 						<div class="formulario_grupo-input">
-							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input"></textarea>
- 						</div>
+							<textarea type="text" name="descripcion" id="descripcion" class="formulario_input"></textarea>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="proveedor" class="formulario_label">Proveedor</label> 
+						<label for="proveedor" class="formulario_label">Proveedor</label>
 						<div class="formulario_grupo-input">
-							<select name="proveedor" id="sucursal" class="formulario_input"></select>
+							<select name="proveedor" id="sucursal" class="formulario_input">
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_proveedores)) { ?>
+									<option value=" <?php echo $row['id_proveedor']; ?>"> <?php echo $row['nombre_empresa']; ?> </option>
+
+								<?php }
+								?>
+							</select>
 						</div>
 					</div>
 
 					<div class="photo">
 						<label for="foto" class="formulario_label">Imagen</label>
-							<div class="prevPhoto">
+						<div class="prevPhoto">
 							<span class="delPhoto notBlock">X</span>
 							<label for="foto"></label>
-							</div>
-							<div class="upimg">
-							<input type="file" name="foto" id="foto"  class="formulario_input">
-							</div>
-							<div id="form_alert"></div>
+						</div>
+						<div class="upimg">
+							<input type="file" name="foto" id="foto" class="formulario_input">
+						</div>
+						<div id="form_alert"></div>
 					</div>
 
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
 					</div>
 
-				</form>		
+				</form>
 			</article>
 		</div>
-	</main>	
+	</main>
 </body>
+
 </html>
+
+<!-- Sript para la busqueda inteligente (me lo fusilé de con Nayeli) -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#sucursal').select2();
+	});
+</script>
