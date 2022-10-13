@@ -153,6 +153,7 @@
 								<td>'.'<a href="#">'.$eli. '</a>'.'</td>
 								</tr>';
 							}
+						sqlsrv_close($conn_sis);
 						?>
                     </table>
 					<div class="paginador">

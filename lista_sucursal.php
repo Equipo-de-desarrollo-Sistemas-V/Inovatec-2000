@@ -97,6 +97,11 @@
 				<section class="tablas">
 					<table>
 						<thead>
+						<?php
+							$serverName='localhost';
+							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"sa", "PWD"=>"lebronjames23", "CharacterSet"=>"UTF-8");
+							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+							?>
 							<tr>
 								<th>Id</th> 
 								<th>Ciudad</th> 
@@ -105,7 +110,104 @@
 								<th></th>
 							</tr>
 						</thead>
+						<?php
+						$query0="SELECT COUNT(*) AS total_sucursales FROM sucursal";
+						$res0= sqlsrv_query($conn_sis, $query0);
+						if( $res0 === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row0 = sqlsrv_fetch_array($res0) ) {
+							$total_sucursales=$row0["total_sucursales"];
+						}
+						$por_pagina=1;
+						if (empty($_GET['pagina'])){
+							$pagina=1;
+						}else{
+							$pagina=$_GET['pagina'];
+						}
+						$desde=($pagina-1)*$por_pagina;
+						$total_paginas=ceil($total_sucursales/$por_pagina);
+
+						$query="SELECT * FROM sucursal ORDER BY id_sucursal OFFSET $desde ROWS FETCH NEXT $por_pagina ROWS ONLY";
+						$res= sqlsrv_query($conn_sis, $query);
+						if( $res === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row = sqlsrv_fetch_array($res) ) {
+							$id=$row["id_sucursal"];
+							$nombre0=$row["ciudad_est"];
+							$query1="SELECT municipios_id FROM estados_municipios WHERE id='$nombre0'";
+							$res1= sqlsrv_query($conn_sis, $query1);
+							if( $res1 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row1 = sqlsrv_fetch_array($res1) ) {
+								$nombre00=$row1["municipios_id"];
+							}
+							$query2="SELECT municipio FROM municipios WHERE Id_Municipios='$nombre00'";
+							$res2= sqlsrv_query($conn_sis, $query2);
+							if( $res2 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row2 = sqlsrv_fetch_array($res2) ) {
+								$nombre=$row2["municipio"];
+							}
+							$query3="SELECT estados_id FROM estados_municipios WHERE id='$nombre0'";
+							$res3= sqlsrv_query($conn_sis, $query3);
+							if( $res3 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row3 = sqlsrv_fetch_array($res3) ) {
+								$estado0=$row3["estados_id"];
+							}
+							$query4="SELECT Estado FROM estados WHERE Id='$estado0'";
+							$res4= sqlsrv_query($conn_sis, $query4);
+							if( $res4 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+							while( $row4 = sqlsrv_fetch_array($res4) ) {
+								$estado=$row4["Estado"];
+							}
+							$edi='Editar';
+							$eli='Eliminar';
+							echo '<tr>
+								<td>'.$id.'</td>
+								<td>'.$nombre.'</td>
+								<td>'.$estado.'</td>
+								<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
+								<td>'.'<a href="#">'.$eli. '</a>'.'</td>
+								</tr>';
+							}
+						sqlsrv_close($conn_sis);
+						?>
 					</table>
+					<div class="paginador">
+						<ul>
+						<?php
+							if($pagina!=1)
+							{
+						?>
+							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
+							<li><a href="?pagina=<?php echo $pagina-1; ?>"><<</a><li>
+						<?php
+							}
+							for ($i=1;$i<=$total_paginas; $i++){
+								if($i==$pagina)
+								{
+									echo '<li class="pageSelected">'.$i.'</li>';
+								}else{
+									echo '<li><a href="?pagina='.$i.'">'.$i.'</a></li>';
+								}
+							}
+
+							if($pagina!=$total_paginas)
+							{
+						?>
+							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
+						<?php } ?>
+						</ul>
+					</div>
 				</section>
 			</article>
 		</div>
