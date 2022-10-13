@@ -102,6 +102,11 @@
 				<section class="tablas">
 					<table>
 						<thead>
+						<?php
+							$serverName='localhost';
+							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+							?>
 							<tr>
 								<th>Id</th> 
 								<th>Nombre</th> 
@@ -115,7 +120,84 @@
 								<th></th>
 							</tr>
 						</thead>
+						<?php
+						$query0="SELECT COUNT(*) AS total_trabajadores FROM Empleados";
+						$res0= sqlsrv_query($conn_sis, $query0);
+						if( $res0 === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row0 = sqlsrv_fetch_array($res0) ) {
+							$total_trabajadores=$row0["total_trabajadores"];
+						}
+						$por_pagina=1;
+						if (empty($_GET['pagina'])){
+							$pagina=1;
+						}else{
+							$pagina=$_GET['pagina'];
+						}
+						$desde=($pagina-1)*$por_pagina;
+						$total_paginas=ceil($total_trabajadores/$por_pagina);
+
+						$query="SELECT * FROM Empleados ORDER BY id_empleado OFFSET $desde ROWS FETCH NEXT $por_pagina ROWS ONLY";
+						$res= sqlsrv_query($conn_sis, $query);
+						if( $res === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row = sqlsrv_fetch_array($res) ) {
+							$id=$row["id_empleado"];
+							$nombre=$row["nombres"];
+							$ap_paterno=$row["ap_paterno"];
+							$ap_materno=$row["ap_materno"];
+							$sucu=$row["sucursal"];
+							$rfc=$row["rfc"];
+							$puesto=$row["puesto"];
+							$correo=$row["email"];
+							$pue='Puestos';
+							$edi='Editar';
+							$eli='Eliminar';
+							echo '<tr>
+								<td>'.$id.'</td>
+								<td>'.$nombre.'</td>
+								<td>'.$ap_paterno.'</td>
+								<td>'.$ap_materno.'</td>
+								<td>'.$rfc.'</td>
+								<td>'.$puesto.'</td>
+								<td>'.$correo.'</td>
+								<td>'.'<a href="#">'.$pue. '</a>'.'</td>
+								<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
+								<td>'.'<a href="#">'.$eli. '</a>'.'</td>
+								</tr>';
+							}
+						sqlsrv_close($conn_sis);
+						?>
 					</table>
+					<div class="paginador">
+						<ul>
+						<?php
+							if($pagina!=1)
+							{
+						?>
+							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
+							<li><a href="?pagina=<?php echo $pagina-1; ?>"><<</a><li>
+						<?php
+							}
+							for ($i=1;$i<=$total_paginas; $i++){
+								if($i==$pagina)
+								{
+									echo '<li class="pageSelected">'.$i.'</li>';
+								}else{
+									echo '<li><a href="?pagina='.$i.'">'.$i.'</a></li>';
+								}
+							}
+
+							if($pagina!=$total_paginas)
+							{
+						?>
+							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
+						<?php } ?>
+						</ul>
+					</div>
 				</section>
 			</article>
 		</div>
