@@ -1,4 +1,5 @@
 <?php
+    function update(){
         $id= filter_input(INPUT_POST, "idProducto");
         $nombreP=filter_input(INPUT_POST, "nombreProd");
         $apar=$_POST['categoria'];
@@ -7,7 +8,7 @@
         $des=filter_input(INPUT_POST, "descripcion");
         $proved=$_POST['proveedor'];
         $subA=$_POST['subcategoria'];
-        echo $id.$nombreP.$apar.$pC.$pV.$des.$subA;
+        //echo $id.$nombreP.$apar.$pC.$pV.$des.$subA;
         
         $serverName='localhost';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
@@ -17,4 +18,5 @@
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
         }
+    }    
 ?>

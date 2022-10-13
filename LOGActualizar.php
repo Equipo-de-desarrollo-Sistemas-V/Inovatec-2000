@@ -115,9 +115,15 @@
                                     $prove=$row["id_proveedor"];
                                     //echo $id.$nombre;
                                     }
-                                    ?>
-                                
-                                <form action="LogUpdate.php" class="formularios" method="POST" enctype="multipart/form-data">
+                                ?>                                
+                                <script>
+                                function test(){
+                                    $.ajax({url:"LogUpdate.php", success:function(update){
+                                    $("div").text(update);}
+                                })
+                                } 
+                                </script>
+                                <form action="" class="formularios" method="POST" enctype="multipart/form-data">
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
@@ -161,18 +167,17 @@
                                                         </select>
  						</div>
 					</div>
-
+                                        
 					<div class="formulario_grupo-input">
 						<label for="subcategoria" class="formulario_label">Subcategoria</label>
 
 						<div class="formulario_grupo-input">
 							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input">
-                                                        <?php
-                                                            $mostrarCate=$_POST['categoria'];
+                                                        <?php                                                            
                                                             $serverName='localhost';
                                                             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
                                                             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
-                                                            $getSubApartado ="select * from SubApartados where id_ap=$mostraCate";
+                                                            $getSubApartado ="select * from SubApartados where id_ap=$cate";
                                                             $getSubApartado2 = sqlsrv_query($conn_sis, $getSubApartado);
                                                             if( $getSubApartado2 === false) {
                                                                 die( print_r( sqlsrv_errors(), true) );
@@ -267,7 +272,7 @@
 					</div>
 
 					<div class="btn_enviar">
-						<button on click="" type="submit" name="actualizar" class="btn_submit" value="Actualizar">Actualizar</button>
+						<button onclick="test()" type="submit" name="actualizar" class="btn_submit" value="Actualizar">Actualizar</button>
 					</div>
                                         
 				</form>		
