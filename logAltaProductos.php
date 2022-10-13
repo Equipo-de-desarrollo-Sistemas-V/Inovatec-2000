@@ -31,7 +31,7 @@
                 echo $proveedor . '<br>';
                 //inserta los datos a la base de datos
                 $querry = "INSERT INTO Productos
-                VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria)";
+                VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria, 1)";
                 echo $querry;
 
                 $stm = sqlsrv_query($con, $querry);
