@@ -99,6 +99,11 @@
                 <section class="tablas">
                     <table>
                         <thead>
+						<?php
+							$serverName='localhost';
+							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"sa", "PWD"=>"lebronjames23", "CharacterSet"=>"UTF-8");
+							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+							?>
                             <tr>
                                 <th>Id</th> 
                                 <th>Empresa</th> 
@@ -109,7 +114,74 @@
 								<th></th>
                             </tr>
                         </thead>
+						<?php
+						$query0="SELECT COUNT(*) AS total_proveedores FROM Proveedores";
+						$res0= sqlsrv_query($conn_sis, $query0);
+						if( $res0 === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row0 = sqlsrv_fetch_array($res0) ) {
+							$total_proveedores=$row0["total_proveedores"];
+						}
+						$por_pagina=2;
+						if (empty($_GET['pagina'])){
+							$pagina=1;
+						}else{
+							$pagina=$_GET['pagina'];
+						}
+						$desde=($pagina-1)*$por_pagina;
+						$total_paginas=ceil($total_proveedores/$por_pagina);
+
+						$query="SELECT * FROM Proveedores ORDER BY id_proveedor OFFSET $desde ROWS FETCH NEXT $por_pagina ROWS ONLY";
+						$res= sqlsrv_query($conn_sis, $query);
+						if( $res === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+						while( $row = sqlsrv_fetch_array($res) ) {
+							$id=$row["id_proveedor"];
+							$nombre=$row["nombre_empresa"];
+							$rfc=$row["RFC"];
+							$email=$row["email_empresa"];
+							$edi='Editar';
+							$eli='Eliminar';
+							echo '<tr>
+								<td>'.$id.'</td>
+								<td>'.$nombre.'</td>
+								<td>'.$rfc.'</td>
+								<td>'.$email.'</td>
+								<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
+								<td>'.'<a href="#">'.$eli. '</a>'.'</td>
+								</tr>';
+							}
+						?>
                     </table>
+					<div class="paginador">
+						<ul>
+						<?php
+							if($pagina!=1)
+							{
+						?>
+							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
+							<li><a href="?pagina=<?php echo $pagina-1; ?>"><<</a><li>
+						<?php
+							}
+							for ($i=1;$i<=$total_paginas; $i++){
+								if($i==$pagina)
+								{
+									echo '<li class="pageSelected">'.$i.'</li>';
+								}else{
+									echo '<li><a href="?pagina='.$i.'">'.$i.'</a></li>';
+								}
+							}
+
+							if($pagina!=$total_paginas)
+							{
+						?>
+							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
+						<?php } ?>
+						</ul>
+					</div>
                 </section>
             </article>
         </div>
