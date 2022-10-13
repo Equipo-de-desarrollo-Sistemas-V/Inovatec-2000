@@ -1,23 +1,27 @@
-$(obtener_registros());
+$(buscar_datos());
 
-function obtener_registros(alumnos){
+function buscar_datos(consulta){
     $.ajax({
         url : 'consulta.php',
         type : 'POST',
         dataType : 'html',
-        data : {alumnos: alumnos},
+        data : {consulta: consulta},
     })
 
-    .done(function(resultado){
-        $("#tabla_resultado").html(resultado);
+    .done(function(respuesta){
+        $("#tablaResultado").html(respuesta);
+    })
+    .fail(function(){
+        console.log("error");
     })
 }
 
 $(document).on('keyup', '#busqueda', function(){
     var valorBusqueda=$(this).val();
-    if (valorBusqueda!=""){
-        obtener_registros(valorBusqueda);
-    }else{
-        obtener_registros();
-    }
+    console.log(valorBusqueda);
+     if (valorBusqueda!=""){
+         buscar_datos(valorBusqueda);
+     }else{
+         buscar_datos();
+     }
 })
