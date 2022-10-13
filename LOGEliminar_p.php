@@ -1,37 +1,37 @@
 <?php
-
-$serverName = 'localhost';
-$login = "usuario";
-$paswor = "123";
-$conctioninfo = array("Database"=>"Pruebas_Conexion", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
-$conn_sis = sqlsrv_connect($serverName,$conctioninfo);
-
-
-
-$id=$_GET['id'];
-echo $id;
-
-$borrar = "DELETE FROM Productos WHERE id_producto='$id'";
-$ejecutar = sqlsrv_query($conn_sis,$borrar);
-
-$error = sqlsrv_errors();
+   
+   $serverName = 'localhost';
+   $login = "usuario";
+   $paswor = "123";
+   $conctioninfo = array("Database"=>"Pruebas_Conexion", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
+   $conn_sis = sqlsrv_connect($serverName,$conctioninfo);
 
 
-if ($ejecutar){
+    $Eliminar_id=$_GET['id'];
     
-echo '<script type="text/javascript">alert("El producto se elimino");
-window.location.href="administrativo.php";
 
-</script>'
+    $borrar = "DELETE FROM Productos WHERE id_producto='$Eliminar_id'";
+    
+    
+    $ejecutar = sqlsrv_query($conn_sis,$borrar) ;
+ 
+
+    if( $ejecutar === false) {
+        die( print_r( sqlsrv_errors(), true) );}
 
 
-}
+  
+
+
 
 
 ?>
 
 
-<script type="text/javascript">alert('El producto se elimino');
+
+<script type="text/javascript">alert('El producto elimino');
         window.location.href='administrativo.php';
     
     </script>
+
+    
