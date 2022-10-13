@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 </head>
+
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
 	<script src="funcionamiento.js"></script>
@@ -46,8 +48,8 @@
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php">Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php">Lista de sucursales</a></li>
 							</ul>
 						</li>
 
@@ -61,7 +63,7 @@
 						<li><a href="#">Proveedores</a>
 							<ul>
 								<li><a id="menuProveedor1" href="alta_proveedor.php">Nuevo proveedor</a></li>
-								<li><a id="menuProveedor2" href="lista_proveedor.php" >Lista de proveedores</a></li>
+								<li><a id="menuProveedor2" href="lista_proveedor.php">Lista de proveedores</a></li>
 							</ul>
 						</li>
 
@@ -74,7 +76,7 @@
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php">Registro de ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
 							</ul>
 						</li>
@@ -84,23 +86,23 @@
 		</div>
 	</header>
 
-    <!--Main General-->
+	<!--Main General-->
 	<main>
 		<!--Contenido de la parte PROVEEDOR-->
 		<div class="contenidoAgregaProv" id="contenidoAgregaProv">
 			<article>
 				<h1 align="center">Nuevo proveedor</h1>
 				<br>
-				<form action="logAltaProveedor.php" class="formularios" method="post" enctype="multipart/form-data">
+				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
-						<label for="idProveedor" class="formulario_label">Id</label> 
+						<label for="idProveedor" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="idProveedor" id="idProv" class="formulario_input">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="empresa" class="formulario_label">Empresa</label> 
+						<label for="empresa" class="formulario_label">Empresa</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="empresa" id="empresaProv" class="formulario_input">
 						</div>
@@ -110,24 +112,27 @@
 						<label for="rfcProv" class="formulario_label">RFC</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="rfcProv" id="rfcProv" class="formulario_input"></input>
- 						</div>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="correoProv" class="formulario_label">Correo electrónico</label>
 						<div class="formulario_grupo-input">
 							<input type="email" name="correoProv" id="correoProv" class="formulario_input"></input>
- 						</div>
+						</div>
 					</div><br>
 
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
 					</div>
-					
-				</form>		
+
+				</form>
 			</article>
 		</div>
-    </main>
+	</main>
+
+	<script src="js/alertasProveedor.js"></script>
 
 </body>
+
 </html>

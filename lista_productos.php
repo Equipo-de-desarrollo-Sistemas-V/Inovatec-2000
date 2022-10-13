@@ -9,6 +9,7 @@
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/consulProductos.js"></script>
 </head>
 <body>
 	<!--Estructura Header Superior-->
@@ -97,13 +98,13 @@
 					</button>
 				</div>
 				<br>
-				<section class="tablas" id="tabla_resultado">
-					<table>
+				<section class="tablas" id="tablaResultado">
+					<!-- <table>
 						<thead>
 						<?php
-							$serverName='localhost';
+							/*$serverName='localhost';
 							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);*/
 							?>
 							<tr>
 								<th>Id</th> 
@@ -119,7 +120,7 @@
 								<th></th>
 							</tr>
 						</thead>
-						<?php
+						//<a?php/*
 						$query0="SELECT COUNT(*) AS total_registro FROM Productos";
 						$res0= sqlsrv_query($conn_sis, $query0);
 						if( $res0 === false) {
@@ -182,9 +183,9 @@
 								<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
 								<td>'.'<a href="#">'.$eli. '</a>'.'</td>
 								</tr>';
-							}
+							}*/
 						?>
-					</table>
+					</table> -->
 					<div class="paginador">
 						<ul>
 						<?php

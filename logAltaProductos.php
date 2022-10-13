@@ -3,10 +3,6 @@
 
     class Productos{
 
-        function prueba(){
-            echo "ecta corriendo el archivo de lógica" . '<br>';
-            $this -> registrar();
-        }
         //informacion para la conexion a base de datos
         function registrar(){
             $servername = "localhost";
@@ -26,35 +22,47 @@
                 $proveedor = $_POST["proveedor"];
                 //$foto = $_POST['foto'];
 
-                echo $proveedor. '<br>';
-                $proveedor = $this ->quitarEspacio($proveedor);
-                echo $proveedor . '<br>';
-                //inserta los datos a la base de datos
-                $querry = "INSERT INTO Productos
-                VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria, 1)";
-                echo $querry;
-
-                $stm = sqlsrv_query($con, $querry);
-
-                $confirm = "SELECT * FROM Productos
+                //verificar que el ID no se repita
+                $querry_id = "SELECT * FROM Productos
                 WHERE id_producto = $id";
+                $resultID = sqlsrv_query($con, $querry_id);
 
-                $resultados = sqlsrv_query($con, $confirm);
-
-                if(sqlsrv_fetch_array($resultados)){
-                    include("administrativo2.php");
-                    echo '<script>alert("Producto registrado con éxito")</script>';
-                    
+                if (sqlsrv_fetch_array($resultID)) {
+                    echo json_encode("ID existente");
                 }
 
                 else{
-                    echo 'Fallo al conectar con la base de datos'. '<br>';
-                    die(print_r(sqlsrv_errors(), true));
-                }
+                    $proveedor = $this->quitarEspacio($proveedor);
+
+                    //inserta los datos a la base de datos
+                    $querry = "INSERT INTO Productos
+                    VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria, 1)";
+                    //echo $querry;
+
+                    $stm = sqlsrv_query($con, $querry);
+
+                    //verifica que el producto de verdad se inserto en la base de datos
+                    $confirm = "SELECT * FROM Productos
+                    WHERE id_producto = $id";
+
+                    $resultados = sqlsrv_query($con, $confirm);
+
+                    if (sqlsrv_fetch_array($resultados)) {
+                        //include("administrativo2.php");
+                        echo json_encode("todo chido");
+                    } 
+                    
+                    else {
+                        //echo 'Fallo al conectar con la base de datos'. '<br>';
+                        //die(print_r(sqlsrv_errors(), true));
+                        echo json_encode("consulta BD");
+                    }
+                } 
             }
 
             else{
-                die(print_r(sqlsrv_errors(), true));
+                //die(print_r(sqlsrv_errors(), true));
+                echo json_encode("conexion BD");
             }
         }
 
@@ -70,6 +78,6 @@
     }
 
     $obj = new Productos;
-    $obj -> prueba();
+    $obj -> registrar();
 
 ?>
