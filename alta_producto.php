@@ -124,25 +124,26 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 			<article>
 				<h1 align="center">Nuevo producto</h1>
 				<br>
-				<form action="logAltaProductos.php" class="formularios" method="post" enctype="multipart/form-data">
+				<form action="logAltaProductos.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProducto" id="idProd" class="formulario_input">
+							<input type="text" name="idProducto" id="idProducto" class="formulario_input" required maxlength="8" minlength="6">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="nombreProd" class="formulario_label">Nombre</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="nombreProd" id="nombreProd" class="formulario_input">
+							<input type="text" name="nombreProd" id="nombreProd" class="formulario_input" required maxlength="50">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="categoria" class="formulario_label">Categoria</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="categoria" id="categoria" class="formulario_input">
+							<select type="text" name="categoria" id="categoria" class="formulario_input" required>
+							<option value=""></option>
 								<?php
 
 								//cargar los resultados de la consulta en la combobox
@@ -159,8 +160,8 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 						<label for="subcategoria" class="formulario_label">Subcategoria</label>
 
 						<div class="formulario_grupo-input">
-							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input">
-								<option value="0">Subcategoría</option>
+							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" required>
+								<!-- <option value="0">Subcategoría</option> -->
 							</select>
 						</div>
 					</div>
@@ -168,14 +169,14 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					<div class="formulario_grupo-input">
 						<label for="precioCompra" class="formulario_label">Precio de compra</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="precioProd" id="precioProd" class="formulario_input">
+							<input type="text" name="precioProd" id="precioProd" class="formulario_input" required>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="precioVenta" class="formulario_label">Precio de venta</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input">
+							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input" required>
 						</div>
 					</div>
 
@@ -183,14 +184,14 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 						<label for="descripcion" class="formulario_label">Descripcion</label>
 
 						<div class="formulario_grupo-input">
-							<textarea type="text" name="descripcion" id="descripcion" class="formulario_input"></textarea>
+							<textarea type="text" name="descripcion" id="descripcion" class="formulario_input" required></textarea>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="proveedor" class="formulario_label">Proveedor</label>
 						<div class="formulario_grupo-input">
-							<select name="proveedor" id="sucursal" class="formulario_input">
+							<select name="proveedor" id="sucursal" class="formulario_input required">
 								<?php
 
 								//cargar los resultados de la consulta en la combobox
@@ -221,6 +222,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 
 				</form>
 			</article>
+			<script src="js/validProductos.js"></script>
 		</div>
 	</main>
 </body>
