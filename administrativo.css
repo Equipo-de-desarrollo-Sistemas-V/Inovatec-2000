@@ -465,7 +465,7 @@ tr:nth-child(even){
 	}
 
 	nav > ul > li:hover ul{
-		top: 60px;
+		top: 50px;
 	}
 
 	nav > ul > li:first-child a{

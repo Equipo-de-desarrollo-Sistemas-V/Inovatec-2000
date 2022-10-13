@@ -106,7 +106,6 @@
 
 					<div class="formulario_grupo-input">
 						<label for="categoria" class="formulario_label">Categoria</label>
-
 						<div class="formulario_grupo-input">
 							<select type="text" name="categoria" id="categoria" class="formulario_input"></select>
  						</div>

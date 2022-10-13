@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Menu Administrativo</title>
+	<title>Registro ventas</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
@@ -83,3 +83,39 @@
 			</div>
 		</div>
 	</header>
+
+	<main>
+        <div class="contenidoListaInventario" id="contenidoListaInventario">
+			<article>
+				<h1 align="center">Registro de ventas</h1>
+				<div class="contenido-barra-buscar">
+					<input type="text" placeholder="Buscar" required />
+					<button class="btn-buscar">
+						<i class="fas fa-search icon"></i>
+
+					</button>
+				</div>
+				<br>
+
+				<section class="tablas">
+					<table>
+						<thead>
+							<tr>
+								<th>Id producto</th> 
+								<th>Nombre producto</th> 
+								<th>Sucursal</th> 
+								<th>Existentes</th> 
+								<th>Stock mínimo</th> 
+								<th>Inversión</th>
+								<th>Valor</th>
+								<th>Acciones</th>
+								<th></th>
+							</tr>
+						</thead>
+					</table>
+				</section>
+			</article>
+		</div>
+    </main>
+</body>
+</html>
