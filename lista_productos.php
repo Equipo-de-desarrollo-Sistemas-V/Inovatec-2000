@@ -102,7 +102,7 @@
 						<thead>
 						<?php
 							$serverName='localhost';
-							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"sa", "PWD"=>"lebronjames23", "CharacterSet"=>"UTF-8");
+							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 							?>
 							<tr>

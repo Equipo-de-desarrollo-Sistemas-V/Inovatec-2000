@@ -267,7 +267,7 @@
 									<td>'.$proveedor.'</td>
 									<td>'.'</td>
 									<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
-									<td>'.'<a href="#">'.$eli. '</a>'.'</td>
+									<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" onclick="return confirm('.$text.');">'.$eli. '</a>'.'</td>
 									</tr>';
 						}
 						?>

@@ -87,7 +87,8 @@
     <main>
         <!--Contenido de la parte INVENTARIO-->
 		<div class="contenidoInventario" id="contenidoInventario">
-		<h1 align="center">Producto inventario</h1>
+			<article>
+			<h1 align="center">Producto inventario</h1>
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data">
 					<div class="formulario_grupo-input">

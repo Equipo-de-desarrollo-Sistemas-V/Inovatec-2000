@@ -91,7 +91,7 @@
 			<article>
 				<h1 align="center">Nuevo proveedor</h1>
 				<br>
-				<form action="" class="formularios" method="post" enctype="multipart/form-data">
+				<form action="logAltaProveedor.php" class="formularios" method="post" enctype="multipart/form-data">
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
