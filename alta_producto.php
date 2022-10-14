@@ -124,7 +124,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 			<article>
 				<h1 align="center">Nuevo producto</h1>
 				<br>
-				<form action="logAltaProductos.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
@@ -225,6 +225,8 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 			<script src="js/validProductos.js"></script>
 		</div>
 	</main>
+
+	<script src="js/alertasProductos.js"></script>
 </body>
 
 </html>
