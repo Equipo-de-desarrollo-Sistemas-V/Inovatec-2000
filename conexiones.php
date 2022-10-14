@@ -27,10 +27,5 @@
     $connectionInfo = array( "Database"=>$nombre_bd, "UID"=>$nombre_usuario, "PWD"=>$password, "CharacterSet" => "UTF-8");
     $conexion = sqlsrv_connect($nombre_servidor, $connectionInfo);
 
-    /* if( $conn ) {
-        echo "Conexión establecida.<BR>";
-    }else{
-        echo "Conexión no se pudo establecer.<BR>";
-        die( print_r( sqlsrv_errors(), true));
-    } */
+
 ?>  

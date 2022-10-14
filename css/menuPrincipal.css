@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
 * {
     box-sizing: border-box;
 }
@@ -15,11 +16,12 @@ body {
     box-sizing: border-box;
     text-decoration: none;
     background-color: #ebebeb;
+    user-select: none;
 }
 header {
     width: 100%;
-    height: 80px;
-    padding: 0 45px 0 45px;
+    height: 5rem;
+    padding: 0 2.8125rem 0 2.8125rem;
     background-color: #ffc727;
 }
 
@@ -29,76 +31,13 @@ header {
     align-items: center; 
     justify-content: space-between;
     background-color: #ffc727;
-    padding-block: 5px; 
-}
-.navbar a{
-    text-decoration: none;
-    color: black;
-    margin: 0 10px 0 10px;
-    font-weight: 600;
-    background-color: #fff;
-    padding: 10px 15px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 300ms; /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
+    padding-block: .3125rem; 
 }
 
-.navbar a:hover{
-    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
-
-}
 .logo{
-    margin-right: 50px;
-    width: 200px;
-    padding-left: 15px;
-}
-.list{
-    list-style: none;
-    display: flex;
-    gap: 25px; 
-}
-#toggler,
-.navbar label{
-    display: none;
-}
-
-@media screen and 
-(max-width: 765px){
-    .menu{
-        width: 100%;
-        max-height: 0; /*Makes the max-height 0 to side the expanded menu.*/
-        overflow: hidden; /*Hides the overflowing content.*/
-    }
-    .list{
-        flex-direction: column; /*Chances the direction of the flex container. By default it is a row so we change it to column in small screens.*/
-        align-items: center;
-        padding: 20px;
-    }
-    .navbar label{
-        display: inline-flex; /*Makes it an inline flex container for the icon. Used for centering the icon inside this box.*/
-        align-items: center;
-        cursor: pointer;
-    }
-
-    #toggler:checked ~ .menu{
-        max-height: 100%;
-    }
-}
-
-header a {
-    text-decoration: none;
-    color: black;
-    margin: 0 10px 0 10px;
-    font-weight: 600;
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 300ms;
+    margin-right: 3.125rem;
+    width: 10.625rem;
+    padding-left: .9375rem;
 }
 
 header a:hover {
@@ -107,10 +46,43 @@ header a:hover {
     transition: 300ms;
 }
 
-article img {
-    width: 700px;
-    padding-top: 50px;
-    rotate: -2.5deg;
+.containerOpciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffc727;
+    padding-block: .3125rem;
+}
+
+.containerOpciones .containerBtn {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: .3125rem;
+}
+
+.containerOpciones .containerBtn .btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .4063rem .9375rem;
+    margin-inline: .3125rem;
+
+    border-radius: 1.5625rem;
+    background-color: #fff;
+    color: #000;
+    font-weight: 600;
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.containerOpciones .containerBtn .btn:hover {
+    background-color: #ffc727;
+    color: #fff;
+    transition: 300ms;
 }
 
 .containerBuscador {
@@ -118,30 +90,31 @@ article img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20rem;
-    padding: 10px 0;
-    border-radius: 25px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+    width: 400px;
+    padding: .4063rem 0;
+    border-radius: 1.5625rem;
+    box-shadow: 0 .3125rem .3125rem rgba(0, 0, 0, 0.25);
     transition: 300ms ;
+    margin-right: .625rem;
 }
 
 .containerBuscador:hover {
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 .3125rem .3125rem rgba(0, 0, 0, 0.75);
 }
 
 .containerBuscador .fa-magnifying-glass {
     color: #757575;
-    font-size: 1rem;
-    margin-left: 10px;
+    font-size: 16px;
+    margin-left: .625rem;
 }
 
 .buscador {
     width: 85%;
     height: 100%;
     border: none;
-    border-radius: 25px;
-    padding: 0 10px;
-    font-size: 1.2rem;
+    border-radius: 1.5625rem;
+    padding: 0 .625rem;
+    font-size: 19.2px;
     background-color: #fff;
     color: #000;
     font-family: 'Montserrat', sans-serif;
@@ -161,5 +134,192 @@ article img {
 }
 
 .categorias {
-    margin : 10px;
+    margin-inline: .3125rem;
+    border: none;
+    text-align: center;
+    padding: .3125rem;
+    border-radius: 1.5625rem;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-bottom: .3125rem;
+}
+/* Carrusel en css nativo */
+
+.slider-frame {
+    width: 90.4522rem;
+    height: 20rem;
+    overflow: hidden;
+}
+
+.slider-frame ul {
+	display: flex;
+	padding: 0;
+	width: 400%;
+	
+	animation: slide 40s infinite alternate ease-in-out;
+}
+
+.slider-frame li {
+	width: 100%;
+	list-style: none;
+}
+
+.slider-frame img {
+	width: 100%;
+    height: auto;
+    z-index: -100;
+    margin-top: -15px;
+}
+
+@keyframes slide {
+	0% {margin-left: 0;}
+	20% {margin-left: 0;}
+	
+	25% {margin-left: -100%;}
+	45% {margin-left: -100%;}
+	
+	50% {margin-left: -200%;}
+	70% {margin-left: -200%;}
+	
+	75% {margin-left: -300%;}
+	100% {margin-left: -300%;}
+}
+
+/* Tarjetas de los productos */
+
+.containerProductos {
+    margin: 1.25rem;
+   /*  background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    margin-right: 50px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+}
+
+.containerinfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -30px;
+    margin-inline: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    color: #234edb;
+}
+
+.link:hover {
+    color: #e6b323;
+    transition: 300ms ease-in-out;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.containerCards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.25rem;
+}
+
+
+.cardProducto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 16.875rem;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+    transition: 300ms ease-in-out;
+}
+
+.cardProducto:hover {
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.75);
+}
+
+.encabezado {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    column-gap: 1.875rem;
+    height: auto;
+}
+
+/* .subtitulo {
+    margin-top: 55px;
+} */
+
+.encabezado .tituloProducto {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0px;
+}
+
+.encabezado .tituloPrecio {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0px;
+    color: #234edb;
+}
+
+
+
+.cardProducto img {
+    width: 200px;
+    max-width: 200px;
+    height: 200px;
+    max-height: 200px;
+    object-fit: fill;
+}
+
+.cardProducto .nombreProducto {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 6px;
+    text-align: center;
+
+    width: 100%;
+    height: 3rem;
+    min-height: 3rem;
+    max-height: 3rem;
+}
+
+.cardProducto .descripcion {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: -5px;
+    text-align: center;
+}
+
+.cardProducto .btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 5px 10px;
+    text-align: center;
+    width: 160px;
+
+    border-radius: 8px;
+    background-color: #234edb;
+    color: #fff;
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cardProducto .btn:hover {
+    background-color: #e6b323;
+    color: #fff;
+    transition: 300ms;
 }
