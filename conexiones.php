@@ -25,7 +25,7 @@
     
     /* Crear la conexion a la base de datos para SQLServer*/
     $connectionInfo = array( "Database"=>$nombre_bd, "UID"=>$nombre_usuario, "PWD"=>$password, "CharacterSet" => "UTF-8");
-    $conn = sqlsrv_connect($nombre_servidor, $connectionInfo);
+    $conexion = sqlsrv_connect($nombre_servidor, $connectionInfo);
 
     /* if( $conn ) {
         echo "Conexión establecida.<BR>";
