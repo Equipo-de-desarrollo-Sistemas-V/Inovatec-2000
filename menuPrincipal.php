@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,7 +142,7 @@
                     
                     <img src="assets/seccion-1/computadora1.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre1">Huawei Matebook X 2022 1Tb</span></h3>
+                    <h3 class="nombreProducto"><span class="seccion1-nombre1"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
@@ -155,7 +154,7 @@
                     
                     <img src="assets/seccion-1/computadora2.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre2">Huawei Matebook X Pro 500Gb</span></h3>
+                    <h3 class="nombreProducto"><span class="seccion1-nombre2"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
@@ -167,7 +166,7 @@
                     
                     <img src="assets/seccion-1/computadora3.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre3">Huawei Matebook D16 2022 16 RAM + 512Gb</span></h3>
+                    <h3 class="nombreProducto"><span class="seccion1-nombre3"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
@@ -179,7 +178,7 @@
                     
                     <img src="assets/seccion-1/computadora4.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre4">Asus ROG Zephyrus Duo 512Gb 16"</span></h3>
+                    <h3 class="nombreProducto"><span class="seccion1-nombre4"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
             </div>
@@ -306,5 +305,37 @@
         </article>
     </section>
 </body>
-
 </html>
+<?php
+    include("conexiones.php");
+
+    $resultado = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria FROM $tabla_productos, $tabla_apartados, $tabla_subapartados where Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap");
+    
+    /* Declara una lista y guarda los valores dentro de una lista independiente pora nombre, precio_ven y apartados.nombre */
+    $nombres = array();
+    $precios = array();
+    $categorias = array();
+    $subcategorias = array();
+
+    while($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)){
+        $nombres[] = $fila['nombre'];
+        $precios[] = $fila['precio_ven'];
+        $categorias[] = $fila['categoria'];
+        $subcategorias[] = $fila['subcategoria'];
+    }
+
+    /* Guarda los valores de los arreglos en un archivo txt y llamalo variables_seccion1 */
+
+    $archivo = fopen("variables_seccion1.txt", "w");
+    fwrite($archivo, "Nombres: ");
+    fwrite($archivo, print_r($nombres, true));
+    fwrite($archivo, "Precios: ");
+    fwrite($archivo, print_r($precios, true));
+    fwrite($archivo, "Categorias: ");
+    fwrite($archivo, print_r($categorias, true));
+    fwrite($archivo, "Subcategorias: ");
+    fwrite($archivo, print_r($subcategorias, true));
+    fclose($archivo);
+    
+    
+?>

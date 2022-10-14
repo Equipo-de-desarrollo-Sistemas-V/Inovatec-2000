@@ -1,0 +1,28 @@
+Nombres: Array
+(
+    [0] => Huawei Matebook X 2022 1Tb
+    [1] => Huawei Matebook X Pro 500Gb
+    [2] => Huawei Matebook D16 2022 16 RAM + 512Gb
+    [3] => Asus ROG Zephyrus Duo 16 RAM + 512Gb 16"
+)
+Precios: Array
+(
+    [0] => 31799.4900
+    [1] => 21999.4900
+    [2] => 25989.0000
+    [3] => 114699.0000
+)
+Categorias: Array
+(
+    [0] => Computadoras
+    [1] => Computadoras
+    [2] => Computadoras
+    [3] => Computadoras
+)
+Subcategorias: Array
+(
+    [0] => Laptop
+    [1] => Laptop
+    [2] => Laptop
+    [3] => Laptop
+)
