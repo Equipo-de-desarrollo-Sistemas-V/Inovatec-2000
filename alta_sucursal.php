@@ -89,27 +89,30 @@
             <article>
                 <h1 align="center">Nueva sucursal</h1>
                 <br>
-                <form action="" class="formularios" method="post" enctype="multipart/form-data">
+                <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
                     <div class="formulario_grupo-input">
                         <label for="idSucursal" class="formulario_label">Id</label> 
                         <div class="formulario_grupo-input">
-                            <input type="text" name="idSucursal" id="idSuc" class="formulario_input">
+                            <input type="text" name="idSucursal" id="idSucursal" class="formulario_input" required maxlength="8" minlength="6">
                         </div>
                     </div>
 
-                    <div class="formulario_grupo-input">
-                        <label for="ciudadSucursal" class="formulario_label">Ciudad</label> 
-                        <div class="formulario_grupo-input">
-                            <input type="text" name="ciudadSuc" id="ciudadSuc" class="formulario_input">
-                        </div>
-                    </div>
-
-                    <div class="formulario_grupo-input">
+					<div class="formulario_grupo-input">
                         <label for="estado" class="formulario_label">Estado</label>
                         <div class="formulario_grupo-input">
-                            <select type="text" name="estado" id="estado" class="formulario_input"></select>
+                            <select type="text" name="estado" id="estado" class="formulario_input" required></select>
                             </div>
-                    </div><br>
+                    </div>
+
+                    <div class="formulario_grupo-input">
+                        <label for="ciudadSucursal" class="formulario_label">Municipio</label> 
+                        <div class="formulario_grupo-input">
+                            <select type="text" name="ciudadSuc" id="ciudadSuc" class="formulario_input" required> </select>
+                        </div>
+                    </div>
+
+                    
+					<br>
 
 					<!--select para la parte de actualizar
 					<div class="formulario_grupo-input">
@@ -121,12 +124,13 @@
 					-->
 
                     <div class="btn_enviar">
-                        <button type="submit" class="btn_submit" value="Guardar">Guardar</button>
+                        <button type="submit" class="btn_submit" name="guardar" id="guardar"value="Guardar">Guardar</button>
                     </div>
                     
                 </form>		
             </article>
         </div>
     </main>  
+	<script src="js/validAltaSucursales.js"></script>
 </body>
 </html>
