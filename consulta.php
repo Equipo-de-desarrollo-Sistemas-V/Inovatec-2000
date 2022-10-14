@@ -6,11 +6,8 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 
 $query0="SELECT COUNT(*) AS total_registro FROM Productos";
 $res0= sqlsrv_query($con, $query0);
-if( $res0 === false) {
-	die( print_r( sqlsrv_errors(), true) );
-}
-	while( $row0 = sqlsrv_fetch_array($res0) ) {
-	$total_registro=$row0["total_registro"];
+while( $row0 = sqlsrv_fetch_array($res0) ) {
+$total_registro=$row0["total_registro"];
 }
 	$por_pagina=10;
 if (empty($_GET['pagina'])){
@@ -24,14 +21,13 @@ $total_paginas=ceil($total_registro/$por_pagina);
 
 
 $salida="";
-// $query="SELECT id_producto, nombre, descripcion, Apartado, Subapartado, precio_com, precio_ven, id_proveedor FROM Productos ORDER BY id_producto";
 
 $query="SELECT * FROM Productos ORDER BY id_producto OFFSET $desde ROWS FETCH NEXT $por_pagina ROWS ONLY";
 
 
 if (isset($_POST['consulta'])){
     $q=($_POST['consulta']);
-    $query="SELECT id_producto, nombre, descripcion, Apartado, Subapartado, precio_com, precio_ven, id_proveedor FROM Productos WHERE nombre LIKE '%".$q."%' OR descripcion LIKE '%".$q."%' OR Apartado LIKE '%".$q."%'";
+    $query="SELECT * FROM Productos WHERE  id_producto LIKE '%".$q."%' OR nombre LIKE '%".$q."%' OR descripcion LIKE '%".$q."%' OR precio_com LIKE '%".$q."%' OR precio_ven LIKE '%".$q."%'";
 }
 
 
@@ -78,41 +74,31 @@ if($resultado==true){
 							}
 							$edi='Editar';
 							$eli='Eliminar';
-        /*$id=$row["id_producto"];
-        $nombre=$row["nombre"];
-        $descri=$row["descripcion"];
-        $cate=$row["Apartado"];
-        $subcate=$row["Subapartado"];
-        $pre_com=$row["precio_com"];
-        $pre_ven=$row["precio_ven"];
-        $prove=$row["id_proveedor"];
-        $edi='Editar';
-        $eli='Eliminar';*/
-        $salida.=
-        "<tr>
-            <th>$id</th> 
-            <th>$nombre</th> 
-            <th>$descri</th> 
-            <th>$categoria</th> 
-            <th>$subcate</th> 
-            <th>$pre_com</th> 
-            <th>$pre_ven</th> 
-            <th>$proveedor</th>
-            <th></th>
-            <th></th>
-		</tr>";
+        $salida.='<tr>';
+        $salida.='<td>'.$id.'</td>';
+        $salida.='<td>'.$nombre.'</td>'; 
+        $salida.='<td>'.$descri.'</td>'; 
+        $salida.='<td>'.$categoria.'</td>'; 
+        $salida.='<td>'.$subcate.'</td>'; 
+        $salida.='<td>'.$pre_com.'</td>'; 
+        $salida.='<td>'.$pre_ven.'</td>'; 
+        $salida.='<td>'.$proveedor.'</td>';
+        $salida.='<td>'.'</td>';
+        $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
+        $salida.='<td>'.'<a href="#">'.$eli. '</a>'.'</td>';
+		$salida.='</tr>';
     }
 
 	$salida.="</tbody></table>";
+    
 
 }else{
-    $salida="No hay resultados";
+    $edi='No hay resultados';
+    $salida.='<tr>';
+    $salida.='<td>'.$edi.'</td>';
+    $salida.='</tr>';
+    
 }
-
 echo $salida;
-
-
-
-
 ?>
 
