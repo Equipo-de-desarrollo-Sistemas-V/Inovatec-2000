@@ -116,6 +116,7 @@
 								<th>Precio venta</th> 
 								<th>Proveedor</th>
 								<th>Imagen</th>
+								<th>Estado</th>
 								<th>Acciones</th>
 								<th></th>
 							</tr>

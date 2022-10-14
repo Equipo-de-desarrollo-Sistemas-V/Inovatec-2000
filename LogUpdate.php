@@ -21,7 +21,7 @@ class ActPro{
             die( print_r( sqlsrv_errors(), true) );
         }
         include("lista_productos.php");
-        echo '<script>alert("Producto registrado con éxito")</script>';
+        echo '<script>alert("Producto actualizado con éxito")</script>';
     }
 }
     $obj= new ActPro;
