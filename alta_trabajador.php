@@ -118,7 +118,7 @@
 						<label for="apMaterno" class="formulario_label">Apellido materno</label>
 
 						<div class="formulario_grupo-input">
-							<input type="text" name="apMaterno" id="apMaterno" class="formulario_input" required maxlength="20"></input>
+							<input type="text" name="apMaterno" id="apMaterno" class="formulario_input" maxlength="20"></input>
  						</div>
 					</div>
 
