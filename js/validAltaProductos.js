@@ -33,7 +33,7 @@ formulario.idProducto.addEventListener('keyup', (e) => {
         idProducto.removeAttribute("style");
         bId = true
     }
-    //validar();
+    validar();
 })
 
 /* Input nombre del Producto */
@@ -53,7 +53,7 @@ formulario.nombreProd.addEventListener('keyup', (e) => {
         nombreProd.removeAttribute("style");
         bNom = true
     }
-    //validar();
+    validar();
 })
 
 /* Input precio de compra */
@@ -81,7 +81,7 @@ formulario.precioProd.addEventListener('keyup', (e) => {
             bPrC = true
         }
     }
-    //validar();
+    validar();
 })
 
 /* Input precio de venta */
@@ -110,7 +110,7 @@ formulario.precioVenta.addEventListener('keyup', (e) => {
         bPrV = true
         }
     }
-    //validar();
+    validar();
 })
 
 /* Input descripcion del producto */
@@ -128,7 +128,7 @@ formulario.descripcion.addEventListener('keyup', (e) => {
         descripcion.removeAttribute("style");
         bDes = true
     }
-    //validar();
+    validar();
 })
 
 function validar(){

@@ -4,10 +4,30 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Menu Administrativo</title>
+	<title>Nuevo Producto</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<link rel="stylesheet" href="administrativo.css">
+        <script languaje="javascript">
+		$(document).ready(function() {
+			$("#categoria").change(function() {
+				$("#categoria option:selected").each(function() {
+					Id = $(this).val();
+					$.post("getSubApartados.php", {
+						Id: Id
+					}, function(data) {
+						$("#subcategoria").html(data);
+					});
+				});
+			})
+		});
+	</script>
 </head>
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
@@ -27,7 +47,7 @@
 				<button class="btn-cerrar-session" type="button">Cerrar session</button>
 			</div>
 		</div>
-
+                
 		<!-- Menu Desplegable -->
 		<div class="container_menu">
 			<div class="menu">
@@ -39,44 +59,43 @@
 					<ul>
 						<li><a href="#">Productos</a>
 							<ul>
-								<li><a id="menuProducto1" href="#" onclick="show('contenidoAgregaProd')">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="#" onclick="show('contenidoListaProd')">Lista de productos</a></li>
+								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="#" onclick="show('contenidoAgregaSuc')">Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="#" onclick="show('contenidoListaSuc')">Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
 							</ul>
-						
 						</li>
 
 						<li><a href="#">Trabajadores</a>
 							<ul>
-								<li><a id="menuTrabajador1" href="#" onclick="show('contenidoAgregaTrab')">Nuevo trabajador</a></li>
-								<li><a id="menuTrabajador2" href="#" onclick="show('contenidoListaTrab')">Lista de trabajadores</a></li>
+								<li><a id="menuTrabajador1" href="alta_trabajador.php">Nuevo trabajador</a></li>
+								<li><a id="menuTrabajador2" href="lista_trabajador.php">Lista de trabajadores</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Proveedores</a>
 							<ul>
-								<li><a id="menuProveedor1" href="#"onclick="show('contenidoAgregaProv')">Nuevo proveedor</a></li>
-								<li><a id="menuProveedor2" href="#" onclick="show('contenidoListaProv')">Lista de proveedores</a></li>
+								<li><a id="menuProveedor1" href="alta_proveedor.php">Nuevo proveedor</a></li>
+								<li><a id="menuProveedor2" href="lista_proveedor.php">Lista de proveedores</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Inventario</a>
 							<ul>
-								<li><a id="menuInventario1" href="#" onclick="show('contenidoInventario')">Productos</a></li>
-								<li><a id="menuInventario2" href="#" onclick="show('contenidoListaInventario')">Consulta inventario</a></li>
+								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a id="menuVentas1" href="#" onclick="show('contenidoAgregaVenta')">Nueva venta</a></li>
-								<li><a id="menuVentas2" href="#" onclick="show('contenidoListaVenta')">Ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
+								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -116,14 +135,7 @@
                                     //echo $id.$nombre;
                                     }
                                 ?>                                
-                                <script>
-                                function test(){
-                                    $.ajax({url:"LogUpdate.php", success:function(update){
-                                    $("div").text(update);}
-                                })
-                                } 
-                                </script>
-                                <form action="" class="formularios" method="POST" enctype="multipart/form-data" id="formulario">
+                                <form action="LogUpdate.php" class="formularios" method="POST" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
@@ -173,11 +185,11 @@
 
 						<div class="formulario_grupo-input">
 							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" required>
-                                                        <?php                                                            
+                                                        <?php
                                                             $serverName='localhost';
                                                             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
                                                             $getSubApartado ="select * from SubApartados where id_ap=$cate";
+                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
                                                             $getSubApartado2 = sqlsrv_query($conn_sis, $getSubApartado);
                                                             if( $getSubApartado2 === false) {
                                                                 die( print_r( sqlsrv_errors(), true) );
@@ -258,7 +270,15 @@
                                                         </select>
 						</div>
 					</div>
-
+                                    <div class="formulario_grupo-input">
+						<label for="Estado_ah" class="formulario_label">Estado</label> 
+						<div class="formulario_grupo-input"> 
+                                                    <select type="text" name="estado_ah" id="estado_ah" class="formulario_input">
+                                                        <option value="1">Activo</option>
+                                                        <option value="0">No surtiendo</option>
+                                                    </select>
+                                                </div>
+                                    </div>
 					<div class="photo">
 						<label for="foto" class="formulario_label">Imagen</label>
 							<div class="prevPhoto">
@@ -272,12 +292,12 @@
 					</div>
 
 					<div class="btn_enviar">
-						<button onclick="test()" type="submit" name="actualizar" class="btn_submit" value="Actualizar">Actualizar</button>
+						<button onclick="test()" type="submit" name="guardar" id="guardar" class="btn_submit" value="Actualizar">Actualizar</button>
 					</div>
                                         
 				</form>		
 			</article>
-			<script src="js/validProductos.js"></script>
+			<script src="js/validEditarProductos.js"></script>
 		</div>
 		
 </body>

@@ -217,12 +217,12 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					</div>
 
 					<div class="btn_enviar">
-						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
+						<input type="submit" class="btn_submit" value="Guardar" id="guardar" name="guardar">
 					</div>
 
 				</form>
 			</article>
-			<script src="js/validProductos.js"></script>
+			<script src="js/validAltaProductos.js"></script>
 		</div>
 	</main>
 
