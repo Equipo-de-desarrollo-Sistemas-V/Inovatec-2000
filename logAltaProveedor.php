@@ -14,7 +14,7 @@
 
                 //datos del formulario
                 $id = $_POST["idProveedor"];
-                $empresa = $_POST["empresa"];
+                $empresa = $_POST["empresaProv"];
                 $rfc = $_POST["rfcProv"];
                 $correo = $_POST["correoProv"];
                
