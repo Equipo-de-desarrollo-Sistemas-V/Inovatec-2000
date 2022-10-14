@@ -97,28 +97,28 @@
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProveedor" id="idProv" class="formulario_input">
+							<input type="text" name="idProveedor" id="idProveedor" class="formulario_input" required maxlength="8" minlength="6">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="empresa" class="formulario_label">Empresa</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="empresa" id="empresaProv" class="formulario_input">
+							<input type="text" name="empresaProv" id="empresaProv" class="formulario_input" required maxlength="20">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="rfcProv" class="formulario_label">RFC</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="rfcProv" id="rfcProv" class="formulario_input"></input>
+							<input type="text" name="rfcProv" id="rfcProv" class="formulario_input" required maxlength="12" minlength="12"></input >
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="correoProv" class="formulario_label">Correo electrónico</label>
 						<div class="formulario_grupo-input">
-							<input type="email" name="correoProv" id="correoProv" class="formulario_input"></input>
+							<input type="email" name="correoProv" id="correoProv" class="formulario_input" required maxlength="255"></input>
 						</div>
 					</div><br>
 					
@@ -132,7 +132,7 @@
 					-->
 
 					<div class="btn_enviar">
-						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
+						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>
 
 				</form>
@@ -141,6 +141,7 @@
 	</main>
 
 	<script src="js/alertasProveedor.js"></script>
+	<script src="js/validAltaProveedor.js"></script>
 
 </body>
 
