@@ -172,10 +172,9 @@ class PerfilUsuario{
                             if ($b1===true and $b2===true){
                                 $query= "UPDATE Persona set nombres = '".$nombreCliente."',
                                 ap_paterno = '".$apellidoPaterno."', 
-                                ap_materno = '".$apellidoMaterno."'
+                                ap_materno = '".$apellidoMaterno."',
+                                telefono = '".$telefonoPersona."'
                                 where Usuario='".$ingreso."'" ;
-                                $resultado=sqlsrv_query( $this->con, $query);
-                                $query= "UPDATE Direccion set telefono = '".$telefonoPersona."'where Usuario='".$ingreso."'" ;
                                 $resultado=sqlsrv_query( $this->con, $query);
                                 $ban1=true;
                             } 
@@ -239,7 +238,7 @@ class PerfilUsuario{
                                 echo json_encode('codigo');
                             }else{
                                             $query = "SELECT  id FROM estados_municipios
-                                            where estados_id = '$estadoPersona'
+                                            where estados_id= '$estadoPersona'
                                             and municipios_id = '$municipioPersona'";
                                             $resultado = sqlsrv_query($this->con, $query);
 
@@ -412,7 +411,7 @@ class PerfilUsuario{
                     // $in->alertas("validacion", 'Datos inválidos', 'El mes de expiración debe ser númerico (1-12), máximo 2 dígitos');
                     echo json_encode('mes');
                 }else{
-                    if((strlen($añoTar)>3) or (is_numeric($añoTar)===false) or ($añoTar<22)){
+                    if((strlen($añoTar)>3) or (is_numeric($añoTar)===false) or ($añoTar<22) or ($añoTar>39)){
                         // $in->alertas("validacion", 'Datos inválidos', 'El año de expiración debe ser númerico de 2 dígitos');
                         echo json_encode('anio');
                     }else{

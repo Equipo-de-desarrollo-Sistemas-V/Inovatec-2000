@@ -19,6 +19,7 @@ $nombre=$row['nombres'];
 $aP=$row['ap_paterno'];
 $aM=$row['ap_materno'];
 $email=$row['email'];
+$telefono=$row['telefono'];
 //echo $nombre;
 //$nombre=strtr($auxNombre, " ", "_");
 
@@ -28,7 +29,6 @@ $row = sqlsrv_fetch_array($resultado);
 $colonia=$row['colonia'];
 $calle=$row['calle'];
 $no_calle=$row['no_calle'];
-$telefono=$row['telefono'];
 $cp=$row['codigo_postal'];
 $auxRela=$row['Ciudad_Estado'];
 
@@ -189,7 +189,7 @@ else{
 
                     <div class="input-group">
                     <select name="estado" id="estado" name="estado" class="estado">
-                    <option value="<?php echo $auxEs;?>"><?php echo $estado;?></option>
+                    <option value="<?php echo $auxEst;?>"><?php echo $estado;?></option>
                                 <?php
                                 $serverName='localhost';
                                 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
