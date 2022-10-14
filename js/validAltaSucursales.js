@@ -1,7 +1,7 @@
 let bId = false
 
 const expresiones = {
-    id:/^[a-zA-ZÁ-ý0-9]{6,8}$/
+    id:/^[a-zA-ZÁ-ý0-9-]{6,8}$/
 }
 
 /* Input id del Producto */
@@ -12,7 +12,7 @@ formulario.idSucursal.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?]/g, '')
      // Eliminar el ultimo espaciado
 	.trim();
 
