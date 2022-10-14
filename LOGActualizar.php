@@ -292,12 +292,12 @@
 					</div>
 
 					<div class="btn_enviar">
-						<button onclick="test()" type="submit" name="actualizar" class="btn_submit" value="Actualizar">Actualizar</button>
+						<button onclick="test()" type="submit" name="guardar" id="guardar" class="btn_submit" value="Actualizar">Actualizar</button>
 					</div>
                                         
 				</form>		
 			</article>
-			<script src="js/validProductos.js"></script>
+			<script src="js/validEditarProductos.js"></script>
 		</div>
 		
 </body>

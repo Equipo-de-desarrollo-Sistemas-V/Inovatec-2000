@@ -105,6 +105,7 @@
 							<tr>
 								<th>Id</th> 
 								<th>Ciudad</th> 
+								<th>Estado</th>
 								<th>Estado</th> 
 								<th>Acciones</th>
 								<th></th>

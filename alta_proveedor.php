@@ -121,6 +121,15 @@
 							<input type="email" name="correoProv" id="correoProv" class="formulario_input"></input>
 						</div>
 					</div><br>
+					
+					<!--select para la parte de actualizar
+					<div class="formulario_grupo-input">
+						<label for="estado" class="formulario_label">Estado</label>
+						<div class="formulario_grupo-input">
+							<select type="text" name="estado" id="estado" class="formulario_input"></select>
+						</div>
+					</div>
+					-->
 
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
