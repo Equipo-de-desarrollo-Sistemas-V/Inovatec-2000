@@ -1,5 +1,21 @@
+<?php
+$servername = "localhost";
+$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$con = sqlsrv_connect($servername, $info);
+
+$query = "SELECT Id, Estado FROM estados";
+$resultados = sqlsrv_query($con, $query);
+
+$query_municipios = "SELECT Id_municipios, municipio FROM estados, estados_municipios, municipios
+WHERE estados.Id = 32 AND estados.Id = estados_municipios.estados_id AND 
+estados_municipios.municipios_id = municipios.Id_Municipios";
+$resultados_proveedores = sqlsrv_query($con, $query_municipios);
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +24,29 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+	<!-- llama al archivo getSubApartados para obtener solo los suabpartados correspondientes a la categoria seleccionada-->
+	<script languaje="javascript">
+		$(document).ready(function() {
+			$("#estado").change(function() {
+				$("#estado option:selected").each(function() {
+					Id = $(this).val();
+					$.post("getMunicipios.php", {
+						Id: Id
+					}, function(data) {
+						$("#ciudadSuc").html(data);
+					});
+				});
+			})
+		});
+	</script>
 </head>
+
 <body>
 
 	<!--Estructura Header Superior-->
@@ -44,8 +82,8 @@
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php">Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php">Lista de sucursales</a></li>
 							</ul>
 						</li>
 
@@ -72,7 +110,7 @@
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php">Registro de ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
 							</ul>
 						</li>
@@ -82,36 +120,48 @@
 		</div>
 	</header>
 
-    <!--Main General-->
+	<!--Main General-->
 	<main>
-        <!--Contenido de la parte SUCURSAL-->
-        <div class="contenidoAgregaSuc" id="contenidoAgregaSuc">
-            <article>
-                <h1 align="center">Nueva sucursal</h1>
-                <br>
-                <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
-                    <div class="formulario_grupo-input">
-                        <label for="idSucursal" class="formulario_label">Id</label> 
-                        <div class="formulario_grupo-input">
-                            <input type="text" name="idSucursal" id="idSucursal" class="formulario_input" required maxlength="8" minlength="6">
-                        </div>
-                    </div>
+		<!--Contenido de la parte SUCURSAL-->
+		<div class="contenidoAgregaSuc" id="contenidoAgregaSuc">
+			<article>
+				<h1 align="center">Nueva sucursal</h1>
+				<br>
+				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+					<div class="formulario_grupo-input">
+						<label for="idSucursal" class="formulario_label">Id</label>
+						<div class="formulario_grupo-input">
+							<input type="text" name="idSucursal" id="idSucursal" class="formulario_input" required maxlength="8" minlength="6">
+						</div>
+					</div>
 
 					<div class="formulario_grupo-input">
-                        <label for="estado" class="formulario_label">Estado</label>
-                        <div class="formulario_grupo-input">
-                            <select type="text" name="estado" id="estado" class="formulario_input" required></select>
-                            </div>
-                    </div>
+						<label for="estado" class="formulario_label">Estado</label>
+						<div class="formulario_grupo-input">
+							<select type="text" name="estado" id="estado" class="formulario_input" required>
+								<?php
 
-                    <div class="formulario_grupo-input">
-                        <label for="ciudadSucursal" class="formulario_label">Municipio</label> 
-                        <div class="formulario_grupo-input">
-                            <select type="text" name="ciudadSuc" id="ciudadSuc" class="formulario_input" required> </select>
-                        </div>
-                    </div>
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados)) { ?>
+									<option value=" <?php echo $row['Id']; ?>"> <?php echo $row['Estado']; ?> </option>
 
-                    
+								<?php }
+								?>
+							</select>
+							</select>
+						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="ciudadSucursal" class="formulario_label">Municipio</label>
+						<div class="formulario_grupo-input">
+							<select type="text" name="ciudadSuc" id="ciudadSuc" class="formulario_input" required>
+
+							</select>
+						</div>
+					</div>
+
+
 					<br>
 
 					<!--select para la parte de actualizar
@@ -123,14 +173,28 @@
 					</div>
 					-->
 
-                    <div class="btn_enviar">
-                        <button type="submit" class="btn_submit" name="guardar" id="guardar"value="Guardar">Guardar</button>
-                    </div>
-                    
-                </form>		
-            </article>
-        </div>
-    </main>  
+					<div class="btn_enviar">
+						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
+					</div>
+
+				</form>
+			</article>
+		</div>
+	</main>
 	<script src="js/validAltaSucursales.js"></script>
 </body>
+
+<script src="js/alertasSucursal.js"></script>
+
 </html>
+
+<!-- Sript para la busqueda inteligente (me lo fusilé de con Nayeli) -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#estado').select2();
+	});
+
+	$(document).ready(function() {
+		$('#ciudadSuc').select2();
+	});
+</script>
