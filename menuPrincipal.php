@@ -136,49 +136,49 @@
 
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion1-producto1">Laptop</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion1-precio1">$31,799.49</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-1/computadora1.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre1"></span></h3>
+                    <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion1-producto2">Laptop</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion1-precio2">$21,999.50</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion1-producto2"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion1-precio2"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-1/computadora2.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre2"></span></h3>
+                    <h3 class="nombreProducto"><span id="seccion1-nombre2"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion1-producto3">Laptop</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion1-precio3">$25,989.00</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion1-producto3"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion1-precio3"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-1/computadora3.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre3"></span></h3>
+                    <h3 class="nombreProducto"><span id="seccion1-nombre3"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion1-producto4">Laptop</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion1-precio4">$114,699.00</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion1-producto4"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion1-precio4"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-1/computadora4.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion1-nombre4"></span></h3>
+                    <h3 class="nombreProducto"><span id="seccion1-nombre4"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
             </div>
@@ -196,49 +196,49 @@
 
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion2-producto1">Procesador</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion2-precio1">$11,300.00</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion2-producto1"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion2-precio1"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-2/imagen1.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion2-nombre1">AMD Ryzen 9 3950X 16 núcleos 4.7GHz</span></h3>
+                    <h3 class="nombreProducto"><span id="seccion2-nombre1"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion2-producto2">Procesador</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion2-precio2">$9,226.50</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion2-producto2"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion2-precio2"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-2/imagen2.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion2-nombre2">Intel core i9 10900K 5.3GHz Core 1200</span></h3>
+                    <h3 class="nombreProducto"><span id="seccion2-nombre2"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion2-producto3">Procesador</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion2-precio3">$9,899.00</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion2-producto3"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion2-precio3"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-2/imagen3.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion2-nombre3">Intel Core i9 9900 8 núcleos 5GHz</span></h3>
+                    <h3 class="nombreProducto"><span id="seccion2-nombre3"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion2-producto4">Procesador</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion2-precio4">$19,139.00</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion2-producto4"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion2-precio4"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-2/imagen4.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion2-nombre4">AMD Ryzen Threaddripper 2950X 16 núcleos 4.4GHz</span></h3>
+                    <h3 class="nombreProducto"><span id="seccion2-nombre4"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
             </div>
@@ -256,59 +256,61 @@
 
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion3-producto1">Motherboard</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion3-precio1">$4,449.00</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion3-producto1"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion3-precio1"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-3/imagen1.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion3-nombre1">Asus Tarjeta Madre AMD B550 ROG Strix B550-A Gaming</span></h3>
+                    <h3 class="nombreProducto"><span id="seccion3-nombre1"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion3-producto2">Motherboard</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion3-precio2">$11,620.20</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion3-producto2"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion3-precio2"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-3/imagen2.png" alt="">
     
-                    <h3 class="nombreProducto"><span  class="seccion3-nombre2">Asus ROG Strix Z690-E Gaming WiFi Intel LGA 1700 ATX DDR5 Motherboard</span></h3>
+                    <h3 class="nombreProducto"><span  id="seccion3-nombre2"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion3-producto3">Motherboard</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion3-precio3">$6,594.38</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion3-producto3"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion3-precio3"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-3/imagen3.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion3-nombre3">ASUS ROG Strix Z490-G (Intel Z490, overclocking, 2 PCIe M.2)</span></h3>
+                    <h3 class="nombreProducto"><span id="seccion3-nombre3"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
     
                 <div class="cardProducto">
                     <div class="encabezado">
-                        <h3 class="tituloProducto"><span class="seccion3-producto4">Motherboard</span></h3>
-                        <h3 class="tituloPrecio"><span class="seccion3-precio4">$8,427.99</span></h3>
+                        <h3 class="tituloProducto"><span id="seccion3-producto4"></span></h3>
+                        <h3 class="tituloPrecio"><span id="seccion3-precio4"></span></h3>
                     </div>
                     
                     <img src="assets/seccion-3/imagen4.png" alt="">
     
-                    <h3 class="nombreProducto"><span class="seccion3-nombre4">Asus Motherboard ROG Strix X570-F Gaming, Socket AM4, 2ª/3ª Gen AMD Ryzen</span></h3>
+                    <h3 class="nombreProducto"><span id="seccion3-nombre4"></span></h3>
                     <a href="#" class="btn">Comprar</a>
             </div>
                         
         </article>
     </section>
+    <script src="js/prueba.js"></script>
 </body>
 </html>
 <?php
     include("conexiones.php");
 
+    /* Realiza una consulta a la base de datos */
     $resultado = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria FROM $tabla_productos, $tabla_apartados, $tabla_subapartados where Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap");
     
     /* Declara una lista y guarda los valores dentro de una lista independiente pora nombre, precio_ven y apartados.nombre */
@@ -324,18 +326,124 @@
         $subcategorias[] = $fila['subcategoria'];
     }
 
-    /* Guarda los valores de los arreglos en un archivo txt y llamalo variables_seccion1 */
+    /* Separa el contenido de nombres en conjuntos de 4 y con javascript pasalo a los span con la clase seccion1-producto*/
+    $nombres = array_chunk($nombres, 12);
+    $precios = array_chunk($precios, 12);
+    $categorias = array_chunk($categorias, 12);
+    $subcategorias = array_chunk($subcategorias, 12);
+    
+    $nombres = $nombres[0];
+    $precios = $precios[0];
+    $categorias = $categorias[0];
+    $subcategorias = $subcategorias[0];
 
-    $archivo = fopen("variables_seccion1.txt", "w");
-    fwrite($archivo, "Nombres: ");
-    fwrite($archivo, print_r($nombres, true));
-    fwrite($archivo, "Precios: ");
-    fwrite($archivo, print_r($precios, true));
-    fwrite($archivo, "Categorias: ");
-    fwrite($archivo, print_r($categorias, true));
-    fwrite($archivo, "Subcategorias: ");
-    fwrite($archivo, print_r($subcategorias, true));
-    fclose($archivo);
+    /* elimina los ultimos dos caracteres de los precios*/
+    for($i = 0; $i < count($nombres); $i++){
+        $precios[$i] = substr($precios[$i], 0, -2);
+    }
+
+    /* Crea un script de javascript para las primeras 4 tarjetas */
+    echo "<script>
+        /* Declaramos los nombres de los identificadores para las variables */
+        let subcategoria1 = document.getElementById('seccion1-producto1');
+        let subcategoria2 = document.getElementById('seccion1-producto2');
+        let subcategoria3 = document.getElementById('seccion1-producto3');
+        let subcategoria4 = document.getElementById('seccion1-producto4');
+        
+        let precio1 = document.getElementById('seccion1-precio1');
+        let precio2 = document.getElementById('seccion1-precio2');
+        let precio3 = document.getElementById('seccion1-precio3');
+        let precio4 = document.getElementById('seccion1-precio4');
+        
+        let nombre1 = document.getElementById('seccion1-nombre1');
+        let nombre2 = document.getElementById('seccion1-nombre2');
+        let nombre3 = document.getElementById('seccion1-nombre3');
+        let nombre4 = document.getElementById('seccion1-nombre4');
+        
+        /* Asignamos una prueba para mandar nombres */
+        subcategoria1.innerHTML = '$subcategorias[0]';
+        subcategoria2.innerHTML = '$subcategorias[1]';
+        subcategoria3.innerHTML = '$subcategorias[2]';
+        subcategoria4.innerHTML = '$subcategorias[3]';
+        
+        precio1.innerHTML = '$precios[0]';
+        precio2.innerHTML = '$precios[1]';
+        precio3.innerHTML = '$precios[2]';
+        precio4.innerHTML = '$precios[3]';
+        
+        nombre1.innerHTML = '$nombres[0]';
+        nombre2.innerHTML = '$nombres[1]';
+        nombre3.innerHTML = '$nombres[2]';
+        nombre4.innerHTML = '$nombres[3]';
+    </script>";   
     
-    
+    /* Crea un script de javascript para las siguientes 4 tarjetas */
+    echo "<script>
+        /* Declaramos los nombres de los identificadores para las variables */
+        let subcategoria5 = document.getElementById('seccion2-producto1');
+        let subcategoria6 = document.getElementById('seccion2-producto2');
+        let subcategoria7 = document.getElementById('seccion2-producto3');
+        let subcategoria8 = document.getElementById('seccion2-producto4');
+        
+        let precio5 = document.getElementById('seccion2-precio1');
+        let precio6 = document.getElementById('seccion2-precio2');
+        let precio7 = document.getElementById('seccion2-precio3');
+        let precio8 = document.getElementById('seccion2-precio4');
+        
+        let nombre5 = document.getElementById('seccion2-nombre1');
+        let nombre6 = document.getElementById('seccion2-nombre2');
+        let nombre7 = document.getElementById('seccion2-nombre3');
+        let nombre8 = document.getElementById('seccion2-nombre4');
+        
+        /* Asignamos una prueba para mandar nombres */
+        subcategoria5.innerHTML = '$subcategorias[4]';
+        subcategoria6.innerHTML = '$subcategorias[5]';
+        subcategoria7.innerHTML = '$subcategorias[6]';
+        subcategoria8.innerHTML = '$subcategorias[7]';
+        
+        precio5.innerHTML = '$precios[4]';
+        precio6.innerHTML = '$precios[5]';
+        precio7.innerHTML = '$precios[6]';
+        precio8.innerHTML = '$precios[7]';
+        
+        nombre5.innerHTML = '$nombres[4]';
+        nombre6.innerHTML = '$nombres[5]';
+        nombre7.innerHTML = '$nombres[6]';
+        nombre8.innerHTML = '$nombres[7]';
+    </script>";
+
+    /* Crea un script de javascript para las ultimas 4 tarjetas */
+    echo "<script>
+        /* Declaramos los nombres de los identificadores para las variables */
+        let subcategoria9 = document.getElementById('seccion3-producto1');
+        let subcategoria10 = document.getElementById('seccion3-producto2');
+        let subcategoria11 = document.getElementById('seccion3-producto3');
+        let subcategoria12 = document.getElementById('seccion3-producto4');
+        
+        let precio9 = document.getElementById('seccion3-precio1');
+        let precio10 = document.getElementById('seccion3-precio2');
+        let precio11 = document.getElementById('seccion3-precio3');
+        let precio12 = document.getElementById('seccion3-precio4');
+        
+        let nombre9 = document.getElementById('seccion3-nombre1');
+        let nombre10 = document.getElementById('seccion3-nombre2');
+        let nombre11 = document.getElementById('seccion3-nombre3');
+        let nombre12 = document.getElementById('seccion3-nombre4');
+        
+        /* Asignamos una prueba para mandar nombres */
+        subcategoria9.innerHTML = '$subcategorias[8]';
+        subcategoria10.innerHTML = '$subcategorias[9]';
+        subcategoria11.innerHTML = '$subcategorias[10]';
+        subcategoria12.innerHTML = '$subcategorias[11]';
+        
+        precio9.innerHTML = '$precios[8]';
+        precio10.innerHTML = '$precios[9]';
+        precio11.innerHTML = '$precios[10]';
+        precio12.innerHTML = '$precios[11]';
+        
+        nombre9.innerHTML = '$nombres[8]';
+        nombre10.innerHTML = '$nombres[9]';
+        nombre11.innerHTML = '$nombres[10]';
+        nombre12.innerHTML = '$nombres[11]';
+    </script>";
 ?>
