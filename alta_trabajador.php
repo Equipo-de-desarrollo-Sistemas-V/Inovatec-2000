@@ -95,14 +95,14 @@
 					<div class="formulario_grupo-input">
 						<label for="idTrabajador" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="idTrabajador" id="idTrabajador" class="formulario_input">
+							<input type="text" name="idTrabajador" id="idTrabajador" class="formulario_input" required maxlength="8" minlength="6">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="nombreTabajador" class="formulario_label">Nombre</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="nombreTabajador" id="nombreTabajador" class="formulario_input">
+							<input type="text" name="nombreTabajador" id="nombreTabajador" class="formulario_input" required maxlength="40">
 						</div>
 					</div>
 
@@ -110,7 +110,7 @@
 						<label for="apPaterno" class="formulario_label">Apellido paterno</label>
 
 						<div class="formulario_grupo-input">
-							<input type="text" name="apPaterno" id="apPaterno" class="formulario_input"></input>
+							<input type="text" name="apPaterno" id="apPaterno" class="formulario_input" required maxlength="20"></input>
  						</div>
 					</div>
 
@@ -118,35 +118,35 @@
 						<label for="apMaterno" class="formulario_label">Apellido materno</label>
 
 						<div class="formulario_grupo-input">
-							<input type="text" name="apMaterno" id="apMaterno" class="formulario_input"></input>
+							<input type="text" name="apMaterno" id="apMaterno" class="formulario_input" maxlength="20"></input>
  						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="rfc" class="formulario_label">RFC</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="rfc" id="rfc" class="formulario_input">
+							<input type="text" name="rfc" id="rfc" class="formulario_input" required maxlength="13" minlength="13">
  						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="puesto" class="formulario_label">Puesto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="puesto" id="puesto" class="formulario_input"></select>
+							<select type="text" name="puesto" id="puesto" class="formulario_input" required></select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="usuario" class="formulario_label">Usuario</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="usuario"id="usuario" class="formulario_input"></input>
+							<input type="text" name="usuario"id="usuario" class="formulario_input" required></input>
  						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="contraseña" class="formulario_label">Contraseña</label> 
 						<div class="formulario_grupo-input">
-							<input type="password" name="contraseña" id="contraseña" class="formulario_input"></input>
+							<input type="password" name="contraseña" id="contraseña" class="formulario_input" required maxlength="100"></input>
 						</div>
 					</div>
 
@@ -179,7 +179,7 @@
 					</div>
 
 					<div class="btn_enviar">
-						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
+						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>
 
 				</form>		
@@ -187,6 +187,7 @@
 			
 		</div>
     </main>
+	<script src="js/validAltaTrabajador.js"></script>
 
 </body>
 </html>
