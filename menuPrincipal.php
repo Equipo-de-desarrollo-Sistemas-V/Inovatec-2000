@@ -351,11 +351,6 @@
         $precios_computadoras_categoria[$i] = substr($precios_computadoras_categoria[$i], 0, -2);
     }
 
-    /* Imprime los resultados */
-    for($i = 0; $i < 4; $i++){
-        echo $nombres_computadoras_categoria[$i] . " " . $precios_computadoras_categoria[$i] . " " . $subcategorias_computadoras_categoria[$i] . "<br>";
-    }
-
     echo "<script>
         /* Declaramos los nombres de los identificadores para las variables */
         let subcategoria1 = document.getElementById('seccion1-producto1');
@@ -434,11 +429,6 @@
     /* Elimina los ultimos dos caracteres de los precios */
     for($i = 0; $i < 4; $i++){
         $precios_procesadores_categoria[$i] = substr($precios_procesadores_categoria[$i], 0, -2);
-    }
-
-    /* Imprime los resultados */
-    for($i = 0; $i < 4; $i++){
-        echo $nombres_procesadores_categoria[$i] . " " . $precios_procesadores_categoria[$i] . " " . $subcategorias_procesadores_categoria[$i] . "<br>";
     }
 
     echo "<script>
@@ -520,11 +510,6 @@
     /* Elimina los ultimos dos caracteres de los precios */
     for($i = 0; $i < 4; $i++){
         $precios_placa_madre_categoria[$i] = substr($precios_placa_madre_categoria[$i], 0, -2);
-    }
-
-    /* Imprime los resultados */
-    for($i = 0; $i < 4; $i++){
-        echo $nombres_placa_madre_categoria[$i] . " " . $precios_placa_madre_categoria[$i] . " " . $subcategorias_placa_madre_categoria[$i] . "<br>";
     }
 
     echo "<script>
