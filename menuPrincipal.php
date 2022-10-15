@@ -128,7 +128,7 @@
         <article class="containerProductos" >
 
             <div class="containerinfo">
-                <h2 class="subtitulo">Computadoras</span></h2>
+                <h2 class="subtitulo">Computación</span></h2>
                 <a href="#" class="link">Ver más</a>
             </div>
 
@@ -307,42 +307,55 @@
     <script src="js/prueba.js"></script>
 </body>
 </html>
-<?php
-    include("conexiones.php");
 
-    /* Realiza una consulta a la base de datos */
-    $resultado = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria FROM $tabla_productos, $tabla_apartados, $tabla_subapartados where Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap");
-    
-    /* Declara una lista y guarda los valores dentro de una lista independiente pora nombre, precio_ven y apartados.nombre */
-    $nombres = array();
-    $precios = array();
-    $categorias = array();
-    $subcategorias = array();
+<?php 
+    include 'conexiones.php';
+    /* Creamos la consulta para obtener las computadoras */
+    $resultado_computadoras = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria FROM $tabla_productos, $tabla_apartados, $tabla_subapartados WHERE Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap and Apartados.nombre = 'Computadoras'");
 
-    while($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)){
-        $nombres[] = $fila['nombre'];
-        $precios[] = $fila['precio_ven'];
-        $categorias[] = $fila['categoria'];
-        $subcategorias[] = $fila['subcategoria'];
+    /* Declara una lista y guarda los valores de resultado_computadoras para elegir 4 al azar*/
+    $nombres_computadoras = array();
+    $precios_computadoras = array();
+    $categorias_computadoras = array();
+    $subcategorias_computadoras = array();
+
+    while($row = sqlsrv_fetch_array($resultado_computadoras)){
+        array_push($nombres_computadoras, $row['nombre']);
+        array_push($precios_computadoras, $row['precio_ven']);
+        array_push($categorias_computadoras, $row['categoria']);
+        array_push($subcategorias_computadoras, $row['subcategoria']);
+    }
+    /* Obten la longitud del arreglo nombres_computadoras */
+    $longitud = count($nombres_computadoras);
+    /* Genera 4 numeros aleatorios que no se repitan entre 0 y la longitud del arreglo nombres_computadoras */
+    $numeros_aleatorios = array();
+    while(count($numeros_aleatorios) < 4){
+        $numero = rand(0, $longitud - 1);
+        if(!in_array($numero, $numeros_aleatorios)){
+            array_push($numeros_aleatorios, $numero);
+        }
+    }
+    /* Almacena los resultados por categoria en diferentes arrglos que solo contengan su categoria*/
+    $nombres_computadoras_categoria = array();
+    $precios_computadoras_categoria = array();
+    $subcategorias_computadoras_categoria = array();
+
+    for($i = 0; $i < 4; $i++){
+        array_push($nombres_computadoras_categoria, $nombres_computadoras[$numeros_aleatorios[$i]]);
+        array_push($precios_computadoras_categoria, $precios_computadoras[$numeros_aleatorios[$i]]);
+        array_push($subcategorias_computadoras_categoria, $subcategorias_computadoras[$numeros_aleatorios[$i]]);
     }
 
-    /* Separa el contenido de nombres en conjuntos de 4 y con javascript pasalo a los span con la clase seccion1-producto*/
-    $nombres = array_chunk($nombres, 12);
-    $precios = array_chunk($precios, 12);
-    $categorias = array_chunk($categorias, 12);
-    $subcategorias = array_chunk($subcategorias, 12);
-    
-    $nombres = $nombres[0];
-    $precios = $precios[0];
-    $categorias = $categorias[0];
-    $subcategorias = $subcategorias[0];
-
-    /* elimina los ultimos dos caracteres de los precios*/
-    for($i = 0; $i < count($nombres); $i++){
-        $precios[$i] = substr($precios[$i], 0, -2);
+    /* Elimina los ultimos dos caracteres de los precios */
+    for($i = 0; $i < 4; $i++){
+        $precios_computadoras_categoria[$i] = substr($precios_computadoras_categoria[$i], 0, -2);
     }
 
-    /* Crea un script de javascript para las primeras 4 tarjetas */
+    /* Imprime los resultados */
+    for($i = 0; $i < 4; $i++){
+        echo $nombres_computadoras_categoria[$i] . " " . $precios_computadoras_categoria[$i] . " " . $subcategorias_computadoras_categoria[$i] . "<br>";
+    }
+
     echo "<script>
         /* Declaramos los nombres de los identificadores para las variables */
         let subcategoria1 = document.getElementById('seccion1-producto1');
@@ -361,23 +374,73 @@
         let nombre4 = document.getElementById('seccion1-nombre4');
         
         /* Asignamos una prueba para mandar nombres */
-        subcategoria1.innerHTML = '$subcategorias[0]';
-        subcategoria2.innerHTML = '$subcategorias[1]';
-        subcategoria3.innerHTML = '$subcategorias[2]';
-        subcategoria4.innerHTML = '$subcategorias[3]';
+        subcategoria1.innerHTML = '$subcategorias_computadoras_categoria[0]';
+        subcategoria2.innerHTML = '$subcategorias_computadoras_categoria[1]';
+        subcategoria3.innerHTML = '$subcategorias_computadoras_categoria[2]';
+        subcategoria4.innerHTML = '$subcategorias_computadoras_categoria[3]';
         
-        precio1.innerHTML = '$precios[0]';
-        precio2.innerHTML = '$precios[1]';
-        precio3.innerHTML = '$precios[2]';
-        precio4.innerHTML = '$precios[3]';
+        precio1.innerHTML = '$precios_computadoras_categoria[0]';
+        precio2.innerHTML = '$precios_computadoras_categoria[1]';
+        precio3.innerHTML = '$precios_computadoras_categoria[2]';
+        precio4.innerHTML = '$precios_computadoras_categoria[3]';
         
-        nombre1.innerHTML = '$nombres[0]';
-        nombre2.innerHTML = '$nombres[1]';
-        nombre3.innerHTML = '$nombres[2]';
-        nombre4.innerHTML = '$nombres[3]';
-    </script>";   
-    
-    /* Crea un script de javascript para las siguientes 4 tarjetas */
+        nombre1.innerHTML = '$nombres_computadoras_categoria[0]';
+        nombre2.innerHTML = '$nombres_computadoras_categoria[1]';
+        nombre3.innerHTML = '$nombres_computadoras_categoria[2]';
+        nombre4.innerHTML = '$nombres_computadoras_categoria[3]';
+    </script>";
+
+    /* Cierra la conexion */
+    sqlsrv_close($conexion);
+?>
+
+<?php
+    include 'conexiones.php';
+    /* Creamos la consulta para obtener los procesadores */
+    $resultado_procesadores = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria FROM $tabla_productos, $tabla_apartados, $tabla_subapartados WHERE Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap and Subapartados.SubApartado = 'Procesadores'");
+
+    /* Declara una lista y guarda los valores de resultado_procesadores para elegir 4 al azar*/
+    $nombres_procesadores = array();
+    $precios_procesadores = array();
+    $categorias_procesadores = array();
+    $subcategorias_procesadores = array();
+
+    while($row = sqlsrv_fetch_array($resultado_procesadores)){
+        array_push($nombres_procesadores, $row['nombre']);
+        array_push($precios_procesadores, $row['precio_ven']);
+        array_push($categorias_procesadores, $row['categoria']);
+        array_push($subcategorias_procesadores, $row['subcategoria']);
+    }
+
+    /* Obten la longitud del arreglo nombres_procesadores */
+    $longitud = count($nombres_procesadores);
+    /* Genera 4 numeros aleatorios entre 0 y la longitud del arreglo nombres_procesadores */
+    $numeros_aleatorios = array();
+    for($i = 0; $i < 4; $i++){
+        $numero_aleatorio = rand(0, $longitud - 1);
+        array_push($numeros_aleatorios, $numero_aleatorio);
+    }
+    /* Almacena los resultados por categoria en diferentes arrglos que solo contengan su categoria */
+    $nombres_procesadores_categoria = array();
+    $precios_procesadores_categoria = array();
+    $subcategorias_procesadores_categoria = array();
+
+    for($i = 0; $i < 4; $i++){
+        array_push($nombres_procesadores_categoria, $nombres_procesadores[$numeros_aleatorios[$i]]);
+        array_push($precios_procesadores_categoria, $precios_procesadores[$numeros_aleatorios[$i]]);
+        array_push($subcategorias_procesadores_categoria, $subcategorias_procesadores[$numeros_aleatorios[$i]]);
+    }
+
+    /* Elimina los ultimos dos caracteres de los precios */
+    for($i = 0; $i < 4; $i++){
+        $precios_procesadores_categoria[$i] = substr($precios_procesadores_categoria[$i], 0, -2);
+    }
+
+    /* Imprime los resultados */
+    for($i = 0; $i < 4; $i++){
+        echo $nombres_procesadores_categoria[$i] . " " . $precios_procesadores_categoria[$i] . " " . $subcategorias_procesadores_categoria[$i] . "<br>";
+    }
+
     echo "<script>
         /* Declaramos los nombres de los identificadores para las variables */
         let subcategoria5 = document.getElementById('seccion2-producto1');
@@ -396,23 +459,74 @@
         let nombre8 = document.getElementById('seccion2-nombre4');
         
         /* Asignamos una prueba para mandar nombres */
-        subcategoria5.innerHTML = '$subcategorias[4]';
-        subcategoria6.innerHTML = '$subcategorias[5]';
-        subcategoria7.innerHTML = '$subcategorias[6]';
-        subcategoria8.innerHTML = '$subcategorias[7]';
+        subcategoria5.innerHTML = '$subcategorias_procesadores_categoria[0]';
+        subcategoria6.innerHTML = '$subcategorias_procesadores_categoria[1]';
+        subcategoria7.innerHTML = '$subcategorias_procesadores_categoria[2]';
+        subcategoria8.innerHTML = '$subcategorias_procesadores_categoria[3]';
         
-        precio5.innerHTML = '$precios[4]';
-        precio6.innerHTML = '$precios[5]';
-        precio7.innerHTML = '$precios[6]';
-        precio8.innerHTML = '$precios[7]';
+        precio5.innerHTML = '$precios_procesadores_categoria[0]';
+        precio6.innerHTML = '$precios_procesadores_categoria[1]';
+        precio7.innerHTML = '$precios_procesadores_categoria[2]';
+        precio8.innerHTML = '$precios_procesadores_categoria[3]';
         
-        nombre5.innerHTML = '$nombres[4]';
-        nombre6.innerHTML = '$nombres[5]';
-        nombre7.innerHTML = '$nombres[6]';
-        nombre8.innerHTML = '$nombres[7]';
+        nombre5.innerHTML = '$nombres_procesadores_categoria[0]';
+        nombre6.innerHTML = '$nombres_procesadores_categoria[1]';
+        nombre7.innerHTML = '$nombres_procesadores_categoria[2]';
+        nombre8.innerHTML = '$nombres_procesadores_categoria[3]';
     </script>";
 
-    /* Crea un script de javascript para las ultimas 4 tarjetas */
+    /* Cierra la conexion */
+    sqlsrv_close($conexion);
+?>
+
+<?php
+    include("conexiones.php");
+
+    /* Creamos la consulta para obtener la placa madre */
+    $resultado_placa_madre = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria FROM $tabla_productos, $tabla_apartados, $tabla_subapartados WHERE Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap and Subapartados.SubApartado = 'Motherboard'");
+
+    /* Declara una lista y guarda los valores de resultado_placa_madre para elegir 4 al azar*/  
+    $nombres_placa_madre = array();
+    $precios_placa_madre = array();
+    $categorias_placa_madre = array();
+    $subcategorias_placa_madre = array();
+
+    while($row = sqlsrv_fetch_array($resultado_placa_madre)){
+        array_push($nombres_placa_madre, $row['nombre']);
+        array_push($precios_placa_madre, $row['precio_ven']);
+        array_push($categorias_placa_madre, $row['categoria']);
+        array_push($subcategorias_placa_madre, $row['subcategoria']);
+    }
+
+    /* Obten la longitud del arreglo nombres_placa_madre */
+    $longitud = count($nombres_placa_madre);
+    /* Genera 4 numeros aleatorios entre 0 y la longitud del arreglo nombres_placa_madre */
+    $numeros_aleatorios = array();
+    for($i = 0; $i < 4; $i++){
+        $numero_aleatorio = rand(0, $longitud - 1);
+        array_push($numeros_aleatorios, $numero_aleatorio);
+    }
+    /* Almacena los resultados por categoria en diferentes arrglos que solo contengan su categoria*/
+    $nombres_placa_madre_categoria = array();
+    $precios_placa_madre_categoria = array();
+    $subcategorias_placa_madre_categoria = array();
+
+    for($i = 0; $i < 4; $i++){
+        array_push($nombres_placa_madre_categoria, $nombres_placa_madre[$numeros_aleatorios[$i]]);
+        array_push($precios_placa_madre_categoria, $precios_placa_madre[$numeros_aleatorios[$i]]);
+        array_push($subcategorias_placa_madre_categoria, $subcategorias_placa_madre[$numeros_aleatorios[$i]]);
+    }
+
+    /* Elimina los ultimos dos caracteres de los precios */
+    for($i = 0; $i < 4; $i++){
+        $precios_placa_madre_categoria[$i] = substr($precios_placa_madre_categoria[$i], 0, -2);
+    }
+
+    /* Imprime los resultados */
+    for($i = 0; $i < 4; $i++){
+        echo $nombres_placa_madre_categoria[$i] . " " . $precios_placa_madre_categoria[$i] . " " . $subcategorias_placa_madre_categoria[$i] . "<br>";
+    }
+
     echo "<script>
         /* Declaramos los nombres de los identificadores para las variables */
         let subcategoria9 = document.getElementById('seccion3-producto1');
@@ -431,19 +545,22 @@
         let nombre12 = document.getElementById('seccion3-nombre4');
         
         /* Asignamos una prueba para mandar nombres */
-        subcategoria9.innerHTML = '$subcategorias[8]';
-        subcategoria10.innerHTML = '$subcategorias[9]';
-        subcategoria11.innerHTML = '$subcategorias[10]';
-        subcategoria12.innerHTML = '$subcategorias[11]';
+        subcategoria9.innerHTML = '$subcategorias_placa_madre_categoria[0]';
+        subcategoria10.innerHTML = '$subcategorias_placa_madre_categoria[1]';
+        subcategoria11.innerHTML = '$subcategorias_placa_madre_categoria[2]';
+        subcategoria12.innerHTML = '$subcategorias_placa_madre_categoria[3]';
         
-        precio9.innerHTML = '$precios[8]';
-        precio10.innerHTML = '$precios[9]';
-        precio11.innerHTML = '$precios[10]';
-        precio12.innerHTML = '$precios[11]';
+        precio9.innerHTML = '$precios_placa_madre_categoria[0]';
+        precio10.innerHTML = '$precios_placa_madre_categoria[1]';
+        precio11.innerHTML = '$precios_placa_madre_categoria[2]';
+        precio12.innerHTML = '$precios_placa_madre_categoria[3]';
         
-        nombre9.innerHTML = '$nombres[8]';
-        nombre10.innerHTML = '$nombres[9]';
-        nombre11.innerHTML = '$nombres[10]';
-        nombre12.innerHTML = '$nombres[11]';
+        nombre9.innerHTML = '$nombres_placa_madre_categoria[0]';
+        nombre10.innerHTML = '$nombres_placa_madre_categoria[1]';
+        nombre11.innerHTML = '$nombres_placa_madre_categoria[2]';
+        nombre12.innerHTML = '$nombres_placa_madre_categoria[3]';
     </script>";
+    
+    /* Cierra la conexion a la base de datos */
+    sqlsrv_close($conexion);
 ?>
