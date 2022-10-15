@@ -1,5 +1,5 @@
 function confirmacion(e){
-    if (confirm("¿Estas reguro que deseas eliminar este producto?")){
+    if (confirm("¿Estas seguro que deseas eliminar este producto?")){
         return true;
     }
     else{

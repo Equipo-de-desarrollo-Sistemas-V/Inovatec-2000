@@ -1,6 +1,5 @@
 
 
-
 <?php
    
    $serverName = 'localhost';
@@ -13,14 +12,32 @@
     $Eliminar_id=$_GET['id'];
     
 
-    $borrar = "DELETE FROM Provedores WHERE id_producto='$Eliminar_id'";
+    $borrar = "DELETE FROM Proveedores WHERE id_proveedor='$Eliminar_id'";
     
     
     $ejecutar = sqlsrv_query($conn_sis,$borrar) ;
  
 
     if( $ejecutar === false) {
-        die( print_r( sqlsrv_errors(), true) );}
+        
+        //$mod="UPDATE Proveedores SET Estado ='False' where id_proveedor='$Eliminar_id'";
+        echo "
+        <script type='text/javascript'>alert('No se puede puede eliminar el provedor');
+        window.location.href='lista_proveedor.php';
+            
+            </script>
+        ";
+        //$mod="UPDATE Proveedores SET Estado ='False' where id_proveedor='$Eliminar_id'";
+    }
+
+    else{
+        echo "
+        <script type='text/javascript'>alert('Proveedor eliminado');
+                window.location.href='lista_proveedor.php';
+            
+            </script>
+        ";
+    }
 
 
   

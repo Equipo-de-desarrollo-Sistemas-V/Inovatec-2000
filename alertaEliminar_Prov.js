@@ -1,5 +1,5 @@
 function confirmacion(e){
-    if (confirm("¿Estas reguro que deseas eliminar este proveedor?")){
+    if (confirm("¿Estas seguro que deseas eliminar este proveedor?")){
         return true;
     }
     else{

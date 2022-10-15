@@ -9,9 +9,11 @@
 
 
     $Eliminar_id=$_GET['id'];
+
+    
     
 
-    $borrar = "DELETE FROM Empleado WHERE id_empleado='$Eliminar_id'";
+    $borrar = "DELETE FROM Empleados WHERE id_empleado='$Eliminar_id'";
     
     
     $ejecutar = sqlsrv_query($conn_sis,$borrar) ;
@@ -31,7 +33,7 @@
 
 
 <script type="text/javascript">alert('Trabajador eliminado');
-        window.location.href='listas_trabajador.php';
+        window.location.href='lista_trabajador.php';
     
     </script>
 
