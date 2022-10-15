@@ -176,7 +176,7 @@
 								<td>'.$nombre.'</td>
 								<td>'.$estado.'</td>
 								<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
-								<td>'.'<a href="#">'.$eli. '</a>'.'</td>
+								<td>'.'<a href="LOGEliminar_Suc.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>
 								</tr>';
 							}
 						sqlsrv_close($conn_sis);
@@ -213,5 +213,6 @@
 			</article>
 		</div>
     </main>
+	<script src="alertaEliminar_Suc.js"></script>
 </body>
 </html>

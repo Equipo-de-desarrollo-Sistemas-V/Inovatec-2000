@@ -1,3 +1,4 @@
+
 <?php
    
    $serverName = 'localhost';
@@ -10,7 +11,7 @@
     $Eliminar_id=$_GET['id'];
     
 
-    $borrar = "DELETE FROM Productos WHERE id_producto='$Eliminar_id'";
+    $borrar = "DELETE FROM Empleado WHERE id_empleado='$Eliminar_id'";
     
     
     $ejecutar = sqlsrv_query($conn_sis,$borrar) ;
@@ -29,8 +30,8 @@
 
 
 
-<script type="text/javascript">alert('Producto eliminado');
-        window.location.href='lista_productos.php';
+<script type="text/javascript">alert('Trabajador eliminado');
+        window.location.href='listas_trabajador.php';
     
     </script>
 
