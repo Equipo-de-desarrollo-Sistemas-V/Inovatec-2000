@@ -282,7 +282,7 @@
 			
 		</div>
     </main>
-	<script src="js/validAltaTrabajador.js"></script>
+	<!-- <script src="js/validEditarTrabajador.js"></script> -->
 
 </body>
 </html>
