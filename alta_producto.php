@@ -128,7 +128,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProducto" id="idProducto" class="formulario_input" required maxlength="8" minlength="6">
+							<input type="text" name="idProducto" id="idProducto" class="formulario_input" required maxlength="8" minlength="1">
 						</div>
 					</div>
 
