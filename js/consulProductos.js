@@ -2,7 +2,7 @@ $(buscar_datos());
 
 function buscar_datos(consulta){
     $.ajax({
-        url : 'consulta.php',
+        url : 'auxConsulProducto.php',
         type : 'POST',
         dataType : 'html',
         data : {consulta: consulta},
@@ -18,7 +18,6 @@ function buscar_datos(consulta){
 
 $(document).on('keyup', '#busqueda', function(){
     var valorBusqueda=$(this).val();
-    console.log(valorBusqueda);
      if (valorBusqueda!=""){
          buscar_datos(valorBusqueda);
      }else{

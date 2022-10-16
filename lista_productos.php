@@ -187,10 +187,10 @@
 							}*/
 						?>
 					</table> -->
-					<div class="paginador">
+					<!-- <div class="paginador">
 						<ul>
 						<?php
-							if($pagina!=1)
+							/*if($pagina!=1)
 							{
 						?>
 							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
@@ -206,14 +206,14 @@
 								}
 							}
 
-							if($pagina!=$total_paginas)
+							if($pagina!=$total_paginas)*/
 							{
 						?>
-							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
-							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
+							<li><a href="?pagina=<?php //echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php //echo $total_paginas; ?>">>|</a></li>
 						<?php } ?>
 						</ul>
-					</div>
+					</div> -->
 				</section>
 			</article>
 		</div>
