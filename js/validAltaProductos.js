@@ -6,10 +6,10 @@ let bPrV = false
 let bDes = false
 
 const expresiones = {
-    id:/^[0-9]{6,8}$/,
+    id:/^[0-9]{1,8}$/,
     nombre:/^[a-zA-ZÁ-ý\s0-9"-]{3,50}$/,
     precio:/^[0-9.]{0,100}$/,
-    descripcion:/^[a-zA-ZÁ-ý0-9\s"-]{1,10000}$/
+    descripcion:/^[a-zA-ZÁ-ý0-9\s"-.,]{1,10000}$/
 }
 
 /* Input id del Producto */
@@ -77,10 +77,23 @@ formulario.precioProd.addEventListener('keyup', (e) => {
             precioProd.style.border = "3px solid red";
             bPrC = false
         }else{
-            precioProd.removeAttribute("style");
-            bPrC = true
+            var banPun= 0;
+            for(i=0;i<(precio.length);i++){
+                //verificar cuantos puntos ingresa
+                if((precio[i]==".")){
+                    banPun ++;
+                }
+            }
+            if (banPun>1){
+                precioProd.style.border = "3px solid red";
+            bPrC = false
+            }else{
+                precioProd.removeAttribute("style");
+                bPrC = true
+            }
         }
     }
+    validarPrecios();
     validar();
 })
 
@@ -98,7 +111,6 @@ formulario.precioVenta.addEventListener('keyup', (e) => {
         precioVenta.style.border = "3px solid red";
         bPrV = false
 	}else{
-        console.log("hool");
         if(precio=="."){
             precioVenta.style.border = "3px solid red";
             bPrV = false
@@ -106,10 +118,23 @@ formulario.precioVenta.addEventListener('keyup', (e) => {
             precioVenta.style.border = "3px solid red";
             bPrV = false
         }else{
-            precioVenta.removeAttribute("style");
-        bPrV = true
+            var banPun= 0;
+            for(i=0;i<(precio.length);i++){
+                //verificar cuantos puntos ingresa
+                if((precio[i]==".")){
+                    banPun ++;
+                }
+            }
+            if (banPun>1){
+                precioVenta.style.border = "3px solid red";
+            bPrV = false
+            }else{
+                precioVenta.removeAttribute("style");
+                bPrV = true
+            }
         }
     }
+    validarPrecios();
     validar();
 })
 
@@ -119,7 +144,7 @@ formulario.descripcion.addEventListener('keyup', (e) => {
 
 	formulario.descripcion.value = valorInput
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':\\|,.<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':\\|<>\/?]/g, '')
 
     if (!expresiones.descripcion.test(valorInput)) {
         descripcion.style.border = "3px solid red";
@@ -130,6 +155,22 @@ formulario.descripcion.addEventListener('keyup', (e) => {
     }
     validar();
 })
+
+
+/*Funcion para validar que el precio de compra sea menor o igual que el precio de venta*/
+const validarPrecios = () =>{
+    const inputPC = document.getElementById('precioProd');
+    const inputPV = document.getElementById('precioVenta');
+
+    if (inputPC.value > inputPV.value){
+        precioVenta.style.border = "3px solid red";
+        bPrV = false
+    }else{
+        precioVenta.removeAttribute("style");
+        bPrV = true
+    }
+    validar();
+}
 
 function validar(){
     const guardar = document.getElementById('guardar');
