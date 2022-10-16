@@ -5,10 +5,10 @@ let bRFC = false
 let bEmail = false
 
 const expresiones = {
-    id:/^[a-zA-ZÁ-ý0-9-]{6,8}$/,
+    id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/,
     empresa:/^[a-zA-ZÁ-ý\s0-9"]{1,20}$/,
     rfc:/^[A-Z0-9]{12}$/,
-    email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]/
+    email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/
 }
 
 /* Input id del Producto */
