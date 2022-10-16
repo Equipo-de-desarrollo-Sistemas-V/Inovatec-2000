@@ -15,12 +15,12 @@
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<link rel="stylesheet" href="administrativo.css">
-        <script languaje="javascript">
+	<script languaje="javascript">
 		$(document).ready(function() {
-			$("#estados_s").change(function() {
-				$("#estados_s option:selected").each(function() {
+			$("#estado").change(function() {
+				$("#estado option:selected").each(function() {
 					Id = $(this).val();
-					$.post("getMun.php", {
+					$.post("getMunicipios.php", {
 						Id: Id
 					}, function(data) {
 						$("#ciudadSuc").html(data);
@@ -177,7 +177,7 @@
                     <div class="formulario_grupo-input">
                         <label for="estado" class="formulario_label">Estado</label>
                         <div class="formulario_grupo-input">
-                            <select type="text" name="estados_s" id="estado_s" class="formulario_input">
+                            <select type="text" name="estado" id="estado" class="formulario_input">
                             <?php
                             $getEstado ="select * from estados";
                             $getEstado2 = sqlsrv_query($conn_sis, $getEstado);
@@ -227,3 +227,12 @@
     </main>  
 </body>
 </html>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#estado').select2();
+	});
+
+	$(document).ready(function() {
+		$('#ciudadSuc').select2();
+	});
+</script>

@@ -9,9 +9,9 @@ class ActPro{
         $serverName='localhost';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
-        $updateQuery ="UPDATE Sucursal SET ciudad_est=('$mun'),Estado=('$estado') WHERE id_sucursal=$id";
+        $updateQuery ="UPDATE Sucursal SET ciudad_est=('$mun'),Estado=('$estado') WHERE id_sucursal='$id'";
         $getProv = sqlsrv_query($conn_sis, $updateQuery);
-        if( $getProv === false) {
+        if( $getProv === false) {            
             die( print_r( sqlsrv_errors(), true) );
         }
         include("lista_sucursal.php");
