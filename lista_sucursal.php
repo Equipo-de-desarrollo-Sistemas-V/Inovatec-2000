@@ -8,6 +8,8 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/consulSucursal.js"></script>
 </head>
 <body>
 	<!--Estructura Header Superior-->
@@ -87,20 +89,20 @@
 			<article>
 				<h1 align="center">Sucursales</h1>
 				<div class="contenido-barra-buscar">
-					<input type="text" placeholder="Buscar" required />
+					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required />
 					<button class="btn-buscar">
 						<i class="fas fa-search icon"></i>
 					</button>
 				</div>
 				<br>
 
-				<section class="tablas">
-					<table>
+				<section class="tablas" id="tablaResultado">
+					<!-- <table>
 						<thead>
 						<?php
-							$serverName='localhost';
+							/*$serverName='localhost';
 							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);*/
 							?>
 							<tr>
 								<th>Id</th> 
@@ -112,7 +114,7 @@
 							</tr>
 						</thead>
 						<?php
-						$query0="SELECT COUNT(*) AS total_sucursales FROM sucursal";
+						/*$query0="SELECT COUNT(*) AS total_sucursales FROM sucursal";
 						$res0= sqlsrv_query($conn_sis, $query0);
 						if( $res0 === false) {
 							die( print_r( sqlsrv_errors(), true) );
@@ -175,17 +177,17 @@
 								<td>'.$id.'</td>
 								<td>'.$nombre.'</td>
 								<td>'.$estado.'</td>
-								<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>
+								<td>'.'<a href="LOGActualizar_Suc.php?item='.$id.'">'.$edi. '</a>'.'</td>
 								<td>'.'<a href="LOGEliminar_Suc.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>
 								</tr>';
 							}
-						sqlsrv_close($conn_sis);
+						sqlsrv_close($conn_sis);*/
 						?>
-					</table>
-					<div class="paginador">
+					</table> -->
+					<!-- <div class="paginador">
 						<ul>
 						<?php
-							if($pagina!=1)
+							/*if($pagina!=1)
 							{
 						?>
 							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
@@ -201,18 +203,18 @@
 								}
 							}
 
-							if($pagina!=$total_paginas)
+							if($pagina!=$total_paginas)*/
 							{
 						?>
-							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
-							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
+							<li><a href="?pagina=<?php //echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php //echo $total_paginas; ?>">>|</a></li>
 						<?php } ?>
 						</ul>
-					</div>
+					</div> -->
 				</section>
 			</article>
 		</div>
     </main>
-	<script src="alertaEliminar_Suc.js"></script>
+	<!-- <script src="alertaEliminar_Suc.js"></script> -->
 </body>
 </html>
