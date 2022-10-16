@@ -131,7 +131,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_municipios);
 					<div class="formulario_grupo-input">
 						<label for="idSucursal" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idSucursal" id="idSucursal" class="formulario_input" required maxlength="8" minlength="6">
+							<input type="text" name="idSucursal" id="idSucursal" class="formulario_input" required maxlength="8" minlength="1">
 						</div>
 					</div>
 

@@ -1,7 +1,7 @@
 let bId = false
 
 const expresiones = {
-    id:/^[a-zA-ZÁ-ý0-9-]{6,8}$/
+    id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/
 }
 
 /* Input id del Producto */
