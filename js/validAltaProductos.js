@@ -135,7 +135,7 @@ formulario.precioVenta.addEventListener('keyup', (e) => {
         }
     }
     validarPrecios();
-    validar();
+    //validar();
 })
 
 /* Input descripcion del producto */
@@ -161,11 +161,18 @@ formulario.descripcion.addEventListener('keyup', (e) => {
 const validarPrecios = () =>{
     const inputPC = document.getElementById('precioProd');
     const inputPV = document.getElementById('precioVenta');
+    var compra=parseFloat(inputPC.value)
+    var venta=parseFloat(inputPV.value)
 
-    if (inputPC.value > inputPV.value){
+    console.log(compra, venta)
+
+    if (compra > venta){
+        console.log("Hola"+" "+inputPC.value+" "+inputPV.value)
         precioVenta.style.border = "3px solid red";
         bPrV = false
-    }else{
+        
+    }else if(compra < venta){
+        console.log("Adios"+" "+inputPC.value+" "+inputPV.value)
         precioVenta.removeAttribute("style");
         bPrV = true
     }

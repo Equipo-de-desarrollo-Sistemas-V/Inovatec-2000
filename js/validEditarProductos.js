@@ -5,35 +5,10 @@ let bPrV = true
 let bDes = true
 
 const expresiones = {
-    id:/^[0-9]{6,8}$/,
     nombre:/^[a-zA-ZÁ-ý\s0-9"-]{3,50}$/,
     precio:/^[0-9.]{0,100}$/,
     descripcion:/^[a-zA-ZÁ-ý0-9\s"-]{1,10000}$/
 }
-
-/* Input id del Producto */
-formulario.idProducto.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-	formulario.idProducto.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
-	// Eliminar letras
-	.replace(/\D/g, '')
-     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
-
-    if (!expresiones.id.test(valorInput)) {
-        idProducto.style.border = "3px solid red";
-        bId = false
-	}else{
-        idProducto.removeAttribute("style");
-        bId = true
-    }
-    validar();
-})
 
 /* Input nombre del Producto */
 formulario.nombreProd.addEventListener('keyup', (e) => {
@@ -55,6 +30,48 @@ formulario.nombreProd.addEventListener('keyup', (e) => {
     validar();
 })
 
+/* Input precio de compra */
+formulario.precioProd.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+    precio=valorInput;
+
+	formulario.precioProd.value = valorInput
+    .replace(/[^0-9.]+/, "")
+     // Eliminar el ultimo espaciado
+	.trim();
+
+    if (!expresiones.precio.test(valorInput)) {
+        precioProd.style.border = "3px solid red";
+        bPrC = false
+	}else{
+        if(precio=="."){
+            precioProd.style.border = "3px solid red";
+            bPrC = false
+        }else if(precio<=0){
+            precioProd.style.border = "3px solid red";
+            bPrC = false
+        }else{
+            var banPun= 0;
+            for(i=0;i<(precio.length);i++){
+                //verificar cuantos puntos ingresa
+                if((precio[i]==".")){
+                    banPun ++;
+                }
+            }
+            if (banPun>1){
+                precioProd.style.border = "3px solid red";
+            bPrC = false
+            }else{
+                precioProd.removeAttribute("style");
+                bPrC = true
+            }
+        }
+    }
+    validarPrecios();
+    validar();
+})
+
+
 /* Input precio de venta */
 formulario.precioVenta.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
@@ -69,7 +86,6 @@ formulario.precioVenta.addEventListener('keyup', (e) => {
         precioVenta.style.border = "3px solid red";
         bPrV = false
 	}else{
-        console.log("hool");
         if(precio=="."){
             precioVenta.style.border = "3px solid red";
             bPrV = false
@@ -77,13 +93,47 @@ formulario.precioVenta.addEventListener('keyup', (e) => {
             precioVenta.style.border = "3px solid red";
             bPrV = false
         }else{
-            precioVenta.removeAttribute("style");
-        bPrV = true
+            var banPun= 0;
+            for(i=0;i<(precio.length);i++){
+                //verificar cuantos puntos ingresa
+                if((precio[i]==".")){
+                    banPun ++;
+                }
+            }
+            if (banPun>1){
+                precioVenta.style.border = "3px solid red";
+            bPrV = false
+            }else{
+                precioVenta.removeAttribute("style");
+                bPrV = true
+            }
         }
     }
-    validar();
+    validarPrecios();
+    //validar();
 })
 
+/*Funcion para validar que el precio de compra sea menor o igual que el precio de venta*/
+const validarPrecios = () =>{
+    const inputPC = document.getElementById('precioProd');
+    const inputPV = document.getElementById('precioVenta');
+    var compra=parseFloat(inputPC.value)
+    var venta=parseFloat(inputPV.value)
+
+    console.log(compra, venta)
+
+    if (compra > venta){
+        console.log("Hola"+" "+inputPC.value+" "+inputPV.value)
+        precioVenta.style.border = "3px solid red";
+        bPrV = false
+        
+    }else if(compra < venta){
+        console.log("Adios"+" "+inputPC.value+" "+inputPV.value)
+        precioVenta.removeAttribute("style");
+        bPrV = true
+    }
+    validar();
+}
 /* Input descripcion del producto */
 formulario.descripcion.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
