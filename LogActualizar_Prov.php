@@ -170,9 +170,7 @@
 			</article>
 		</div>
 	</main>
-
-	<script src="js/alertasProveedor.js"></script>
-	<script src="js/validAltaProveedor.js"></script>
+	<script src="js/validEditarProveedor.js"></script>
 
 </body>
 
