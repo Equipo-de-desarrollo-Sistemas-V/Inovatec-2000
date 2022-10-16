@@ -22,9 +22,21 @@ formulario.addEventListener('submit', function(e){
             alert("Se produjo un problema en la consulta a la base de datos");
         }
 
-        else {
+        else if(data === 'todo chido'){
             alert("El registro se ha realizado con éxito");
             location.href = "administrativo2.php";
+        }
+            
+        else if(data === 'foto nula'){
+            alert("No se ha subido nungún archivo");
+        }
+            
+        else if(data === 'formato'){
+            alert("El archivo debe estar en un formate de imágen (.gif, .jepg, .jpg o .png)");
+        }
+            
+        else {
+            alert(data);
         }
     })
 })
