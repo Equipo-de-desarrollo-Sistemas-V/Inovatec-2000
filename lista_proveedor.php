@@ -8,6 +8,8 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/consulProveedor.js"></script>
 </head>
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
@@ -88,7 +90,7 @@
             <article>
                 <h1 align="center">Lista de proveedores</h1>
                 <div class="contenido-barra-buscar">
-                    <input type="text" placeholder="Buscar" required />
+                    <input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required />
                     <button class="btn-buscar">
                         <i class="fas fa-search icon"></i>
     
@@ -96,13 +98,13 @@
                 </div>
                 <br>
     
-                <section class="tablas">
-                    <table>
+                <section class="tablas" id="tablaResultado">
+                    <!-- <table>
                         <thead>
 						<?php
-							$serverName='localhost';
+							/*$serverName='localhost';
 							$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+							$conn_sis=sqlsrv_connect($serverName, $connectionInfo);*/
 							?>
                             <tr>
                                 <th>Id</th> 
@@ -114,7 +116,7 @@
 								<th></th>
                             </tr>
                         </thead>
-						<?php
+						<?php /*
 						$query0="SELECT COUNT(*) AS total_proveedores FROM Proveedores";
 						$res0= sqlsrv_query($conn_sis, $query0);
 						if( $res0 === false) {
@@ -153,19 +155,19 @@
 								<td>'.'<a href="LOGEliminar_Prov.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>
 								</tr>';
 							}
-						sqlsrv_close($conn_sis);
+						sqlsrv_close($conn_sis);*/
 						?>
-                    </table>
-					<div class="paginador">
+                    </table> -->
+					<!-- <div class="paginador">
 						<ul>
 						<?php
-							if($pagina!=1)
-							{
+							// if($pagina!=1)
+							// {
 						?>
 							<li><a href="?pagina=<?php echo 1; ?>">|<</a><li>
 							<li><a href="?pagina=<?php echo $pagina-1; ?>"><<</a><li>
 						<?php
-							}
+							/*}
 							for ($i=1;$i<=$total_paginas; $i++){
 								if($i==$pagina)
 								{
@@ -176,17 +178,17 @@
 							}
 
 							if($pagina!=$total_paginas)
-							{
+							{*/
 						?>
-							<li><a href="?pagina=<?php echo $pagina + 1; ?>">>></a></li>
-							<li><a href="?pagina=<?php echo $total_paginas; ?>">>|</a></li>
-						<?php } ?>
+							<li><a href="?pagina=<?php //echo $pagina + 1; ?>">>></a></li>
+							<li><a href="?pagina=<?php // echo $total_paginas; ?>">>|</a></li>
+						<?php //} ?>
 						</ul>
-					</div>
+					</div> -->
                 </section>
             </article>
         </div>
     </main>
-	<script src="alertaEliminar_Prov.js"></script>
+	<!-- <script src="alertaEliminar_Prov.js"></script> -->
 </body>
 </html>    
