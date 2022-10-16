@@ -7,11 +7,12 @@ let bRFC = false
 let bEmail = false
 
 const expresiones = {
-    id:/^[a-zA-ZÁ-ý0-9-]{6,8}$/,
+    id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/,
     nombre:/^[a-zA-ZÁ-ý\s]{3,40}$/,
-    apellidos:/^[a-zA-ZÁ-ý\s0-9"-]{3,50}$/,
+    apellidos:/^[a-zA-ZÁ-ý\s0-9"-]{3,20}$/,
+    apeMa:/^[a-zA-ZÁ-ý\s0-9"-]{0,20}$/,
     rfc:/^[A-Z0-9]{13}$/,
-    email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]/
+    email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/
 }
 
 /* Input id del trabajador*/
@@ -86,34 +87,12 @@ formulario.apMaterno.addEventListener('keyup', (e) => {
    // Eliminar caracteres especiales
   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
 
-    if (!expresiones.apellidos.test(valorInput)) {
+    if (!expresiones.apeMa.test(valorInput)) {
         apMaterno.style.border = "3px solid red";
-        bAP = false
+        bAM = false
 	}else{
         apMaterno.removeAttribute("style");
-        bAP = true
-    }
-    validar();
-})
-
-/* Input del RFC*/
-formulario.rfc.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-	formulario.rfc.value = valorInput
-    // Eliminar espacios en blanco
-        .replace(/\s/g, '')
-        // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-        // Eliminar el ultimo espaciado
-    .trim();
-
-    if (!expresiones.rfc.test(valorInput)) {
-        rfc.style.border = "3px solid red";
-        bRFC = false
-	}else{
-        rfc.removeAttribute("style");
-        bRFC = true
+        bAM = true
     }
     validar();
 })
@@ -141,10 +120,10 @@ formulario.rfc.addEventListener('keyup', (e) => {
 })
 
 /* Input del correo*//*
-formulario.rfc.addEventListener('keyup', (e) => {
+formulario.email.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.rfc.value = valorInput
+	formulario.email.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
@@ -153,11 +132,11 @@ formulario.rfc.addEventListener('keyup', (e) => {
    .trim();
 
     if (!expresiones.email.test(valorInput)) {
-        rfc.style.border = "3px solid red";
-        bRFC = false
+        email.style.border = "3px solid red";
+        bEmail = false
 	}else{
-        rfc.removeAttribute("style");
-        bRFC = true
+        email.removeAttribute("style");
+        bEmail = true
     }
     validar();
 })*/
@@ -187,7 +166,7 @@ formulario.rfc.addEventListener('keyup', (e) => {
 
 function validar(){
     const guardar = document.getElementById('guardar');
-    if(bId == true && bNom== true && bPrC == true && bPrV == true && bDes == true){
+    if(bId == true && bNom== true && bAP == true && bAM == true && bRFC == true /*&& bEmail == true*/){
         guardar.disabled=false;
     }
     else{

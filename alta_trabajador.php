@@ -91,11 +91,11 @@
 			<article>
 				<h1 align="center">Nuevo trabajador</h1>
 				<br>
-				<form action="" class="formularios" method="post" enctype="multipart/form-data">
+				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
 						<label for="idTrabajador" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="idTrabajador" id="idTrabajador" class="formulario_input" required maxlength="8" minlength="6">
+							<input type="text" name="idTrabajador" id="idTrabajador" class="formulario_input" required maxlength="8" minlength="1">
 						</div>
 					</div>
 
@@ -187,7 +187,7 @@
 			
 		</div>
     </main>
-	<script src="js/validAltaTrabajador.js"></script>
+	<!-- <script src="js/validAltaTrabajador.js"></script> -->
 
 </body>
 </html>
