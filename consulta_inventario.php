@@ -8,6 +8,8 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/consulInventario.js"></script>
 </head>
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
@@ -89,7 +91,7 @@
 			<article>
 				<h1 align="center">Lista de inventario</h1>
 				<div class="contenido-barra-buscar">
-					<input type="text" placeholder="Buscar" required />
+					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required />
 					<button class="btn-buscar">
 						<i class="fas fa-search icon"></i>
 
@@ -97,8 +99,8 @@
 				</div>
 				<br>
 
-				<section class="tablas">
-					<table>
+				<section class="tablas" id="tablaResultado">
+					<!-- <table>
 						<thead>
 							<tr>
 								<th>Id producto</th> 
@@ -112,7 +114,7 @@
 								<th></th>
 							</tr>
 						</thead>
-					</table>
+					</table> -->
 				</section>
 			</article>
 		</div>
