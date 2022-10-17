@@ -20,7 +20,7 @@
                
                 //verifica que el id no este registrado
                 $querry_id = "SELECT * FROM Proveedores
-                WHERE id_proveedor = $id";
+                WHERE id_proveedor = '$id'";
 
                 $resultID = sqlsrv_query($con, $querry_id);
 
@@ -38,7 +38,7 @@
 
                     //verifica que el proveedor de verdad se inserto en la base
                     $confirm = "SELECT * FROM Proveedores
-                    WHERE id_proveedor = $id";
+                    WHERE id_proveedor = '$id'";
 
                     $resultados = sqlsrv_query($con, $confirm);
 
