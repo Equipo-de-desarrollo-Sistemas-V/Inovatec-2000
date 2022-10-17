@@ -90,7 +90,7 @@
 			<article>
 			<h1 align="center">Producto inventario</h1>
 				<br>
-				<form action="" class="formularios" method="post" enctype="multipart/form-data">
+				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id producto</label> 
 						<div class="formulario_grupo-input">
@@ -108,22 +108,25 @@
 					<div class="formulario_grupo-input">
 						<label for="rfcProv" class="formulario_label">Existentes</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="rfcProv" id="rfcProv" class="formulario_input"></input>
+							<input type="text" name="existentes" id="existentes" class="formulario_input"></input>
  						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="correoProv" class="formulario_label">Stock mínimo</label>
 						<div class="formulario_grupo-input">
-							<input type="email" name="correoProv" id="correoProv" class="formulario_input"></input>
+							<input type="text" name="stock" id="stock" class="formulario_input"></input>
  						</div>
 					</div><br>
 
 					<div class="btn_enviar">
-						<button type="submit" class="btn_submit" value="Guardar">Guardar</button>
+						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>
 					
 				</form>		
 			</article>
+			<script src="js/validAltaInventario.js"></script>
 		</div>
     </main>
+</body>
+</html>
