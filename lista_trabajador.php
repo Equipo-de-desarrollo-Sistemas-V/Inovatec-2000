@@ -117,6 +117,7 @@
 								<th>RFC</th> 
 								<th>Puesto</th> 
 								<th>Usuario</th>
+								<th>Sucursal</th>
 								<th>Permisos</th>
 								<th>Acciones</th>
 								<th></th>

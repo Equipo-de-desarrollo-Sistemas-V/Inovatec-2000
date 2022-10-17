@@ -150,6 +150,13 @@
 						</div>
 					</div>
 
+					<div class="formulario_grupo-input">
+						<label for="sucursal" class="formulario_label">Sucursal</label>
+						<div class="formulario_grupo-input">
+							<select type="text" name="sucursal" id="sucursal" class="formulario_input" required></select>
+						</div>
+					</div>
+
 					<div class="formulario_grupo-input2">
 						<label class="formulario_label">Permisos</label> 
 					</div>
