@@ -7,7 +7,11 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 
 $salida="";
 //Consulta normal, muetra todos los registros
-$query="";
+$query="SELECT Productos.id_producto, Productos.nombre, sucursal.id_sucursal,
+Inventario_suc.cantidad,Inventario_suc.stock_min,
+Inventario_suc.cantidad*Productos.precio_com AS Inversion, 
+Inventario_suc.cantidad*Productos.precio_ven AS Valor
+FROM [Productos],[sucursal],[Inventario_suc]";
 
 //detecta si se escribio algo en la caja de busqueda
 //Consulta que busca lo que hay dentro de la caja de busqueda, en todas las columnas
@@ -41,32 +45,22 @@ if($resultado==true){
     while( $row = sqlsrv_fetch_array($resultado) ) {
                             $id=$row["id_producto"];
 							$nombre=$row["nombre"];
-							$descri=$row["descripcion"];
-							$categoria=$row["Nombre"];
-							$subcate=$row["SubApartado"];
-							$pre_com=$row["precio_com"];
-							$pre_ven=$row["precio_ven"];
-							$proveedor=$row["nombre_empresa"];
-                            $condi=$row["Estado"];
+							$sucursal=$row["id_sucursal"];
+							$cantidad=$row["cantidad"];
+							$min=$row["stock_min"];
+							$inver=$row["Inversion"];
+							$valor=$row["Valor"];
 							$edi='Editar';
 							$eli='Eliminar';
-            if ($condi==1){
-                $aux="Activo";
-            }else{
-                $aux="No surtiendo";
-            }
         //muestra los resultados en la tabla
         $salida.='<tr>';
         $salida.='<td>'.$id.'</td>';
         $salida.='<td>'.$nombre.'</td>'; 
-        $salida.='<td>'.$descri.'</td>'; 
-        $salida.='<td>'.$categoria.'</td>'; 
-        $salida.='<td>'.$subcate.'</td>'; 
-        $salida.='<td>'.$pre_com.'</td>'; 
-        $salida.='<td>'.$pre_ven.'</td>'; 
-        $salida.='<td>'.$proveedor.'</td>';
-        $salida.='<td>'.'</td>';
-        $salida.='<td>'.$aux.'</td>';
+        $salida.='<td>'.$sucursal.'</td>'; 
+        $salida.='<td>'.$cantidad.'</td>'; 
+        $salida.='<td>'.$min.'</td>'; 
+        $salida.='<td>'.$inver.'</td>'; 
+        $salida.='<td>'.$valor.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
