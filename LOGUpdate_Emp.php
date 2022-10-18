@@ -7,7 +7,7 @@ class ActPro{
         $ap_mat= filter_input(INPUT_POST, "apMaterno");
         $rfc= filter_input(INPUT_POST, "rfc");
         $user= filter_input(INPUT_POST, "usuario");
-        $contra= filter_input(INPUT_POST, "contraseña");
+        $suc=$_POST['idSucursal'];
         $puesto=$_POST['puesto'];
         if(isset($_POST['cbox1']))
         {
@@ -61,7 +61,7 @@ class ActPro{
         $serverName='localhost';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
-        $updateQuery ="UPDATE Empleados SET nombres=('$nomEmp'),ap_paterno=('$ap_pat'),ap_materno=('$ap_mat'),rfc=('$rfc'),email=('$user'),puesto=('$puesto') WHERE id_empleado='$id'";
+        $updateQuery ="UPDATE Empleados SET nombres=('$nomEmp'),ap_paterno=('$ap_pat'),ap_materno=('$ap_mat'),sucursal=('$suc'),rfc=('$rfc'),email=('$user'),puesto=('$puesto') WHERE id_empleado='$id'";
         $getProv = sqlsrv_query($conn_sis, $updateQuery);
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
@@ -72,9 +72,10 @@ class ActPro{
             die( print_r( sqlsrv_errors(), true) );
         }
         
-        echo '<script>alert("Empleado actualizado con éxito")</script>';
+        
         include("lista_trabajador.php");
     //}
 }}
+    //echo '<script>alert("Empleado actualizado con éxito")</script>';
     $obj= new ActPro;
     $obj->Update();

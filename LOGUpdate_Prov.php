@@ -16,8 +16,8 @@ class ActPro{
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
         }
-        include("LogActualizar_Prov.php");
-        echo '<script>alert("Proveedor actualizada con éxito")</script>';
+        include("lista_proveedor.php");
+        //echo '<script>alert("Proveedor actualizada con éxito")</script>';
     }
 }
     $obj= new ActPro;

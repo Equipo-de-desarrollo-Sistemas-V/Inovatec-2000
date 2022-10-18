@@ -10,18 +10,18 @@ class ActPro{
         $proved=$_POST['proveedor'];
         $subA=$_POST['subcategoria'];
         $estado=$_POST['estado_ah'];
-        //echo $id.$nombreP.$apar.$pC.$pV.$des.$subA;
+        //echo '<script>alert("'.$proved.'")</script>';
         
         $serverName='localhost';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
-        $updateQuery ="UPDATE Productos SET nombre=('$nombreP'),Apartado=('$apar'),precio_com=('$pC'),precio_ven=('$pV'), descripcion=('$des'),Subapartado=('$subA'), Estado=('$estado') WHERE id_producto=$id";
+        $updateQuery ="UPDATE Productos SET nombre=('$nombreP'),Apartado=('$apar'),precio_com=('$pC'),precio_ven=('$pV'),id_proveedor=('$proved'), descripcion=('$des'),Subapartado=('$subA'), Estado=('$estado') WHERE id_producto=$id";
         $getProv = sqlsrv_query($conn_sis, $updateQuery);
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
         }
         include("lista_productos.php");
-        echo '<script>alert("Producto actualizado con éxito")</script>';
+        //echo '<script>alert("Producto actualizado con éxito")</script>';
     }
 }
     $obj= new ActPro;

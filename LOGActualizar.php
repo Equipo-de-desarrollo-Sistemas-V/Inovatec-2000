@@ -28,6 +28,7 @@
 			})
 		});
 	</script>
+
 </head>
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
@@ -132,7 +133,7 @@
                                     $pre_com=$row["precio_com"];
                                     $pre_ven=$row["precio_ven"];
                                     $prove=$row["id_proveedor"];
-                                    //echo $id.$nombre;
+                                    //echo '<script>alert("'.$prove.'")</script>';
                                     }
                                 ?>                                
                                 <form action="LogUpdate.php" class="formularios" method="POST" enctype="multipart/form-data" id="formulario">
@@ -252,12 +253,13 @@
                                                             }
                                                             while ($rowProv = sqlsrv_fetch_array($getProv))
                                                             {
-                                                                $id_Pro=$rowProv['Id_proveedor'];
+                                                                $id_Pro=$rowProv['id_proveedor'];
                                                                 $nomEmp=$rowProv['nombre_empresa'];
                                                                 $rfc=$rowProv['RFC'];
-                                                                $email=$rowProv['email_empresa'];                                                                
+                                                                $email=$rowProv['email_empresa'];
+                                                                //echo '<script>alert("'.$id_Pro.'")</script>';                                                                
                                                                 if($id_Pro==$prove){
-                                                                ?>
+                                                                ?>                                                                
                                                                     <option value="<?php echo $id_Pro;?>" selected><?php echo $nomEmp;?></option>
                                                                 <?php    
                                                                 }else{
@@ -292,7 +294,7 @@
 					</div>
 
 					<div class="btn_enviar">
-						<button onclick="test()" type="submit" name="guardar" id="guardar" class="btn_submit" value="Actualizar">Actualizar</button>
+						<button onclick="alert('Producto actualizado con éxito')" type="submit" name="guardar" id="guardar" class="btn_submit" value="Actualizar">Actualizar</button>
 					</div>
                                         
 				</form>		
