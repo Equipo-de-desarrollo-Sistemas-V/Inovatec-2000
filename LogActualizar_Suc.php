@@ -111,7 +111,7 @@
             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
             $id=$_GET["item"];            
-            $query="SELECT id_sucursal,ciudad_est,Estado FROM sucursal where id_sucursal=$id";
+            $query="SELECT id_sucursal,ciudad_est,Estado FROM sucursal where id_sucursal='$id'";
             $res= sqlsrv_query($conn_sis, $query);
             if( $res === false) {
                     die( print_r( sqlsrv_errors(), true) );
@@ -149,32 +149,6 @@
                     </div>
 
                     <div class="formulario_grupo-input">
-                        <label for="ciudadSucursal" class="formulario_label">Ciudad</label> 
-                        <div class="formulario_grupo-input">
-                            <select type="text" name="ciudadSuc" id="ciudadSuc" class="formulario_input">
-                            <?php
-                            $getCiudad ="select * from municipios";
-                            $getCiudad2 = sqlsrv_query($conn_sis, $getCiudad);
-                            if( $getCiudad2 === false) {
-                                die( print_r( sqlsrv_errors(), true) );
-                            }
-                            while ($rowCiudad = sqlsrv_fetch_array($getCiudad2)){
-                                $id_mun=$rowCiudad['Id_Municipios'];
-                                $municipios=$rowCiudad['municipio'];
-                                if ($id_gen==$id_mun){?>
-                                    <option value="<?php echo $id_mun;?>" selected><?php echo $municipios;?></option>
-                            <?php
-                            }else{
-                                ?>
-                                <option value="<?php echo $id_mun;?>"><?php echo $municipios;?></option>
-                                <?php
-                            }}
-                        ?>   
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="formulario_grupo-input">
                         <label for="estado" class="formulario_label">Estado</label>
                         <div class="formulario_grupo-input">
                             <select type="text" name="estado" id="estado" class="formulario_input">
@@ -199,6 +173,33 @@
                             </select>
                             </div>
                     </div>
+                    
+                    
+                    <div class="formulario_grupo-input">
+                        <label for="ciudadSucursal" class="formulario_label">Municipio</label> 
+                        <div class="formulario_grupo-input">
+                            <select type="text" name="ciudadSuc" id="ciudadSuc" class="formulario_input">
+                            <?php
+                            $getCiudad ="select * from municipios";
+                            $getCiudad2 = sqlsrv_query($conn_sis, $getCiudad);
+                            if( $getCiudad2 === false) {
+                                die( print_r( sqlsrv_errors(), true) );
+                            }
+                            while ($rowCiudad = sqlsrv_fetch_array($getCiudad2)){
+                                $id_mun=$rowCiudad['Id_Municipios'];
+                                $municipios=$rowCiudad['municipio'];
+                                if ($id_gen==$id_mun){?>
+                                    <option value="<?php echo $id_mun;?>" selected><?php echo $municipios;?></option>
+                            <?php
+                            }else{
+                                ?>
+                                <option value="<?php echo $id_mun;?>"><?php echo $municipios;?></option>
+                                <?php
+                            }}
+                        ?>   
+                            </select>
+                        </div>
+                    </div>
                     <div class="formulario_grupo-input">
                         <label for="Estado_ah" class="formulario_label">Estado</label> 
                         <div class="formulario_grupo-input"> 
@@ -218,7 +219,7 @@
                         </div>
                     </div>
                     <div class="btn_enviar">
-                        <button type="submit" class="btn_submit" value="Actualizar">Actualizar</button>
+                        <button type="submit" onclick="alert('Sucursal actualizada con éxito')" class="btn_submit" value="Actualizar">Actualizar</button>
                     </div>
                     
                 </form>		

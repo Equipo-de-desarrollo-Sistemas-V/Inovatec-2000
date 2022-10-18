@@ -1,5 +1,21 @@
+<?php
+//informacion para la conexion a base de datos
+$servername = "localhost";
+$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$con = sqlsrv_connect($servername, $info);
+
+$querry_puestos = "SELECT id_puesto, puesto FROM puestos
+WHERE puesto != 'Duenio'";
+$resultados_puestos = sqlsrv_query($con, $querry_puestos);
+
+$querry_sucursal = "SELECT id_sucursal FROM Sucursal
+WHERE Estado = 1";
+$resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +24,18 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+
+	<!-- Scripts para el funcionamiento de las combobox -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 </head>
+
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
-	<script src="funcionamiento.js"></script>
+	<!-- <script src="funcionamiento.js"></script> -->
 
 	<!--Estructura Header Superior-->
 	<header>
@@ -46,8 +70,8 @@
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php">Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php">Lista de sucursales</a></li>
 							</ul>
 						</li>
 
@@ -74,7 +98,7 @@
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php">Registro de ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
 							</ul>
 						</li>
@@ -84,7 +108,7 @@
 		</div>
 	</header>
 
-    <!--Main General-->
+	<!--Main General-->
 	<main>
 		<!--Contenido de la parte TRABAJADOR-->
 		<div class="contenidoAgregaTrab" id="contenidoAgregaTrab">
@@ -93,14 +117,14 @@
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
-						<label for="idTrabajador" class="formulario_label">Id</label> 
+						<label for="idTrabajador" class="formulario_label">Id</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="idTrabajador" id="idTrabajador" class="formulario_input" required maxlength="8" minlength="1">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="nombreTabajador" class="formulario_label">Nombre</label> 
+						<label for="nombreTabajador" class="formulario_label">Nombre</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="nombreTabajador" id="nombreTabajador" class="formulario_input" required maxlength="40">
 						</div>
@@ -111,7 +135,7 @@
 
 						<div class="formulario_grupo-input">
 							<input type="text" name="apPaterno" id="apPaterno" class="formulario_input" required maxlength="20"></input>
- 						</div>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
@@ -119,32 +143,41 @@
 
 						<div class="formulario_grupo-input">
 							<input type="text" name="apMaterno" id="apMaterno" class="formulario_input" maxlength="20"></input>
- 						</div>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="rfc" class="formulario_label">RFC</label> 
+						<label for="rfc" class="formulario_label">RFC</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="rfc" id="rfc" class="formulario_input" required maxlength="13" minlength="13">
- 						</div>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="puesto" class="formulario_label">Puesto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="puesto" id="puesto" class="formulario_input" required></select>
+							<select type="text" name="puesto" id="puesto" class="formulario_input" required>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_puestos)) { ?>
+									<option value=" <?php echo $row['id_puesto']; ?>"> <?php echo $row['puesto']; ?> </option>
+
+								<?php }
+								?>
+							</select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="usuario" class="formulario_label">Usuario</label> 
+						<label for="usuario" class="formulario_label">Usuario</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="usuario"id="usuario" class="formulario_input" required></input>
- 						</div>
+							<input type="text" name="usuario" id="usuario" class="formulario_input" required></input>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="contraseña" class="formulario_label">Contraseña</label> 
+						<label for="contraseña" class="formulario_label">Contraseña</label>
 						<div class="formulario_grupo-input">
 							<input type="password" name="contraseña" id="contraseña" class="formulario_input" required maxlength="100"></input>
 						</div>
@@ -153,48 +186,65 @@
 					<div class="formulario_grupo-input">
 						<label for="sucursal" class="formulario_label">Sucursal</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="sucursal" id="sucursal" class="formulario_input" required></select>
+							<select type="text" name="sucursal" id="sucursal" class="formulario_input" required>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_sucursal)) { ?>
+									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal']; ?> </option>
+
+								<?php }
+								?>
+							</select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input2">
-						<label class="formulario_label">Permisos</label> 
+						<label class="formulario_label">Permisos</label>
 					</div>
 
 					<div class="formulario_grupo-input">
-							<label class="formulario_label-checkbox1"><input type="checkbox" id="cbox1" value="permiso1"> Acceso a inventario </label>
+						<label class="formulario_label-checkbox1"><input type="checkbox" name="cbox1" id="cbox1" value="permiso1"> Acceso a inventario </label>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label class="formulario_label-checkbox2"><input type="checkbox" id="cbox2" value="permiso2"> Acceso a proveedores </label>
+						<label class="formulario_label-checkbox2"><input type="checkbox" name="cbox2" id="cbox2" value="permiso2"> Acceso a proveedores </label>
 					</div>
 
 					<div class="formulario_grupo-input">
-							<label class="formulario_label-checkbox1"><input type="checkbox" id="cbox3" value="permiso3"> Acceso a sucursales </label>
+						<label class="formulario_label-checkbox1"><input type="checkbox" name="cbox3" id="cbox3" value="permiso3"> Acceso a sucursales </label>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label class="formulario_label-checkbox2"><input type="checkbox" id="cbox4" value="permiso4"> Acceso a ventas </label>
+						<label class="formulario_label-checkbox2"><input type="checkbox" name="cbox4" id="cbox4" value="permiso4"> Acceso a ventas </label>
 					</div>
 
 					<div class="formulario_grupo-input">
-							<label class="formulario_label-checkbox1"><input type="checkbox" id="cbox5" value="permiso5"> Acceso a promociones </label>
+						<label class="formulario_label-checkbox1"><input type="checkbox" name="cbox5" id="cbox5" value="permiso5"> Acceso a promociones </label>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label class="formulario_label-checkbox2"><input type="checkbox" id="cbox6" value="permiso6"> Bloqueado </label>
+						<label class="formulario_label-checkbox2"><input type="checkbox" name="cbox6" id="cbox6" value="permiso6"> Bloqueado </label>
 					</div>
 
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>
 
-				</form>		
+				</form>
 			</article>
-			
+
 		</div>
-    </main>
-	<!-- <script src="js/validAltaTrabajador.js"></script> -->
+	</main>
+	<script src="js/alertasTrabajador.js"></script>
+	<script src="js/validAltaTrabajador.js"></script>
 
 </body>
+
 </html>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#sucursal').select2();
+	});
+</script>

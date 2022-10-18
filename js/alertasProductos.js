@@ -24,7 +24,7 @@ formulario.addEventListener('submit', function(e){
 
         else if(data === 'todo chido'){
             alert("El registro se ha realizado con éxito");
-            location.href = "administrativo2.php";
+            location.href = "alta_producto.php";
         }
             
         else if(data === 'foto nula'){

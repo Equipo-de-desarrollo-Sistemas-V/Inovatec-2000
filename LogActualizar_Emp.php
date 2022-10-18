@@ -166,7 +166,36 @@
 							<input type="text" name="rfc" id="rfc" class="formulario_input" required maxlength="13" minlength="13" value="<?php echo $rfc;?>">
  						</div>
 					</div>
-
+                                        
+                                        <div class="formulario_grupo-input">
+						<label for="idSucursal" class="formulario_label">Id Sucursal</label> 
+						<div class="formulario_grupo-input">
+                                                    <select type="text" name="idSucursal" id="idSucursal" class="formulario_input">
+                                                        <?php
+                                                        $serverName='localhost';
+                                                            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+                                                            $getSucursal ="select id_sucursal from Sucursal";
+                                                            $getSucursal2 = sqlsrv_query($conn_sis, $getSucursal);
+                                                            if( $getSucursal2 === false) {
+                                                                die( print_r( sqlsrv_errors(), true) );
+                                                            }
+                                                            while ($rowSucursal = sqlsrv_fetch_array($getSucursal2)){
+                                                                $id_suc=$rowSucursal['id_sucursal'];
+                                                                
+                                                                if ($id_suc==$sucursal){?>
+                                                                    <option value="<?php echo $id_suc;?>" selected><?php echo $id_suc;?></option>
+                                                            <?php
+                                                            }else{
+                                                                ?>
+                                                                <option value="<?php echo $id_suc;?>"><?php echo $id_suc;?></option>
+                                                                <?php
+                                                            }}
+                                                        ?>
+                                                    </select>
+						</div>
+					</div>
+                                    
 					<div class="formulario_grupo-input">
 						<label for="puesto" class="formulario_label">Puesto</label>
 						<div class="formulario_grupo-input">
@@ -202,18 +231,12 @@
 					</div>
                                     
 					<div class="formulario_grupo-input">
-						<label for="usuario" class="formulario_label">Usuario</label> 
+						<label for="usuario" class="formulario_label">Correo electrónico</label> 
 						<div class="formulario_grupo-input">
 							<input type="text" name="usuario"id="usuario" class="formulario_input" required value="<?php echo $correo;?>"</input>
  						</div>
 					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="contraseña" class="formulario_label">Contraseña</label> 
-						<div class="formulario_grupo-input">
-							<input type="password" name="contraseña" id="contraseña" class="formulario_input" required maxlength="100"></input>
-						</div>
-					</div>
+					
 
 					<div class="formulario_grupo-input2">
 						<label class="formulario_label">Permisos</label> 
@@ -274,7 +297,7 @@
 					</div>
 
 					<div class="btn_enviar">
-						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
+                                            <button type="submit" onclick="alert('Empleado actualizado con éxito')" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>
 
 				</form>		

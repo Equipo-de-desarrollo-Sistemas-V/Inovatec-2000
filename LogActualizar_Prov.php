@@ -163,7 +163,7 @@
 					
 
 					<div class="btn_enviar">
-						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
+						<button type="submit" onclick="alert('Proveedor actualizado con éxito')" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>
 
 				</form>

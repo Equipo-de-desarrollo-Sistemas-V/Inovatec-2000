@@ -15,7 +15,7 @@ class ActPro{
             die( print_r( sqlsrv_errors(), true) );
         }
         include("lista_sucursal.php");
-        echo '<script>alert("Sucursal actualizada con éxito")</script>';
+        //echo '<script>alert("Sucursal actualizada con éxito")</script>';
     }
 }
     $obj= new ActPro;
