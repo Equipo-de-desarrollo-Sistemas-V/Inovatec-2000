@@ -11,7 +11,6 @@
     <!-- Importación de los archivos css para el uso de la página -->
     <link rel="stylesheet" href="css/menuPrincipal.css">
 </head>
-
 <body>
     <header>
         <nav class="navbar">
