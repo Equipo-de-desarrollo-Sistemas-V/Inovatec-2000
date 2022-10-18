@@ -25,6 +25,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_municipios);
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 
+	<!-- Scripts para el funcionamiento de las combobox -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

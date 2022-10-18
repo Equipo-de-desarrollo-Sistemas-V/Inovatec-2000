@@ -18,7 +18,7 @@
 
                 //verificar que el ID no se repita
                 $querry_id = "SELECT * FROM sucursal
-                WHERE id_sucursal = $id";
+                WHERE id_sucursal = '$id'";
                 $resultID = sqlsrv_query($con, $querry_id);
 
                 if (sqlsrv_fetch_array($resultID)) {
@@ -46,7 +46,7 @@
 
                     //verifica que el producto de verdad se inserto en la base de datos
                     $confirm = "SELECT * FROM sucursal
-                    WHERE id_sucursal = $id";
+                    WHERE id_sucursal = '$id'";
 
                     $resultados = sqlsrv_query($con, $confirm);
 
