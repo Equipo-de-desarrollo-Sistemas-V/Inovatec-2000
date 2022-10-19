@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Nuevo trabajador</title>
+	<title>Actualizar datos del trabajador</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
@@ -296,7 +296,7 @@
 					</div>
 
 					<div class="btn_enviar">
-                                            <button type="submit" onclick="alert('Empleado actualizado con éxito')" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
+                                            <button type="submit" onclick="alert('Empleado actualizado con éxito')" class="btn_submit" name="guardar" id="guardar" value="Guardar">Actualizar</button>
 					</div>
 
 				</form>		

@@ -262,7 +262,7 @@
 					</div><br>
 
 					<div class="btn_enviar">
-						<button type="submit" onclick="alert('Artículo actualizado con éxito')" class="btn_submit" value="Guardar">Guardar</button>
+						<button type="submit" onclick="alert('Artículo actualizado con éxito')" class="btn_submit" value="Guardar">Actualizar</button>
 					</div>
 					
 				</form>		
