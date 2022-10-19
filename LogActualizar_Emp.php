@@ -166,9 +166,16 @@
 							<input type="text" name="rfc" id="rfc" class="formulario_input" required maxlength="13" minlength="13" value="<?php echo $rfc;?>">
  						</div>
 					</div>
-                                        
-                                        <div class="formulario_grupo-input">
-						<label for="idSucursal" class="formulario_label">Id Sucursal</label> 
+
+					<div class="formulario_grupo-input">
+						<label for="usuario" class="formulario_label">Correo electrónico</label> 
+						<div class="formulario_grupo-input">
+							<input type="text" name="usuario"id="usuario" class="formulario_input" required value="<?php echo $correo;?>"</input>
+ 						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="idSucursal" class="formulario_label">Id sucursal</label> 
 						<div class="formulario_grupo-input">
                                                     <select type="text" name="idSucursal" id="idSucursal" class="formulario_input">
                                                         <?php
@@ -229,14 +236,6 @@
                                                     </select>
 						</div>
 					</div>
-                                    
-					<div class="formulario_grupo-input">
-						<label for="usuario" class="formulario_label">Correo electrónico</label> 
-						<div class="formulario_grupo-input">
-							<input type="text" name="usuario"id="usuario" class="formulario_input" required value="<?php echo $correo;?>"</input>
- 						</div>
-					</div>
-					
 
 					<div class="formulario_grupo-input2">
 						<label class="formulario_label">Permisos</label> 

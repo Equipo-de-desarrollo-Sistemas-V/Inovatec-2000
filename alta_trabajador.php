@@ -154,25 +154,9 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="puesto" class="formulario_label">Puesto</label>
+						<label for="correoE" class="formulario_label">Correo electrónico</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="puesto" id="puesto" class="formulario_input" required>
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados_puestos)) { ?>
-									<option value=" <?php echo $row['id_puesto']; ?>"> <?php echo $row['puesto']; ?> </option>
-
-								<?php }
-								?>
-							</select>
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="usuario" class="formulario_label">Usuario</label>
-						<div class="formulario_grupo-input">
-							<input type="text" name="usuario" id="usuario" class="formulario_input" required></input>
+							<input type="text" name="correoE" id="correoE" class="formulario_input" required></input>
 						</div>
 					</div>
 
@@ -184,7 +168,14 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="sucursal" class="formulario_label">Sucursal</label>
+						<label for="contraseña2" class="formulario_label">Confirmar contraseña</label>
+						<div class="formulario_grupo-input">
+							<input type="password" name="contraseña2" id="contraseña2" class="formulario_input" required maxlength="100"></input>
+						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="sucursal" class="formulario_label">Id sucursal</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="sucursal" id="sucursal" class="formulario_input" required>
 								<?php
@@ -192,6 +183,22 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 								//cargar los resultados de la consulta en la combobox
 								while ($row = sqlsrv_fetch_array($resultados_sucursal)) { ?>
 									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal']; ?> </option>
+
+								<?php }
+								?>
+							</select>
+						</div>
+					</div>
+
+					<div class="formulario_grupo-input">
+						<label for="puesto" class="formulario_label">Puesto</label>
+						<div class="formulario_grupo-input">
+							<select type="text" name="puesto" id="puesto" class="formulario_input" required>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_puestos)) { ?>
+									<option value=" <?php echo $row['id_puesto']; ?>"> <?php echo $row['puesto']; ?> </option>
 
 								<?php }
 								?>
