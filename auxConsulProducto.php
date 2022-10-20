@@ -95,7 +95,7 @@ if($resultado==true){
         $salida.='<td>'.$pre_com.'</td>'; 
         $salida.='<td>'.$pre_ven.'</td>'; 
         $salida.='<td>'.$proveedor.'</td>';
-        $salida.='<td>'.'<p><img src="' .$imagen. '"></p></td>';
+        $salida.='<td>'.'<p><img src="' .$imagen. '" width="50" height="50"></p></td>';
         $salida.='<td>'.$aux.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
