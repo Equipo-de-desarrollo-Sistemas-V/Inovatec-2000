@@ -129,7 +129,7 @@
             while( $rowlugar = sqlsrv_fetch_array($lugar) ) {
                 $id_gen=$rowlugar["id"];
                 $id_est=$rowlugar["Id"];
-                $mun=$rowlugar["Estado"];
+                $est=$rowlugar["Estado"];
                 $mun=$rowlugar["municipio"];
             }
             //echo $id_gen.$id_est;
@@ -205,13 +205,13 @@
                         <div class="formulario_grupo-input"> 
                             <select type="text" name="estado_ah" id="estado_ah" class="formulario_input">
                                 <?php
-                                if ($situacion){?>
-                                <option value="1" selected>Activo</option>
-                                <option value="0">No surtiendo</option>
+                                if ($situacion=="Activo"){?>
+                                <option value="Activo" selected>Activo</option>
+                                <option value="Inactivo">No surtiendo</option>
                                 <?php 
                                 }else{?>
-                                <option value="1">Activo</option>
-                                <option value="0" selected>No surtiendo</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo" selected>No surtiendo</option>
                                 <?php                                
                                 }
                                 ?>
