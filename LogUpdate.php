@@ -10,6 +10,7 @@ class ActPro{
         $proved=$_POST['proveedor'];
         $subA=$_POST['subcategoria'];
         $estado=$_POST['estado_ah'];
+       
         //echo '<script>alert("'.$proved.'")</script>';
         
         $serverName='localhost';
@@ -73,7 +74,7 @@ class Foto{
                     }
 
                     else{
-                        echo 'ERROR: No se pudo guardar la imágen';
+                        echo 'Notificación: No hay imágen nueva';
                     }
                 }
                 
