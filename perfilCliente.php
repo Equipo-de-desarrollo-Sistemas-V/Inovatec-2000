@@ -103,7 +103,7 @@ else{
 <body>
     <header>
         <nav class="navbar container">
-            <img src="css/assets/Logo_Integrado.svg" required class="logo">
+            <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
             <input type="checkbox" id="toggler">
             <label for="toggler"><i class="ri-menu-line"></i></label>
             <div class="menu">
@@ -112,7 +112,7 @@ else{
             session_start();
              //$_SESSION["Usuario"] = $arreClien['Usuario'];
 			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['Usuario']);?>
-                    <a class="btn-cerrar-session" href="cerrar.php" type="button">Cerrar Sesión</a>
+                    <a class="btn-cerrar-session btn" href="cerrar.php" type="button">Cerrar Sesión</a>
                 <!-- </ul> -->
             </div>
         </nav>
@@ -323,6 +323,7 @@ else{
         <script src="js/alertasPerfil.js"></script>
         <script src="js/validPerfil.js"></script>
     </section>
+    <script src="js/linkHome.js"></script>
 </body>
 
 </html>

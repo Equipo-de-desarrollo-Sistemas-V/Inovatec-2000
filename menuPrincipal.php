@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +12,12 @@
     <!-- Importación de los archivos css para el uso de la página -->
     <link rel="stylesheet" href="css/menuPrincipal.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar">
-            <img src="css/assets/Logo_Integrado.svg" required class="logo">
-            
+            <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
+
             <div class="containerOpciones">
                 <div class="containerBuscador">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -23,20 +25,59 @@
                 </div>
 
                 <div class="containerBtn">
-                    <a href="#" class="btn">Iniciar sesión</a>
-                    <a href="#" class="btn">Registrate</a>
-                    <a href="#" class="btn">Mi perfil</a>
+                    <a href="login.php" class="btn">Iniciar sesión</a>
+                    <a href="registroUsuarios.php" class="btn">Registrate</a>
+                    <a href="perfilCliente.php" class="btn">Mi perfil</a>
                     <a href="#" class="btn">Mi carrito</a>
                 </div>
             </div>
-            
-        </nav>
+
+        </nav>      
     </header>
 
     <section class="containerAll">
         <article class="containerMenu">
-            
-            <i class="fa-solid fa-computer"></i>
+
+            <div class="seccion1">
+                <i class="fa-solid fa-wifi"></i>
+                <select name="redes" id="redes" class="categorias">
+                    <option value="red">Redes</option>
+                    <option value="ruteadores">Ruteadores inalámbicos</option>
+                    <option value="cablesRed">Cables de red</option>
+                    <option value="adaptadoresBluethoot">Adaptadores Bluetooth</option>
+                    <option value="tarjetaRed">Tarjetas de Red</option>
+                    <option value="adaptadoresInalambricos">Adaptadores inalámbricos</option>
+                </select>
+
+                <i class="fa-solid fa-laptop-code"></i>
+                <select name="software" id="software" class="categorias">
+                    <option value="softw">Software</option>
+                    <option value="antivirus">Antivirus y seguridad</option>
+                    <option value="sistOperativos">Sistemas operativos</option>
+                    <option value="ofimatica">Ofimática</option>
+                    <!-- <option value="">Software punto de venta</option> -->
+                </select>
+
+                <i class="fa-solid fa-server"></i>
+                <select name="servidores" id="servidores" class="categorias">
+                    <option value="servers">Servidores</option>
+                    <option value="accesoriosServers">Accesorios servidores</option>
+                    <option value="serverRedes">Redes</option>
+                    <option value="energía">Energía</option>
+                </select>
+
+                <i class="fa-solid fa-print"></i>
+                <select name="impresion" id="impresion" class="categorias">
+                    <option value="impres">Impresión</option>
+                    <option value="consmibles">Consumibles y articulos</option>
+                    <option value="impresoras">Impresoras</option>
+                    <!-- <option value="3">Puntos de venta</option> -->
+                    <option value="scanners">Scanners de cama</option>
+                </select>
+            </div>
+
+            <div class="seccion2">
+                <i class="fa-solid fa-computer"></i>
                 <select name="computadoras" id="computadoras" class="categorias">
                     <option value="compu">Computadoras</option>
                     <option value="laptops">Laptops</option>
@@ -44,86 +85,51 @@
                     <option value="smartphones">Smartphones</option>
                     <option value="tablets">Tablets</option>
                 </select>
-            
-            <i class="fa-solid fa-microchip"></i>
-            <select name="hardware" id="hardware" class="categorias">
-                <option value="hardw">Hardware</option>
-                <option value="discosDuros">Discos duros</option>
-                <option value="procesadores">Procesadores</option>
-                <option value="memorias">Memorias</option>
-                <option value="placasMadre">Placas madre</option>
-            </select>
 
-            <i class="fa-solid fa-keyboard"></i>
-            <select name="accesorios" id="accesorios" class="categorias">
-                <option value="acces">Accesorios</option>
-                <option value="perifericos">Perifericos</option>
-                <option value="cables">Cables</option>
-                <option value="adaptadores">Adaptadores</option>
-                <option value="herramientas">Herramientas</option>
-                <option value="limpieza">Limpieza</option>
-            </select>
+                <i class="fa-solid fa-microchip"></i>
+                <select name="hardware" id="hardware" class="categorias">
+                    <option value="hardw">Hardware</option>
+                    <option value="discosDuros">Discos duros</option>
+                    <option value="procesadores">Procesadores</option>
+                    <option value="memorias">Memorias</option>
+                    <option value="placasMadre">Placas madre</option>
+                </select>
 
-            <i class="fa-solid fa-wrench"></i>
-            <select name="electronica" id="electronica" class="categorias">
-                <option value="electro">Electrónica</option>
-                <option value="monitores">Monitores</option>
-                <option value="audifonos">Audífonos</option>
-                <option value="microfonos">Micrófonos</option>
-                <option value="bocinas">Bocinas</option>
-                <option value="capturadorasVideo">Capturadoras de video</option>
-            </select>
+                <i class="fa-solid fa-keyboard"></i>
+                <select name="accesorios" id="accesorios" class="categorias">
+                    <option value="acces">Accesorios</option>
+                    <option value="perifericos">Perifericos</option>
+                    <option value="cables">Cables</option>
+                    <option value="adaptadores">Adaptadores</option>
+                    <option value="herramientas">Herramientas</option>
+                    <option value="limpieza">Limpieza</option>
+                </select>
 
-            <i class="fa-solid fa-wifi"></i>
-            <select name="redes" id="redes" class="categorias">
-                <option value="red">Redes</option>
-                <option value="ruteadores">Ruteadores inalámbicos</option>
-                <option value="cablesRed">Cables de red</option>
-                <option value="adaptadoresBluethoot">Adaptadores Bluetooth</option>
-                <option value="tarjetaRed">Tarjetas de Red</option>
-                <option value="adaptadoresInalambricos">Adaptadores inalámbricos</option>
-            </select>
+                <i class="fa-solid fa-wrench"></i>
+                <select name="electronica" id="electronica" class="categorias">
+                    <option value="electro">Electrónica</option>
+                    <option value="monitores">Monitores</option>
+                    <option value="audifonos">Audífonos</option>
+                    <option value="microfonos">Micrófonos</option>
+                    <option value="bocinas">Bocinas</option>
+                    <option value="capturadorasVideo">Capturadoras de video</option>
+                </select>
+            </div>
 
-            <i class="fa-solid fa-laptop-code"></i>
-            <select name="software" id="software" class="categorias">
-                <option value="softw">Software</option>
-                <option value="antivirus">Antivirus y seguridad</option>
-                <option value="sistOperativos">Sistemas operativos</option>
-                <option value="ofimatica">Ofimática</option>
-                <!-- <option value="">Software punto de venta</option> -->
-            </select>
-
-            <i class="fa-solid fa-server"></i>
-            <select name="servidores" id="servidores" class="categorias">
-                <option value="servers">Servidores</option>
-                <option value="accesoriosServers">Accesorios servidores</option>
-                <option value="serverRedes">Redes</option>
-                <option value="energía">Energía</option>
-            </select>
-
-            <i class="fa-solid fa-print"></i>
-            <select name="impresion" id="impresion" class="categorias">
-                <option value="impres">Impresión</option>
-                <option value="consmibles">Consumibles y articulos</option>
-                <option value="impresoras">Impresoras</option>
-                <!-- <option value="3">Puntos de venta</option> -->
-                <option value="scanners">Scanners de cama</option>
-            </select>
-            
         </article>
 
         <aside class="lateral"></aside>
 
         <article class="slider-frame">
-                <ul>
-                    <li><img src="assets/imagen-1.jpg" alt=""></li>
-                    <li><img src="assets/imagen-2.jpg" alt=""></li>
-                    <li><img src="assets/imagen-3.jpg" alt=""></li>
-                    <li><img src="assets/imagen-4.jpg" alt=""></li>
-                </ul>
+            <ul>
+                <li><img src="assets/imagen-1.jpg" alt=""></li>
+                <li><img src="assets/imagen-2.jpg" alt=""></li>
+                <li><img src="assets/imagen-3.jpg" alt=""></li>
+                <li><img src="assets/imagen-4.jpg" alt=""></li>
+            </ul>
         </article>
 
-        <article class="containerProductos" >
+        <article class="containerProductos">
 
             <div class="containerinfo">
                 <h2 class="subtitulo">Computación y electrónica</span></h2>
@@ -139,43 +145,43 @@
                     </div>
 
                     <img src="" alt="" id="seccion1-imagen1">
-    
+
                     <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion1-producto2"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion1-precio2"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion1-imagen2">
-    
+
                     <h3 class="nombreProducto"><span id="seccion1-nombre2"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion1-producto3"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion1-precio3"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion1-imagen3">
-    
+
                     <h3 class="nombreProducto"><span id="seccion1-nombre3"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion1-producto4"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion1-precio4"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion1-imagen4">
-    
+
                     <h3 class="nombreProducto"><span id="seccion1-nombre4"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
@@ -197,45 +203,45 @@
                         <h3 class="tituloProducto"><span id="seccion2-producto1"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion2-precio1"></span></h3>
                     </div>
-                    
-                    <img src="" alt="" id="seccion2-imagen1" >
-    
+
+                    <img src="" alt="" id="seccion2-imagen1">
+
                     <h3 class="nombreProducto"><span id="seccion2-nombre1"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion2-producto2"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion2-precio2"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion2-imagen2">
-    
+
                     <h3 class="nombreProducto"><span id="seccion2-nombre2"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion2-producto3"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion2-precio3"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion2-imagen3">
-    
+
                     <h3 class="nombreProducto"><span id="seccion2-nombre3"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion2-producto4"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion2-precio4"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion2-imagen4">
-    
+
                     <h3 class="nombreProducto"><span id="seccion2-nombre4"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
@@ -258,54 +264,55 @@
                         <h3 class="tituloProducto"><span id="seccion3-producto1"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion3-precio1"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion3-imagen1">
-    
+
                     <h3 class="nombreProducto"><span id="seccion3-nombre1"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion3-producto2"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion3-precio2"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion3-imagen2">
-    
-                    <h3 class="nombreProducto"><span  id="seccion3-nombre2"></span></h3>
+
+                    <h3 class="nombreProducto"><span id="seccion3-nombre2"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion3-producto3"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion3-precio3"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion3-imagen3">
-    
+
                     <h3 class="nombreProducto"><span id="seccion3-nombre3"></span></h3>
                     <a href="#" class="btn">Comprar</a>
                 </div>
-    
+
                 <div class="cardProducto">
                     <div class="encabezado">
                         <h3 class="tituloProducto"><span id="seccion3-producto4"></span></h3>
                         <h3 class="tituloPrecio"><span id="seccion3-precio4"></span></h3>
                     </div>
-                    
+
                     <img src="" alt="" id="seccion3-imagen4">
-    
+
                     <h3 class="nombreProducto"><span id="seccion3-nombre4"></span></h3>
                     <a href="#" class="btn">Comprar</a>
-            </div>
+                </div>
 
         </article>
 
     </section>
-    <script src="js/prueba.js"></script>
+    <script src="js/linkHome.js"></script>
 </body>
+
 </html>
 
 <?php 

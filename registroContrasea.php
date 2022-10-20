@@ -15,7 +15,7 @@
 <body>
   <header>
     <nav class="navbar container">
-      <img src="css/assets/Logo_Integrado.svg" required class="logo">
+      <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
     </nav>
   </header>
 
@@ -56,6 +56,7 @@
   </section>
 
   <script src="js/alertasContra.js"> </script>
+  <script src="js/linkHome.js"></script>
 </body>
 
 </html>

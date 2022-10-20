@@ -33,6 +33,9 @@ header{
 .logo{
 	width: 180px;
 }
+.logo:hover{
+    cursor: pointer;
+}
 
 .btn-cerrar-session{
 	align-items: right;

@@ -8,8 +8,8 @@ class Recuperar{
         $serverName='localhost';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         try{
-           $this->con = sqlsrv_connect($serverName, $connectionInfo); 
-           $this->varConectado=true;
+            $this->con = sqlsrv_connect($serverName, $connectionInfo); 
+            $this->varConectado=true;
         }catch (Exception $e){
             echo json_encode('conR');
         }

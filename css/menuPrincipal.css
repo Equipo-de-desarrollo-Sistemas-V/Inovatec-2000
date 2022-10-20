@@ -39,9 +39,12 @@ header {
     width: 10.625rem;
     padding-left: .9375rem;
 }
+.logo:hover{
+    cursor: pointer;
+}
 
 header a:hover {
-    background-color: #ffc727;
+    background-color: #ff7400;
     color: #fff;
     transition: 300ms;
 }
@@ -129,7 +132,7 @@ header a:hover {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -138,6 +141,7 @@ header a:hover {
     border: none;
     text-align: center;
     padding: .3125rem;
+    margin-right: 30px;
     border-radius: 1.5625rem;
     font-family: 'Montserrat', sans-serif;
     -webkit-appearance: none;
@@ -148,7 +152,7 @@ header a:hover {
 /* Carrusel en css nativo */
 
 .slider-frame {
-    width: 90.4522rem;
+    width: 100;
     height: 20rem;
     overflow: hidden;
 }
@@ -170,7 +174,7 @@ header a:hover {
 	width: 100%;
     height: auto;
     z-index: -100;
-    margin-top: -15px;
+    margin-top: -16px;
 }
 
 @keyframes slide {
@@ -191,10 +195,9 @@ header a:hover {
 
 .containerProductos {
     margin: 1.25rem;
-   /*  background-color: #fff; */
     display: flex;
     flex-direction: column;
-    margin-left: 250px;
+    margin-left: 300px;
     margin-right: 50px;
     border-radius: 25px;
     margin-bottom: 30px;
@@ -217,7 +220,7 @@ header a:hover {
 }
 
 .link:hover {
-    color: #e6b323;
+    color: #ff7400;
     transition: 300ms ease-in-out;
     font-weight: 700;
     font-size: 16px;
@@ -235,7 +238,7 @@ header a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 16.875rem;
+    width: 100%;
     background-color: #fff;
     border-radius: 15px;
     padding: 10px;
@@ -322,4 +325,47 @@ header a:hover {
     background-color: #e6b323;
     color: #fff;
     transition: 300ms;
+}
+
+/* Estilos para el boton */
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e6b323;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.50);
+    transition: box-shadow 300ms;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #ff7400;
+    color: #fff;
+    font-weight: bolder;
+    transition: 300ms all;
+}   
+
+::-webkit-scrollbar {
+    width: 0.8rem;
+    background-color: #c1c1c1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #9b9b9b;
+}
+
+/* Media qwery */
+@media screen and (max-width: 1200px) {
+    .containerCards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

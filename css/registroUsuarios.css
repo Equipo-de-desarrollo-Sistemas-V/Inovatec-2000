@@ -60,6 +60,9 @@ header {
     width: 200px;
     padding-left: 15px;
 }
+.logo:hover{
+    cursor: pointer;
+}
 
 .list {
     list-style: none;
