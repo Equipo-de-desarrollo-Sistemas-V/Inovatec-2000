@@ -147,13 +147,13 @@
 						<div class="formulario_grupo-input">
                                                     <select type="text" name="estado" id="estado" class="formulario_input">
                                                         <?php
-                                                        if ($situacion){?>
-                                                            <option value="1" selected>Activo</option>
-                                                            <option value="0">No surtiendo</option>
+                                                        if ($situacion=="Activo"){?>
+                                                            <option value="Activo" selected>Activo</option>
+                                                            <option value="Inactivo">No surtiendo</option>
                                                         <?php 
                                                         }else{?>
-                                                            <option value="1">Activo</option>
-                                                            <option value="0" selected>No surtiendo</option>
+                                                            <option value="Activo">Activo</option>
+                                                            <option value="Inactivo" selected>No surtiendo</option>
                                                         <?php                                
                                                         }
                                                         ?>
