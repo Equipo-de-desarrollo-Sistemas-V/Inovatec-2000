@@ -46,6 +46,8 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 
 <body>
 
+	<!-- script para que salga la foto en el cuadrito -->
+	<script src="funcionamiento.js"></script>
 	<!--Estructura Header Superior-->
 	<header>
 		<div class="header_superior">
@@ -143,7 +145,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 						<label for="categoria" class="formulario_label">Categoria</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="categoria" id="categoria" class="formulario_input" required>
-							<option value=""></option>
+								<option value=""></option>
 								<?php
 
 								//cargar los resultados de la consulta en la combobox
