@@ -13,7 +13,7 @@
                 $materno = $_POST["apMaterno"];
                 $rfc = $_POST["rfc"];
                 $puesto = $_POST["puesto"];
-                $correo = $_POST["usuario"];
+                $correo = $_POST["correoE"];
                 $pass = $_POST["contraseña"];
                 $sucursal = $_POST["sucursal"];
                 $cbox1 = isset($_POST["cbox1"]);
@@ -35,62 +35,91 @@
 
                 else{
 
-                    //insertar datos en la tabla empleados
-                    $contra = $this->encriptar($pass);
-                    $sucursal = $this->quitarEspacio($sucursal);
+                    $contra = $this->encriptar($pass); //encriptar la contraseña
+                    $sucursal = $this->quitarEspacio($sucursal); //quitarle el especio del principio a sucursal
 
-                    $querry_emp = "INSERT INTO Empleados
-                    VALUES('$id', '$nombre', '$paterno', '$materno', '$sucursal', '$rfc', '$correo', '$contra', '$puesto')";
-                    //echo $querry_emp . '<br>';
+                    //verifica si la casilla de bloqueado esta seleccionada
+                    $p6 = $this -> evaluarPermiso($cbox6);
+                    if($p6 == 1){
 
-                    $stm = sqlsrv_query($con, $querry_emp);
-                    if($stm === false){
-                        //die(print_r(sqlsrv_errors(), true));
-                        echo json_encode("consulta BD");
-                    }
-                    else{
-                        //echo 'consulta para insertar empleados si sirve';
+                        $querry_emp = "INSERT INTO Empleados
+                        VALUES('$id', '$nombre', '$paterno', '$materno', '$sucursal', '$rfc', '$correo', '$contra', '$puesto')";
 
-                        //verifica que el emlpeado si se haya registrado en la tabla
-                        $confirm = "SELECT * FROM Empleados
-                        WHERE id_empleado = '$id'";
+                        $stm = sqlsrv_query($con, $querry_emp);
+                        if ($stm === false) {
+                            //die(print_r(sqlsrv_errors(), true));
+                            echo json_encode("consulta BD");
+                        } 
+                        
+                        else {
 
-                        $resultados = sqlsrv_query($con, $confirm);
+                            //verifica que el empleado si se haya insertado en la base 
+                            $confirm = "SELECT * FROM Empleados
+                            WHERE id_empleado = '$id'";
 
-                        if (sqlsrv_fetch_array($resultados)) {
+                            $resultados = sqlsrv_query($con, $confirm);
 
-                            //evaluar si la casilla de bloqueado esta activa
-                            if ($cbox6 == false) {
+                            if (sqlsrv_fetch_array($resultados)) {
 
-                                //evaluar cuales casillas estan seleccionadas
-                                $p1 = $this->evaluarPermiso($cbox1);
-                                $p2 = $this->evaluarPermiso($cbox2);
-                                $p3 = $this->evaluarPermiso($cbox3);
-                                $p4 = $this->evaluarPermiso($cbox4);
-                                $p5 = $this->evaluarPermiso($cbox5);
-
-                                //inserta datos en la tabla de permisos
-                                $querry_permisos = "INSERT INTO Permisos
-                                VALUES('$id', 0, $p1, $p2, $p3, $p4, $p5, 0)";
-                                $stmp = sqlsrv_query($con, $querry_permisos);
-
-                                echo json_encode("todo chido");
-                            } 
-                            
-                            else {
                                 //inserta datos en la tabla de permisos pero con todos en false
                                 $querry_permisos = "INSERT INTO Permisos
-                                    VALUES('$id', 0, 0, 0, 0, 0, 0, 1)";
+                                        VALUES('$id', 0, 0, 0, 0, 0, 0, 0)";
                                 $stmp = sqlsrv_query($con, $querry_permisos);
                                 //echo json_encode("bloqueado");
 
                                 echo json_encode("todo chido");
                             }
-                        } 
-                        
-                        else {
-                            //die(print_r(sqlsrv_errors(), true));
-                            echo json_encode("consulta BD");
+
+                            else{
+                                echo json_encode("consulta BD");
+                            }
+                                
+                        }
+                    }
+
+                    else{
+
+                        //evaluar cuales casillas estan seleccionadas
+                        $p1 = $this->evaluarPermiso($cbox1);
+                        $p2 = $this->evaluarPermiso($cbox2);
+                        $p3 = $this->evaluarPermiso($cbox3);
+                        $p4 = $this->evaluarPermiso($cbox4);
+                        $p5 = $this->evaluarPermiso($cbox5);
+
+                        //verifica que al menos un check este seleccionado
+                        if($p1 == 0 and $p2 == 0 and $p3 == 0 and $p4 == 0 and $p5 == 0){
+                            echo json_encode("check");
+                        }  
+
+                        else{
+                            $querry_emp = "INSERT INTO Empleados
+                            VALUES('$id', '$nombre', '$paterno', '$materno', '$sucursal', '$rfc', '$correo', '$contra', '$puesto')";
+
+                            $stm = sqlsrv_query($con, $querry_emp);
+                            if ($stm === false) {
+                                //die(print_r(sqlsrv_errors(), true));
+                                echo json_encode("consulta BD");
+                            } else {
+
+                                //verifica que el empleado si se haya insertado en la base 
+                                $confirm = "SELECT * FROM Empleados
+                                WHERE id_empleado = '$id'";
+
+                                $resultados = sqlsrv_query($con, $confirm);
+
+                                if (sqlsrv_fetch_array($resultados)) {
+
+                                    //inserta datos en la tabla de permisos pero con todos en false
+                                    $querry_permisos = "INSERT INTO Permisos
+                                            VALUES('$id', 0, $p1, $p2, $p3, $p4, $p5, 1)";
+                                    $stmp = sqlsrv_query($con, $querry_permisos);
+                                    //echo json_encode("bloqueado");
+
+                                    echo json_encode("todo chido");
+                                } else {
+                                    echo json_encode("consulta BD");
+                                }
+                            }
                         }
                     }
                     
