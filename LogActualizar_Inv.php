@@ -119,10 +119,7 @@
             while( $row = sqlsrv_fetch_array($res) ) {
             $id=$row["id_producto"];
             $idsucursal=$row["id_sucursal"];
-            $apar=$row["Apartado"];
             $cantidad=$row["cantidad"];
-            $ultima=$row["ultima_venta"];
-            $subapartado=$row["Subapartado"];
             $stock=$row["stock_min"];
             }
             $query2="SELECT nombre FROM productos WHERE id_producto='$id'";
@@ -184,69 +181,9 @@
 						</div>
 					</div>
 
-					<div class="formulario_grupo-input">
-						<label for="categoria" class="formulario_label">Apartado</label> 
-						<div class="formulario_grupo-input">
-                                                    <select type="text" name="categoria" id="categoria" class="formulario_input">
-                                                        <?php
-                                                        $serverName='localhost';
-                                                            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
-                                                            $getApartado ="select * from Apartados";
-                                                            $getApartado2 = sqlsrv_query($conn_sis, $getApartado);
-                                                            if( $getApartado2 === false) {
-                                                                die( print_r( sqlsrv_errors(), true) );
-                                                            }
-                                                            while ($rowApartado = sqlsrv_fetch_array($getApartado2)){
-                                                                $id_ap=$rowApartado['ID_ap'];
-                                                                $apartado=$rowApartado['Nombre'];
-                                                                if ($id_ap==$apar){?>
-                                                                    <option value="<?php echo $id_ap;?>" selected><?php echo $apartado;?></option>
-                                                            <?php
-                                                            }else{
-                                                                ?>
-                                                                <option value="<?php echo $id_ap;?>"><?php echo $apartado;?></option>
-                                                                <?php
-                                                            }}
-                                                        ?>
-                                                    </select>
-						</div>
-					</div>
+					
                                     
-                                        <div class="formulario_grupo-input">
-						<label for="subcategoria" class="formulario_label">Subapartado</label> 
-						<div class="formulario_grupo-input">
-                                                    <select type="text" name="subcategoria" id="subcategoria" class="formulario_input">
-                                                        <?php
-                                                            $serverName='localhost';
-                                                            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-                                                            $getSubApartado ="select * from SubApartados where id_ap=$apar";
-                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
-                                                            $getSubApartado2 = sqlsrv_query($conn_sis, $getSubApartado);
-                                                            if( $getSubApartado2 === false) {
-                                                                die( print_r( sqlsrv_errors(), true) );
-                                                            }
-                                                            while ($rowSubApartado = sqlsrv_fetch_array($getSubApartado2))
-                                                            {
-                                                                $id_sap=$rowSubApartado['Id_subap'];
-                                                                $ap=$rowSubApartado['id_ap'];
-                                                                $subapartado=$rowSubApartado['SubApartado'];
-                                                                if($id_sap==$subapar){
-                                                                ?>
-                                                                    <option value="<?php echo $id_sap;?>" selected><?php echo $subapartado;?></option>
-                                                                <?php    
-                                                                }else{
-                                                                ?>
-                                                                <option value="<?php echo $id_sap;?>"><?php echo $subapartado;?></option>
-                                                                <?php
-                                                                }                                                                
-                                                            }
-
-                                                        ?>    
-                                                    </select>
-						</div>
-					</div>
-
+                     
 					<div class="formulario_grupo-input">
 						<label for="rfcProv" class="formulario_label">Existentes</label>
 						<div class="formulario_grupo-input">
