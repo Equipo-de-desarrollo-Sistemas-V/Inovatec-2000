@@ -180,7 +180,7 @@ main{
 article{
 	margin: 20px auto;
 	padding: 10px;
-	width: 1100px;
+	width: 1200px;
     background-color: rgba(145, 145, 145, 0.2);
     box-shadow: 0 0 10px #0575FF;
     border-radius: 20px;
@@ -351,7 +351,7 @@ table{
 }
 
 th,td{
-	width: auto;
+	width: 80px;
 	padding: 8px 8px;
 }
 
