@@ -17,6 +17,7 @@ validar();
 const expresiones = {
     cadenas:/^[a-zA-ZÁ-ý\s]{3,40}$/,
     apellidos:/^[a-zA-ZÁ-ý\s]{3,20}$/,
+    apMat:/^[a-zA-ZÁ-ý\s]{0,20}$/,
     usuario:/^[a-zA-ZÁ-ý0-9\s_@.]{3,20}$/,
     telefono:/^[0-9]{10}$/,
     correo:/^[a-zA-Z0-9.-_+]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]/,
@@ -58,8 +59,6 @@ formulario.apellidoPaterno.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
 
     if (!expresiones.apellidos.test(valorInput)) {
         apellidoPaterno.style.border = "3px solid red";
@@ -81,10 +80,8 @@ formulario.apellidoMaterno.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim(); 
 
-    if (!expresiones.apellidos.test(valorInput)) {
+    if (!expresiones.apMat.test(valorInput)) {
         apellidoMaterno.style.border = "3px solid red";
         bandAM = false
 	}else{
@@ -146,8 +143,6 @@ formulario.calle.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
 
     if (!expresiones.cadenasD.test(valorInput)) {
         calle.style.border = "3px solid red";
@@ -190,9 +185,7 @@ formulario.colonia.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
-
+    
     if (!expresiones.cadenas.test(valorInput)) {
         colonia.style.border = "3px solid red";
         bandCol = false
