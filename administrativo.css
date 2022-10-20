@@ -215,6 +215,21 @@ article{
 	line-height: 45px;
 	transition: .3s ease all;
 }
+.select2{
+	font-size: 16px;
+	font-weight: 450;
+	width: 100%;
+	background: #fff;
+	border: 3px solid #CCC;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	transition: .3s ease all;
+}
+.select2-container .select2-selection--single{
+	height: 45px;
+}
+
 .formulario_label-checkbox1{
 	display: block;
 	text-align: right;
