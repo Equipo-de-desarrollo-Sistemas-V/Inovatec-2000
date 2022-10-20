@@ -21,6 +21,10 @@ formulario.addEventListener('submit', function(e){
         else if (data === 'consulta BD') {
             alert("Se produjo un problema en la consulta a la base de datos");
         }
+            
+        else if (data === 'check') {
+            alert("Para poder registrar a un trabajador debe estar seleccionado al menos una casilla")
+        }
 
         else if(data === 'todo chido'){
             alert("El registro se ha realizado con éxito");

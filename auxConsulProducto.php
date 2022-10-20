@@ -1,7 +1,7 @@
 <?php
 
 $serverName='localhost';
-$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"sa", "PWD"=>"lebronjames23", "CharacterSet"=>"UTF-8");
 $con = sqlsrv_connect($serverName, $connectionInfo); 
 
 
@@ -69,6 +69,14 @@ if($resultado==true){
 							$pre_com=$row["precio_com"];
 							$pre_ven=$row["precio_ven"];
 							$proveedor=$row["nombre_empresa"];
+                            $query0="SELECT * FROM imagenes";
+                            $resultados0=sqlsrv_query($con, $query0);
+                            if( $resultados0 === false) {
+								die( print_r( sqlsrv_errors(), true) );
+							}
+                            while ($row0= sqlsrv_fetch_array($resultados0)) {
+                                $imagen=$row0["ruta"];
+                            }
                             $condi=$row["Estado"];
 							$edi='Editar';
 							$eli='Eliminar';
@@ -87,7 +95,7 @@ if($resultado==true){
         $salida.='<td>'.$pre_com.'</td>'; 
         $salida.='<td>'.$pre_ven.'</td>'; 
         $salida.='<td>'.$proveedor.'</td>';
-        $salida.='<td>'.'</td>';
+        $salida.='<td>'.'<p><img src="' .$imagen. '"></p></td>';
         $salida.='<td>'.$aux.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
