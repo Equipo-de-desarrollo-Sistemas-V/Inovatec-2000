@@ -65,9 +65,88 @@ if($resultado==true){
                             $puesto=$row["puesto"];
 							$correo=$row["email"];
                             $sucu=$row["id_sucursal"];
-                            $per='Permisos';
-							$edi='Editar';
-							$eli='Eliminar';
+                            $query="SELECT * FROM Permisos WHERE id_empleado='$id' ORDER BY id_empleado";
+                            $res= sqlsrv_query($con, $query);
+                            $mensaje="";
+                            if( $res === false) {
+                                die( print_r( sqlsrv_errors(), true) );
+                            }
+                            while( $row = sqlsrv_fetch_array($res) ) {
+                                $bloqueo=$row["permiso7"];
+                                if($bloqueo===1){
+                                    $mensaje="Bloqueado";
+                                }else{
+                                    $empleados=$row["permiso1"];
+                                    if ($empleados===1){
+                                        $len=strlen($mensaje);
+                                        if (($len==0)){
+                                            $mensaje=$mensaje."Empleados";
+                                        }else{
+                                            $mensaje=$mensaje."<br>"."Empleados";
+                                        }
+                                    }else{
+                                        $empleado1="";
+                                    }
+                                    $inventario=$row["permiso2"];
+                                    if($inventario===1){
+                                        $len=strlen($mensaje);
+                                        if (($len==0)){
+                                            $mensaje=$mensaje."Inventario";
+                                        }else{
+                                            $mensaje=$mensaje."<br>"."Inventario";
+                                        }
+                                    }else{
+                                        $inventario1="";
+                                    }
+                                    $proveedores=$row["permiso3"];
+                                    if($proveedores===1){
+                                        $len=strlen($mensaje);
+                                        if (($len==0)){
+                                            $mensaje=$mensaje."Proveedores";
+                                        }else{
+                                            $mensaje=$mensaje."<br>"."Proveedores";
+                                        }
+                                    }else{
+                                        $proveedores1="";
+                                    }
+                                    $sucursales=$row["permiso4"];
+                                    if($sucursales===1){
+                                        $len=strlen($mensaje);
+                                        if (($len==0)){
+                                            $mensaje=$mensaje."Sucursales";
+                                        }else{
+                                            $mensaje=$mensaje."<br>"."Sucursales";
+                                        }
+                                    }else{
+                                        $sucursales1="";
+                                    }
+                                    $ventas=$row["permiso5"];
+                                    if($ventas===1){
+                                        $len=strlen($mensaje);
+                                        if (($len==0)){
+                                            $mensaje=$mensaje."Ventas";
+                                        }else{
+                                            $mensaje=$mensaje."<br>"."Ventas";
+                                        }
+                                    }else{
+                                        $ventas1="";
+                                    }
+                                    $promociones=$row["permiso6"];
+                                    if($promociones===1){
+                                        $len=strlen($mensaje);
+                                        if (($len==0)){
+                                            $mensaje=$mensaje."Promociones";
+                                        }else{
+                                            $mensaje=$mensaje."<br>"."Promociones";
+                                        }
+                                    }else{
+                                        $promociones1="";
+                                    }
+                                }
+    
+                            }
+                            $edi='Editar';
+                            $eli='Eliminar';
         //muestra los resultados en la tabla
         $salida.='<tr>';
         $salida.='<td>'.$id.'</td>';
@@ -78,7 +157,7 @@ if($resultado==true){
         $salida.='<td>'.$puesto.'</td>'; 
         $salida.='<td>'.$correo.'</td>'; 
         $salida.='<td>'.$sucu.'</td>';
-        $salida.='<td>'.'<a href="#">'.$per. '</a>'.'</td>';
+        $salida.='<td>'.$mensaje.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar_Emp.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
