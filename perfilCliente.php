@@ -146,7 +146,7 @@ else{
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="apellidoMaterno" id="apellidoMaterno" required class="input" maxlength="20"value=<?php echo $aM;?>>
+                        <input type="text" name="apellidoMaterno" id="apellidoMaterno" class="input" maxlength="20"value=<?php echo $aM;?>>
                         <label for="apellido-paterno" class="input-label">Apellido paterno</label>
                     </div>
 

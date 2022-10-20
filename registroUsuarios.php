@@ -48,7 +48,7 @@
             </div>
 
             <div class="input-group">
-              <input type="text" name="apellidoMaterno" id="apellidoMaterno" required class="input" autocomplete="off" maxlength="20">
+              <input type="text" name="apellidoMaterno" id="apellidoMaterno" class="input" autocomplete="off" maxlength="20">
               <label for="apellido-materno" class="input-label">Apellido materno</label>
             </div>
 

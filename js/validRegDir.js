@@ -19,8 +19,6 @@ formulario.calle.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
 
     if (!expresiones.cadenas.test(valorInput)) {
         calle.style.border = "3px solid red";
@@ -41,8 +39,6 @@ formulario.numero.addEventListener('keyup', (e) => {
 	.replace(/\s/g, '')
 	// Eliminar letras
 	.replace(/\D/g, '')
-	// Eliminar el ultimo espaciado
-	.trim();
 
     if (!expresiones.numero.test(valorInput)) {
         numero.style.border = "3px solid red";
@@ -63,8 +59,6 @@ formulario.colonia.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
 
     if (!expresiones.cadenas.test(valorInput)) {
         colonia.style.border = "3px solid red";
