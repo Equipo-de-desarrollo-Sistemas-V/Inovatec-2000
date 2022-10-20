@@ -184,7 +184,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 						<label for="descripcion" class="formulario_label">Descripcion</label>
 
 						<div class="formulario_grupo-input">
-							<textarea type="text" name="descripcion" id="descripcion" class="formulario_input" required></textarea>
+							<textarea type="text" name="descripcion" id="descripcion" class="formulario_input-textarea" required></textarea>
 						</div>
 					</div>
 
