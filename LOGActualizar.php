@@ -119,22 +119,23 @@
                                
                                 $id=$_GET["item"];
                                 //if (isset($_POST('Actualizar')))
-                                    $query="SELECT id_producto,nombre,Apartado,precio_com,precio_ven,id_proveedor,descripcion,Subapartado FROM Productos where id_producto=$id";
-                                    $res= sqlsrv_query($conn_sis, $query);
-                                    if( $res === false) {
-                                            die( print_r( sqlsrv_errors(), true) );
-                                    }
-                                    while( $row = sqlsrv_fetch_array($res) ) {
-                                    $id=$row["id_producto"];
-                                    $nombre=$row["nombre"];
-                                    $descri=$row["descripcion"];
-                                    $cate=$row["Apartado"];
-                                    $subcate=$row["Subapartado"];
-                                    $pre_com=$row["precio_com"];
-                                    $pre_ven=$row["precio_ven"];
-                                    $prove=$row["id_proveedor"];
-                                    //echo '<script>alert("'.$prove.'")</script>';
-                                    }
+								$query="SELECT id_producto,nombre,Apartado,precio_com,precio_ven,id_proveedor,descripcion,Subapartado, Estado FROM Productos where id_producto=$id";
+								$res= sqlsrv_query($conn_sis, $query);
+								if( $res === false) {
+									die( print_r( sqlsrv_errors(), true) );
+								}
+								while( $row = sqlsrv_fetch_array($res) ) {
+									$id=$row["id_producto"];
+									$nombre=$row["nombre"];
+									$descri=$row["descripcion"];
+									$cate=$row["Apartado"];
+									$subcate=$row["Subapartado"];
+									$pre_com=$row["precio_com"];
+									$pre_ven=$row["precio_ven"];
+									$prove=$row["id_proveedor"];
+									$estado=$row["Estado"];									
+								//echo '<script>alert("'.$prove.'")</script>';
+								}
                                 ?>                                
                                 <form action="LogUpdate.php" class="formularios" method="POST" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
@@ -264,7 +265,7 @@
                                                                 <?php    
                                                                 }else{
                                                                 ?>
-                                                                <option value="<?php echo $id_Pro;?>"><?php echo $nomEmp;?></option>
+                                                                	<option value="<?php echo $id_Pro;?>"><?php echo $nomEmp;?></option>
                                                                 <?php
                                                                 }                                                                
                                                             }
@@ -276,8 +277,15 @@
 						<label for="Estado_ah" class="formulario_label">Estado</label> 
 						<div class="formulario_grupo-input"> 
                                                     <select type="text" name="estado_ah" id="estado_ah" class="formulario_input">
-                                                        <option value="1">Activo</option>
-                                                        <option value="0">No surtiendo</option>
+														<?php
+														if ($estado == "Activo") {?>
+															<option value="Activo" selected>Activo</option>
+															<option value="No surtiendo">No surtiendo</option>
+														<?php }else{?>
+															<option value="Activo">Activo</option>
+															<option value="No surtiendo" selected>No surtiendo</option>
+														<?php } ?>
+
                                                     </select>
                                                 </div>
                                     </div>
