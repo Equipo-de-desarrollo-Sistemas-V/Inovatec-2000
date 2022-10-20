@@ -13,7 +13,7 @@ window.onload=function(){
     var vent2= document.getElementById("contenidoListaVenta");
 
 
-    prod1.style.display = "none";
+    /*prod1.style.display = "none";
     prod2.style.display = "none";
     suc1.style.display = "none";
     suc2.style.display = "none";
@@ -24,7 +24,7 @@ window.onload=function(){
     inv1.style.display = "none";
     inv2.style.display = "none" 
     vent1.style.display = "none";
-    vent2.style.display = "none";
+    vent2.style.display = "none";*/
 
     document.getElementById('menuProducto1').className = 'desactivate';
     document.getElementById('menuProducto2').className = 'desactivate';
