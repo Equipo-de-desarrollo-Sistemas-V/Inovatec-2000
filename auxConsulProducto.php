@@ -1,7 +1,7 @@
 <?php
 
 $serverName='localhost';
-$connectionInfo=array("Database"=>"PagVentas", "UID"=>"sa", "PWD"=>"lebronjames23", "CharacterSet"=>"UTF-8");
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $con = sqlsrv_connect($serverName, $connectionInfo); 
 
 
@@ -69,7 +69,7 @@ if($resultado==true){
 							$pre_com=$row["precio_com"];
 							$pre_ven=$row["precio_ven"];
 							$proveedor=$row["nombre_empresa"];
-                            $query0="SELECT * FROM imagenes";
+                            $query0="SELECT ruta FROM imagenes WHERE id_prod='$id'";
                             $resultados0=sqlsrv_query($con, $query0);
                             if( $resultados0 === false) {
 								die( print_r( sqlsrv_errors(), true) );
