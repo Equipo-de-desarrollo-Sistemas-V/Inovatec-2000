@@ -149,11 +149,11 @@
                                                         <?php
                                                         if ($situacion=="Activo"){?>
                                                             <option value="Activo" selected>Activo</option>
-                                                            <option value="Inactivo">No surtiendo</option>
+                                                            <option value="Inactivo">Inactivo</option>
                                                         <?php 
                                                         }else{?>
                                                             <option value="Activo">Activo</option>
-                                                            <option value="Inactivo" selected>No surtiendo</option>
+                                                            <option value="Inactivo" selected>Inactivo</option>
                                                         <?php                                
                                                         }
                                                         ?>
