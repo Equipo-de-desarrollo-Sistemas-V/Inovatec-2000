@@ -564,7 +564,7 @@
 
     /* Elimina los ultimos dos caracteres de los precios */
     for($i = 0; $i < 4; $i++){
-        $precios_procesadores_categoria[$i] = substr($precios_procesadores_categoria[$i], 0, -2);
+        $precios_motherboards_categoria[$i] = substr($precios_motherboards_categoria[$i], 0, -2);
     }
 
     echo "<script>
