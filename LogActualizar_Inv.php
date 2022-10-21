@@ -88,6 +88,7 @@
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
 						</li>
@@ -136,7 +137,7 @@
 			<article>
 			<h1 align="center">Producto inventario</h1>
 				<br>
-                                <form action="LOGUpdate_Inv.php" class="formularios" method="post" enctype="multipart/form-data">
+                                <form action="LOGUpdate_Inv.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					
                                         <div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">ID Producto</label>
@@ -187,22 +188,23 @@
 					<div class="formulario_grupo-input">
 						<label for="rfcProv" class="formulario_label">Existentes</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="cantidad" id="cantidad" class="formulario_input" value="<?php echo $cantidad;?>"></input>
+							<input type="text" name="cantidad" id="cantidad" class="formulario_input" value="<?php echo $cantidad;?>" required></input>
  						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="correoProv" class="formulario_label">Stock mínimo</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="stockmin" id="stockmin" class="formulario_input" value="<?php echo $stock;?>"></input>
+							<input type="text" name="stockmin" id="stockmin" class="formulario_input" value="<?php echo $stock;?>" required></input>
  						</div>
 					</div><br>
 
 					<div class="btn_enviar">
-						<button type="submit" onclick="alert('Artículo actualizado con éxito')" class="btn_submit" value="Guardar">Actualizar</button>
+						<button type="submit" onclick="alert('Artículo actualizado con éxito')" class="btn_submit" id="guardar" id="guardar" value="Guardar">Actualizar</button>
 					</div>
 					
 				</form>		
 			</article>
+			<script src="js/validEditarInventario.js"></script>
 		</div>
     </main>

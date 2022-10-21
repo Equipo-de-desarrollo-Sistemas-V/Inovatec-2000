@@ -4,17 +4,14 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Menu Administrativo</title>
+	<title>Productos en stock minimo</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="js/consulInventario.js"></script>
+	<script src="js/consulStock.js"></script>
 </head>
 <body>
-	<!--Script de funcionaminto del menu desplegable-->
-	<script src="funcionamiento.js"></script>
-
 	<!--Estructura Header Superior-->
 	<header>
 		<div class="header_superior">
@@ -70,7 +67,7 @@
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
-								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
+                                <li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
 						</li>
@@ -87,19 +84,21 @@
 		</div>
 	</header>
 
-    <main>
-        <div class="contenidoListaInventario" id="contenidoListaInventario">
+    <!--Main General-->
+	<main>
+		<!--Contenido de la parte LISTA PRODUCTOS-->
+	
+		<div class="contenidoListaStockMinProd" id="contenidoListaStockMinProd">
 			<article>
-				<h1 align="center">Lista de inventario</h1>
+				<h1 align="center">Stock mínimo</h1>
 				<div class="contenido-barra-buscar">
-					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required />
+					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required >
 					<button class="btn-buscar">
 						<i class="fas fa-search icon"></i>
 
 					</button>
 				</div>
 				<br>
-
 				<section class="tablas" id="tablaResultado">
 					<!-- <table>
 						<thead>
@@ -115,10 +114,12 @@
 								<th></th>
 							</tr>
 						</thead>
+						
 					</table> -->
 				</section>
 			</article>
 		</div>
     </main>
+
 </body>
 </html>

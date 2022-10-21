@@ -1,44 +1,44 @@
 /* Declara una variable global */
-let bExis = false
-let bStock = false
+let bExis = true
+let bStock = true
 
 const expresiones = {
     numero:/^[0-9]{1,100}$/
 }
 
 /* Input de existentes */
-formulario.existentes.addEventListener('keyup', (e) => {
+formulario.cantidad.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.existentes.value = valorInput
+	formulario.cantidad.value = valorInput
     .replace(/[^0-9]+/, "")
      // Eliminar el ultimo espaciado
 	.trim();
 
     if (!expresiones.numero.test(valorInput)) {
-        existentes.style.border = "3px solid red";
+        cantidad.style.border = "3px solid red";
         bExis = false
 	}else{
-        existentes.removeAttribute("style");
+        cantidad.removeAttribute("style");
         bExis = true
     }
     validar();
 })
 
 /* Input stcok minimo*/
-formulario.stock.addEventListener('keyup', (e) => {
+formulario.stockmin.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.stock.value = valorInput
+	formulario.stockmin.value = valorInput
     .replace(/[^0-9.]+/, "")
      // Eliminar el ultimo espaciado
 	.trim();
 
     if (!expresiones.numero.test(valorInput)) {
-        stock.style.border = "3px solid red";
+        stockmin.style.border = "3px solid red";
         bStock = false
 	}else{
-        stock.removeAttribute("style");
+        stockmin.removeAttribute("style");
         bStock = true
     }
     validar();
