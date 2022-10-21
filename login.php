@@ -22,15 +22,17 @@
 
     $query= "SELECT Usuario FROM Persona where Usuario ='".$ingreso."'";
     $resultado=sqlsrv_query( $con, $query);
-    $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
-    if (!empty($arreResul)){
-      $query= "DELETE FROM Tarjetas WHERE Usuario='$ingreso'";
-      $resultado=sqlsrv_query($con, $query);
-      $query= "DELETE FROM Direccion WHERE Usuario='$ingreso'";
-      $resultado=sqlsrv_query( $con, $query);
-      $query= "DELETE FROM Persona WHERE Usuario='$ingreso'";
-      $resultado=sqlsrv_query( $con, $query);
-      }
+    if ($resultado){
+      $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
+      if (!empty($arreResul)){
+        $query= "DELETE FROM Tarjetas WHERE Usuario='$ingreso'";
+        $resultado=sqlsrv_query($con, $query);
+        $query= "DELETE FROM Direccion WHERE Usuario='$ingreso'";
+        $resultado=sqlsrv_query( $con, $query);
+        $query= "DELETE FROM Persona WHERE Usuario='$ingreso'";
+        $resultado=sqlsrv_query( $con, $query);
+        }
+    }
   }
 
 

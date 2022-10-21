@@ -91,7 +91,8 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 
 						<li><a href="#">Inventario</a>
 							<ul>
-								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+							<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
 						</li>
