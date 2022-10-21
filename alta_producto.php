@@ -6,7 +6,8 @@ $con = sqlsrv_connect($servername, $info);
 $query = "SELECT ID_ap, Nombre FROM Apartados";
 $resultados = sqlsrv_query($con, $query);
 
-$query_proveedores = "SELECT id_proveedor, nombre_empresa FROM Proveedores";
+$query_proveedores = "SELECT id_proveedor, nombre_empresa FROM Proveedores
+where Estado = 'Activo'";
 $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 ?>
 
