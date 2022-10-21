@@ -58,7 +58,7 @@
 
                                 //inserta los datos a la tabla producto
                                 $querry = "INSERT INTO Productos
-                                VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria, 1)";
+                                VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria, 'Activo')";
                                 //echo $querry;
 
                                 $stm = sqlsrv_query($con, $querry);

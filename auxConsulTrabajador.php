@@ -159,7 +159,7 @@ if($resultado==true){
         $salida.='<td>'.$sucu.'</td>';
         $salida.='<td>'.$mensaje.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar_Emp.php?item='.$id.'">'.$edi. '</a>'.'</td>';
-        $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
+        $salida.='<td>'.'<a href="LOGEliminar_Trabajador.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
     }
 	$salida.="</tbody></table>";
@@ -175,5 +175,5 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<!-- <script src="alertaEliminar.js"></script> -->
+<script src="alertaEliminar.js"></script> 
 

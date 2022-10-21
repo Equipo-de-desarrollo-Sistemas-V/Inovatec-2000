@@ -70,6 +70,7 @@
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
 						</li>
@@ -149,11 +150,11 @@
                                                         <?php
                                                         if ($situacion=="Activo"){?>
                                                             <option value="Activo" selected>Activo</option>
-                                                            <option value="Inactivo">No surtiendo</option>
+                                                            <option value="Inactivo">Inactivo</option>
                                                         <?php 
                                                         }else{?>
                                                             <option value="Activo">Activo</option>
-                                                            <option value="Inactivo" selected>No surtiendo</option>
+                                                            <option value="Inactivo" selected>Inactivo</option>
                                                         <?php                                
                                                         }
                                                         ?>

@@ -115,5 +115,5 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<!-- <script src="alertaEliminar.js"></script> -->
+<script src="alertaEliminar.js"></script>
 

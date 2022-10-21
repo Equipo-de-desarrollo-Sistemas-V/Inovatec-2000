@@ -66,7 +66,7 @@ class ActPro{
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
         }
-        $updateQueryPer ="UPDATE Permisos SET permiso1=('$p1'),permiso2=('$p2'),permiso3=('$p3'),permiso4=('$p4'),permiso5=('$p5'),permiso6=('$p6') WHERE id_empleado='$id'";
+        $updateQueryPer ="UPDATE Permisos SET permiso2=('$p1'),permiso3=('$p2'),permiso4=('$p3'),permiso5=('$p4'),permiso6=('$p5'),permiso7=('$p6') WHERE id_empleado='$id'";
         $getProv = sqlsrv_query($conn_sis, $updateQueryPer);
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );

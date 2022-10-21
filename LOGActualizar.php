@@ -89,6 +89,7 @@
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
 						</li>
@@ -135,6 +136,14 @@
 									$prove=$row["id_proveedor"];
 									$estado=$row["Estado"];									
 								//echo '<script>alert("'.$prove.'")</script>';
+								}
+								$query2="SELECT ruta FROM imagenes WHERE id_prod='$id'";
+								$res2= sqlsrv_query($conn_sis, $query2);
+								if( $res2 === false) {
+										die( print_r( sqlsrv_errors(), true) );
+								}
+								while( $row2 = sqlsrv_fetch_array($res2) ) {
+								$ruta=$row2["ruta"];
 								}
                                 ?>                                
                                 <form action="LogUpdate.php" class="formularios" method="POST" enctype="multipart/form-data" id="formulario">
@@ -300,7 +309,18 @@
 							</div>
 							<div id="form_alert"></div>
 					</div>
-
+					<div class="photo">
+						<label for="foto" class="formulario_label">Imagen Actual</label>							
+							<div class="prevPhoto_2">							
+							<img src="<?php echo $ruta;?>" id='image_input' width=180 height=180 />
+							<script type="text/javascript">
+								$('#image_input').on('click', function(){
+									$('#file_input').trigger('click');
+								});
+							</script>
+							</div>
+							<div id="form_alert"></div>
+					</div>				
 					<div class="btn_enviar">
 						<button onclick="alert('Producto actualizado con éxito')" type="submit" name="guardar" id="guardar" class="btn_submit" value="Actualizar">Actualizar</button>
 					</div>
