@@ -49,10 +49,10 @@ if($resultado==true){
 							$condi=$row["Estado"];
 							$edi='Editar';
 							$eli='Eliminar';
-            if ($condi==True){
+            if ($condi=='Activo'){
                 $aux="Activo";
             }else{
-                $aux="No surtiendo";
+                $aux="Inactivo";
             }
         //muestra los resultados en la tabla
         $salida.='<tr>';

@@ -80,7 +80,7 @@ if($resultado==true){
                             $condi=$row["Estado"];
 							$edi='Editar';
 							$eli='Eliminar';
-            if ($condi==1){
+            if ($condi==='Activo'){
                 $aux="Activo";
             }else{
                 $aux="No surtiendo";

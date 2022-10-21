@@ -58,7 +58,7 @@ if($resultado==true){
                             if ($condi==1){
                                 $aux="Activo";
                             }else{
-                                $aux="No surtiendo";
+                                $aux="Inactivo";
                             }
         //muestra los resultados en la tabla
         $salida.='<tr>';
