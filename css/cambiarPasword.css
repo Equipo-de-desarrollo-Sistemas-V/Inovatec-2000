@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    background-color: #ebebeb;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 45px 0 45px;
+}
+
+.navbar{
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center; 
+    justify-content: space-between;
+    background-color: #ffc727;
+    padding-block: 5px; 
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+    margin: 0 10px 0 10px;
+    font-weight: 600;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 300ms; /*Inherits the same color as the parent element or grandparent (the body) unless you set the color to the navbar.*/
+}
+
+.navbar a:hover{
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.75);
+
+}
+.logo{
+    margin-right: 50px;
+    width: 200px;
+    padding-left: 15px;
+}
+.logo:hover{
+    cursor: pointer;
+}
+
+@media screen and 
+(max-width: 765px){
+    .menu{
+        width: 100%;
+        max-height: 0; /*Makes the max-height 0 to side the expanded menu.*/
+        overflow: hidden; /*Hides the overflowing content.*/
+    }
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    margin: 0 10px 0 10px;
+    font-weight: 600;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 300ms;
+}
+
+header a:hover {
+    background-color: #ffd527;
+    color: #fff;
+    transition: 300ms;
+}
+
+article img {
+    width: 700px;
+    padding-top: 50px;
+    rotate: -2.5deg;
+}
+
+.bgcolor {
+    width: 100%;
+    height: 15vh;
+    background-color: #ffc727;
+    position: absolute;
+    top: 0;
+}
+
+.wave {
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 5px;
+    background-image: url(assets/wave_yellow.svg);
+    background-repeat: repeat-x;
+}
+
+.w1 {
+    animation: w1 7s linear infinite;
+}
+
+.w2 {
+    animation: w2 7s linear infinite;
+}
+
+@keyframes w1 {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: -1600px;
+    }
+}
+
+@keyframes w2 {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: -1600px;
+    }
+}
+
+.container-all {
+    height: 83.5vh;
+    margin-top: 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -117px;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: -10px;
+}
+
+.subcabecera {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.card-login span {
+    color: #e6b323;
+}
+
+.card-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 65vh;
+    height: 65vh;
+    background-color: rgba(145, 145, 145, 0.2);
+    box-shadow: 0 0 10px rgba(255, 199, 39, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-group-2 {
+    position: relative;
+    margin: 18px 0;
+}
+
+.input {
+    padding: 10px;
+    margin-bottom: 23px;
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    color: #000;
+    background-color: transparent;
+    outline: 2px solid #e6b323;
+}
+
+.input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(10px, 10px);
+    transform-origin: left;
+    transition: transform .25s;
+}
+
+.input:focus~.input-label,
+.input:valid~.input-label {
+    transform: translate(0, -30px) scale(.8);
+    color: #e6b323;
+}
+
+.input:is(:focus, :valid) {
+    outline-color: #e6b323;
+}
+
+.btn-login {
+    background-color: #e6b323;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.50);
+    transition: box-shadow 300ms;
+    margin-top: 20px;
+}
+
+.btn-login:hover {
+    background-color: #e6b323;
+    color: #fff;
+    font-weight: bolder;
+    transition: 300ms all;
+}
+
+.recuperar {
+    margin-top: -5px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.metodos-recuperacion {
+    text-decoration: none;
+    color: #297cc0;
+    font-weight: 600;
+}
+
+.metodos-recuperacion:hover {
+    text-decoration: none;
+    color: #e6b323;
+}
+
+.label-1 {
+    margin-top: 10px;
+}
+
+.label-2 {
+    margin-top: 0;
+}
+
+@media (max-width: 415px) {
+    header {
+        padding: 0;
+    }
+
+    .container-header{
+        padding: 0px 10px;
+    }
+
+    .logo img {
+        width: 30px;
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+    .logo .imagen_2 {
+        width: 100px;
+        margin-left: 5px;
+    }
+
+    .container-all {
+        display: grid;
+        grid-template-rows: 1fr, 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .image {
+        margin-top: -10px;
+    }
+
+    .image img {
+        width: 345px;
+        padding-top: 0px;
+        rotate: 0deg;
+    }
+
+    .card-login {
+        width: 40vh;
+        height: 55vh;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 17px;
+    }
+
+    .subcabecera {
+        font-size: 12px;
+    }
+    
+    .input-group, .input-group-2 {
+        font-size: 14px;
+    }
+
+    .metodos-recuperacion {
+        font-size: 13px;
+    }
+
+    .btn-login {
+        margin-top: 5px;
+    }
+
+    .label-1 {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #297cc0;
+    }
+    
+    .label-2 {
+        margin-top: 0;
+        font-size: 12px;
+        color:#297cc0
+    }
+
+}
