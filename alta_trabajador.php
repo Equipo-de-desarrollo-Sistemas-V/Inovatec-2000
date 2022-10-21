@@ -9,7 +9,7 @@ WHERE puesto != 'Duenio'";
 $resultados_puestos = sqlsrv_query($con, $querry_puestos);
 
 $querry_sucursal = "SELECT id_sucursal FROM Sucursal
-WHERE Estado = 1";
+WHERE Estado = 'Activo'";
 $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 ?>
 
@@ -91,7 +91,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 
 						<li><a href="#">Inventario</a>
 							<ul>
-								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+							<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
 								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
@@ -157,21 +157,21 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 					<div class="formulario_grupo-input">
 						<label for="correoE" class="formulario_label">Correo electrónico</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="correoE" id="correoE" class="formulario_input" required></input>
+							<input type="text" name="correoE" id="correoE" class="formulario_input" required maxlength="255"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="contraseña" class="formulario_label">Contraseña</label>
 						<div class="formulario_grupo-input">
-							<input type="password" name="contraseña" id="contraseña" class="formulario_input" required maxlength="100"></input>
+							<input type="password" name="contraseña" id="contraseña" class="formulario_input" required minlength="8"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="contraseña2" class="formulario_label">Confirmar contraseña</label>
 						<div class="formulario_grupo-input">
-							<input type="password" name="contraseña2" id="contraseña2" class="formulario_input" required maxlength="100"></input>
+							<input type="password" name="contraseña2" id="contraseña2" class="formulario_input" required minlength="8"></input>
 						</div>
 					</div>
 

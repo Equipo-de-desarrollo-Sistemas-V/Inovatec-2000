@@ -26,6 +26,10 @@ formulario.addEventListener('submit', function(e){
             alert("Para poder registrar a un trabajador debe estar seleccionado al menos una casilla")
         }
 
+        else if (data === 'contra') {
+            alert("La contraseña debe tener mínimo 8 caracteres, incluir 1 letra minúscula, 1 letra mayúscula, 1 número y 1 carácter especial")
+        }
+
         else if(data === 'todo chido'){
             alert("El registro se ha realizado con éxito");
             location.href = "alta_trabajador.php";

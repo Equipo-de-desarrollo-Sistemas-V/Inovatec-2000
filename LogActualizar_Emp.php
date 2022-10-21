@@ -130,7 +130,7 @@
 			<article>
 				<h1 align="center">Nuevo trabajador</h1>
 				<br>
-                                <form action="LOGUpdate_Emp.php" class="formularios" method="post" enctype="multipart/form-data">
+                                <form action="LOGUpdate_Emp.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
 						<label for="idTrabajador" class="formulario_label">Id</label> 
 						<div class="formulario_grupo-input">
@@ -305,7 +305,7 @@
 			
 		</div>
     </main>
-	<!-- <script src="js/validEditarTrabajador.js"></script> -->
+	<script src="js/validEditarTrabajador.js"></script>
 
 </body>
 </html>

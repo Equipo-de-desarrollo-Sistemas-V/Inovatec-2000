@@ -25,9 +25,9 @@ if (isset($_POST['consulta'])){
     FROM [Productos], [Inventario_suc]
     where (Productos.id_producto like '%".$q."%' or 
     Productos.nombre like '%".$q."%' or 
-    Inventario_suc.id_sucursal like '%".$q."%' or
-    Inventario_suc.cantidad*Productos.precio_com like '%".$q."%' or
-    Inventario_suc.cantidad*Productos.precio_venlike '%".$q."%') and 
+    Inventario_suc.cantidad like '%".$q."%' or 
+    Inventario_suc.stock_min like '%".$q."%' or
+    Inventario_suc.id_sucursal like '%".$q."%') and 
     Productos.id_producto=Inventario_suc.id_producto
     ORDER BY Productos.id_producto";
 }
@@ -35,6 +35,11 @@ if (isset($_POST['consulta'])){
 
 
 $resultado=sqlsrv_query($con, $query);
+$resultad0=sqlsrv_query($con, $query);
+// if ($resultad0==true){
+// $total=count(sqlsrv_fetch_array($resultad0));
+// echo  sqlsrv_fetch_array($resultad0);
+// }
 //if(!empty($row)){
 if($resultado==true){
     //define el fromato de la tabla
@@ -73,7 +78,7 @@ if($resultado==true){
         $salida.='<td>'.$min.'</td>'; 
         $salida.='<td>'.$inver.'</td>'; 
         $salida.='<td>'.$valor.'</td>';
-        $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
+        $salida.='<td>'.'<a href="LOGActualizar_Inv.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
     }

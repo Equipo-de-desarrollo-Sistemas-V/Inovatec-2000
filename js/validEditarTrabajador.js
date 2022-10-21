@@ -1,41 +1,18 @@
 /* Declara una variable global */
-let bId = false
-let bNom = false
-let bAP = false
-let bAM = false
-let bRFC = false
-let bEmail = false
+let bNom = true
+let bAP = true
+let bAM = true
+let bRFC = true
+let bEmail = true
 
 const expresiones = {
-    id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/,
     nombre:/^[a-zA-ZÁ-ý\s]{3,40}$/,
-    apellidos:/^[a-zA-ZÁ-ý\s0-9"-]{3,20}$/,
+    apellidos:/^[a-zA-ZÁ-ý\s]{3,20}$/,
     apeMa:/^[a-zA-ZÁ-ý\s0-9"-]{0,20}$/,
     rfc:/^[A-Z0-9]{13}$/,
     email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/
 }
 
-/* Input id del trabajador*/
-formulario.idTrabajador.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-	formulario.idTrabajador.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
-     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
-
-    if (!expresiones.id.test(valorInput)) {
-        idTrabajador.style.border = "3px solid red";
-        bId = false
-	}else{
-        idTrabajador.removeAttribute("style");
-        bId = true
-    }
-    validar();
-})
 
 /* Input del nombre del trabajador*/
 formulario.nombreTabajador.addEventListener('keyup', (e) => {
@@ -119,11 +96,11 @@ formulario.rfc.addEventListener('keyup', (e) => {
     validar();
 })
 
-/* Input del correo*//*
-formulario.email.addEventListener('keyup', (e) => {
+/* Input del correo*/
+formulario.usuario.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.email.value = valorInput
+	formulario.usuario.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
@@ -132,33 +109,11 @@ formulario.email.addEventListener('keyup', (e) => {
    .trim();
 
     if (!expresiones.email.test(valorInput)) {
-        email.style.border = "3px solid red";
+        usuario.style.border = "3px solid red";
         bEmail = false
 	}else{
-        email.removeAttribute("style");
+        usuario.removeAttribute("style");
         bEmail = true
-    }
-    validar();
-})*/
-
-/* Input de la constrasenia*/
-formulario.rfc.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-	formulario.rfc.value = valorInput
-    // Eliminar espacios en blanco
-        .replace(/\s/g, '')
-        // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-        // Eliminar el ultimo espaciado
-    .trim();
-
-    if (!expresiones.rfc.test(valorInput)) {
-        rfc.style.border = "3px solid red";
-        bRFC = false
-	}else{
-        rfc.removeAttribute("style");
-        bRFC = true
     }
     validar();
 })
@@ -166,7 +121,7 @@ formulario.rfc.addEventListener('keyup', (e) => {
 
 function validar(){
     const guardar = document.getElementById('guardar');
-    if(bId == true && bNom== true && bAP == true && bAM == true && bRFC == true /*&& bEmail == true*/){
+    if(bNom== true && bAP == true && bAM == true && bRFC == true && bEmail == true){
         guardar.disabled=false;
     }
     else{
