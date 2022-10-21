@@ -157,21 +157,21 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 					<div class="formulario_grupo-input">
 						<label for="correoE" class="formulario_label">Correo electrónico</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="correoE" id="correoE" class="formulario_input" required></input>
+							<input type="text" name="correoE" id="correoE" class="formulario_input" required maxlength="255"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="contraseña" class="formulario_label">Contraseña</label>
 						<div class="formulario_grupo-input">
-							<input type="password" name="contraseña" id="contraseña" class="formulario_input" required maxlength="100"></input>
+							<input type="password" name="contraseña" id="contraseña" class="formulario_input" required minlength="8"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="contraseña2" class="formulario_label">Confirmar contraseña</label>
 						<div class="formulario_grupo-input">
-							<input type="password" name="contraseña2" id="contraseña2" class="formulario_input" required maxlength="100"></input>
+							<input type="password" name="contraseña2" id="contraseña2" class="formulario_input" required minlength="8"></input>
 						</div>
 					</div>
 
