@@ -62,7 +62,7 @@ if($resultado==true){
         $salida.='<td>'.$email.'</td>';
         $salida.='<td>'.$aux.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar_Prov.php?item='.$id.'">'.$edi. '</a>'.'</td>';
-        $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
+        $salida.='<td>'.'<a href="LOGEliminar_Prov.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
     }
 
@@ -79,5 +79,5 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<!-- <script src="alertaElimina_Prov.js"></script> -->
+<script src="alertaElimina_Prov.js"></script>
 
