@@ -79,5 +79,5 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<script src="alertaElimina_Prov.js"></script>
+<script src="alertaEliminar_Prov.js"></script>
 
