@@ -23,13 +23,11 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" class="buscador" id="buscador" placeholder="Realiza una búsqueda">
                 </div>
+            </div>
 
+            <div class="containerOpciones">
                 <div class="containerBtn">
-                    <a href="login.php" class="btn">Iniciar sesión</a>
-                    <a href="registroUsuarios.php" class="btn">Registrate</a>
-                    <a href="perfilCliente.php" class="btn">Mi perfil</a>
-                    <a href="#" class="btn">Mi carrito</a>
-                </div>
+                    
             </div>
 
         </nav>      
@@ -310,6 +308,8 @@
         </article>
 
     </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="js/linkHome.js"></script>
 </body>
 

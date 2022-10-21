@@ -43,6 +43,10 @@ header {
     cursor: pointer;
 }
 
+.icon{
+    font-size: 1.35rem;
+}
+
 header a:hover {
     background-color: #ff7400;
     color: #fff;
@@ -55,7 +59,6 @@ header a:hover {
     align-items: center;
     justify-content: space-between;
     background-color: #ffc727;
-    padding-block: .3125rem;
 }
 
 .containerOpciones .containerBtn {
