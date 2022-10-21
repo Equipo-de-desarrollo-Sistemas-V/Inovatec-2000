@@ -84,4 +84,5 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
+<script src="alertaEliminar_Suc.js"></script> 
 

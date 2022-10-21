@@ -1,5 +1,28 @@
+<?php
+
+//informacion para la conexion
+$servername = "localhost";
+$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$con = sqlsrv_connect($servername, $info);
+
+//obtener id y nombres de los productos
+$querry_productos = "SELECT id_producto, nombre FROM Productos
+		WHERE Estado = 'Activo'";
+
+$resultados_productos = sqlsrv_query($con, $querry_productos);
+
+//obtenr id de las sucursales
+$querry_sucursales = "SELECT id_sucursal FROM Sucursal
+		WHERE Estado = 'Activo'";
+
+$resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +31,14 @@
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+
+	<!-- Scripts para el funrionamiento de las combobox-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
+
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
 	<script src="funcionamiento.js"></script>
@@ -46,8 +76,8 @@
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php">Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php">Lista de sucursales</a></li>
 							</ul>
 						</li>
 
@@ -74,7 +104,7 @@
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php">Registro de ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
 							</ul>
 						</li>
@@ -84,24 +114,44 @@
 		</div>
 	</header>
 
-    <main>
-        <!--Contenido de la parte INVENTARIO-->
+	<main>
+		<!--Contenido de la parte INVENTARIO-->
 		<div class="contenidoInventario" id="contenidoInventario">
 			<article>
-			<h1 align="center">Producto inventario</h1>
+				<h1 align="center">Producto inventario</h1>
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
-						<label for="idProveedor" class="formulario_label">Id producto</label> 
+						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="idProveedor" id="idProv" class="formulario_input"></select>
+							<select type="text" name="idProveedor" id="idProv" class="formulario_input">
+								<option value=""></option>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_productos)) { ?>
+									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto']; ?> </option>
+
+								<?php }
+								?>
+							</select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="empresa" class="formulario_label">Nombre de empresa</label> 
+						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="empresa" id="empresaProv" class="formulario_input"></select>
+							<select type="text" name="empresa" id="empresaProv" class="formulario_input">
+								<option value=""></option>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_sucursales)) { ?>
+									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal']; ?> </option>
+
+								<?php }
+								?>
+							</select>
 						</div>
 					</div>
 
@@ -109,24 +159,27 @@
 						<label for="rfcProv" class="formulario_label">Existentes</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="existentes" id="existentes" class="formulario_input"></input>
- 						</div>
+						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="correoProv" class="formulario_label">Stock mínimo</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="stock" id="stock" class="formulario_input"></input>
- 						</div>
+						</div>
 					</div><br>
 
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>
-					
-				</form>		
+
+				</form>
 			</article>
 			<script src="js/validAltaInventario.js"></script>
 		</div>
-    </main>
+	</main>
+
+	<script src="js/alertasInventario.js"></script>
 </body>
+
 </html>

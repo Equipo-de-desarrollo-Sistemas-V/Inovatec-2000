@@ -31,7 +31,7 @@
                 else{
                     //inserta los datos a la base de datos
                     $querry = "INSERT INTO Proveedores
-                    VALUES('$id', '$empresa', '$rfc', '$correo', 1)";
+                    VALUES('$id', '$empresa', '$rfc', '$correo', 'Activo')";
                     //echo $querry;
 
                     $stm = sqlsrv_query($con, $querry);

@@ -12,7 +12,7 @@ Inventario_suc.cantidad, Inventario_suc.stock_min,
 Inventario_suc.cantidad*Productos.precio_com AS Inversion, 
 Inventario_suc.cantidad*Productos.precio_ven AS Valor
 FROM [Productos], [Inventario_suc]
-where Productos.id_producto=Inventario_suc.id_producto";
+where Productos.id_producto=Inventario_suc.id_producto and Inventario_suc.cantidad<=Inventario_suc.stock_min";
 
 //detecta si se escribio algo en la caja de busqueda
 //Consulta que busca lo que hay dentro de la caja de busqueda, en todas las columnas
@@ -28,18 +28,14 @@ if (isset($_POST['consulta'])){
     Inventario_suc.cantidad like '%".$q."%' or 
     Inventario_suc.stock_min like '%".$q."%' or
     Inventario_suc.id_sucursal like '%".$q."%') and 
-    Productos.id_producto=Inventario_suc.id_producto
+    Productos.id_producto=Inventario_suc.id_producto and 
+    Inventario_suc.cantidad<=Inventario_suc.stock_min
     ORDER BY Productos.id_producto";
 }
 
 
 
 $resultado=sqlsrv_query($con, $query);
-$resultad0=sqlsrv_query($con, $query);
-// if ($resultad0==true){
-// $total=count(sqlsrv_fetch_array($resultad0));
-// echo  sqlsrv_fetch_array($resultad0);
-// }
 //if(!empty($row)){
 if($resultado==true){
     //define el fromato de la tabla
