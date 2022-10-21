@@ -39,7 +39,7 @@
 
                     //inserta los datos a la base de datos
                     $querry = "INSERT INTO sucursal
-                    VALUES('$id', $estado_municipio, 1)";
+                    VALUES('$id', $estado_municipio, 'Activo')";
                     //echo $querry;
 
                     $stm = sqlsrv_query($con, $querry);

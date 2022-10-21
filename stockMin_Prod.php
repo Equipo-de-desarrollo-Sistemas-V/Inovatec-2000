@@ -7,9 +7,9 @@
 	<title>Productos en stock minimo</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/administrativo.css">
+	<link rel="stylesheet" href="administrativo.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="js/consulProductos.js"></script>
+	<script src="js/consulStock.js"></script>
 </head>
 <body>
 	<!--Estructura Header Superior-->
@@ -100,7 +100,7 @@
 				</div>
 				<br>
 				<section class="tablas" id="tablaResultado">
-					<table>
+					<!-- <table>
 						<thead>
 							<tr>
 								<th>Id producto</th> 
@@ -115,7 +115,7 @@
 							</tr>
 						</thead>
 						
-					</table>
+					</table> -->
 				</section>
 			</article>
 		</div>
