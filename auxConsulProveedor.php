@@ -49,18 +49,13 @@ if($resultado==true){
 							$condi=$row["Estado"];
 							$edi='Editar';
 							$eli='Eliminar';
-            if ($condi=='Activo'){
-                $aux="Activo";
-            }else{
-                $aux="Inactivo";
-            }
         //muestra los resultados en la tabla
         $salida.='<tr>';
         $salida.='<td>'.$id.'</td>';
         $salida.='<td>'.$nombre.'</td>'; 
         $salida.='<td>'.$rfc.'</td>'; 
         $salida.='<td>'.$email.'</td>';
-        $salida.='<td>'.$aux.'</td>';
+        $salida.='<td>'.$condi.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar_Prov.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_Prov.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
