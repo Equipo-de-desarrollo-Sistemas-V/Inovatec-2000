@@ -23,9 +23,7 @@ if($res === false){
                 $inventario=$row0["permiso5"];
                 if($inventario===1){
                 }else{
-                    echo '<script> alert("No tienes acceso a este apartado");
-                    location.href="administrativo2.php";
-                    </script>';
+                    header("location:denegado.php");
                 }
             }
         }

@@ -13,19 +13,17 @@ if($res === false){
     $row=sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC);
     if (!empty($row)) {
         $id=$row['id_empleado'];
-        $query0="SELECT permiso2 FROM Permisos WHERE id_empleado='$id'";
+        $query0="SELECT permiso1 FROM Permisos WHERE id_empleado='$id'";
         $res0= sqlsrv_query($conn_sis, $query0);
         if($res0 === false){
             die(print_r(sqlsrv_errors(), true));
         }else{
             $row0=sqlsrv_fetch_array($res0, SQLSRV_FETCH_ASSOC);
             if(!empty($row0)){
-                $inventario=$row0["permiso2"];
+                $inventario=$row0["permiso1"];
                 if($inventario===1){
                 }else{
-                    echo '<script> alert("No tienes acceso a este apartado");
-                    location.href="administrativo2.php";
-                    </script>';
+                    header("location:denegado.php");
                 }
             }
         }

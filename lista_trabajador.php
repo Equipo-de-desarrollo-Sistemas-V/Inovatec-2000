@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("perProdTrab.php");
+include("perTrabajadores.php");
 $sesion_i = $_SESSION["nombres"];
 ?>
 

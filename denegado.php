@@ -1,10 +1,4 @@
 <?php
-session_start();
-include("perProdInv.php");
-$sesion_i = $_SESSION["nombres"];
-?>
-
-<?php
 $servername = "localhost";
 $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
 $con = sqlsrv_connect($servername, $info);
@@ -132,118 +126,9 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 		<!--Contenido de la parte PRODUCTOS-->
 		<div class="contenidoAgregaProd" id="contenidoAgregaProd">
 			<article>
-				<h1 align="center">Nuevo producto</h1>
-				<br>
-				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
-					<div class="formulario_grupo-input">
-						<label for="idProducto" class="formulario_label">Id</label>
-						<div class="formulario_grupo-input">
-							<input type="text" name="idProducto" id="idProducto" class="formulario_input" required maxlength="8" minlength="1">
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="nombreProd" class="formulario_label">Nombre</label>
-						<div class="formulario_grupo-input">
-							<input type="text" name="nombreProd" id="nombreProd" class="formulario_input" required maxlength="50">
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="categoria" class="formulario_label">Categoria</label>
-						<div class="formulario_grupo-input">
-							<select type="text" name="categoria" id="categoria" class="formulario_input" required>
-								<option value=""></option>
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados)) { ?>
-									<option value=" <?php echo $row['ID_ap']; ?>"> <?php echo $row['Nombre']; ?> </option>
-
-								<?php }
-								?>
-							</select>
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="subcategoria" class="formulario_label">Subcategoria</label>
-
-						<div class="formulario_grupo-input">
-							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" required>
-								<!-- <option value="0">Subcategoría</option> -->
-							</select>
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="precioCompra" class="formulario_label">Precio de compra</label>
-						<div class="formulario_grupo-input">
-							<input type="text" name="precioProd" id="precioProd" class="formulario_input" required>
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="precioVenta" class="formulario_label">Precio de venta</label>
-						<div class="formulario_grupo-input">
-							<input type="text" name="precioVenta" id="precioVenta" class="formulario_input" required>
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="descripcion" class="formulario_label">Descripcion</label>
-
-						<div class="formulario_grupo-input">
-							<textarea type="text" name="descripcion" id="descripcion" class="formulario_input-textarea" required></textarea>
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="proveedor" class="formulario_label">Proveedor</label>
-						<div class="formulario_grupo-input">
-							<select name="proveedor" id="sucursal" class="formulario_input required">
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados_proveedores)) { ?>
-									<option value=" <?php echo $row['id_proveedor']; ?>"> <?php echo $row['nombre_empresa']; ?> </option>
-
-								<?php }
-								?>
-							</select>
-						</div>
-					</div>
-
-					<div class="photo">
-						<label for="foto" class="formulario_label">Imagen</label>
-						<div class="prevPhoto">
-							<span class="delPhoto notBlock">X</span>
-							<label for="foto"></label>
-						</div>
-						<div class="upimg">
-							<input type="file" name="foto" id="foto" class="formulario_input">
-						</div>
-						<div id="form_alert"></div>
-					</div>
-
-					<div class="btn_enviar">
-						<input type="submit" class="btn_submit" value="Guardar" id="guardar" name="guardar">
-					</div>
-
-				</form>
-			</article>
-			<script src="js/validAltaProductos.js"></script>
-		</div>
-	</main>
-
-	<script src="js/alertasProductos.js"></script>
+				<h1 align="center">Acceso Denegado</h1>
+            </article>
+        </div>
+    </main>
 </body>
-
 </html>
-
-<!-- Sript para la busqueda inteligente (me lo fusilé de con Nayeli) -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#sucursal').select2();
-	});
-</script>

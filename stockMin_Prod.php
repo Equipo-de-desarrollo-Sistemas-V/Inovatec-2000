@@ -1,3 +1,9 @@
+<?php
+session_start();
+include("perProdInv.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

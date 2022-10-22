@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("perInventario.php");
+include("perProdInv.php");
 $sesion_i = $_SESSION["nombres"];
 ?>
 
