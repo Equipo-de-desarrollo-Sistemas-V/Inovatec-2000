@@ -29,7 +29,7 @@ $sesion_i = $_SESSION["nombres"];
 			</div>
 
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
 			</div>
 		</div>
 
@@ -45,7 +45,7 @@ $sesion_i = $_SESSION["nombres"];
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 
@@ -94,7 +94,7 @@ $sesion_i = $_SESSION["nombres"];
 	
 		<div class="contenidoListaSuc" id="contenidoListaSuc">
 			<article>
-				<h1 align="center">Sucursales</h1>
+				<h1 align="center">Lista de Sucursales</h1>
 				<div class="contenido-barra-buscar">
 					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required />
 					<button class="btn-buscar">

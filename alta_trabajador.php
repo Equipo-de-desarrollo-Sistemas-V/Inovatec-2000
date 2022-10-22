@@ -55,7 +55,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 			</div>
 
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>	
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>	
 			</div>
 		</div>
 
@@ -71,7 +71,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 

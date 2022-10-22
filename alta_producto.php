@@ -66,7 +66,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 			</div>
 
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
 			</div>
 		</div>
 
@@ -82,7 +82,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 
@@ -150,7 +150,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="categoria" class="formulario_label">Categoria</label>
+						<label for="categoria" class="formulario_label">Categoría</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="categoria" id="categoria" class="formulario_input" required>
 								<option value=""></option>
@@ -167,7 +167,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="subcategoria" class="formulario_label">Subcategoria</label>
+						<label for="subcategoria" class="formulario_label">Subcategoría</label>
 
 						<div class="formulario_grupo-input">
 							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" required>
@@ -191,7 +191,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="descripcion" class="formulario_label">Descripcion</label>
+						<label for="descripcion" class="formulario_label">Descripción</label>
 
 						<div class="formulario_grupo-input">
 							<textarea type="text" name="descripcion" id="descripcion" class="formulario_input-textarea" required></textarea>
