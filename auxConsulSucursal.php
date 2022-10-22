@@ -42,7 +42,7 @@ if($resultado==true){
             <th>Id</th> 
             <th>Municipio</th> 
             <th>Estado</th>
-            <th>Condicion</th> 
+            <th>Condición</th> 
             <th>Acciones</th>
             <th></th>
         </tr>

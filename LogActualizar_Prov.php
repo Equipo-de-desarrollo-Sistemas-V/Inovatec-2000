@@ -151,7 +151,7 @@ $sesion_i = $_SESSION["nombres"];
 					
 					
 					<div class="formulario_grupo-input">
-						<label for="estado" class="formulario_label">Estado</label>
+						<label for="estado" class="formulario_label">Condición</label>
 						<div class="formulario_grupo-input">
                                                     <select type="text" name="estado" id="estado" class="formulario_input">
                                                         <?php

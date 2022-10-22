@@ -48,7 +48,7 @@ if($resultado==true){
             <th>Ap. Materno</th> 
             <th>RFC</th> 
             <th>Puesto</th> 
-            <th>Correo electronico</th> 
+            <th>Correo electrónico</th> 
             <th>Sucursal</th>
             <th>Permisos</th>
             <th>Acciones</th>
