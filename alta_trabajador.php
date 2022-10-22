@@ -1,4 +1,11 @@
 <?php
+session_start();
+include("perProdTrab.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
+
+<?php
 //informacion para la conexion a base de datos
 $servername = "localhost";
 $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
@@ -48,7 +55,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>	
 			</div>
 		</div>
 

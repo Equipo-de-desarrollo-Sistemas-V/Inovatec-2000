@@ -17,12 +17,16 @@ formulario.addEventListener('submit', function(e){
         else if (data === 'usuario no registrado') {
             alert("El usuario no esta registrado");
         }
+        
+        else if(data==='permiso'){
+            alert("Usuario bloqueado, por favor de contactar con el administrador");
+        }
 
         else if (data === 'admin') {
             //alert("Iniciado sesion correctamente");
             //session_start();
             //$_SESSION["Usuario"] = $arreClien['Usuario'];
-            location.href="administrativo.php";
+            location.href="administrativo2.php";
         }
 
         else if (data === 'cliente') {

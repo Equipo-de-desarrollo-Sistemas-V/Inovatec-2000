@@ -1,3 +1,11 @@
+
+<?php
+session_start();
+include("no_iniciada.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +32,8 @@
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<h2><?php echo $sesion_i; ?></h2>				
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>
 			</div>
 		</div>
 

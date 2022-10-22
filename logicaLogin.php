@@ -11,7 +11,7 @@ class login{
         $palabra_secreta = $_POST["password"];
 
         //Verficar si es un empleado
-        $query="SELECT nombres, email FROM Empleados WHERE email='$usuario'";
+        $query="SELECT id_empleado, nombres, email FROM Empleados WHERE email='$usuario'";
         $res= sqlsrv_query($conn_sis, $query);
         //echo $res . 'hola' . '<br>';
 
@@ -22,20 +22,30 @@ class login{
         else{
             $arreEmpl = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC);
             if (!empty($arreEmpl)) {
+                $id=$arreEmpl['id_empleado'];
                 $query1 = "SELECT contra_em FROM Empleados WHERE email='$usuario'";
                 $res = sqlsrv_query($conn_sis, $query1);
                 $row = sqlsrv_fetch_array($res);
                 $contraHash = $row['contra_em'];
                 if (password_verify($palabra_secreta, $contraHash)) {
-                    //echo $arreEmpl['nombres'];
-                    session_start();
-                    $_SESSION["nombres"] = $arreEmpl['nombres'];
-                    echo json_encode("admin");
-                    //include "administrativo.php";
+                    $query000="SELECT permiso7 FROM Permisos WHERE id_empleado='$id' ORDER BY id_empleado";
+                    $res000= sqlsrv_query($conn_sis, $query000);
+                    $permiso=sqlsrv_fetch_array($res000, SQLSRV_FETCH_ASSOC);
+                    if(!empty($permiso)){
+                        $perm=$permiso["permiso7"];
+                        if($perm===1){
+                            echo json_encode("permiso");
+                        }else{
+                            session_start();
+                            $_SESSION["nombres"] = $arreEmpl['nombres'];
+                            echo json_encode("admin");
+                        }
+                    }
+                    
                 } else {
-                    echo json_encode("usuario error");
+                        echo json_encode("usuario error");
                     //$in->alertas("validacion", 'Error', 'Correo o contraseña incorrectos');
-                }
+                }   
             } else {
                 $query = "SELECT Usuario, email FROM Persona WHERE email='$usuario'";
                 $res = sqlsrv_query($conn_sis, $query);
@@ -65,9 +75,10 @@ class login{
                 }
             }
         }
-        
-        
         sqlsrv_close($conn_sis);
+}
+}
+
 
 
         // #Informacion ingresada en las cajas de texto
@@ -180,7 +191,6 @@ class login{
         //         $in->alertas("validacion", 'Error', 'Correo no registrado');
         //     }
         //     sqlsrv_close($conn_sis);
-    }
 
     /*function alertas($valor, $titulo, $mensaje){
         ?>
@@ -230,7 +240,6 @@ class login{
         </body>
         </html>
         <?php*/
-        }
 
 $log=new login();
 $log->verifica();

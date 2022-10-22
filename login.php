@@ -1,3 +1,10 @@
+
+<?php
+include("sesion_iniciada.php");
+?>
+
+
+
 <?php
  $file = fopen("archivo_elim.txt", "r");
  $valor = fgets($file);
@@ -73,7 +80,7 @@
     <article class="login">
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
-        <form action="logicaLogin.php" method="POST" id="formulario">
+        <form method="POST" id="formulario">
           <!--llama a la accion de logear-->
           <h2>INICIO DE SESIÓN</h2>
 

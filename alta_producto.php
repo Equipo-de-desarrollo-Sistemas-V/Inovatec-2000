@@ -1,4 +1,10 @@
 <?php
+session_start();
+include("perProdTrab.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
+<?php
 $servername = "localhost";
 $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
 $con = sqlsrv_connect($servername, $info);
@@ -60,7 +66,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>
 			</div>
 		</div>
 

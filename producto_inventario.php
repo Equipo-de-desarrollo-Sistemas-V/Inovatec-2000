@@ -1,4 +1,11 @@
 <?php
+session_start();
+include("perInventario.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
+
+<?php
 
 //informacion para la conexion
 $servername = "localhost";

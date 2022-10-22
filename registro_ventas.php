@@ -1,3 +1,9 @@
+<?php
+session_start();
+include("perVentas.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

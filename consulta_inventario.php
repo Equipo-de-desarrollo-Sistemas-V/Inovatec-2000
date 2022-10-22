@@ -1,3 +1,10 @@
+<?php
+session_start();
+include("perInventario.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
