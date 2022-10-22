@@ -65,7 +65,7 @@
 
                                     //inserta datos en la tabla de permisos pero con todos en false
                                     $querry_permisos = "INSERT INTO Permisos
-                                            VALUES('$id', 0, 0, 0, 0, 0, 0, 0)";
+                                            VALUES('$id', 0, 0, 0, 0, 0, 0, 1)";
                                     $stmp = sqlsrv_query($con, $querry_permisos);
                                     //echo json_encode("bloqueado");
 
@@ -113,7 +113,7 @@
 
                                         //inserta datos en la tabla de permisos pero con todos en false
                                         $querry_permisos = "INSERT INTO Permisos
-                                                VALUES('$id', 0, $p1, $p2, $p3, $p4, $p5, 1)";
+                                                VALUES('$id', 0, $p1, $p2, $p3, $p4, $p5, 0)";
                                         $stmp = sqlsrv_query($con, $querry_permisos);
                                         //echo json_encode("bloqueado");
 
