@@ -1,5 +1,6 @@
 
 <?php
+error_reporting(0);
 session_start();
 include("no_iniciada.php");
 $sesion_i = $_SESSION["nombres"];

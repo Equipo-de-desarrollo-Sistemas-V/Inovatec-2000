@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 include("perProdInv.php");
 $sesion_i = $_SESSION["nombres"];
@@ -27,9 +28,9 @@ $sesion_i = $_SESSION["nombres"];
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-
+			<?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
 			</div>
 		</div>
 

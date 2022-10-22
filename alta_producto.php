@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 include("perProdInv.php");
 $sesion_i = $_SESSION["nombres"];
@@ -64,7 +65,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-
+			<?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
 				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
 			</div>
