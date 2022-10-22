@@ -47,14 +47,14 @@ if($resultado==true){
         <tr>
             <th>Id</th> 
             <th>Nombre</th> 
-            <th>Descripcion</th> 
-            <th>Categoria</th> 
-            <th>Subcategoria</th> 
+            <th>Descripción</th> 
+            <th>Categoría</th> 
+            <th>Subcategoría</th> 
             <th>Precio compra</th> 
             <th>Precio venta</th> 
             <th>Proveedor</th>
             <th>Imagen</th>
-            <th>Condicion</th>
+            <th>Condición</th>
             <th>Acciones</th>
             <th></th>
         </tr>

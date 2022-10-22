@@ -34,8 +34,8 @@ if($resultado==true){
             <th>Id</th> 
             <th>Empresa</th> 
             <th>RFC</th> 
-            <th>Correo</th> 
-            <th>Condicion</th>
+            <th>Correo electrónico</th> 
+            <th>Condición</th>
             <th>Acciones</th>
             <th></th>
         </tr>

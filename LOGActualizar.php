@@ -1,3 +1,10 @@
+<?php
+error_reporting(0);
+session_start();
+include("perTrabajadores.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,9 +50,9 @@
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-
+			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar sesión</button>
+			<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
                 
@@ -283,7 +290,7 @@
 						</div>
 					</div>
                                     <div class="formulario_grupo-input">
-						<label for="Estado_ah" class="formulario_label">Estado</label> 
+						<label for="Estado_ah" class="formulario_label">Condición</label> 
 						<div class="formulario_grupo-input"> 
                                                     <select type="text" name="estado_ah" id="estado_ah" class="formulario_input">
 														<?php

@@ -62,7 +62,7 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 			</div>
 			<?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
+			<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
