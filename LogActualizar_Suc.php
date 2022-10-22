@@ -208,11 +208,11 @@
                                 <?php
                                 if ($situacion=="Activo"){?>
                                 <option value="Activo" selected>Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                                <option value="Deshabilitado">Deshabilitado</option>
                                 <?php 
                                 }else{?>
                                 <option value="Activo">Activo</option>
-                                <option value="Inactivo" selected>Inactivo</option>
+                                <option value="Deshabilitado" selected>Deshabilitado</option>
                                 <?php                                
                                 }
                                 ?>

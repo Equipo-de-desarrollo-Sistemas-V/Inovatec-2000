@@ -80,11 +80,6 @@ if($resultado==true){
                             $condi=$row["Estado"];
 							$edi='Editar';
 							$eli='Eliminar';
-            if ($condi==='Activo'){
-                $aux="Activo";
-            }else{
-                $aux="No surtiendo";
-            }
         //muestra los resultados en la tabla
         $salida.='<tr>';
         $salida.='<td>'.$id.'</td>';
@@ -96,7 +91,7 @@ if($resultado==true){
         $salida.='<td>'.$pre_ven.'</td>'; 
         $salida.='<td>'.$proveedor.'</td>';
         $salida.='<td>'.'<p><img src="' .$imagen. '" width="50" height="50"></p></td>';
-        $salida.='<td>'.$aux.'</td>';
+        $salida.='<td>'.$condi.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';

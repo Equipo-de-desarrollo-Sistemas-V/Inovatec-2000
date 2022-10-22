@@ -33,16 +33,27 @@ if (isset($_POST['consulta'])){
 }
 
 
+//Consulta para saber el total de resgistros que cumplen la condicion
+$resultad0=sqlsrv_query($con, $query);
+if($resultad0==true){
+    $cont=0;
+    while( $row = sqlsrv_fetch_array($resultad0) ) {
+        $cont++;
+    }
+}
+
+//contador para saber que registro se esta mostrando y en el ultimo agregar una fila para el total
+$x=0;
+
+//contadores para guardar el total de la inversion y el total del valor, 
+//de todos los registros que se muestren en la tabla
+$totInversion=0;
+$totValor=0;
+
 
 $resultado=sqlsrv_query($con, $query);
-$resultad0=sqlsrv_query($con, $query);
-// if ($resultad0==true){
-// $total=count(sqlsrv_fetch_array($resultad0));
-// echo  sqlsrv_fetch_array($resultad0);
-// }
-//if(!empty($row)){
 if($resultado==true){
-    //define el fromato de la tabla
+    //define el formato de la tabla
     $salida.=
     "<table>
     <thead>
@@ -60,6 +71,8 @@ if($resultado==true){
     </thead>
     <tbody>";
     while( $row = sqlsrv_fetch_array($resultado) ) {
+        //condicional que permite mostrar los registros obtenidos de la consulta
+        if ($x<$cont){
                             $id=$row["id_producto"];
 							$nombre=$row["nombre"];
 							$sucursal=$row["id_sucursal"];
@@ -69,6 +82,8 @@ if($resultado==true){
 							$valor=$row["Valor"];
 							$edi='Editar';
 							$eli='Eliminar';
+                            $totInversion=$totInversion+$inver;
+                            $totValor=$totValor+$valor;
         //muestra los resultados en la tabla
         $salida.='<tr>';
         $salida.='<td>'.$id.'</td>';
@@ -81,6 +96,26 @@ if($resultado==true){
         $salida.='<td>'.'<a href="LOGActualizar_Inv.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
+        }
+
+        //condicional que identifica cuando se acaba de mostrar el ultimo registros, y asi añadir una ultima fila
+        //con los totales
+        if ($x+1==$cont){
+        //muestra los resultados en la tabla
+        $salida.='<tr>';
+        $salida.='<td>'."".'</td>';
+        $salida.='<td>'."".'</td>'; 
+        $salida.='<td>'."".'</td>'; 
+        $salida.='<td>'."".'</td>'; 
+        $salida.='<td>'."TOTAL".'</td>'; 
+        $salida.='<td>'.$totInversion.'</td>'; 
+        $salida.='<td>'.$totValor.'</td>';
+        $salida.='<td>'."".'</td>';
+        $salida.='<td>'."".'</td>';
+        $salida.='</tr>';
+        }
+
+        $x++;
     }
 
 	$salida.="</tbody></table>";
