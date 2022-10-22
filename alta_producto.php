@@ -65,9 +65,10 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
+				<!-- <li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li> -->
+				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
