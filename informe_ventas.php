@@ -30,7 +30,7 @@ $sesion_i = $_SESSION["nombres"];
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<button class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar session</button>
 			</div>
 		</div>
 
