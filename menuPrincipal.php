@@ -1,3 +1,10 @@
+<?php
+error_reporting(0);
+session_start();
+include("no_iniciada_Cli.php");
+$sesion_i = $_SESSION["Usuario"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +24,12 @@
   <header>
     <nav class="navbar">
       <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-
+      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
       <div class="containerOpciones">
         <div class="containerBuscador">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" class="buscador" id="buscador" placeholder="Realiza una búsqueda">
+          
         </div>
       </div>
 

@@ -31,7 +31,7 @@ formulario.addEventListener('submit', function(e){
 
         else if (data === 'cliente') {
             //alert("Iniciado sesion correctamente");
-            location.href="perfilCliente.php";
+            location.href="menuPrincipal.php";
         }
         
     })

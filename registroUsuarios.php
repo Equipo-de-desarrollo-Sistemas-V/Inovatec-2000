@@ -1,3 +1,8 @@
+<?php
+error_reporting(0);
+include("sesion_iniciada_Cli.php");
+?>
+
 <!-- Interfaz para REGISTRAR EL USUARIO-CREAR CUENTA -->
 <!DOCTYPE html>
 <html lang="es">

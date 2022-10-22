@@ -109,9 +109,8 @@ else{
             <div class="menu">
                 <!-- <ul class="list"> -->
             <?php 
-            session_start();
              //$_SESSION["Usuario"] = $arreClien['Usuario'];
-			echo ucwords("Bienvenido") . " " . ucwords($_SESSION['Usuario']);?>
+			//echo ucwords("Bienvenido") . " " . ucwords($_SESSION['Usuario']);?>
                     <a class="btn-cerrar-session btn" href="cerrar.php" type="button">Cerrar Sesión</a>
                 <!-- </ul> -->
             </div>
