@@ -44,7 +44,7 @@
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<button class="btn-cerrar-session" type="button">Cerrar sesión</button>
 			</div>
 		</div>
 
@@ -60,7 +60,7 @@
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 
@@ -135,12 +135,12 @@
         <!--Contenido de la parte INVENTARIO-->
 		<div class="contenidoInventario" id="contenidoInventario">
 			<article>
-			<h1 align="center">Producto inventario</h1>
+			<h1 align="center">Actualizar datos de producto inventario</h1>
 				<br>
                                 <form action="LOGUpdate_Inv.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					
                                         <div class="formulario_grupo-input">
-						<label for="idProducto" class="formulario_label">ID Producto</label>
+						<label for="idProducto" class="formulario_label">ID producto</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="idProducto" id="idProducto" class="formulario_input" readonly="readonly" value="<?php echo $id;?>"></input>
  						</div>
@@ -154,7 +154,7 @@
 					</div>
                                     
                                         <div class="formulario_grupo-input">
-						<label for="idSucursal" class="formulario_label">Id Sucursal</label> 
+						<label for="idSucursal" class="formulario_label">Id sucursal</label> 
 						<div class="formulario_grupo-input">
                                                     <select type="text" name="idSucursal" id="idSucursal" class="formulario_input" readonly="readonly">
                                                         <?php

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Nuevo Producto</title>
+	<title>Actualizar Producto</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
@@ -45,7 +45,7 @@
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<button class="btn-cerrar-session" type="button">Cerrar sesión</button>
 			</div>
 		</div>
                 
@@ -61,7 +61,7 @@
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 
@@ -110,7 +110,7 @@
 	<main>
                 <div class="contenidoActProd" id="contenidoActProd">
 			<article>
-				<h1 align="center">Actualizar productos</h1>
+				<h1 align="center">Actualizar datos del producto</h1>
 				<br>
                                 <?php
                                 //echo "Este dato: " . $_GET["item"] . " lo recibo por URL.";
@@ -162,7 +162,7 @@
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="categoria" class="formulario_label">Categoria</label>
+						<label for="categoria" class="formulario_label">Categoría</label>
 
 						<div class="formulario_grupo-input">
 							<select type="text" name="categoria" id="categoria" class="formulario_input" required>
@@ -192,7 +192,7 @@
 					</div>
                                         
 					<div class="formulario_grupo-input">
-						<label for="subcategoria" class="formulario_label">Subcategoria</label>
+						<label for="subcategoria" class="formulario_label">Subcategoría</label>
 
 						<div class="formulario_grupo-input">
 							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" required>
@@ -241,10 +241,10 @@
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="descripcion" class="formulario_label">Descripcion</label> 
+						<label for="descripcion" class="formulario_label">Descripción</label> 
 
 						<div class="formulario_grupo-input">
-							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input" required><?php echo $descri;?></textarea>
+							<textarea type="text" name="descripcion"id="descripcion" class="formulario_input-textarea" required><?php echo $descri;?></textarea>
  						</div>
 					</div>
 
@@ -310,7 +310,7 @@
 							<div id="form_alert"></div>
 					</div>
 					<div class="photo">
-						<label for="foto" class="formulario_label">Imagen Actual</label>							
+						<label for="foto" class="formulario_label">Imagen actual</label>							
 							<div class="prevPhoto_2">							
 							<img src="<?php echo $ruta;?>" id='image_input' width=180 height=180 />
 							<script type="text/javascript">

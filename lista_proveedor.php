@@ -10,7 +10,7 @@ $sesion_i = $_SESSION["nombres"];
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Menu Administrativo</title>
+	<title>Lista proveedor</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
@@ -32,7 +32,7 @@ $sesion_i = $_SESSION["nombres"];
 			</div>
 
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>
+				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
 			</div>
 		</div>
 
@@ -48,7 +48,7 @@ $sesion_i = $_SESSION["nombres"];
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 

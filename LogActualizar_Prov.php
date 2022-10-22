@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="btn-header">
-				<button class="btn-cerrar-session" type="button">Cerrar session</button>
+				<button class="btn-cerrar-session" type="button">Cerrar sesión</button>
 			</div>
 		</div>
 
@@ -42,7 +42,7 @@
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 
@@ -111,7 +111,7 @@
 		<!--Contenido de la parte PROVEEDOR-->
 		<div class="contenidoAgregaProv" id="contenidoAgregaProv">
 			<article>
-				<h1 align="center">Nuevo proveedor</h1>
+				<h1 align="center">Actualizar datos del proveedor</h1>
 				<br>
                                 <form action="LOGUpdate_Prov.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
