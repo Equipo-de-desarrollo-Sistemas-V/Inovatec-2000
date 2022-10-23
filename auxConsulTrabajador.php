@@ -147,8 +147,17 @@ if($resultado==true){
                             }
                             $edi='Editar';
                             $eli='Eliminar';
-        //muestra los resultados en la tabla
-        $salida.='<tr>';
+
+        $queryPermisos="SELECT * FROM Permisos where id_empleado='$id'";
+        $resPer= sqlsrv_query($con, $queryPermisos);
+        if( $resPer === false) {
+            die( print_r( sqlsrv_errors(), true) );
+        }
+        while( $rowPer = sqlsrv_fetch_array($resPer) ) {
+            $Per1=$rowPer["permiso1"];
+        }
+        if($Per1==0){
+            $salida.='<tr>';
         $salida.='<td>'.$id.'</td>';
         $salida.='<td>'.$nombre.'</td>'; 
         $salida.='<td>'.$ap_paterno.'</td>'; 
@@ -161,6 +170,28 @@ if($resultado==true){
         $salida.='<td>'.'<a href="LOGActualizar_Emp.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_Trabajador.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
+            
+        }
+        else{
+            $salida.='<tr>';
+        $salida.='<td>'.$id.'</td>';
+        $salida.='<td>'.$nombre.'</td>'; 
+        $salida.='<td>'.$ap_paterno.'</td>'; 
+        $salida.='<td>'.$ap_materno.'</td>'; 
+        $salida.='<td>'.$rfc.'</td>'; 
+        $salida.='<td>'.$puesto.'</td>'; 
+        $salida.='<td>'.$correo.'</td>'; 
+        $salida.='<td>'.$sucu.'</td>';
+        $salida.='<td>'.$mensaje.'</td>';
+        $salida.='<td>'.'<a href="LOGActualizar_Emp.php?item='.$id.'">'.$edi. '</a>'.'</td>';
+        $salida.='<td>'.''.'</td>';
+		$salida.='</tr>';
+        }
+
+
+
+        //muestra los resultados en la tabla
+        
     }
 	$salida.="</tbody></table>";
     
@@ -175,5 +206,5 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<script src="alertaEliminar_Trab.js"></script> 
+<script src="js/alertaEliminar_Trab.js"></script> 
 
