@@ -62,7 +62,7 @@ if($resultado==true){
         $salida.='<td>'.$estado.'</td>'; 
         $salida.='<td>'.$condi.'</td>'; 
         $salida.='<td>'.'<a href="LOGActualizar_Suc.php?item='.$id.'">'.$edi. '</a>'.'</td>';
-        $salida.='<td>'.'<a href="LOGEliminar_Suc.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
+        $salida .= '<td>' . '<a href="logEliminarSucursal.php?id=' . $id . '" ; class="table__item_link">' . $eli . '</a>' . '</td>';
 		$salida.='</tr>';
     }
 
@@ -78,6 +78,6 @@ if($resultado==true){
 }
 sqlsrv_close($con);
 echo $salida;
-?>
-<script src="alertaEliminar_Suc.js"></script> 
 
+echo '<script src="js/alertasEliminarSucursal.js"></script>';
+?>
