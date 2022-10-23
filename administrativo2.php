@@ -1,4 +1,3 @@
-
 <?php
 error_reporting(0);
 session_start();
@@ -16,6 +15,52 @@ $sesion_i = $_SESSION["nombres"];
 	<title>Menu Administrativo</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+	<script src="js/push.min.js"></script>
+
+
+	<?php
+		$serverName='localhost';
+		$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+		$conn_sis= sqlsrv_connect($serverName, $connectionInfo);
+		$query="SELECT id_empleado FROM Empleados WHERE nombres='$sesion_i'";
+		$res= sqlsrv_query($conn_sis, $query);
+
+		if($res === false){
+			die(print_r(sqlsrv_errors(), true));
+		}else{
+			$row=sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC);
+			if (!empty($row)) {
+				$id=$row['id_empleado'];
+				$query0="SELECT permiso2 FROM Permisos WHERE id_empleado='$id'";
+				$res0= sqlsrv_query($conn_sis, $query0);
+				if($res0 === false){
+					die(print_r(sqlsrv_errors(), true));
+				}else{
+					$row0=sqlsrv_fetch_array($res0, SQLSRV_FETCH_ASSOC);
+					if(!empty($row0)){
+						$inventario=$row0["permiso2"];
+						if($inventario===1){
+							$query0="SELECT* FROM Inventario_suc 
+							WHERE cantidad<=stock_min";
+							$res0= sqlsrv_query($conn_sis, $query0);
+							$row0=sqlsrv_fetch_array($res0, SQLSRV_FETCH_ASSOC);
+							if(!empty($row0)){
+								//echo "<script>Push.create('Stock mínimo alcanzado',)</script>";
+								echo "<script>Push.create('Stock mínimo alcanzado', {
+									body: 'Varios productos han alcanzado el stock mínimo', 
+									});
+								</script>";
+							}
+							
+						}
+					}
+				}
+			}
+		}
+?>
+
+
+
 	<link rel="stylesheet" href="administrativo.css">
 </head>
 <body>
