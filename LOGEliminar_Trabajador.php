@@ -24,13 +24,16 @@
             
             if($ejecutar){
                 $borrar = "DELETE FROM Empleados WHERE id_empleado='$Eliminar_id'";
-                $query=sqlsrv_query($conn_sis,$borrar);
-                echo '<script>alert("Trabajador eliminado");window.location.href="lista_trabajador.php";</script>';                
+                $query=sqlsrv_query($conn_sis,$borrar);  
+                // echo '<script>alert("Trabajador eliminado");window.location.href="lista_trabajador.php";</script>';   
+                echo"<script>alert('Trabajador eliminado existosamente')</script>";
+                header("Location:lista_trabajador.php");             
             }
-            else{                
-                echo "<script type='text/javascript'>alert('No se pudo eliminar el trabajador');
-                window.location.href='lista_trabajador.php';
-            </script>";
+            else{      
+                echo"<script>alert('No se pudo eliminar la actividad')</script>";          
+            //     echo "<script type='text/javascript'>alert('No se pudo eliminar el trabajador');
+            //     window.location.href='lista_trabajador.php';
+            // </script>";
             }
     }
     else{
