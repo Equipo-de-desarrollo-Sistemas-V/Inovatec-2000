@@ -93,9 +93,10 @@ if($resultado==true){
         $salida.='<td>'.'<p><img src="' .$imagen. '" width="50" height="50"></p></td>';
         $salida.='<td>'.$condi.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
-        $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
+        $salida.='<td>'.'<a href="logEliminarProducto.php?item='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
     }
+    
 
 	$salida.="</tbody></table>";
     
@@ -110,5 +111,4 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<script src="alertaEliminar.js"></script>
-
+<script src="../Inovatec-2000/js/alertasEliminarProducto.js"></script>
