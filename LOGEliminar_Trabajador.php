@@ -19,7 +19,7 @@
                 $Per1=$rowPer["permiso1"];
             }
     if($conn_sis && $Per1==0){
-            $del_permisos="DELETE FROM Permisos WHERE id_empleado='$Eliminar_id' and id_empleado!=1";
+            $del_permisos="DELETE FROM Permisos WHERE id_empleado='$Eliminar_id' and id_empleado!='1'";
             $ejecutar=sqlsrv_query($conn_sis,$del_permisos);        
             
             if($ejecutar){
@@ -30,7 +30,8 @@
                 header("Location:lista_trabajador.php");             
             }
             else{      
-                echo"<script>alert('No se pudo eliminar la actividad')</script>";          
+                echo"<script>alert('No se pudo eliminar la actividad')</script>";
+                die(print_r(sqlsrv_errors(), true));          
             //     echo "<script type='text/javascript'>alert('No se pudo eliminar el trabajador');
             //     window.location.href='lista_trabajador.php';
             // </script>";
