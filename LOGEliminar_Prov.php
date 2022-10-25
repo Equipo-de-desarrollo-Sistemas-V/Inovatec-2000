@@ -1,50 +1,46 @@
-
-
 <?php
-   
-   $serverName = 'localhost';
-   $login = "usuario";
-   $paswor = "123";
-   $conctioninfo = array("Database"=>"PagVentas", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
-   $conn_sis = sqlsrv_connect($serverName,$conctioninfo);
 
-
-    $Eliminar_id=$_GET['id'];
-
-    
-    if ($conn_sis){
-        $trab ="SELECT COUNT(*) AS pov from Productos WHERE id_proveedor= '$Eliminar_id'";
-        $trab1 =sqlsrv_query($conn_sis,$trab);
-        $que = sqlsrv_fetch_array($trab1);
-        $qu=$que["pov"];
-
-        if($qu==0){
-            $borrar = "DELETE FROM Proveedores WHERE id_proveedor='$Eliminar_id'";
-            $ejecuta =sqlsrv_query($conn_sis,$borrar);
-            if($ejecuta){
-                echo "<script type='text/javascript'>alert('Proveedor eliminado');
-                window.location.href='lista_proveedor.php';
-                </script>";
+class Proveedor{
+    function eliminar(){
+        //informacion para la conexion a la base de datos
+        $servername="localhost";
+        $info=array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+        $con=sqlsrv_connect($servername, $info);
+        if ($con) {
+            //obtener el ID del URL
+            $id=$_GET['id'];
+            $deshabilita = false;
+            //echo $id. '<br>';
+            //verificar si la sucursal tiene registros en ventas
+            $querry_productos="SELECT * FROM Productos
+            WHERE id_proveedor='$id'";
+            $resultados_productos=sqlsrv_query($con, $querry_productos);
+            if (sqlsrv_fetch_array($resultados_productos)) {
+                //echo '<script>alert("Esta sucursal todavía tiene ventas registradas, necesarias para el balance, por lo que no puede ser eliminada. La sucursal será deshabilitada");</script>';
+                $deshabilita=true;
             }
-            
-        }else{
-            echo "<script type='text/javascript'>confirm('No se puede eliminar este proveedor porque esta reguistrada en productos ¿Deseas inavilitar a este proveedor?');
-                window.location.href='lista_proveedor.php';
-                </script>";
+            //verifica si se encontro alguna tabla, en caso afirmativo deshabilida la sucursal, de lo contrario, la elimina
+            if($deshabilita==true){
+                $querry_update="UPDATE Proveedores
+                SET Estado='Deshabilitado' 
+                WHERE id_proveedor='$id'";
+                $stm=sqlsrv_query($con, $querry_update);
+            }
+            else{
+                $querry_delete="DELETE FROM Proveedores
+                WHERE id_proveedor='$id'";
+
+                $stm=sqlsrv_query($con, $querry_delete);
+            }
+
+            include_once("lista_proveedor.php");
+        } 
+        else {
+            echo '<script>alert("Error al conectar con la base de datos"); </script>';
         }
+    }
+}
+$obj = new Proveedor();
+$obj->eliminar();
 
-        
-    }else{
-        echo "<script type='text/javascript'>alert('No se puede ecceder a la base de datos');
-                window.location.href='lista_proveedor.php';
-                </script>";
-    }    sqlsrv_close($conn_sis);
- 
-
-        //$mod="UPDATE Proveedores SET Estado ='False' where id_proveedor='$Eliminar_id'";
-        //$mod="UPDATE Proveedores SET Estado ='False' where id_proveedor='$Eliminar_id'";
 ?>
-
-
-
-    
