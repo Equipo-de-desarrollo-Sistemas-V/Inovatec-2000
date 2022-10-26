@@ -4,7 +4,7 @@ session_start();
 $sesion_i = $_SESSION["Usuario"];
 
 if($sesion_i!=""){
-    echo "<script type='text/javascript'>alert('Ya tienes sesion'); 
+    echo "<script type='text/javascript'>
     window.location.href='menuPrincipal.php'</script>";
 }else{
     echo "<script type='text/javascript'>window.location.href='login.php'</script>";
