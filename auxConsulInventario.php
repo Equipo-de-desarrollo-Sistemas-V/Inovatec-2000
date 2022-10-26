@@ -131,4 +131,6 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
+<script src="js/alertaEliminar_Inv.js"></script> 
+
 

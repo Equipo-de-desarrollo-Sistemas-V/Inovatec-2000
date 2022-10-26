@@ -1,49 +1,33 @@
 <?php
    
-   $serverName = 'localhost';
-   $login = "usuario";
-   $paswor = "123";
-   $conctioninfo = array("Database"=>"PagVentas", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
-   $conn_sis = sqlsrv_connect($serverName,$conctioninfo);
-
-
+    $servername = "localhost";
+    $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+    $con = sqlsrv_connect($servername, $info);
     $Eliminar_id=$_GET['id'];
 
-    $query="SELECT COUNT(*) AS MEC FROM Inventario_suc WHERE id_producto='$Eliminar_id'";
-    $quer = sqlsrv_query($conn_sis,$query);
-    $que = sqlsrv_fetch_array($quer);
-    $qu=$que["MEC"];
+    if ($con){
 
-    if ($conn_sis){
-        if ($qu==0){
-            $query="DELETE FROM imagenes WHERE id_prod='$Eliminar_id'";
-            $quer = sqlsrv_query($conn_sis,$query);
+        $query="SELECT cantidad FROM Inventario_suc WHERE id_producto='$Eliminar_id'";
+        $resultado=sqlsrv_query($con, $query);
+        $cant=sqlsrv_fetch_array($resultado);
 
+        if($cant[0]==0){
+            $borrar="DELETE FROM Inventario_suc WHERE id_producto='$Eliminar_id'";
+            $ejecutar = sqlsrv_query($con,$borrar);
 
-                    $borrar = "DELETE FROM Productos WHERE id_producto='$Eliminar_id'";
-
-                    $ejecutar = sqlsrv_query($conn_sis,$borrar) ;
-                    
-                    
-
-                    echo "<script type='text/javascript'>alert('Producto eliminado');
-                    window.location.href='lista_productos.php';  
-                    </script>";
-                    
-
-                }
+            echo"<script>alert('Producto eliminado')</script>";
+            header("Location:consulta_inventario.php");
+        }
         
         else{
-            echo "<script type='text/javascript'>confirm('No se puede eliminar este producto porque esta en inventario ¿Deseas desactivar este producto?');
-            
-            
-            
-            window.location.href='lista_productos.php';  
-            </script>";
-            }}
-    else{
+
+            echo"<script>alert('No se pudo eliminar el producto porque todavia esta en stock')</script>";
+            header("Location:consulta_inventario.php");
+            }
+    }else{
+        
         echo "<script type='text/javascript'>alert('No se puede ecceder a la base de datos');
-        window.location.href='lista_productos.php';  
+        window.location.href='consulta_inventario.php';  
         </script>";
     }
     sqlsrv_close($conn_sis);

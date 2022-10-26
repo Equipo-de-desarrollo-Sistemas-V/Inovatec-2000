@@ -189,6 +189,14 @@ article{
     box-shadow: 0 0 10px #0575FF;
     border-radius: 20px;
 }
+.article-tablas article{
+	margin: 20px auto;
+	padding: 10px;
+	width: 1500px;
+    background-color: rgba(145, 145, 145, 0.2);
+    box-shadow: 0 0 10px #0575FF;
+    border-radius: 20px;
+}
 /*Estilos para los formularios de datos*/
 textarea{
 	height: 10px;
