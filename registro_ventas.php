@@ -94,7 +94,7 @@ $sesion_i = $_SESSION["nombres"];
 	</header>
 
 	<main>
-        <div class="contenidoListaInventario" id="contenidoListaInventario">
+		<div class="contenidoListaVenta" id="contenidoListaVenta">
 			<article>
 				<h1 align="center">Registro de ventas</h1>
 				<div class="contenido-barra-buscar">
@@ -110,14 +110,17 @@ $sesion_i = $_SESSION["nombres"];
 					<table>
 						<thead>
 							<tr>
+								<th>Id venta</th> 
+								<th>Fecha</th> 
 								<th>Id producto</th> 
-								<th>Nombre producto</th> 
-								<th>Sucursal</th> 
-								<th>Existentes</th> 
-								<th>Stock mínimo</th> 
-								<th>Inversión</th>
-								<th>Valor</th>
-								<th>Acciones</th>
+								<th>Producto</th> 
+								<th>Id sucursal</th> 
+								<th>categoría</th>
+								<th>Subcategoría</th>
+								<th>Cantidad </th>
+								<th>Precio de venta </th>
+								<th>Descuento </th>
+								<th>Total </th>
 								<th></th>
 							</tr>
 						</thead>
