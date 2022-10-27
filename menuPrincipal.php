@@ -33,9 +33,9 @@ $sesion_i = $_SESSION["Usuario"];
     </div>
 
     <ol>
-      <li><a href="sesion_iniciada_Cli.php" class="">Iniciar sesión</a></li>
+      <li><a href="login.php" class="">Iniciar sesión</a></li>
 
-      <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
+      <li><a href="registroUsuarios.php" class="">Registrate</a></li>
 
       <li><a href="perfilCliente.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
 
@@ -43,11 +43,13 @@ $sesion_i = $_SESSION["Usuario"];
 
     </ol>
 
-    <label for="check" class="bar">
-      <span><i class="fas fa-bars" id="bars"></i></span>
-      <span><i class="fas fa-times" id="times"></i></span>
-    </label>
-  </nav>
+      <div class="containerOpciones">
+        <div class="containerBtn">
+          <a href="login.php" class="btn">Iniciar sesión</a>
+          <a href="registroUsuarios.php" class="btn">Registrate</a>
+          <a href="perfilCliente.php" class="btn"><ion-icon name="person-circle-outline" class="icon"></ion-icon></a>
+          <a href="#" class="btn"><ion-icon name="cart-outline" class="icon"></ion-icon></a>
+    </nav>
   </header>
 
   <section class="containerAll">
