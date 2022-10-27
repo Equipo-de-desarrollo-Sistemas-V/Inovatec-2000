@@ -28,10 +28,10 @@
     $conexion = sqlsrv_connect($nombre_servidor, $connectionInfo);
 
     /* Verificar la conexion a la base de datos */
-    /* if( $conexion === false ) {
+    if( $conexion === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
     else{
         echo "Conexion exitosa";
-    } */
+    }
 ?>  

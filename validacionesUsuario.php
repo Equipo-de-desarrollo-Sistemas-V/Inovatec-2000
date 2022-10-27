@@ -16,7 +16,7 @@ class Usuario
         $servername = "localhost";
         $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
         $con = sqlsrv_connect($servername, $info);
-
+        
         //verificar que la conexion se hizo bien
         if ($con) {
             //verifica que el usuario no exeda los 20 caracteres

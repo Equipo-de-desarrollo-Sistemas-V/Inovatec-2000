@@ -15,31 +15,40 @@ $sesion_i = $_SESSION["Usuario"];
   <!-- Importación de los scripts para los iconos -->
   <script src="https://kit.fontawesome.com/2c54bc1d9c.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <title>Menú principal</title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
+  <link rel="stylesheet" href="css/nav.css">
 </head>
 
 <body>
-  <header>
-    <nav class="navbar">
-      <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
-      <div class="containerOpciones">
-        <div class="containerBuscador">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" class="buscador" id="buscador" placeholder="Realiza una búsqueda">
-          
-        </div>
-      </div>
+  <input type="checkbox" name="" id="check">
+  <nav>
+    <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+    <div class="search-box">
+      <input type="search" placeholder="Busquemos algunas cosas...">
+      <span><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
 
-      <div class="containerOpciones">
-        <div class="containerBtn">
-          <a href="login.php" class="btn">Iniciar sesión</a>
-          <a href="registroUsuarios.php" class="btn">Registrate</a>
-          <a href="perfilCliente.php" class="btn"><ion-icon name="person-circle-outline" class="icon"></ion-icon></a>
-          <a href="#" class="btn"><ion-icon name="cart-outline" class="icon"></ion-icon></a>
-    </nav>
+    <ol>
+      <li><a href="login.php" class="">Iniciar sesión</a></li>
+
+      <li><a href="registroUsuarios.php" class="">Registrate</a></li>
+
+      <li><a href="perfilCliente.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
+
+      <li><a href="#" class=""><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
+
+    </ol>
+
+    <label for="check" class="bar">
+      <span><i class="fas fa-bars" id="bars"></i></span>
+      <span><i class="fas fa-times" id="times"></i></span>
+    </label>
+  </nav>
   </header>
 
   <section class="containerAll">

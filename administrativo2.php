@@ -17,7 +17,6 @@ $sesion_i = $_SESSION["nombres"];
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<script src="js/push.min.js"></script>
 
-
 	<?php
 		$serverName='localhost';
 		$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");

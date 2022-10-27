@@ -2,44 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/nav.css">
+  <script src="https://kit.fontawesome.com/2c54bc1d9c.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <nav>
-        <div class="icon">Desing Pro</div>
-        <div class="search-box">
-            <input type="text" placeholder="Busquemos algunas cosas...">
-            <ion-icon name="search-circle-outline" class="icono"></ion-icon>
-        </div>
+  <input type="checkbox" name="" id="check">
+  <nav>
+    <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+    <div class="search-box">
+      <input type="search" placeholder="Busquemos algunas cosas...">
+      <span><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
 
-        <ol>
-            <li>
-                <a href="login.php" class="btn">Iniciar sesión</a>
-            </li>
+    <ol>
+      <li><a href="login.php" class="btn">Iniciar sesión</a></li>
 
-            <li>
-                <a href="registroUsuarios.php" class="btn">Registrate</a>
-            </li>
+      <li><a href="registroUsuarios.php" class="btn">Registrate</a></li>
 
-            <li>
-                <a href="perfilCliente.php" class="btn">
-                    <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="btn">
-                    <ion-icon name="cart-outline" class="icon"></ion-icon>
-                </a>
-            </li>
-        </ol>
-    </nav>
+      <li><a href="perfilCliente.php" class="btn"><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <li><a href="#" class="btn"><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
+
+    </ol>
+
+    <label for="check" class="bar">
+      <span><i class="fas fa-bars" id="bars"></i></span>
+      <span><i class="fas fa-times" id="times"></i></span>
+    </label>
+  </nav>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
