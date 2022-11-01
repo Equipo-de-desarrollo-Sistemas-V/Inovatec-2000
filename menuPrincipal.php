@@ -34,8 +34,8 @@ $sesion_i = $_SESSION["Usuario"];
 
       <div class="containerOpciones">
         <div class="containerBtn">
-          <a href="sesion_iniciada_Cli.php" class="btn">Iniciar sesión</a>
-          <a href="sesion_iniciada_Reg.php" class="btn">Registrate</a>
+          <a href="login.php" class="btn">Iniciar sesión</a>
+          <a href="registroUsuarios.php" class="btn">Registrate</a>
           <a href="perfilCliente.php" class="btn"><ion-icon name="person-circle-outline" class="icon"></ion-icon></a>
           <a href="#" class="btn"><ion-icon name="cart-outline" class="icon"></ion-icon></a>
     </nav>
