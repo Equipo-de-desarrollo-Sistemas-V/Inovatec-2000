@@ -53,7 +53,6 @@ if($resultado==true){
             <th>Inversión</th>
             <th>Valor</th>
             <th>Acciones</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>";
@@ -77,7 +76,6 @@ if($resultado==true){
         $salida.='<td>'.$inver.'</td>'; 
         $salida.='<td>'.$valor.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar_Inv.php?item='.$id.'">'.$edi. '</a>'.'</td>';
-        $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
     }
 
