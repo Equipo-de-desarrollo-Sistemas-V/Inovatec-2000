@@ -15,6 +15,8 @@ $sesion_i = $_SESSION["nombres"];
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<script src="js/consulInforme.js"></script>
+
 </head>
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
@@ -31,7 +33,7 @@ $sesion_i = $_SESSION["nombres"];
 			</div>
 			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
+				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
