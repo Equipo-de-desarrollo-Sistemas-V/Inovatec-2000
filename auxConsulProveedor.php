@@ -74,5 +74,5 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<script src="alertaEliminar_Prov.js"></script>
+<script src="../Inovatec-2000/js/alertaEliminar_Prov.js"></script>
 
