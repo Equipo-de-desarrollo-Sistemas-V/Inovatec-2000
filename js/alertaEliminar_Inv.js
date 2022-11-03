@@ -1,5 +1,5 @@
 function confirmacion(e){
-    if (confirm("¿Estas seguro que deseas eliminar este registro?")){
+    if (confirm("¿Estas seguro que deseas eliminar este registro?\nSi la cantidad es diferente a cero, el registro no puede ser eliminado.")){
         return true;
     }
     else{

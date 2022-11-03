@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Importación de los scripts para los iconos -->
+  <script src="https://kit.fontawesome.com/2c54bc1d9c.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <title>Menú principal</title>
+  <!-- Importación de los archivos css para el uso de la página -->
+  <link rel="stylesheet" href="css/menuPrincipal.css">
+  <link rel="stylesheet" href="css/prefilcCliente.css">
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
+      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+      <div class="containerOpciones">
+        <div class="containerBuscador">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="buscador" id="buscador" placeholder="Realiza una búsqueda">
+          
+        </div>
+      </div>
+
+      <div class="containerOpciones">
+        <div class="containerBtn">
+          <a href="sesion_iniciada_Cli.php" class="btn">Iniciar sesión</a>
+          <a href="sesion_iniciada_Reg.php" class="btn">Registrate</a>
+          <a href="perfilCliente.php" class="btn"><ion-icon name="person-circle-outline" class="icon"></ion-icon></a>
+          <a href="#" class="btn"><ion-icon name="cart-outline" class="icon"></ion-icon></a>
+    </nav>
+  </header>
+
+  <section class="containerAll">
+    <article class="containerMenu">
+
+      <div class="seccion1">
+        <i class="fa-solid fa-wifi"></i>
+        <select name="redes" id="redes" class="categorias">
+          <option value="red">Redes</option>
+          <option value="ruteadores">Ruteadores inalámbicos</option>
+          <option value="cablesRed">Cables de red</option>
+          <option value="adaptadoresBluethoot">Adaptadores Bluetooth</option>
+          <option value="tarjetaRed">Tarjetas de Red</option>
+          <option value="adaptadoresInalambricos">Adaptadores inalámbricos</option>
+        </select>
+
+        <i class="fa-solid fa-laptop-code"></i>
+        <select name="software" id="software" class="categorias">
+          <option value="softw">Software</option>
+          <option value="antivirus">Antivirus y seguridad</option>
+          <option value="sistOperativos">Sistemas operativos</option>
+          <option value="ofimatica">Ofimática</option>
+          <!-- <option value="">Software punto de venta</option> -->
+        </select>
+
+        <i class="fa-solid fa-server"></i>
+        <select name="servidores" id="servidores" class="categorias">
+          <option value="servers">Servidores</option>
+          <option value="accesoriosServers">Accesorios servidores</option>
+          <option value="serverRedes">Redes</option>
+          <option value="energía">Energía</option>
+        </select>
+
+        <i class="fa-solid fa-print"></i>
+        <select name="impresion" id="impresion" class="categorias">
+          <option value="impres">Impresión</option>
+          <option value="consmibles">Consumibles y articulos</option>
+          <option value="impresoras">Impresoras</option>
+          <!-- <option value="3">Puntos de venta</option> -->
+          <option value="scanners">Scanners de cama</option>
+        </select>
+      </div>
+
+      <div class="seccion2">
+        <i class="fa-solid fa-computer"></i>
+        <select name="computadoras" id="computadoras" class="categorias">
+          <option value="compu">Computadoras</option>
+          <option value="laptops">Laptops</option>
+          <option value="desktops">Desktops</option>
+          <option value="smartphones">Smartphones</option>
+          <option value="tablets">Tablets</option>
+        </select>
+
+        <i class="fa-solid fa-microchip"></i>
+        <select name="hardware" id="hardware" class="categorias">
+          <option value="hardw">Hardware</option>
+          <option value="discosDuros">Discos duros</option>
+          <option value="procesadores">Procesadores</option>
+          <option value="memorias">Memorias</option>
+          <option value="placasMadre">Placas madre</option>
+        </select>
+
+        <i class="fa-solid fa-keyboard"></i>
+        <select name="accesorios" id="accesorios" class="categorias">
+          <option value="acces">Accesorios</option>
+          <option value="perifericos">Perifericos</option>
+          <option value="cables">Cables</option>
+          <option value="adaptadores">Adaptadores</option>
+          <option value="herramientas">Herramientas</option>
+          <option value="limpieza">Limpieza</option>
+        </select>
+
+        <i class="fa-solid fa-wrench"></i>
+        <select name="electronica" id="electronica" class="categorias">
+          <option value="electro">Electrónica</option>
+          <option value="monitores">Monitores</option>
+          <option value="audifonos">Audífonos</option>
+          <option value="microfonos">Micrófonos</option>
+          <option value="bocinas">Bocinas</option>
+          <option value="capturadorasVideo">Capturadoras de video</option>
+        </select>
+      </div>
+
+    </article>
+
+    <section class="container-all">
+
+        <article id="container-datos-usuario" class="contenedor">
+                <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
+
+            <h3 id="subtitulo">Datos bancarios</h3>
+
+            <div class="entrada-2">
+                <div class="input-group">
+                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="100" minlength="3">
+                    <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16">
+                    <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" >
+                    <label for="month-expiracion" class="input-label">Mes de expiración</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2">
+                    <label for="year-expiracion" class="input-label">Año de expiración</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3">
+                    <label for="ccv" class="input-label">CCV</label>
+                </div>
+            </div>
+
+            <h3 id="subtitulo">Datos de dirección</h3>
+
+
+                <div class="entrada-2">
+                    <div class="input-group">
+                        <input type="text" name="calle" id="calle" required class="input" maxlength="20">
+                        <label for="calle" class="input-label">Calle</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="numero" id="numero" required class="input" maxlength="10">
+                        <label for="numero" class="input-label">Número</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" >
+                        <label for="colonia" class="input-label">Colonia</label>
+                    </div>
+
+                    <div class="input-group">
+                    <select name="estado" id="estado" name="estado" class="estado">
+                    <option value="<?php echo $auxEst;?>"><?php echo $estado;?></option>
+                                <?php
+                                $serverName='localhost';
+                                $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+                                $con = sqlsrv_connect($serverName, $connectionInfo); 
+                                
+                                $query = "SELECT Id, Estado FROM estados";
+                                $resultado = sqlsrv_query($con, $query);
+
+                                    while($row = sqlsrv_fetch_array($resultado)){?>
+                                        <option value="<?php echo $row['Id'];?>"><?php echo $row['Estado'];?></option>
+                                <?php } ?>
+                            </select>
+                        <!-- <input type="text" name="estado" id="estado" required class="input" value=
+                        //?php echo $estado;?>>
+                        <label for="estado" class="input-label">Estado</label> -->
+                    </div>
+
+                    <div class="input-group">
+                            <select name="municipio" id="municipio" class="municipio">
+                                <option value="<?php echo $auxMun;?>"><?php echo $municipio;?></option>
+                                
+                                <!-- Generar aquí el contenido de las ciudades -->
+                            </select>
+                        <!-- <input type="text" name="municipio" id="municipio" required class="input" value=
+                        //</?p//hp echo $municipio;?>>
+                        <label for="municipio" class="input-label">Municipio</label> -->
+
+
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
+                        maxlength="5" minlength="5">
+                        <label for="codigo-postal" class="input-label">Código postal</label>
+                    </div>
+
+                </div>    
+
+                <!-- <input type="submit" name="boton3" value="Actualizar contraseña" class="btn"> -->
+                <br>
+                <br>
+                <br>
+
+
+
+                <input type="submit" name="boton4" id="boton4" value="Comprar" class="btn" disabled>
+                <br>
+                <br>
+                <br>
+
+            </form>
+        </article>
+        <script src="js/alertasPerfil.js"></script>
+        <script src="js/validPerfil.js"></script>
+    </section>
+    <script src="js/linkHome.js"></script>
+</body>
+
+</html>

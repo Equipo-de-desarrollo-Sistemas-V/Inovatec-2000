@@ -206,7 +206,7 @@ header {
 /* Tarjetas de los productos */
 
 .containerProductos {
-    margin: 10px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
     margin-left: 275px;
@@ -243,7 +243,6 @@ header {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
 }
-
 
 .cardProducto {
     display: flex;
@@ -730,4 +729,8 @@ a{
         opacity: 0;
         transform: translateY(15px);
     }
+}
+
+.subtitulo{
+    margin-top: 15px;
 }

@@ -2,7 +2,6 @@
 <?php
 error_reporting(0);
 include("sesion_iniciada.php");
-include("sesion_iniciada_Cli.php");
 ?>
 
 

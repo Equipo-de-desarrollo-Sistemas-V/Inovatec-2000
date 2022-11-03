@@ -15,10 +15,13 @@ $sesion_i = $_SESSION["nombres"];
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/consulVentas.js"></script>
 </head>
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
 	<script src="funcionamiento.js"></script>
+	
 
 	<!--Estructura Header Superior-->
 	<header>
@@ -31,7 +34,7 @@ $sesion_i = $_SESSION["nombres"];
 			</div>
 			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li>
+				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
@@ -98,16 +101,16 @@ $sesion_i = $_SESSION["nombres"];
 			<article>
 				<h1 align="center">Registro de ventas</h1>
 				<div class="contenido-barra-buscar">
-					<input type="text" placeholder="Buscar" required />
-					<button class="btn-buscar">
+						<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required >
+						<button class="btn-buscar">
 						<i class="fas fa-search icon"></i>
 
 					</button>
 				</div>
 				<br>
 
-				<section class="tablas">
-					<table>
+				<section class="tablas" id="tablaResultado">
+					<!--<table>
 						<thead>
 							<tr>
 								<th>Id venta</th> 
@@ -124,7 +127,7 @@ $sesion_i = $_SESSION["nombres"];
 								<th></th>
 							</tr>
 						</thead>
-					</table>
+					</table>-->
 				</section>
 			</article>
 		</div>
