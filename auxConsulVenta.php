@@ -63,7 +63,6 @@ if($resultado==true){
             <th>Precio de venta </th>
             <th>Descuento </th>
             <th>Total </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>";
@@ -93,7 +92,6 @@ if($resultado==true){
         $salida.='<td>'.$pre_ven.'</td>';
         $salida.='<td>'.$descuento.'</td>';
         $salida.='<td>'.$total.'</td>';
-        $salida.='<td>'.'</td>';
 		$salida.='</tr>';
     }
     
