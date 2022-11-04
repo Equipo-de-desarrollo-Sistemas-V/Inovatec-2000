@@ -163,29 +163,7 @@ $sesion_i = $_SESSION["nombres"];
                                         <div class="formulario_grupo-input">
 						<label for="idSucursal" class="formulario_label">Id sucursal</label> 
 						<div class="formulario_grupo-input">
-                                                    <select type="text" name="idSucursal" id="idSucursal" class="formulario_input" readonly="readonly">
-                                                        <?php
-                                                        $serverName='localhost';
-                                                            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-                                                            $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
-                                                            $getSucursal ="select id_sucursal from Sucursal";
-                                                            $getSucursal2 = sqlsrv_query($conn_sis, $getSucursal);
-                                                            if( $getSucursal2 === false) {
-                                                                die( print_r( sqlsrv_errors(), true) );
-                                                            }
-                                                            while ($rowSucursal = sqlsrv_fetch_array($getSucursal2)){
-                                                                $id_suc=$rowSucursal['id_sucursal'];
-                                                                
-                                                                if ($id_suc==$idsucursal){?>
-                                                                    <option value="<?php echo $id_suc;?>" selected><?php echo $id_suc;?></option>
-                                                            <?php
-                                                            }else{
-                                                                ?>
-                                                                <option value="<?php echo $id_suc;?>"><?php echo $id_suc;?></option>
-                                                                <?php
-                                                            }}
-                                                        ?>
-                                                    </select>
+						<input type="text" name="idSucursal" id="Sucursal" class="formulario_input" readonly="readonly" value="<?php echo $idsucursal;?>"></input>
 						</div>
 					</div>
 
