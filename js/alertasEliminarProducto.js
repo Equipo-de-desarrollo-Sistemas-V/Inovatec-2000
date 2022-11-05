@@ -1,5 +1,5 @@
 function confirmacion(e){
-    if (confirm("¿Estas seguro de eliminar el producto?\nPuede que el producto se encuentre relacionado con la sección de inventario, o alguna otra sección, de ser así, se procederá a cambiar el status de dicho producto.")){
+    if (confirm("¿Estas seguro de eliminar el producto?\nPuede que el producto se encuentre relacionado con la sección de inventario, o alguna otra sección, de ser así, se procederá a cambiar el estado de dicho producto.")){
         return true;
     }else{
         e.preventDefault();

@@ -20,8 +20,12 @@ $querry_productos = "SELECT id_producto, nombre FROM Productos
 $resultados_productos = sqlsrv_query($con, $querry_productos);
 
 //obtenr id de las sucursales
-$querry_sucursales = "SELECT id_sucursal FROM Sucursal
-		WHERE Estado = 'Activo'";
+$querry_sucursales = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
+FROM estados, estados_municipios, municipios, sucursal
+WHERE sucursal.Estado = 'Activo' and
+sucursal.ciudad_est = estados_municipios.id and
+estados_municipios.estados_id = estados.Id and
+municipios.Id_Municipios = estados_municipios.municipios_id";
 
 $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 
@@ -139,7 +143,8 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 
 								//cargar los resultados de la consulta en la combobox
 								while ($row = sqlsrv_fetch_array($resultados_productos)) { ?>
-									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto']; ?> </option>
+									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' 
+									. $row["nombre"]; ?> </option>
 
 								<?php }
 								?>
@@ -156,7 +161,7 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 
 								//cargar los resultados de la consulta en la combobox
 								while ($row = sqlsrv_fetch_array($resultados_sucursales)) { ?>
-									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal']; ?> </option>
+									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal'], ' - '. $row["municipio"]. ', '. $row["estado"]; ?> </option>
 
 								<?php }
 								?>
