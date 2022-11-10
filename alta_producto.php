@@ -203,7 +203,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 					<div class="formulario_grupo-input">
 						<label for="proveedor" class="formulario_label">Proveedor</label>
 						<div class="formulario_grupo-input">
-							<select name="proveedor" id="sucursal" class="formulario_input required">
+							<select name="proveedor" id="sucursal" class="formulario_input" required>
 								<?php
 
 								//cargar los resultados de la consulta en la combobox
