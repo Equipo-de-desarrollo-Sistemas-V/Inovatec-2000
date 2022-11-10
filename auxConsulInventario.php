@@ -82,6 +82,7 @@ if($resultado==true){
 							$valor=$row["Valor"];
 							$edi='Editar';
 							$eli='Eliminar';
+                            $ent='Entrada';
                             $totInversion=$totInversion+$inver;
                             $totValor=$totValor+$valor;
         //muestra los resultados en la tabla
@@ -95,6 +96,7 @@ if($resultado==true){
         $salida.='<td>'.$valor.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar_Inv.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
+        $salida.='<td>'.'<a href="entradas_prod.php?item='.$id.'">'.$ent. '</a>'.'</td>';
 		$salida.='</tr>';
         }
 
