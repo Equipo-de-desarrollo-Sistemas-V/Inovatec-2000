@@ -1,5 +1,29 @@
+/* Declara una variable global */
 let bId = false
 
+
+/*Detecta cuando el boton fue presionado*/
+let botonRegresar = document.getElementById("guardar");
+botonRegresar.addEventListener("click", (e) => {
+
+    if (bId==false){
+        idProducto.style.border = "3px solid red";
+    }else if(bNom==false){
+        nombreProd.style.border = "3px solid red";
+    }else if(bCat==false){
+        categoria.style.border = "3px solid red";
+    }else if(bPrC==false){
+        precioProd.style.border = "3px solid red";
+    }else if(bPrV==false){
+        precioVenta.style.border = "3px solid red";
+    }else if(bDes==false){
+        descripcion.style.border = "3px solid red";
+    }else{
+        validar(true);
+    }
+});
+
+/*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
     id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/
 }
@@ -26,9 +50,11 @@ formulario.idSucursal.addEventListener('keyup', (e) => {
     validar();
 })
 
-function validar(){
+
+/*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
+function validar(bandera){
     const guardar = document.getElementById('guardar');
-    if(bId == true){
+    if(bandera == true){
         guardar.disabled=false;
     }
     else{
