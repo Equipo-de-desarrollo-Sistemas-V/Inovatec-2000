@@ -199,10 +199,10 @@ header {
 
 .entrada-2 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    column-gap: 40px;
-    row-gap: -15px;
+    column-gap: 50px;
+    grid-row-gap: 8px;
 }
 
 .entrada-3 {
@@ -224,7 +224,7 @@ header {
 }
 
 .input {
-    width: 300px;
+    width: 400px;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -350,7 +350,7 @@ header {
 
 .estado, .municipio {
     background: transparent;
-    width: 300px;
+    width: 13.4rem;
     height: 2.5rem;
     border-radius: 5px;
     border-color: #e6b323;
