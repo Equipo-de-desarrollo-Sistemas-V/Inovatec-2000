@@ -30,7 +30,6 @@
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
 			<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
@@ -106,15 +105,6 @@
 						<div class="formulario_grupo-input">
 							<select type="text" name="idProveedor" id="idProv" class="formulario_input">
 								<option value=""></option>
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados_productos)) { ?>
-									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' 
-									. $row["nombre"]; ?> </option>
-
-								<?php }
-								?>
 							</select>
 						</div>
 					</div>
@@ -124,14 +114,6 @@
 						<div class="formulario_grupo-input">
 							<select type="text" name="empresa" id="empresaProv" class="formulario_input">
 								<option value=""></option>
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados_sucursales)) { ?>
-									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal'], ' - '. $row["municipio"]. ', '. $row["estado"]; ?> </option>
-
-								<?php }
-								?>
 							</select>
 						</div>
 					</div>
