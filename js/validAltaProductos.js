@@ -1,10 +1,35 @@
 /* Declara una variable global */
 let bId = false
 let bNom = false
+let bCat = false
 let bPrC = false
 let bPrV = false
 let bDes = false
 
+
+/*Detecta cuando el boton fue presionado*/
+let botonRegresar = document.getElementById("guardar");
+botonRegresar.addEventListener("click", (e) => {
+
+    if (bId==false){
+        idProducto.style.border = "3px solid red";
+    }else if(bNom==false){
+        nombreProd.style.border = "3px solid red";
+    }else if(bCat==false){
+        categoria.style.border = "3px solid red";
+    }else if(bPrC==false){
+        precioProd.style.border = "3px solid red";
+    }else if(bPrV==false){
+        precioVenta.style.border = "3px solid red";
+    }else if(bDes==false){
+        descripcion.style.border = "3px solid red";
+    }else{
+        validar(true);
+    }
+});
+
+
+/*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
     id:/^[0-9]{1,8}$/,
     nombre:/^[a-zA-ZÁ-ý\s0-9"-]{3,50}$/,
@@ -33,7 +58,19 @@ formulario.idProducto.addEventListener('keyup', (e) => {
         idProducto.removeAttribute("style");
         bId = true
     }
-    validar();
+    validar(bId);
+})
+
+/* Select de Categoria*/
+formulario.categoria.addEventListener('change', (e) => {
+	let valorInput = e.target.value;
+    if (valorInput==""){
+        categoria.style.border = "3px solid red";
+        bCat = false
+    }else{
+        categoria.removeAttribute("style");
+        bCat = true
+    }
 })
 
 /* Input nombre del Producto */
@@ -53,7 +90,7 @@ formulario.nombreProd.addEventListener('keyup', (e) => {
         nombreProd.removeAttribute("style");
         bNom = true
     }
-    validar();
+    validar(bNom);
 })
 
 /* Input precio de compra */
@@ -94,7 +131,7 @@ formulario.precioProd.addEventListener('keyup', (e) => {
         }
     }
     validarPrecios();
-    validar();
+    validar(bPrC);
 })
 
 /* Input precio de venta */
@@ -153,7 +190,7 @@ formulario.descripcion.addEventListener('keyup', (e) => {
         descripcion.removeAttribute("style");
         bDes = true
     }
-    validar();
+    validar(bDes);
 })
 
 
@@ -164,28 +201,26 @@ const validarPrecios = () =>{
     var compra=parseFloat(inputPC.value)
     var venta=parseFloat(inputPV.value)
 
-    console.log(compra, venta)
-
     if (compra > venta){
-        console.log("Hola"+" "+inputPC.value+" "+inputPV.value)
         precioVenta.style.border = "3px solid red";
         bPrV = false
         
     }else if(compra < venta){
-        console.log("Adios"+" "+inputPC.value+" "+inputPV.value)
         precioVenta.removeAttribute("style");
         bPrV = true
     }
-    validar();
+    validar(bPrV);
 }
 
-function validar(){
+
+/*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
+function validar(bandera){
     const guardar = document.getElementById('guardar');
-    if(bId == true && bNom== true && bPrC == true && bPrV == true && bDes == true){
+    if(bandera == true){
         guardar.disabled=false;
     }
     else{
-        guardar.disabled=true;
+        guardar.disabled=true;   
     }
 
 }
