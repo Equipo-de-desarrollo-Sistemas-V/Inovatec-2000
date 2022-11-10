@@ -75,7 +75,6 @@
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
-								<li><a id="menuInventario3" href="entradas_prod.php">Entradas</a></li>
 								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
@@ -103,18 +102,14 @@
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="idProveedor" id="idProv" class="formulario_input">
-								<option value=""></option>
-							</select>
+							<input type="text" name="idProveedor" id="idProv" class="formulario_input"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="empresa" id="empresaProv" class="formulario_input">
-								<option value=""></option>
-							</select>
+							<input type="text" name="empresa" id="empresaProv" class="formulario_input"></input>
 						</div>
 					</div>
 

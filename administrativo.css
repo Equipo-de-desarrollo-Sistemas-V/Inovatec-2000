@@ -240,6 +240,7 @@ textarea{
 }
 
 .formulario_input{
+	padding: 10px;
 	font-size: 16px;
 	font-weight: 450;
 	width: 100%;
