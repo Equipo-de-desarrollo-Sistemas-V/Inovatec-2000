@@ -1,10 +1,3 @@
-<?php
-error_reporting(0);
-session_start();
-include("perProveedor.php");
-$sesion_i = $_SESSION["nombres"];
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,10 +5,16 @@ $sesion_i = $_SESSION["nombres"];
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Nuevo proveedor</title>
+	<title>Entradas de productos</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+
+	<!-- Scripts para el funrionamiento de las combobox-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -33,8 +32,7 @@ $sesion_i = $_SESSION["nombres"];
 			</div>
 			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<!-- <li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li> -->
-				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
+			<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
@@ -96,50 +94,54 @@ $sesion_i = $_SESSION["nombres"];
 		</div>
 	</header>
 
-	<!--Main General-->
 	<main>
-		<!--Contenido de la parte PROVEEDOR-->
-		<div class="contenidoAgregaProv" id="contenidoAgregaProv">
+		<!--Contenido de la parte INVENTARIO-->
+		<div class="contenidoInventario" id="contenidoInventario">
 			<article>
-				<h1 align="center">Nuevo proveedor</h1>
+				<h1 align="center">Entradas de productos</h1>
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
-						<label for="idProveedor" class="formulario_label">Id</label>
+						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProveedor" id="idProveedor" class="formulario_input" required maxlength="8" minlength="1">
+							<select type="text" name="idProveedor" id="idProv" class="formulario_input">
+								<option value=""></option>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_productos)) { ?>
+									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' 
+									. $row["nombre"]; ?> </option>
+
+								<?php }
+								?>
+							</select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="empresa" class="formulario_label">Empresa</label>
+						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="empresaProv" id="empresaProv" class="formulario_input" required maxlength="20">
+							<select type="text" name="empresa" id="empresaProv" class="formulario_input">
+								<option value=""></option>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados_sucursales)) { ?>
+									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal'], ' - '. $row["municipio"]. ', '. $row["estado"]; ?> </option>
+
+								<?php }
+								?>
+							</select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="rfcProv" class="formulario_label">RFC</label>
+						<label for="carga" class="formulario_label">Carga de productos</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="rfcProv" id="rfcProv" class="formulario_input" required maxlength="12" minlength="12"></input >
-						</div>
-					</div>
-
-					<div class="formulario_grupo-input">
-						<label for="correoProv" class="formulario_label">Correo electrónico</label>
-						<div class="formulario_grupo-input">
-							<input type="email" name="correoProv" id="correoProv" class="formulario_input" required maxlength="255"></input>
+							<input type="text" name="carga" id="carga" class="formulario_input"></input>
 						</div>
 					</div><br>
-					
-					<!--select para la parte de actualizar
-					<div class="formulario_grupo-input">
-						<label for="estado" class="formulario_label">Estado</label>
-						<div class="formulario_grupo-input">
-							<select type="text" name="estado" id="estado" class="formulario_input"></select>
-						</div>
-					</div>
-					-->
 
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
@@ -147,12 +149,11 @@ $sesion_i = $_SESSION["nombres"];
 
 				</form>
 			</article>
+			<script src="js/validAltaInventario.js"></script>
 		</div>
 	</main>
 
-	<script src="js/alertasProveedor.js"></script>
-	<script src="js/validAltaProveedor.js"></script>
-
+	<script src="js/alertasInventario.js"></script>
 </body>
 
 </html>
