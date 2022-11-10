@@ -201,7 +201,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    column-gap: 35px;
+    column-gap: 40px;
     row-gap: -15px;
 }
 
@@ -224,6 +224,7 @@ header {
 }
 
 .input {
+    width: 300px;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -349,7 +350,7 @@ header {
 
 .estado, .municipio {
     background: transparent;
-    width: 13.4rem;
+    width: 300px;
     height: 2.5rem;
     border-radius: 5px;
     border-color: #e6b323;
