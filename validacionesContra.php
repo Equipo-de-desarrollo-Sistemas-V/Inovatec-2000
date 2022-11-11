@@ -24,7 +24,7 @@
         function validar(){
             $in=new Contra;
             $contra = $_POST["contraseña"];
-            $confirmacion = $_POST["confirmar-contraseña"];
+            $confirmacion = $_POST["confirmar"];
             $bandn = 0;
             $bandc = 0;
             $bandM = 0;
