@@ -4,6 +4,24 @@ let bNom = false
 let bRFC = false    
 let bEmail = false
 
+/*Detecta cuando el boton fue presionado*/
+let botonRegresar = document.getElementById("guardar");
+botonRegresar.addEventListener("click", (e) => {
+
+    if (bId==false){
+        idProveedor.style.border = "3px solid red";
+    }else if(bNom==false){
+        empresaProv.style.border = "3px solid red";
+    }else if(bRFC==false){
+        rfcProv.style.border = "3px solid red";
+    }else if(bEmail==false){
+        correoProv.style.border = "3px solid red";
+    }else{
+        validar(true);
+    }
+});
+
+/*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
     id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/,
     empresa:/^[a-zA-ZÁ-ý\s0-9"]{1,20}$/,
@@ -30,7 +48,7 @@ formulario.idProveedor.addEventListener('keyup', (e) => {
         idProveedor.removeAttribute("style");
         bId = true
     }
-    validar();
+    validar(bId);
 })
 
 /* Input id del nombre de la empresa*/
@@ -48,7 +66,7 @@ formulario.empresaProv.addEventListener('keyup', (e) => {
         empresaProv.removeAttribute("style");
         bNom = true
     }
-    validar();
+    validar(bNom);
 })
 
 /* Input id del RFC*/
@@ -70,7 +88,7 @@ formulario.rfcProv.addEventListener('keyup', (e) => {
         rfcProv.removeAttribute("style");
         bRFC = true
     }
-    validar();
+    validar(bRFC);
 })
 
 /* Input id del email*/
@@ -92,13 +110,13 @@ formulario.correoProv.addEventListener('keyup', (e) => {
         correoProv.removeAttribute("style");
         bEmail = true
     }
-    validar();
+    validar(bEmail);
 })
 
 
-function validar(){
+function validar(bandera){
     const guardar = document.getElementById('guardar');
-    if(bId == true && bNom== true && bRFC == true && bEmail == true){
+    if(bandera == true){
         guardar.disabled=false;
     }
     else{

@@ -110,7 +110,6 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
-								<li><a id="menuInventario3" href="entradas_prod.php">Entradas</a></li>
 								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
@@ -138,7 +137,7 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="idProveedor" id="idProv" class="formulario_input">
+							<select type="text" name="idProveedor" id="idProv" class="formulario_input" required>
 								<option value=""></option>
 								<?php
 
@@ -155,7 +154,7 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<div class="formulario_grupo-input">
 						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="empresa" id="empresaProv" class="formulario_input">
+							<select type="text" name="empresa" id="empresa" class="formulario_input" required>
 								<option value=""></option>
 								<?php
 
@@ -172,14 +171,14 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<div class="formulario_grupo-input">
 						<label for="rfcProv" class="formulario_label">Existentes</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="existentes" id="existentes" class="formulario_input"></input>
+							<input type="text" name="existentes" id="existentes" class="formulario_input" required></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="correoProv" class="formulario_label">Stock mínimo</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="stock" id="stock" class="formulario_input"></input>
+							<input type="text" name="stock" id="stock" class="formulario_input" required></input>
 						</div>
 					</div><br>
 

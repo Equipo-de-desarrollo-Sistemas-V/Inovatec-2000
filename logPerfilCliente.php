@@ -13,12 +13,12 @@ class PerfilUsuario{
             $this->con = sqlsrv_connect($serverName, $connectionInfo); 
             $this->varConectado=true;
         }catch (Exception $e){
-            // $in->alertas("validacion", 'Vaya...', 'Fallo al conectar a la base de datos');
             echo json_encode('conR');
             //echo "No se puedo conectar";
         }  
     }
 
+    //Se detecta que proceso se realiza, actualizacion de datos o eliminar cuenta
     function proceso(){
         $contra=$_POST["delete-password"];
         if ($contra===""){
@@ -28,7 +28,7 @@ class PerfilUsuario{
         }
     }
 
-
+    //proceso para eliminar cuenta
     function eliminarCuenta(){
         $file = fopen("archivo_correo.txt", "r");
         $auxIngreso = fgets($file);
@@ -43,7 +43,6 @@ class PerfilUsuario{
 
         if($contra != $confirmacion){
             echo json_encode('confirmacion');
-            // $in->alertas("validacion", 'Datos inválidos', 'La contraseña y la confirmación no coinciden');
         }else{
             $ban1=false;
             self::conexion();
@@ -76,20 +75,12 @@ class PerfilUsuario{
                     $this->varConectado=false;
                     sqlsrv_close($this->con);
                 }
-                /*if ($ban1===true){
-                    // $in->alertas("aceptado", 'Listo!!!', 'Cuenta eliminada');
-                     //echo json_encode('conR');
-                    //$this->varConectado=false;
-                    //sqlsrv_close($this->con);
-                    //include_once("cerrar.php");
-                }*/
-
             }
         }
     }
 
+    //proceso par actualizar los datos personales
     function actualizarDatos(){
-        
         $file = fopen("archivo_correo.txt", "r");
         $auxIngreso = fgets($file);
         fclose($file);
@@ -111,7 +102,6 @@ class PerfilUsuario{
                 $numn = $this->numeros($nombreCliente);
                 $carn = $this->caracteres($nombreCliente);
                 if ((strlen($nombreCliente)>40) or ($numn != 0 or $carn != 0)){
-                    // $in->alertas("validacion", 'Datos inválidos', 'El nombre no debe contener más de 40 caracteres (a-z / A-Z)');
                     echo json_encode('nombre');
                 }else{
                     $nump = $this->numeros($apellidoPaterno);
@@ -119,11 +109,9 @@ class PerfilUsuario{
                     $carp = $this->caracteres($apellidoPaterno);
                     $carm = $this->caracteres($apellidoMaterno);
                     if ((strlen($apellidoPaterno)>20) or ($nump != 0 or $numm != 0 or $carp != 0 or $carm != 0)){
-                        // $in->alertas("validacion", 'Datos inválidos', 'Los apellidos no deben contener más de 20 caracteres (a-z / A-Z)');
                         echo json_encode('apellidos');
                     }else{
                         if((strlen($telefonoPersona)!=10) or (is_numeric($telefonoPersona)===false)){
-                            // $in->alertas("validacion", 'Datos inválidos', 'El teléfono debe tener 10 dígitos (0-9)');
                             echo json_encode('telefono');
                         }else{
                             $query= "SELECT email FROM Persona where usuario ='".$ingreso."'";
@@ -140,32 +128,18 @@ class PerfilUsuario{
                                 $resultado=sqlsrv_query( $this->con, $query);
                                 $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
                                 if (!empty($arreResul)){
-                                    // $in->alertas("validacion", 'Datos inválidos', 'El correo ya se encuentra registrado');
                                     echo json_encode('correo');
                                 }else{
                                     $query= "SELECT email FROM Empleados where email ='".$correoPersona."'";
                                     $resultado=sqlsrv_query( $this->con, $query);
                                     $arreResul = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC);
                                     if (!empty($arreResul)){
-                                        // $in->alertas("validacion", 'Datos inválidos', 'El correo ya se encuentra registrado');
                                         echo json_encode('correo');
                                     }else{
                                         $b1=true;
                                         $b2=true;
                                         $query= "UPDATE Persona set email = '".$correoPersona."'where Usuario='".$ingreso."'" ;
                                         $resultado=sqlsrv_query( $this->con, $query);
-                                        /*include_once("VerifyEmail.php");
-                                        $vmail = new verifyEmail();
-                                        if ($vmail->check($correoPersona)) {
-                                            echo "correo valido";
-                                        }elseif ($vmail->isValid($correoPersona)) {
-                                            echo 'email &lt;' . $correoPersona . '&gt; valid, but not exist!';
-                                            //echo '<script>alert("Por favor inserte un correo válido")</script>';
-                                            
-                                        } else {
-                                            echo 'email &lt;' . $correoPersona . '&gt; not valid and not exist!';
-                                            //echo '<script>alert("Por favor inserte un correo válido")</script>';
-                                        }*/
                                     }
                                 }
                             }
@@ -188,15 +162,13 @@ class PerfilUsuario{
                     }        
             }
             if ($ban1===true){
-                // $in->alertas("aceptado", '¡Enhorabuena!', 'Datos actualizados correctamente');
-                //echo json_encode('datAct');
                 $this->varConectado=false;
                 sqlsrv_close($this->con);
                 $this->actualizarDirec();
             }
     }
 
-
+    //proceso para actualizar la direccion
     function actualizarDirec(){
         $file = fopen("archivo_correo.txt", "r");
         $auxIngreso = fgets($file);
@@ -213,28 +185,23 @@ class PerfilUsuario{
         $estadoPersona=$_POST["estado"];
         $cpPersona=$_POST["codigoPostal"];
         $ban1=false;
-        //echo $municipioPersona."fwef";
         self::conexion();
         if ($this->varConectado===true){
            try{
             $numc = $this -> numeros($callePersona);
             $carc = $this -> caracteres($callePersona);
                 if ((strlen($callePersona)>20) or ($numc != 0 or $carc != 0)){
-                    // $this->in->alertas("validacion", 'Datos inválidos', 'El nombre de la calle no debe contener más de 20 caracteres (a-z / A-Z)');
                     echo json_encode('calle');
                 }else{
                     if((strlen($numeroPersona)>10) or (is_numeric($numeroPersona)===false)){
-                        // $this->in->alertas("validacion", 'Datos inválidos', 'El número de la calle debe ser totalmente númerico (0-9), máximo 10 dígitos');
                         echo json_encode('numero');
                     }else{
                         $numc = $this->numeros($coloniaPersona);
                         $carc = $this->caracteres($coloniaPersona);
                         if ((strlen($coloniaPersona)>20) or ($numc != 0 or $carc != 0)){
-                            // $this->in->alertas("validacion", 'Datos inválidos', 'El nombre de la colonia no debe contener más de 20 caracteres (a-z / A-Z)');
                             echo json_encode('colonia');
                         }else{
                             if((strlen($cpPersona)!=5) or (is_numeric($cpPersona)===false)){
-                                // $this->in->alertas("validacion", 'Datos inválidos', 'El código postal debe ser totalmente númerico (0-9), de 5 dígitos');
                                 echo json_encode('codigo');
                             }else{
                                             $query = "SELECT  id FROM estados_municipios
@@ -254,7 +221,6 @@ class PerfilUsuario{
                                                 $resultado=sqlsrv_query( $this->con, $query);
                                                 $ban1=true;
                                             }else{
-                                                //  $this->in->alertas("validacion", 'Datos inválidos', 'El municipio no se encuentra en el estado indicado');
                                                 echo json_encode('munEstaExi');
                                             }
                             }
@@ -267,14 +233,13 @@ class PerfilUsuario{
                     }        
             }
             if ($ban1===true){
-                // $this->in->alertas("aceptado", 'Listo!!!', 'Dirección actualizada correctamente');
-                //echo json_encode('dirAct'); 
                 $this->varConectado=false;
                 sqlsrv_close($this->con);
                 $this->actualizarContra();
             }
     }
 
+    //proceso para actualizar contraseña
     function actualizarContra(){
         $file = fopen("archivo_correo.txt", "r");
         $auxIngreso = fgets($file);
@@ -301,9 +266,7 @@ class PerfilUsuario{
 
         if (password_verify($actual, $hash)){
             if($contra != $confirmacion){
-                // $this->in->alertas("validacion", 'Datos inválidos', 'La contraseña y la confirmación no coinciden');
                 echo json_encode('confirmacion');
-                //echo "no coinciden";
             }else{
                 if(strlen($contra)>=8){
                     $bandE = 0;
@@ -331,7 +294,6 @@ class PerfilUsuario{
                     }
         
                     if($bandE!=0 or $bandn == 0 or $bandc == 0 or $bandm == 0 or $bandM == 0){
-                        // $this->in->alertas("validacion", 'Datos inválidos', 'La contraseña debe contener números, mayúsculas, minúsculas y caracteres especiales');
                         echo json_encode('validacion');
                     }else{
                         $clave = password_hash($contra, PASSWORD_DEFAULT);
@@ -349,8 +311,6 @@ class PerfilUsuario{
                                 sqlsrv_close($this->con);
                             }
                             if ($ban1===true){
-                                // $this->in->alertas("aceptado", 'Listo!!!', 'Contraseña actualizada correctamente');
-                                // echo json_encode('contAct');
                                 $this->varConectado=false;
                                 sqlsrv_close($this->con);
                                 $this->actualizarBanco();
@@ -358,12 +318,10 @@ class PerfilUsuario{
                         }
                     }
                 } else {
-                    // $this->in->alertas("validacion", 'Datos inválidos', 'La contraseña debe tener un mínimo de 8 caracteres');
                     echo json_encode('longitud');
                 }
             }
         }else{
-            // $this->in->alertas("validacion", 'Datos inválidos', 'La contraseña actual ingresada no coincide con la registrada');
             echo json_encode('actual');
         }
     }else{
@@ -371,8 +329,7 @@ class PerfilUsuario{
 }
 }
 
-
-
+    //proceso para actualizar datos del banco
     function actualizarBanco(){
         $file = fopen("archivo_correo.txt", "r");
         $auxIngreso = fgets($file);
@@ -392,7 +349,6 @@ class PerfilUsuario{
         $nump = $this->numeros($nombreTar);
         $carp = $this->caracteres($nombreTar);
         if ((strlen($nombreTar)>20) or ($nump != 0 or $carp != 0)){
-            // $in->alertas("validacion", 'Datos inválidos', 'El nombre de la tarjeta solo debe contener letras (a-z / A-Z)');
             echo json_encode('nomTar');
         }else{
             $auxiliar = "";
@@ -402,21 +358,16 @@ class PerfilUsuario{
                 }
             }
             $numTar = $auxiliar;
-            //verificar que el numero de tarjeta tenga los 16 digitos
             if(strlen($numTar) != 16){
-                // $in->alertas("validacion", 'Datos inválidos', 'El número de tarjeta debe tener 16 dígitos (0-9)');
                 echo json_encode('numTar');
             }else{
                 if((strlen($mesTar)>3) or (is_numeric($mesTar)===false) or ($mesTar>12) or ($mesTar<1)){
-                    // $in->alertas("validacion", 'Datos inválidos', 'El mes de expiración debe ser númerico (1-12), máximo 2 dígitos');
                     echo json_encode('mes');
                 }else{
                     if((strlen($añoTar)>3) or (is_numeric($añoTar)===false) or ($añoTar<22) or ($añoTar>39)){
-                        // $in->alertas("validacion", 'Datos inválidos', 'El año de expiración debe ser númerico de 2 dígitos');
                         echo json_encode('anio');
                     }else{
                         if((strlen($ccvTar)>3) or (is_numeric($ccvTar)===false and $ccvTar!="")){
-                            // $in->alertas("validacion", 'Datos inválidos', 'El cvv debe ser númerico de tres dígitos');
                             echo json_encode('cvv');
                         }else{
                             $ban1=false;
@@ -436,7 +387,6 @@ class PerfilUsuario{
                                     sqlsrv_close($this->con);
                                 }
                                 if ($ban1===true){
-                                    // $in->alertas("aceptado", 'Listo!!!', 'Datos bancarios actualizados correctamente');
                                     echo json_encode('chido');
                                     $this->varConectado=false;
                                     sqlsrv_close($this->con);
@@ -451,11 +401,7 @@ class PerfilUsuario{
     }
 
 
-
-
-
-
-
+    //proceso para verificar que el parametro recibido contenga numeros
     function numeros($cadena)
     {
         $conta = 0;
@@ -483,7 +429,6 @@ class PerfilUsuario{
                 and ord($cadena[$i]) != 154 and ord($cadena[$i]) != 177 and ord($cadena[$i]) != 145
             ) {
                 $conta++;
-                //echo json_encode(ord($cadena[$i]));
             }
         }
 
@@ -491,6 +436,5 @@ class PerfilUsuario{
     }
 }
 $per= new PerfilUsuario;
-//$per->actualizarDatos();
 $per->proceso();
 ?>

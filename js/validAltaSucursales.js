@@ -1,5 +1,18 @@
+/* Declara una variable global */
 let bId = false
 
+/*Detecta cuando el boton fue presionado*/
+let botonRegresar = document.getElementById("guardar");
+botonRegresar.addEventListener("click", (e) => {
+
+    if (bId==false){
+        idSucursal.style.border = "3px solid red";
+    }else{
+        validar(true);
+    }
+});
+
+/*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
     id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/
 }
@@ -23,12 +36,14 @@ formulario.idSucursal.addEventListener('keyup', (e) => {
         idSucursal.removeAttribute("style");
         bId = true
     }
-    validar();
+    validar(bId);
 })
 
-function validar(){
+
+/*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
+function validar(bandera){
     const guardar = document.getElementById('guardar');
-    if(bId == true){
+    if(bandera == true){
         guardar.disabled=false;
     }
     else{

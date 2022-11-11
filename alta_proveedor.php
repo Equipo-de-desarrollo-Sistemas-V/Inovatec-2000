@@ -78,7 +78,6 @@ $sesion_i = $_SESSION["nombres"];
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
-								<li><a id="menuInventario3" href="entradas_prod.php">Entradas</a></li>
 								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
@@ -131,15 +130,6 @@ $sesion_i = $_SESSION["nombres"];
 							<input type="email" name="correoProv" id="correoProv" class="formulario_input" required maxlength="255"></input>
 						</div>
 					</div><br>
-					
-					<!--select para la parte de actualizar
-					<div class="formulario_grupo-input">
-						<label for="estado" class="formulario_label">Estado</label>
-						<div class="formulario_grupo-input">
-							<select type="text" name="estado" id="estado" class="formulario_input"></select>
-						</div>
-					</div>
-					-->
 
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
@@ -147,12 +137,12 @@ $sesion_i = $_SESSION["nombres"];
 
 				</form>
 			</article>
+			<script src="js/validAltaProveedor.js"></script>
 		</div>
 	</main>
 
 	<script src="js/alertasProveedor.js"></script>
-	<script src="js/validAltaProveedor.js"></script>
-
+	
 </body>
 
 </html>

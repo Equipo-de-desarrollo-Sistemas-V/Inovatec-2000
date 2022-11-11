@@ -31,8 +31,8 @@ $resultado = sqlsrv_query($con, $query);
     
     <script languaje="javascript">
         $(document).ready(function(){
-            $("#estado").change(function(){
-                $("#estado option:selected").each(function(){
+            $("#estados").change(function(){
+                $("#estados option:selected").each(function(){
                     Id=$(this).val();
                     $.post("getMunicipio.php", {Id: Id}, function(data){
                         $("#municipio").html(data);
@@ -88,10 +88,8 @@ $resultado = sqlsrv_query($con, $query);
                         
 
                         <div class="input-group">
-                            <!-- <input type="text" name="estado" id="estado" required class="input" autocomplete="off">
-                            <label for="estado" class="input-label">Estado</label> -->
-                            <select name="estado" id="estado" name="estado" class="estado" style="background: transparent;">
-                                <option value="0">Estado</option>
+                            <select type="text" name="estados" id="estados" class="estado" required style="background: transparent;">
+                                <option value="">Estado</option>
                                 <?php
                                     while($row = sqlsrv_fetch_array($resultado)){?>
                                         <option value="<?php echo $row['Id'];?>"><?php echo $row['Estado'];?></option>
@@ -99,7 +97,7 @@ $resultado = sqlsrv_query($con, $query);
                             </select>
                         </div>
                         <div class="input-group-2">
-                            <select name="municipio" id="municipio" class="municipio">
+                            <select name="municipio" id="municipio" required class="municipio">
                                 <option value="0">Municipio</option>
                                 <!-- Generar aquí el contenido de las ciudades -->
                             </select>
@@ -111,7 +109,7 @@ $resultado = sqlsrv_query($con, $query);
                         </div>
 
                     </div>
-                    <input type="submit" value="Siguiente ->" id="siguiente" value="Siguiente" class="btn-login" diabled>
+                    <input type="submit" value="Siguiente ->" id="siguiente" value="Siguiente" class="btn-login">
                     <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="recuperarCorreo.php">Recuperar
                             contraseña</a></p>
                 </form>
@@ -127,7 +125,7 @@ $resultado = sqlsrv_query($con, $query);
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#estado').select2();
+        $('#estados').select2();
     });
     $(document).ready(function(){
         $('#municipio').select2();
