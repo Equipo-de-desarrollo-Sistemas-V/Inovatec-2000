@@ -94,7 +94,37 @@
 
 	<main>
 		<!--Contenido de la parte INVENTARIO-->
+		<?php
+		$id=$_GET["item"];
+		$serverName='localhost';
+		$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+		$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+		$querry_productos = "SELECT Inventario_suc.id_producto,Productos.nombre, 
+		Inventario_suc.id_sucursal 
+		FROM Inventario_suc, Productos
+		WHERE Inventario_suc.id_producto = '$id'";
+		$resultados_productos = sqlsrv_query($conn_sis, $querry_productos);
+		while ($row = sqlsrv_fetch_array($resultados_productos)) {
+			$id_p=$row["id_producto"];
+			$nombre=$row["nombre"];
+			$id_s=$row["id_sucursal"];
+		}
+		$querry_sucursales = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
+		FROM estados, estados_municipios, municipios, sucursal, Inventario_suc
+		WHERE Inventario_suc.id_sucursal='$id_s' and
+		sucursal.ciudad_est = estados_municipios.id and
+		estados_municipios.estados_id = estados.Id and
+		municipios.Id_Municipios = estados_municipios.municipios_id";
+		$resultados_sucursales = sqlsrv_query($conn_sis, $querry_sucursales);
+		while ($row = sqlsrv_fetch_array($resultados_sucursales)) {
+			$id_su=$row["id_sucursal"];
+			$estado=$row["estado"];
+			$muni=$row["municipio"];
+		}
+
+		?>
 		<div class="contenidoInventario" id="contenidoInventario">
+
 			<article>
 				<h1 align="center">Entradas de productos</h1>
 				<br>
@@ -102,14 +132,14 @@
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProveedor" id="idProv" class="formulario_input"></input>
+							<input type="text" name="idProveedor" id="idProv" class="formulario_input" readonly="readonly" value="<?php echo $id_p," - ".$nombre;?>"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="empresa" id="empresaProv" class="formulario_input"></input>
+							<input type="text" name="empresa" id="empresaProv" class="formulario_input" readonly="readonly" value="<?php echo $id_su," - ".$muni,", ".$estado;?>"></input>
 						</div>
 					</div>
 
@@ -130,7 +160,7 @@
 		</div>
 	</main>
 
-	<script src="js/alertasInventario.js"></script>
+	<script src="js/alertaEntrada.js"></script>
 </body>
 
 </html>

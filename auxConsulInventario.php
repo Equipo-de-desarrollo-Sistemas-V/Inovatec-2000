@@ -67,6 +67,7 @@ if($resultado==true){
             <th>Valor</th>
             <th>Acciones</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>";
@@ -112,6 +113,7 @@ if($resultado==true){
         $salida.='<td>'."TOTAL".'</td>'; 
         $salida.='<td>'.$totInversion.'</td>'; 
         $salida.='<td>'.$totValor.'</td>';
+        $salida.='<td>'."".'</td>';
         $salida.='<td>'."".'</td>';
         $salida.='<td>'."".'</td>';
         $salida.='</tr>';
