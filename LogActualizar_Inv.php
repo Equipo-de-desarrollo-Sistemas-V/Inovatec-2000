@@ -138,6 +138,18 @@ $sesion_i = $_SESSION["nombres"];
             while( $row2 = sqlsrv_fetch_array($res2) ) {
             $nom=$row2["nombre"];
             }
+
+			//obtiene el municipio y el estado de la sucursal
+			$querry_suc = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
+			FROM estados, estados_municipios, municipios, sucursal
+			WHERE sucursal.id_sucursal = '$idsucursal' and
+			sucursal.ciudad_est = estados_municipios.id and
+			estados_municipios.estados_id = estados.Id and
+			municipios.Id_Municipios = estados_municipios.municipios_id";
+
+			$resultados_sucursal = sqlsrv_query($conn_sis, $querry_suc);
+
+			$datos_sucursal = sqlsrv_fetch_array($resultados_sucursal)
         ?>  
         <!--Contenido de la parte INVENTARIO-->
 		<div class="contenidoInventario" id="contenidoInventario">
@@ -163,7 +175,7 @@ $sesion_i = $_SESSION["nombres"];
                                         <div class="formulario_grupo-input">
 						<label for="idSucursal" class="formulario_label">Id sucursal</label> 
 						<div class="formulario_grupo-input">
-						<input type="text" name="idSucursal" id="Sucursal" class="formulario_input" readonly="readonly" value="<?php echo $idsucursal;?>"></input>
+						<input type="text" name="idSucursal" id="Sucursal" class="formulario_input" readonly="readonly" value="<?php echo $idsucursal. ' - '. $datos_sucursal["municipio"]. ', '. $datos_sucursal["estado"];?>"></input>
 						</div>
 					</div>
 
