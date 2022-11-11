@@ -45,16 +45,16 @@
           </div>
 
           <div class="input-group">
-            <input type="password" name="confirmar-contraseña" id="confirmar-contraseña" required class="input" autocomplete="off">
+            <input type="password" name="confirmar" id="confirmar" required class="input" autocomplete="off">
             <label for="confirmar-contraseña" class="input-label">Confirmar contraseña</label>
           </div>
 
-          <input type="submit" value="Siguiente ->" class="btn-login">
+          <input type="submit" name="siguiente" id="siguiente" value="Siguiente ->" class="btn-login">
         </form>
       </div>
     </article>
   </section>
-
+  <script src="js/validRegContra.js"></script>
   <script src="js/alertasContra.js"> </script>
   <script src="js/linkHome.js"></script>
 </body>

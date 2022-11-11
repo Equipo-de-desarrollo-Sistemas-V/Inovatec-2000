@@ -2,7 +2,24 @@
 let bandCalle = false
 let bandNum = false
 let bandCol = false
+let bandEst = false
 let bandCP = false
+
+/*Detecta cuando el boton fue presionado*/
+let botonSig = document.getElementById("siguiente");
+botonSig.addEventListener("click", (e) => {
+    if (bandCalle==false){
+        calle.style.border = "3px solid red";
+    }else if(bandNum==false){
+        numero.style.border = "3px solid red";
+    }else if(bandCol==false){
+        colonia.style.border = "3px solid red";
+    }else if(bandCP==false){
+        codigoPostal.style.border = "3px solid red";
+    }else{
+        validar(true);
+    }
+});
 
 const expresiones = {
     cadenas:/^[a-zA-ZÁ-ý\s]{2,20}$/,
@@ -27,7 +44,7 @@ formulario.calle.addEventListener('keyup', (e) => {
         calle.removeAttribute("style");
         bandCalle = true
     }
-    validar();
+    validar(bandCalle);
 })
 
 /* Input numero */
@@ -47,7 +64,7 @@ formulario.numero.addEventListener('keyup', (e) => {
         numero.removeAttribute("style");
         bandNum = true
     }
-    validar();
+    validar(bandNum);
 })
 
 /* Input colonia */
@@ -67,7 +84,7 @@ formulario.colonia.addEventListener('keyup', (e) => {
         colonia.removeAttribute("style");
         bandCol = true
     }
-    validar();
+    validar(bandCol);
 })
 
 /* Input CP */
@@ -89,12 +106,12 @@ formulario.codigoPostal.addEventListener('keyup', (e) => {
         codigoPostal.removeAttribute("style");
         bandCP = true
     }
-    validar();
+    validar(bandCP);
 })
 
-function validar(){
+function validar(bandera){
     const siguiente = document.getElementById('siguiente');
-    if(bandCalle == true && bandNum == true && bandCol == true && bandCP == true){
+    if(bandera == true){
         siguiente.disabled=false;
     }
     else{

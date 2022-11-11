@@ -16,8 +16,12 @@ $querry_puestos = "SELECT id_puesto, puesto FROM puestos
 WHERE puesto != 'Duenio'";
 $resultados_puestos = sqlsrv_query($con, $querry_puestos);
 
-$querry_sucursal = "SELECT id_sucursal FROM Sucursal
-WHERE Estado = 'Activo'";
+$querry_sucursal = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
+FROM estados, estados_municipios, municipios, sucursal
+WHERE sucursal.Estado = 'Activo' and
+sucursal.ciudad_est = estados_municipios.id and
+estados_municipios.estados_id = estados.Id and
+municipios.Id_Municipios = estados_municipios.municipios_id";
 $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 ?>
 
@@ -54,9 +58,9 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
+			<?php echo ucwords("Bienvenid@") . " " . ucwords($sesion_i); ?>
 			<div class="btn-header">
-				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>	
+				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
@@ -100,6 +104,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+								<li><a id="menuInventario3" href="entradas_prod.php">Entradas</a></li>
 								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
@@ -191,7 +196,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 
 								//cargar los resultados de la consulta en la combobox
 								while ($row = sqlsrv_fetch_array($resultados_sucursal)) { ?>
-									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal']; ?> </option>
+									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal'], ' - ' . $row["municipio"] . ', ' . $row["estado"]; ?> </option>
 
 								<?php }
 								?>

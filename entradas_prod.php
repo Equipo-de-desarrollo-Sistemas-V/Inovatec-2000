@@ -1,3 +1,26 @@
+<?php
+//informacion para la conexion
+$servername = "localhost";
+$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$con = sqlsrv_connect($servername, $info);
+
+//obtener id y nombres de los productos
+$querry_productos = "SELECT id_producto, nombre FROM Productos
+			WHERE Estado = 'Activo'";
+
+$resultados_productos = sqlsrv_query($con, $querry_productos);
+
+//obtenr id de las sucursales
+$querry_sucursales = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
+	FROM estados, estados_municipios, municipios, sucursal
+	WHERE sucursal.Estado = 'Activo' and
+	sucursal.ciudad_est = estados_municipios.id and
+	estados_municipios.estados_id = estados.Id and
+	municipios.Id_Municipios = estados_municipios.municipios_id";
+
+$resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -31,7 +54,7 @@
 				</div>
 			</div>
 			<div class="btn-header">
-			<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
+				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
@@ -132,14 +155,14 @@
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProveedor" id="idProv" class="formulario_input" readonly="readonly" value="<?php echo $id_p," - ".$nombre;?>"></input>
+							<input type="text" name="idProveedor" id="idProv" class="formulario_input"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="empresa" id="empresaProv" class="formulario_input" readonly="readonly" value="<?php echo $id_su," - ".$muni,", ".$estado;?>"></input>
+							<input type="text" name="empresa" id="empresaProv" class="formulario_input"></input>
 						</div>
 					</div>
 
@@ -164,3 +187,14 @@
 </body>
 
 </html>
+
+<!-- funcionamiento de la busqueda inteligente de los select -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#idProv').select2();
+	});
+
+	$(document).ready(function() {
+		$('#empresaProv').select2();
+	});
+</script>

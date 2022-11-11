@@ -170,19 +170,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_municipios);
 							</select>
 						</div>
 					</div>
-
-
 					<br>
-
-					<!--select para la parte de actualizar
-					<div class="formulario_grupo-input">
-						<label for="estado" class="formulario_label">Estado</label>
-						<div class="formulario_grupo-input">
-							<select type="text" name="estado" id="estado" class="formulario_input"></select>
-						</div>
-					</div>
-					-->
-
 					<div class="btn_enviar">
 						<button type="submit" class="btn_submit" name="guardar" id="guardar" value="Guardar">Guardar</button>
 					</div>

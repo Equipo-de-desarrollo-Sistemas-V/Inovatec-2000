@@ -64,9 +64,9 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
+			<?php echo ucwords("Bienvenid@") . " " . ucwords($sesion_i); ?>
 			<div class="btn-header">
-			<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
+				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
 		</div>
 
@@ -137,14 +137,13 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="idProveedor" id="idProv" class="formulario_input">
+							<select type="text" name="idProveedor" id="idProv" class="formulario_input" required>
 								<option value=""></option>
 								<?php
 
 								//cargar los resultados de la consulta en la combobox
 								while ($row = sqlsrv_fetch_array($resultados_productos)) { ?>
-									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' 
-									. $row["nombre"]; ?> </option>
+									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' . $row["nombre"]; ?> </option>
 
 								<?php }
 								?>
@@ -155,13 +154,13 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<div class="formulario_grupo-input">
 						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="empresa" id="empresaProv" class="formulario_input">
+							<select type="text" name="empresa" id="empresa" class="formulario_input" required>
 								<option value=""></option>
 								<?php
 
 								//cargar los resultados de la consulta en la combobox
 								while ($row = sqlsrv_fetch_array($resultados_sucursales)) { ?>
-									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal'], ' - '. $row["municipio"]. ', '. $row["estado"]; ?> </option>
+									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal'], ' - ' . $row["municipio"] . ', ' . $row["estado"]; ?> </option>
 
 								<?php }
 								?>
@@ -172,14 +171,14 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<div class="formulario_grupo-input">
 						<label for="rfcProv" class="formulario_label">Existentes</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="existentes" id="existentes" class="formulario_input"></input>
+							<input type="text" name="existentes" id="existentes" class="formulario_input" required></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="correoProv" class="formulario_label">Stock mínimo</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="stock" id="stock" class="formulario_input"></input>
+							<input type="text" name="stock" id="stock" class="formulario_input" required></input>
 						</div>
 					</div><br>
 
@@ -197,3 +196,14 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 </body>
 
 </html>
+
+<!-- funcionamiento de la busqueda inteligente de los select -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#idProv').select2();
+	});
+
+	$(document).ready(function() {
+		$('#empresaProv').select2();
+	});
+</script>	

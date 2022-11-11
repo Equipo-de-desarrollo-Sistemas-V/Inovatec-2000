@@ -1,23 +1,12 @@
 /* Declara una variable global */
 let bId = false
 
-
 /*Detecta cuando el boton fue presionado*/
 let botonRegresar = document.getElementById("guardar");
 botonRegresar.addEventListener("click", (e) => {
 
     if (bId==false){
-        idProducto.style.border = "3px solid red";
-    }else if(bNom==false){
-        nombreProd.style.border = "3px solid red";
-    }else if(bCat==false){
-        categoria.style.border = "3px solid red";
-    }else if(bPrC==false){
-        precioProd.style.border = "3px solid red";
-    }else if(bPrV==false){
-        precioVenta.style.border = "3px solid red";
-    }else if(bDes==false){
-        descripcion.style.border = "3px solid red";
+        idSucursal.style.border = "3px solid red";
     }else{
         validar(true);
     }
@@ -47,7 +36,7 @@ formulario.idSucursal.addEventListener('keyup', (e) => {
         idSucursal.removeAttribute("style");
         bId = true
     }
-    validar();
+    validar(bId);
 })
 
 

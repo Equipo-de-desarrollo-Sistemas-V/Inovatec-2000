@@ -10,7 +10,7 @@
             $numero = $_POST["numero"];
             $colonia = $_POST["colonia"];
             $ciudad = $_POST["municipio"];
-            $estado = $_POST["estado"];
+            $estado = $_POST["estados"];
             $cp = $_POST["codigoPostal"];
 
             //informacion de la conexion a BD
