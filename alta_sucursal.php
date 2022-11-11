@@ -18,7 +18,6 @@ $query_municipios = "SELECT Id_municipios, municipio FROM estados, estados_munic
 WHERE estados.Id = 32 AND estados.Id = estados_municipios.estados_id AND 
 estados_municipios.municipios_id = municipios.Id_Municipios";
 $resultados_proveedores = sqlsrv_query($con, $query_municipios);
-sqlsrv_close($con);
 ?>
 
 
