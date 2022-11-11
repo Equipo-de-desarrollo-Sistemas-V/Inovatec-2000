@@ -155,14 +155,14 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					<div class="formulario_grupo-input">
 						<label for="idProveedor" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProveedor" id="idProv" class="formulario_input"></input>
+							<input type="text" name="idProveedor" id="idProv" class="formulario_input" readonly="readonly" value="<?php echo $id_p. ' - '. $nombre;?>"></input>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
 						<label for="empresa" class="formulario_label">Id de la sucursal</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="empresa" id="empresaProv" class="formulario_input"></input>
+							<input type="text" name="empresa" id="empresaProv" class="formulario_input" readonly="readonly" value="<?php echo $id_su. ' - '. $muni.', '.$estado;?>"></input>
 						</div>
 					</div>
 
@@ -187,14 +187,3 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 </body>
 
 </html>
-
-<!-- funcionamiento de la busqueda inteligente de los select -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#idProv').select2();
-	});
-
-	$(document).ready(function() {
-		$('#empresaProv').select2();
-	});
-</script>
