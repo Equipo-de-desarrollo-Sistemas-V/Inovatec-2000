@@ -2,12 +2,38 @@
 let bId = false
 let bNom = false
 let bAP = false
-let bAM = false
+let bAM = true
 let bRFC = false
 let bEmail = false
 let bandPas1 = false
 let bandPas2 = false
 
+/*Detecta cuando el boton fue presionado*/
+let botonRegresar = document.getElementById("guardar");
+botonRegresar.addEventListener("click", (e) => {
+
+    if (bId==false){
+        idTrabajador.style.border = "3px solid red";
+    }else if(bNom==false){
+        nombreTabajador.style.border = "3px solid red";
+    }else if(bAP==false){
+        apPaterno.style.border = "3px solid red";
+    }else if(bAM==false){
+        apMaterno.style.border = "3px solid red";
+    }else if(bRFC==false){
+        rfc.style.border = "3px solid red";
+    }else if(bEmail==false){
+        correoE.style.border = "3px solid red";
+    }else if(bandPas1==false){
+        contraseña.style.border = "3px solid red";
+    }else if(bandPas2==false){
+        contraseña2.style.border = "3px solid red";
+    }else{
+        validar(true);
+    }
+});
+
+/*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
     id:/^[a-zA-ZÁ-ý0-9-]{1,8}$/,
     nombre:/^[a-zA-ZÁ-ý\s]{3,40}$/,
@@ -37,7 +63,7 @@ formulario.idTrabajador.addEventListener('keyup', (e) => {
         idTrabajador.removeAttribute("style");
         bId = true
     }
-    validar();
+    validar(bId);
 })
 
 /* Input del nombre del trabajador*/
@@ -57,7 +83,7 @@ formulario.nombreTabajador.addEventListener('keyup', (e) => {
         nombreTabajador.removeAttribute("style");
         bNom = true
     }
-    validar();
+    validar(bNom);
 })
 
 /* Input del apellido paterno*/
@@ -77,7 +103,7 @@ formulario.apPaterno.addEventListener('keyup', (e) => {
         apPaterno.removeAttribute("style");
         bAP = true
     }
-    validar();
+    validar(bAP);
 })
 
 /* Input del apellido materno*/
@@ -97,7 +123,7 @@ formulario.apMaterno.addEventListener('keyup', (e) => {
         apMaterno.removeAttribute("style");
         bAM = true
     }
-    validar();
+    validar(bAM);
 })
 
 /* Input del RFC*/
@@ -119,7 +145,7 @@ formulario.rfc.addEventListener('keyup', (e) => {
         rfc.removeAttribute("style");
         bRFC = true
     }
-    validar();
+    validar(bRFC);
 })
 
 /* Input del correo*/
@@ -141,7 +167,7 @@ formulario.correoE.addEventListener('keyup', (e) => {
         correoE.removeAttribute("style");
         bEmail = true
     }
-    validar();
+    validar(bEmail);
 })
 
 /* Input de la constrasenia*/
@@ -164,7 +190,7 @@ formulario.contraseña.addEventListener('keyup', (e) => {
         bandPas1 = true
     }
     validarPassword2();
-    validar();
+    validar(bandPas1);
 })
 
 /* Input de la confirmacion de la constrasenia*/
@@ -194,14 +220,15 @@ const validarPassword2 = () =>{
         contraseña2.removeAttribute("style");
         bandPas2 = true
     }
-    validar();
+    validar(bandPas2);
 }
 
 
 
-function validar(){
+/*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
+function validar(bandera){
     const guardar = document.getElementById('guardar');
-    if(bId == true && bNom== true && bAP == true && bAM == true && bRFC == true && bEmail == true && bandPas1 == true && bandPas2 == true){
+    if(bandera == true ){
         guardar.disabled=false;
     }
     else{
