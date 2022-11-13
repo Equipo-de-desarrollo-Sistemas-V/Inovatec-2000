@@ -159,7 +159,7 @@ $sesion_i = $_SESSION["nombres"];
                                 <form action="LOGUpdate_Inv.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					
                                         <div class="formulario_grupo-input">
-						<label for="idProducto" class="formulario_label">ID producto</label>
+						<label for="idProducto" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
 							<input type="text" name="idProducto" id="idProducto" class="formulario_input" readonly="readonly" value="<?php echo $id;?>"></input>
  						</div>

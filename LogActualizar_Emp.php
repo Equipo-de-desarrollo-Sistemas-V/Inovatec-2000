@@ -186,7 +186,7 @@ $sesion_i = $_SESSION["nombres"];
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="idSucursal" class="formulario_label">Id sucursal</label>
+						<label for="idSucursal" class="formulario_label">Sucursal</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="idSucursal" id="idSucursal" class="formulario_input">
 								<?php
@@ -213,7 +213,7 @@ $sesion_i = $_SESSION["nombres"];
 									<?php
 									} else {
 									?>
-										<option value="<?php echo $id_suc; ?>"><?php echo $id_suc; ?></option>
+										<option value="<?php echo $id_suc; ?>" selected><?php echo $id_suc . ' - ' . $rowSucursal["municipio"] . ', ' . $rowSucursal["estado"]; ?></option>
 								<?php
 									}
 								}

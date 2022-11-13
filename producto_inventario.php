@@ -135,7 +135,7 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
-						<label for="idProveedor" class="formulario_label">Id producto</label>
+						<label for="idProveedor" class="formulario_label">Producto</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="idProveedor" id="idProv" class="formulario_input" required>
 								<option value=""></option>
@@ -152,7 +152,7 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="empresa" class="formulario_label">Id de la sucursal</label>
+						<label for="empresa" class="formulario_label">Sucursal</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="empresa" id="empresa" class="formulario_input" required>
 								<option value=""></option>
@@ -204,6 +204,6 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 	});
 
 	$(document).ready(function() {
-		$('#empresaProv').select2();
+		$('#empresa').select2();
 	});
 </script>	
