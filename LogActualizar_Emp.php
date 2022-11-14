@@ -17,6 +17,12 @@ $sesion_i = $_SESSION["nombres"];
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<!-- Scripts para el funcionamiento de las combobox -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script languaje="javascript" src="js/jquery-3.6.1.min.js"></script> -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 </head>
 
 <body>
@@ -186,7 +192,7 @@ $sesion_i = $_SESSION["nombres"];
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="idSucursal" class="formulario_label">Id sucursal</label>
+						<label for="idSucursal" class="formulario_label">Sucursal</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="idSucursal" id="idSucursal" class="formulario_input">
 								<?php
@@ -205,15 +211,15 @@ $sesion_i = $_SESSION["nombres"];
 								if ($getSucursal2 === false) {
 									die(print_r(sqlsrv_errors(), true));
 								}
+
 								while ($rowSucursal = sqlsrv_fetch_array($getSucursal2)) {
 									$id_suc = $rowSucursal['id_sucursal'];
-
 									if ($id_suc == $sucursal) { ?>
 										<option value="<?php echo $id_suc; ?>" selected><?php echo $id_suc . ' - ' . $rowSucursal["municipio"] . ', ' . $rowSucursal["estado"]; ?></option>
 									<?php
 									} else {
 									?>
-										<option value="<?php echo $id_suc; ?>"><?php echo $id_suc; ?></option>
+										<option value="<?php echo $id_suc; ?>"><?php echo $id_suc . ' - ' . $rowSucursal["municipio"] . ', ' . $rowSucursal["estado"]; ?></option>
 								<?php
 									}
 								}
@@ -306,11 +312,16 @@ $sesion_i = $_SESSION["nombres"];
 
 					<div class="formulario_grupo-input">
 						<?php
-						if ($Per7) { ?>
-							<label class="formulario_label-checkbox2"><input type="checkbox" name="cbox6" id="cbox6" value="1" checked="checked"> Bloqueado </label>
-						<?php } else { ?>
-							<label class="formulario_label-checkbox2"><input type="checkbox" name="cbox6" id="cbox6" value="1"> Bloqueado </label>
-						<?php } ?>
+						if ($Per1==1){ ?>
+								<label class="formulario_label-checkbox2"><input type="checkbox" class="case"  disabled="true" name="cbox6" id="cbox6" value="1"> Bloqueado </label>
+						<?php } else {?>
+							<?php
+							if ($Per7) { ?>
+								<label class="formulario_label-checkbox2"><input type="checkbox" class="case"  name="cbox6" id="cbox6" value="1" checked="checked"> Bloqueado </label>
+							<?php } else { ?>
+								<label class="formulario_label-checkbox2"><input type="checkbox" class="case"  name="cbox6" id="cbox6" value="1"> Bloqueado </label>
+							<?php } ?>
+						<?php }?>
 					</div>
 
 					<div class="btn_enviar">
@@ -331,10 +342,6 @@ $sesion_i = $_SESSION["nombres"];
 <!-- funcionamiento de la busqueda inteligente de los select -->
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#idProv').select2();
-	});
-
-	$(document).ready(function() {
-		$('#empresaProv').select2();
+		$('#idSucursal').select2();
 	});
 </script>

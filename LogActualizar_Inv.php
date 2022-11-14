@@ -114,12 +114,14 @@ $sesion_i = $_SESSION["nombres"];
 
     <main>
         <?php
-            $id=$_GET["item"];
-            //echo "Este dato: " . $_GET["item"] . " lo recibo por URL.";
+            $aux=$_GET["item"];
+			$array1 = explode("/",$aux);
+        	$id=$array1[0];
+			$id_Suc=$array1[1];
             $serverName='localhost';
             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
-            $query="SELECT * FROM inventario_suc WHERE id_producto='$id'";
+            $query="SELECT * FROM inventario_suc WHERE id_producto='$id' and id_sucursal='$id_Suc'";
             $res= sqlsrv_query($conn_sis, $query);
             if( $res === false) {
                     die( print_r( sqlsrv_errors(), true) );
@@ -156,26 +158,27 @@ $sesion_i = $_SESSION["nombres"];
 			<article>
 			<h1 align="center">Actualizar datos de producto inventario</h1>
 				<br>
-                                <form action="LOGUpdate_Inv.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+                        <form action="LOGUpdate_Inv.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					
-                                        <div class="formulario_grupo-input">
-						<label for="idProducto" class="formulario_label">ID producto</label>
+                        <div class="formulario_grupo-input">
+						<label for="idProducto" class="formulario_label">Producto</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="idProducto" id="idProducto" class="formulario_input" readonly="readonly" value="<?php echo $id;?>"></input>
+						<select type="text" name="idProducto" id="idProducto" class="formulario_input" readonly="readonly">
+								<option  value=" <?php echo $id; ?>"> <?php echo $id . ' - ' . $nom; ?></option>
+
+							</select>
+							<!-- <input type="text" name="idProducto" id="idProducto" class="formulario_input" readonly="readonly" value="<?php echo $id;?>"></input> -->
  						</div>
 					</div>
                                     
-                                        <div class="formulario_grupo-input">
-						<label for="Producto" class="formulario_label">Producto</label>
+                        <div class="formulario_grupo-input">
+						<label for="idSucursal" class="formulario_label">Sucursal</label> 
 						<div class="formulario_grupo-input">
-							<input type="text" name="Producto" id="Producto" class="formulario_input" readonly="readonly" value="<?php echo $nom;?>"></input>
- 						</div>
-					</div>
-                                    
-                                        <div class="formulario_grupo-input">
-						<label for="idSucursal" class="formulario_label">Id sucursal</label> 
-						<div class="formulario_grupo-input">
-						<input type="text" name="idSucursal" id="Sucursal" class="formulario_input" readonly="readonly" value="<?php echo $idsucursal. ' - '. $datos_sucursal["municipio"]. ', '. $datos_sucursal["estado"];?>"></input>
+						<select type="text" name="idSuc" id="idSuc" class="formulario_input" readonly="readonly">
+								<option  value=" <?php echo $idsucursal; ?>"> <?php echo $idsucursal. ' - '. $datos_sucursal["municipio"]. ', '. $datos_sucursal["estado"]; ?></option>
+
+							</select>
+						<!-- <input type="text" name="idSucursal" id="idSucursal" class="formulario_input" readonly="readonly" value="<?php echo $idsucursal. ' - '. $datos_sucursal["municipio"]. ', '. $datos_sucursal["estado"];?>"></input> -->
 						</div>
 					</div>
 
@@ -185,7 +188,7 @@ $sesion_i = $_SESSION["nombres"];
 					<div class="formulario_grupo-input">
 						<label for="rfcProv" class="formulario_label">Existentes</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="cantidad" id="cantidad" class="formulario_input" value="<?php echo $cantidad;?>" required></input>
+							<input type="text" name="cantidad" id="cantidad" class="formulario_input" value="<?php echo $cantidad;?>" readonly="readonly"></input>
  						</div>
 					</div>
 

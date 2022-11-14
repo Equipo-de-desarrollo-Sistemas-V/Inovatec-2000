@@ -23,7 +23,7 @@ botonRegresar.addEventListener("click", (e) => {
 
 /*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
-    numero:/^[0-9]{1,100}$/
+    numero:/^[0-9]{1,1000}$/
 }
 
 /* Select de Id Producto*/
@@ -74,7 +74,7 @@ formulario.stock.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.stock.value = valorInput
-    .replace(/[^0-9.]+/, "")
+    .replace(/[^0-9]+/, "")
      // Eliminar el ultimo espaciado
 	.trim();
 

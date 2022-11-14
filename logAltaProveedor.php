@@ -1,7 +1,9 @@
 <?php
     //logica para registrar un producto en la base de datos
 
-    class Productos{
+use Proveedor as GlobalProveedor;
+
+    class Proveedor{
         
         function registrar(){
             
@@ -73,5 +75,5 @@
         }
     }
 
-    $obj = new Productos;
+    $obj = new Proveedor;
     $obj -> registrar();
