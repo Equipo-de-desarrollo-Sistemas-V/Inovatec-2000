@@ -206,7 +206,8 @@ header {
 .comprar-producto{
     height: auto;
     margin: 10px 20px 10px 20px;    
-    box-shadow: 0px 0px 1px 2px rgb(0 0 0 / 30%);
+    box-shadow: 1px 1px 20px 5px rgb(0 0 0 / 35%);
+
     padding:20px ;
 }
 .formulario-producto{
@@ -252,7 +253,7 @@ header {
 .descripcion-producto{
     height: auto;
     margin: 10px 20px 10px 20px;    
-    box-shadow: 0px 0px 1px 2px rgb(0 0 0 / 30%);
+    box-shadow: 0px 0px 0px 2px rgb(0 0 0 / 35%);
     padding:20px ;
     grid-column: span 2;
 
