@@ -79,8 +79,8 @@ if($resultado==true){
 							$sucursal=$row["id_sucursal"];
 							$cantidad=$row["cantidad"];
 							$min=$row["stock_min"];
-							$inver=$row["Inversion"];
-							$valor=$row["Valor"];
+							$inver=substr($row["Inversion"],0,-2);
+							$valor=substr($row["Valor"],0,-2);
 							$edi='Editar';
 							$eli='Eliminar';
                             $ent='Entradas';
@@ -93,8 +93,8 @@ if($resultado==true){
         $salida.='<td>'.$sucursal.'</td>'; 
         $salida.='<td>'.$cantidad.'</td>'; 
         $salida.='<td>'.$min.'</td>'; 
-        $salida.='<td>'.$inver.'</td>'; 
-        $salida.='<td>'.$valor.'</td>';
+        $salida.='<td>'."$".$inver.'</td>'; 
+        $salida.='<td>'."$".$valor.'</td>';
         $salida.='<td>'.'<a href="entradas_prod.php?item='.(strval($id)."/".$sucursal).'">'.$ent. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGActualizar_Inv.php?item='.(strval($id)."/".$sucursal).'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="LOGEliminar_p.php?id='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
@@ -111,8 +111,8 @@ if($resultado==true){
         $salida.='<td>'."".'</td>'; 
         $salida.='<td>'."".'</td>'; 
         $salida.='<td>'."TOTAL".'</td>'; 
-        $salida.='<td>'.$totInversion.'</td>'; 
-        $salida.='<td>'.$totValor.'</td>';
+        $salida.='<td>'."$".$totInversion.'</td>'; 
+        $salida.='<td>'."$".$totValor.'</td>';
         $salida.='<td>'."".'</td>';
         $salida.='<td>'."".'</td>';
         $salida.='<td>'."".'</td>';

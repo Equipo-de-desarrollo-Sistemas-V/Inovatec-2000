@@ -75,9 +75,9 @@ if($resultado==true){
 							$cate=$row["Nombre"];
 							$subcate=$row["SubApartado"];
 							$cantidad=$row["cantidad"];
-							$pre_ven=$row["precio_ven"];
+							$pre_ven=substr($row["precio_ven"],0,-2);
                             $descuento=$row["descuento"];
-                            $total=$row["total"];
+                            $total=substr($row["total"],0,-2);
                             $id=$row["id_ventas"];
 							$edi='Editar';
 							$eli='Eliminar';
@@ -91,9 +91,9 @@ if($resultado==true){
         $salida.='<td>'.$cate.'</td>'; 
         $salida.='<td>'.$subcate.'</td>'; 
         $salida.='<td>'.$cantidad.'</td>'; 
-        $salida.='<td>'.$pre_ven.'</td>';
+        $salida.='<td>'."$".$pre_ven.'</td>';
         $salida.='<td>'.$descuento.'</td>';
-        $salida.='<td>'.$total.'</td>';
+        $salida.='<td>'."$".$total.'</td>';
 		$salida.='</tr>';
     }
     
