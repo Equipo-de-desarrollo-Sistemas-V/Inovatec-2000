@@ -99,6 +99,10 @@ $sesion_i = $_SESSION["nombres"];
 		<div class="contenidoListaVenta" id="contenidoListaVenta">
 			<article>
 				<h1 align="center">Registro de ventas</h1>
+				<form action="" class="formularios" method="post" action="fechas.php" id="formulario">
+				<input type="date" name="fecha1" id="fecha1">
+				<input type="date" name="fecha2" id="fecha2">
+				</form>	
 				<div class="contenido-barra-buscar">
 						<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required >
 						<button class="btn-buscar">
@@ -129,7 +133,28 @@ $sesion_i = $_SESSION["nombres"];
 					</table>-->
 				</section>
 			</article>
+			<!-- <script src="js/alerFecha.js"></script> -->
 		</div>
     </main>
 </body>
 </html>
+
+	<!-- llama al archivo getSubApartados para obtener solo los suabpartados correspondientes a la categoria seleccionada-->
+	<script lenguaje="javascript">
+		$(document).ready(function() {
+			$("#fecha1").change(function() {
+				auxUno=$('input[id=fecha2]').val()
+				if (auxUno!=""){
+					alert("Cambio fecha uno"+auxUno);
+					//location.href="fechas.php"
+					//location.href="fechas.php";
+				}
+			})
+			$("#fecha2").change(function() {
+				auxDos=$('input[id=fecha1]').val()
+				if (auxDos!=""){
+					alert("Cambio feha Dos"+auxDos);
+				}
+			})
+		});
+	</script>
