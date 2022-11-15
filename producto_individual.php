@@ -1,5 +1,6 @@
 <?php
 $x="9";
+error_reporting(0);
 ?>
 
 <!DOCTYPE html>
