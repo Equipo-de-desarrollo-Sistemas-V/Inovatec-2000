@@ -189,7 +189,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="sucursal" class="formulario_label">Id sucursal</label>
+						<label for="sucursal" class="formulario_label">Sucursal</label>
 						<div class="formulario_grupo-input">
 							<select type="text" name="sucursal" id="sucursal" class="formulario_input" required>
 								<?php

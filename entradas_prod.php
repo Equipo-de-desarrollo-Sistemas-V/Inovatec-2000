@@ -4,21 +4,6 @@ $servername = "localhost";
 $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
 $con = sqlsrv_connect($servername, $info);
 
-//obtener id y nombres de los productos
-$querry_productos = "SELECT id_producto, nombre FROM Productos
-			WHERE Estado = 'Activo'";
-
-$resultados_productos = sqlsrv_query($con, $querry_productos);
-
-//obtenr id de las sucursales
-$querry_sucursales = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
-	FROM estados, estados_municipios, municipios, sucursal
-	WHERE sucursal.Estado = 'Activo' and
-	sucursal.ciudad_est = estados_municipios.id and
-	estados_municipios.estados_id = estados.Id and
-	municipios.Id_Municipios = estados_municipios.municipios_id";
-
-$resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 ?>
 
 <!DOCTYPE html>
@@ -117,41 +102,55 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 
 	<main>
 		<!--Contenido de la parte INVENTARIO-->
+		<?php
+		$aux=$_GET["item"];
+		$array1 = explode("/",$aux);
+		$id=$array1[0];
+		$id_Suc=$array1[1];
+		$serverName='localhost';
+		$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+		$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+		$querry_productos = "SELECT Inventario_suc.id_producto, Productos.nombre, Inventario_suc.id_sucursal 
+		FROM Inventario_suc, Productos
+		WHERE Inventario_suc.id_producto=Productos.id_producto and
+		Inventario_suc.id_producto = '$id' and Inventario_suc.id_sucursal='$id_Suc'";
+		$resultados_productos = sqlsrv_query($conn_sis, $querry_productos);
+		$row = sqlsrv_fetch_array($resultados_productos);
+		$nombre=$row["nombre"];
+		
+		
+		$querry_sucursales = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
+		FROM estados, estados_municipios, municipios, sucursal, Inventario_suc
+		WHERE sucursal.id_sucursal='$id_Suc' and
+		sucursal.ciudad_est = estados_municipios.id and
+		estados_municipios.estados_id = estados.Id and
+		municipios.Id_Municipios = estados_municipios.municipios_id";
+		$resultados_sucursales = sqlsrv_query($conn_sis, $querry_sucursales);
+		$row = sqlsrv_fetch_array($resultados_sucursales);
+		$estado=$row["estado"];
+		$muni=$row["municipio"];
+		?>
+
 		<div class="contenidoInventario" id="contenidoInventario">
+
 			<article>
 				<h1 align="center">Entradas de productos</h1>
 				<br>
 				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
 					<div class="formulario_grupo-input">
-						<label for="idProveedor" class="formulario_label">Id producto</label>
+						<label for="idProveedor" class="formulario_label">Producto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="idProveedor" id="idProv" class="formulario_input">
-								<option value=""></option>
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados_productos)) { ?>
-									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' . $row["nombre"]; ?> </option>
-
-								<?php }
-								?>
+						<select type="text" name="idProducto" id="idProducto" class="formulario_input" readonly="readonly">
+								<option  value=" <?php echo $id; ?>"> <?php echo $id . ' - ' . $nombre; ?></option>
 							</select>
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="empresa" class="formulario_label">Id de la sucursal</label>
+						<label for="empresa" class="formulario_label">Sucursal</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="empresa" id="empresaProv" class="formulario_input">
-								<option value=""></option>
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados_sucursales)) { ?>
-									<option value=" <?php echo $row['id_sucursal']; ?>"> <?php echo $row['id_sucursal'], ' - ' . $row["municipio"] . ', ' . $row["estado"]; ?> </option>
-
-								<?php }
-								?>
+						<select type="text" name="idSuc" id="idSuc" class="formulario_input" readonly="readonly">
+								<option  value=" <?php echo $id_Suc; ?>"> <?php echo $id_Suc. ' - '. $muni. ', '. $estado; ?></option>
 							</select>
 						</div>
 					</div>
@@ -169,22 +168,11 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 
 				</form>
 			</article>
-			<script src="js/validAltaInventario.js"></script>
+			<script src="js/validEntrada.js"></script>
 		</div>
 	</main>
 
-	<script src="js/alertasInventario.js"></script>
+	<script src="js/alertaEntrada.js"></script>
 </body>
 
 </html>
-
-<!-- funcionamiento de la busqueda inteligente de los select -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#idProv').select2();
-	});
-
-	$(document).ready(function() {
-		$('#empresaProv').select2();
-	});
-</script>

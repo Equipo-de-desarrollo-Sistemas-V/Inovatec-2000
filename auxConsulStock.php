@@ -50,12 +50,11 @@ if($resultado==true){
             <th>Sucursal</th> 
             <th>Existentes</th> 
             <th>Stock mínimo</th> 
-            <th>Inversión</th>
-            <th>Valor</th>
-            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>";
+    // <th>Inversión</th>
+    // <th>Valor</th>
     while( $row = sqlsrv_fetch_array($resultado) ) {
                             $id=$row["id_producto"];
 							$nombre=$row["nombre"];
@@ -73,9 +72,9 @@ if($resultado==true){
         $salida.='<td>'.$sucursal.'</td>'; 
         $salida.='<td>'.$cantidad.'</td>'; 
         $salida.='<td>'.$min.'</td>'; 
-        $salida.='<td>'.$inver.'</td>'; 
-        $salida.='<td>'.$valor.'</td>';
-        $salida.='<td>'.'<a href="LOGActualizar_Inv.php?item='.$id.'">'.$edi. '</a>'.'</td>';
+        //$salida.='<td>'.$inver.'</td>'; 
+        //$salida.='<td>'.$valor.'</td>';
+        //$salida.='<td>'.'<a href="LOGActualizar_Inv.php?item='.$id.'">'.$edi. '</a>'.'</td>';
 		$salida.='</tr>';
     }
 
