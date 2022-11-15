@@ -15,7 +15,7 @@ FROM [ventas], [Productos], [Apartados], [Subapartados]
 WHERE ventas.id_prod=Productos.id_producto and 
 ventas.nombre=Productos.nombre and
 Productos.Subapartado=Subapartados.Id_subap and 
-Productos.Apartado=Apartados.ID_ap";
+Productos.Apartado=Apartados.ID_ap ORDER BY ventas.fecha";
 
 //detecta si se escribio algo en la caja de busqueda
 //Consulta que busca lo que hay dentro de la caja de busqueda, en todas las columnas
