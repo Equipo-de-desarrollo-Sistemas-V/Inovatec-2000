@@ -326,8 +326,10 @@ $sesion_i = $_SESSION["Usuario"];
 
             <img src="" alt="" id="seccion1-imagen1">
 
+            <!-- $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>'; -->
             <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-            <a href="producto_individual.php" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id1" class="btn"> Comprar</a>
+            <!-- <a href='producto_individual.php?item='+compra class="btn">Comprar</a> -->
           </div>
 
           <div class="cardProducto">
@@ -339,7 +341,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion1-imagen2">
 
             <h3 class="nombreProducto"><span id="seccion1-nombre2"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id2" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -351,7 +353,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion1-imagen3">
 
             <h3 class="nombreProducto"><span id="seccion1-nombre3"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id3" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -363,7 +365,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion1-imagen4">
 
             <h3 class="nombreProducto"><span id="seccion1-nombre4"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id4" class="btn"> Comprar</a>
           </div>
         </div>
 
@@ -499,7 +501,9 @@ $sesion_i = $_SESSION["Usuario"];
 <?php 
     include 'conexiones.php';
     /* Creamos la consulta para obtener las computadoras */
-    $resultado_computadoras = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria, ruta FROM $tabla_productos, $tabla_apartados, $tabla_subapartados, $tabla_imagenes WHERE Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap and Apartados.nombre = 'Computadoras' and Productos.id_producto = imagenes.id_prod");
+    $resultado_computadoras = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria, ruta, Productos.id_producto  
+    FROM $tabla_productos, $tabla_apartados, $tabla_subapartados, $tabla_imagenes 
+    WHERE Apartado = Apartados.ID_ap and Productos.Subapartado = Id_subap and Apartados.nombre = 'Computadoras' and Productos.id_producto = imagenes.id_prod");
 
     /* Verficamos que la consulta se haya realizado de manera correcta */
     if($resultado_computadoras === false){
@@ -512,6 +516,7 @@ $sesion_i = $_SESSION["Usuario"];
     $categorias_computadoras = array();
     $subcategorias_computadoras = array();
     $rutas_computadoras = array();
+    $ids_computadoras = array();
 
     while($row = sqlsrv_fetch_array($resultado_computadoras)){
         array_push($nombres_computadoras, $row['nombre']);
@@ -519,7 +524,10 @@ $sesion_i = $_SESSION["Usuario"];
         array_push($categorias_computadoras, $row['categoria']);
         array_push($subcategorias_computadoras, $row['subcategoria']);
         array_push($rutas_computadoras, $row['ruta']);
+        array_push($ids_computadoras, $row['id_producto']);
     }
+
+    var_dump($ids_computadoras);
     /* Obten la longitud del arreglo nombres_computadoras */
     $longitud = count($nombres_computadoras);
     /* Genera 4 numeros aleatorios que no se repitan entre 0 y la longitud del arreglo nombres_computadoras */
@@ -530,19 +538,23 @@ $sesion_i = $_SESSION["Usuario"];
             array_push($numeros_aleatorios, $numero);
         }
     }
+
     /* Almacena los resultados por categoria en diferentes arrglos que solo contengan su categoria*/
     $nombres_computadoras_categoria = array();
     $precios_computadoras_categoria = array();
     $subcategorias_computadoras_categoria = array();
     $rutas_computadoras_categoria = array();
+    $ids_computadoras_categoria = array();
 
     for($i = 0; $i < 4; $i++){
         array_push($nombres_computadoras_categoria, $nombres_computadoras[$numeros_aleatorios[$i]]);
         array_push($precios_computadoras_categoria, $precios_computadoras[$numeros_aleatorios[$i]]);
         array_push($subcategorias_computadoras_categoria, $subcategorias_computadoras[$numeros_aleatorios[$i]]);
         array_push($rutas_computadoras_categoria, $rutas_computadoras[$numeros_aleatorios[$i]]);
+        array_push($ids_computadoras_categoria, $ids_computadoras[$numeros_aleatorios[$i]]);
     }
-
+    echo "<br><br>Nuevos ids";
+    var_dump($ids_computadoras_categoria);
     /* Elimina los ultimos dos caracteres de los precios */
     for($i = 0; $i < 4; $i++){
         $precios_computadoras_categoria[$i] = substr($precios_computadoras_categoria[$i], 0, -2);
@@ -590,6 +602,12 @@ $sesion_i = $_SESSION["Usuario"];
         nombre2.innerHTML = '$nombres_computadoras_categoria[1]';
         nombre3.innerHTML = '$nombres_computadoras_categoria[2]';
         nombre4.innerHTML = '$nombres_computadoras_categoria[3]';
+
+        /* Asignamos el id de cada producto a una variable para mandarlo en la url de cada tarjeta*/
+        let id1= '$ids_computadoras_categoria[0]';
+        let id2= '$ids_computadoras_categoria[1]';
+        let id3= '$ids_computadoras_categoria[2]';
+        let id4= '$ids_computadoras_categoria[3]';
     </script>";
 
     /* Cierra la conexion */

@@ -1,5 +1,4 @@
 <?php
-$x="9";
 error_reporting(0);
 ?>
 
@@ -300,23 +299,24 @@ error_reporting(0);
     </article>
 
     <section class="container-all">
-
+        
         <article id="container-datos-usuario" class="contenedor">
             <div class="imagen_producto">
-              <p>Nombre del producto</p>
+              <p id="nombre">Nombre del producto</p>
 
-                <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300">
+                <img src="" alt=""  id="imagen" class="imagen-producto" height="300">
+                <!-- <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300"> -->
 
             </div>
 
             <div class="comprar-producto">
               <form action="#" class="formulario-producto">
                 <div class="labels-precio">
-                  <label align="center" for="" class="label-precio">Precio total: </label>
+                  <label align="center" class="label-precio">Precio total: </label>
                   
-                  <label align="center" for="Precio" class="label-total" id="precio">$850</label>
+                  <label align="center" class="label-total" id="precio">$850</label>
                   
-                  <label align="center" for="Precio" class="label-noDescuento" id="precio"><del>$850</del></label>
+                  <label align="center" class="label-noDescuento" id="precioDes"><del>$850</del></label>
                 </div>
                
                 <div class="div-cantidad">
@@ -346,19 +346,33 @@ error_reporting(0);
             <br>
 
             <div class="descripcion-producto">
-              <h1>Descripción del producto</h1>
+              <h1>Descripción del producto - Características - Especificaciones</h1>
               <br>
-              <p>Aqui va la descripción del producto</p>
+              <p id="descripcion">Aqui va la descripción del producto</p>
               
             </div>
 
             
         </article>
-
-        <script src="js/alertasPerfil.js"></script>
-        <script src="js/validPerfil.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
 </body>
 
 </html>
+
+<?php
+$idProducto=$_GET["item"];
+echo "HOLA".$idProducto."ADIOS";
+
+$ruta="imagenes/computadora1.png";
+echo "
+<script>
+  document.getElementById('nombre').innerHTML = 'Hola yo voy dentro del label!';
+  document.getElementById('precio').innerHTML = 'Hola yo voy dentro del label!';
+  document.getElementById('precioDes').innerHTML = 'Hola yo voy dentro del label!';
+  document.getElementById('descripcion').innerHTML = 'Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!';
+  document.getElementById('imagen').src= '$ruta';
+  
+</script>";
+
+?>
