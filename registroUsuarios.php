@@ -68,7 +68,7 @@
             </div>
 
           </div>
-          <input type="submit" name="siguiente" id="siguiente" value="Siguiente" class="btn-login">
+          <input type="submit" name="siguiente" id="siguiente" value="Siguiente" class="btn-login" disabled>
           <p class="recuperar">¿Has perdido tu cuenta? <a class="metodos-recuperacion" href="recuperarCorreo.php">Recuperar
               contraseña</a></p>
         </form>

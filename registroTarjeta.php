@@ -1,3 +1,20 @@
+<?php
+$usuario = $_GET['user'];
+$nombre = $_GET['nombre'];
+$paterno = $_GET['pat'];
+$materno = $_GET['mat'];
+$correo = $_GET['correo'];
+$usuario = $_GET['user'];
+$telefono = $_GET['tel'];
+$contra = $_GET['contra'];
+$calle = $_GET['calle'];
+$numero = $_GET['num'];
+$colonia = $_GET['colonia'];
+$estado = $_GET['estado'];
+$municipio = $_GET['mun'];
+$cp = $_GET['cp'];
+?>
+
 <!-- Interfaz para REGISTRO DE LA TARJETA -->
 <!DOCTYPE html>
 <html lang="es">
@@ -88,6 +105,22 @@
             <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
             <div class="card-login">
                 <form method="POST" action="" id="formulario">
+
+                    <!-- auxiliares para la transmision de datos entre forms -->
+                    <input type="hidden" readonly="readonly" name="usuario" id="usuario" value="<?php echo $usuario ?>">
+                    <input type="hidden" readonly="readonly" name="nombre" id="nombreCliente" value="<?php echo $nombre ?>">
+                    <input type="hidden" readonly="readonly" name="paterno" id="apellidoPaterno" value="<?php echo $paterno ?>">
+                    <input type="hidden" readonly="readonly" name="materno" id="apellidoMaterno" value="<?php echo $materno ?>">
+                    <input type="hidden" readonly="readonly" name="email" id="email" value="<?php echo $correo ?>">
+                    <input type="hidden" readonly="readonly" name="telefono" id="Teléfono" value="<?php echo $telefono ?>">
+                    <input type="hidden" readonly="readonly" name="contra" id="contraseña" value="<?php echo $contra ?>">
+                    <input type="hidden" readonly="readonly" name="calle" id="calle" value="<?php echo $calle ?>">
+                    <input type="hidden" readonly="readonly" name="numero" id="numero" value="<?php echo $numero ?>">
+                    <input type="hidden" readonly="readonly" name="colonia" id="colonia" value="<?php echo $colonia ?>">
+                    <input type="hidden" readonly="readonly" name="estado" id="estado" value="<?php echo $estado ?>">
+                    <input type="hidden" readonly="readonly" name="municipio" id="municipio" value="<?php echo $municipio ?>">
+                    <input type="hidden" readonly="readonly" name="cp" id="cp" value="<?php echo $cp ?>">
+
                     <!--llama a la accion de logear-->
                     <h2>CREA TU CUENTA</h2>
 

@@ -4,6 +4,22 @@ var respuesta=document.getElementById('respuesta');
 formulario.addEventListener('submit', function(e){
     e.preventDefault();
     var datos = new FormData(formulario);
+
+    var usuario = document.getElementById('usuario').value;
+    var nombre = document.getElementById('nombreCliente').value;
+    var paterno = document.getElementById('apellidoPaterno').value;
+    var materno = document.getElementById('apellidoMaterno').value;
+    var email = document.getElementById('email').value;
+    var telefono = document.getElementById('Teléfono').value;
+    var contra = document.getElementById('contraseña').value;
+    var calle = document.getElementById('calle').value;
+    var numero = document.getElementById('numero').value;
+    var colonia = document.getElementById('colonia').value;
+    var estado = document.getElementById('estados').value;
+    var municipio = document.getElementById('municipio').value;
+    var cp = document.getElementById('codigoPostal').value;
+    
+
     fetch('validacionesDireccion.php', { 
         method:'POST',
         body: datos
@@ -52,7 +68,7 @@ formulario.addEventListener('submit', function(e){
         
         else{
             //alert("Información aceptada");
-            location.href = "registroTarjeta.php";
+            location.href = "registroTarjeta.php?user=" + usuario + "&nombre=" + nombre + "&pat=" + paterno + "&mat=" + materno + "&correo=" + email + "&tel=" + telefono + "&contra=" + contra + "&calle="+calle+"&num="+numero+"&colonia="+colonia+"&estado="+estado+"&mun="+municipio+"&cp="+cp;
         }
     })
 })

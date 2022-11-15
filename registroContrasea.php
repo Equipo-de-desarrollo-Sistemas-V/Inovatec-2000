@@ -1,3 +1,14 @@
+<?php
+$usuario = $_GET['user'];
+$nombre = $_GET['nombre'];
+$paterno = $_GET['pat'];
+$materno = $_GET['mat'];
+$correo = $_GET['correo'];
+$usuario = $_GET['user'];
+$telefono = $_GET['tel'];
+
+?>
+
 <!-- Interfaz para GUARDAR CONTRASEÑA -->
 <!DOCTYPE html>
 <html lang="es">
@@ -34,6 +45,15 @@
       <!-- Del H2 hasta el siguiente comentario es la implementación del login -->
       <div class="card-login">
         <form method="POST" action="validacionesContra.php" id="formulario">
+
+          <!--auxiliares para parar datos entre formularios -->
+          <input type="hidden" readonly="readonly" id="usuario" value="<?php echo $usuario ?>">
+          <input type="hidden" readonly="readonly" id="nombreCliente" value="<?php echo $nombre ?>">
+          <input type="hidden" readonly="readonly" id="apellidoPaterno" value="<?php echo $paterno ?>">
+          <input type="hidden" readonly="readonly" id="apellidoMaterno" value="<?php echo $materno ?>">
+          <input type="hidden" readonly="readonly" id="email" value="<?php echo $correo ?>">
+          <input type="hidden" readonly="readonly" id="Teléfono" value="<?php echo $telefono ?>">
+
           <!--llama a la accion de logear-->
           <h2>CREA TU CUENTA</h2>
 

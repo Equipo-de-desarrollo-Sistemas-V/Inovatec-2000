@@ -2,8 +2,23 @@
     // <!-- Logica para guadar datos de tarjeta y guardar los datos en BD -->
     class Tarjeta{
         function registro(){
-            $in=new Tarjeta;
+            //$in=new Tarjeta;
             //obtener los datos del formulario
+            $usuario = $_POST["usuario"];
+            $nombre = $_POST["nombre"];
+            $paterno = $_POST["paterno"];
+            $materno = $_POST["materno"];
+            $correo = $_POST["email"];
+            $telefono = $_POST["telefono"];
+            $contra = $this->encriptar($_POST["contra"]);
+
+            $calle = $_POST["calle"];
+            $numero = $_POST["numero"];
+            $colonia = $_POST["colonia"];
+            $estado = $_POST["estado"];
+            $municipio = $_POST["municipio"];
+            $cp = $_POST["cp"];
+
             $ntarjeta = $_POST["numeroTarjeta"];
             $nombreProp = $_POST["nombrePropietario"];
             $mes = $_POST["mesCaja"];
@@ -35,105 +50,6 @@
             }
 
             else{
-                //obtener los datos del resto de formularios desde el fichero
-                $file = fopen("archivo_campos.txt", "r");
-
-                $nombre = fgets($file);
-                $paterno = fgets($file);
-                $materno = fgets($file);
-                $correo = fgets($file);
-                $telefono = fgets($file);
-                $usuario = fgets($file);
-                $contra = fgets($file);
-                $calle = fgets($file);
-                $numero = fgets($file);
-                $colonia = fgets($file);
-                $estado_municipio = fgets($file);
-                $cp = fgets($file);
-
-                //quiterle el salto de linea al nombre
-                $auxiliar ="";
-                for ($i=0;$i<strlen($nombre)-2;$i++){
-                    $auxiliar = $auxiliar.$nombre[$i];
-                }
-                $nombre = $auxiliar;
-
-                //quiterle el salto de linea al paterno
-                $auxiliar ="";
-                for ($i=0;$i<strlen($paterno)-2;$i++){
-                    $auxiliar = $auxiliar.$paterno[$i];
-                }
-                $paterno = $auxiliar;
-
-                //quiterle el salto de linea al materno
-                $auxiliar ="";
-                for ($i=0;$i<strlen($materno)-2;$i++){
-                    $auxiliar = $auxiliar.$materno[$i];
-                }
-                $materno = $auxiliar;
-
-                //quiterle el salto de linea al correo
-                $auxiliar ="";
-                for ($i=0;$i<strlen($correo)-2;$i++){
-                    $auxiliar = $auxiliar.$correo[$i];
-                }
-                $correo = $auxiliar;
-
-                //quiterle el salto de linea al telefono
-                $auxiliar ="";
-                for ($i=0;$i<strlen($telefono)-2;$i++){
-                    $auxiliar = $auxiliar.$telefono[$i];
-                }
-                $telefono = $auxiliar;
-
-                //quiterle el salto de linea al usuario
-                $auxiliar ="";
-                for ($i=0;$i<strlen($usuario)-2;$i++){
-                    $auxiliar = $auxiliar.$usuario[$i];
-                }
-                $usuario = $auxiliar;
-
-                //quiterle el salto de linea al contrase;a
-                $auxiliar ="";
-                for ($i=0;$i<strlen($contra)-2;$i++){
-                    $auxiliar = $auxiliar.$contra[$i];
-                }
-                $contra = $auxiliar;
-
-                //quiterle el salto de linea al calle
-                $auxiliar ="";
-                for ($i=0;$i<strlen($calle)-2;$i++){
-                    $auxiliar = $auxiliar.$calle[$i];
-                }
-                $calle = $auxiliar;
-
-                //quiterle el salto de linea al numero
-                $auxiliar ="";
-                for ($i=0;$i<strlen($numero)-2;$i++){
-                    $auxiliar = $auxiliar.$numero[$i];
-                }
-                $numero = $auxiliar;
-
-                //quiterle el salto de linea al colonia
-                $auxiliar ="";
-                for ($i=0;$i<strlen($colonia)-2;$i++){
-                    $auxiliar = $auxiliar.$colonia[$i];
-                }
-                $colonia = $auxiliar;
-
-                //quiterle el salto de linea al estado_municipio
-                $auxiliar ="";
-                for ($i=0;$i<strlen($estado_municipio)-2;$i++){
-                    $auxiliar = $auxiliar.$estado_municipio[$i];
-                }
-                $estado_municipio = $auxiliar;
-
-                //quiterle el salto de linea a el codigo postal
-                $auxiliar ="";
-                for ($i=0;$i<strlen($cp)-2;$i++){
-                    $auxiliar = $auxiliar.$cp[$i];
-                }
-                $cp = $auxiliar;
 
                 //conexion a la base de datos
                 $servername = "localhost";
@@ -142,10 +58,26 @@
 
                 //verificar que la conexion se hizo bien
                 if ($con){
-                    //echo "Conexion exitosa".'<br>';
+
+                    $querry_edoMun = "SELECT estados_municipios.id 
+                    FROM estados_municipios, estados, municipios
+                    WHERE municipios.id_Municipios = $municipio AND estados.id = $estado
+                    AND estados_municipios.estados_id = estados.id AND municipios.Id_Municipios = estados_municipios.municipios_id";
+
+                    $resultado = sqlsrv_query($con, $querry_edoMun);
+                    $estado_municipio = sqlsrv_fetch($resultado);
 
                     //inserta los datos en la tabla personas
-                    $querry_user = "INSERT INTO Persona
+                    $querry ="BEGIN TRAN
+                    INSERT INTO Persona
+                    values('$usuario', '$contra', '$nombre', '$paterno', '$materno', '$correo',  '$telefono')
+                    INSERT INTO Direccion
+                    values('$usuario', $estado_municipio, '$colonia', '$calle', '$numero', '$cp')
+                    INSERT INTO Tarjetas
+                    values('$usuario', '$ntarjeta', '$mes', '$year', '$nombreProp')
+                    COMMIT";
+                    $resultado = sqlsrv_query($con, $querry);
+                    /*$querry_user = "INSERT INTO Persona
                     values('$usuario', '$contra', '$nombre', '$paterno', '$materno', '$correo',  '$telefono')";
                     $consulta_user = sqlsrv_query($con, $querry_user);
 
@@ -157,7 +89,7 @@
                     //inserta los datos en la tabla tarjetas
                     $querry_tarjeta = "INSERT INTO Tarjetas
                     values('$usuario', '$ntarjeta', '$mes', '$year', '$nombreProp')";
-                    $consulta_tarjeta = sqlsrv_query($con, $querry_tarjeta);
+                    $consulta_tarjeta = sqlsrv_query($con, $querry_tarjeta);*/
 
                     echo json_encode("todo chido");
                     //$in->alertas("aceptado", '¡Felicidades!', 'Tu cuenta ha sido creada.');
@@ -223,6 +155,13 @@
             <?php
             }
         }
+
+    function encriptar($contra){
+        $salt = "";
+        $clave = password_hash($contra, PASSWORD_DEFAULT, [15]);
+
+        return $clave;
+    }
 }
 $obj = new Tarjeta;
 $obj->registro();

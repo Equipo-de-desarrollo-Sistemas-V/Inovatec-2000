@@ -4,6 +4,15 @@ var respuesta=document.getElementById('respuesta');
 formulario.addEventListener('submit', function(e){
     e.preventDefault();
     var datos = new FormData(formulario);
+    var usuario = document.getElementById('usuario').value;
+    var nombre = document.getElementById('nombreCliente').value;
+    var paterno = document.getElementById('apellidoPaterno').value;
+    var materno = document.getElementById('apellidoMaterno').value;
+    var email = document.getElementById('email').value;
+    var telefono = document.getElementById('Teléfono').value;
+    
+    
+    
     fetch('validacionesUsuario.php', { 
         method:'POST',
         body: datos
@@ -56,7 +65,7 @@ formulario.addEventListener('submit', function(e){
 
         else if (data === 'todo chido') {
             //alert("Información aceptada");
-            location.href = "registroContrasea.php";
+            location.href = "registroContrasea.php?user="+usuario+"&nombre="+nombre+"&pat="+paterno+"&mat="+materno+"&correo="+email+"&tel="+telefono;
         }
 
         else {
