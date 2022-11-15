@@ -327,7 +327,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion1-imagen1">
 
             <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a href="producto_individual.php" class="btn">Comprar</a>
           </div>
 
           <div class="cardProducto">

@@ -32,6 +32,6 @@
         die( print_r( sqlsrv_errors(), true));
     }
     else{
-        echo "Conexion exitosa";
+        //echo "Conexion exitosa";
     }
 ?>  
