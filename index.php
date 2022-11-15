@@ -553,8 +553,7 @@ $sesion_i = $_SESSION["Usuario"];
         array_push($rutas_computadoras_categoria, $rutas_computadoras[$numeros_aleatorios[$i]]);
         array_push($ids_computadoras_categoria, $ids_computadoras[$numeros_aleatorios[$i]]);
     }
-    echo "<br><br>Nuevos ids";
-    var_dump($ids_computadoras_categoria);
+
     /* Elimina los ultimos dos caracteres de los precios */
     for($i = 0; $i < 4; $i++){
         $precios_computadoras_categoria[$i] = substr($precios_computadoras_categoria[$i], 0, -2);

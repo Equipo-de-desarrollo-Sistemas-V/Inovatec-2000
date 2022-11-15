@@ -336,9 +336,9 @@ error_reporting(0);
                 </label>    
                  
                 <br>
-                <label align="center" type="submit" name="existentes" id="existentes" class="label-existentes" disabled>
+                <label align="center" type="submit" name="existencia" id="existencia" class="label-existentes" disabled>
                   <span>Existentes: </span>
-                  <span>10</span>
+                  <span>0</span>
                 </label>
               </form>
 
@@ -362,17 +362,53 @@ error_reporting(0);
 
 <?php
 $idProducto=$_GET["item"];
-echo "HOLA".$idProducto."ADIOS";
+$idProducto=13;
 
-$ruta="imagenes/computadora1.png";
-echo "
-<script>
-  document.getElementById('nombre').innerHTML = 'Hola yo voy dentro del label!';
-  document.getElementById('precio').innerHTML = 'Hola yo voy dentro del label!';
-  document.getElementById('precioDes').innerHTML = 'Hola yo voy dentro del label!';
-  document.getElementById('descripcion').innerHTML = 'Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!Hola yo voy dentro del label!';
-  document.getElementById('imagen').src= '$ruta';
+//Consulta para obtener los datos del productos seleccionado
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$con = sqlsrv_connect($serverName, $connectionInfo); 
+
+
+$query="SELECT Productos.nombre, Productos.precio_ven, Productos.descripcion, ruta
+FROM [Productos], [imagenes]
+where Productos.id_producto=imagenes.id_prod and Productos.id_producto=$idProducto";
+
+$resultado=sqlsrv_query($con, $query);
+if($resultado==true){
+  $row = sqlsrv_fetch_array($resultado);
+  $nomProd=$row["nombre"];
+  $auxPrecio=$row["precio_ven"];
+  $desProd=$row["descripcion"];
+  $ruta=$row["ruta"];
+
+  //Obtener el total de existentes del producto, en todas las sucursales.
+  $query = "SELECT cantidad FROM Inventario_suc
+  WHERE id_producto = $idProducto";
+
+  $resultado = sqlsrv_query($con, $query);
+
+  $existentes = 0;
+
+  while($row = sqlsrv_fetch_array($resultado)){
+      $existentes = $existentes + $row["cantidad"];
+  }
+
+  $precioProd= "$ ".substr($auxPrecio, 0, -2);
   
-</script>";
+  echo "
+  <script>
+    document.getElementById('nombre').innerHTML = '$nomProd';
+    document.getElementById('precio').innerHTML = '$precioProd';
+    document.getElementById('precioDes').innerHTML = '';
+    document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
+    document.getElementById('descripcion').innerHTML = '$desProd';
+    document.getElementById('imagen').src= '$ruta';
+    
+  </script>";
 
+}
+
+//Cerrar conexion
+sqlsrv_close($con);
 ?>
