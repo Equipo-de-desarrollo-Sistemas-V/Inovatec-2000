@@ -312,7 +312,7 @@ $x="9";
               <form action="#" class="formulario-producto">
                 <label for="">Precio del producto: </label>
                 <br>
-                <label for="Precio" class="label-precio">$850</label>
+                <label for="Precio" class="label-precio" id="precio">$850</label>
                 <br>
                 <div class="div-cantidad">
                   <label for="cantidad">Cantidad: </label>
@@ -320,21 +320,25 @@ $x="9";
                 </div>
                 <br>
                 
-                <label align="center" type="submit" name="boton4" id="boton4" value="Agregar" class="btn" disabled>
+                <label align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
                   <i class="fa-solid fa-cart-shopping"></i>
                   Agregar al carrito
                 </label>
                 <br>
-                <label align="center" type="submit" name="boton4" id="boton4" value="Comprar" class="btn" disabled>
+                <label align="center" type="submit" name="comprar" id="comprar" class="btn" disabled>
                   <i class="fa-solid fa-bag-shopping"></i>
                   Comprar
                 </label>    
                 <br>
-                <label align="center" type="submit" name="boton4" id="boton4" value="Comprar" class="label-descuento" disabled>
+                <label align="center" type="submit" name="descuento" id="descuento" class="label-descuento" disabled>
                   <span>Descuento: </span>
                   <span>10%</span>
                 </label> 
-
+                <br>
+                <label align="center" type="submit" name="existentes" id="existentes" class="label-existentes" disabled>
+                  <span>Existentes: </span>
+                  <span>10</span>
+                </label>
               </form>
 
             </div>
