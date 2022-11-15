@@ -1,23 +1,26 @@
 <?php
 error_reporting(0);
 session_start();
-include("perVentas.php");
+include("perProdInv.php");
 $sesion_i = $_SESSION["nombres"];
 ?>
 
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Informe ventas</title>
+	<title>Menu Administrativo</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="js/consulInforme.js"></script>
-
 </head>
+
 <body>
 	<!--Script de funcionaminto del menu desplegable-->
 	<script src="funcionamiento.js"></script>
@@ -31,7 +34,7 @@ $sesion_i = $_SESSION["nombres"];
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
+			<?php echo ucwords("Bienvenid@") . " " . ucwords($sesion_i); ?>
 			<div class="btn-header">
 				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
@@ -49,14 +52,14 @@ $sesion_i = $_SESSION["nombres"];
 						<li><a href="#">Productos</a>
 							<ul>
 								<li><a id="menuProducto1" href="alta_producto.php">Nuevo producto</a></li>
-								<li><a id="menuProducto2" href="lista_productos.php">Productos</a></li>
+								<li><a id="menuProducto2" href="lista_productos.php">Lista de Productos</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php">Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php">Lista de sucursales</a></li>
 							</ul>
 						</li>
 
@@ -77,6 +80,7 @@ $sesion_i = $_SESSION["nombres"];
 						<li><a href="#">Inventario</a>
 							<ul>
 								<li><a id="menuInventario1" href="producto_inventario.php">Productos</a></li>
+								<li><a id="menuInventario3" href="entradas_prod.php">Entradas</a></li>
 								<li><a id="menuInventario3" href="stockMin_prod.php">Productos en stock mínimo</a></li>
 								<li><a id="menuInventario2" href="consulta_inventario.php">Consulta inventario</a></li>
 							</ul>
@@ -84,7 +88,7 @@ $sesion_i = $_SESSION["nombres"];
 
 						<li><a href="#">Ventas</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php">Registro de ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
 							</ul>
 						</li>
@@ -95,11 +99,11 @@ $sesion_i = $_SESSION["nombres"];
 	</header>
 
 	<main>
-        <div class="contenidoListaInventario" id="contenidoListaInventario">
+		<div class="contenidoListaInventario" id="contenidoListaInventario">
 			<article>
 				<h1 align="center">Informe de ventas</h1>
 				<div class="contenido-barra-buscar">
-					<input type="text" placeholder="Buscar" required />
+					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required />
 					<button class="btn-buscar">
 						<i class="fas fa-search icon"></i>
 
@@ -107,24 +111,26 @@ $sesion_i = $_SESSION["nombres"];
 				</div>
 				<br>
 
-				<section class="tablas">
-					<table>
+				<section class="tablas" id="tablaResultado">
+					<!-- <table>
 						<thead>
 							<tr>
 								<th>Id producto</th> 
-								<th>Cantidad</th> 
-								<th>Precio unitario</th> 
-								<th>Precio público</th> 
-								<th>Iva</th> 
-								<th>Total</th>
+								<th>Nombre producto</th> 
+								<th>Sucursal</th> 
+								<th>Existentes</th> 
+								<th>Stock mínimo</th> 
+								<th>Inversión</th>
+								<th>Valor</th>
+								<th>Acciones</th>
+								<th></th>
 							</tr>
 						</thead>
-					</table>
+					</table> -->
 				</section>
 			</article>
 		</div>
-    </main>
+	</main>
 </body>
-</html>
 
-	
+</html>
