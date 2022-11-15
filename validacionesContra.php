@@ -3,23 +3,6 @@
 //logica para guardar datos de contraseña
     class Contra{
 
-        //regresa una cadena con la contraseña hasheada
-        function encriptar($contra){
-            $salt = "";
-            $clave = password_hash($contra, PASSWORD_DEFAULT, [15]);
-            
-            //return $clave;
-
-            $this -> guardar($clave);
-        }
-
-        //añade la contraseña al archivo
-        function guardar($clave){
-            $file = fopen("archivo_campos.txt", "a");
-            fwrite($file, $clave.PHP_EOL);
-            fclose($file);
-        }
-
         //Comprueba que la contraseña cumpla con los requerimientos de seguridad
         function validar(){
             $in=new Contra;
@@ -70,7 +53,7 @@
 
                     else{
                         
-                        $clave = $this -> encriptar($contra);
+                        //$clave = $this -> encriptar($contra);
                         echo json_encode("todo chido");
                         //$in->alertas("aceptado", 'Listo!!!', 'La contraseña ha sido aceptada');
                         //$this -> guardar($clave);

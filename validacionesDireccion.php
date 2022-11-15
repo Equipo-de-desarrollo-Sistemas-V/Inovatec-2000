@@ -56,7 +56,6 @@
                                                     if ($numero >= 1) {
 
                                                         //la informacion paso todos los filtros
-                                                        $this->guardar($estado_municipio);
                                                         echo json_encode("todo chido");
                                                         //$in->alertas("aceptado", 'Listo!!!', 'La información ha sido aceptada');
                                                     }
@@ -111,22 +110,6 @@
             }
         }
 
-        //guarda los datos de dirección en el fichero
-        function guardar($estado_municipio)
-        {
-            $calle = $_POST["calle"];
-            $numero = $_POST["numero"];
-            $colonia = $_POST["colonia"];
-            $cp = $_POST["codigoPostal"];
-
-            $file = fopen("archivo_campos.txt", "a");
-            fwrite($file, $calle . PHP_EOL);
-            fwrite($file, $numero . PHP_EOL);
-            fwrite($file, $colonia . PHP_EOL);
-            fwrite($file, $estado_municipio.PHP_EOL);
-            fwrite($file, $cp . PHP_EOL);
-            fclose($file);
-        }
         function alertas($valor, $titulo, $mensaje){
             ?>
             <html>
