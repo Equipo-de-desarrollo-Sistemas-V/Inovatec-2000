@@ -15,7 +15,7 @@ error_reporting(0);
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <title>Datos factura</title>
+  <title>Comprar producto</title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
@@ -311,10 +311,14 @@ error_reporting(0);
 
             <div class="comprar-producto">
               <form action="#" class="formulario-producto">
-                <label for="">Precio del producto: </label>
-                <br>
-                <label for="Precio" class="label-precio" id="precio">$850</label>
-                <br>
+                <div class="labels-precio">
+                  <label align="center" for="" class="label-precio">Precio total: </label>
+                  
+                  <label align="center" for="Precio" class="label-total" id="precio">$850</label>
+                  
+                  <label align="center" for="Precio" class="label-noDescuento" id="precio"><del>$850</del></label>
+                </div>
+               
                 <div class="div-cantidad">
                   <label for="cantidad">Cantidad: </label>
                   <input type="number" name="cantidad" id="cantidad" class="input-cantidad" value="1" min="1">
@@ -330,11 +334,7 @@ error_reporting(0);
                   <i class="fa-solid fa-bag-shopping"></i>
                   Comprar
                 </label>    
-                <br>
-                <label align="center" type="submit" name="descuento" id="descuento" class="label-descuento" disabled>
-                  <span>Descuento: </span>
-                  <span>10%</span>
-                </label> 
+                 
                 <br>
                 <label align="center" type="submit" name="existentes" id="existentes" class="label-existentes" disabled>
                   <span>Existentes: </span>
@@ -343,7 +343,6 @@ error_reporting(0);
               </form>
 
             </div>
-            <br>
             <br>
 
             <div class="descripcion-producto">
