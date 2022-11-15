@@ -7,7 +7,7 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 
 $salida="";
 //Consulta normal, muetra todos los registros
-$query="SELECT ventas.fecha, ventas.id_prod, ventas.nombre,
+$query="SELECT ventas.id_ventas, ventas.fecha, ventas.id_prod, ventas.nombre,
 ventas.id_suc, Apartados.Nombre, Subapartados.SubApartado, 
 ventas.cantidad, ventas.precio_ven,
 ventas.descuento, ventas.total
@@ -26,7 +26,8 @@ if (isset($_POST['consulta'])){
     ventas.cantidad, ventas.precio_ven,
     ventas.descuento, ventas.total
     FROM [ventas], [Productos], [Apartados], [Subapartados]
-    WHERE (ventas.fecha like '%".$q."%' or 
+    WHERE (ventas.id_ventas like '%".$q."%' or 
+    ventas.fecha like '%".$q."%' or 
     ventas.id_prod like '%".$q."%' or 
     ventas.nombre like '%".$q."%' or
     ventas.id_suc like '%".$q."%' or
@@ -77,11 +78,12 @@ if($resultado==true){
 							$pre_ven=$row["precio_ven"];
                             $descuento=$row["descuento"];
                             $total=$row["total"];
+                            $id=$row["id_ventas"];
 							$edi='Editar';
 							$eli='Eliminar';
         //muestra los resultados en la tabla
         $salida.='<tr>';
-        $salida.='<td>'.'</td>';
+        $salida.='<td>'.$id.'</td>';
         $salida.='<td>'.$fecha.'</td>';
         $salida.='<td>'.$id_prod.'</td>'; 
         $salida.='<td>'.$nombre.'</td>'; 
