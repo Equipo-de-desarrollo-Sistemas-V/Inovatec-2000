@@ -325,16 +325,22 @@ error_reporting(0);
                 </div>
                 <br>
                 
-                <label align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
+                <a align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
                   <i class="fa-solid fa-cart-shopping"></i>
                   Agregar al carrito
-                </label>
+                </a>
                 <br>
                 <!-- <label align="center" onclick="alert('Proveedor actualizado con éxito')" name="comprar" id="comprar" class="btn">
                   <i class="fa-solid fa-bag-shopping"></i>
                   Comprar
                 </label>   -->
-                <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
+
+                <a align="center" type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
+                <i class="fa-solid fa-bag-shopping"></i>
+                Comprar
+                </a>
+
+                <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
                 <br>
                 <label align="center" name="existencia" id="existencia" class="label-existentes" disabled>
                   <span>Existentes: </span>
@@ -423,7 +429,7 @@ sqlsrv_close($con);
 	let valorInput = e.target.value;
 
 	cantidadE.value = valorInput
-  .replace(/[^1-9.]/, "")
+  .replace(/[^0-9.]/, "")
   })
 
   //Valdido que no este vacio y que el numero sea entero, mlientras que no sea vedadero el boton esta desactivado
