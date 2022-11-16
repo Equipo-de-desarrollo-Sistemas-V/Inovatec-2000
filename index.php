@@ -389,7 +389,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion2-imagen1">
 
             <h3 class="nombreProducto"><span id="seccion2-nombre1"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id5" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -401,7 +401,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion2-imagen2">
 
             <h3 class="nombreProducto"><span id="seccion2-nombre2"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id6" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -413,7 +413,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion2-imagen3">
 
             <h3 class="nombreProducto"><span id="seccion2-nombre3"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id7" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -425,7 +425,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion2-imagen4">
 
             <h3 class="nombreProducto"><span id="seccion2-nombre4"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id8" class="btn"> Comprar</a>
           </div>
 
         </div>
@@ -527,7 +527,6 @@ $sesion_i = $_SESSION["Usuario"];
         array_push($ids_computadoras, $row['id_producto']);
     }
 
-    var_dump($ids_computadoras);
     /* Obten la longitud del arreglo nombres_computadoras */
     $longitud = count($nombres_computadoras);
     /* Genera 4 numeros aleatorios que no se repitan entre 0 y la longitud del arreglo nombres_computadoras */
@@ -616,7 +615,9 @@ $sesion_i = $_SESSION["Usuario"];
 <?php
     include 'conexiones.php';
     /* Creamos la consulta para obtener los procesadores */
-    $resultado_procesadores = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria, ruta FROM $tabla_productos, $tabla_apartados, $tabla_subapartados, $tabla_imagenes WHERE Apartado = $tabla_apartados.ID_ap and $tabla_productos.Subapartado = Id_subap and $tabla_subapartados.SubApartado = 'Procesadores' and $tabla_productos.id_producto = $tabla_imagenes.id_prod");
+    $resultado_procesadores = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria, ruta,  Productos.id_producto
+    FROM $tabla_productos, $tabla_apartados, $tabla_subapartados, $tabla_imagenes 
+    WHERE Apartado = $tabla_apartados.ID_ap and $tabla_productos.Subapartado = Id_subap and $tabla_subapartados.SubApartado = 'Procesadores' and $tabla_productos.id_producto = $tabla_imagenes.id_prod");
 
     if($resultado_procesadores === false){
         die(print_r(sqlsrv_errors(), true));
@@ -628,6 +629,7 @@ $sesion_i = $_SESSION["Usuario"];
     $categorias_procesadores = array();
     $subcategorias_procesadores = array();
     $rutas_procesadores = array();
+    $ids_procesadores = array();
 
     while($row = sqlsrv_fetch_array($resultado_procesadores)){
         array_push($nombres_procesadores, $row['nombre']);
@@ -635,6 +637,7 @@ $sesion_i = $_SESSION["Usuario"];
         array_push($categorias_procesadores, $row['categoria']);
         array_push($subcategorias_procesadores, $row['subcategoria']);
         array_push($rutas_procesadores, $row['ruta']);
+        array_push($ids_procesadores, $row['id_producto']);
     }
 
     /* Obten la longitud del arreglo nombres_computadoras */
@@ -652,12 +655,14 @@ $sesion_i = $_SESSION["Usuario"];
     $precios_procesadores_categoria = array();
     $subcategorias_procesadores_categoria = array();
     $rutas_procesadores_categoria = array();
+    $ids_procesadores_categoria = array();
 
     for($i = 0; $i < 4; $i++){
         array_push($nombres_procesadores_categoria, $nombres_procesadores[$numeros_aleatorios[$i]]);
         array_push($precios_procesadores_categoria, $precios_procesadores[$numeros_aleatorios[$i]]);
         array_push($subcategorias_procesadores_categoria, $subcategorias_procesadores[$numeros_aleatorios[$i]]);
         array_push($rutas_procesadores_categoria, $rutas_procesadores[$numeros_aleatorios[$i]]);
+        array_push($ids_procesadores_categoria, $ids_procesadores[$numeros_aleatorios[$i]]);
     }
 
     /* Elimina los ultimos dos caracteres de los precios */
@@ -707,6 +712,12 @@ $sesion_i = $_SESSION["Usuario"];
         nombre6.innerHTML = '$nombres_procesadores_categoria[1]';
         nombre7.innerHTML = '$nombres_procesadores_categoria[2]';
         nombre8.innerHTML = '$nombres_procesadores_categoria[3]';
+
+        /* Asignamos el id de cada producto a una variable para mandarlo en la url de cada tarjeta*/
+        let id5= '$ids_procesadores_categoria[0]';
+        let id6= '$ids_procesadores_categoria[1]';
+        let id7= '$ids_procesadores_categoria[2]';
+        let id8= '$ids_procesadores_categoria[3]';
     </script>";
 
     /* Cierra la conexion */
@@ -716,7 +727,9 @@ $sesion_i = $_SESSION["Usuario"];
 <?php
     include("conexiones.php");
     /* Creamos la consulta para obtener los procesadores */
-    $resultado_motherboards = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria, ruta FROM $tabla_productos, $tabla_apartados, $tabla_subapartados, $tabla_imagenes WHERE Apartado = $tabla_apartados.ID_ap and $tabla_productos.Subapartado = Id_subap and $tabla_subapartados.SubApartado = 'Tarjeta Madre' and $tabla_productos.id_producto = $tabla_imagenes.id_prod");
+    $resultado_motherboards = sqlsrv_query($conexion, "SELECT productos.nombre, precio_ven, apartados.nombre as categoria, Subapartados.SubApartado as subcategoria, ruta, Productos.id_producto
+    FROM $tabla_productos, $tabla_apartados, $tabla_subapartados, $tabla_imagenes 
+    WHERE Apartado = $tabla_apartados.ID_ap and $tabla_productos.Subapartado = Id_subap and $tabla_subapartados.SubApartado = 'Tarjeta Madre' and $tabla_productos.id_producto = $tabla_imagenes.id_prod");
 
     if($resultado_motherboards === false){
         die(print_r(sqlsrv_errors(), true));
@@ -727,6 +740,7 @@ $sesion_i = $_SESSION["Usuario"];
     $precios_motherboards = array();
     $subcategorias_motherboards = array();
     $rutas_motherboards = array();
+    $ids_motherboards = array();
 
     /* imprime el contenido de los arreglos */
     while($row = sqlsrv_fetch_array($resultado_motherboards)){
@@ -734,6 +748,7 @@ $sesion_i = $_SESSION["Usuario"];
         array_push($precios_motherboards, $row['precio_ven']);
         array_push($subcategorias_motherboards, $row['subcategoria']);
         array_push($rutas_motherboards, $row['ruta']);
+        array_push($ids_motherboards, $row['id_producto']);
     }
     /* Obten la longitud del arreglo nombres_computadoras */
     $longitud = count($nombres_motherboards);
@@ -751,12 +766,14 @@ $sesion_i = $_SESSION["Usuario"];
     $precios_motherboards_categoria = array();
     $subcategorias_motherboards_categoria = array();
     $rutas_motherboards_categoria = array();
+    $ids_motherboards_categoria = array();
 
     for($i = 0; $i < 4; $i++){
         array_push($nombres_motherboards_categoria, $nombres_motherboards[$numeros_aleatorios[$i]]);
         array_push($precios_motherboards_categoria, $precios_motherboards[$numeros_aleatorios[$i]]);
         array_push($subcategorias_motherboards_categoria, $subcategorias_motherboards[$numeros_aleatorios[$i]]);
         array_push($rutas_motherboards_categoria, $rutas_motherboards[$numeros_aleatorios[$i]]);
+        array_push($ids_motherboards_categoria, $ids_motherboards[$numeros_aleatorios[$i]]);
     }
 
     /* Elimina los ultimos dos caracteres de los precios */
@@ -806,6 +823,13 @@ $sesion_i = $_SESSION["Usuario"];
         nombre10.innerHTML = '$nombres_motherboards_categoria[1]';
         nombre11.innerHTML = '$nombres_motherboards_categoria[2]';
         nombre12.innerHTML = '$nombres_motherboards_categoria[3]';
+
+        /* Asignamos el id de cada producto a una variable para mandarlo en la url de cada tarjeta*/
+        let id9= '$ids_motherboards_categoria[0]';
+        let id10= '$ids_motherboards_categoria[1]';
+        let id11= '$ids_motherboards_categoria[2]';
+        let id12= '$ids_motherboards_categoria[3]';
+
     </script>";
     /* Cierra la conexion a la base de datos */
     sqlsrv_close($conexion);
