@@ -354,11 +354,12 @@ where id ='".$auxEst."'";
       </div>
     </article>
     <section class="container-all">
-
         <article id="container-datos-usuario" class="contenedor">
                 <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
                 <br>
                 <br>
+            <h1>Confirmación de datos</h1>
+            <br>
 
             <h3 id="subtitulo">Datos bancarios</h3>
 
@@ -392,52 +393,77 @@ where id ='".$auxEst."'";
             <br>
 
             <h3 id="subtitulo">Datos de dirección</h3>
-                <div class="entrada-2">
-                    <div class="input-group">
-                        <input type="text" name="calle" id="calle" required class="input" maxlength="20" value=<?php echo $calle;?> readonly="readonly">
-                        <label for="calle" class="input-label">Calle</label>
-                    </div>
+            <div class="entrada-2">
+                <div class="input-group">
+                    <input type="text" name="calle" id="calle" required class="input" maxlength="20" value=<?php echo $calle;?> readonly="readonly">
+                    <label for="calle" class="input-label">Calle</label>
+                </div>
 
-                    <div class="input-group">
-                        <input type="text" name="numero" id="numero" required class="input" maxlength="10" value=<?php echo $no_calle;?> readonly="readonly">
-                        <label for="numero" class="input-label">Número</label>
-                    </div>
+                <div class="input-group">
+                    <input type="text" name="numero" id="numero" required class="input" maxlength="10" value=<?php echo $no_calle;?> readonly="readonly">
+                    <label for="numero" class="input-label">Número</label>
+                </div>
 
-                    <div class="input-group">
-                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" value=<?php echo $colonia;?> readonly="readonly">
-                        <label for="colonia" class="input-label">Colonia</label>
-                    </div>
+                <div class="input-group">
+                    <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" value=<?php echo $colonia;?> readonly="readonly">
+                    <label for="colonia" class="input-label">Colonia</label>
+                </div>
 
-                    <div class="input-group">
-                      <input type="text" name="estado" id="estado" required class="input" maxlength="20" value=<?php echo $estado;?> readonly="readonly">
-                        <label for="colonia" class="input-label">Colonia</label>
-                    </div>
+                <div class="input-group">
+                  <input type="text" name="estado" id="estado" required class="input" maxlength="20" value=<?php echo $estado;?> readonly="readonly">
+                    <label for="colonia" class="input-label">Colonia</label>
+                </div>
 
-                    <div class="input-group">
-                        <input type="text" name="municipio" id="municipio" required class="input" maxlength="20" value=<?php echo $municipio;?> readonly="readonly">
-                        <label for="colonia" class="input-label">Colonia</label>
-                    </div>
+                <div class="input-group">
+                    <input type="text" name="municipio" id="municipio" required class="input" maxlength="20" value=<?php echo $municipio;?> readonly="readonly">
+                    <label for="colonia" class="input-label">Colonia</label>
+                </div>
 
-                    <div class="input-group">
-                        <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
-                        maxlength="5" minlength="5" value=<?php echo $cp;?> readonly="readonly">
-                        <label for="codigo-postal" class="input-label">Código postal</label>
-                    </div>
+                <div class="input-group">
+                    <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
+                    maxlength="5" minlength="5" value=<?php echo $cp;?> readonly="readonly">
+                    <label for="codigo-postal" class="input-label">Código postal</label>
+                </div>
+            </div>    
+            <br>
+            <br>
+                
+            <h3 id="subtitulo">Datos de compra</h3>
+            <div class="entrada-2">
+                <div class="input-group">
+                    <label for="nombre-producto" class="input-label">Producto</label>
+                    <input type="text" name="nombreProducto" id="nombreProducto" required class="input" maxlength="40" >
+                </div>
 
-                </div>    
-                <br>
-                <br>
-                <br>
+                <div class="input-group">
+                    <input type="text" name="precioUnitario" id="precioUnitario" required class="input" maxlength="16" >
+                    <label for="precio-unitario" class="input-label">Precio unitario</label>
+                </div>
 
+                <div class="input-group">
+                    <input type="text" name="cantidad" id="cantidad" required class="input" maxlength="2" minlength="2" >
+                    <label for="producto-cantidad" class="input-label">Cantidad</label>
+                </div>
 
+                <div class="input-group">
+                    <input type="text" name="subtotal" id="subtotal" required class="input"maxlength="2" minlength="2" >
+                    <label for="subtotal" class="input-label">Subtotal</label>
+                </div>
 
-                <input type="submit" name="genCompra" id="genCompra" value="Finalizar compra" class="btn" disabled>
-                <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
-                <br>
-                <br>
-                <br>
+                <div class="input-group">
+                    <input type="text" name="total" id="total" class="input" maxlength="3" minlength="3">
+                    <label for="total" class="input-label">Total</label>
+                </div>
+            </div>
+            <br>
 
-            </form>
+            <input type="submit" name="genCompra" id="genCompra" value="Finalizar compra" class="btn" disabled>
+            <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
+            <br>
+            <br>
+            <br>
+
+            
         </article>
     </section>
     <script src="js/linkHome.js"></script>
