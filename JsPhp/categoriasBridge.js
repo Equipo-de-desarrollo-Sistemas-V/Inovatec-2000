@@ -28,9 +28,9 @@ window.onload = function () {
 
         let arreglosVariables = Object.values(data);
 
-        console.log(arreglosVariables);
+        let size2 = Object.keys(arreglosVariables[0]).length;
 
-        for (let i = 0; i < size -2; i++) {
+        for (let i = 0; i < size2; i++) {
             body += `
                 <div class="cardProducto">
                     <div class="encabezado">
