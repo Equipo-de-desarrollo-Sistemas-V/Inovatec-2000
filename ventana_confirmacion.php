@@ -300,10 +300,13 @@
                 <h1 align="center">Compra realizada exitosamente</h1>
                 <img src="imagenes/paloma_verde.png" alt="" height="200">
                 <p align="center">Gracias por adquirir nuestros productos. Esperamos que tu experiencia con nosotros fuera extraordinaria.</p>
-                <label align="center" type="submit" name="factura" id="agregar" value="factura" class="btn" disabled>
+                <!-- <label align="center" type="submit" name="factura" id="agregar" value="factura" class="btn" disabled>
                     <i class="fa-solid fa-file-invoice"></i>
                     Generar factura
-                </label>
+                </label> -->
+
+                <input type="button" id='factura' name='factura' value="Generar factura" onclick="generarFactura();" class="btn">
+
                 <br>
                 <!-- <label align="center" type="submit" name="regresar" id="regresar" value="regresar" class="btn" disabled>
                     <i class="fa-solid fa-home"></i>
@@ -321,7 +324,22 @@
 </body>
 </html>
 
+
+<?php
+$idProducto=$_GET["item"];
+$array1 = explode("/",$idProducto);
+$producto=$array1[0];
+$cantiCompra=$array1[1];
+echo "
+  <script>
+    let auxId= $producto;
+    let auxCan= $cantiCompra;
+  </script>";
+?>
+
 <script>
-
-
+function generarFactura(){
+  let envio= auxId+"/"+auxCan;
+    location.href="datos_factura.php?item="+envio;
+}
 </script>
