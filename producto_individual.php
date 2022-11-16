@@ -321,7 +321,7 @@ error_reporting(0);
                
                 <div class="div-cantidad">
                   <label for="cantidad">Cantidad: </label>
-                  <input type="number" name="cantidad" id="cantidad" class="input-cantidad" value="1" min="1">
+                  <input type="number" name="cantidadE" id="cantidadE" class="input-cantidad" value="1" min="1" required>
                 </div>
                 <br>
                 
@@ -330,11 +330,11 @@ error_reporting(0);
                   Agregar al carrito
                 </label>
                 <br>
-                <label align="center" type="submit" name="comprar" id="comprar" class="btn" disabled>
+                <!-- <label align="center" onclick="alert('Proveedor actualizado con éxito')" name="comprar" id="comprar" class="btn">
                   <i class="fa-solid fa-bag-shopping"></i>
                   Comprar
-                </label>    
-                 
+                </label>   -->
+                <input type="submit" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
                 <br>
                 <label align="center" type="submit" name="existencia" id="existencia" class="label-existentes" disabled>
                   <span>Existentes: </span>
@@ -362,7 +362,7 @@ error_reporting(0);
 
 <?php
 $idProducto=$_GET["item"];
-$idProducto=13;
+//$idProducto=13;
 
 //Consulta para obtener los datos del productos seleccionado
 $serverName='localhost';
@@ -404,7 +404,8 @@ if($resultado==true){
     document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
     document.getElementById('descripcion').innerHTML = '$desProd';
     document.getElementById('imagen').src= '$ruta';
-    
+    let auxId= $idProducto;
+    let auxExis= $existentes;
   </script>";
 
 }
@@ -412,3 +413,29 @@ if($resultado==true){
 //Cerrar conexion
 sqlsrv_close($con);
 ?>
+
+
+<script>
+  com = document.getElementById('comprar');
+  com.addEventListener("click", (e) => {
+    alert("Qu hay");
+  });
+
+  /*
+  function datos(){
+    let canti = document.getElementById('cantidadE').value;
+    if (canti==""){
+      a=a;
+    }else{
+      if (auxExis==0){
+        alert('Por el momento no contamos con existentes')
+      }else{
+        let valor = document.getElementById('cantidadE').value;
+        let envio= auxId+"/"+canti;
+        document.getElementById('descripcion').innerHTML = envio;
+        location.href="datos_venta.php?item="+envio;
+      }
+    }
+    
+  } */
+</script>

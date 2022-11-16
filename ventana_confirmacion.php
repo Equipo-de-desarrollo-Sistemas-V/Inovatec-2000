@@ -23,7 +23,6 @@
 
     <nav>
       <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
       <div class="search-box">
         <input type="search" placeholder="Busquemos algunas cosas...">
         <span><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -298,7 +297,7 @@
 
         <article id="container-datos-usuario" class="contenedor">
             <div class="venta-exitosa">
-                <h1 align="center">Venta realizada exitosamente</h1>
+                <h1 align="center">Compra realizada exitosamente</h1>
                 <img src="imagenes/paloma_verde.png" alt="" height="200">
                 <p align="center">Gracias por adquirir nuestros productos. Esperamos que tu experiencia con nosotros fuera extraordinaria.</p>
                 <label align="center" type="submit" name="factura" id="agregar" value="factura" class="btn" disabled>
@@ -306,19 +305,23 @@
                     Generar factura
                 </label>
                 <br>
-                <label align="center" type="submit" name="regresar" id="regresar" value="regresar" class="btn" disabled>
+                <!-- <label align="center" type="submit" name="regresar" id="regresar" value="regresar" class="btn" disabled>
                     <i class="fa-solid fa-home"></i>
                     Regresar al menú
-                </label>
+                </label> -->
+                <input type="button" id='regresar' name='regresar' value="Regresar al menú" onclick="window.location.href='index.php'" class="btn">
             </div>
 
             
         </article>
 
-        <script src="js/alertasPerfil.js"></script>
-        <script src="js/validPerfil.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
     
 </body>
 </html>
+
+<script>
+
+
+</script>

@@ -3,6 +3,56 @@ error_reporting(0);
 session_start();
 include("no_iniciada_cli.php");
 $sesion_i = $_SESSION["Usuario"];
+
+
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$con = sqlsrv_connect($serverName, $connectionInfo); 
+
+$query = "SELECT * 
+FROM Tarjetas 
+WHERE Usuario='$sesion_i'";
+
+$resultado = sqlsrv_query($con, $query);
+$row=sqlsrv_fetch_array($resultado);
+$no_tar=$row["no_tarjeta"];
+$fecha=$row["fecha_ven_mes"];
+$fecha1=$row["fecha_ven_anio"];
+$nombre=$row["Nombre_Tar"];
+
+$query= "SELECT* 
+FROM Direccion 
+where Usuario ='".$sesion_i."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $colonia=$row['colonia'];
+  $calle=$row['calle'];
+  $no_calle=$row['no_calle'];
+  $cp=$row['codigo_postal'];
+  $auxRela=$row['Ciudad_Estado'];
+
+$query= "SELECT* 
+FROM estados_municipios 
+where id ='".$auxRela."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $auxMun=$row['municipios_id'];
+  $auxEst=$row['estados_id'];
+
+$query= "SELECT* 
+FROM municipios 
+where Id_Municipios ='".$auxMun."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $municipio=$row['municipio'];
+
+$query= "SELECT* 
+FROM estados 
+where id ='".$auxEst."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $estado=$row['Estado'];
+
 ?>
 
 
@@ -301,19 +351,6 @@ $sesion_i = $_SESSION["Usuario"];
         </div>
       </div>
     </article>
-    <?php
-    $serverName='localhost';
-    $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-    $con = sqlsrv_connect($serverName, $connectionInfo); 
-    $query = "SELECT * FROM Tarjetas WHERE Usuario='$sesion_i'";
-    $resultado = sqlsrv_query($con, $query);
-    $row=sqlsrv_fetch_array($resultado);
-    $no_tar=$row["no_tarjeta"];
-    $fecha=$row["fecha_ven_mes"];
-    $fecha1=$row["fecha_ven_anio"];
-    $nombre=$row["Nombre_Tar"];
-    ?>
-
     <section class="container-all">
 
         <article id="container-datos-usuario" class="contenedor">
@@ -357,62 +394,37 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <div class="entrada-2">
                     <div class="input-group">
-                        <input type="text" name="calle" id="calle" required class="input" maxlength="20">
+                        <input type="text" name="calle" id="calle" required class="input" maxlength="20" value=<?php echo $calle;?>>
                         <label for="calle" class="input-label">Calle</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="numero" id="numero" required class="input" maxlength="10">
+                        <input type="text" name="numero" id="numero" required class="input" maxlength="10" value=<?php echo $no_calle;?>>
                         <label for="numero" class="input-label">Número</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" >
+                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" value=<?php echo $colonia;?>>
                         <label for="colonia" class="input-label">Colonia</label>
                     </div>
 
                     <div class="input-group">
-                    <select name="estado" id="estado" name="estado" class="estado">
-                    <option value="<?php echo $auxEst;?>"><?php echo $estado;?></option>
-                                <?php
-                                $serverName='localhost';
-                                $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-                                $con = sqlsrv_connect($serverName, $connectionInfo); 
-                                
-                                $query = "SELECT Id, Estado FROM estados";
-                                $resultado = sqlsrv_query($con, $query);
-
-                                    while($row = sqlsrv_fetch_array($resultado)){?>
-                                        <option value="<?php echo $row['Id'];?>"><?php echo $row['Estado'];?></option>
-                                <?php } ?>
-                            </select>
-                        <!-- <input type="text" name="estado" id="estado" required class="input" value=
-                        //?php echo $estado;?>>
-                        <label for="estado" class="input-label">Estado</label> -->
+                      <input type="text" name="estado" id="estado" required class="input" maxlength="20" value=<?php echo $estado;?>>
+                        <label for="colonia" class="input-label">Colonia</label>
                     </div>
 
                     <div class="input-group">
-                            <select name="municipio" id="municipio" class="municipio">
-                                <option value="<?php echo $auxMun;?>"><?php echo $municipio;?></option>
-                                
-                                <!-- Generar aquí el contenido de las ciudades -->
-                            </select>
-                        <!-- <input type="text" name="municipio" id="municipio" required class="input" value=
-                        //</?p//hp echo $municipio;?>>
-                        <label for="municipio" class="input-label">Municipio</label> -->
-
-
+                        <input type="text" name="municipio" id="municipio" required class="input" maxlength="20" value=<?php echo $municipio;?>>
+                        <label for="colonia" class="input-label">Colonia</label>
                     </div>
 
                     <div class="input-group">
                         <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
-                        maxlength="5" minlength="5">
+                        maxlength="5" minlength="5" value=<?php echo $cp;?>>
                         <label for="codigo-postal" class="input-label">Código postal</label>
                     </div>
 
                 </div>    
-
-                <!-- <input type="submit" name="boton3" value="Actualizar contraseña" class="btn"> -->
                 <br>
                 <br>
                 <br>
@@ -426,10 +438,26 @@ $sesion_i = $_SESSION["Usuario"];
 
             </form>
         </article>
-        <script src="js/alertasPerfil.js"></script>
-        <script src="js/validPerfil.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
 </body>
 
 </html>
+
+<?php
+$idProducto=$_GET["item"];
+//$idProducto=13;
+
+  echo "
+  <script>
+    let auxId= $idProducto;
+  </script>";
+
+?>
+
+<script>
+  function datos(){
+    let envio= auxId;
+    window.location.href="ventana_confirmacion.php?item="+envio;
+  }
+</script>
