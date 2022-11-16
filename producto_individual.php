@@ -1,5 +1,4 @@
 <?php
-$x="9";
 error_reporting(0);
 ?>
 
@@ -300,23 +299,24 @@ error_reporting(0);
     </article>
 
     <section class="container-all">
-
+        
         <article id="container-datos-usuario" class="contenedor">
             <div class="imagen_producto">
-              <p>Nombre del producto</p>
+              <p id="nombre">Nombre del producto</p>
 
-                <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300">
+                <img src="" alt=""  id="imagen" class="imagen-producto" height="300">
+                <!-- <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300"> -->
 
             </div>
 
             <div class="comprar-producto">
               <form action="#" class="formulario-producto">
                 <div class="labels-precio">
-                  <label align="center" for="" class="label-precio">Precio total: </label>
+                  <label align="center" class="label-precio">Precio total: </label>
                   
-                  <label align="center" for="Precio" class="label-total" id="precio">$850</label>
+                  <label align="center" class="label-total" id="precio">$850</label>
                   
-                  <label align="center" for="Precio" class="label-noDescuento" id="precio"><del>$850</del></label>
+                  <label align="center" class="label-noDescuento" id="precioDes"><del>$850</del></label>
                 </div>
                
                 <div class="div-cantidad">
@@ -336,9 +336,9 @@ error_reporting(0);
                 </label>    
                  
                 <br>
-                <label align="center" type="submit" name="existentes" id="existentes" class="label-existentes" disabled>
+                <label align="center" type="submit" name="existencia" id="existencia" class="label-existentes" disabled>
                   <span>Existentes: </span>
-                  <span>10</span>
+                  <span>0</span>
                 </label>
               </form>
 
@@ -346,19 +346,69 @@ error_reporting(0);
             <br>
 
             <div class="descripcion-producto">
-              <h1>Descripción del producto</h1>
+              <h1>Descripción del producto - Características - Especificaciones</h1>
               <br>
-              <p>Aqui va la descripción del producto</p>
+              <p id="descripcion">Aqui va la descripción del producto</p>
               
             </div>
 
             
         </article>
-
-        <script src="js/alertasPerfil.js"></script>
-        <script src="js/validPerfil.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
 </body>
 
 </html>
+
+<?php
+$idProducto=$_GET["item"];
+$idProducto=13;
+
+//Consulta para obtener los datos del productos seleccionado
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$con = sqlsrv_connect($serverName, $connectionInfo); 
+
+
+$query="SELECT Productos.nombre, Productos.precio_ven, Productos.descripcion, ruta
+FROM [Productos], [imagenes]
+where Productos.id_producto=imagenes.id_prod and Productos.id_producto=$idProducto";
+
+$resultado=sqlsrv_query($con, $query);
+if($resultado==true){
+  $row = sqlsrv_fetch_array($resultado);
+  $nomProd=$row["nombre"];
+  $auxPrecio=$row["precio_ven"];
+  $desProd=$row["descripcion"];
+  $ruta=$row["ruta"];
+
+  //Obtener el total de existentes del producto, en todas las sucursales.
+  $query = "SELECT cantidad FROM Inventario_suc
+  WHERE id_producto = $idProducto";
+
+  $resultado = sqlsrv_query($con, $query);
+
+  $existentes = 0;
+
+  while($row = sqlsrv_fetch_array($resultado)){
+      $existentes = $existentes + $row["cantidad"];
+  }
+
+  $precioProd= "$ ".substr($auxPrecio, 0, -2);
+  
+  echo "
+  <script>
+    document.getElementById('nombre').innerHTML = '$nomProd';
+    document.getElementById('precio').innerHTML = '$precioProd';
+    document.getElementById('precioDes').innerHTML = '';
+    document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
+    document.getElementById('descripcion').innerHTML = '$desProd';
+    document.getElementById('imagen').src= '$ruta';
+    
+  </script>";
+
+}
+
+//Cerrar conexion
+sqlsrv_close($con);
+?>

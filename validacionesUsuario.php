@@ -133,7 +133,6 @@ class Usuario
                                                                         if ($numt == 10) {
 
                                                                             //los datos pasaron todas las verificaciones
-                                                                            $this->guardar();
                                                                             echo json_encode("todo chido");
                                                                             //$in->alertas("aceptado", 'Listo!!!', 'Los datos se han registrado con éxito');
                                                                         } else {
@@ -193,29 +192,6 @@ class Usuario
         }
     }
 
-    function guardar()
-    {
-        $nombre = $_POST["nombreCliente"];
-        $paterno = $_POST["apellidoPaterno"];
-        $materno = $_POST["apellidoMaterno"];
-        $correo = $_POST["email"];
-        $telefono = $_POST["Teléfono"];
-        $usuario = $_POST["usuario"];
-
-        //escribir campos en el fichero
-        $file = fopen("archivo_campos.txt", "w");
-        fwrite($file, $nombre . PHP_EOL);
-        fwrite($file, $paterno . PHP_EOL);
-        fwrite($file, $materno . PHP_EOL);
-        fwrite($file, $correo . PHP_EOL);
-        fwrite($file, $telefono . PHP_EOL);
-        fwrite($file, $usuario . PHP_EOL);
-
-        fclose($file);
-
-        //include ("registroContrasea.php");
-
-    }
 
     //devuelve la cantidad de numeros encontrados en una cadena
     function numeros($cadena)

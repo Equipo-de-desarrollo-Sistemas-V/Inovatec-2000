@@ -7,7 +7,7 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 
 $salida="";
 //Consulta normal, muetra todos los registros
-$query="SELECT ventas.fecha, ventas.id_prod, ventas.nombre,
+$query="SELECT ventas.id_ventas, ventas.fecha, ventas.id_prod, ventas.nombre,
 ventas.id_suc, Apartados.Nombre, Subapartados.SubApartado, 
 ventas.cantidad, ventas.precio_ven,
 ventas.descuento, ventas.total
@@ -15,7 +15,7 @@ FROM [ventas], [Productos], [Apartados], [Subapartados]
 WHERE ventas.id_prod=Productos.id_producto and 
 ventas.nombre=Productos.nombre and
 Productos.Subapartado=Subapartados.Id_subap and 
-Productos.Apartado=Apartados.ID_ap";
+Productos.Apartado=Apartados.ID_ap ORDER BY ventas.fecha";
 
 //detecta si se escribio algo en la caja de busqueda
 //Consulta que busca lo que hay dentro de la caja de busqueda, en todas las columnas
@@ -26,7 +26,8 @@ if (isset($_POST['consulta'])){
     ventas.cantidad, ventas.precio_ven,
     ventas.descuento, ventas.total
     FROM [ventas], [Productos], [Apartados], [Subapartados]
-    WHERE (ventas.fecha like '%".$q."%' or 
+    WHERE (ventas.id_ventas like '%".$q."%' or 
+    ventas.fecha like '%".$q."%' or 
     ventas.id_prod like '%".$q."%' or 
     ventas.nombre like '%".$q."%' or
     ventas.id_suc like '%".$q."%' or
@@ -74,14 +75,15 @@ if($resultado==true){
 							$cate=$row["Nombre"];
 							$subcate=$row["SubApartado"];
 							$cantidad=$row["cantidad"];
-							$pre_ven=$row["precio_ven"];
+							$pre_ven=substr($row["precio_ven"],0,-2);
                             $descuento=$row["descuento"];
-                            $total=$row["total"];
+                            $total=substr($row["total"],0,-2);
+                            $id=$row["id_ventas"];
 							$edi='Editar';
 							$eli='Eliminar';
         //muestra los resultados en la tabla
         $salida.='<tr>';
-        $salida.='<td>'.'</td>';
+        $salida.='<td>'.$id.'</td>';
         $salida.='<td>'.$fecha.'</td>';
         $salida.='<td>'.$id_prod.'</td>'; 
         $salida.='<td>'.$nombre.'</td>'; 
@@ -89,9 +91,9 @@ if($resultado==true){
         $salida.='<td>'.$cate.'</td>'; 
         $salida.='<td>'.$subcate.'</td>'; 
         $salida.='<td>'.$cantidad.'</td>'; 
-        $salida.='<td>'.$pre_ven.'</td>';
+        $salida.='<td>'."$".$pre_ven.'</td>';
         $salida.='<td>'.$descuento.'</td>';
-        $salida.='<td>'.$total.'</td>';
+        $salida.='<td>'."$".$total.'</td>';
 		$salida.='</tr>';
     }
     

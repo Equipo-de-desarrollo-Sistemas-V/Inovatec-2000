@@ -1,3 +1,11 @@
+<?php
+error_reporting(0);
+session_start();
+include("no_iniciada_cli.php");
+$sesion_i = $_SESSION["Usuario"];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -293,6 +301,18 @@
         </div>
       </div>
     </article>
+    <?php
+    $serverName='localhost';
+    $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+    $con = sqlsrv_connect($serverName, $connectionInfo); 
+    $query = "SELECT * FROM Tarjetas WHERE Usuario='$sesion_i'";
+    $resultado = sqlsrv_query($con, $query);
+    $row=sqlsrv_fetch_array($resultado);
+    $no_tar=$row["no_tarjeta"];
+    $fecha=$row["fecha_ven_mes"];
+    $fecha1=$row["fecha_ven_anio"];
+    $nombre=$row["Nombre_Tar"];
+    ?>
 
     <section class="container-all">
 
@@ -305,22 +325,23 @@
 
             <div class="entrada-2">
                 <div class="input-group">
-                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="100" minlength="3">
+                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="40" value=<?php echo $nombre;?>>
                     <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
+                    
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16">
+                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16" value=<?php echo $no_tar;?>>
                     <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" >
+                    <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" value=<?php echo $fecha;?>>
                     <label for="month-expiracion" class="input-label">Mes de expiración</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2">
+                    <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2" value=<?php echo $fecha1;?>>
                     <label for="year-expiracion" class="input-label">Año de expiración</label>
                 </div>
                 <div class="input-group">
