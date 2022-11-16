@@ -10,11 +10,11 @@
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <title>Datos venta</title>
+  <title>Compra </title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/datosVenta.css">
+  <link rel="stylesheet" href="css/ventana_confirmacion.css">
 </head>
 
 <body>
@@ -297,118 +297,28 @@
     <section class="container-all">
 
         <article id="container-datos-usuario" class="contenedor">
-                <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
+            <div class="venta-exitosa">
+                <h1 align="center">Venta realizada exitosamente</h1>
+                <img src="imagenes/paloma_verde.png" alt="" height="200">
+                <p align="center">Gracias por adquirir nuestros productos. Esperamos que tu experiencia con nosotros fuera extraordinaria.</p>
+                <label align="center" type="submit" name="factura" id="agregar" value="factura" class="btn" disabled>
+                    <i class="fa-solid fa-file-invoice"></i>
+                    Generar factura
+                </label>
                 <br>
-                <br>
-
-            <h3 id="subtitulo">Datos bancarios</h3>
-
-            <div class="entrada-2">
-                <div class="input-group">
-                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="100" minlength="3">
-                    <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16">
-                    <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" >
-                    <label for="month-expiracion" class="input-label">Mes de expiración</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2">
-                    <label for="year-expiracion" class="input-label">Año de expiración</label>
-                </div>
-                <div class="input-group">
-                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3">
-                    <label for="ccv" class="input-label">CCV</label>
-                </div>
+                <label align="center" type="submit" name="regresar" id="regresar" value="regresar" class="btn" disabled>
+                    <i class="fa-solid fa-home"></i>
+                    Regresar al menú
+                </label>
             </div>
-            <br>
-            <br>
 
-            <h3 id="subtitulo">Datos de dirección</h3>
-
-
-                <div class="entrada-2">
-                    <div class="input-group">
-                        <input type="text" name="calle" id="calle" required class="input" maxlength="20">
-                        <label for="calle" class="input-label">Calle</label>
-                    </div>
-
-                    <div class="input-group">
-                        <input type="text" name="numero" id="numero" required class="input" maxlength="10">
-                        <label for="numero" class="input-label">Número</label>
-                    </div>
-
-                    <div class="input-group">
-                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" >
-                        <label for="colonia" class="input-label">Colonia</label>
-                    </div>
-
-                    <div class="input-group">
-                    <select name="estado" id="estado" name="estado" class="estado">
-                    <option value="<?php echo $auxEst;?>"><?php echo $estado;?></option>
-                                <?php
-                                $serverName='localhost';
-                                $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-                                $con = sqlsrv_connect($serverName, $connectionInfo); 
-                                
-                                $query = "SELECT Id, Estado FROM estados";
-                                $resultado = sqlsrv_query($con, $query);
-
-                                    while($row = sqlsrv_fetch_array($resultado)){?>
-                                        <option value="<?php echo $row['Id'];?>"><?php echo $row['Estado'];?></option>
-                                <?php } ?>
-                            </select>
-                        <!-- <input type="text" name="estado" id="estado" required class="input" value=
-                        //?php echo $estado;?>>
-                        <label for="estado" class="input-label">Estado</label> -->
-                    </div>
-
-                    <div class="input-group">
-                            <select name="municipio" id="municipio" class="municipio">
-                                <option value="<?php echo $auxMun;?>"><?php echo $municipio;?></option>
-                                
-                                <!-- Generar aquí el contenido de las ciudades -->
-                            </select>
-                        <!-- <input type="text" name="municipio" id="municipio" required class="input" value=
-                        //</?p//hp echo $municipio;?>>
-                        <label for="municipio" class="input-label">Municipio</label> -->
-
-
-                    </div>
-
-                    <div class="input-group">
-                        <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
-                        maxlength="5" minlength="5">
-                        <label for="codigo-postal" class="input-label">Código postal</label>
-                    </div>
-
-                </div>    
-
-                <!-- <input type="submit" name="boton3" value="Actualizar contraseña" class="btn"> -->
-                <br>
-                <br>
-                <br>
-
-
-
-                <input type="submit" name="boton4" id="boton4" value="Comprar" class="btn" disabled>
-                <br>
-                <br>
-                <br>
-
-            </form>
+            
         </article>
+
         <script src="js/alertasPerfil.js"></script>
         <script src="js/validPerfil.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
+    
 </body>
-
 </html>
