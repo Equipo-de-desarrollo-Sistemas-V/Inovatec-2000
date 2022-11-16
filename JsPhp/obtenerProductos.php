@@ -31,6 +31,10 @@
         $rutas_productos[] = $fila['ruta'];
     }
 
+    /* Creamos un arreglo para almacenar los datos de la consulta */
+    $data = array('nombres' => $nombres_productos, 'precios' => $precios_productos, 'categorias' => $categorias_productos, 'subcategorias' => $subcategorias_productos, 'rutas' => $rutas_productos);
+    echo json_encode($data);
+
     /* $mensaje = "Categoria: " . $nombre_categoria . " Subcategoria: " . $nombre_subcategoria;
     $data = array('mensaje' => $mensaje);
     header ("Content-Type:text/json");
