@@ -450,7 +450,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion3-imagen1">
 
             <h3 class="nombreProducto"><span id="seccion3-nombre1"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id9" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -462,7 +462,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion3-imagen2">
 
             <h3 class="nombreProducto"><span id="seccion3-nombre2"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id10" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -474,7 +474,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion3-imagen3">
 
             <h3 class="nombreProducto"><span id="seccion3-nombre3"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id11" class="btn"> Comprar</a>
           </div>
 
           <div class="cardProducto">
@@ -486,7 +486,7 @@ $sesion_i = $_SESSION["Usuario"];
             <img src="" alt="" id="seccion3-imagen4">
 
             <h3 class="nombreProducto"><span id="seccion3-nombre4"></span></h3>
-            <a href="#" class="btn">Comprar</a>
+            <a onclick="href='producto_individual.php?item='+id12" class="btn"> Comprar</a>
           </div>
 
       </article>
