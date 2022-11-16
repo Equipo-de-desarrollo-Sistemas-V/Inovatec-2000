@@ -122,10 +122,8 @@ header {
 
 .container-all {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 0.5fr);
     padding-bottom: 40px;
-    height: 92rem;
+    height: auto;
 }
 
 /* Estilos del contenedor del titulo y el menu */
@@ -179,6 +177,12 @@ header {
 
 #subtitulo {
     font-size: 26px;
+    font-weight: 700;
+    margin: 0px 0px 20px 0px;
+    color: #000;
+}
+h1{
+    font-size: 32px;
     font-weight: 700;
     margin: 0px 0px 10px 0px;
     color: #000;
@@ -245,15 +249,15 @@ header {
 
 /* Estilos para el boton */
 .btn {
-    width: 200px;
+    width: auto;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
     background-color: #e6b323;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 600;
     cursor: pointer;
     box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.50);
     transition: box-shadow 300ms;
@@ -288,7 +292,7 @@ header {
         width: 370px;
     }
 
-    #subtitulo {
+    .subtitulo {
         font-size: 20px;
         font-weight: 700;
         margin: 0px 0px 10px 0px;

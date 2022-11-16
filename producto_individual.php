@@ -304,7 +304,7 @@ error_reporting(0);
             <div class="imagen_producto">
               <p id="nombre">Nombre del producto</p>
 
-                <img src="" alt=""  id="imagen" class="imagen-producto" height="300">
+                <img src="" alt=""  id="imagen" class="imagen-producto" height="300" width="300">
                 <!-- <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300"> -->
 
             </div>
@@ -325,18 +325,24 @@ error_reporting(0);
                 </div>
                 <br>
                 
-                <label align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
+                <a align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
                   <i class="fa-solid fa-cart-shopping"></i>
                   Agregar al carrito
-                </label>
+                </a>
                 <br>
                 <!-- <label align="center" onclick="alert('Proveedor actualizado con éxito')" name="comprar" id="comprar" class="btn">
                   <i class="fa-solid fa-bag-shopping"></i>
                   Comprar
                 </label>   -->
-                <input type="submit" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
+
+                <a align="center" type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
+                <i class="fa-solid fa-bag-shopping"></i>
+                Comprar
+                </a>
+
+                <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
                 <br>
-                <label align="center" type="submit" name="existencia" id="existencia" class="label-existentes" disabled>
+                <label align="center" name="existencia" id="existencia" class="label-existentes" disabled>
                   <span>Existentes: </span>
                   <span>0</span>
                 </label>
@@ -412,30 +418,54 @@ if($resultado==true){
 
 //Cerrar conexion
 sqlsrv_close($con);
+
+//existentes, que la cantidad no exeda, 
 ?>
 
 
 <script>
-  com = document.getElementById('comprar');
-  com.addEventListener("click", (e) => {
-    alert("Qu hay");
-  });
+  //obtengo el valor  de lo que se esta escribiendo en el input de cantidad y valido
+  cantidadE.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
 
-  /*
+	cantidadE.value = valorInput
+  .replace(/[^0-9.]/, "")
+  })
+
+  //Valdido que no este vacio y que el numero sea entero, mlientras que no sea vedadero el boton esta desactivado
+  banCanti=true
+  const input = document.querySelector('cantidadE');
+  cantidadE.addEventListener('input', updateValue);
+  
+  function updateValue(){
+    let canti = document.getElementById('cantidadE').value;
+    const comprar = document.getElementById('comprar');
+    if (canti=="" || canti%1!=0 || canti<=0){
+      cantidadE.style.border = "3px solid red";
+      comprar.disabled=true;
+      banCanti=false
+    }else{
+      cantidadE.removeAttribute("style");
+      comprar.disabled=false;
+    }
+  }
+
+
+  //funcion que es llamada por el boton de comprar, valido que haya stock, que la cantidad sea menor o igual que el stock
   function datos(){
     let canti = document.getElementById('cantidadE').value;
-    if (canti==""){
-      a=a;
-    }else{
       if (auxExis==0){
-        alert('Por el momento no contamos con existentes')
+        alert('El stock esta vacío')
       }else{
-        let valor = document.getElementById('cantidadE').value;
-        let envio= auxId+"/"+canti;
-        document.getElementById('descripcion').innerHTML = envio;
-        location.href="datos_venta.php?item="+envio;
+        if (canti>auxExis){
+          alert('Stock insuficiente')
+        }else{
+          let envio= auxId+"/"+canti;
+          document.getElementById('descripcion').innerHTML = envio;
+          location.href="datos_venta.php?item="+envio;
+        }
       }
     }
     
-  } */
+
 </script>
