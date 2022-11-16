@@ -440,7 +440,7 @@ sqlsrv_close($con);
   function updateValue(){
     let canti = document.getElementById('cantidadE').value;
     const comprar = document.getElementById('comprar');
-    if (canti=="" || canti%1!=0){
+    if (canti=="" || canti%1!=0 || canti<=0){
       cantidadE.style.border = "3px solid red";
       comprar.disabled=true;
       banCanti=false
