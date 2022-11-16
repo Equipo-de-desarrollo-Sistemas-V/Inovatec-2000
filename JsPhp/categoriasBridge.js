@@ -1,7 +1,10 @@
 window.onload = function () {
     let url = "JsPhp/obtenerProductos.php";
-    categoria = "Computadoras";
-    subcategoria = "Laptop";
+    /* categoria = "Computadoras";
+    subcategoria = "Laptop"; */
+
+    categoria = document.getElementById('categoria').textContent
+    subcategoria = document.getElementById('subcategoria').textContent
 
     let form = new FormData();
     form.append("categoria", categoria);
@@ -21,11 +24,13 @@ window.onload = function () {
 
         let size = Object.keys(data).length;
 
+        console.log("El tamaño es: " + size);
+
         let arreglosVariables = Object.values(data);
 
         console.log(arreglosVariables);
 
-        for (let i = 0; i < size -1; i++) {
+        for (let i = 0; i < size -2; i++) {
             body += `
                 <div class="cardProducto">
                     <div class="encabezado">
@@ -36,10 +41,10 @@ window.onload = function () {
                 <img src="${arreglosVariables[4][i]}" alt="" id="seccion1-imagen1">
 
                 <h3 class="nombreProducto"><span id="seccion1-nombre1">${arreglosVariables[0][i]}</span></h3>
-                <a href="#" class="btn">Comprar</a>
+                <a href="producto_individual.php?item=${arreglosVariables[5][i]}" class="btn">Comprar</a>
                 </div>
             `;
         }
         document.querySelector('.containerCards').innerHTML = body;
     }
-}
+} 
