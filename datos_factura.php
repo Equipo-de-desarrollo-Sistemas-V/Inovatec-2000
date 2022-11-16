@@ -302,15 +302,16 @@
                 <br>
 
             <h3 id="subtitulo">Datos para la factura</h3>
-
+            <form action="Factura.php" class="formularios" method="POST">
             <div class="entrada-2">
+              <!--<form action="Factura.php" class="formularios" method="post">-->
                 <div class="input-group">
                     <input type="text" name="nombreDenominación" id="nombreDenominación" required class="input" maxlength="100" minlength="3">
                     <label for="nombre-denominación" class="input-label">Nombre denominación o razón social</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name=regimenFiscal" id="regimenFiscal" required class="input" maxlength="100">
+                    <input type="text" name="regimenFiscal" id="regimenFiscal" required class="input" maxlength="100">
                     <label for="regimen-fiscal" class="input-label">Régimen fiscal del receptor de comprobante</label>
                 </div>
 
@@ -323,8 +324,9 @@
                     <input type="text" name="usoComprobante" id="usoComprobante" required class="input">
                     <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
                 </div>
-
+              <!--</form>-->
             </div>
+            
             <br>
             <br>
 
@@ -332,7 +334,7 @@
             <br>
             <br>
             <br>
-            
+            </form>
         </article>
         <script src="js/alertasPerfil.js"></script>
         <script src="js/validPerfil.js"></script>
