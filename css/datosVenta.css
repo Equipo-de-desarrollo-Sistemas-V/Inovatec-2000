@@ -224,7 +224,7 @@ header {
 }
 
 .input {
-    width: 300px;
+    width: 350px;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -235,27 +235,19 @@ header {
 }
 
 .input-label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(10px, 10px);
-    transform-origin: left;
-    transition: transform .25s;
-}
-
-.input:focus~.input-label,
-.input:valid~.input-label {
-    transform: translate(0, -30px) scale(.8);
     color: #e6b323;
+    position: absolute;
+    top: -30px;
+    left: 0;
+
 }
 
-.input:is(:focus, :valid) {
-    outline-color: #e6b323;
-}
 
 /* Estilos para el boton */
 .btn {
+    width: 200px;
     font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
     background-color: #e6b323;
     color: #fff;
     padding: 10px 20px;
@@ -350,7 +342,7 @@ header {
 
 .estado, .municipio {
     background: transparent;
-    width: 300px;
+    width: 350px;
     height: 2.5rem;
     border-radius: 5px;
     border-color: #e6b323;

@@ -325,8 +325,8 @@ $sesion_i = $_SESSION["Usuario"];
 
             <div class="entrada-2">
                 <div class="input-group">
-                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="40" value=<?php echo $nombre;?>>
                     <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
+                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="40" value=<?php echo $nombre;?>>
                     
                 </div>
 
