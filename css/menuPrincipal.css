@@ -597,10 +597,10 @@ a{
     .nav-btn{
         position: fixed;
         height: calc(100vh - 3rem);
-        top: 3rem;
+        top: 9.8rem;
         left: 0;
         width: 100%;
-        background-color: #69bde7;
+        background-color: #eeba2b;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
@@ -608,6 +608,7 @@ a{
         overflow-y: auto;
         transform: translateX(100%);
         transition: .65s;
+        z-index: 1;
     }
 
     #check:checked ~ .nav-btn{
@@ -641,7 +642,7 @@ a{
 
     .nav-link:hover > a{
         transform: scale(1);
-        background-color: #50a9d6;
+        background-color: #ff7400;
     }
 
     .dropdown, .dropdown.second{
@@ -653,7 +654,7 @@ a{
         pointer-events: auto;
         width: 100%;
         padding: 0;
-        background-color: #3183ac;
+        background-color: #c1951e;
         display: none;
     }
     
@@ -688,14 +689,14 @@ a{
 
     .arrow{
         z-index: 1;
-        background-color: #69bde7;
+        background-color: #ff7400;
         left: 10%;
         transform: scale(1.1) rotate(45deg);
         transition: .5s;
     }
 
     .nav-link:hover .arrow{
-        background-color: #50a9d6;
+        background-color: #ff7400;
     }
 
     .dropdown .dropdown .arrow{
