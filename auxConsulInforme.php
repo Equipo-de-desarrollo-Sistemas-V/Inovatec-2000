@@ -80,10 +80,10 @@ if ($resultado == true) {
             $salida .= '<tr>';
             $salida .= '<td>' . $id . '</td>';
             $salida .= '<td>' . $cantidad . '</td>';
-            $salida .= '<td>' . $precio_venta . '</td>';
-            $salida .= '<td>' . $precio_compra . '</td>';
+            $salida .= '<td>' . "$".$precio_venta . '</td>';
+            $salida .= '<td>' . "$".$precio_compra . '</td>';
             $salida .= '<td>' . $iva . '</td>';
-            $salida .= '<td>' . $total       . '</td>';
+            $salida .= '<td>' . "$".$total       . '</td>';
         }
 
         //condicional que identifica cuando se acaba de mostrar el ultimo registros, y asi añadir una ultima fila
@@ -93,10 +93,10 @@ if ($resultado == true) {
             $salida .= '<tr>';
             $salida .= '<td>' . "" . '</td>';
             $salida .= '<td>' . "TOTAL" . '</td>';
-            $salida .= '<td>' . $total_precio_compra . '</td>';
-            $salida .= '<td>' . $total_precio_venta . '</td>';
+            $salida .= '<td>' . "$".$total_precio_compra . '</td>';
+            $salida .= '<td>' . "$".$total_precio_venta . '</td>';
             $salida .= '<td>' . $totIva . '</td>';
-            $salida .= '<td>' . $total_final . '</td>';
+            $salida .= '<td>' . "$".$total_final . '</td>';
 
         }
 

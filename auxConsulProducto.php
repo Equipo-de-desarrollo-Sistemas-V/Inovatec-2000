@@ -66,8 +66,8 @@ if($resultado==true){
 							$descri=$row["descripcion"];
 							$categoria=$row["Nombre"];
 							$subcate=$row["SubApartado"];
-							$pre_com=$row["precio_com"];
-							$pre_ven=$row["precio_ven"];
+							$pre_com=substr($row["precio_com"],0,-2);
+							$pre_ven=substr($row["precio_ven"],0,-2);
 							$proveedor=$row["nombre_empresa"];
                             $query0="SELECT ruta FROM imagenes WHERE id_prod='$id'";
                             $resultados0=sqlsrv_query($con, $query0);
@@ -87,8 +87,8 @@ if($resultado==true){
         $salida.='<td>'.$descri.'</td>'; 
         $salida.='<td>'.$categoria.'</td>'; 
         $salida.='<td>'.$subcate.'</td>'; 
-        $salida.='<td>'.$pre_com.'</td>'; 
-        $salida.='<td>'.$pre_ven.'</td>'; 
+        $salida.='<td>'."$".$pre_com.'</td>'; 
+        $salida.='<td>'."$".$pre_ven.'</td>'; 
         $salida.='<td>'.$proveedor.'</td>';
         $salida.='<td>'.'<p><img src="' .$imagen. '" width="50" height="50"></p></td>';
         $salida.='<td>'.$condi.'</td>';

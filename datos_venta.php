@@ -1,6 +1,60 @@
 <?php
 error_reporting(0);
+session_start();
+include("no_iniciada_cli.php");
+$sesion_i = $_SESSION["Usuario"];
+
+
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$con = sqlsrv_connect($serverName, $connectionInfo); 
+
+$query = "SELECT * 
+FROM Tarjetas 
+WHERE Usuario='$sesion_i'";
+
+$resultado = sqlsrv_query($con, $query);
+$row=sqlsrv_fetch_array($resultado);
+$no_tar=$row["no_tarjeta"];
+$fecha=$row["fecha_ven_mes"];
+$fecha1=$row["fecha_ven_anio"];
+$nombre=$row["Nombre_Tar"];
+
+$query= "SELECT* 
+FROM Direccion 
+where Usuario ='".$sesion_i."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $colonia=$row['colonia'];
+  $calle=$row['calle'];
+  $no_calle=$row['no_calle'];
+  $cp=$row['codigo_postal'];
+  $auxRela=$row['Ciudad_Estado'];
+
+$query= "SELECT* 
+FROM estados_municipios 
+where id ='".$auxRela."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $auxMun=$row['municipios_id'];
+  $auxEst=$row['estados_id'];
+
+$query= "SELECT* 
+FROM municipios 
+where Id_Municipios ='".$auxMun."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $municipio=$row['municipio'];
+
+$query= "SELECT* 
+FROM estados 
+where id ='".$auxEst."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $estado=$row['Estado'];
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +68,11 @@ error_reporting(0);
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <title>Comprar producto</title>
+  <title>Datos venta</title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/productoIndividual.css">
+  <link rel="stylesheet" href="css/datosVenta.css">
 </head>
 
 <body>
@@ -297,62 +351,92 @@ error_reporting(0);
         </div>
       </div>
     </article>
-
     <section class="container-all">
-        
+
         <article id="container-datos-usuario" class="contenedor">
-            <div class="imagen_producto">
-              <p id="nombre">Nombre del producto</p>
+                <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
+                <br>
+                <br>
 
-                <img src="" alt=""  id="imagen" class="imagen-producto" height="300">
-                <!-- <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300"> -->
+            <h3 id="subtitulo">Datos bancarios</h3>
 
-            </div>
-
-            <div class="comprar-producto">
-              <form action="#" class="formulario-producto">
-                <div class="labels-precio">
-                  <label align="center" class="label-precio">Precio total: </label>
-                  
-                  <label align="center" class="label-total" id="precio">$850</label>
-                  
-                  <label align="center" class="label-noDescuento" id="precioDes"><del>$850</del></label>
+            <div class="entrada-2">
+                <div class="input-group">
+                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="40" value=<?php echo $nombre;?>>
+                    <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
+                    
                 </div>
-               
-                <div class="div-cantidad">
-                  <label for="cantidad">Cantidad: </label>
-                  <input type="number" name="cantidadE" id="cantidadE" class="input-cantidad" value="1" min="1" required>
-                </div>
-                <br>
-                
-                <label align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
-                  <i class="fa-solid fa-cart-shopping"></i>
-                  Agregar al carrito
-                </label>
-                <br>
-                <!-- <label align="center" onclick="alert('Proveedor actualizado con éxito')" name="comprar" id="comprar" class="btn">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  Comprar
-                </label>   -->
-                <input type="submit" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
-                <br>
-                <label align="center" type="submit" name="existencia" id="existencia" class="label-existentes" disabled>
-                  <span>Existentes: </span>
-                  <span>0</span>
-                </label>
-              </form>
 
+                <div class="input-group">
+                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16" value=<?php echo $no_tar;?>>
+                    <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" value=<?php echo $fecha;?>>
+                    <label for="month-expiracion" class="input-label">Mes de expiración</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2" value=<?php echo $fecha1;?>>
+                    <label for="year-expiracion" class="input-label">Año de expiración</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3">
+                    <label for="ccv" class="input-label">CCV</label>
+                </div>
             </div>
             <br>
+            <br>
 
-            <div class="descripcion-producto">
-              <h1>Descripción del producto - Características - Especificaciones</h1>
-              <br>
-              <p id="descripcion">Aqui va la descripción del producto</p>
-              
-            </div>
+            <h3 id="subtitulo">Datos de dirección</h3>
 
-            
+
+                <div class="entrada-2">
+                    <div class="input-group">
+                        <input type="text" name="calle" id="calle" required class="input" maxlength="20" value=<?php echo $calle;?>>
+                        <label for="calle" class="input-label">Calle</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="numero" id="numero" required class="input" maxlength="10" value=<?php echo $no_calle;?>>
+                        <label for="numero" class="input-label">Número</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" value=<?php echo $colonia;?>>
+                        <label for="colonia" class="input-label">Colonia</label>
+                    </div>
+
+                    <div class="input-group">
+                      <input type="text" name="estado" id="estado" required class="input" maxlength="20" value=<?php echo $estado;?>>
+                        <label for="colonia" class="input-label">Colonia</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="municipio" id="municipio" required class="input" maxlength="20" value=<?php echo $municipio;?>>
+                        <label for="colonia" class="input-label">Colonia</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
+                        maxlength="5" minlength="5" value=<?php echo $cp;?>>
+                        <label for="codigo-postal" class="input-label">Código postal</label>
+                    </div>
+
+                </div>    
+                <br>
+                <br>
+                <br>
+
+
+
+                <input type="submit" name="boton4" id="boton4" value="Comprar" class="btn" disabled>
+                <br>
+                <br>
+                <br>
+
+            </form>
         </article>
     </section>
     <script src="js/linkHome.js"></script>
@@ -364,78 +448,16 @@ error_reporting(0);
 $idProducto=$_GET["item"];
 //$idProducto=13;
 
-//Consulta para obtener los datos del productos seleccionado
-$serverName='localhost';
-$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-$con = sqlsrv_connect($serverName, $connectionInfo); 
-
-
-$query="SELECT Productos.nombre, Productos.precio_ven, Productos.descripcion, ruta
-FROM [Productos], [imagenes]
-where Productos.id_producto=imagenes.id_prod and Productos.id_producto=$idProducto";
-
-$resultado=sqlsrv_query($con, $query);
-if($resultado==true){
-  $row = sqlsrv_fetch_array($resultado);
-  $nomProd=$row["nombre"];
-  $auxPrecio=$row["precio_ven"];
-  $desProd=$row["descripcion"];
-  $ruta=$row["ruta"];
-
-  //Obtener el total de existentes del producto, en todas las sucursales.
-  $query = "SELECT cantidad FROM Inventario_suc
-  WHERE id_producto = $idProducto";
-
-  $resultado = sqlsrv_query($con, $query);
-
-  $existentes = 0;
-
-  while($row = sqlsrv_fetch_array($resultado)){
-      $existentes = $existentes + $row["cantidad"];
-  }
-
-  $precioProd= "$ ".substr($auxPrecio, 0, -2);
-  
   echo "
   <script>
-    document.getElementById('nombre').innerHTML = '$nomProd';
-    document.getElementById('precio').innerHTML = '$precioProd';
-    document.getElementById('precioDes').innerHTML = '';
-    document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
-    document.getElementById('descripcion').innerHTML = '$desProd';
-    document.getElementById('imagen').src= '$ruta';
     let auxId= $idProducto;
-    let auxExis= $existentes;
   </script>";
 
-}
-
-//Cerrar conexion
-sqlsrv_close($con);
 ?>
 
-
 <script>
-  com = document.getElementById('comprar');
-  com.addEventListener("click", (e) => {
-    alert("Qu hay");
-  });
-
-  /*
   function datos(){
-    let canti = document.getElementById('cantidadE').value;
-    if (canti==""){
-      a=a;
-    }else{
-      if (auxExis==0){
-        alert('Por el momento no contamos con existentes')
-      }else{
-        let valor = document.getElementById('cantidadE').value;
-        let envio= auxId+"/"+canti;
-        document.getElementById('descripcion').innerHTML = envio;
-        location.href="datos_venta.php?item="+envio;
-      }
-    }
-    
-  } */
+    let envio= auxId;
+    window.location.href="ventana_confirmacion.php?item="+envio;
+  }
 </script>
