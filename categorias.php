@@ -297,99 +297,12 @@
       <h2 class="subtitulo" id="subtitulo">Titulo de la categoría</h2>
 
       <div class="containerCards">
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
 
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a href="#" class="btn">Comprar</a>
-        </div>  
       </div>
     </article>
   </section>
 </body>
-  <script>
+  <!-- <script>
     let url = "JsPhp/obtenerProductos.php";
     categoria = "Computadoras";
     subcategoria = "Laptop";
@@ -405,5 +318,6 @@
       .then(response => response.json())
       .then(data =>console.log(data))
       .catch(error => alert(error));
-  </script>
+  </script> -->
+  <script src="JsPhp/categoriasBridge.js"></script>
 </html>

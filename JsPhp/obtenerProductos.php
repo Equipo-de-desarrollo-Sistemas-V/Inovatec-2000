@@ -31,6 +31,11 @@
         $rutas_productos[] = $fila['ruta'];
     }
 
+    /* Elimina los dos ulimos digitos a los precios */
+    $precios_productos = array_map(function($precio){
+        return substr($precio, 0, -2);
+    }, $precios_productos);
+
     /* Creamos un arreglo para almacenar los datos de la consulta */
     $data = array('nombres' => $nombres_productos, 'precios' => $precios_productos, 'categorias' => $categorias_productos, 'subcategorias' => $subcategorias_productos, 'rutas' => $rutas_productos);
     echo json_encode($data);
