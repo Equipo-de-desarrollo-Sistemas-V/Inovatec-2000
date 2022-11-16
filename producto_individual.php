@@ -304,7 +304,7 @@ error_reporting(0);
             <div class="imagen_producto">
               <p id="nombre">Nombre del producto</p>
 
-                <img src="" alt=""  id="imagen" class="imagen-producto" height="300">
+                <img src="" alt=""  id="imagen" class="imagen-producto" height="300" width="300">
                 <!-- <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300"> -->
 
             </div>
