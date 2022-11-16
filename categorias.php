@@ -294,30 +294,30 @@
     </article>
 
     <article class="containerTarjetas">
-      <h2 class="subtitulo" id="subtitulo">Titulo de la categoría</h2>
+      <h2 class="subtitulo" id="subtitulo"></h2>
 
       <div class="containerCards">
 
       </div>
     </article>
+
+    <span id="categoria"style="display:none;"></span>
+    <span id="subcategoria"style="display:none;"></span>
   </section>
 </body>
-  <!-- <script>
-    let url = "JsPhp/obtenerProductos.php";
-    categoria = "Computadoras";
-    subcategoria = "Laptop";
 
-    let form = new FormData();
-    form.append("categoria", categoria);
-    form.append("subcategoria", subcategoria);
-    
-    fetch(url, {
-      method: "POST",
-      body: form
-    })
-      .then(response => response.json())
-      .then(data =>console.log(data))
-      .catch(error => alert(error));
-  </script> -->
   <script src="JsPhp/categoriasBridge.js"></script>
 </html>
+
+<?php
+  $item = $_GET['item'];
+
+  /* Separa el item en dos secciones y guardalo en diferentes variables */
+  $item = explode("/", $item);
+  
+  /* Asigna el nombre de la subcategoria al h2 con el id subtitulo */
+  echo "<script>document.getElementById('subtitulo').innerHTML = '$item[1]'</script>";
+
+  echo "<script>document.getElementById('categoria').innerText = '$item[0]'</script>";
+  echo "<script>document.getElementById('subcategoria').innerText = '$item[1]'</script>";
+?>

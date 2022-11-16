@@ -181,16 +181,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Desktops</a>
+                      <a href="categorias.php?item=computadoras/Desktops">Desktops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Laptops</a>
+                      <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Smartphones</a>
+                      <a href="categorias.php?item=computadoras/Smarthphones">Smartphones</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Tablets</a>
+                      <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
