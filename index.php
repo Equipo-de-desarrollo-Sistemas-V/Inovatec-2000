@@ -70,8 +70,9 @@ $sesion_i = $_SESSION["Usuario"];
                 <div class="dropdown">
 
                   <ul>
+                    <!-- '<a href="entradas_prod.php?item='.(strval($id)."/".$sucursal).'">'.$ent. '</a>'.'</td>'; -->
                     <li class="dropdown-link">
-                      <a href="">Ruteadores inalámbicos</a>
+                      <a href="categorias.php?item=computadoras/Ruteadores inalambricos" >Ruteadores inalámbicos</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="">Cables de red</a>

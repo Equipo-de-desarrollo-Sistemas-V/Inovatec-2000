@@ -496,6 +496,7 @@ a{
     align-content: center;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .containerCards{
@@ -503,6 +504,15 @@ a{
     grid-template-areas: "div div div div";
     column-gap: 20px;
     row-gap: 20px;
+}
+
+
+
+@media (max-width: 450px) {
+    .containerCards{
+        grid-template-areas: "div";
+    }
+    
 }
 
 /* Estilos para el contenido de las tarjetas */

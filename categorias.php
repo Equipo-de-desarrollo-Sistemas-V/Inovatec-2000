@@ -8,13 +8,17 @@
   <title>Categorias</title>
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/cards.css">
+  <script src="https://kit.fontawesome.com/2c54bc1d9c.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
   <input type="checkbox" name="" id="check">
   <nav>
     <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+    
     <div class="search-box">
       <input type="search" placeholder="Busquemos algunas cosas...">
       <span><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -60,6 +64,7 @@
               <div class="dropdown">
 
                 <ul>
+                  
                   <li class="dropdown-link">
                     <a href="">Ruteadores inalámbicos</a>
                   </li>
@@ -383,7 +388,22 @@
       </div>
     </article>
   </section>
-
 </body>
+  <script>
+    let url = "JsPhp/obtenerProductos.php";
+    categoria = "Computadoras";
+    subcategoria = "Laptop";
 
+    let form = new FormData();
+    form.append("categoria", categoria);
+    form.append("subcategoria", subcategoria);
+    
+    fetch(url, {
+      method: "POST",
+      body: form
+    })
+      .then(response => response.json())
+      .then(data =>console.log(data))
+      .catch(error => alert(error));
+  </script>
 </html>
