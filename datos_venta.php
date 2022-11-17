@@ -12,13 +12,33 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 $query = "SELECT * 
 FROM Tarjetas 
 WHERE Usuario='$sesion_i'";
+  $resultado = sqlsrv_query($con, $query);
+  $row=sqlsrv_fetch_array($resultado);
+  $no_tar=$row["no_tarjeta"];
+  $fecha=$row["fecha_ven_mes"];
+  $fecha1=$row["fecha_ven_anio"];
+  $nombre=$row["Nombre_Tar"];
 
-$resultado = sqlsrv_query($con, $query);
-$row=sqlsrv_fetch_array($resultado);
-$no_tar=$row["no_tarjeta"];
-$fecha=$row["fecha_ven_mes"];
-$fecha1=$row["fecha_ven_anio"];
-$nombre=$row["Nombre_Tar"];
+$query2 = "SELECT * 
+FROM banco 
+WHERE noTarjeta='$no_tar'";
+  $resultado2 = sqlsrv_query($con, $query2);
+  $cont=0;
+  while( $row2 = sqlsrv_fetch_array($resultado2) ) {
+      $cont++;
+  }
+  if ($cont!=0){
+    $resultadoS = sqlsrv_query($con, $query2);
+    $rowS=sqlsrv_fetch_array($resultadoS);
+    $auxTar=$rowS["noTarjeta"];
+    $auxCCV=$rowS["ccv"];
+    $auxDin=$rowS["dineros"];
+    //$nombre="si hay";
+  }else{
+    $auxTar="";
+    $auxCCV="";
+    $auxDin="";
+  }
 
 $query= "SELECT* 
 FROM Direccion 
@@ -54,7 +74,36 @@ where id ='".$auxEst."'";
   $estado=$row['Estado'];
 
 
-  sqlsrv_close($con);
+$idProducto=$_GET["item"];
+  
+$array1 = explode("/",$idProducto);
+$producto=$array1[0];
+$cantiCompra=$array1[1];
+
+$query= "SELECT nombre, precio_ven
+FROM Productos 
+where id_producto ='".$producto."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $nom=$row['nombre'];
+  $precio=substr($row['precio_ven'],0,-2);
+
+$subT=$precio;   // falta agregar descuento 
+$total=$subT*$cantiCompra;
+
+$precioProd= "$ ".substr($auxPrecio, 0, -2);
+echo "
+  <script>
+    let auxId= $producto;
+    let auxCan= $cantiCompra;
+    let auxNumTar= $auxTar;
+    let auxCcvTar= $auxCCV;
+    let auxDinTar= $auxDin;
+    let auxTot= $total;
+  </script>";
+  
+
+sqlsrv_close($con);
 ?>
 
 
@@ -70,6 +119,9 @@ where id ='".$auxEst."'";
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
   <title>Datos venta</title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
@@ -366,26 +418,26 @@ where id ='".$auxEst."'";
             <div class="entrada-2">
                 <div class="input-group">
                     <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
-                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="40" value=<?php echo $nombre;?> readonly="readonly">
+                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" class="input" value="<?php echo $nombre;?>" readonly="readonly">
                     
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16" value=<?php echo $no_tar;?> readonly="readonly">
+                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" class="input" value="<?php echo $no_tar;?>" readonly="readonly">
                     <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" value=<?php echo $fecha;?> readonly="readonly">
+                    <input type="text" name="monthExpiracion" id="monthExpiracion" class="input" value="<?php echo $fecha;?>" readonly="readonly">
                     <label for="month-expiracion" class="input-label">Mes de expiración</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2" value=<?php echo $fecha1;?> readonly="readonly">
+                    <input type="text" name="yearExpiracion" id="yearExpiracion" class="input" value="<?php echo $fecha1;?>" readonly="readonly">
                     <label for="year-expiracion" class="input-label">Año de expiración</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3">
+                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3" required>
                     <label for="ccv" class="input-label">CCV</label>
                 </div>
             </div>
@@ -395,28 +447,28 @@ where id ='".$auxEst."'";
             <h3 id="subtitulo">Datos de dirección</h3>
             <div class="entrada-2">
                 <div class="input-group">
-                    <input type="text" name="calle" id="calle" required class="input" maxlength="20" value=<?php echo $calle;?> readonly="readonly">
+                    <input type="text" name="calle" id="calle" class="input" value="<?php echo $calle;?>" readonly="readonly">
                     <label for="calle" class="input-label">Calle</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="numero" id="numero" required class="input" maxlength="10" value=<?php echo $no_calle;?> readonly="readonly">
+                    <input type="text" name="numero" id="numero" class="input" value="<?php echo $no_calle;?>" readonly="readonly">
                     <label for="numero" class="input-label">Número</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="colonia" id="colonia" required class="input" maxlength="20" value=<?php echo $colonia;?> readonly="readonly">
+                    <input type="text" name="colonia" id="colonia" class="input" value="<?php echo $colonia;?>" readonly="readonly">
                     <label for="colonia" class="input-label">Colonia</label>
                 </div>
 
                 <div class="input-group">
-                  <input type="text" name="estado" id="estado" required class="input" maxlength="20" value=<?php echo $estado;?> readonly="readonly">
-                    <label for="colonia" class="input-label">Colonia</label>
+                  <input type="text" name="estado" id="estado" class="input" value="<?php echo $estado;?>" readonly="readonly">
+                    <label for="colonia" class="input-label">Estado</label>
                 </div>
 
                 <div class="input-group">
                     <input type="text" name="municipio" id="municipio" required class="input" maxlength="20" value=<?php echo $municipio;?> readonly="readonly">
-                    <label for="colonia" class="input-label">Colonia</label>
+                    <label for="colonia" class="input-label">Municipio</label>
                 </div>
 
                 <div class="input-group">
@@ -432,32 +484,32 @@ where id ='".$auxEst."'";
             <div class="entrada-2">
                 <div class="input-group">
                     <label for="nombre-producto" class="input-label">Producto</label>
-                    <input type="text" name="nombreProducto" id="nombreProducto" required class="input" maxlength="40" >
+                    <input type="text" name="nombreProducto" id="nombreProducto" class="input" value="<?php echo $nom;?>">
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="precioUnitario" id="precioUnitario" required class="input" maxlength="16" >
+                    <input type="text" name="precioUnitario" id="precioUnitario" class="input" value="<?php echo $precio;?>">
                     <label for="precio-unitario" class="input-label">Precio unitario</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="cantidad" id="cantidad" required class="input" maxlength="2" minlength="2" >
+                    <input type="text" name="cantidad" id="cantidad" class="input" value="<?php echo $cantiCompra;?>">
                     <label for="producto-cantidad" class="input-label">Cantidad</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="subtotal" id="subtotal" required class="input"maxlength="2" minlength="2" >
+                    <input type="text" name="subtotal" id="subtotal" class="input" value="<?php echo $subT;?>">
                     <label for="subtotal" class="input-label">Subtotal</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="total" id="total" class="input" maxlength="3" minlength="3">
+                    <input type="text" name="total" id="total" class="input" value="<?php echo $total;?>">
                     <label for="total" class="input-label">Total</label>
                 </div>
             </div>
             <br>
 
-            <input type="submit" name="genCompra" id="genCompra" value="Finalizar compra" class="btn" disabled>
+            <input type="button" name="genCompra" id="genCompra" value="Finalizar compra" onclick="datos();" class="btn">
             <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
             <br>
             <br>
@@ -471,24 +523,56 @@ where id ='".$auxEst."'";
 
 </html>
 
-<?php
-$idProducto=$_GET["item"];
-//$idProducto=13;
-
-  echo "
-  <script>
-    let auxId= $idProducto;
-  </script>";
-
-?>
-
 <script>
+//obtengo el valor  de lo que se esta escribiendo en el input de ccv y valido
+ccv.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	ccv.value = valorInput
+  .replace(/[^0-9]/, "")
+  })
+
+  //Valdido que no este vacio y que el numero sea entero, mlientras que no sea vedadero el boton esta desactivado
+
+  const input = document.querySelector('ccv');
+  ccv.addEventListener('input', updateValue);
+  
+  function updateValue(){
+    let auxCCV = document.getElementById('ccv').value;
+    const comprar = document.getElementById('genCompra');
+    let auxLong=auxCCV.toString();
+    if (auxLong.length!=3){
+      ccv.style.border = "3px solid red";
+      genCompra.disabled=true;
+    }else{
+      ccv.removeAttribute("style");
+      genCompra.disabled=false;
+    }
+  }
+
   function datos(){
-    let envio= auxId;
-    window.location.href="ventana_confirmacion.php?item="+envio;
+    if (auxNumTar==""){
+      alert("Número de tarjeta no existente")
+    }else{
+      let auxCCV = document.getElementById('ccv').value;
+      if (auxCcvTar!=auxCCV){
+        alert("CCV incorrecto, favor de verificarlo")
+      }else{
+        if (auxDinTar<auxTot){
+          alert("Monto insuficiente")
+        }else{
+          let envio= auxId+"/"+auxCan;
+          location.href="ventana_confirmacion.php?item="+envio;
+        }
+      }
+    }
+    
   }
 </script>
+<!-- 
+
+
 exista tarjeta, saldo, ccv
 
 Datos de la compra
-Producto, Precio unitario, cantidad, subtotal, total
+Producto, Precio unitario, cantidad, subtotal, total -->

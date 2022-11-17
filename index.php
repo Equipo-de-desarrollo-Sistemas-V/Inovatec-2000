@@ -70,21 +70,17 @@ $sesion_i = $_SESSION["Usuario"];
                 <div class="dropdown">
 
                   <ul>
-                    <!-- '<a href="entradas_prod.php?item='.(strval($id)."/".$sucursal).'">'.$ent. '</a>'.'</td>'; -->
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Ruteadores inalambricos" >Ruteadores inalámbicos</a>
+                      <a href="categorias.php?item=Redes/Ruteadores inalambricos" >Ruteadores inalámbicos</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Cables de red</a>
+                      <a href="categorias.php?item=Redes/Cables de red">Cables de red</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Adaptadores Bluetooth</a>
+                      <a href="categorias.php?item=Redes/Adaptadores Bluetooth">Adaptadores Bluetooth</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Tarjertas de red</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="">Adaptadores inalámbricos</a>
+                      <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalambricos">Tarjertas de red y adaptadores inalámbricos</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -104,13 +100,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Antivirus y seguridad</a>
+                      <a href="categorias.php?item=Software/Antivirus y seguridad">Antivirus y seguridad</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Sistemas operativos</a>
+                      <a href="categorias.php?item=Software/Sistemas operativos">Sistemas operativos</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Ofimatica</a>
+                      <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Software/Microsft Office">Ofimatica</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -130,13 +129,13 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Accesorios de servidores</a>
+                      <a href="categorias.php?item=Servidores e impresion/Accesorios para servidores">Accesorios de servidores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Redes</a>
+                      <a href="categorias.php?item=Servidores e impresion/Redes">Redes</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Energía</a>
+                      <a href="categorias.php?item=Servidores e impresion/Energia">Energía</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -156,18 +155,19 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Consumibles y articulos</a>
+                      <a href="categorias.php?item=Impresion/Consumibles">Consumibles y articulos</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Impresoras</a>
+                      <a href="categorias.php?item=Impresion/Impresoras">Impresoras</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Scanners de cama</a>
+                      <a href="categorias.php?item=Impresion/Scanners de cama">Scanners de cama</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
                 </div>
               </li>
+
               <!-- COMPUTADORAS -->
               <li class="nav-link" style="--i: .85s">
 
@@ -181,21 +181,22 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Desktops</a>
+                      <a href="categorias.php?item=computadoras/Desktops">Desktops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Laptops</a>
+                      <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Smartphones</a>
+                      <a href="categorias.php?item=computadoras/Smarthphones">Smartphones</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Tablets</a>
+                      <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
                 </div>
               </li>
+
               <!-- HARDWARE -->
               <li class="nav-link" style="--i: .85s">
 
@@ -209,21 +210,22 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Discos duros</a>
+                      <a href="categorias.php?item=Hardware/Disco duro">Discos duros</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Procesadores</a>
+                      <a href="categorias.php?item=Hardware/Procesadores">Procesadores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Memorias</a>
+                      <a href="categorias.php?item=Hardware/Memorias">Memorias</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Motherboards</a>
+                      <a href="categorias.php?item=Hardware/Tarjeta Madre">Motherboards</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
                 </div>
               </li>
+
               <!-- ACCESORIOS -->
               <li class="nav-link" style="--i: .85s">
 
@@ -237,24 +239,22 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Perifericos</a>
+                      <a href="categorias.php?item=Accesorios/Perifericos">Perifericos</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Cables</a>
+                      <a href="categorias.php?item=Accesorios/Cables y adaptadores">Cables y adaptadores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Adaptadores</a>
+                      <a href="categorias.php?item=Accesorios/Herramientas">Herramientas</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Herramientas</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="">Limpieza</a>
+                      <a href="categorias.php?item=Accesorios/Limpieza">Limpieza</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
                 </div>
               </li>
+
               <!-- ELECTRONICA -->
               <li class="nav-link" style="--i: .85s">
 
@@ -268,19 +268,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="">Monitores</a>
+                      <a href="categorias.php?item=Electronica/Monitores">Monitores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Audifonos</a>
+                      <a href="categorias.php?item=Electronica/Audifonos">Audifonos</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Micrófonos</a>
+                      <a href="categorias.php?item=Electronica/Bocinas">Bocinas</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="">Bocinas</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="">Capturadoras de video</a>
+                      <a href="categorias.php?item=Electronica/Capturadora de video">Capturadoras de video</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
