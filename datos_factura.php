@@ -326,7 +326,39 @@
                 </div>
               <!--</form>-->
             </div>
+
             
+            <div class="detalles-producto">
+            <h1>Detalles del producto</h1>
+
+              <div class="especificacion-prod">
+                <label for="Articulo">Articulo</label>
+                <input type="text" value="">
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Cantidad">Cantidad</label>
+                <input type="text" value="">
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Precio">Precio</label>
+                <input type="text" value="">
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Fecha">Fecha</label>
+                <input type="text" value="">
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Total">Total</label>
+                <input type="text" value="">
+              </div>
+              
+            </div>
+            
+
             <br>
             <br>
 
