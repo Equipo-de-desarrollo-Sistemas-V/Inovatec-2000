@@ -86,10 +86,10 @@ $sesion_i = $_SESSION["nombres"];
 							</ul>
 						</li>
 
-						<li><a href="#">Ventas</a>
+						<li><a href="#">Reportes</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php">Registro de ventas</a></li>
-								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php">Ventas</a></li>
+								<li><a id="menuVentas2" href="informe_ventas.php">Productos</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -101,7 +101,7 @@ $sesion_i = $_SESSION["nombres"];
 	<main>
 		<div class="contenidoListaInventario" id="contenidoListaInventario">
 			<article>
-				<h1 align="center">Informe de ventas</h1>
+				<h1 align="center">Reporte de productos</h1>
 				<div class="contenido-barra-buscar">
 					<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required />
 					<button class="btn-buscar">

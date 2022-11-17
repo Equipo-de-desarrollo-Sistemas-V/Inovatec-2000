@@ -83,10 +83,10 @@ $sesion_i = $_SESSION["nombres"];
 							</ul>
 						</li>
 
-						<li><a href="#">Ventas</a>
+						<li><a href="#">Reportes</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
-								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php" >Ventas
+								<li><a id="menuVentas2" href="informe_ventas.php">Productos</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -98,10 +98,10 @@ $sesion_i = $_SESSION["nombres"];
 	<main>
 		<div class="contenidoListaVenta" id="contenidoListaVenta">
 			<article>
-				<h1 align="center">Registro de ventas</h1>
+				<h1 align="center">Reporte de ventas</h1>
 				<form action="" class="formularios" method="post" action="fechas.php" id="formulario">
-				<input type="date" name="fecha1" id="fecha1">
-				<input type="date" name="fecha2" id="fecha2">
+				<!-- <input type="date" name="fecha1" id="fecha1">
+				<input type="date" name="fecha2" id="fecha2"> -->
 				</form>	
 				<div class="contenido-barra-buscar">
 						<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required >
@@ -140,7 +140,7 @@ $sesion_i = $_SESSION["nombres"];
 </html>
 
 	<!-- llama al archivo getSubApartados para obtener solo los suabpartados correspondientes a la categoria seleccionada-->
-	<script lenguaje="javascript">
+	<!-- <script lenguaje="javascript">
 		$(document).ready(function() {
 			$("#fecha1").change(function() {
 				auxUno=$('input[id=fecha2]').val()
@@ -157,4 +157,4 @@ $sesion_i = $_SESSION["nombres"];
 				}
 			})
 		});
-	</script>
+	</script> -->
