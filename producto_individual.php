@@ -461,7 +461,6 @@ sqlsrv_close($con);
           alert('Stock insuficiente')
         }else{
           let envio= auxId+"/"+canti;
-          document.getElementById('descripcion').innerHTML = envio;
           location.href="datos_venta.php?item="+envio;
         }
       }

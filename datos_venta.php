@@ -12,13 +12,33 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 $query = "SELECT * 
 FROM Tarjetas 
 WHERE Usuario='$sesion_i'";
+  $resultado = sqlsrv_query($con, $query);
+  $row=sqlsrv_fetch_array($resultado);
+  $no_tar=$row["no_tarjeta"];
+  $fecha=$row["fecha_ven_mes"];
+  $fecha1=$row["fecha_ven_anio"];
+  $nombre=$row["Nombre_Tar"];
 
-$resultado = sqlsrv_query($con, $query);
-$row=sqlsrv_fetch_array($resultado);
-$no_tar=$row["no_tarjeta"];
-$fecha=$row["fecha_ven_mes"];
-$fecha1=$row["fecha_ven_anio"];
-$nombre=$row["Nombre_Tar"];
+$query2 = "SELECT * 
+FROM banco 
+WHERE noTarjeta='$no_tar'";
+  $resultado2 = sqlsrv_query($con, $query2);
+  $cont=0;
+  while( $row2 = sqlsrv_fetch_array($resultado2) ) {
+      $cont++;
+  }
+  if ($cont!=0){
+    $resultadoS = sqlsrv_query($con, $query2);
+    $rowS=sqlsrv_fetch_array($resultadoS);
+    $auxTar=$rowS["noTarjeta"];
+    $auxCCV=$rowS["ccv"];
+    $auxDin=$rowS["dineros"];
+    //$nombre="si hay";
+  }else{
+    $auxTar="";
+    $auxCCV="";
+    $auxDin="";
+  }
 
 $query= "SELECT* 
 FROM Direccion 
@@ -76,6 +96,10 @@ echo "
   <script>
     let auxId= $producto;
     let auxCan= $cantiCompra;
+    let auxNumTar= $auxTar;
+    let auxCcvTar= $auxCCV;
+    let auxDinTar= $auxDin;
+    let auxTot= $total;
   </script>";
   
 
@@ -95,6 +119,9 @@ sqlsrv_close($con);
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
   <title>Datos venta</title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
@@ -410,7 +437,7 @@ sqlsrv_close($con);
                     <label for="year-expiracion" class="input-label">Año de expiración</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3">
+                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3" required>
                     <label for="ccv" class="input-label">CCV</label>
                 </div>
             </div>
@@ -497,12 +524,55 @@ sqlsrv_close($con);
 </html>
 
 <script>
+//obtengo el valor  de lo que se esta escribiendo en el input de ccv y valido
+ccv.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	ccv.value = valorInput
+  .replace(/[^0-9]/, "")
+  })
+
+  //Valdido que no este vacio y que el numero sea entero, mlientras que no sea vedadero el boton esta desactivado
+
+  const input = document.querySelector('ccv');
+  ccv.addEventListener('input', updateValue);
+  
+  function updateValue(){
+    let auxCCV = document.getElementById('ccv').value;
+    const comprar = document.getElementById('genCompra');
+    let auxLong=auxCCV.toString();
+    if (auxLong.length!=3){
+      ccv.style.border = "3px solid red";
+      genCompra.disabled=true;
+    }else{
+      ccv.removeAttribute("style");
+      genCompra.disabled=false;
+    }
+  }
+
   function datos(){
-    let envio= auxId+"/"+auxCan;
-    location.href="ventana_confirmacion.php?item="+envio;
+    if (auxNumTar==""){
+      alert("Número de tarjeta no existente")
+    }else{
+      let auxCCV = document.getElementById('ccv').value;
+      if (auxCcvTar!=auxCCV){
+        alert("CCV incorrecto, favor de verificarlo")
+      }else{
+        if (auxDinTar<auxTot){
+          alert("Monto insuficiente")
+        }else{
+          let envio= auxId+"/"+auxCan;
+          location.href="ventana_confirmacion.php?item="+envio;
+        }
+      }
+    }
+    
   }
 </script>
+<!-- 
+
+
 exista tarjeta, saldo, ccv
 
 Datos de la compra
-Producto, Precio unitario, cantidad, subtotal, total
+Producto, Precio unitario, cantidad, subtotal, total -->
