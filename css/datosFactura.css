@@ -123,9 +123,8 @@ header {
 .container-all {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 0.5fr);
     padding-bottom: 40px;
-    height: 92rem;
+    height: auto;
 }
 
 /* Estilos del contenedor del titulo y el menu */

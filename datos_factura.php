@@ -333,27 +333,27 @@
 
               <div class="especificacion-prod">
                 <label for="Articulo">Articulo</label>
-                <input type="text" value="">
+                <input type="text" value="" readonly>
               </div>
 
               <div class="especificacion-prod">
                 <label for="Cantidad">Cantidad</label>
-                <input type="text" value="">
+                <input type="text" value="" readonly>
               </div>
 
               <div class="especificacion-prod">
-                <label for="Precio">Precio</label>
-                <input type="text" value="">
+                <label for="Precio">Precio</label >
+                <input type="text" value="" readonly>
               </div>
 
               <div class="especificacion-prod">
-                <label for="Fecha">Fecha</label>
-                <input type="text" value="">
+                <label for="Fecha">Fecha</label >
+                <input type="text" value="" readonly>
               </div>
 
               <div class="especificacion-prod">
                 <label for="Total">Total</label>
-                <input type="text" value="">
+                <input type="text" value="" readonly>
               </div>
               
             </div>
