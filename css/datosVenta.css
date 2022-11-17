@@ -122,10 +122,8 @@ header {
 
 .container-all {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 0.5fr);
     padding-bottom: 40px;
-    height: 92rem;
+    height: auto;
 }
 
 /* Estilos del contenedor del titulo y el menu */
@@ -180,6 +178,12 @@ header {
 #subtitulo {
     font-size: 26px;
     font-weight: 700;
+    margin: 0px 0px 20px 0px;
+    color: #000;
+}
+h1{
+    font-size: 32px;
+    font-weight: 700;
     margin: 0px 0px 10px 0px;
     color: #000;
 }
@@ -224,7 +228,7 @@ header {
 }
 
 .input {
-    width: 300px;
+    width: 350px;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -235,33 +239,25 @@ header {
 }
 
 .input-label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(10px, 10px);
-    transform-origin: left;
-    transition: transform .25s;
-}
-
-.input:focus~.input-label,
-.input:valid~.input-label {
-    transform: translate(0, -30px) scale(.8);
     color: #e6b323;
+    position: absolute;
+    top: -30px;
+    left: 0;
+
 }
 
-.input:is(:focus, :valid) {
-    outline-color: #e6b323;
-}
 
 /* Estilos para el boton */
 .btn {
+    width: auto;
     font-family: 'Montserrat', sans-serif;
     background-color: #e6b323;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 600;
     cursor: pointer;
     box-shadow: 1px 1px 30px -5px rgba(0, 0, 0, 0.50);
     transition: box-shadow 300ms;
@@ -296,7 +292,7 @@ header {
         width: 370px;
     }
 
-    #subtitulo {
+    .subtitulo {
         font-size: 20px;
         font-weight: 700;
         margin: 0px 0px 10px 0px;
@@ -350,7 +346,7 @@ header {
 
 .estado, .municipio {
     background: transparent;
-    width: 300px;
+    width: 350px;
     height: 2.5rem;
     border-radius: 5px;
     border-color: #e6b323;
