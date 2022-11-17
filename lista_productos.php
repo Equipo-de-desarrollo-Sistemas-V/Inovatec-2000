@@ -80,10 +80,10 @@ $sesion_i = $_SESSION["nombres"];
 							</ul>
 						</li>
 
-						<li><a href="#">Ventas</a>
+						<li><a href="#">Reportes</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Registro de ventas</a></li>
-								<li><a id="menuVentas2" href="informe_ventas.php">Reporte de ventas</a></li>
+								<li><a id="menuVentas1" href="registro_ventas.php" >Ventas
+								<li><a id="menuVentas2" href="informe_ventas.php">Productos</a></li>
 							</ul>
 						</li>
 					</ul>

@@ -72,11 +72,12 @@ $pdf->Cell(70,10,utf8_decode('183.40'),0,0,'R');//Subtotal
 
 //variable que controla el salto de linea de las ultimas partes
 $saltoLN=386-35;
+$fecha= date("d/m/Y");
 //parte de los productos
 $pdf->SetFont('Times','',10);
 $pdf->Ln(35);
 $pdf->Cell(45);
-$pdf->Cell(70,10,utf8_decode('17/11/2022'),0,0,'L');//Fecha
+$pdf->Cell(70,10,utf8_decode($fecha),0,0,'L');//Fecha
 $pdf->SetFont('Times','',10);
 $pdf->Cell(45);
 $pdf->Cell(70,10,utf8_decode('Tarjeta Grafica ASUS ROG'),0,0,'L');//Total debido
