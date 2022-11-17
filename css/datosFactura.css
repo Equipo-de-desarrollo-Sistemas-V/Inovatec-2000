@@ -212,6 +212,36 @@ header {
     row-gap: 15px;
 }
 
+.detalles-producto{
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+    height: auto;
+    margin: 10px 20px 10px 25%;    
+    box-shadow: 0px 0px 0px 2px rgb(0 0 0 / 35%);
+    padding:20px ;
+    grid-column: span 2;
+}
+.detalles-producto .nombre-prod{
+    justify-items: center;
+    align-items: center;
+    margin-left: 15%;
+    margin-bottom: 10px;
+    padding: 10px;
+
+}
+
+.detalles-producto .nombre-prod label{
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.detalles-producto .nombre-prod input{
+
+    font-size: 14px;
+    padding: 10px;
+}
 /* Implementacion del estilo para las cajas */
 .input-group {
     position: relative;
