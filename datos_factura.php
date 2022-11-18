@@ -3,6 +3,26 @@ error_reporting(0);
 session_start();
 include("no_iniciada_cli.php");
 $sesion_i = $_SESSION["Usuario"];
+
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+
+$id=$_GET["item"];
+//if (isset($_POST('Actualizar')))
+$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
+$res= sqlsrv_query($conn_sis, $query);
+if( $res === false) {
+  die( print_r( sqlsrv_errors(), true) );
+}
+while( $row = sqlsrv_fetch_array($res) ) {
+  $nombre=$row["nombre"];
+  $pre_ven=substr($row['precio_ven'],0,-2);							
+//echo '<script>alert("'.$nombre.'")</script>';
+}
+
+$fecha= date("d/m/Y");
+$total=$pre_ven*1;
 ?>
 
 <!DOCTYPE html>
@@ -331,6 +351,18 @@ $sesion_i = $_SESSION["Usuario"];
                     <input type="text" name="usoComprobante" id="usoComprobante" required class="input">
                     <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
                 </div>
+                <div class="input-group">
+                    <input type="text" name="direccion" id="direccion" required class="input">
+                    <label for="uso-comprobante" class="input-label">Dirección</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="email" id="email" required class="input">
+                    <label for="uso-comprobante" class="input-label">Correo Electrónico</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="telefono" id="telefono" required class="input">
+                    <label for="uso-comprobante" class="input-label">Teléfono</label>
+                </div>
               <!--</form>-->
             </div>
 
@@ -340,27 +372,27 @@ $sesion_i = $_SESSION["Usuario"];
 
               <div class="especificacion-prod">
                 <label for="Articulo">Articulo</label>
-                <input type="text" value="" readonly>
+                <input type="text" name="art" value="<?php echo $nombre; ?>" readonly>
               </div>
 
               <div class="especificacion-prod">
                 <label for="Cantidad">Cantidad</label>
-                <input type="text" value="" readonly>
+                <input type="text" name="can" value="1" readonly>
               </div>
 
               <div class="especificacion-prod">
                 <label for="Precio">Precio</label >
-                <input type="text" value="" readonly>
+                <input type="text" name="pre" value="<?php echo $pre_ven; ?>" readonly>
               </div>
 
               <div class="especificacion-prod">
                 <label for="Fecha">Fecha</label >
-                <input type="text" value="" readonly>
+                <input type="text" name="fec" value="<?php echo $fecha; ?>" readonly>
               </div>
 
               <div class="especificacion-prod">
                 <label for="Total">Total</label>
-                <input type="text" value="" readonly>
+                <input type="text" name="tot" value="<?php echo $total; ?>" readonly>
               </div>
               
             </div>

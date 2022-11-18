@@ -23,6 +23,16 @@ $nombre=$_POST["nombreDenominación"];
 $regimen=$_POST["regimenFiscal"];
 $cp=$_POST["codigoPostal"];
 $uso=$_POST["usoComprobante"];
+$direccion=$_POST["direccion"];
+$correo=$_POST["email"];
+$telefono=$_POST["telefono"];
+
+
+//datos articulo
+$articulo=$_POST["art"];
+$cantidad=$_POST["can"];
+$precio=$_POST["pre"];
+$total=$_POST["tot"];
 $pdf->AddPage(); 
 //  Print the edge of
 $pdf->Image("Facturas/FacturaImg.png", 20, 20, 540); 
@@ -37,22 +47,22 @@ $pdf->Cell(0,10,utf8_decode($regimen),0,0,'L');//regimen
 $pdf->SetFont('Times','',10);
 $pdf->Ln(22);
 $pdf->Cell(355);
-$pdf->Cell(0,10,utf8_decode('Lopez Mateos #8'),0,0,'L');//direccion
+$pdf->Cell(0,10,utf8_decode($direccion),0,0,'L');//direccion
 $pdf->Ln(12);
 $pdf->Cell(355);
 $pdf->Cell(0,10,utf8_decode($cp),0,0,'L');//direccion
 $pdf->SetFont('Times','',10);
 $pdf->Ln(10);
 $pdf->Cell(355);
-$pdf->Cell(0,10,utf8_decode('4371073134'),0,0,'L');//telefono
+$pdf->Cell(0,10,utf8_decode($telefono),0,0,'L');//telefono
 $pdf->SetFont('Times','',10);
 $pdf->Ln(12);
 $pdf->Cell(355);
-$pdf->Cell(0,10,utf8_decode('dzexion11@gmail.com'),0,0,'L');//correo
+$pdf->Cell(0,10,utf8_decode($correo),0,0,'L');//correo
 $pdf->SetFont('Times','',10);
 $pdf->Ln(21);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('300'),0,0,'R');//Deposito
+$pdf->Cell(70,10,utf8_decode($total),0,0,'R');//Deposito
 $pdf->SetFont('Times','',10);
 $pdf->Ln(13);
 $pdf->Cell(385);
