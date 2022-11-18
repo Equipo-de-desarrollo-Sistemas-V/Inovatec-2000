@@ -1,5 +1,8 @@
 <?php
 error_reporting(0);
+session_start();
+include("no_iniciada_cli.php");
+$sesion_i = $_SESSION["Usuario"];
 ?>
 
 <!DOCTYPE html>
