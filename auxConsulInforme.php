@@ -18,9 +18,8 @@ if (isset($_POST['consulta'])) {
     $query = "SELECT Productos.id_producto, Productos.precio_com,
     Productos.precio_ven, Productos.precio_com*0.16 as iva
     FROM Productos
-    where (Productos.id_producto like '%".$q."%' or 
-    productos.precio_com like '%".$q."%' or productos.precio_ven like '%.$q.%'
-    or iva like '%".$q."%'";
+    where (Productos.id_producto like '%" . $q . "%' or 
+    productos.precio_com like '%$q%' or productos.precio_ven like '%$q%')";
     //like '%".$q."%'
 
 }
