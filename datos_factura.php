@@ -1,3 +1,10 @@
+<?php
+error_reporting(0);
+session_start();
+include("no_iniciada_cli.php");
+$sesion_i = $_SESSION["Usuario"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -326,7 +333,39 @@
                 </div>
               <!--</form>-->
             </div>
+
             
+            <div class="detalles-producto">
+            <h1>Detalles del producto</h1>
+
+              <div class="especificacion-prod">
+                <label for="Articulo">Articulo</label>
+                <input type="text" value="" readonly>
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Cantidad">Cantidad</label>
+                <input type="text" value="" readonly>
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Precio">Precio</label >
+                <input type="text" value="" readonly>
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Fecha">Fecha</label >
+                <input type="text" value="" readonly>
+              </div>
+
+              <div class="especificacion-prod">
+                <label for="Total">Total</label>
+                <input type="text" value="" readonly>
+              </div>
+              
+            </div>
+            
+
             <br>
             <br>
 

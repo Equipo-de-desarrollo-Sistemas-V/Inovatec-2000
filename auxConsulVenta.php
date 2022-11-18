@@ -24,7 +24,7 @@ if (isset($_POST['consulta'])){
     $query="SELECT ventas.fecha, ventas.id_prod, ventas.nombre,
     ventas.id_suc, Apartados.Nombre, Subapartados.SubApartado, 
     ventas.cantidad, ventas.precio_ven,
-    ventas.descuento, ventas.total
+    ventas.descuento, ventas.total, ventas.id_ventas
     FROM [ventas], [Productos], [Apartados], [Subapartados]
     WHERE (ventas.id_ventas like '%".$q."%' or 
     ventas.fecha like '%".$q."%' or 
@@ -58,7 +58,7 @@ if($resultado==true){
             <th>Id producto</th> 
             <th>Producto</th> 
             <th>Id sucursal</th> 
-            <th>categoría</th>
+            <th>Categoría</th>
             <th>Subcategoría</th>
             <th>Cantidad </th>
             <th>Precio de venta </th>

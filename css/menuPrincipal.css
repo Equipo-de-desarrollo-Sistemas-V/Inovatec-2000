@@ -386,7 +386,8 @@ a{
 }
 
 .container{
-    max-width: 65rem;
+    background-color: #e6b323;
+    max-width: 100%;
     padding: 0 2rem;
     margin: 0 auto;
     display: flex;

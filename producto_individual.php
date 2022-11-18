@@ -1,5 +1,8 @@
 <?php
 error_reporting(0);
+session_start();
+include("no_iniciada_cli.php");
+$sesion_i = $_SESSION["Usuario"];
 ?>
 
 <!DOCTYPE html>
@@ -325,22 +328,24 @@ error_reporting(0);
                 </div>
                 <br>
                 
-                <a align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
+                <!-- <a align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
                   <i class="fa-solid fa-cart-shopping"></i>
                   Agregar al carrito
-                </a>
+                </a> -->
                 <br>
                 <!-- <label align="center" onclick="alert('Proveedor actualizado con éxito')" name="comprar" id="comprar" class="btn">
                   <i class="fa-solid fa-bag-shopping"></i>
                   Comprar
                 </label>   -->
 
-                <a align="center" type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
+                <!-- <a align="center" type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
                 <i class="fa-solid fa-bag-shopping"></i>
                 Comprar
-                </a>
+                </a> -->
+                <input type="button" id='agregar' name='agregar' value="Agregar al carrito" class="btn">
+                <br>
 
-                <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
+                <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
                 <br>
                 <label align="center" name="existencia" id="existencia" class="label-existentes" disabled>
                   <span>Existentes: </span>

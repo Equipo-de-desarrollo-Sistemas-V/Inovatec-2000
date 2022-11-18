@@ -73,7 +73,7 @@
 							</ul>
 						</li>
 
-						<li><a href="#">Ventas</a>
+						<li><a href="#">Reportes</a>
 							<ul>
 								<li><a id="menuVentas1" href="#" onclick="show('contenidoAgregaVenta')">Nueva venta</a></li>
 								<li><a id="menuVentas2" href="#" onclick="show('contenidoListaVenta')">Ventas</a></li>
