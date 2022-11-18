@@ -561,18 +561,27 @@ ccv.addEventListener('keyup', (e) => {
         if (auxDinTar<auxTot){
           alert("Monto insuficiente")
         }else{
-          let envio= auxId+"/"+auxCan;
-          location.href="ventana_confirmacion.php?item="+envio;
+          
+          let envio= auxId+"/"+auxCan+"/"+auxNumTar;
+          location.href="registrarVenta.php?item="+envio;
+
+          let envio2= auxId+"/"+auxCan;
+          location.href="ventana_confirmacion.php?item="+envio2;
+          /*
+          function cargarDatos(id){
+            var url='registrarVenta.php';
+            $.ajax({
+              type: 'POST',
+              url:url,
+              data: 'id='+envio,
+              success: function(response){
+              alert(response);
+              }
+            });
+          }*/
         }
       }
     }
     
   }
 </script>
-<!-- 
-
-
-exista tarjeta, saldo, ccv
-
-Datos de la compra
-Producto, Precio unitario, cantidad, subtotal, total -->

@@ -407,8 +407,6 @@ $total=$pre_ven*1;
             <br>
             </form>
         </article>
-        <script src="js/alertasPerfil.js"></script>
-        <script src="js/validPerfil.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
 </body>
