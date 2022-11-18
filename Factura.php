@@ -33,6 +33,10 @@ $articulo=$_POST["art"];
 $cantidad=$_POST["can"];
 $precio=$_POST["pre"];
 $total=$_POST["tot"];
+//formula iva
+$precionfinal=$total;
+$antesImpuestos=($precionfinal*1)/1.16;
+$antesImpuestosFormateado = number_format($antesImpuestos, 2, '.', '');
 $pdf->AddPage(); 
 //  Print the edge of
 $pdf->Image("Facturas/FacturaImg.png", 20, 20, 540); 
@@ -62,23 +66,24 @@ $pdf->Cell(0,10,utf8_decode($correo),0,0,'L');//correo
 $pdf->SetFont('Times','',10);
 $pdf->Ln(21);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode($total),0,0,'R');//Deposito
+$pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Deposito
 $pdf->SetFont('Times','',10);
 $pdf->Ln(13);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('400'),0,0,'R');//Subtotal
+
+$pdf->Cell(70,10,utf8_decode($antesImpuestosFormateado),0,0,'R');//Subtotal
 $pdf->SetFont('Times','',10);
 $pdf->Ln(25);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('100'),0,0,'R');//Total factura
+$pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Total factura
 $pdf->SetFont('Times','',10);
 $pdf->Ln(11);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('100'),0,0,'R');//Total debido
+$pdf->Cell(70,10,utf8_decode('0.00'),0,0,'R');//Total debido
 $pdf->SetFont('Times','',10);
 $pdf->Ln(11);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('183.40'),0,0,'R');//Subtotal
+$pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Subtotal
 
 //variable que controla el salto de linea de las ultimas partes
 $saltoLN=386-35;
@@ -93,22 +98,23 @@ $pdf->Cell(45);
 $pdf->Cell(70,10,utf8_decode('Tarjeta Grafica ASUS ROG'),0,0,'L');//Total debido
 $pdf->SetFont('Times','',10);
 $pdf->Cell(185);
-$pdf->Cell(70,10,utf8_decode('183.40'),0,0,'L');//Subtotal
+$pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'L');//Subtotal
 
 
 //parte baja de la factura subtotal,impuesto y total
 $pdf->SetFont('Times','',10);
 $pdf->Ln($saltoLN);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('100'),0,0,'R');//Total factura
+$pdf->Cell(70,10,utf8_decode($antesImpuestosFormateado),0,0,'R');//Subtotal
 $pdf->SetFont('Times','',10);
 $pdf->Ln(11);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('100'),0,0,'R');//Total debido
+$impuestos= number_format(($precionfinal-$antesImpuestos), 2, '.', '');
+$pdf->Cell(70,10,utf8_decode($impuestos),0,0,'R');//Impuestos
 $pdf->SetFont('Times','',10);
 $pdf->Ln(12);
 $pdf->Cell(385);
-$pdf->Cell(70,10,utf8_decode('183.40'),0,0,'R');//Subtotal
+$pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Total
 
 
 //Loading data 
