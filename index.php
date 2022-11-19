@@ -137,6 +137,9 @@ $sesion_i = $_SESSION["Usuario"];
                     <li class="dropdown-link">
                       <a href="categorias.php?item=Servidores e impresion/Energia">Energía</a>
                     </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Servidores e impresion/Servidores">Servidores</a>
+                    </li>
                     <div class="arrow"></div>
                   </ul>
                 </div>
@@ -187,7 +190,7 @@ $sesion_i = $_SESSION["Usuario"];
                       <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Smarthphones">Smartphones</a>
+                      <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
@@ -278,6 +281,35 @@ $sesion_i = $_SESSION["Usuario"];
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=Electronica/Capturadora de video">Capturadoras de video</a>
+                    </li>
+                    <div class="arrow"></div>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- ALMACENAMIENTO -->
+              <li class="nav-link" style="--i: .85s">
+
+                <a href="#">
+                  <ion-icon name="cloud-circle-outline"></ion-icon>
+                  Almacenamiento
+                  <i class="fas fa-caret-down"></i>
+                </a>
+
+                <div class="dropdown">
+
+                  <ul>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/M.2" >M.2</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/HDD">HDD</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/Memoria RAM">Memoria RAM</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
