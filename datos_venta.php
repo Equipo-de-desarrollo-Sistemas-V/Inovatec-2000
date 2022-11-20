@@ -130,7 +130,7 @@ sqlsrv_close($con);
 </head>
 
 <body>
-  <header>
+  
     <input type="checkbox" name="" id="check">
 
     <nav>
@@ -157,7 +157,7 @@ sqlsrv_close($con);
         <span><i class="fas fa-times" id="times"></i></span>
       </label>
     </nav>
-  </header>
+  
 
   <section class="containerAll">
     <article class="container">
@@ -405,6 +405,7 @@ sqlsrv_close($con);
         </div>
       </div>
     </article>
+
     <section class="container-all">
         <article id="container-datos-usuario" class="contenedor">
                 <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
@@ -479,33 +480,21 @@ sqlsrv_close($con);
             </div>    
             <br>
             <br>
-                
+
             <h3 id="subtitulo">Datos de compra</h3>
-            <div class="entrada-2">
-                <div class="input-group">
-                    <label for="nombre-producto" class="input-label">Producto</label>
-                    <input type="text" name="nombreProducto" id="nombreProducto" class="input" value="<?php echo $nom;?>">
-                </div>
 
-                <div class="input-group">
-                    <input type="text" name="precioUnitario" id="precioUnitario" class="input" value="<?php echo $precio;?>">
-                    <label for="precio-unitario" class="input-label">Precio unitario</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="cantidad" id="cantidad" class="input" value="<?php echo $cantiCompra;?>">
-                    <label for="producto-cantidad" class="input-label">Cantidad</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="subtotal" id="subtotal" class="input" value="<?php echo $subT;?>">
-                    <label for="subtotal" class="input-label">Subtotal</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="total" id="total" class="input" value="<?php echo $total;?>">
-                    <label for="total" class="input-label">Total</label>
-                </div>
+            <div class="tabla-datos-compra">
+              <table>
+                <thead>
+                  <tr>
+                    <th> <b>Producto</b> </th> 
+                    <td> <b>Precio unitario</b> </td> 
+                    <td> <b>Cantidad</b> </td> 
+                    <td> <b>Subtotal</b> </td> 
+                    <td> <b>Total</b> </td> 
+                  </tr>
+                </thead>
+              </table>
             </div>
             <br>
 

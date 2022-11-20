@@ -261,7 +261,8 @@ header {
 }
 
 .input {
-    width: 400px;
+    width: 350px;
+    height: auto;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -272,12 +273,12 @@ header {
 }
 
 .input-label {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #e6b323;
     position: absolute;
-    top: 0;
+    top: -30px;
     left: 0;
-    transform: translate(10px, 10px);
-    transform-origin: left;
-    transition: transform .25s;
 }
 
 .input:focus~.input-label,
@@ -288,6 +289,41 @@ header {
 
 .input:is(:focus, :valid) {
     outline-color: #e6b323;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para las tablas*/
+.tabla-datos-compra{
+    justify-content: center;
+    display: grid;
+}
+table{
+    margin-left: 10%;
+    max-width: 80%;
+	background-color: rgb(243, 243, 243);
+	text-align: center;
+	border-collapse: collapse;
+}
+
+th,td{
+	width: 300px;
+	padding: 10px 15px;
+}
+
+thead{
+	background-color:#ffcb3e;
+	color: #000;
+	font-size: 16px;
+	border-bottom: solid 5px #e8b835;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
 }
 
 /* Estilos para el boton */
@@ -328,9 +364,12 @@ header {
 }
 
 @media (max-width: 415px) {
+    nav{
+        width: 520px;
+    }
     .contenedor-titulos{
         margin-left: 10px;
-        width: 370px;
+        width: 500px;
     }
 
     #subtitulo {
@@ -348,8 +387,8 @@ header {
     }
 
     .contenedor {
-        margin-left: 10px;
-        width: 370px;
+        margin-left: 5px;
+        width: 500px;
     }
 
     .leyenda-1 {
@@ -382,6 +421,18 @@ header {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
+    }
+
+    .input-label{
+        font-size: 14px;
+    }
+    table{
+        max-width: 500px;
+        margin-left: 2px;
+    }
+    .container{
+        width: 520px;
+        max-width: 520px;
     }
 }
 
