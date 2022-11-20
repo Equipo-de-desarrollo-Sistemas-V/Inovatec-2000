@@ -75,7 +75,7 @@ $sesion_i = $_SESSION["nombres"];
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenido")." ".ucwords($sesion_i);?> 
+			<?php echo ucwords("Bienvenid@")." ".ucwords($sesion_i);?> 
 			<div class="btn-header">
 				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
