@@ -329,7 +329,7 @@ $total=$pre_ven*1;
                 <br>
 
             <h3 id="subtitulo">Datos para la factura</h3>
-            <form action="Factura.php" class="formularios" method="POST">
+            <form id="formulario" action="Factura.php" class="formularios" method="POST">
             <div class="entrada-2">
               <!--<form action="Factura.php" class="formularios" method="post">-->
                 <div class="input-group">
@@ -343,16 +343,16 @@ $total=$pre_ven*1;
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="usoComprobante" id="usoComprobante" required class="input">
+                    <input type="text" name="usoComprobante" id="usoComprobante" required class="input" maxlength="100" minlength="3">
                     <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
                 </div>
 
                  <div class="input-group">
-                    <input type="text" name="direccion" id="direccion" required class="input">
+                    <input type="text" name="direccion" id="direccion" required class="input" minlength="2" maxlength="20">
                     <label for="uso-comprobante" class="input-label">Dirección</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="codigoPostal" id="codigoPostal" required class="input" >
+                    <input type="text" name="codigoPostal" id="codigoPostal" required class="input" minlength="5" maxlength="5">
                     <label for="codigo-postal" class="input-label">Código postal del domicilio fiscal</label>
                 </div>
 
@@ -362,7 +362,7 @@ $total=$pre_ven*1;
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="telefono" id="telefono" required class="input">
+                    <input type="text" name="telefono" id="telefono" required class="input" minlength="10" maxlength="10">
                     <label for="uso-comprobante" class="input-label">Teléfono</label>
                 </div>
               <!--</form>-->
@@ -403,13 +403,14 @@ $total=$pre_ven*1;
             <br>
             <br>
 
-            <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn" disabled>
+            <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
             <br>
             <br>
             <br>
             </form>
         </article>
     </section>
+    <script src="js/validFactura.js"></script>
     <script src="js/linkHome.js"></script>
 </body>
 
