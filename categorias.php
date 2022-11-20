@@ -123,16 +123,16 @@
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Accesorios para servidores">Accesorios de servidores</a>
+                      <a href="categorias.php?item=Servidores e impresión/Accesorios para servidores">Accesorios de servidores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Redes">Redes</a>
+                      <a href="categorias.php?item=Servidores e impresión/Redes">Redes</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Energia">Energía</a>
+                      <a href="categorias.php?item=Servidores e impresión/Energia">Energía</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Servidores">Servidores</a>
+                      <a href="categorias.php?item=Servidores e impresión/Servidores">Servidores</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
