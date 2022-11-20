@@ -184,7 +184,7 @@
                       <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Smarthphones">Smartphones</a>
+                      <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
@@ -342,13 +342,10 @@
 
 <?php
   $item = $_GET['item'];
-
   /* Separa el item en dos secciones y guardalo en diferentes variables */
   $item = explode("/", $item);
-  
   /* Asigna el nombre de la subcategoria al h2 con el id subtitulo */
   echo "<script>document.getElementById('subtitulo').innerHTML = '$item[1]'</script>";
-
   echo "<script>document.getElementById('categoria').innerText = '$item[0]'</script>";
   echo "<script>document.getElementById('subcategoria').innerText = '$item[1]'</script>";
 ?>
