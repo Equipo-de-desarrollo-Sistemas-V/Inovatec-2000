@@ -45,7 +45,7 @@ $total=$pre_ven*1;
 </head>
 
 <body>
-  <header>
+  
     <input type="checkbox" name="" id="check">
 
     <nav>
@@ -72,7 +72,6 @@ $total=$pre_ven*1;
         <span><i class="fas fa-times" id="times"></i></span>
       </label>
     </nav>
-  </header>
 
   <section class="containerAll">
     <article class="container">
@@ -322,16 +321,17 @@ $total=$pre_ven*1;
     </article>
 
     <section class="container-all">
-
         <article id="container-datos-usuario" class="contenedor">
                 <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
                 <br>
                 <br>
 
             <h3 id="subtitulo">Datos para la factura</h3>
+            <br>
             <form id="formulario" action="Factura.php" class="formularios" method="POST">
-            <div class="entrada-2">
-              <!--<form action="Factura.php" class="formularios" method="post">-->
+              <div class="entrada-2">
+                
+                <!--<form action="Factura.php" class="formularios" method="post">-->
                 <div class="input-group">
                     <input type="text" name="nombreDenominación" id="nombreDenominación" required class="input" maxlength="100" minlength="3">
                     <label for="nombre-denominación" class="input-label">Nombre denominación o razón social</label>
@@ -347,7 +347,7 @@ $total=$pre_ven*1;
                     <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
                 </div>
 
-                 <div class="input-group">
+                <div class="input-group">
                     <input type="text" name="direccion" id="direccion" required class="input" minlength="2" maxlength="20">
                     <label for="uso-comprobante" class="input-label">Dirección</label>
                 </div>
@@ -365,48 +365,33 @@ $total=$pre_ven*1;
                     <input type="text" name="telefono" id="telefono" required class="input" minlength="10" maxlength="10">
                     <label for="uso-comprobante" class="input-label">Teléfono</label>
                 </div>
-              <!--</form>-->
-            </div>
+                <!--</form>-->
+              </div>
+              <br>
 
-            
-            <div class="detalles-producto">
-            <h1>Detalles del producto</h1>
+              <h3 id="subtitulo">Detalles del producto</h3>
 
-              <div class="especificacion-prod">
-                <label for="Articulo">Articulo</label>
-                <input type="text" name="art" value="<?php echo $nombre; ?>" readonly>
+              <div class="tabla-datos-compra">
+                <table>
+                    <thead>
+                      <tr>
+                        <th> <b>Producto</b> </th> 
+                        <td> <b>Cantidad</b> </td> 
+                        <td> <b>Precio </b> </td> 
+                        <td> <b>Fecha</b> </td> 
+                        <td> <b>Total</b> </td> 
+                      </tr>
+                    </thead>
+                  </table>
               </div>
 
-              <div class="especificacion-prod">
-                <label for="Cantidad">Cantidad</label>
-                <input type="text" name="can" value="1" readonly>
-              </div>
+              <br>
+              <br>
 
-              <div class="especificacion-prod">
-                <label for="Precio">Precio</label >
-                <input type="text" name="pre" value="<?php echo $pre_ven; ?>" readonly>
-              </div>
-
-              <div class="especificacion-prod">
-                <label for="Fecha">Fecha</label >
-                <input type="text" name="fec" value="<?php echo $fecha; ?>" readonly>
-              </div>
-
-              <div class="especificacion-prod">
-                <label for="Total">Total</label>
-                <input type="text" name="tot" value="<?php echo $total; ?>" readonly>
-              </div>
-              
-            </div>
-            
-
-            <br>
-            <br>
-
-            <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
-            <br>
-            <br>
-            <br>
+              <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
+              <br>
+              <br>
+              <br>
             </form>
         </article>
     </section>
