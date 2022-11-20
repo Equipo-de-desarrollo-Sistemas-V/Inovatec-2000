@@ -343,22 +343,24 @@ $total=$pre_ven*1;
                 </div>
 
                 <div class="input-group">
+                    <input type="text" name="usoComprobante" id="usoComprobante" required class="input">
+                    <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
+                </div>
+
+                 <div class="input-group">
+                    <input type="text" name="direccion" id="direccion" required class="input">
+                    <label for="uso-comprobante" class="input-label">Dirección</label>
+                </div>
+                <div class="input-group">
                     <input type="text" name="codigoPostal" id="codigoPostal" required class="input" >
                     <label for="codigo-postal" class="input-label">Código postal del domicilio fiscal</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="usoComprobante" id="usoComprobante" required class="input">
-                    <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
+                    <input type="email" name="email" id="email" required class="input">
+                    <label for="uso-comprobante" class="input-label">Correo electrónico</label>
                 </div>
-                <div class="input-group">
-                    <input type="text" name="direccion" id="direccion" required class="input">
-                    <label for="uso-comprobante" class="input-label">Dirección</label>
-                </div>
-                <div class="input-group">
-                    <input type="text" name="email" id="email" required class="input">
-                    <label for="uso-comprobante" class="input-label">Correo Electrónico</label>
-                </div>
+
                 <div class="input-group">
                     <input type="text" name="telefono" id="telefono" required class="input">
                     <label for="uso-comprobante" class="input-label">Teléfono</label>
