@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $file = fopen("archivo_correo.txt", "r");
 $auxIngreso = fgets($file);
 fclose($file);
