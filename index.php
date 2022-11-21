@@ -20,6 +20,8 @@ $sesion_i = $_SESSION["Usuario"];
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/estiloFooter.css">
+
 </head>
 
 <body>
@@ -33,11 +35,11 @@ $sesion_i = $_SESSION["Usuario"];
     </div>
 
     <ol>
-      <li><a href="login.php" class="">Iniciar sesión</a></li>
+      <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
 
-      <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
+      <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
 
-      <li><a href="perfilCliente.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
+      <li><a href="sesion_iniciada_Per.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
 
       <li><a href="#" class=""><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
 
@@ -129,13 +131,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Accesorios para servidores">Accesorios de servidores</a>
+                      <a href="categorias.php?item=Servidores e impresión/Accesorios para servidores">Accesorios de servidores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Redes">Redes</a>
+                      <a href="categorias.php?item=Servidores e impresión/Redes">Redes</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Energia">Energía</a>
+                      <a href="categorias.php?item=Servidores e impresión/Energia">Energía</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Servidores e impresión/Servidores">Servidores</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -187,7 +192,7 @@ $sesion_i = $_SESSION["Usuario"];
                       <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Smarthphones">Smartphones</a>
+                      <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
@@ -278,6 +283,35 @@ $sesion_i = $_SESSION["Usuario"];
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=Electronica/Capturadora de video">Capturadoras de video</a>
+                    </li>
+                    <div class="arrow"></div>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- ALMACENAMIENTO -->
+              <li class="nav-link" style="--i: .85s">
+
+                <a href="#">
+                  <ion-icon name="cloud-circle-outline"></ion-icon>
+                  Almacenamiento
+                  <i class="fas fa-caret-down"></i>
+                </a>
+
+                <div class="dropdown">
+
+                  <ul>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/M.2" >M.2</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/HDD">HDD</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/Memoria RAM">Memoria RAM</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -489,7 +523,30 @@ $sesion_i = $_SESSION["Usuario"];
 
       </article>
 
+      <!--    Pie de Pagina    -->
     </section>
+    
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                      <img src="css/assets/Logo_inovatec_original.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+            <p>Inovación Tecnológica 2000. </p>
+                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+                <p>Teléfono: 4371010101</p>
+                <p>fabricaitzas.com/inovatec/</p>
+                <p>Correo electrónico: inovatec2000st@gmail.com</p>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>
 
   <script src="js/linkHome.js"></script>
 </body>

@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 session_start();
-include("no_iniciada_cli.php");
+//include("no_iniciada_cli.php");
 $sesion_i = $_SESSION["Usuario"];
 ?>
 
@@ -22,6 +22,8 @@ $sesion_i = $_SESSION["Usuario"];
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/productoIndividual.css">
+  <link rel="stylesheet" href="css/estiloFooter.css">
+
 </head>
 
 <body>
@@ -366,6 +368,30 @@ $sesion_i = $_SESSION["Usuario"];
             
         </article>
     </section>
+
+    <!--    Pie de Pagina    -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                      <img src="css/assets/Logo_inovatec_original.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+            <p>Inovación Tecnológica 2000. </p>
+                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+                <p>Teléfono: 4371010101</p>
+                <p>fabricaitzas.com/inovatec/</p>
+                <p>Correo electrónico: inovatec2000st@gmail.com</p>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>
     <script src="js/linkHome.js"></script>
 </body>
 
@@ -423,8 +449,6 @@ if($resultado==true){
 
 //Cerrar conexion
 sqlsrv_close($con);
-
-//existentes, que la cantidad no exeda, 
 ?>
 
 
@@ -465,8 +489,14 @@ sqlsrv_close($con);
         if (canti>auxExis){
           alert('Stock insuficiente')
         }else{
-          let envio= auxId+"/"+canti;
-          location.href="datos_venta.php?item="+envio;
+          //creo un arreglo para mandar el prodcuto y su cantidad
+          var arreProduc = new Array(1);
+          arreProduc[0] = new Array(2);
+          arreProduc[0][0] = auxId;
+          arreProduc[0][1] = canti;
+          let envio= arreProduc;
+          location.href="datos_venta.php?item="+JSON.stringify(envio);
+          
         }
       }
     }

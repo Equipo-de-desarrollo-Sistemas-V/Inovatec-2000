@@ -3,6 +3,26 @@ error_reporting(0);
 session_start();
 include("no_iniciada_cli.php");
 $sesion_i = $_SESSION["Usuario"];
+
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+
+$id=$_GET["item"];
+//if (isset($_POST('Actualizar')))
+$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
+$res= sqlsrv_query($conn_sis, $query);
+if( $res === false) {
+  die( print_r( sqlsrv_errors(), true) );
+}
+while( $row = sqlsrv_fetch_array($res) ) {
+  $nombre=$row["nombre"];
+  $pre_ven=substr($row['precio_ven'],0,-2);							
+//echo '<script>alert("'.$nombre.'")</script>';
+}
+
+$fecha= date("d/m/Y");
+$total=$pre_ven*1;
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +42,11 @@ $sesion_i = $_SESSION["Usuario"];
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/datosFactura.css">
+  <link rel="stylesheet" href="css/estiloFooter.css">
 </head>
 
 <body>
-  <header>
+  
     <input type="checkbox" name="" id="check">
 
     <nav>
@@ -52,7 +73,6 @@ $sesion_i = $_SESSION["Usuario"];
         <span><i class="fas fa-times" id="times"></i></span>
       </label>
     </nav>
-  </header>
 
   <section class="containerAll">
     <article class="container">
@@ -302,16 +322,17 @@ $sesion_i = $_SESSION["Usuario"];
     </article>
 
     <section class="container-all">
-
         <article id="container-datos-usuario" class="contenedor">
                 <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
                 <br>
                 <br>
 
             <h3 id="subtitulo">Datos para la factura</h3>
-            <form action="Factura.php" class="formularios" method="POST">
-            <div class="entrada-2">
-              <!--<form action="Factura.php" class="formularios" method="post">-->
+            <br>
+            <form id="formulario" action="Factura.php" class="formularios" method="POST">
+              <div class="entrada-2">
+                
+                <!--<form action="Factura.php" class="formularios" method="post">-->
                 <div class="input-group">
                     <input type="text" name="nombreDenominación" id="nombreDenominación" required class="input" maxlength="100" minlength="3">
                     <label for="nombre-denominación" class="input-label">Nombre denominación o razón social</label>
@@ -323,61 +344,84 @@ $sesion_i = $_SESSION["Usuario"];
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="codigoPostal" id="codigoPostal" required class="input" >
+                    <input type="text" name="usoComprobante" id="usoComprobante" required class="input" maxlength="100" minlength="3">
+                    <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="direccion" id="direccion" required class="input" minlength="2" maxlength="20">
+                    <label for="uso-comprobante" class="input-label">Dirección</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="codigoPostal" id="codigoPostal" required class="input" minlength="5" maxlength="5">
                     <label for="codigo-postal" class="input-label">Código postal del domicilio fiscal</label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" name="usoComprobante" id="usoComprobante" required class="input">
-                    <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
+                    <input type="email" name="email" id="email" required class="input">
+                    <label for="uso-comprobante" class="input-label">Correo electrónico</label>
                 </div>
-              <!--</form>-->
-            </div>
 
-            
-            <div class="detalles-producto">
-            <h1>Detalles del producto</h1>
+                <div class="input-group">
+                    <input type="text" name="telefono" id="telefono" required class="input" minlength="10" maxlength="10">
+                    <label for="uso-comprobante" class="input-label">Teléfono</label>
+                </div>
+                <!--</form>-->
+              </div>
+              <br>
 
-              <div class="especificacion-prod">
-                <label for="Articulo">Articulo</label>
-                <input type="text" value="" readonly>
+              <h3 id="subtitulo">Detalles del producto</h3>
+
+              <div class="tabla-datos-compra">
+                <table>
+                    <thead>
+                      <tr>
+                        <th> <b>Producto</b> </th> 
+                        <td> <b>Cantidad</b> </td> 
+                        <td> <b>Precio </b> </td> 
+                        <td> <b>Fecha</b> </td> 
+                        <td> <b>Total</b> </td> 
+                      </tr>
+                    </thead>
+                  </table>
               </div>
 
-              <div class="especificacion-prod">
-                <label for="Cantidad">Cantidad</label>
-                <input type="text" value="" readonly>
-              </div>
+              <br>
+              <br>
 
-              <div class="especificacion-prod">
-                <label for="Precio">Precio</label >
-                <input type="text" value="" readonly>
-              </div>
-
-              <div class="especificacion-prod">
-                <label for="Fecha">Fecha</label >
-                <input type="text" value="" readonly>
-              </div>
-
-              <div class="especificacion-prod">
-                <label for="Total">Total</label>
-                <input type="text" value="" readonly>
-              </div>
-              
-            </div>
-            
-
-            <br>
-            <br>
-
-            <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn" disabled>
-            <br>
-            <br>
-            <br>
+              <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
+              <br>
+              <br>
+              <br>
             </form>
         </article>
-        <script src="js/alertasPerfil.js"></script>
-        <script src="js/validPerfil.js"></script>
     </section>
+
+    <!--    Pie de Pagina    -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                      <img src="css/assets/Logo_inovatec_original.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+            <p>Inovación Tecnológica 2000. </p>
+                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+                <p>Teléfono: 4371010101</p>
+                <p>fabricaitzas.com/inovatec/</p>
+                <p>Correo electrónico: inovatec2000st@gmail.com</p>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>
+
+    <script src="js/validFactura.js"></script>
     <script src="js/linkHome.js"></script>
 </body>
 

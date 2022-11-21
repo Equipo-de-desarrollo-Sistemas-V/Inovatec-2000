@@ -23,10 +23,18 @@ $nombre=$_POST["nombreDenominación"];
 $regimen=$_POST["regimenFiscal"];
 $cp=$_POST["codigoPostal"];
 $uso=$_POST["usoComprobante"];
+$direccion=$_POST["direccion"];
+$correo=$_POST["email"];
+$telefono=$_POST["telefono"];
 
 
-//montos
-$precionfinal=400;
+//datos articulo
+$articulo=$_POST["art"];
+$cantidad=$_POST["can"];
+$precio=$_POST["pre"];
+$total=$_POST["tot"];
+//formula iva
+$precionfinal=$total;
 $antesImpuestos=($precionfinal*1)/1.16;
 $antesImpuestosFormateado = number_format($antesImpuestos, 2, '.', '');
 $pdf->AddPage(); 
@@ -43,18 +51,18 @@ $pdf->Cell(0,10,utf8_decode($regimen),0,0,'L');//regimen
 $pdf->SetFont('Times','',10);
 $pdf->Ln(22);
 $pdf->Cell(355);
-$pdf->Cell(0,10,utf8_decode('Lopez Mateos #8'),0,0,'L');//direccion
+$pdf->Cell(0,10,utf8_decode($direccion),0,0,'L');//direccion
 $pdf->Ln(12);
 $pdf->Cell(355);
 $pdf->Cell(0,10,utf8_decode($cp),0,0,'L');//direccion
 $pdf->SetFont('Times','',10);
 $pdf->Ln(10);
 $pdf->Cell(355);
-$pdf->Cell(0,10,utf8_decode('4371073134'),0,0,'L');//telefono
+$pdf->Cell(0,10,utf8_decode($telefono),0,0,'L');//telefono
 $pdf->SetFont('Times','',10);
 $pdf->Ln(12);
 $pdf->Cell(355);
-$pdf->Cell(0,10,utf8_decode('dzexion11@gmail.com'),0,0,'L');//correo
+$pdf->Cell(0,10,utf8_decode($correo),0,0,'L');//correo
 $pdf->SetFont('Times','',10);
 $pdf->Ln(21);
 $pdf->Cell(385);
@@ -90,7 +98,7 @@ $pdf->Cell(45);
 $pdf->Cell(70,10,utf8_decode('Tarjeta Grafica ASUS ROG'),0,0,'L');//Total debido
 $pdf->SetFont('Times','',10);
 $pdf->Cell(185);
-$pdf->Cell(70,10,utf8_decode('183.40'),0,0,'L');//Subtotal
+$pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'L');//Subtotal
 
 
 //parte baja de la factura subtotal,impuesto y total

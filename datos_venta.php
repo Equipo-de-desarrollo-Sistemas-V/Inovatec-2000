@@ -40,72 +40,25 @@ WHERE noTarjeta='$no_tar'";
     $auxDin="";
   }
 
-$query= "SELECT* 
-FROM Direccion 
-where Usuario ='".$sesion_i."'";
+$query ="SELECT colonia, calle, no_calle, codigo_postal, municipios.municipio, estados.Estado
+FROM Direccion, estados_municipios, estados, municipios
+WHERE Ciudad_Estado=estados_municipios.id and
+estados_municipios.estados_id = estados.id and
+estados_municipios.municipios_id = municipios.Id_Municipios and
+Usuario ='".$sesion_i."'";
   $resultado=sqlsrv_query($con, $query);
   $row = sqlsrv_fetch_array($resultado);
   $colonia=$row['colonia'];
   $calle=$row['calle'];
   $no_calle=$row['no_calle'];
   $cp=$row['codigo_postal'];
-  $auxRela=$row['Ciudad_Estado'];
-
-$query= "SELECT* 
-FROM estados_municipios 
-where id ='".$auxRela."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
-  $auxMun=$row['municipios_id'];
-  $auxEst=$row['estados_id'];
-
-$query= "SELECT* 
-FROM municipios 
-where Id_Municipios ='".$auxMun."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
   $municipio=$row['municipio'];
-
-$query= "SELECT* 
-FROM estados 
-where id ='".$auxEst."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
   $estado=$row['Estado'];
 
-
-$idProducto=$_GET["item"];
-  
-$array1 = explode("/",$idProducto);
-$producto=$array1[0];
-$cantiCompra=$array1[1];
-
-$query= "SELECT nombre, precio_ven
-FROM Productos 
-where id_producto ='".$producto."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
-  $nom=$row['nombre'];
-  $precio=substr($row['precio_ven'],0,-2);
-
-$subT=$precio;   // falta agregar descuento 
-$total=$subT*$cantiCompra;
-
-$precioProd= "$ ".substr($auxPrecio, 0, -2);
-echo "
-  <script>
-    let auxId= $producto;
-    let auxCan= $cantiCompra;
-    let auxNumTar= $auxTar;
-    let auxCcvTar= $auxCCV;
-    let auxDinTar= $auxDin;
-    let auxTot= $total;
-  </script>";
-  
-
-sqlsrv_close($con);
+//obtengo el arreglo del url de productos de la compra y su cantidad 
+$arrProd = (array)json_decode($_GET["item"]);
+$numPro=count($arrProd);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,10 +80,12 @@ sqlsrv_close($con);
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/datosVenta.css">
+  <link rel="stylesheet" href="css/estiloFooter.css">
+
 </head>
 
 <body>
-  <header>
+  
     <input type="checkbox" name="" id="check">
 
     <nav>
@@ -157,7 +112,7 @@ sqlsrv_close($con);
         <span><i class="fas fa-times" id="times"></i></span>
       </label>
     </nav>
-  </header>
+  
 
   <section class="containerAll">
     <article class="container">
@@ -405,6 +360,7 @@ sqlsrv_close($con);
         </div>
       </div>
     </article>
+
     <section class="container-all">
         <article id="container-datos-usuario" class="contenedor">
                 <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
@@ -479,38 +435,77 @@ sqlsrv_close($con);
             </div>    
             <br>
             <br>
-                
+
             <h3 id="subtitulo">Datos de compra</h3>
-            <div class="entrada-2">
-                <div class="input-group">
-                    <label for="nombre-producto" class="input-label">Producto</label>
-                    <input type="text" name="nombreProducto" id="nombreProducto" class="input" value="<?php echo $nom;?>">
-                </div>
 
-                <div class="input-group">
-                    <input type="text" name="precioUnitario" id="precioUnitario" class="input" value="<?php echo $precio;?>">
-                    <label for="precio-unitario" class="input-label">Precio unitario</label>
-                </div>
+            <div class="tabla-datos-compra">
+              <table>
+                <thead>
+                  <tr>
+                    <th> <b>Producto</b> </th> 
+                    <td> <b>Precio unitario $</b> </td> 
+                    <td> <b>Cantidad</b> </td> 
+                    <td> <b>Subtotal $</b> </td> 
+                    <td> <b>Descuento $</b> </td> 
+                    <td> <b>Total $</b> </td> 
+                  </tr>
+                </thead>
+                <?php
+                    $aux=json_encode($arrProd);
+                  $x=0;
+                  $totDeCompra=0;                  //contador para acumular los totales de cada producto y obtner el monto final de la compra
+                  for($i=0;$i<$numPro;$i++) {
+                      $idProd=$arrProd[$i][0];                        //id del producto
+                      $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
+                      $query= "SELECT nombre, precio_ven
+                      FROM Productos 
+                      where id_producto ='".$idProd."'";
+                        $resultado=sqlsrv_query($con, $query);
+                        $row = sqlsrv_fetch_array($resultado);
+                        $nomProd=$row['nombre'];                      //nombre del prodcuto
+                        $precio=substr($row['precio_ven'],0,-2);      //precio de venta
+                        $descuento=0;                                 // descuento en pesos
+                      $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
+                      $totProd=$subT-$descuento;                    //
+                      $totDeCompra+=$totProd;
+                        echo '<tr>
+                          <td>'.$nomProd.'</td>
+                          <td>'.$precio.'</td>
+                          <td>'.$cantiProd.'</td>
+                          <td>'.$subT.'</td>
+                          <td>'.$descuento.'</td>
+                          <td>'.$totProd.'</td>
+                          </tr>';
+                  }
+                  echo '<tr>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."Total a pagar $".'</td>
+                          <td>'.$totDeCompra.'</td>
+                          </tr>';
+                  echo "
+                    <script>
+                      // let auxId= $producto;
+                      // let auxCan= $cantiCompra;
+                      let auxNumTar= $auxTar;
+                      let auxCcvTar= $auxCCV;
+                      let auxDinTar= $auxDin;
+                      let auxTot= $totDeCompra;
+                      let arreglo = $aux;
+                      let arreglo2 = $aux;
+                    </script>";
+                        sqlsrv_close($con);
 
-                <div class="input-group">
-                    <input type="text" name="cantidad" id="cantidad" class="input" value="<?php echo $cantiCompra;?>">
-                    <label for="producto-cantidad" class="input-label">Cantidad</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="subtotal" id="subtotal" class="input" value="<?php echo $subT;?>">
-                    <label for="subtotal" class="input-label">Subtotal</label>
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="total" id="total" class="input" value="<?php echo $total;?>">
-                    <label for="total" class="input-label">Total</label>
-                </div>
+                ?>
+              </table>
+              <?php
+              ?>
             </div>
             <br>
 
             <input type="button" name="genCompra" id="genCompra" value="Finalizar compra" onclick="datos();" class="btn">
-            <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
             <br>
             <br>
             <br>
@@ -518,6 +513,31 @@ sqlsrv_close($con);
             
         </article>
     </section>
+
+    <!--    Pie de Pagina    -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                      <img src="css/assets/Logo_inovatec_original.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+            <p>Inovación Tecnológica 2000. </p>
+                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+                <p>Teléfono: 4371010101</p>
+                <p>fabricaitzas.com/inovatec/</p>
+                <p>Correo electrónico: inovatec2000st@gmail.com</p>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>
+    
     <script src="js/linkHome.js"></script>
 </body>
 
@@ -532,7 +552,7 @@ ccv.addEventListener('keyup', (e) => {
   .replace(/[^0-9]/, "")
   })
 
-  //Valdido que no este vacio y que el numero sea entero, mlientras que no sea vedadero el boton esta desactivado
+  //Valdido que no este vacio y que el numero sea entero, mientras que no sea verdadero el boton esta desactivado
 
   const input = document.querySelector('ccv');
   ccv.addEventListener('input', updateValue);
@@ -561,18 +581,14 @@ ccv.addEventListener('keyup', (e) => {
         if (auxDinTar<auxTot){
           alert("Monto insuficiente")
         }else{
-          let envio= auxId+"/"+auxCan;
-          location.href="ventana_confirmacion.php?item="+envio;
+          arreglo[1] = new Array(1);
+          arreglo[1][0] = auxNumTar;
+          location.href="registrarVenta.php?item="+JSON.stringify(arreglo);
+        
+          location.href="ventana_confirmacion.php?item="+JSON.stringify(arreglo2);
         }
       }
     }
     
   }
 </script>
-<!-- 
-
-
-exista tarjeta, saldo, ccv
-
-Datos de la compra
-Producto, Precio unitario, cantidad, subtotal, total -->

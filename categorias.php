@@ -123,13 +123,16 @@
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Accesorios para servidores">Accesorios de servidores</a>
+                      <a href="categorias.php?item=Servidores e impresión/Accesorios para servidores">Accesorios de servidores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Redes">Redes</a>
+                      <a href="categorias.php?item=Servidores e impresión/Redes">Redes</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresion/Energia">Energía</a>
+                      <a href="categorias.php?item=Servidores e impresión/Energia">Energía</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Servidores e impresión/Servidores">Servidores</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -181,7 +184,7 @@
                       <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Smarthphones">Smartphones</a>
+                      <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
@@ -278,6 +281,36 @@
                 </div>
               </li>
 
+              <!-- ALMACENAMIENTO -->
+              <li class="nav-link" style="--i: .85s">
+
+                <a href="#">
+                  <ion-icon name="cloud-circle-outline"></ion-icon>
+                  Almacenamiento
+                  <i class="fas fa-caret-down"></i>
+                </a>
+
+                <div class="dropdown">
+
+                  <ul>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/M.2" >M.2</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/HDD">HDD</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Almacenamiento/Memoria RAM">Memoria RAM</a>
+                    </li>
+                    <div class="arrow"></div>
+                  </ul>
+                </div>
+              </li>
+
+
             </ul>
           </div>
 
@@ -304,17 +337,15 @@
 </body>
 
   <script src="JsPhp/categoriasBridge.js"></script>
+  <script src="js/linkHome.js"></script>
 </html>
 
 <?php
   $item = $_GET['item'];
-
   /* Separa el item en dos secciones y guardalo en diferentes variables */
   $item = explode("/", $item);
-  
   /* Asigna el nombre de la subcategoria al h2 con el id subtitulo */
   echo "<script>document.getElementById('subtitulo').innerHTML = '$item[1]'</script>";
-
   echo "<script>document.getElementById('categoria').innerText = '$item[0]'</script>";
   echo "<script>document.getElementById('subcategoria').innerText = '$item[1]'</script>";
 ?>

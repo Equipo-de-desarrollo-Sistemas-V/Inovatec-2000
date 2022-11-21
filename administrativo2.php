@@ -75,7 +75,7 @@ $sesion_i = $_SESSION["nombres"];
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenido")." ".ucwords($sesion_i);?> 
+			<?php echo ucwords("Bienvenid@")." ".ucwords($sesion_i);?> 
 			<div class="btn-header">
 				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
@@ -130,6 +130,13 @@ $sesion_i = $_SESSION["nombres"];
 							<ul>
 								<li><a id="menuVentas1" href="registro_ventas.php">Ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Productos</a></li>
+							</ul>
+						</li>
+
+						<li><a href="#">Promociones</a>
+							<ul>
+								<li><a id="menuVentas1" href="registro_promocion.php">Nueva promoción</a></li>
+								<li><a id="menuVentas2" href="lista_promociones.php">Lista de promociones</a></li>
 							</ul>
 						</li>
 					</ul>

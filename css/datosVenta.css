@@ -216,6 +216,35 @@ h1{
     row-gap: 15px;
 }
 
+/* Estilos para las tablas*/
+.tabla-datos-compra{
+    justify-content: center;
+    display: grid;
+}
+table{
+    margin-left: 10%;
+    max-width: 80%;
+	background-color: rgb(243, 243, 243);
+	text-align: center;
+	border-collapse: collapse;
+}
+
+th,td{
+	width: 300px;
+	padding: 10px 15px;
+}
+
+thead{
+	background-color:#ffcb3e;
+	color: #000;
+	font-size: 16px;
+	border-bottom: solid 5px #e8b835;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
 /* Implementacion del estilo para las cajas */
 .input-group {
     position: relative;
@@ -287,6 +316,9 @@ h1{
 }
 
 @media (max-width: 415px) {
+    nav{
+        width: 520px;
+    }
     .contenedor-titulos{
         margin-left: 10px;
         width: 370px;
@@ -307,8 +339,8 @@ h1{
     }
 
     .contenedor {
-        margin-left: 10px;
-        width: 370px;
+        margin-left: 5px;
+        width: 500px;
     }
 
     .leyenda-1 {
@@ -341,6 +373,15 @@ h1{
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
+    }
+
+    table{
+        max-width: 500px;
+        margin-left: 2px;
+    }
+    .container{
+        width: 520px;
+        max-width: 520px;
     }
 }
 
