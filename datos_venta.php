@@ -40,72 +40,25 @@ WHERE noTarjeta='$no_tar'";
     $auxDin="";
   }
 
-$query= "SELECT* 
-FROM Direccion 
-where Usuario ='".$sesion_i."'";
+$query ="SELECT colonia, calle, no_calle, codigo_postal, municipios.municipio, estados.Estado
+FROM Direccion, estados_municipios, estados, municipios
+WHERE Ciudad_Estado=estados_municipios.id and
+estados_municipios.estados_id = estados.id and
+estados_municipios.municipios_id = municipios.Id_Municipios and
+Usuario ='".$sesion_i."'";
   $resultado=sqlsrv_query($con, $query);
   $row = sqlsrv_fetch_array($resultado);
   $colonia=$row['colonia'];
   $calle=$row['calle'];
   $no_calle=$row['no_calle'];
   $cp=$row['codigo_postal'];
-  $auxRela=$row['Ciudad_Estado'];
-
-$query= "SELECT* 
-FROM estados_municipios 
-where id ='".$auxRela."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
-  $auxMun=$row['municipios_id'];
-  $auxEst=$row['estados_id'];
-
-$query= "SELECT* 
-FROM municipios 
-where Id_Municipios ='".$auxMun."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
   $municipio=$row['municipio'];
-
-$query= "SELECT* 
-FROM estados 
-where id ='".$auxEst."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
   $estado=$row['Estado'];
 
-
-$idProducto=$_GET["item"];
-  
-$array1 = explode("/",$idProducto);
-$producto=$array1[0];
-$cantiCompra=$array1[1];
-
-$query= "SELECT nombre, precio_ven
-FROM Productos 
-where id_producto ='".$producto."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
-  $nom=$row['nombre'];
-  $precio=substr($row['precio_ven'],0,-2);
-
-$subT=$precio;   // falta agregar descuento 
-$total=$subT*$cantiCompra;
-
-$precioProd= "$ ".substr($auxPrecio, 0, -2);
-echo "
-  <script>
-    let auxId= $producto;
-    let auxCan= $cantiCompra;
-    let auxNumTar= $auxTar;
-    let auxCcvTar= $auxCCV;
-    let auxDinTar= $auxDin;
-    let auxTot= $total;
-  </script>";
-  
-
-sqlsrv_close($con);
+//obtengo el arreglo del url de productos de la compra y su cantidad 
+$arrProd = (array)json_decode($_GET["item"]);
+$numPro=count($arrProd);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -488,18 +441,68 @@ sqlsrv_close($con);
                 <thead>
                   <tr>
                     <th> <b>Producto</b> </th> 
-                    <td> <b>Precio unitario</b> </td> 
+                    <td> <b>Precio unitario $</b> </td> 
                     <td> <b>Cantidad</b> </td> 
-                    <td> <b>Subtotal</b> </td> 
-                    <td> <b>Total</b> </td> 
+                    <td> <b>Subtotal $</b> </td> 
+                    <td> <b>Descuento $</b> </td> 
+                    <td> <b>Total $</b> </td> 
                   </tr>
                 </thead>
+                <?php
+                    $aux=json_encode($arrProd);
+                  $x=0;
+                  $totDeCompra=0;                  //contador para acumular los totales de cada producto y obtner el monto final de la compra
+                  for($i=0;$i<$numPro;$i++) {
+                      $idProd=$arrProd[$i][0];                        //id del producto
+                      $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
+                      $query= "SELECT nombre, precio_ven
+                      FROM Productos 
+                      where id_producto ='".$idProd."'";
+                        $resultado=sqlsrv_query($con, $query);
+                        $row = sqlsrv_fetch_array($resultado);
+                        $nomProd=$row['nombre'];                      //nombre del prodcuto
+                        $precio=substr($row['precio_ven'],0,-2);      //precio de venta
+                        $descuento=0;                                 // descuento en pesos
+                      $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
+                      $totProd=$subT-$descuento;                    //
+                      $totDeCompra+=$totProd;
+                        echo '<tr>
+                          <td>'.$nomProd.'</td>
+                          <td>'.$precio.'</td>
+                          <td>'.$cantiProd.'</td>
+                          <td>'.$subT.'</td>
+                          <td>'.$descuento.'</td>
+                          <td>'.$totProd.'</td>
+                          </tr>';
+                  }
+                  echo '<tr>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."Total a pagar $".'</td>
+                          <td>'.$totDeCompra.'</td>
+                          </tr>';
+                  echo "
+                    <script>
+                      // let auxId= $producto;
+                      // let auxCan= $cantiCompra;
+                      let auxNumTar= $auxTar;
+                      let auxCcvTar= $auxCCV;
+                      let auxDinTar= $auxDin;
+                      let auxTot= $totDeCompra;
+                      let arreglo = $aux;
+                    </script>";
+                        sqlsrv_close($con);
+
+                ?>
               </table>
+              <?php
+              ?>
             </div>
             <br>
 
             <input type="button" name="genCompra" id="genCompra" value="Finalizar compra" onclick="datos();" class="btn">
-            <!-- <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn"> -->
             <br>
             <br>
             <br>
@@ -521,7 +524,7 @@ ccv.addEventListener('keyup', (e) => {
   .replace(/[^0-9]/, "")
   })
 
-  //Valdido que no este vacio y que el numero sea entero, mlientras que no sea vedadero el boton esta desactivado
+  //Valdido que no este vacio y que el numero sea entero, mientras que no sea verdadero el boton esta desactivado
 
   const input = document.querySelector('ccv');
   ccv.addEventListener('input', updateValue);
@@ -551,23 +554,13 @@ ccv.addEventListener('keyup', (e) => {
           alert("Monto insuficiente")
         }else{
           
-          let envio= auxId+"/"+auxCan+"/"+auxNumTar;
-          location.href="registrarVenta.php?item="+envio;
-
+          //let envio= auxId+"/"+auxCan+"/"+auxNumTar;
+          location.href="registrarVenta.php?item="+JSON.stringify(arreglo);
+/*
           let envio2= auxId+"/"+auxCan;
           location.href="ventana_confirmacion.php?item="+envio2;
-          /*
-          function cargarDatos(id){
-            var url='registrarVenta.php';
-            $.ajax({
-              type: 'POST',
-              url:url,
-              data: 'id='+envio,
-              success: function(response){
-              alert(response);
-              }
-            });
-          }*/
+          */
+          //  location.href="ventana_confirmacion.php?item="+JSON.stringify(arreglo);
         }
       }
     }

@@ -423,8 +423,6 @@ if($resultado==true){
 
 //Cerrar conexion
 sqlsrv_close($con);
-
-//existentes, que la cantidad no exeda, 
 ?>
 
 
@@ -465,8 +463,14 @@ sqlsrv_close($con);
         if (canti>auxExis){
           alert('Stock insuficiente')
         }else{
-          let envio= auxId+"/"+canti;
-          location.href="datos_venta.php?item="+envio;
+          //creo un arreglo para mandar el prodcuto y su cantidad
+          var arreProduc = new Array(1);
+          arreProduc[0] = new Array(2);
+          arreProduc[0][0] = auxId;
+          arreProduc[0][1] = canti;
+          let envio= arreProduc;
+          location.href="datos_venta.php?item="+JSON.stringify(envio);
+          
         }
       }
     }
