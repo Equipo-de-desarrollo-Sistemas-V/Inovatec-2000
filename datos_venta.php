@@ -492,6 +492,7 @@ $numPro=count($arrProd);
                       let auxDinTar= $auxDin;
                       let auxTot= $totDeCompra;
                       let arreglo = $aux;
+                      let arreglo2 = $aux;
                     </script>";
                         sqlsrv_close($con);
 
@@ -553,14 +554,11 @@ ccv.addEventListener('keyup', (e) => {
         if (auxDinTar<auxTot){
           alert("Monto insuficiente")
         }else{
-          
-          //let envio= auxId+"/"+auxCan+"/"+auxNumTar;
+          arreglo[1] = new Array(1);
+          arreglo[1][0] = auxNumTar;
           location.href="registrarVenta.php?item="+JSON.stringify(arreglo);
-/*
-          let envio2= auxId+"/"+auxCan;
-          location.href="ventana_confirmacion.php?item="+envio2;
-          */
-          //  location.href="ventana_confirmacion.php?item="+JSON.stringify(arreglo);
+        
+          location.href="ventana_confirmacion.php?item="+JSON.stringify(arreglo2);
         }
       }
     }
