@@ -98,7 +98,7 @@
 			<div class="article-tablas">
 
 				<article>
-					<h1 align="center">Lista de Productos</h1>
+					<h1 align="center">Lista de promociones</h1>
 					<div class="contenido-barra-buscar">
 						<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required >
 						<button class="btn-buscar">
