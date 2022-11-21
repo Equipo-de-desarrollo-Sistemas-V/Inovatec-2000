@@ -19,6 +19,10 @@ $this->Cell(0,10,'This certificate has been ©  © produced by thetutor',0,0,'R'
 } 
 
 $pdf = new FPDF('P','pt','A4'); 
+$arre=$_GET["item"];
+$array_para_recibir_via_url = urldecode($arre);
+$matriz_completa = unserialize($array_para_recibir_via_url);
+
 $nombre=$_POST["nombreDenominación"];
 $regimen=$_POST["regimenFiscal"];
 $cp=$_POST["codigoPostal"];
@@ -29,12 +33,37 @@ $telefono=$_POST["telefono"];
 
 
 //datos articulo
-$articulo=$_POST["art"];
+/*$articulo=$_POST["art"];
 $cantidad=$_POST["can"];
 $precio=$_POST["pre"];
-$total=$_POST["tot"];
+$total=$_POST["tot"];*/
+
+//datos de bd
+$serverName='localhost';
+$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+$numPro=count($matriz_completa);
+//echo '<script>alert("'.$numPro.'")</script>';
+$totDeCompra=0;
+for($i=0;$i<$numPro;$i++) {
+    $idProd=$matriz_completa[0][$i];                        //id del producto
+    $cantiProd=$matriz_completa[1][$i];                     //cantidad que se va a comprar
+    //echo'<script>alert("'.$idProd.'")</script>';
+    //echo'<script>alert("'.$cantiProd.'")</script>';
+    $query= "SELECT nombre, precio_ven,descuento
+    FROM Productos 
+    where id_producto ='".$idProd."'";
+    $resultado=sqlsrv_query($conn_sis, $query);
+    $row = sqlsrv_fetch_array($resultado);
+    $nomProd=$row['nombre'];                      //nombre del prodcuto
+    $precio=substr($row['precio_ven'],0,-2);      //precio de venta
+    $descuento=$row['descuento'];                                 // descuento en pesos
+    $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
+    $totProd=$subT-$descuento;                    //
+    $totDeCompra+=$totProd;
+}
 //formula iva
-$precionfinal=$total;
+$precionfinal=$totDeCompra;
 $antesImpuestos=($precionfinal*1)/1.16;
 $antesImpuestosFormateado = number_format($antesImpuestos, 2, '.', '');
 $pdf->AddPage(); 
@@ -88,17 +117,37 @@ $pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Subtotal
 //variable que controla el salto de linea de las ultimas partes
 $saltoLN=386-35;
 $fecha= date("d/m/Y");
-//parte de los productos
-$pdf->SetFont('Times','',10);
 $pdf->Ln(35);
-$pdf->Cell(45);
-$pdf->Cell(70,10,utf8_decode($fecha),0,0,'L');//Fecha
-$pdf->SetFont('Times','',10);
-$pdf->Cell(45);
-$pdf->Cell(70,10,utf8_decode('Tarjeta Grafica ASUS ROG'),0,0,'L');//Total debido
-$pdf->SetFont('Times','',10);
-$pdf->Cell(185);
-$pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'L');//Subtotal
+//parte de los productos
+for($i=0;$i<$numPro;$i++) {
+    $idProd=$matriz_completa[0][$i];                        //id del producto
+    $cantiProd=$matriz_completa[1][$i];                     //cantidad que se va a comprar
+    //echo'<script>alert("'.$idProd.'")</script>';
+    //echo'<script>alert("'.$cantiProd.'")</script>';
+    $query= "SELECT nombre, precio_ven,descuento
+    FROM Productos 
+    where id_producto ='".$idProd."'";
+    $resultado=sqlsrv_query($conn_sis, $query);
+    $row = sqlsrv_fetch_array($resultado);
+    $nomProd=$row['nombre'];                      //nombre del prodcuto
+    $precio=substr($row['precio_ven'],0,-2);      //precio de venta
+    $descuento=$row['descuento'];                                 // descuento en pesos
+    $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
+    $totProd=$subT-$descuento;
+    $pdf->SetFont('Times','',10);
+    
+    $pdf->Cell(45);
+    $pdf->Cell(70,10,utf8_decode($fecha),0,0,'L');//Fecha
+    $pdf->SetFont('Times','',10);
+    $pdf->Cell(45);
+    $pdf->Cell(70,10,utf8_decode($nomProd),0,0,'L');//Total debido
+    $pdf->SetFont('Times','',10);
+    $pdf->Cell(185);
+    $pdf->Cell(70,10,utf8_decode($subT),0,0,'L');//Subtotal
+    $pdf->Ln(15);
+    $saltoLN-=15; 
+}
+
 
 
 //parte baja de la factura subtotal,impuesto y total

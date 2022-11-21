@@ -8,9 +8,10 @@ $serverName='localhost';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 
-$id=$_GET["item"];
+//$id=$_GET["item"];
+$arre=$_GET["item"];
 //if (isset($_POST('Actualizar')))
-$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
+/*$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
 $res= sqlsrv_query($conn_sis, $query);
 if( $res === false) {
   die( print_r( sqlsrv_errors(), true) );
@@ -19,10 +20,15 @@ while( $row = sqlsrv_fetch_array($res) ) {
   $nombre=$row["nombre"];
   $pre_ven=substr($row['precio_ven'],0,-2);							
 //echo '<script>alert("'.$nombre.'")</script>';
-}
+}*/
+$array_para_recibir_via_url = urldecode($arre);
+$matriz_completa = unserialize($array_para_recibir_via_url);
 
+//echo '<script>alert("'.$matriz_completa[1][1].'")</script>';
 $fecha= date("d/m/Y");
-$total=$pre_ven*1;
+//$total=$pre_ven*1;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -328,7 +334,7 @@ $total=$pre_ven*1;
 
             <h3 id="subtitulo">Datos para la factura</h3>
             <br>
-            <form id="formulario" action="Factura.php" class="formularios" method="POST">
+            <form id="formulario" action="Factura.php?item=<?php echo $arre; ?>" class="formularios" method="POST">
               <div class="entrada-2">
                 
                 <!--<form action="Factura.php" class="formularios" method="post">-->
@@ -382,13 +388,47 @@ $total=$pre_ven*1;
                         <td> <b>Total</b> </td> 
                       </tr>
                     </thead>
+                    <?php
+                    $numPro=count($matriz_completa);
+                    //echo '<script>alert("'.$numPro.'")</script>';
+                    for($i=0;$i<$numPro;$i++) {
+                      $idProd=$matriz_completa[0][$i];                        //id del producto
+                      $cantiProd=$matriz_completa[1][$i];                     //cantidad que se va a comprar
+                      //echo'<script>alert("'.$idProd.'")</script>';
+                      //echo'<script>alert("'.$cantiProd.'")</script>';
+                      $query= "SELECT nombre, precio_ven,descuento
+                      FROM Productos 
+                      where id_producto ='".$idProd."'";
+                        $resultado=sqlsrv_query($conn_sis, $query);
+                        $row = sqlsrv_fetch_array($resultado);
+                        $nomProd=$row['nombre'];                      //nombre del prodcuto
+                        $precio=substr($row['precio_ven'],0,-2);      //precio de venta
+                        $descuento=$row['descuento'];                                 // descuento en pesos
+                      $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
+                      $totProd=$subT-$descuento;                    //
+                      $totDeCompra+=$totProd;
+                        echo '<tr>
+                          <td>'.$nomProd.'</td>
+                          <td>'.$cantiProd.'</td>
+                          <td>'.$precio.'</td>
+                          <td>'.$fecha.'</td>
+                          <td>'.$totProd.'</td>
+                          </tr>';
+                  }
+                  echo '<tr>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."".'</td>
+                          <td>'."Total a pagar $".'</td>
+                          <td>'.$totDeCompra.'</td>
+                          </tr>'; ?>
                   </table>
               </div>
 
               <br>
               <br>
 
-              <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
+              <input type="submit" name="boton4" id="boton4" value="Continuar"  class="btn">
               <br>
               <br>
               <br>
