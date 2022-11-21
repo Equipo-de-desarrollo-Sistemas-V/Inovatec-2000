@@ -79,7 +79,7 @@ header{
 
 .menu{
 	max-width: 800px;
-	margin: auto;
+	margin-left: 18%;
 	height: 100%;
 	
 }
@@ -420,7 +420,7 @@ tr:nth-child(even){
 /*Estilos para la barra de busqueda*/
 
 .contenido-barra-buscar {
-    padding: 0px 0px 0px 750px;
+    padding: 0px 0px 0px 75%;
   }
   
   .contenido-barra-buscar input {

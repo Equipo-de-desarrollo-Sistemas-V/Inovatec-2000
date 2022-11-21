@@ -121,6 +121,13 @@ $resultados_sucursales = sqlsrv_query($con, $querry_sucursales);
 								<li><a id="menuVentas2" href="informe_ventas.php">Productos</a></li>
 							</ul>
 						</li>
+
+						<li><a href="#">Promociones</a>
+							<ul>
+								<li><a id="menuVentas1" href="registro_promocion.php">Nueva promoción</a></li>
+								<li><a id="menuVentas2" href="lista_promociones.php">Lista de promociones</a></li>
+							</ul>
+						</li>
 					</ul>
 				</nav>
 			</div>
