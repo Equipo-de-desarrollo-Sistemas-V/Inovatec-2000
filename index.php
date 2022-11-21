@@ -35,11 +35,11 @@ $sesion_i = $_SESSION["Usuario"];
     </div>
 
     <ol>
-      <li><a href="login.php" class="">Iniciar sesión</a></li>
+      <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
 
-      <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
+      <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
 
-      <li><a href="perfilCliente.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
+      <li><a href="sesion_iniciada_Per.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
 
       <li><a href="#" class=""><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
 
