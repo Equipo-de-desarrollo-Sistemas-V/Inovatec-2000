@@ -22,6 +22,8 @@ $sesion_i = $_SESSION["Usuario"];
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/productoIndividual.css">
+  <link rel="stylesheet" href="css/estiloFooter.css">
+
 </head>
 
 <body>
@@ -366,6 +368,30 @@ $sesion_i = $_SESSION["Usuario"];
             
         </article>
     </section>
+
+    <!--    Pie de Pagina    -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                      <img src="css/assets/Logo_inovatec_original.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+            <p>Inovación Tecnológica 2000. </p>
+                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+                <p>Teléfono: 4371010101</p>
+                <p>fabricaitzas.com/inovatec/</p>
+                <p>Correo electrónico: inovatec2000st@gmail.com</p>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>
     <script src="js/linkHome.js"></script>
 </body>
 

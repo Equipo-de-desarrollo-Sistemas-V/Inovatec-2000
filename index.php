@@ -523,9 +523,7 @@ $sesion_i = $_SESSION["Usuario"];
 
       </article>
 
-      <!--::::Pie de Pagina::::::-->
-    
-
+      <!--    Pie de Pagina    -->
     </section>
     
     <footer class="pie-pagina">
@@ -542,12 +540,13 @@ $sesion_i = $_SESSION["Usuario"];
                 <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
                 <p>Teléfono: 4371010101</p>
                 <p>fabricaitzas.com/inovatec/</p>
-                <p>inovatec2000st@gmail.com</p>
+                <p>Correo electrónico: inovatec2000st@gmail.com</p>
             </div>
         </div>
         <div class="grupo-2">
             <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
         </div>
+      </footer>
 
   <script src="js/linkHome.js"></script>
 </body>

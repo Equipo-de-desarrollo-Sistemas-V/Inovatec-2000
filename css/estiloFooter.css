@@ -3,7 +3,7 @@
 /*:::::Pie de Pagina*/
 .pie-pagina{
     width: 100%;
-    background-color: #f8f8f8;
+    background-color: #cdcdcd;
 }
 .pie-pagina .grupo-1{
     width: 100%;
@@ -22,7 +22,7 @@
     align-items: center;
 }
 .pie-pagina .grupo-1 .box figure img{
-    width: 350px;
+    width: 250px;
 }
 .pie-pagina .grupo-1 .box h2{
     color: #3d3d3d;
@@ -30,6 +30,7 @@
     font-size: 20px;
 }
 .pie-pagina .grupo-1 .box p{
+    font-size: 14px;
     color: #474747;
     margin-bottom: 5px;
 }
@@ -49,13 +50,13 @@
     color: aqua;
 }
 .pie-pagina .grupo-2{
-    background-color: #c3c3c3;
+    background-color: #ababab;
     padding: 15px 10px;
     text-align: center;
     color: #3d3d3d;
 }
 .pie-pagina .grupo-2 small{
-    font-size: 15px;
+    font-size: 14px;
 }
 @media screen and (max-width:800px){
     .pie-pagina .grupo-1{
