@@ -335,20 +335,18 @@ $sesion_i = $_SESSION["Usuario"];
 
 
 <?php
-$idProducto=$_GET["item"];
-$array1 = explode("/",$idProducto);
-$producto=$array1[0];
-$cantiCompra=$array1[1];
+//obtengo el arreglo del url de productos de la compra y su cantidad 
+$arrProd = (array)json_decode($_GET["item"]);
+$aux=json_encode($arrProd);
+
 echo "
   <script>
-    let auxId= $producto;
-    let auxCan= $cantiCompra;
+  let arreglo = $aux;
   </script>";
 ?>
 
 <script>
 function generarFactura(){
-  let envio= auxId+"/"+auxCan;
-    location.href="datos_factura.php?item="+envio;
+    location.href="datos_factura.php?item="+JSON.stringify(arreglo);
 }
 </script>
