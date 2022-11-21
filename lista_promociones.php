@@ -4,12 +4,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lista Productos</title>
+	<title>Lista promociones</title>
 
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="js/consulProductos.js"></script>
 </head>
 <body>
 	<!--Estructura Header Superior-->
@@ -21,7 +20,6 @@
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
-			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
 				<!-- <li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a></li> -->
 				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
@@ -96,7 +94,7 @@
 	<main>
 		<!--Contenido de la parte LISTA PRODUCTOS-->
 	
-		<div class="contenidoListaProd" id="contenidoListaProd">
+		<div class="contenidoListaProm" id="contenidoListaProm">
 			<div class="article-tablas">
 
 				<article>
