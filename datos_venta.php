@@ -452,6 +452,7 @@ $numPro=count($arrProd);
                 </thead>
                 <?php
                     $aux=json_encode($arrProd);
+                    $longi=count($arrProd);
                   $x=0;
                   $totDeCompra=0;                  //contador para acumular los totales de cada producto y obtner el monto final de la compra
                   for($i=0;$i<$numPro;$i++) {
@@ -466,8 +467,8 @@ $numPro=count($arrProd);
                         $precio=substr($row['precio_ven'],0,-2);      //precio de venta
                         $descuento=0;                                 // descuento en pesos
                       $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
-                      $totProd=$subT-$descuento;                    //
-                      $totDeCompra+=$totProd;
+                      $totProd=$subT-$descuento;                    //Total del producto
+                      $totDeCompra+=$totProd;                       //Acumulativo para el total de la compra
                         echo '<tr>
                           <td>'.$nomProd.'</td>
                           <td>'.$precio.'</td>
@@ -495,6 +496,7 @@ $numPro=count($arrProd);
                       let auxTot= $totDeCompra;
                       let arreglo = $aux;
                       let arreglo2 = $aux;
+                      let longi = $longi;
                     </script>";
                         sqlsrv_close($con);
 
@@ -581,7 +583,8 @@ ccv.addEventListener('keyup', (e) => {
         if (auxDinTar<auxTot){
           alert("Monto insuficiente")
         }else{
-          arreglo[1] = new Array(1);
+
+          arreglo[longi] = new Array(1);
           arreglo[1][0] = auxNumTar;
           location.href="registrarVenta.php?item="+JSON.stringify(arreglo);
         
