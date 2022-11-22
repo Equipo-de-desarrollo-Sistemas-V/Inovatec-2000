@@ -80,6 +80,8 @@ $numPro=count($arrProd);
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/datosVenta.css">
+  <link rel="stylesheet" href="css/estiloFooter.css">
+
 </head>
 
 <body>
@@ -481,6 +483,7 @@ $numPro=count($arrProd);
                 </thead>
                 <?php
                     $aux=json_encode($arrProd);
+                    $longi=count($arrProd);
                   $x=0;
                   $totDeCompra=0;                  //contador para acumular los totales de cada producto y obtner el monto final de la compra
                   for($i=0;$i<$numPro;$i++) {
@@ -495,8 +498,8 @@ $numPro=count($arrProd);
                         $precio=substr($row['precio_ven'],0,-2);      //precio de venta
                         $descuento=0;                                 // descuento en pesos
                       $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
-                      $totProd=$subT-$descuento;                    //
-                      $totDeCompra+=$totProd;
+                      $totProd=$subT-$descuento;                    //Total del producto
+                      $totDeCompra+=$totProd;                       //Acumulativo para el total de la compra
                         echo '<tr>
                           <td>'.$nomProd.'</td>
                           <td>'.$precio.'</td>
@@ -524,6 +527,7 @@ $numPro=count($arrProd);
                       let auxTot= $totDeCompra;
                       let arreglo = $aux;
                       let arreglo2 = $aux;
+                      let longi = $longi;
                     </script>";
                         sqlsrv_close($con);
 
@@ -542,6 +546,31 @@ $numPro=count($arrProd);
             
         </article>
     </section>
+
+    <!--    Pie de Pagina    -->
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                      <img src="css/assets/Logo_inovatec_original.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+            <p>Inovación Tecnológica 2000. </p>
+                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+                <p>Teléfono: 4371010101</p>
+                <p>fabricaitzas.com/inovatec/</p>
+                <p>Correo electrónico: inovatec2000st@gmail.com</p>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>
+    
     <script src="js/linkHome.js"></script>
 </body>
 
@@ -585,7 +614,8 @@ ccv.addEventListener('keyup', (e) => {
         if (auxDinTar<auxTot){
           alert("Monto insuficiente")
         }else{
-          arreglo[1] = new Array(1);
+
+          arreglo[longi] = new Array(1);
           arreglo[1][0] = auxNumTar;
           location.href="registrarVenta.php?item="+JSON.stringify(arreglo);
         

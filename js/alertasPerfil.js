@@ -43,7 +43,7 @@ formulario.addEventListener('submit', function(e){
         }else if (data==='validacion'){
             alert('La contraseña debe contener números, mayúsculas, minúsculas y caracteres especiales.')
         }else if (data==='longitud'){
-            alert('"La contraseña debe tener un mínimo de 8 caracteres')
+            alert('La contraseña debe tener un mínimo de 8 caracteres')
         }else  if (data==='nomTar'){
             alert('El nombre de la tarjeta solo debe contener letras (a-z / A-Z)')
         }else if (data==='numTar'){

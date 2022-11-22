@@ -1,87 +1,125 @@
 <?php
-//obtengo id del producto de la compra y la cantidad
-$idProducto=$_GET["item"];
-  
-$array1 = explode("/",$idProducto);
-$producto=$array1[0];
-$cantiCompra=$array1[1];
-$tarjetaCliente=$array1[2];
-
+//[[60020,"10"],[50200,"5"],[50350,"1"],[6654687946549846]]
 //conexion a la BD
 $serverName='localhost';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-$con=sqlsrv_connect($serverName, $connectionInfo) ;
+$con=sqlsrv_connect($serverName, $connectionInfo);
 
-
-//obtengo el stock actual del producto
-$query="SELECT cantidad, id_sucursal
-from Inventario_suc
-where id_producto='".$producto."'";
+//obtener el numero de la ultima venta
+$arreIdVentas=array();
+$query="SELECT id_ventas
+from ventas
+order by fecha desc";
 $resultado=sqlsrv_query($con, $query);
 while($row = sqlsrv_fetch_array($resultado)){
-    $auxStock=$row['cantidad'];
-    if ($auxStock!=0){
-        $stockActual=$row['cantidad'];
-        $sucursalActual=$row['id_sucursal'];
-        break;
-    }
+        $aux=explode("-", $row['id_ventas']);
+        $arreIdVentas[]=$aux[0];
 };
 
-$nuevoStock=$stockActual-$cantiCompra;
+if (!empty($arreIdVentas)){
+    $ultimaVenta=max($arreIdVentas);
+}else{
+    $ultimaVenta=0;
+}
+//echo "Ultima venta, id", $ultimaVenta;
 
-//actualizo el stock del producto
-$updateQuery ="UPDATE Inventario_suc
-SET cantidad='".$nuevoStock."' 
-WHERE id_producto='".$producto."' and id_sucursal='".$sucursalActual."'";
-$resul = sqlsrv_query($con, $updateQuery);
 
+//obtengo el arreglo del url de productos de la compra y su cantidad 
+$arrProd = (array)json_decode($_GET["item"]);
 
-//obtengo el precio de venta y nombre del producto
-$query="SELECT precio_ven, nombre
-from Productos
-where id_producto='".$producto."'";
-$resultado=sqlsrv_query($con, $query);
-$row = sqlsrv_fetch_array($resultado);
-$precioVenta=$row['precio_ven'];
-$nombreProd=$row['nombre'];
+$totProd=1;
+$totVenta=0;
+for($z=0;$z<(count($arrProd)-1);$z++) {
+    $producto=$arrProd[$z][0]; 
+    $cantiCompra=$arrProd[$z][1];  
+    
+    //echo "<br>-----------------------PRODCUCTO-----------------", $producto, "<br>";
+    //echo "Cantida del url ", $cantiCompra;
 
-//obtengo el monto actual de la tarjeta del cliente
-$query="SELECT dineros
-from banco
-where noTarjeta='".$tarjetaCliente."'";
-$resultado=sqlsrv_query($con, $query);
-$row = sqlsrv_fetch_array($resultado);
-$montoActual=$row['dineros'];
+    //obtengo el precio de venta y nombre del producto actual
+    $query="SELECT precio_ven, nombre
+    from Productos
+    where id_producto='".$producto."'";
+    $resultado=sqlsrv_query($con, $query);
+    $row = sqlsrv_fetch_array($resultado);
+    $precioVenta=$row['precio_ven'];
+    $nombreProd=$row['nombre'];
 
-$totalVenta=$cantiCompra*$precioVenta;
-$nuevoMonto=$montoActual-$totalVenta;
+    //arreglos para guardar el stock del productos en las distintas sucursales
+    $arreSotck=array();
+    $arreSucur=array();
+    //$producto=60020;
+
+    //obtengo el stock actual del producto actual, ordeno de mayor a menor y agrego los datos a los arreglos anteriores
+    $query="SELECT cantidad, id_sucursal
+    from Inventario_suc
+    where id_producto='".$producto."' order by cantidad desc";
+    $resultado=sqlsrv_query($con, $query);
+    while($row = sqlsrv_fetch_array($resultado)){
+        $arreSotck[]=$row['cantidad'];
+        $arreSucur[]=$row['id_sucursal'];
+    };
+
+    //Actualizo stock,, ya sea en una sola sucursal o en varias, dependiendo la cantidad a vander y el stock de la sucursal
+    $totSuc=1;
+    for($i=0;$i<count($arreSotck);$i++) {
+        //echo "<br>"."Stock de la sucusal ".$arreSotck[$i]."________________________Sucursal ".$arreSucur[$i];
+        //echo "<br>"."Cantidad compra ".$cantiCompra,"<br>";
+        
+        if ($cantiCompra!=0){
+            if ($arreSotck[$i]!=0){
+                
+                if($arreSotck[$i]>=$cantiCompra){
+                    $updateQuery ="UPDATE Inventario_suc
+                    SET cantidad=(cantidad-$cantiCompra)
+                    WHERE id_producto='".$producto."' and id_sucursal='".$arreSucur[$i]."'";
+                    $resul = sqlsrv_query($con, $updateQuery);  
+                    $totVenta+=registrar($producto, $nombreProd, $arreSucur[$i], $cantiCompra, $precioVenta, $ultimaVenta, $totProd, $totSuc, $con);
+                    break;                 
+                }else{
+                    $cantiCompra-=$arreSotck[$i];
+                    $updateQuery ="UPDATE Inventario_suc
+                    SET cantidad=0
+                    WHERE id_producto='".$producto."' and id_sucursal='".$arreSucur[$i]."'";
+                    $resul = sqlsrv_query($con, $updateQuery); 
+                    $totVenta+=registrar($producto, $nombreProd, $arreSucur[$i], $arreSotck[$i], $precioVenta, $ultimaVenta, $totProd, $totSuc, $con); 
+                }
+                $totSuc++;
+                if ($cantiCompra==0){
+                    break;
+                }
+            } 
+        }
+    }
+    $totProd++;
+}
+
+$tarjetaCliente=$arrProd[count($arrProd)-1][0];
+//echo "<br> Total de la vetna", $tarjetaCliente;
 
 // actualizo el monto de la tarjeta del cliente
 $updateQuery ="UPDATE banco 
-SET dineros='".$nuevoMonto."' 
+SET dineros=(dineros-$totVenta) 
 WHERE noTarjeta='".$tarjetaCliente."'";
 $getProv = sqlsrv_query($con, $updateQuery);
+sqlsrv_close($con);
 
 
-// obtengo la fecha en la que se lleva acabo la venta
-date_default_timezone_set("America/Mexico_City");
-$fechaActual=date("Y-m-d");
+function registrar($id_producto, $nombreProd, $id_sucrusal, $cantiCompra, $precioVenta, $ultimaVenta, $totProd, $totSuc, $con){           //funcion para registrar las ventas
+    //echo $id_producto."  ".$nombreProd."  ".$id_sucrusal."  ".$cantiCompra."  ".$precioVenta."  ".$ultimaVenta."  ".$totProd."  ".$totSuc;
+    
+    // obtengo la fecha en la que se lleva acabo la venta
+    date_default_timezone_set("America/Mexico_City");
+    $fechaActual=date("Y-m-d");
 
-//obtengo el total de ventas que se han realizado y asi poder asignar un id a la nueva venta
-$query="SELECT count(*) as tot
-from ventas";
-$resultado=sqlsrv_query($con, $query);
-$row = sqlsrv_fetch_array($resultado);
-$totVentas=$row['tot'];
-
-//registro la nueva venta
-$desc=0;
-$idVenta=$totVentas+1;
-$query = "INSERT INTO ventas
-VALUES('$fechaActual', '$producto', '$nombreProd', '$sucursalActual', '$cantiCompra', '$precioVenta', '$totalVenta', '$desc', '$idVenta')";
-$resultado=sqlsrv_query($con, $query);
-
-
-// falta verificar que el stock actual de la sucursal seleccionada sea sufciente para surtir la compra
+    $totalVenta=$precioVenta*$cantiCompra;
+    $desc=0;
+    $idVenta=strval($ultimaVenta+1)."-".strval($totProd)."-".strval($totSuc);
+    //echo "<br> ID DE VENTA", $idVenta, "<br>";
+    $query = "INSERT INTO ventas
+    VALUES('$fechaActual', '$id_producto', '$nombreProd', '$id_sucrusal', '$cantiCompra', '$precioVenta', '$totalVenta', '$desc', '$idVenta')";
+    $resultado=sqlsrv_query($con, $query);
+    return $totalVenta;
+}
 ?>
 
