@@ -1,3 +1,15 @@
+<?php
+//informacion para la conexion a base de datos
+$servername = "localhost";
+$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$con = sqlsrv_connect($servername, $info);
+
+$querry_producto = "SELECT id_producto, nombre FROM Productos
+WHERE Estado = 'Activo' And descuento = 0";
+
+$resultados = sqlsrv_query($con, $querry_producto);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -86,7 +98,7 @@
 							</ul>
 						</li>
 
-                        <li><a href="#">Promociones</a>
+						<li><a href="#">Promociones</a>
 							<ul>
 								<li><a id="menuVentas1" href="registro_promocion.php">Nueva promoción</a></li>
 								<li><a id="menuVentas2" href="lista_promociones.php">Lista de promociones</a></li>
@@ -110,6 +122,14 @@
 						<div class="formulario_grupo-input">
 							<select type="text" name="idProducto" id="idProducto" class="formulario_input" required>
 								<option value=""></option>
+								<?php
+
+								//cargar los resultados de la consulta en la combobox
+								while ($row = sqlsrv_fetch_array($resultados)) { ?>
+									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' . $row["nombre"]; ?> </option>
+
+								<?php }
+								?>
 							</select>
 						</div>
 					</div>
@@ -148,3 +168,10 @@
 </body>
 
 </html>
+
+<!-- funcionamiento de la busqueda inteligente de los select -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#idProducto').select2();
+	});
+</script>
