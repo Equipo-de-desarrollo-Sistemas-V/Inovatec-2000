@@ -73,7 +73,7 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Redes/Ruteadores inalambricos" >Ruteadores inalámbicos</a>
+                      <a href="categorias.php?item=Redes/Ruteadores inalámbricos" >Ruteadores inalámbicos</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=Redes/Cables de red">Cables de red</a>
@@ -82,7 +82,7 @@ $sesion_i = $_SESSION["Usuario"];
                       <a href="categorias.php?item=Redes/Adaptadores Bluetooth">Adaptadores Bluetooth</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalambricos">Tarjertas de red y adaptadores inalámbricos</a>
+                      <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalámbricos">Tarjertas de red y adaptadores inalámbricos</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -111,7 +111,7 @@ $sesion_i = $_SESSION["Usuario"];
                       <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Software/Microsft Office">Ofimatica</a>
+                      <a href="categorias.php?item=Software/Microsoft Office">Ofimatica</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -131,16 +131,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Accesorios para servidores">Accesorios de servidores</a>
+                      <a href="categorias.php?item=Servidores/Accesorios para servidores">Accesorios de servidores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Redes">Redes</a>
+                      <a href="categorias.php?item=Servidores/Redes">Redes</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Energia">Energía</a>
+                      <a href="categorias.php?item=Servidores/Energía">Energía</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Servidores">Servidores</a>
+                      <a href="categorias.php?item=Servidores/Servidores">Servidores</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -160,13 +160,13 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Impresion/Consumibles">Consumibles y articulos</a>
+                      <a href="categorias.php?item=Impresión/Consumibles">Consumibles y articulos</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Impresion/Impresoras">Impresoras</a>
+                      <a href="categorias.php?item=Impresión/Impresoras">Impresoras</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Impresion/Scanners de cama">Scanners de cama</a>
+                      <a href="categorias.php?item=Impresión/Scanner de cama">Scanners de cama</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -195,7 +195,7 @@ $sesion_i = $_SESSION["Usuario"];
                       <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
+                      <a href="categorias.php?item=computadoras/Tablet">Tablets</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -244,7 +244,7 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Accesorios/Perifericos">Perifericos</a>
+                      <a href="categorias.php?item=Accesorios/Periféricos">Periféricos</a>
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=Accesorios/Cables y adaptadores">Cables y adaptadores</a>
@@ -273,16 +273,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                   <ul>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Monitores">Monitores</a>
+                      <a href="categorias.php?item=Electrónica/Monitores">Monitores</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Audifonos">Audifonos</a>
+                      <a href="categorias.php?item=Electrónica/Audífonos">Audífonos</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Bocinas">Bocinas</a>
+                      <a href="categorias.php?item=Electrónica/Bocinas">Bocinas</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Capturadora de video">Capturadoras de video</a>
+                      <a href="categorias.php?item=Electrónica/Capturadora de video">Capturadoras de video</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>

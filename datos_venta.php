@@ -1,63 +1,63 @@
 <?php
-error_reporting(0);
-session_start();
-include("no_iniciada_cli.php");
-$sesion_i = $_SESSION["Usuario"];
+  error_reporting(0);
+  session_start();
+  include("no_iniciada_cli.php");
+  $sesion_i = $_SESSION["Usuario"];
 
 
-$serverName='localhost';
-$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-$con = sqlsrv_connect($serverName, $connectionInfo); 
+  $serverName='localhost';
+  $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+  $con = sqlsrv_connect($serverName, $connectionInfo); 
 
-$query = "SELECT * 
-FROM Tarjetas 
-WHERE Usuario='$sesion_i'";
-  $resultado = sqlsrv_query($con, $query);
-  $row=sqlsrv_fetch_array($resultado);
-  $no_tar=$row["no_tarjeta"];
-  $fecha=$row["fecha_ven_mes"];
-  $fecha1=$row["fecha_ven_anio"];
-  $nombre=$row["Nombre_Tar"];
+  $query = "SELECT * 
+  FROM Tarjetas 
+  WHERE Usuario='$sesion_i'";
+    $resultado = sqlsrv_query($con, $query);
+    $row=sqlsrv_fetch_array($resultado);
+    $no_tar=$row["no_tarjeta"];
+    $fecha=$row["fecha_ven_mes"];
+    $fecha1=$row["fecha_ven_anio"];
+    $nombre=$row["Nombre_Tar"];
 
-$query2 = "SELECT * 
-FROM banco 
-WHERE noTarjeta='$no_tar'";
-  $resultado2 = sqlsrv_query($con, $query2);
-  $cont=0;
-  while( $row2 = sqlsrv_fetch_array($resultado2) ) {
-      $cont++;
-  }
-  if ($cont!=0){
-    $resultadoS = sqlsrv_query($con, $query2);
-    $rowS=sqlsrv_fetch_array($resultadoS);
-    $auxTar=$rowS["noTarjeta"];
-    $auxCCV=$rowS["ccv"];
-    $auxDin=$rowS["dineros"];
-    //$nombre="si hay";
-  }else{
-    $auxTar="";
-    $auxCCV="";
-    $auxDin="";
-  }
+  $query2 = "SELECT * 
+  FROM banco 
+  WHERE noTarjeta='$no_tar'";
+    $resultado2 = sqlsrv_query($con, $query2);
+    $cont=0;
+    while( $row2 = sqlsrv_fetch_array($resultado2) ) {
+        $cont++;
+    }
+    if ($cont!=0){
+      $resultadoS = sqlsrv_query($con, $query2);
+      $rowS=sqlsrv_fetch_array($resultadoS);
+      $auxTar=$rowS["noTarjeta"];
+      $auxCCV=$rowS["ccv"];
+      $auxDin=$rowS["dineros"];
+      //$nombre="si hay";
+    }else{
+      $auxTar="";
+      $auxCCV="";
+      $auxDin="";
+    }
 
-$query ="SELECT colonia, calle, no_calle, codigo_postal, municipios.municipio, estados.Estado
-FROM Direccion, estados_municipios, estados, municipios
-WHERE Ciudad_Estado=estados_municipios.id and
-estados_municipios.estados_id = estados.id and
-estados_municipios.municipios_id = municipios.Id_Municipios and
-Usuario ='".$sesion_i."'";
-  $resultado=sqlsrv_query($con, $query);
-  $row = sqlsrv_fetch_array($resultado);
-  $colonia=$row['colonia'];
-  $calle=$row['calle'];
-  $no_calle=$row['no_calle'];
-  $cp=$row['codigo_postal'];
-  $municipio=$row['municipio'];
-  $estado=$row['Estado'];
+  $query ="SELECT colonia, calle, no_calle, codigo_postal, municipios.municipio, estados.Estado
+  FROM Direccion, estados_municipios, estados, municipios
+  WHERE Ciudad_Estado=estados_municipios.id and
+  estados_municipios.estados_id = estados.id and
+  estados_municipios.municipios_id = municipios.Id_Municipios and
+  Usuario ='".$sesion_i."'";
+    $resultado=sqlsrv_query($con, $query);
+    $row = sqlsrv_fetch_array($resultado);
+    $colonia=$row['colonia'];
+    $calle=$row['calle'];
+    $no_calle=$row['no_calle'];
+    $cp=$row['codigo_postal'];
+    $municipio=$row['municipio'];
+    $estado=$row['Estado'];
 
-//obtengo el arreglo del url de productos de la compra y su cantidad 
-$arrProd = (array)json_decode($_GET["item"]);
-$numPro=count($arrProd);
+  //obtengo el arreglo del url de productos de la compra y su cantidad 
+  $arrProd = (array)json_decode($_GET["item"]);
+  $numPro=count($arrProd);
 ?>
 
 <!DOCTYPE html>
@@ -119,269 +119,268 @@ $numPro=count($arrProd);
       <input type="checkbox" name="" id="check">
 
       <div class="nav-btn">
-          <div class="nav-links">
-            <ul>
-              <!-- REDES -->
-              <li class="nav-link" style="--i: .85s">
+        <div class="nav-links">
+          <ul>
+            <!-- REDES -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="wifi-outline"></ion-icon>
-                  Redes
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="wifi-outline"></ion-icon>
+                Redes
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Redes/Ruteadores inalambricos" >Ruteadores inalámbicos</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Redes/Cables de red">Cables de red</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Redes/Adaptadores Bluetooth">Adaptadores Bluetooth</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalambricos">Tarjertas de red y adaptadores inalámbricos</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Redes/Ruteadores inalámbricos" >Ruteadores inalámbicos</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Redes/Cables de red">Cables de red</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Redes/Adaptadores Bluetooth">Adaptadores Bluetooth</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalámbricos">Tarjertas de red y adaptadores inalámbricos</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- SOFTWARE -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- SOFTWARE -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="code-slash-outline"></ion-icon>
-                  Software
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                Software
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Software/Antivirus y seguridad">Antivirus y seguridad</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Software/Sistemas operativos">Sistemas operativos</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Software/Microsft Office">Ofimatica</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Software/Antivirus y seguridad">Antivirus y seguridad</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Software/Sistemas operativos">Sistemas operativos</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Software/Microsoft Office">Ofimatica</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- SERVIDORES -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- SERVIDORES -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="server-outline"></ion-icon>
-                  Servidores
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="server-outline"></ion-icon>
+                Servidores
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Accesorios para servidores">Accesorios de servidores</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Redes">Redes</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Energia">Energía</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Servidores e impresión/Servidores">Servidores</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Servidores/Accesorios para servidores">Accesorios de servidores</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Servidores/Redes">Redes</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Servidores/Energía">Energía</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Servidores/Servidores">Servidores</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- IMPRESIÓN -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- IMPRESIÓN -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="print-outline"></ion-icon>
-                  Impresión
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="print-outline"></ion-icon>
+                Impresión
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Impresion/Consumibles">Consumibles y articulos</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Impresion/Impresoras">Impresoras</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Impresion/Scanners de cama">Scanners de cama</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Impresión/Consumibles">Consumibles y articulos</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Impresión/Impresoras">Impresoras</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Impresión/Scanner de cama">Scanners de cama</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- COMPUTADORAS -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- COMPUTADORAS -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="desktop-outline"></ion-icon>
-                  Computadoras
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="desktop-outline"></ion-icon>
+                Computadoras
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Desktops">Desktops</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/laptop">Laptops</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=computadoras/Tablets">Tablets</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=computadoras/Desktops">Desktops</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=computadoras/laptop">Laptops</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=computadoras/Tablet">Tablets</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- HARDWARE -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- HARDWARE -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="hardware-chip-outline"></ion-icon>
-                  Hardware
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+                Hardware
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Hardware/Disco duro">Discos duros</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Hardware/Procesadores">Procesadores</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Hardware/Memorias">Memorias</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Hardware/Tarjeta Madre">Motherboards</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Hardware/Disco duro">Discos duros</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Hardware/Procesadores">Procesadores</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Hardware/Memorias">Memorias</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Hardware/Tarjeta Madre">Motherboards</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- ACCESORIOS -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- ACCESORIOS -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="wifi-outline"></ion-icon>
-                  Accesorios
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="wifi-outline"></ion-icon>
+                Accesorios
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Accesorios/Perifericos">Perifericos</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Accesorios/Cables y adaptadores">Cables y adaptadores</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Accesorios/Herramientas">Herramientas</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Accesorios/Limpieza">Limpieza</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Accesorios/Periféricos">Periféricos</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Accesorios/Cables y adaptadores">Cables y adaptadores</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Accesorios/Herramientas">Herramientas</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Accesorios/Limpieza">Limpieza</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- ELECTRONICA -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- ELECTRONICA -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="wifi-outline"></ion-icon>
-                  Electrónica
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="wifi-outline"></ion-icon>
+                Electrónica
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Monitores">Monitores</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Audifonos">Audifonos</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Bocinas">Bocinas</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Electronica/Capturadora de video">Capturadoras de video</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Electrónica/Monitores">Monitores</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Electrónica/Audífonos">Audífonos</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Electrónica/Bocinas">Bocinas</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Electrónica/Capturadora de video">Capturadoras de video</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-              <!-- ALMACENAMIENTO -->
-              <li class="nav-link" style="--i: .85s">
+            <!-- ALMACENAMIENTO -->
+            <li class="nav-link" style="--i: .85s">
 
-                <a href="#">
-                  <ion-icon name="cloud-circle-outline"></ion-icon>
-                  Almacenamiento
-                  <i class="fas fa-caret-down"></i>
-                </a>
+              <a href="#">
+                <ion-icon name="cloud-circle-outline"></ion-icon>
+                Almacenamiento
+                <i class="fas fa-caret-down"></i>
+              </a>
 
-                <div class="dropdown">
+              <div class="dropdown">
 
-                  <ul>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Almacenamiento/M.2" >M.2</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Almacenamiento/HDD">HDD</a>
-                    </li>
-                    <li class="dropdown-link">
-                      <a href="categorias.php?item=Almacenamiento/Memoria RAM">Memoria RAM</a>
-                    </li>
-                    <div class="arrow"></div>
-                  </ul>
-                </div>
-              </li>
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/M.2" >M.2</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/HDD">HDD</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/Memoria RAM">Memoria RAM</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
 
-
-            </ul>
-          </div>
+          </ul>
+        </div>
 
       </div>
 
