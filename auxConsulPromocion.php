@@ -68,7 +68,7 @@ if($resultado==true){
         $salida.='<td>'.$descuento."%".'</td>';
         $salida.='<td>'."$".$oferta.'</td>'; 
         $salida.='<td>'.'<p><img src="' .$imagen. '" width="50" height="50"></p></td>';
-        $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
+        $salida.='<td>'.'<a href="LOGActualizar_Promocion.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="logEliminarProducto.php?item='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
     }
