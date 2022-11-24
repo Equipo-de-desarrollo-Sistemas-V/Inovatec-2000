@@ -19,7 +19,8 @@ let bandMesTar = true
 let bandAnTar = true
 let bandNumTar = true
 
-
+let bandPasE1 = false
+let bandPasE2 = false
 /*Detecta cuando el boton de contrase;a fue presionado*/
 let boton3 = document.getElementById("boton3");
 boton3.addEventListener("click", (e) => {
@@ -303,10 +304,6 @@ const validarPassword2 = () =>{
     validarContra();
 }
 
-
-
-
-
 /* Input nombre del propietario de la tarjeta*/
 formulario.nombreTarjeta.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
@@ -391,6 +388,46 @@ formulario.yearExpiracion.addEventListener('keyup', (e) => {
     validarBanco();
 })
 
+/* Input de la contrase;a para eliminar*/
+formulario.deletePassword.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+    if (valorInput==""){
+        deletePassword.style.border = "3px solid red";
+        bandPasE1 = false
+	}else{
+        deletePassword.removeAttribute("style");
+        bandPasE1 = true
+    }
+    validarPasswordE2();
+    validarEliminar();
+})
+
+/* Input de la confirmacion de la constrasenia para eliminar*/
+formulario.confirmDeletePassword.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.confirmDeletePassword.value = valorInput
+
+    validarPasswordE2();
+})
+
+// verifica que la contrasenia y su confirmacion coincidan
+const validarPasswordE2 = () =>{
+    const inputPass1 = document.getElementById('deletePassword');
+    const inputPass2 = document.getElementById('confirmDeletePassword');
+
+    if (inputPass1.value !== inputPass2.value){
+        confirmDeletePassword.style.border = "3px solid red";
+        bandPasE2 = false
+    }else{
+        confirmDeletePassword.removeAttribute("style");
+        bandPasE2 = true
+    }
+    validarEliminar();
+}
+
+
 function validarDatos(){
     const boton1 = document.getElementById('boton1');
     if(bandNombre == true && bandAP == true && bandAM == true && bandEmail == true && bandTel == true){
@@ -428,6 +465,16 @@ function validarBanco(){
     }
     else{
         boton4.disabled=true;
+    }
+}
+
+function validarEliminar(){
+    const boton5 = document.getElementById('boton5');
+    if(bandPasE1 == true && bandPasE2 == true){
+            boton5.disabled=false;
+    }
+    else{
+        boton5.disabled=true;
     }
 }
 

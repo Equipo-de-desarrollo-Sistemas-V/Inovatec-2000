@@ -1,19 +1,13 @@
 <?php
 error_reporting(0);
-$file = fopen("archivo_correo.txt", "r");
-$auxIngreso = fgets($file);
-fclose($file);
-
-$ingreso ="";
-for ($i=0;$i<strlen($auxIngreso)-2;$i++){
-    $ingreso= $ingreso.$auxIngreso[$i];
-}
+session_start();
+$sesion_i = $_SESSION["Usuario"];
 
 $serverName='localhost';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $con = sqlsrv_connect($serverName, $connectionInfo); 
 
-$query= "SELECT* FROM Persona where usuario ='".$ingreso."'";
+$query= "SELECT* FROM Persona where usuario ='".$sesion_i."'";
 $resultado=sqlsrv_query($con, $query);
 $row = sqlsrv_fetch_array($resultado);
 $nombre=$row['nombres'];
@@ -21,35 +15,26 @@ $aP=$row['ap_paterno'];
 $aM=$row['ap_materno'];
 $email=$row['email'];
 $telefono=$row['telefono'];
-//echo $nombre;
-//$nombre=strtr($auxNombre, " ", "_");
 
-$query= "SELECT* FROM Direccion where usuario ='".$ingreso."'";
-$resultado=sqlsrv_query($con, $query);
-$row = sqlsrv_fetch_array($resultado);
-$colonia=$row['colonia'];
-$calle=$row['calle'];
-$no_calle=$row['no_calle'];
-$cp=$row['codigo_postal'];
-$auxRela=$row['Ciudad_Estado'];
+$query ="SELECT colonia, calle, no_calle, codigo_postal, municipios.municipio, municipios.Id_Municipios, estados.Estado, estados.Id
+FROM Direccion, estados_municipios, estados, municipios
+WHERE Ciudad_Estado=estados_municipios.id and
+estados_municipios.estados_id = estados.id and
+estados_municipios.municipios_id = municipios.Id_Municipios and
+Usuario ='".$sesion_i."'";
+  $resultado=sqlsrv_query($con, $query);
+  $row = sqlsrv_fetch_array($resultado);
+  $colonia=$row['colonia'];
+  $calle=$row['calle'];
+  $no_calle=$row['no_calle'];
+  $cp=$row['codigo_postal'];
+  $municipioS=$row['municipio'];
+  $estadoS=$row['Estado'];
+  $auxEst=$row['Id'];
+  $auxMun=$row['Id_Municipios'];
 
-$query= "SELECT* FROM estados_municipios where id ='".$auxRela."'";
-$resultado=sqlsrv_query($con, $query);
-$row = sqlsrv_fetch_array($resultado);
-$auxMun=$row['municipios_id'];
-$auxEst=$row['estados_id'];
 
-$query= "SELECT* FROM municipios where Id_Municipios ='".$auxMun."'";
-$resultado=sqlsrv_query($con, $query);
-$row = sqlsrv_fetch_array($resultado);
-$municipio=$row['municipio'];
-
-$query= "SELECT* FROM estados where id ='".$auxEst."'";
-$resultado=sqlsrv_query($con, $query);
-$row = sqlsrv_fetch_array($resultado);
-$estado=$row['Estado'];
-
-$query= "SELECT * FROM Tarjetas where usuario ='".$ingreso."'";
+$query= "SELECT * FROM Tarjetas where usuario ='".$sesion_i."'";
 $resultado=sqlsrv_query($con, $query);
 $row = sqlsrv_fetch_array($resultado);
 
@@ -135,37 +120,37 @@ else{
                 
                 <div class="entrada-2">
                     <div class="input-group">
-                        <input type="text" name="nombreCliente" id="nombreCliente" required class="input" maxlength="40" value=<?php echo $nombre;?>>
+                        <input type="text" name="nombreCliente" id="nombreCliente" required class="input" maxlength="40" value="<?php echo $nombre;?>">
                         <label for="nombre-cliente" class="input-label">Nombre</label>
                         
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="apellidoPaterno" id="apellidoPaterno" required class="input" maxlength="20" value=<?php echo $aP;?>>
+                        <input type="text" name="apellidoPaterno" id="apellidoPaterno" required class="input" maxlength="20" value="<?php echo $aP;?>">
                         <label for="apellido-paterno" class="input-label">Apellido paterno</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="apellidoMaterno" id="apellidoMaterno" class="input" maxlength="20"value=<?php echo $aM;?>>
+                        <input type="text" name="apellidoMaterno" id="apellidoMaterno" class="input" maxlength="20"value="<?php echo $aM;?>">
                         <label for="apellido-paterno" class="input-label">Apellido paterno</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="telefono" id="telefono" required class="input" maxlength="10" minlength="10" value=<?php echo $telefono;?>>
+                        <input type="text" name="telefono" id="telefono" required class="input" maxlength="10" minlength="10" value="<?php echo $telefono;?>">
                         <label for="telefono" class="input-label">Teléfono</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="email" name="correo" id="correo" required class="input" maxlength="255" value=<?php echo $email;?>>
+                        <input type="email" name="correo" id="correo" required class="input" maxlength="255" value="<?php echo $email;?>">
                         <label for="correo" class="input-label">Correo</label>
                     </div>
 
                 </div>
 
+                <input type="button" name="boton1" id="boton1" value="Actualizar datos" class="btn" onclick="datosPersonales();">
                 <br>
                 <br>
                 <br>
-                <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
 
             <h3 id="subtitulo">Mi dirección</h3>
 
@@ -173,23 +158,23 @@ else{
 
                 <div class="entrada-2">
                     <div class="input-group">
-                        <input type="text" name="calle" id="calle" required class="input" maxlength="20" value=<?php echo $calle;?>>
+                        <input type="text" name="calle" id="calle" required class="input" maxlength="20" value="<?php echo $calle;?>">
                         <label for="calle" class="input-label">Calle</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="numero" id="numero" required class="input" maxlength="10" value=<?php echo $no_calle;?>>
+                        <input type="text" name="numero" id="numero" required class="input" maxlength="10" value="<?php echo $no_calle;?>">
                         <label for="numero" class="input-label">Número</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20"  value=<?php echo $colonia;?>>
+                        <input type="text" name="colonia" id="colonia" required class="input" maxlength="20"  value="<?php echo $colonia;?>">
                         <label for="colonia" class="input-label">Colonia</label>
                     </div>
 
                     <div class="input-group">
                     <select name="estado" id="estado" name="estado" class="estado">
-                    <option value="<?php echo $auxEst;?>"><?php echo $estado;?></option>
+                    <option value="<?php echo $auxEst;?>"><?php echo $estadoS;?></option>
                                 <?php
                                 $serverName='localhost';
                                 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
@@ -202,35 +187,23 @@ else{
                                         <option value="<?php echo $row['Id'];?>"><?php echo $row['Estado'];?></option>
                                 <?php } ?>
                             </select>
-                        <!-- <input type="text" name="estado" id="estado" required class="input" value=
-                        //?php echo $estado;?>>
-                        <label for="estado" class="input-label">Estado</label> -->
                     </div>
 
                     <div class="input-group">
                             <select name="municipio" id="municipio" class="municipio">
-                                <option value="<?php echo $auxMun;?>"><?php echo $municipio;?></option>
-                                
-                                <!-- Generar aquí el contenido de las ciudades -->
+                                <option value="<?php echo $auxMun;?>"><?php echo $municipioS;?></option>
                             </select>
-                        <!-- <input type="text" name="municipio" id="municipio" required class="input" value=
-                        //</?p//hp echo $municipio;?>>
-                        <label for="municipio" class="input-label">Municipio</label> -->
-
-
                     </div>
-
                     
-
                     <div class="input-group">
                         <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
-                        maxlength="5" minlength="5" value=<?php echo $cp;?>>
+                        maxlength="5" minlength="5" value="<?php echo $cp;?>">
                         <label for="codigo-postal" class="input-label">Código postal</label>
                     </div>
 
                 </div>
 
-                <!-- <input type="submit" name="boton2" value="Actualizar mi direccón" class="btn"> -->
+                <input type="button" id="boton2" name="boton2" value="Actualizar mi direccón" class="btn" onclick="datosDireccion();">
                 <br>
                 <br>
                 <br>
@@ -242,22 +215,22 @@ else{
 
                 <div class="entrada-1">
                     <div class="input-group">
-                        <input type="password" name="password" id="password" class="input">
+                        <input type="password" name="password" id="password" class="input" required>
                         <label for="password" class="input-label">Contraseña actual</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="password" name="new-password" id="new-password" class="input">
-                        <label for="new-password" class="input-label">Nueva contraseña</label>
+                        <input type="password" name="newPassword" id="newPassword" class="input" required>
+                        <label for="newPassword" class="input-label">Nueva contraseña</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="password" name="confirm-password" id="confirm-password" class="input">
-                        <label for="confirm-password" class="input-label">Confirmar contraseña</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" class="input" required>
+                        <label for="confirmPassword" class="input-label">Confirmar contraseña</label>
                     </div>
                 </div>
 
-                <!-- <input type="submit" name="boton3" value="Actualizar contraseña" class="btn"> -->
+                <input type="button" id="boton3" name="boton3" value="Actualizar contraseña" class="btn" onclick="datosContra();">
                 <br>
                 <br>
                 <br>
@@ -267,31 +240,27 @@ else{
 
                 <div class="entrada-2">
                     <div class="input-group">
-                        <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="100" minlength="3" value=<?php echo $nombreTar;?>>
+                        <input type="text" name="nombreTarjeta" id="nombreTarjeta" required class="input" maxlength="100" minlength="3" value="<?php echo $nombreTar;?>">
                         <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16"  value=<?php echo $noTar;?>>
+                        <input type="text" name="numeroTarjeta" id="numeroTarjeta" required class="input" maxlength="16"  value="<?php echo $noTar;?>">
                         <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" value=<?php echo $mes;?>>
+                        <input type="text" name="monthExpiracion" id="monthExpiracion" required class="input" maxlength="2" minlength="2" value="<?php echo $mes;?>">
                         <label for="month-expiracion" class="input-label">Mes de expiración</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2"  value=<?php echo $anio;?>>
+                        <input type="text" name="yearExpiracion" id="yearExpiracion" required class="input"maxlength="2" minlength="2"  value="<?php echo $anio;?>">
                         <label for="year-expiracion" class="input-label">Año de expiración</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3">
-                        <label for="ccv" class="input-label">CCV</label>
                     </div>
                 </div>
 
-                <input type="submit" name="boton4" id="boton4" value="Actualizar" class="btn" disabled>
+                <input type="button" name="boton4" id="boton4" value="Actualizar datos bancarios" class="btn" onclick="datosBanco();">
                 <br>
                 <br>
                 <br>
@@ -304,23 +273,20 @@ else{
 
             <div class="entrada-3">
                     <div class="input-group">
-                        <input type="password" name="delete-password" id="delete-password"
-                            class="input">
-                        <label for="delete-password" class="input-label">Contraseña</label>
+                        <input type="password" name="deletePassword" id="deletePassword" class="input" required>
+                        <label for="deletePassword" class="input-label">Contraseña</label>
                     </div>
 
                     <div class="input-group">
-                        <input type="password" name="confirm-delete-password"
-                            id="confirm-delete-password" class="input">
-                        <label for="confirm-delete-password" class="input-label">Confirmar contraseña</label>
+                        <input type="password" name="confirmDeletePassword" id="confirmDeletePassword" class="input" required>
+                        <label for="confirmDeletePassword" class="input-label">Confirmar contraseña</label>
                     </div>
                 </div>
 
-                <input type="submit" value="Eliminar cuenta" class="btn">
-
+                <input type="button" id="boton5" name="boton5" value="Eliminar cuenta" class="btn" onclick="datosEliminar();">
+                <br>
             </form>
         </article>
-        <script src="js/alertasPerfil.js"></script>
         <script src="js/validPerfil.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
@@ -336,3 +302,126 @@ else{
         $('#municipio').select2();
     });
 </script>
+
+<script>
+    function datosPersonales(){
+        var nombreCliente=document.getElementById("nombreCliente").value;
+        var apellidoPaterno=document.getElementById("apellidoPaterno").value;
+        var apellidoMaterno=document.getElementById("apellidoMaterno").value;
+        var telefono=document.getElementById("telefono").value;
+        var correo=document.getElementById("correo").value;
+        $.ajax({
+            type: "POST",
+            url: "logPerfilPersonal.php",
+            dataType: "json",
+            data: {"nombreCliente":nombreCliente, "apellidoPaterno":apellidoPaterno, "apellidoMaterno":apellidoMaterno, "telefono":telefono, "correo":correo},
+            success: function(data){
+                alert(data)
+            }
+        });
+    }
+
+    function datosDireccion(){
+        var calle=document.getElementById("calle").value;
+        var numero=document.getElementById("numero").value;
+        var colonia=document.getElementById("colonia").value;
+        var estado=document.getElementById("estado").value;
+        var municipio=document.getElementById("municipio").value;
+        var codigoPostal=document.getElementById("codigoPostal").value;
+        //alert($calle, $numero, $colonia, $estado, $municipio, $codigoPostal)
+        
+        $.ajax({
+            type: "POST",
+            url: "logPerfilDireccion.php",
+            dataType: "json",
+            data: {"calle":calle, "numero":numero, "colonia":colonia, "estado":estado, "municipio":municipio, "codigoPostal":codigoPostal},
+            success: function(data){
+                alert(data)
+            }
+        });
+    }
+
+    function datosContra(){
+        var passwordS=document.getElementById("password").value;
+        var newPasswordS=document.getElementById("newPassword").value;
+        if (passwordS==""){
+            password.style.border = "3px solid red";
+            //boton3.disabled=false;
+	    }else{
+            password.removeAttribute("style");
+            //boton3.disabled=true;
+        }
+        if (passwordS!="" && newPasswordS!=""){
+            $.ajax({
+            type: "POST",
+            url: "logPerfilContraseña.php",
+            dataType: "json",
+            data: {"password":passwordS, "newPassword":newPasswordS},
+            success: function(data){
+                alert(data)
+                if (data=="Contraseña actualizada exitosamente"){
+                    document.getElementById("password").value = "";
+                    document.getElementById("newPassword").value = "";
+                    document.getElementById("confirmPassword").value = "";
+                }
+                
+            }
+        });
+	    }   
+    }
+
+    function datosBanco(){
+        var nombreTarjeta=document.getElementById("nombreTarjeta").value;
+        var numeroTarjeta=document.getElementById("numeroTarjeta").value;
+        var monthExpiracion=document.getElementById("monthExpiracion").value;
+        var yearExpiracion=document.getElementById("yearExpiracion").value;
+        $.ajax({
+            type: "POST",
+            url: "logPerfilBanco.php",
+            dataType: "json",
+            data: {"nombreTarjeta":nombreTarjeta, "numeroTarjeta":numeroTarjeta, "monthExpiracion":monthExpiracion, "yearExpiracion":yearExpiracion},
+            success: function(data){
+                alert(data)
+            }
+        });
+    }
+
+    function datosEliminar(){
+        var passwordE=document.getElementById("deletePassword").value;
+        if (passwordE==""){
+            deletePassword.style.border = "3px solid red";
+            boton5.disabled=true;
+	    }else{
+            deletePassword.removeAttribute("style");
+            //boton3.disabled=true;
+        }
+        console.log("Eliminar")
+        if (passwordE!=""){
+            console.log("Eliminarsssssssssss")
+            
+            $.ajax({
+            type: "POST",
+            url: "logPerfilEliminar.php",
+            dataType: "json",
+            data: {"deletePassword":passwordE},
+            success: function(data){
+                if (data=="Confirmar eliminar"){
+                    var respuesta=confirm("¿Estas seguro que deseas eliminar tu cuenta?");
+                    if(respuesta==true){
+                        alert("SI QUISO")
+                        // location.href="eliminarCuenta.php";
+                        // location.href="cerrar.php";
+                    }else{
+                        document.getElementById("deletePassword").value = "";
+                        document.getElementById("confirmDeletePassword").value = "";
+                    }
+                }else{
+                    alert(data)
+                }
+                
+            }
+        }); 
+	    }  
+    }
+</script>
+
