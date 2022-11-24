@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categorias</title>
+  <title>Buscador</title>
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/cards.css">
   <script src="https://kit.fontawesome.com/2c54bc1d9c.js" crossorigin="anonymous"></script>
@@ -20,8 +20,8 @@
     <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
     
     <div class="search-box">
-      <input type="search" placeholder="Busquemos algunas cosas...">
-      <span><i class="fa-solid fa-magnifying-glass"></i></span>
+      <input type="search" placeholder="Busquemos algunas cosas..." id="search">
+      <span id="spanbtn"><i class="fa-solid fa-magnifying-glass"></i></span>
     </div>
 
     <ol>
@@ -331,12 +331,14 @@
       </div>
     </article>
 
-    <!-- <span id="categoria"style="display:none"></span>
-    <span id="subcategoria"style="display:none"></span> -->
+    <span id="categoria"style="display:none"></span>
+    <span id="subcategoria"style="display:none"></span>
+    <span id="busqueda" style="display:none"></span>
   </section>
 </body>
-
-  <script src="JsPhp/categoriasBridge.js"></script>
+  <script src="JsPhp/busquedaBridge.js"></script>
+  <script src="js/ObtenerBuscador.js"></script>
+  <script src="JsPhp/carritoBridge.js"></script>
   <script src="js/linkHome.js"></script>
 </html>
 
@@ -348,4 +350,5 @@
   echo "<script>document.getElementById('subtitulo').innerHTML = '$item[1]'</script>";
   echo "<script>document.getElementById('categoria').innerText = '$item[0]'</script>";
   echo "<script>document.getElementById('subcategoria').innerText = '$item[1]'</script>";
+  echo "<script>document.getElementById('busqueda').innerText = '$item'</script>";
 ?> -->
