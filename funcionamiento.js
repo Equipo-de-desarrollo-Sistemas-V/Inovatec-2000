@@ -1,5 +1,5 @@
 window.onload=function(){
-    var prod1= document.getElementById("contenidoAgregaProd");
+    /*var prod1= document.getElementById("contenidoAgregaProd");
     var prod2= document.getElementById("contenidoListaProd");
     var suc1= document.getElementById("contenidoAgregaSuc");
     var suc2= document.getElementById("contenidoListaSuc");
@@ -10,7 +10,7 @@ window.onload=function(){
     var inv1= document.getElementById("contenidoInventario");
     var inv2= document.getElementById("contenidoListaInventario");
     var vent1= document.getElementById("contenidoAgregaVenta");
-    var vent2= document.getElementById("contenidoListaVenta");
+    var vent2= document.getElementById("contenidoListaVenta");*/
 
 
     /*prod1.style.display = "none";

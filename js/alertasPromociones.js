@@ -12,8 +12,8 @@ formulario.addEventListener('submit', function (e)
         .then(res => res.json())
         .then(data =>
         {
-            if (data === 'ID existente') {
-                alert("Ya hay un producto registrado con ese ID");
+            if (data === 'producto en promoción') {
+                alert("Este producto ya está en promoción");
             }
 
             else if (data === 'conexion BD') {
@@ -26,11 +26,15 @@ formulario.addEventListener('submit', function (e)
 
             else if (data === 'todo chido') {
                 alert("El registro se ha realizado con éxito");
-                location.href = "alta_producto.php";
+                location.href = "registro_promocion.php";
             }
 
             else if (data === 'foto nula') {
                 alert("No se ha subido nungún archivo");
+            }
+                
+            else if (data === 'limite') {
+                alert("El límite de promociones ya ha sido alcanzado");
             }
 
             else if (data === 'formato') {

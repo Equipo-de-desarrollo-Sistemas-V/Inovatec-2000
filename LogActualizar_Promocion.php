@@ -2,12 +2,28 @@
 //informacion para la conexion a base de datos
 $servername = "localhost";
 $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
-$con = sqlsrv_connect($servername, $info);
+$conn_sis = sqlsrv_connect($servername, $info);
 
 $querry_producto = "SELECT id_producto, nombre FROM Productos
 WHERE Estado = 'Activo' And descuento = 0";
 
-$resultados = sqlsrv_query($con, $querry_producto);
+$resultados = sqlsrv_query($conn_sis, $querry_producto);
+
+$id=$_GET["item"]; 
+//echo '<script>alert('.$id.')</script>';
+$query="SELECT id_producto,descuento, nombre, ruta 
+		FROM Productos,imgpromocion
+		WHERE id_prod=id_producto AND id_prod='$id'";
+$res= sqlsrv_query($conn_sis, $query);
+if( $res === false) {
+		die( print_r( sqlsrv_errors(), true) );
+}
+while( $row = sqlsrv_fetch_array($res) ) {
+$id_prod=$row["id_producto"];
+$descuento=$row["descuento"];
+$nombre=$row["nombre"];
+$ruta=$row["ruta"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -114,32 +130,24 @@ $resultados = sqlsrv_query($con, $querry_producto);
 	<main>
 		<div class="contenidoAgregaProm" id="contenidoAgregaProm">
 			<article>
-				<h1 align="center">Nueva promoción</h1>
+				<h1 align="center">Modificar promoción</h1>
 				<br>
-				<form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+				<form action="LOGUpdate_Promociones.php" class="formularios" method="post" enctype="multipart/form-data" >
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
-							<select type="text" name="idProducto" id="idProducto" class="formulario_input" required>
-								<option value=""></option>
-								<?php
-
-								//cargar los resultados de la consulta en la combobox
-								while ($row = sqlsrv_fetch_array($resultados)) { ?>
-									<option value=" <?php echo $row['id_producto']; ?>"> <?php echo $row['id_producto'] . ' - ' . $row["nombre"]; ?> </option>
-
-								<?php }
-								?>
-							</select>
+							<input type="text" name="idNomProd" id="idNomProd" class="formulario_input" readonly="readonly" value="<?php echo $id.' - '.$nombre;?>">
 						</div>
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label for="descProd" class="formulario_label">Descuento</label>
+						<label for="descProd" class="formulario_label">Descuento (%)</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="descProd" id="descProd" class="formulario_input" required maxlength="3">
+							<input type="text" name="descProd" id="descProd" class="formulario_input" value="<?php echo $descuento;?>" required maxlength="3">
 						</div>
 					</div>
+					<input id="prodId" name="prodId" type="hidden" value="<?php echo $id;?>">
+
 
 
 					<div class="photo">
@@ -168,10 +176,3 @@ $resultados = sqlsrv_query($con, $querry_producto);
 </body>
 
 </html>
-
-<!-- funcionamiento de la busqueda inteligente de los select -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#idProducto').select2();
-	});
-</script>
