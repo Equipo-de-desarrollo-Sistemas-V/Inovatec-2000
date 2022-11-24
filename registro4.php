@@ -59,13 +59,14 @@
                 //verificar que la conexion se hizo bien
                 if ($con){
 
-                    $querry_edoMun = "SELECT estados_municipios.id 
+                    $querry_edoMun = "SELECT estados_municipios.id as edo_mun
                     FROM estados_municipios, estados, municipios
                     WHERE municipios.id_Municipios = $municipio AND estados.id = $estado
                     AND estados_municipios.estados_id = estados.id AND municipios.Id_Municipios = estados_municipios.municipios_id";
 
                     $resultado = sqlsrv_query($con, $querry_edoMun);
-                    $estado_municipio = sqlsrv_fetch($resultado);
+                    $row = sqlsrv_fetch_array($resultado);
+                    $estado_municipio = $row["edo_mun"];
 
                     //inserta los datos en la tabla personas
                     $querry ="BEGIN TRAN
