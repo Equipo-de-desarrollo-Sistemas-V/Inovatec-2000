@@ -57,8 +57,12 @@
                                 $ruta = 'imagenes/' . $foto;
 
                                 //inserta los datos a la tabla producto
-                                $querry = "INSERT INTO Productos
-                                VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria, 'Activo', 0)";
+                                $querry = "BEGIN TRAN
+                                INSERT INTO Productos
+                                VALUES($id, '$nombre', $categoria, $precioCompra, $precioVenta, '$proveedor', '$descripcion', $subcategoria, 'Activo', 0)
+                                INSERT INTO imagenes
+                                VALUES($id, '$ruta')
+                                COMMIT";
                                 //echo $querry;
 
                                 $stm = sqlsrv_query($con, $querry);
@@ -70,13 +74,6 @@
                                 $resultados = sqlsrv_query($con, $confirm);
 
                                 if (sqlsrv_fetch_array($resultados)) {
-                                    //include("administrativo2.php");
-                                    
-                                    //inserta el id y la ruta en la tabla imagenes
-                                    $querry_img = "INSERT INTO imagenes
-                                    VALUES($id, '$ruta')";
-
-                                    $stm = sqlsrv_query($con, $querry_img);
 
                                     echo json_encode("todo chido");
                                 } 
