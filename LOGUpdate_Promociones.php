@@ -9,12 +9,14 @@ class ActPro{
         $serverName='localhost';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
-        $updateQuery ="UPDATE Productos SET nombre=('$nombreP'),Apartado=('$apar'),precio_com=('$pC'),precio_ven=('$pV'),id_proveedor=('$proved'), descripcion=('$des'),Subapartado=('$subA'), Estado=('$estado') WHERE id_producto=$id";
+        $updateQuery ="UPDATE Productos 
+        SET  descuento=('$descuento') 
+        WHERE id_producto=$id";
         $getProv = sqlsrv_query($conn_sis, $updateQuery);
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
         }
-        include("lista_productos.php");
+        include("lista_promociones.php");
         //echo '<script>alert("Producto actualizado con éxito")</script>';
     }
 }
@@ -23,7 +25,7 @@ class Foto{
             //echo 'en el archivo de logica'. '<br>';
 
             $archivo = $_FILES['foto']['name'];
-            $id = $_POST["idProducto"];
+            $id = $_POST["prodId"];
 
             //verifica si hay un archivo seleccionado
             if($archivo != null and $archivo != ''){
@@ -59,7 +61,7 @@ class Foto{
                         $con = sqlsrv_connect($servername, $info);
 
                         //consulta para insertar el link y el id en la base de datos
-                        $querry = "UPDATE imagenes SET ruta=('$ruta') WHERE id_prod=$id ";
+                        $querry = "UPDATE imgpromocion SET ruta=('$ruta') WHERE id_prod=$id ";
                         //echo $querry. '<br>';
 
                         $resultados = sqlsrv_query($con, $querry);
@@ -82,6 +84,6 @@ class Foto{
     
     $obj= new ActPro;
     $obj->Update();
-    //$obj = new Foto();
-   // $obj -> guardar();
+    $obj = new Foto();
+    $obj -> guardar();
     ?>
