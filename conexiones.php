@@ -22,6 +22,7 @@
     $tabla_sucursal = "Sucursal";
     $tabla_tarjetas = "Tarjetas";
     $tabla_ventas = "Ventas";
+    $tabla_carrito = "carritoclientes";
     
     /* Crear la conexion a la base de datos para SQLServer*/
     $connectionInfo = array("Database"=>$nombre_bd, "UID"=>$nombre_usuario, "PWD"=>$password, "CharacterSet" => "UTF-8");
