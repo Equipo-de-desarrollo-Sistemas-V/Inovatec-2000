@@ -4,15 +4,34 @@ let bandAP = true
 let bandAM = true
 let bandEmail = true
 let bandTel = true
+
 let bandCalle = true
 let bandNum = true
 let bandCol = true
 let bandCP = true
+
+let bandPas = false
+let bandPas1 = false
+let bandPas2 = false
+
 let bandTar = true
 let bandMesTar = true
 let bandAnTar = true
-let bandCcvTar = true
-validar();
+let bandNumTar = true
+
+
+/*Detecta cuando el boton de contrase;a fue presionado*/
+let boton3 = document.getElementById("boton3");
+boton3.addEventListener("click", (e) => {
+    if (bandPas==false){
+        password.style.border = "3px solid red";
+    }else if(bandPas1==false){
+        newPassword.style.border = "3px solid red";
+    }else{
+        validarContra();
+    }
+});
+
 
 const expresiones = {
     cadenas:/^[a-zA-ZÁ-ý\s]{3,40}$/,
@@ -27,7 +46,8 @@ const expresiones = {
     cadenasT:/^[a-zA-ZÁ-ý\s]{3,100}$/,
     numT:/^[0-9]{16}$/,
     mesT:/^[0-9]{1,2}$/,
-    ccvT:/^[0-9]{3}$/
+    passw:/^[a-zA-Z0-9üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]{8,255}$/
+
 }
 
 /* Input nombre del cliente */
@@ -47,7 +67,7 @@ formulario.nombreCliente.addEventListener('keyup', (e) => {
         nombreCliente.removeAttribute("style");
         bandNombre = true
     }
-    validar();
+    validarDatos();
 })
 
 /* Input apellidoPaterno*/
@@ -67,7 +87,7 @@ formulario.apellidoPaterno.addEventListener('keyup', (e) => {
         apellidoPaterno.removeAttribute("style");
         bandAP = true
     }
-    validar();
+    validarDatos();
 
 })
 
@@ -88,7 +108,7 @@ formulario.apellidoMaterno.addEventListener('keyup', (e) => {
         apellidoMaterno.removeAttribute("style");
         bandAM = true
     }
-    validar();
+    validarDatos();
 })
 
 /* Input email*/
@@ -108,7 +128,7 @@ formulario.correo.addEventListener('keyup', (e) => {
         correo.removeAttribute("style");
         bandEmail = true
     }
-    validar();
+    validarDatos();
 })
 
 /* Input telefono*/
@@ -130,7 +150,7 @@ formulario.telefono.addEventListener('keyup', (e) => {
         telefono.removeAttribute("style");
         bandTel = true
     }
-    validar();
+    validarDatos();
 })
 
 
@@ -151,7 +171,7 @@ formulario.calle.addEventListener('keyup', (e) => {
         calle.removeAttribute("style");
         bandCalle = true
     }
-    validar();
+    validarDireccion();
 })
 
 /* Input numero */
@@ -173,7 +193,7 @@ formulario.numero.addEventListener('keyup', (e) => {
         numero.removeAttribute("style");
         bandNum = true
     }
-    validar();
+    validarDireccion();
 })
 
 /* Input colonia */
@@ -193,7 +213,7 @@ formulario.colonia.addEventListener('keyup', (e) => {
         colonia.removeAttribute("style");
         bandCol = true
     }
-    validar();
+    validarDireccion();
 })
 
 /* Input CP */
@@ -215,8 +235,77 @@ formulario.codigoPostal.addEventListener('keyup', (e) => {
         codigoPostal.removeAttribute("style");
         bandCP = true
     }
-    validar();
+    validarDireccion();
 })
+
+/* Input de la constrasenia*/
+formulario.password.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+    if (valorInput==""){
+        password.style.border = "3px solid red";
+        bandPas = false
+	}else{
+        password.removeAttribute("style");
+        bandPas = true
+    }
+    //validarContra();
+})
+
+/* Input de la nueva constrasenia*/
+formulario.newPassword.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.newPassword.value = valorInput
+    // Eliminar espacios en blanco
+        .replace(/\s/g, '')
+    // Eliminar el ultimo espaciado
+    .trim();
+
+    if (!expresiones.passw.test(valorInput)) {
+        newPassword.style.border = "3px solid red";
+        bandPas1 = false
+	}else{
+        newPassword.removeAttribute("style");
+        bandPas1 = true
+    }
+    validarPassword2();
+    validarContra();
+})
+
+/* Input de la confirmacion de la constrasenia*/
+formulario.confirmPassword.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.confirmPassword.value = valorInput
+    // Eliminar espacios en blanco
+        .replace(/\s/g, '')
+        // Eliminar caracteres especiales
+    //.replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+        // Eliminar el ultimo espaciado
+    .trim();
+
+    validarPassword2();
+})
+
+// verifica que la contrasenia y su confirmacion coincidan
+const validarPassword2 = () =>{
+    const inputPass1 = document.getElementById('newPassword');
+    const inputPass2 = document.getElementById('confirmPassword');
+
+    if (inputPass1.value !== inputPass2.value){
+        confirmPassword.style.border = "3px solid red";
+        bandPas2 = false
+    }else{
+        confirmPassword.removeAttribute("style");
+        bandPas2 = true
+    }
+    validarContra();
+}
+
+
+
+
 
 /* Input nombre del propietario de la tarjeta*/
 formulario.nombreTarjeta.addEventListener('keyup', (e) => {
@@ -236,7 +325,7 @@ formulario.nombreTarjeta.addEventListener('keyup', (e) => {
         nombreTarjeta.removeAttribute("style");
         bandTar  = true
     }
-    validar();
+    validarBanco();
 })
 
 /* Input numero de la tarjeta*/
@@ -257,7 +346,7 @@ formulario.numeroTarjeta.addEventListener('keyup', (e) => {
         numeroTarjeta.removeAttribute("style");
         bandNumTar  = true
     }
-    validar();
+    validarBanco();
 })
 
 /* Input mes*/
@@ -278,7 +367,7 @@ formulario.monthExpiracion.addEventListener('keyup', (e) => {
         monthExpiracion.removeAttribute("style");
         bandMesTar  = true
     }
-    validar();
+    validarBanco();
 })
 
 /* Input anio*/
@@ -299,38 +388,46 @@ formulario.yearExpiracion.addEventListener('keyup', (e) => {
         yearExpiracion.removeAttribute("style");
         bandAnTar  = true
     }
-    validar();
+    validarBanco();
 })
 
-/* Input ccv*/
-formulario.ccv.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-	formulario.ccv.value = valorInput
-		// Eliminar espacios en blanco
-		.replace(/\s/g, '')
-		// Eliminar letras
-		.replace(/\D/g, '')
-		// Eliminar el ultimo espaciado
-		.trim();
-    if (!expresiones.ccvT.test(valorInput)) {
-        ccv.style.border = "3px solid red";
-        bandCcvTar  = false
-	}else{
-        ccv.removeAttribute("style");
-        bandCcvTar  = true
+function validarDatos(){
+    const boton1 = document.getElementById('boton1');
+    if(bandNombre == true && bandAP == true && bandAM == true && bandEmail == true && bandTel == true){
+        boton1.disabled=false;
     }
-    validar();
-})
+    else{
+        boton1.disabled=true;
+    }
+}
 
+function validarDireccion(){
+    const boton2 = document.getElementById('boton2');
+    if(bandCalle == true && bandNum == true && bandCol == true && bandCP == true){
+            boton2.disabled=false;
+    }
+    else{
+        boton2.disabled=true;
+    }
+}
 
-function validar(){
+function validarContra(){
+    const boton3 = document.getElementById('boton3');
+    if(bandPas == true && bandPas1 == true && bandPas2 == true){
+            boton3.disabled=false;
+    }
+    else{
+        boton3.disabled=true;
+    }
+}
+
+function validarBanco(){
     const boton4 = document.getElementById('boton4');
-    if(bandNombre == true && bandAP == true && bandAM == true && bandEmail == true && bandTel == true && bandCalle == true && bandNum == true
-        && bandCol == true && bandCP == true && bandTar == true && bandMesTar == true && bandAnTar == true && bandCcvTar == true){
-        boton4.disabled=false;
+    if(bandTar == true && bandMesTar == true && bandAnTar == true && bandNumTar == true){
+            boton4.disabled=false;
     }
     else{
         boton4.disabled=true;
     }
 }
+
