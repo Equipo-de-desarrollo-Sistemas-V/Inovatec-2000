@@ -333,28 +333,14 @@
       </div>
     </article>
 
-    <span id="categoria"style="display:none"></span>
-    <span id="subcategoria"style="display:none"></span>
-    <span id="busqueda"></span>
+    <span id="busqueda" style="display:none"></span>
   </section>
 </body>
 
-  <!-- <script src="JsPhp/busquedaBridge.js"></script> -->
+  <script src="JsPhp/busquedaBridge.js"></script>
   <script src="JsPhp/ObtenerBuscador.js"></script>
-  <!--  <script src="JsPhp/carritoBridge.js"></script> -->
   <script src="js/linkHome.js"></script>
 </html>
-
-<!-- <?php
-  $item = $_GET['item'];
-  /* Separa el item en dos secciones y guardalo en diferentes variables */
-  $item = explode("/", $item);
-  /* Asigna el nombre de la subcategoria al h2 con el id subtitulo */
-  echo "<script>document.getElementById('subtitulo').innerHTML = '$item[1]'</script>";
-  echo "<script>document.getElementById('categoria').innerText = '$item[0]'</script>";
-  echo "<script>document.getElementById('subcategoria').innerText = '$item[1]'</script>";
-  echo "<script>document.getElementById('busqueda').innerText = '$item'</script>";
-?> -->
 
 <?php
   $item = $_GET['item'];

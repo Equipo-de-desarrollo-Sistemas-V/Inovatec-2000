@@ -1,48 +1,50 @@
 window.onload = function () {
-    let url = "JsPhp/obtenerBusqueda.php";
-    /* categoria = "Computadoras";
-    subcategoria = "Laptop"; */
+  let url = "JsPhp/obtenerBusqueda.php";
+  /* categoria = "Computadoras";
+  subcategoria = "Laptop"; */
 
-    busqueda = document.getElementById('busqueda').textContent;
+  busqueda = document.getElementById('busqueda').textContent;
 
-    let form = new FormData();
-    form.append("busqueda", busqueda);
+  console.log(busqueda);
 
-    fetch(url, {
-        method: "POST",
-        body: form
-    })
-        .then(response => response.json())
-        .then(data => arrays(data))
-        .catch(error => console.log(error));
+  let form = new FormData();
+  form.append("busqueda", busqueda);
 
-    const arrays = (data) => {
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+    .then(response => response.json())
+    .then(data => arrays(data))
+    .catch(error => console.log(error));
 
-        let body = '';
+  const arrays = (data) => {
 
-        let size = Object.keys(data).length;
+    let body = '';
 
-        console.log("El tamaño es: " + size);
+    let size = Object.keys(data).length;
 
-        let arreglosVariables = Object.values(data);
+    console.log("El tamaño es: " + size);
 
-        let size2 = Object.keys(arreglosVariables[0]).length;
+    let arreglosVariables = Object.values(data);
 
-        for (let i = 0; i < size2; i++) {
-            body += `
-                <div class="cardProducto">
-                    <div class="encabezado">
-                        <h3 class="tituloProducto"><span id="seccion1-producto1">${arreglosVariables[3][i]}</span></h3>
-                        <h3 class="tituloPrecio"><span id="seccion1-precio1">${arreglosVariables[1][i]}</span></h3>
-                    </div>
+    let size2 = Object.keys(arreglosVariables[0]).length;
 
-                <img src="${arreglosVariables[4][i]}" alt="" id="seccion1-imagen1">
-
-                <h3 class="nombreProducto"><span id="seccion1-nombre1">${arreglosVariables[0][i]}</span></h3>
-                <a href="producto_individual.php?item=${arreglosVariables[5][i]}" class="btn">Comprar</a>
+    for (let i = 0; i < size2; i++) {
+      body += `
+            <div class="cardProducto">
+                <div class="encabezado">
+                    <h3 class="tituloProducto"><span id="seccion1-producto1">${arreglosVariables[2][i]}</span></h3>
+                    <h3 class="tituloPrecio"><span id="seccion1-precio1">${arreglosVariables[1][i]}</span></h3>
                 </div>
-            `;
-        }
-        document.querySelector('.containerCards').innerHTML = body;
+
+            <img src="${arreglosVariables[3][i]}" alt="" id="seccion1-imagen1">
+
+            <h3 class="nombreProducto"><span id="seccion1-nombre1">${arreglosVariables[0][i]}</span></h3>
+            <a href="producto_individual.php?item=${arreglosVariables[4][i]}" class="btn">Comprar</a>
+            </div>
+        `;
     }
+    document.querySelector('.containerCards').innerHTML = body;
+  }
 } 
