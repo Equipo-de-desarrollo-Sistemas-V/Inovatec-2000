@@ -30,21 +30,26 @@ window.onload = function () {
 
     let size2 = Object.keys(arreglosVariables[0]).length;
 
-    for (let i = 0; i < size2; i++) {
-      body += `
-            <div class="cardProducto">
-                <div class="encabezado">
-                    <h3 class="tituloProducto"><span id="seccion1-producto1">${arreglosVariables[2][i]}</span></h3>
-                    <h3 class="tituloPrecio"><span id="seccion1-precio1">${arreglosVariables[1][i]}</span></h3>
-                </div>
-
-            <img src="${arreglosVariables[3][i]}" alt="" id="seccion1-imagen1">
-
-            <h3 class="nombreProducto"><span id="seccion1-nombre1">${arreglosVariables[0][i]}</span></h3>
-            <a href="producto_individual.php?item=${arreglosVariables[4][i]}" class="btn">Comprar</a>
-            </div>
-        `;
+    if(size2 > 0){
+      for (let i = 0; i < size2; i++) {
+        body += `
+              <div class="cardProducto">
+                  <div class="encabezado">
+                      <h3 class="tituloProducto"><span id="seccion1-producto1">${arreglosVariables[2][i]}</span></h3>
+                      <h3 class="tituloPrecio"><span id="seccion1-precio1">${arreglosVariables[1][i]}</span></h3>
+                  </div>
+  
+              <img src="${arreglosVariables[3][i]}" alt="" id="seccion1-imagen1">
+  
+              <h3 class="nombreProducto"><span id="seccion1-nombre1">${arreglosVariables[0][i]}</span></h3>
+              <a href="producto_individual.php?item=${arreglosVariables[4][i]}" class="btn">Comprar</a>
+              </div>
+          `;
+      }
+      document.querySelector('.containerCards').innerHTML = body;
     }
-    document.querySelector('.containerCards').innerHTML = body;
+    else{
+      document.querySelector('.containerCards').innerHTML = "No se encontraron resultados";
+    }
   }
 } 
