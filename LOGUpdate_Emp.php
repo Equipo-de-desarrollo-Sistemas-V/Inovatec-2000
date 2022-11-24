@@ -73,7 +73,7 @@ class ActPro{
         }
         
         
-        include("lista_trabajador.php");
+        header("location:lista_trabajador.php");
     //}
 }}
     //echo '<script>alert("Empleado actualizado con éxito")</script>';

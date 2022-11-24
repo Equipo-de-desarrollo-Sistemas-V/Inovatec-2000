@@ -19,7 +19,7 @@ class ActPro{
         if( $getProv === false) {            
             die( print_r( sqlsrv_errors(), true) );
         }
-        include("consulta_inventario.php");
+        header("location:consulta_inventario.php");
         //echo '<script>alert("Inventario actualizado con éxito")</scrip>';
     }
 

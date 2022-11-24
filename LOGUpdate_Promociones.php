@@ -16,7 +16,7 @@ class ActPro{
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
         }
-        include("lista_promociones.php");
+        header("location:lista_promociones.php");
         //echo '<script>alert("Producto actualizado con éxito")</script>';
     }
 }
