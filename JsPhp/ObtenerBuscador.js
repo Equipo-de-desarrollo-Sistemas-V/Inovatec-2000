@@ -6,6 +6,6 @@ btnbuscar.addEventListener("click", () => {
 
     let nueva_direccion = "buscadorResultados.php?item="+caja.value
 
-    /* Llama a la ventana CarritoVentas */
-
+    /* llama el archivo que se encuentra en nueva_direccion */
+    location.href = nueva_direccion
 })

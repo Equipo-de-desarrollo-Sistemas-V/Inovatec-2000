@@ -33,9 +33,10 @@ $sesion_i = $_SESSION["Usuario"];
     <nav>
       <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
       <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+
       <div class="search-box">
-        <input type="search" placeholder="Busquemos algunas cosas...">
-        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        <input type="search" placeholder="Busquemos algunas cosas..." id="search">
+        <span id="spanbtn"><i class="fa-solid fa-magnifying-glass"></i></span>
       </div>
   
       <ol>
@@ -426,6 +427,7 @@ $sesion_i = $_SESSION["Usuario"];
         </div>
       </footer>
     <script src="js/linkHome.js"></script>
+    <script src="JsPhp/ObtenerBuscador.js"></script>
 </body>
 
 </html>
