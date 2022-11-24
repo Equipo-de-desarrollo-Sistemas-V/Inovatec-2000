@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,9 @@
 	<script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="administrativo.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/consuPromocion.js"></script>
 </head>
+
 <body>
 	<!--Estructura Header Superior-->
 	<header>
@@ -44,8 +47,8 @@
 
 						<li><a href="#">Sucursales</a>
 							<ul>
-								<li><a id="menuSucursal1" href="alta_sucursal.php" >Nueva sucursal</a></li>
-								<li><a id="menuSucursal2" href="lista_sucursal.php" >Lista de sucursales</a></li>
+								<li><a id="menuSucursal1" href="alta_sucursal.php">Nueva sucursal</a></li>
+								<li><a id="menuSucursal2" href="lista_sucursal.php">Lista de sucursales</a></li>
 							</ul>
 						</li>
 
@@ -73,12 +76,12 @@
 
 						<li><a href="#">Reportes</a>
 							<ul>
-								<li><a id="menuVentas1" href="registro_ventas.php" >Ventas
+								<li><a id="menuVentas1" href="registro_ventas.php">Ventas
 								<li><a id="menuVentas2" href="informe_ventas.php">Productos</a></li>
 							</ul>
 						</li>
 
-                        <li><a href="#">Promociones</a>
+						<li><a href="#">Promociones</a>
 							<ul>
 								<li><a id="menuVentas1" href="registro_promocion.php">Nueva promoción</a></li>
 								<li><a id="menuVentas2" href="lista_promociones.php">Lista de promociones</a></li>
@@ -90,17 +93,17 @@
 		</div>
 	</header>
 
-    <!--Main General-->
+	<!--Main General-->
 	<main>
 		<!--Contenido de la parte LISTA PRODUCTOS-->
-	
+
 		<div class="contenidoListaProm" id="contenidoListaProm">
 			<div class="article-tablas">
 
 				<article>
 					<h1 align="center">Lista de promociones</h1>
 					<div class="contenido-barra-buscar">
-						<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required >
+						<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." required>
 						<button class="btn-buscar">
 							<i class="fas fa-search icon"></i>
 
@@ -108,25 +111,26 @@
 					</div>
 					<br>
 					<section class="tablas" id="tablaResultado">
-						<table>
+						<!-- <table>
 							<thead>
 								<tr>
-									<th>Id</th> 
-									<th>Nombre</th> 
-									<th>Precio venta</th> 
-									<th>Descuento (%)</th> 
-									<th>Descuento ($)</th> 
+									<th>Id</th>
+									<th>Nombre</th>
+									<th>Precio venta</th>
+									<th>Descuento (%)</th>
+									<th>Descuento ($)</th>
 									<th>Imagen</th>
 									<th>Acciones</th>
 									<th></th>
 								</tr>
 							</thead>
-						</table>
+						</table> -->
 					</section>
 				</article>
 			</div>
 		</div>
-    </main>
+	</main>
 
 </body>
+
 </html>
