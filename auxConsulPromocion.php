@@ -8,7 +8,8 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 $salida="";
 //Consulta normal, muetra todos los registros
 $query="SELECT Productos.id_producto, Productos.nombre, Productos.precio_ven, Productos.descuento, 
-Productos.descuento * (Productos.precio_ven / 100) as oferta FROM Productos";
+Productos.descuento * (Productos.precio_ven / 100) as oferta FROM Productos
+WHERE descuento != 0";
 
 //detecta si se escribio algo en la caja de busqueda
 //Consulta que busca lo que hay dentro de la caja de busqueda, en todas las columnas
@@ -19,7 +20,8 @@ if (isset($_POST['consulta'])){
     WHERE (Productos.id_producto like '%".$q."%' or 
     Productos.nombre like '%".$q."%' or 
     precio_ven like '%".$q."%' or
-    Productos.descuento like '%".$q."%')";
+    Productos.descuento like '%".$q."%' AND
+    descuento != 0)";
 }
 
 
@@ -69,7 +71,7 @@ if($resultado==true){
         $salida.='<td>'."$".$oferta.'</td>'; 
         $salida.='<td>'.'<p><img src="' .$imagen. '" width="50" height="50"></p></td>';
         $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>';
-        $salida.='<td>'.'<a href="logEliminarProducto.php?item='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
+        $salida.='<td>'. '<a href="logEliminarPromocion.php?item='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
     }
     
@@ -87,4 +89,4 @@ if($resultado==true){
 sqlsrv_close($con);
 echo $salida;
 ?>
-<script src="../Inovatec-2000/js/alertasEliminarProducto.js"></script>
+<script src="js/alertaEliminarPromocion.js"></script>
