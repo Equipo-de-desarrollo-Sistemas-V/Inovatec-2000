@@ -55,9 +55,6 @@ class login{
                     $contraHash = $row['Contra_us'];
                     if (password_verify($palabra_secreta, $contraHash)) {
                         //echo $arreClien['Usuario'];
-                        $file = fopen("archivo_correo.txt", "w");
-                        fwrite($file, $arreClien['Usuario'] . PHP_EOL);
-                        fclose($file);
                         //echo json_encode("todo bien");
                         session_start();
                         $_SESSION["Usuario"] = $arreClien['Usuario'];
