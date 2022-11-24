@@ -28,10 +28,9 @@
         $nombres_productos = array();
         $precios_productos = array();
         //$categorias_productos = array();
-        //$subcategorias_productos = array();
+        $subcategorias_productos = array();
         $rutas_productos = array();
         $id_productos = array();
-        $cantidad_productos = array();
 
         /* Recorremos los datos de la consulta */
         while($fila = sqlsrv_fetch_array($resultado_productos, SQLSRV_FETCH_ASSOC)){
@@ -49,7 +48,7 @@
         }, $precios_productos);
 
         /* Creamos un arreglo para almacenar los datos de la consulta */
-        $data = array('nombres' => $nombres_productos, 'precios' => $precios_productos, 'precios' => $categorias_productos, 'rutas' => $subcategorias_productos, 'rutas' => $rutas_productos, 'id_productos' => $id_productos);
+        $data = array('nombres' => $nombres_productos, 'precios' => $precios_productos, 'subcategorias' => $subcategorias_productos, 'rutas' => $rutas_productos, 'id_productos' => $id_productos);
         echo json_encode($data);
     }
 ?>
