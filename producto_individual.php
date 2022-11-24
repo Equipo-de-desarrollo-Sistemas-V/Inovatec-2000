@@ -76,19 +76,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Ruteadores inalámbicos</a>
+                    <a href="categorias.php?item=Redes/Ruteadores inalámbricos" >Ruteadores inalámbicos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Cables de red</a>
+                    <a href="categorias.php?item=Redes/Cables de red">Cables de red</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Adaptadores Bluetooth</a>
+                    <a href="categorias.php?item=Redes/Adaptadores Bluetooth">Adaptadores Bluetooth</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Tarjertas de red</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="">Adaptadores inalámbricos</a>
+                    <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalámbricos">Tarjertas de red y adaptadores inalámbricos</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -108,13 +105,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Antivirus y seguridad</a>
+                    <a href="categorias.php?item=Software/Antivirus y seguridad">Antivirus y seguridad</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Sistemas operativos</a>
+                    <a href="categorias.php?item=Software/Sistemas operativos">Sistemas operativos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Ofimatica</a>
+                    <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Software/Microsoft Office">Microsoft Office</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -134,13 +134,16 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Accesorios de servidores</a>
+                    <a href="categorias.php?item=Servidores/Accesorios para servidores">Accesorios de servidores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Redes</a>
+                    <a href="categorias.php?item=Servidores/Redes">Redes</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Energía</a>
+                    <a href="categorias.php?item=Servidores/Energía">Energía</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Servidores/Servidores">Servidores</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -160,18 +163,22 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Consumibles y articulos</a>
+                    <a href="categorias.php?item=Impresión/Consumibles">Consumibles y articulos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Impresoras</a>
+                    <a href="categorias.php?item=Impresión/Impresoras">Impresoras</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Scanners de cama</a>
+                    <a href="categorias.php?item=Impresión/Scanner de cama">Scanners de cama</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Impresión/Punto de venta">Punto de venta</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- COMPUTADORAS -->
             <li class="nav-link" style="--i: .85s">
 
@@ -185,21 +192,22 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Desktops</a>
+                    <a href="categorias.php?item=computadoras/Desktops">Desktops</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Laptops</a>
+                    <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Smartphones</a>
+                    <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Tablets</a>
+                    <a href="categorias.php?item=computadoras/Tablet">Tablets</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- HARDWARE -->
             <li class="nav-link" style="--i: .85s">
 
@@ -213,21 +221,22 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Discos duros</a>
+                    <a href="categorias.php?item=Hardware/Disco duro">Discos duros</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Procesadores</a>
+                    <a href="categorias.php?item=Hardware/Procesadores">Procesadores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Memorias</a>
+                    <a href="categorias.php?item=Hardware/Memorias">Memorias</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Motherboards</a>
+                    <a href="categorias.php?item=Hardware/Tarjeta Madre">Motherboards</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- ACCESORIOS -->
             <li class="nav-link" style="--i: .85s">
 
@@ -241,24 +250,22 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Perifericos</a>
+                    <a href="categorias.php?item=Accesorios/Periféricos">Periféricos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Cables</a>
+                    <a href="categorias.php?item=Accesorios/Cables y adaptadores">Cables y adaptadores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Adaptadores</a>
+                    <a href="categorias.php?item=Accesorios/Herramientas">Herramientas</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Herramientas</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="">Limpieza</a>
+                    <a href="categorias.php?item=Accesorios/Limpieza">Limpieza</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- ELECTRONICA -->
             <li class="nav-link" style="--i: .85s">
 
@@ -272,19 +279,45 @@ $sesion_i = $_SESSION["Usuario"];
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Monitores</a>
+                    <a href="categorias.php?item=Electrónica/Monitores">Monitores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Audifonos</a>
+                    <a href="categorias.php?item=Electrónica/Audífonos">Audífonos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Micrófonos</a>
+                    <a href="categorias.php?item=Electrónica/Bocinas">Bocinas</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Bocinas</a>
+                    <a href="categorias.php?item=Electrónica/Capturadora de video">Capturadoras de video</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+
+            <!-- ALMACENAMIENTO -->
+            <li class="nav-link" style="--i: .85s">
+
+              <a href="#">
+                <ion-icon name="cloud-circle-outline"></ion-icon>
+                Almacenamiento
+                <i class="fas fa-caret-down"></i>
+              </a>
+
+              <div class="dropdown">
+
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/M.2" >M.2</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Capturadoras de video</a>
+                    <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/HDD">HDD</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/Memoria RAM">Memoria RAM</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -398,59 +431,58 @@ $sesion_i = $_SESSION["Usuario"];
 </html>
 
 <?php
-$idProducto=$_GET["item"];
-//$idProducto=13;
+  $idProducto=$_GET["item"];
+  //$idProducto=13;
 
-//Consulta para obtener los datos del productos seleccionado
-$serverName='localhost';
-$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-$con = sqlsrv_connect($serverName, $connectionInfo); 
+  //Consulta para obtener los datos del productos seleccionado
+  $serverName='localhost';
+  $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+  $con = sqlsrv_connect($serverName, $connectionInfo); 
 
 
-$query="SELECT Productos.nombre, Productos.precio_ven, Productos.descripcion, ruta
-FROM [Productos], [imagenes]
-where Productos.id_producto=imagenes.id_prod and Productos.id_producto=$idProducto";
+  $query="SELECT Productos.nombre, Productos.precio_ven, Productos.descripcion, ruta
+  FROM [Productos], [imagenes]
+  where Productos.id_producto=imagenes.id_prod and Productos.id_producto=$idProducto";
 
-$resultado=sqlsrv_query($con, $query);
-if($resultado==true){
-  $row = sqlsrv_fetch_array($resultado);
-  $nomProd=$row["nombre"];
-  $auxPrecio=$row["precio_ven"];
-  $desProd=$row["descripcion"];
-  $ruta=$row["ruta"];
+  $resultado=sqlsrv_query($con, $query);
+  if($resultado==true){
+    $row = sqlsrv_fetch_array($resultado);
+    $nomProd=$row["nombre"];
+    $auxPrecio=$row["precio_ven"];
+    $desProd=$row["descripcion"];
+    $ruta=$row["ruta"];
 
-  //Obtener el total de existentes del producto, en todas las sucursales.
-  $query = "SELECT cantidad FROM Inventario_suc
-  WHERE id_producto = $idProducto";
+    //Obtener el total de existentes del producto, en todas las sucursales.
+    $query = "SELECT cantidad FROM Inventario_suc
+    WHERE id_producto = $idProducto";
 
-  $resultado = sqlsrv_query($con, $query);
+    $resultado = sqlsrv_query($con, $query);
 
-  $existentes = 0;
+    $existentes = 0;
 
-  while($row = sqlsrv_fetch_array($resultado)){
-      $existentes = $existentes + $row["cantidad"];
+    while($row = sqlsrv_fetch_array($resultado)){
+        $existentes = $existentes + $row["cantidad"];
+    }
+
+    $precioProd= "$ ".substr($auxPrecio, 0, -2);
+    
+    echo "
+    <script>
+      document.getElementById('nombre').innerHTML = '$nomProd';
+      document.getElementById('precio').innerHTML = '$precioProd';
+      document.getElementById('precioDes').innerHTML = '';
+      document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
+      document.getElementById('descripcion').innerHTML = '$desProd';
+      document.getElementById('imagen').src= '$ruta';
+      let auxId= $idProducto;
+      let auxExis= $existentes;
+    </script>";
+
   }
 
-  $precioProd= "$ ".substr($auxPrecio, 0, -2);
-  
-  echo "
-  <script>
-    document.getElementById('nombre').innerHTML = '$nomProd';
-    document.getElementById('precio').innerHTML = '$precioProd';
-    document.getElementById('precioDes').innerHTML = '';
-    document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
-    document.getElementById('descripcion').innerHTML = '$desProd';
-    document.getElementById('imagen').src= '$ruta';
-    let auxId= $idProducto;
-    let auxExis= $existentes;
-  </script>";
-
-}
-
-//Cerrar conexion
-sqlsrv_close($con);
+  //Cerrar conexion
+  sqlsrv_close($con);
 ?>
-
 
 <script>
   //obtengo el valor  de lo que se esta escribiendo en el input de cantidad y valido

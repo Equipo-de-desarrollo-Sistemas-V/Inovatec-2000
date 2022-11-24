@@ -16,7 +16,7 @@ class ActPro{
         if( $getProv === false) {
             die( print_r( sqlsrv_errors(), true) );
         }
-        include("lista_proveedor.php");
+        header("location:lista_proveedor.php");
         //echo '<script>alert("Proveedor actualizada con éxito")</script>';
     }
 }

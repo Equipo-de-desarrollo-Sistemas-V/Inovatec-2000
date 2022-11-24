@@ -14,7 +14,7 @@ class ActPro{
         if( $getProv === false) {            
             die( print_r( sqlsrv_errors(), true) );
         }
-        include("lista_sucursal.php");
+        header("location:lista_sucursal.php");
         //echo '<script>alert("Sucursal actualizada con éxito")</script>';
     }
 }

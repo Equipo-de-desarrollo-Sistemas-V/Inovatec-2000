@@ -103,7 +103,7 @@
                     <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="categorias.php?item=Software/Microsoft Office">Ofimatica</a>
+                    <a href="categorias.php?item=Software/Microsoft Office">Microsoft Office</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -159,6 +159,9 @@
                   </li>
                   <li class="dropdown-link">
                     <a href="categorias.php?item=Impresión/Scanner de cama">Scanners de cama</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Impresión/Punto de venta">Punto de venta</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -311,9 +314,9 @@
             </li>
 
           </ul>
-      </div>
-
         </div>
+
+      </div>
 
       <div class="hamburger-menu-container">
         <div class="hamburger-menu">

@@ -111,7 +111,7 @@ $sesion_i = $_SESSION["Usuario"];
                       <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
                     </li>
                     <li class="dropdown-link">
-                      <a href="categorias.php?item=Software/Microsoft Office">Ofimatica</a>
+                      <a href="categorias.php?item=Software/Microsoft Office">Microsoft Office</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
@@ -167,6 +167,9 @@ $sesion_i = $_SESSION["Usuario"];
                     </li>
                     <li class="dropdown-link">
                       <a href="categorias.php?item=Impresión/Scanner de cama">Scanners de cama</a>
+                    </li>
+                    <li class="dropdown-link">
+                      <a href="categorias.php?item=Impresión/Punto de venta">Punto de venta</a>
                     </li>
                     <div class="arrow"></div>
                   </ul>
