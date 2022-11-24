@@ -59,9 +59,12 @@
                                     //echo json_encode($ruta);
 
                                     //actualiza la tabla productos
-                                    $querry_update = "UPDATE Productos
+                                    $querry_update = "BEGIN TRAN
+                                    UPDATE Productos
                                     SET descuento = $descuento  
-                                    WHERE id_producto = $id";
+                                    WHERE id_producto = $id
+                                    INSERT INTO imgpromocion VALUES($id, '$ruta')
+                                    COMMIT";
 
                                     $exect_actualizar = sqlsrv_query($con, $querry_update);
 
@@ -69,12 +72,6 @@
                                     $confirm_prod = sqlsrv_query($con, $querry_descuento);
 
                                     if(sqlsrv_fetch_array($confirm_prod)){
-                                        $querry_img = "INSERT INTO imgpromocion VALUES($id, '$ruta')";
-
-                                        //echo json_encode($querry_img);
-
-                                        $exect_img = sqlsrv_query($con, $querry_img);
-
                                         echo json_encode('todo chido');
                                     }
 
