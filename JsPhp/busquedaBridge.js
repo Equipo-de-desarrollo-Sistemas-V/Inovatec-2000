@@ -3,7 +3,7 @@ window.onload = function () {
     /* categoria = "Computadoras";
     subcategoria = "Laptop"; */
 
-    busqueda = document.getElementById('busqueda').textContent
+    busqueda = document.getElementById('busqueda').textContent;
 
     let form = new FormData();
     form.append("busqueda", busqueda);
