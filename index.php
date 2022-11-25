@@ -701,7 +701,7 @@ $sesion_i = $_SESSION["Usuario"];
     }
 
     /* Obten la longitud del arreglo nombres_computadoras */
-    $longitud = count($nombres_computadoras);
+    $longitud = count($nombres_procesadores);
     /* Genera 4 numeros aleatorios que no se repitan entre 0 y la longitud del arreglo nombres_computadoras */
     $numeros_aleatorios = array();
     while(count($numeros_aleatorios) < 4){
@@ -724,7 +724,6 @@ $sesion_i = $_SESSION["Usuario"];
         array_push($rutas_procesadores_categoria, $rutas_procesadores[$numeros_aleatorios[$i]]);
         array_push($ids_procesadores_categoria, $ids_procesadores[$numeros_aleatorios[$i]]);
     }
-
     /* Elimina los ultimos dos caracteres de los precios */
     for($i = 0; $i < 4; $i++){
         $precios_procesadores_categoria[$i] = substr($precios_procesadores_categoria[$i], 0, -2);
