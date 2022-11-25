@@ -9,7 +9,7 @@ $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "
 $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 
 //$id=$_GET["item"];
-$arre=$_GET["item"];
+
 //if (isset($_POST('Actualizar')))
 /*$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
 $res= sqlsrv_query($conn_sis, $query);
@@ -20,11 +20,14 @@ while( $row = sqlsrv_fetch_array($res) ) {
   $nombre=$row["nombre"];
   $pre_ven=substr($row['precio_ven'],0,-2);							
 //echo '<script>alert("'.$nombre.'")</script>';
-}*/
+}
 $array_para_recibir_via_url = urldecode($arre);
-$matriz_completa = unserialize($array_para_recibir_via_url);
+$matriz_completa = unserialize($array_para_recibir_via_url);*/
 
-//echo '<script>alert("'.$matriz_completa[1][1].'")</script>';
+$arrProd = (array)json_decode($_GET["item"]);
+$numPro=count($arrProd);
+$arre=(array)json_encode($arrProd);
+//echo '<script>alert("'.var_dump(json_decode($_GET["item"])).'")</script>';
 $fecha= date("d/m/Y");
 //$total=$pre_ven*1;
 
@@ -335,7 +338,7 @@ $fecha= date("d/m/Y");
 
             <h3 id="subtitulo">Datos para la factura</h3>
             <br>
-            <form id="formulario" action="Factura.php?item=<?php echo $arre; ?>" class="formularios" method="POST">
+            <form id="formulario" action=" " class="formularios" method="POST">
               <div class="entrada-2">
                 
                 <!--<form action="Factura.php" class="formularios" method="post">-->
@@ -390,11 +393,11 @@ $fecha= date("d/m/Y");
                       </tr>
                     </thead>
                     <?php
-                    $numPro=count($matriz_completa);
-                    //echo '<script>alert("'.$numPro.'")</script>';
+                    $aux=json_encode($arrProd);
+                    $longi=count($arrProd);
                     for($i=0;$i<$numPro;$i++) {
-                      $idProd=$matriz_completa[0][$i];                        //id del producto
-                      $cantiProd=$matriz_completa[1][$i];                     //cantidad que se va a comprar
+                      $idProd=$arrProd[$i][0];                        //id del producto
+                      $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
                       //echo'<script>alert("'.$idProd.'")</script>';
                       //echo'<script>alert("'.$cantiProd.'")</script>';
                       $query= "SELECT nombre, precio_ven,descuento
@@ -422,14 +425,24 @@ $fecha= date("d/m/Y");
                           <td>'."".'</td>
                           <td>'."Total a pagar $".'</td>
                           <td>'.$totDeCompra.'</td>
-                          </tr>'; ?>
+                          </tr>';
+                  echo "
+                          <script>
+                            // let auxId= $producto;
+                            // let auxCan= $cantiCompra;
+                            let auxTot= $totDeCompra;
+                            let arreglo = $aux;
+                            let arreglo2 = $aux;
+                            let longi = $longi;
+                          </script>"; 
+                          sqlsrv_close($conn_sis);?>
                   </table>
               </div>
 
               <br>
               <br>
 
-              <input type="submit" name="boton4" id="boton4" value="Continuar"  class="btn">
+              <input type="submit" name="boton4" id="boton4" value="Continuar" onclick="datos();" class="btn">
               <br>
               <br>
               <br>
@@ -464,5 +477,13 @@ $fecha= date("d/m/Y");
     <script src="js/validFactura.js"></script>
     <script src="js/linkHome.js"></script>
 </body>
-
+<script>
+    function datos(){
+          alert("Datos enviados");
+          arreglo[longi] = new Array(1);
+          arreglo[1][0] = auxNumTar;
+          location.href="Factura.php?item="+JSON.stringify(arreglo);
+    
+  }
+</script>
 </html>
