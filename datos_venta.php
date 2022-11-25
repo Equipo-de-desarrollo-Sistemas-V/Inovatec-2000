@@ -35,9 +35,9 @@
       $auxDin=$rowS["dineros"];
       //$nombre="si hay";
     }else{
-      $auxTar="";
-      $auxCCV="";
-      $auxDin="";
+      $auxTar=0;
+      $auxCCV=0;
+      $auxDin=0;
     }
 
   $query ="SELECT colonia, calle, no_calle, codigo_postal, municipios.municipio, estados.Estado
@@ -603,7 +603,7 @@ ccv.addEventListener('keyup', (e) => {
   }
 
   function datos(){
-    if (auxNumTar==""){
+    if (auxNumTar==0){
       alert("Número de tarjeta no existente")
     }else{
       let auxCCV = document.getElementById('ccv').value;
