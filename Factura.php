@@ -43,7 +43,7 @@ $serverName='localhost';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 $numPro=count($matriz_completa);
-echo '<script>alert("'.$numPro.'")</script>';
+//echo '<script>alert("'.$numPro.'")</script>';
 $totDeCompra=0;
 for($i=0;$i<$numPro-1;$i=$i+2) {
     $idProd=$matriz_completa[$i];                        //id del producto
@@ -67,10 +67,11 @@ for($i=0;$i<$numPro-1;$i=$i+2) {
 $precionfinal=$totDeCompra;
 $antesImpuestos=($precionfinal*1)/1.16;
 $antesImpuestosFormateado = number_format($antesImpuestos, 2, '.', '');
-$pdf->AddPage(); 
+$pdf->AddPage();
+
 //  Print the edge of
-/*
-$pdf->Image("Facturas/FacturaImg.png", 20, 20, 540); 
+
+$pdf->Image("Facturas/FacturaImg.png", 20, 20, 540);
 $pdf->SetFont('Times','',10);
 $pdf->Ln(65);
 $pdf->Cell(388);
@@ -115,8 +116,6 @@ $pdf->SetFont('Times','',10);
 $pdf->Ln(11);
 $pdf->Cell(385);
 $pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Subtotal
-
-//variable que controla el salto de linea de las ultimas partes
 $saltoLN=398-38;
 $fecha= date("d/m/Y");
 $pdf->Ln(38);
@@ -152,6 +151,8 @@ for($i=0;$i<$numPro-1;$i=$i+2) {
     $pdf->Ln(15);
     $saltoLN-=15; 
 }
+//variable que controla el salto de linea de las ultimas partes
+
 
 
 //parte baja de la factura subtotal,impuesto y total
@@ -168,6 +169,13 @@ $pdf->SetFont('Times','',10);
 $pdf->Ln(12);
 $pdf->Cell(385);
 $pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Total
+$pdf->Output();   
+/*
+
+
+
+
+
 
 
 //Loading data 
@@ -176,7 +184,7 @@ $pdf->SetTopMargin(20); $pdf->SetLeftMargin(20); $pdf->SetRightMargin(20); */
 
 
 
-$pdf->Output(); 
+
 
 ?> 
 
