@@ -24,14 +24,29 @@ while( $row = sqlsrv_fetch_array($res) ) {
 $array_para_recibir_via_url = urldecode($arre);
 $matriz_completa = unserialize($array_para_recibir_via_url);*/
 
+
+
+
 $arrProd = (array)json_decode($_GET["item"]);
 $numPro=count($arrProd);
-$arre=(array)json_encode($arrProd);
-//echo '<script>alert("'.var_dump(json_decode($_GET["item"])).'")</script>';
+//echo '<script>alert("'.$arre[1][1].'")</script>';
 $fecha= date("d/m/Y");
 //$total=$pre_ven*1;
+//$str = serialize((array)json_decode($_GET["item"], true));
+//$products = json_decode($_GET["item"], true);
+$articulos=[];
 
-
+$conta=0;
+for($i=0;$i<$numPro;$i++) {
+  $idProd=$arrProd[$i][0];                         //id del producto
+  $articulos[]=$idProd;
+  $conta++;
+  $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
+  $articulos[]=$cantiProd;
+  $conta++;  
+}
+$arre = serialize($articulos);
+$arre = urlencode($arre);
 ?>
 
 <!DOCTYPE html>
@@ -338,7 +353,7 @@ $fecha= date("d/m/Y");
 
             <h3 id="subtitulo">Datos para la factura</h3>
             <br>
-            <form id="formulario" action=" " class="formularios" method="POST">
+            <form id="formulario" action="Factura.php?item=<?php echo $arre; ?>" class="formularios" method="POST">
               <div class="entrada-2">
                 
                 <!--<form action="Factura.php" class="formularios" method="post">-->
@@ -375,6 +390,7 @@ $fecha= date("d/m/Y");
                     <input type="text" name="telefono" id="telefono" required class="input" minlength="10" maxlength="10">
                     <label for="uso-comprobante" class="input-label">Teléfono</label>
                 </div>
+                
                 <!--</form>-->
               </div>
               <br>
@@ -393,11 +409,16 @@ $fecha= date("d/m/Y");
                       </tr>
                     </thead>
                     <?php
+                    $conta=0;
                     $aux=json_encode($arrProd);
                     $longi=count($arrProd);
                     for($i=0;$i<$numPro;$i++) {
-                      $idProd=$arrProd[$i][0];                        //id del producto
+                      $idProd=$arrProd[$i][0];                         //id del producto
+                      $articulos[]=$idProd;
+                      $conta++;
                       $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
+                      $articulos[]=$cantiProd;
+                      $conta++;
                       //echo'<script>alert("'.$idProd.'")</script>';
                       //echo'<script>alert("'.$cantiProd.'")</script>';
                       $query= "SELECT nombre, precio_ven,descuento
@@ -419,6 +440,8 @@ $fecha= date("d/m/Y");
                           <td>'.$totProd.'</td>
                           </tr>';
                   }
+                  //echo '<script>alert("'.$articulos[0].'")</script>';
+                  //echo '<script>alert("'.$conta.'")</script>';
                   echo '<tr>
                           <td>'."".'</td>
                           <td>'."".'</td>
@@ -441,8 +464,8 @@ $fecha= date("d/m/Y");
 
               <br>
               <br>
-
-              <input type="submit" name="boton4" id="boton4" value="Continuar" onclick="datos();" class="btn">
+              <input id="arrayProd" name="arrayProd" type="hidden" value="<?php echo $articulos;?>">
+              <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
               <br>
               <br>
               <br>
@@ -479,11 +502,11 @@ $fecha= date("d/m/Y");
 </body>
 <script>
     function datos(){
-          alert("Datos enviados");
+          
           arreglo[longi] = new Array(1);
           arreglo[1][0] = auxNumTar;
-          location.href="Factura.php?item="+JSON.stringify(arreglo);
-    
+          window.location.href ="Factura.php?item="+JSON.stringify(arreglo);
+          alert("Datos enviados");
   }
 </script>
 </html>

@@ -43,11 +43,11 @@ $serverName='localhost';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 $numPro=count($matriz_completa);
-//echo '<script>alert("'.$numPro.'")</script>';
+echo '<script>alert("'.$numPro.'")</script>';
 $totDeCompra=0;
-for($i=0;$i<$numPro;$i++) {
-    $idProd=$matriz_completa[0][$i];                        //id del producto
-    $cantiProd=$matriz_completa[1][$i];                     //cantidad que se va a comprar
+for($i=0;$i<$numPro-1;$i=$i+2) {
+    $idProd=$matriz_completa[$i];                        //id del producto
+    $cantiProd=$matriz_completa[$i+1];                     //cantidad que se va a comprar
     //echo'<script>alert("'.$idProd.'")</script>';
     //echo'<script>alert("'.$cantiProd.'")</script>';
     $query= "SELECT nombre, precio_ven,descuento
@@ -62,12 +62,14 @@ for($i=0;$i<$numPro;$i++) {
     $totProd=$subT-$descuento;                    //
     $totDeCompra+=$totProd;
 }
+//echo'<script>alert("'.$totDeCompra.'")</script>';
 //formula iva
 $precionfinal=$totDeCompra;
 $antesImpuestos=($precionfinal*1)/1.16;
 $antesImpuestosFormateado = number_format($antesImpuestos, 2, '.', '');
 $pdf->AddPage(); 
 //  Print the edge of
+/*
 $pdf->Image("Facturas/FacturaImg.png", 20, 20, 540); 
 $pdf->SetFont('Times','',10);
 $pdf->Ln(65);
@@ -119,9 +121,9 @@ $saltoLN=398-38;
 $fecha= date("d/m/Y");
 $pdf->Ln(38);
 //parte de los productos
-for($i=0;$i<$numPro;$i++) {
-    $idProd=$matriz_completa[0][$i];                        //id del producto
-    $cantiProd=$matriz_completa[1][$i];                     //cantidad que se va a comprar
+for($i=0;$i<$numPro-1;$i=$i+2) {
+    $idProd=$matriz_completa[$i];                        //id del producto
+    $cantiProd=$matriz_completa[$i+1];                     //cantidad que se va a comprar
     //echo'<script>alert("'.$idProd.'")</script>';
     //echo'<script>alert("'.$cantiProd.'")</script>';
     $query= "SELECT nombre, precio_ven,descuento
@@ -152,7 +154,6 @@ for($i=0;$i<$numPro;$i++) {
 }
 
 
-
 //parte baja de la factura subtotal,impuesto y total
 $pdf->SetFont('Times','',10);
 $pdf->Ln($saltoLN);
@@ -170,7 +171,7 @@ $pdf->Cell(70,10,utf8_decode($precionfinal),0,0,'R');//Total
 
 
 //Loading data 
-$pdf->SetTopMargin(20); $pdf->SetLeftMargin(20); $pdf->SetRightMargin(20); 
+$pdf->SetTopMargin(20); $pdf->SetLeftMargin(20); $pdf->SetRightMargin(20); */
 
 
 
