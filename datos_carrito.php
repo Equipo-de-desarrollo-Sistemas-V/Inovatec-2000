@@ -40,6 +40,20 @@
         VALUES('$sesion_i','$producto_carrito',$cantidad)";
         $resultado=sqlsrv_query($con, $query_insert);
     }
+
+    //actualizo el stock de inventario (no se si se tenga que actualizar el stock en inventario, por eso lo pongo en comentarios xd)
+    /*$query="SELECT cantidad, id_sucursal
+    from Inventario_suc
+    where id_producto='$producto_carrito' order by cantidad";
+    $resultado=sqlsrv_query($con, $query);
+    $row = sqlsrv_fetch_array($resultado);
+    $sucur=$row['id_sucursal'];
+
+    $query_update="UPDATE Inventario_suc
+    SET cantidad=(cantidad-$cantidad)
+    WHERE id_producto='$producto_carrito' and id_sucursal='$sucur'";*/
+
+    
 ?>
 
     
