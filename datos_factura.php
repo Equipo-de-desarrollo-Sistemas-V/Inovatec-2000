@@ -1,52 +1,52 @@
 <?php
-error_reporting(0);
-session_start();
-include("no_iniciada_cli.php");
-$sesion_i = $_SESSION["Usuario"];
+  error_reporting(0);
+  session_start();
+  include("no_iniciada_cli.php");
+  $sesion_i = $_SESSION["Usuario"];
 
-$serverName='localhost';
-$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+  $serverName='localhost';
+  $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+  $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 
-//$id=$_GET["item"];
+  //$id=$_GET["item"];
 
-//if (isset($_POST('Actualizar')))
-/*$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
-$res= sqlsrv_query($conn_sis, $query);
-if( $res === false) {
-  die( print_r( sqlsrv_errors(), true) );
-}
-while( $row = sqlsrv_fetch_array($res) ) {
-  $nombre=$row["nombre"];
-  $pre_ven=substr($row['precio_ven'],0,-2);							
-//echo '<script>alert("'.$nombre.'")</script>';
-}
-$array_para_recibir_via_url = urldecode($arre);
-$matriz_completa = unserialize($array_para_recibir_via_url);*/
-
-
+  //if (isset($_POST('Actualizar')))
+  /*$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
+  $res= sqlsrv_query($conn_sis, $query);
+  if( $res === false) {
+    die( print_r( sqlsrv_errors(), true) );
+  }
+  while( $row = sqlsrv_fetch_array($res) ) {
+    $nombre=$row["nombre"];
+    $pre_ven=substr($row['precio_ven'],0,-2);							
+  //echo '<script>alert("'.$nombre.'")</script>';
+  }
+  $array_para_recibir_via_url = urldecode($arre);
+  $matriz_completa = unserialize($array_para_recibir_via_url);*/
 
 
-$arrProd = (array)json_decode($_GET["item"]);
-$numPro=count($arrProd);
-//echo '<script>alert("'.$arre[1][1].'")</script>';
-$fecha= date("d/m/Y");
-//$total=$pre_ven*1;
-//$str = serialize((array)json_decode($_GET["item"], true));
-//$products = json_decode($_GET["item"], true);
-$articulos=[];
 
-$conta=0;
-for($i=0;$i<$numPro;$i++) {
-  $idProd=$arrProd[$i][0];                         //id del producto
-  $articulos[]=$idProd;
-  $conta++;
-  $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
-  $articulos[]=$cantiProd;
-  $conta++;  
-}
-$arre = serialize($articulos);
-$arre = urlencode($arre);
+
+  $arrProd = (array)json_decode($_GET["item"]);
+  $numPro=count($arrProd);
+  //echo '<script>alert("'.$arre[1][1].'")</script>';
+  $fecha= date("d/m/Y");
+  //$total=$pre_ven*1;
+  //$str = serialize((array)json_decode($_GET["item"], true));
+  //$products = json_decode($_GET["item"], true);
+  $articulos=[];
+
+  $conta=0;
+  for($i=0;$i<$numPro;$i++) {
+    $idProd=$arrProd[$i][0];                         //id del producto
+    $articulos[]=$idProd;
+    $conta++;
+    $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
+    $articulos[]=$cantiProd;
+    $conta++;  
+  }
+  $arre = serialize($articulos);
+  $arre = urlencode($arre);
 ?>
 
 <!DOCTYPE html>
@@ -70,33 +70,38 @@ $arre = urlencode($arre);
 </head>
 
 <body>
-  
-    <input type="checkbox" name="" id="check">
 
-    <nav>
-      <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
-      <div class="search-box">
-        <input type="search" placeholder="Busquemos algunas cosas...">
-        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-      </div>
-  
-      <ol>
-        <li><a href="login.php" class="">Iniciar sesión</a></li>
-  
-        <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
-  
-        <li><a href="perfilCliente.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
-  
-        <li><a href="#" class=""><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
-  
-      </ol>
-  
-      <label for="check" class="bar">
-        <span><i class="fas fa-bars" id="bars"></i></span>
-        <span><i class="fas fa-times" id="times"></i></span>
-      </label>
-    </nav>
+  <input type="checkbox" name="" id="check">
+
+  <nav>
+    <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+
+    <div class="search-box">
+      <input type="search" placeholder="Busquemos algunas cosas..." id="search">
+      <span id="spanbtn"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+
+    <ol>
+      <li><a href="login.php" class="">Iniciar sesión</a></li>
+
+      <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
+
+      <li><a href="perfilCliente.php" class="">
+          <ion-icon name="person-circle-outline" class="icon"></ion-icon>
+        </a></li>
+
+      <li><a href="#" class="">
+          <ion-icon name="cart-outline" class="icon"></ion-icon>
+        </a></li>
+
+    </ol>
+
+    <label for="check" class="bar">
+      <span><i class="fas fa-bars" id="bars"></i></span>
+      <span><i class="fas fa-times" id="times"></i></span>
+    </label>
+  </nav>
 
   <section class="containerAll">
     <article class="container">
@@ -346,69 +351,72 @@ $arre = urlencode($arre);
     </article>
 
     <section class="container-all">
-        <article id="container-datos-usuario" class="contenedor">
-                <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
-                <br>
-                <br>
+      <article id="container-datos-usuario" class="contenedor">
+        <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
+        <br>
+        <br>
 
-            <h3 id="subtitulo">Datos para la factura</h3>
-            <br>
-            <form id="formulario" action="Factura.php?item=<?php echo $arre; ?>" class="formularios" method="POST">
-              <div class="entrada-2">
-                
-                <!--<form action="Factura.php" class="formularios" method="post">-->
-                <div class="input-group">
-                    <input type="text" name="nombreDenominación" id="nombreDenominación" required class="input" maxlength="100" minlength="3">
-                    <label for="nombre-denominación" class="input-label">Nombre denominación o razón social</label>
-                </div>
+        <h3 id="subtitulo">Datos para la factura</h3>
+        <br>
+        <form id="formulario" action="Factura.php?item=<?php echo $arre; ?>" class="formularios" method="POST">
+          <div class="entrada-2">
 
-                <div class="input-group">
-                    <input type="text" name="regimenFiscal" id="regimenFiscal" required class="input" maxlength="100">
-                    <label for="regimen-fiscal" class="input-label">Régimen fiscal del receptor de comprobante</label>
-                </div>
+            <!--<form action="Factura.php" class="formularios" method="post">-->
+            <div class="input-group">
+              <input type="text" name="nombreDenominación" id="nombreDenominación" required class="input"
+                maxlength="100" minlength="3">
+              <label for="nombre-denominación" class="input-label">Nombre denominación o razón social</label>
+            </div>
 
-                <div class="input-group">
-                    <input type="text" name="usoComprobante" id="usoComprobante" required class="input" maxlength="100" minlength="3">
-                    <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
-                </div>
+            <div class="input-group">
+              <input type="text" name="regimenFiscal" id="regimenFiscal" required class="input" maxlength="100">
+              <label for="regimen-fiscal" class="input-label">Régimen fiscal del receptor de comprobante</label>
+            </div>
 
-                <div class="input-group">
-                    <input type="text" name="direccion" id="direccion" required class="input" minlength="2" maxlength="20">
-                    <label for="uso-comprobante" class="input-label">Dirección</label>
-                </div>
-                <div class="input-group">
-                    <input type="text" name="codigoPostal" id="codigoPostal" required class="input" minlength="5" maxlength="5">
-                    <label for="codigo-postal" class="input-label">Código postal del domicilio fiscal</label>
-                </div>
+            <div class="input-group">
+              <input type="text" name="usoComprobante" id="usoComprobante" required class="input" maxlength="100"
+                minlength="3">
+              <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
+            </div>
 
-                <div class="input-group">
-                    <input type="email" name="email" id="email" required class="input">
-                    <label for="uso-comprobante" class="input-label">Correo electrónico</label>
-                </div>
+            <div class="input-group">
+              <input type="text" name="direccion" id="direccion" required class="input" minlength="2" maxlength="20">
+              <label for="uso-comprobante" class="input-label">Dirección</label>
+            </div>
+            <div class="input-group">
+              <input type="text" name="codigoPostal" id="codigoPostal" required class="input" minlength="5"
+                maxlength="5">
+              <label for="codigo-postal" class="input-label">Código postal del domicilio fiscal</label>
+            </div>
 
-                <div class="input-group">
-                    <input type="text" name="telefono" id="telefono" required class="input" minlength="10" maxlength="10">
-                    <label for="uso-comprobante" class="input-label">Teléfono</label>
-                </div>
-                
-                <!--</form>-->
-              </div>
-              <br>
+            <div class="input-group">
+              <input type="email" name="email" id="email" required class="input">
+              <label for="uso-comprobante" class="input-label">Correo electrónico</label>
+            </div>
 
-              <h3 id="subtitulo">Detalles del producto</h3>
+            <div class="input-group">
+              <input type="text" name="telefono" id="telefono" required class="input" minlength="10" maxlength="10">
+              <label for="uso-comprobante" class="input-label">Teléfono</label>
+            </div>
 
-              <div class="tabla-datos-compra">
-                <table>
-                    <thead>
-                      <tr>
-                        <th> <b>Producto</b> </th> 
-                        <td> <b>Cantidad</b> </td> 
-                        <td> <b>Precio </b> </td> 
-                        <td> <b>Fecha</b> </td> 
-                        <td> <b>Total</b> </td> 
-                      </tr>
-                    </thead>
-                    <?php
+            <!--</form>-->
+          </div>
+          <br>
+
+          <h3 id="subtitulo">Detalles del producto</h3>
+
+          <div class="tabla-datos-compra">
+            <table>
+              <thead>
+                <tr>
+                  <th> <b>Producto</b> </th>
+                  <td> <b>Cantidad</b> </td>
+                  <td> <b>Precio </b> </td>
+                  <td> <b>Fecha</b> </td>
+                  <td> <b>Total</b> </td>
+                </tr>
+              </thead>
+              <?php
                     $conta=0;
                     $aux=json_encode($arrProd);
                     $longi=count($arrProd);
@@ -453,60 +461,62 @@ $arre = urlencode($arre);
                           <script>
                             // let auxId= $producto;
                             // let auxCan= $cantiCompra;
-                            let auxTot= $totDeCompra;
+                            let auxTot = $totDeCompra;
                             let arreglo = $aux;
                             let arreglo2 = $aux;
                             let longi = $longi;
                           </script>"; 
                           sqlsrv_close($conn_sis);?>
-                  </table>
-              </div>
+            </table>
+          </div>
 
-              <br>
-              <br>
-              <input id="arrayProd" name="arrayProd" type="hidden" value="<?php echo $articulos;?>">
-              <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
-              <br>
-              <br>
-              <br>
-            </form>
-        </article>
+          <br>
+          <br>
+          <input id="arrayProd" name="arrayProd" type="hidden" value="<?php echo $articulos;?>">
+          <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
+          <br>
+          <br>
+          <br>
+        </form>
+      </article>
     </section>
 
     <!--    Pie de Pagina    -->
 
     <footer class="pie-pagina">
-        <div class="grupo-1">
-            <div class="box">
-                <figure>
-                    <a href="#">
-                      <img src="css/assets/Logo_inovatec_original.png" alt="">
-                    </a>
-                </figure>
-            </div>
-            <div class="box">
-            <p>Inovación Tecnológica 2000. </p>
-                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
-                <p>Teléfono: 4371010101</p>
-                <p>fabricaitzas.com/inovatec/</p>
-                <p>Correo electrónico: inovatec2000st@gmail.com</p>
-            </div>
+      <div class="grupo-1">
+        <div class="box">
+          <figure>
+            <a href="#">
+              <img src="css/assets/Logo_inovatec_original.png" alt="">
+            </a>
+          </figure>
         </div>
-        <div class="grupo-2">
-            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        <div class="box">
+          <p>Inovación Tecnológica 2000. </p>
+          <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+          <p>Teléfono: 4371010101</p>
+          <p>fabricaitzas.com/inovatec/</p>
+          <p>Correo electrónico: inovatec2000st@gmail.com</p>
         </div>
-      </footer>
+      </div>
+      <div class="grupo-2">
+        <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+      </div>
+    </footer>
 
     <script src="js/validFactura.js"></script>
     <script src="js/linkHome.js"></script>
+    <script src="JsPhp/ObtenerBuscador.js"></script>
 </body>
 <script>
-    function datos(){
-          
-          arreglo[longi] = new Array(1);
-          arreglo[1][0] = auxNumTar;
-          window.location.href ="Factura.php?item="+JSON.stringify(arreglo);
-          alert("Datos enviados");
+  function datos() {
+
+    arreglo[longi] = new Array(1);
+    arreglo[1][0] = auxNumTar;
+    window.location.href = "Factura.php?item=" + JSON.stringify(arreglo);
+    alert("Datos enviados");
   }
 </script>
+
 </html>
