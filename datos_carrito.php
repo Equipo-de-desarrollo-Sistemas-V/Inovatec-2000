@@ -12,13 +12,14 @@
     //obtengo el arreglo del url de productos para agregar al carrito y su cantidad 
     $arrProd = (array)json_decode($_GET["item"]);
     $producto_carrito=$arrProd[0][0];
-    $cantidad=$arrProd[0][1];
+    $cantidad_carrito=$arrProd[0][1];
 
     //Verifico si el producto ya esta agregado al carrito, en caso de ser así actualizo solo la cantidad, en caso contrario agrego el producto a la tabla
     $query = "SELECT id_producto,cantidad 
     FROM carritoclientes 
     WHERE Usuario='$sesion_i'";
     $resultado=sqlsrv_query($con, $query);
+    $cantidad=$row['cantidad'];
     $band=FALSE;
     while($row = sqlsrv_fetch_array($resultado)){
         $producto_clientes=$row('id_producto');
@@ -29,7 +30,7 @@
     }
     if ($band==TRUE){
         $query_update="UPDATE carritoclientes 
-        set cantidad=$cantidad 
+        set cantidad=($cantidad + $cantidad_carrito)
         where Usuario='$sesion_i' 
         and id_producto='$producto_carrito'";
         $resultado=sqlsrv_query($con, $query_update);
@@ -37,7 +38,7 @@
     else{
         $cantidad=$arrProd[0][1];
         $query_insert="INSERT INTO carritoclientes 
-        VALUES('$sesion_i','$producto_carrito',$cantidad)";
+        VALUES('$sesion_i','$producto_carrito',$cantidad_carrito)";
         $resultado=sqlsrv_query($con, $query_insert);
     }
 
@@ -50,7 +51,7 @@
     $sucur=$row['id_sucursal'];
 
     $query_update="UPDATE Inventario_suc
-    SET cantidad=(cantidad-$cantidad)
+    SET cantidad=(cantidad-$cantidad_carrito)
     WHERE id_producto='$producto_carrito' and id_sucursal='$sucur'";
     $resultado=sqlsrv_query($con, $query_update);
 */
