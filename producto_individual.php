@@ -467,6 +467,13 @@ $sesion_i = $_SESSION["Usuario"];
     }
 
     $precioProd= "$ ".substr($auxPrecio, 0, -2);
+
+//$cadena = "Esta es la cadena de ejemplo 
+//para sustituir un caracter";
+//echo $cadena;
+//$resultado = str_replace("\n", ",", $cadena);
+$resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
+//echo "La cadena resultante es: " . $resultado;
     
     echo "
     <script>
@@ -474,7 +481,7 @@ $sesion_i = $_SESSION["Usuario"];
       document.getElementById('precio').innerHTML = '$precioProd';
       document.getElementById('precioDes').innerHTML = '';
       document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
-      document.getElementById('descripcion').innerHTML = '$desProd';
+      document.getElementById('descripcion').innerHTML = '$resultado';
       document.getElementById('imagen').src= '$ruta';
       let auxId= $idProducto;
       let auxExis= $existentes;
