@@ -17,11 +17,10 @@ if (isset($_POST['consulta'])){
     $q=($_POST['consulta']);
     $query= "SELECT Productos.id_producto, Productos.nombre, Productos.precio_ven, Productos.descuento,
     Productos.descuento * (Productos.precio_ven / 100) as oferta FROM Productos
-    WHERE (Productos.id_producto like '%".$q."%' or 
+    WHERE (descuento != 0 AND (Productos.id_producto like '%".$q."%' or 
     Productos.nombre like '%".$q."%' or 
     precio_ven like '%".$q."%' or
-    Productos.descuento like '%".$q."%' AND
-    descuento != 0)";
+    Productos.descuento like '%".$q."%'))";
 }
 
 
