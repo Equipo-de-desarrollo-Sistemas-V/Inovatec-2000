@@ -1,3 +1,8 @@
+<?php
+  error_reporting(0);
+  session_start();
+  $sesion_e = $_SESSION["Usuario"];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,6 +23,7 @@
   <input type="checkbox" name="" id="check">
   <nav>
     <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_e);?>
     
     <div class="search-box">
       <input type="search" placeholder="Busquemos algunas cosas..." id="search">
@@ -25,13 +31,13 @@
     </div>
 
     <ol>
-      <li><a href="sesion_iniciada_Cli.php" class="">Iniciar sesión</a></li>
+    <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
 
-      <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
+    <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
 
-      <li><a href="perfilCliente.php" class="">
-          <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-        </a></li>
+    <li><a href="sesion_iniciada_Per.php" class="">
+        <ion-icon name="person-circle-outline" class="icon"></ion-icon>
+      </a></li>
 
       <li><a href="#" class="">
           <ion-icon name="cart-outline" class="icon"></ion-icon>

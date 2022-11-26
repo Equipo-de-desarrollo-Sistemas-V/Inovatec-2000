@@ -1,7 +1,7 @@
 <?php
   error_reporting(0);
   session_start();
-  $sesion_i = $_SESSION["Usuario"];
+  $sesion_e = $_SESSION["Usuario"];
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
   <input type="checkbox" name="" id="check">
   <nav>
     <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_e);?>
 
     <div class="search-box">
       <input type="search" placeholder="Busquemos algunas cosas..." id="search">

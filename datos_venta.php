@@ -2,7 +2,7 @@
   error_reporting(0);
   session_start();
   include("no_iniciada_cli.php");
-  $sesion_i = $_SESSION["Usuario"];
+  $sesion_e = $_SESSION["Usuario"];
 
 
   $serverName='localhost';
@@ -11,7 +11,7 @@
 
   $query = "SELECT * 
   FROM Tarjetas 
-  WHERE Usuario='$sesion_i'";
+  WHERE Usuario='$sesion_e'";
     $resultado = sqlsrv_query($con, $query);
     $row=sqlsrv_fetch_array($resultado);
     $no_tar=$row["no_tarjeta"];
@@ -45,7 +45,7 @@
   WHERE Ciudad_Estado=estados_municipios.id and
   estados_municipios.estados_id = estados.id and
   estados_municipios.municipios_id = municipios.Id_Municipios and
-  Usuario ='".$sesion_i."'";
+  Usuario ='".$sesion_e."'";
     $resultado=sqlsrv_query($con, $query);
     $row = sqlsrv_fetch_array($resultado);
     $colonia=$row['colonia'];
@@ -90,7 +90,7 @@
 
   <nav>
     <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_e);?>
 
     <div class="search-box">
       <input type="search" placeholder="Busquemos algunas cosas..." id="search">
@@ -98,13 +98,13 @@
     </div>
 
     <ol>
-      <li><a href="login.php" class="">Iniciar sesión</a></li>
+    <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
 
-      <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
+    <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
 
-      <li><a href="perfilCliente.php" class="">
-          <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-        </a></li>
+    <li><a href="sesion_iniciada_Per.php" class="">
+        <ion-icon name="person-circle-outline" class="icon"></ion-icon>
+      </a></li>
 
       <li><a href="#" class="">
           <ion-icon name="cart-outline" class="icon"></ion-icon>

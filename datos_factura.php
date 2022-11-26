@@ -2,7 +2,7 @@
   error_reporting(0);
   session_start();
   include("no_iniciada_cli.php");
-  $sesion_i = $_SESSION["Usuario"];
+  $sesion_e = $_SESSION["Usuario"];
 
   $serverName='localhost';
   $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
@@ -75,7 +75,7 @@
 
   <nav>
     <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_e);?>
 
     <div class="search-box">
       <input type="search" placeholder="Busquemos algunas cosas..." id="search">
@@ -83,13 +83,13 @@
     </div>
 
     <ol>
-      <li><a href="login.php" class="">Iniciar sesión</a></li>
+    <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
 
-      <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
+    <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
 
-      <li><a href="perfilCliente.php" class="">
-          <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-        </a></li>
+    <li><a href="sesion_iniciada_Per.php" class="">
+        <ion-icon name="person-circle-outline" class="icon"></ion-icon>
+      </a></li>
 
       <li><a href="#" class="">
           <ion-icon name="cart-outline" class="icon"></ion-icon>
