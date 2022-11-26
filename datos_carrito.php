@@ -51,7 +51,9 @@
 
     $query_update="UPDATE Inventario_suc
     SET cantidad=(cantidad-$cantidad)
-    WHERE id_producto='$producto_carrito' and id_sucursal='$sucur'";*/
+    WHERE id_producto='$producto_carrito' and id_sucursal='$sucur'";
+    $resultado=sqlsrv_query($con, $query_update);
+*/
 
     
 ?>
