@@ -2,7 +2,7 @@
 error_reporting(0);
 session_start();
 include("no_iniciada_cli.php");
-$sesion_i = $_SESSION["Usuario"];
+$sesion_e = $_SESSION["Usuario"];
 ?>
 
 
@@ -18,7 +18,7 @@ $sesion_i = $_SESSION["Usuario"];
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <title>Compra </title>
+  <title>Compra</title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
   <link rel="stylesheet" href="css/nav.css">
@@ -31,23 +31,28 @@ $sesion_i = $_SESSION["Usuario"];
 
     <nav>
       <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
+      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_e);?>
+
       <div class="search-box">
-        <input type="search" placeholder="Busquemos algunas cosas...">
-        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        <input type="search" placeholder="Busquemos algunas cosas..." id="search">
+        <span id="spanbtn"><i class="fa-solid fa-magnifying-glass"></i></span>
       </div>
-  
+
       <ol>
-        <li><a href="login.php" class="">Iniciar sesión</a></li>
-  
-        <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
-  
-        <li><a href="perfilCliente.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
-  
-        <li><a href="#" class=""><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
-  
+      <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
+
+      <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
+
+      <li><a href="sesion_iniciada_Per.php" class="">
+          <ion-icon name="person-circle-outline" class="icon"></ion-icon>
+        </a></li>
+
+        <li><a href="#" class="">
+            <ion-icon name="cart-outline" class="icon"></ion-icon>
+          </a></li>
+
       </ol>
-  
+
       <label for="check" class="bar">
         <span><i class="fas fa-bars" id="bars"></i></span>
         <span><i class="fas fa-times" id="times"></i></span>
@@ -304,33 +309,39 @@ $sesion_i = $_SESSION["Usuario"];
 
     <section class="container-all">
 
-        <article id="container-datos-usuario" class="contenedor">
-            <div class="venta-exitosa">
-                <h1 align="center">Compra realizada exitosamente</h1>
-                <img src="imagenes/paloma_verde.png" alt="" height="200">
-                <p align="center">Gracias por adquirir nuestros productos. Esperamos que tu experiencia con nosotros fuera extraordinaria.</p>
-                <!-- <label align="center" type="submit" name="factura" id="agregar" value="factura" class="btn" disabled>
+      <article id="container-datos-usuario" class="contenedor">
+        <div class="venta-exitosa">
+          <h1 align="center">Compra realizada exitosamente</h1>
+          <img src="imagenes/paloma_verde.png" alt="" height="200">
+          <p align="center">Gracias por adquirir nuestros productos. Esperamos que tu experiencia con nosotros fuera
+            extraordinaria.</p>
+          <!-- <label align="center" type="submit" name="factura" id="agregar" value="factura" class="btn" disabled>
                     <i class="fa-solid fa-file-invoice"></i>
                     Generar factura
                 </label> -->
 
-                <input type="button" id='factura' name='factura' value="Generar factura" onclick="generarFactura();" class="btn">
+          <input type="button" id='factura' name='factura' value="Generar factura" onclick="generarFactura();"
+            class="btn">
 
-                <br>
-                <!-- <label align="center" type="submit" name="regresar" id="regresar" value="regresar" class="btn" disabled>
+          <br>
+          <!-- <label align="center" type="submit" name="regresar" id="regresar" value="regresar" class="btn" disabled>
                     <i class="fa-solid fa-home"></i>
                     Regresar al menú
                 </label> -->
-                <input type="button" id='regresar' name='regresar' value="Regresar al menú" onclick="window.location.href='index.php'" class="btn">
-            </div>
+          <input type="button" id='regresar' name='regresar' value="Regresar al menú"
+            onclick="window.location.href='index.php'" class="btn">
+        </div>
 
-            
-        </article>
+
+      </article>
 
     </section>
+
     <script src="js/linkHome.js"></script>
-    
+    <script src="JsPhp/ObtenerBuscador.js"></script>
+
 </body>
+
 </html>
 
 
@@ -346,7 +357,7 @@ echo "
 ?>
 
 <script>
-function generarFactura(){
-    location.href="datos_factura.php?item="+JSON.stringify(arreglo);
-}
+  function generarFactura() {
+    location.href = "datos_factura.php?item=" + JSON.stringify(arreglo);
+  }
 </script>

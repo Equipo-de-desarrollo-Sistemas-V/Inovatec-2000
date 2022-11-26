@@ -172,7 +172,7 @@ $ruta=$row["ruta"];
 		</div>
 	</main>
 
-	<script src="js/alertasPromociones.js"></script>
+	<!-- <script src="js/alertasPromociones.js"></script> -->
 </body>
 
 </html>

@@ -2,7 +2,7 @@
   error_reporting(0);
   session_start();
   include("no_iniciada_cli.php");
-  $sesion_i = $_SESSION["Usuario"];
+  $sesion_e = $_SESSION["Usuario"];
 
 
   $serverName='localhost';
@@ -11,7 +11,7 @@
 
   $query = "SELECT * 
   FROM Tarjetas 
-  WHERE Usuario='$sesion_i'";
+  WHERE Usuario='$sesion_e'";
     $resultado = sqlsrv_query($con, $query);
     $row=sqlsrv_fetch_array($resultado);
     $no_tar=$row["no_tarjeta"];
@@ -45,7 +45,7 @@
   WHERE Ciudad_Estado=estados_municipios.id and
   estados_municipios.estados_id = estados.id and
   estados_municipios.municipios_id = municipios.Id_Municipios and
-  Usuario ='".$sesion_i."'";
+  Usuario ='".$sesion_e."'";
     $resultado=sqlsrv_query($con, $query);
     $row = sqlsrv_fetch_array($resultado);
     $colonia=$row['colonia'];
@@ -85,34 +85,39 @@
 </head>
 
 <body>
-  
-    <input type="checkbox" name="" id="check">
 
-    <nav>
-      <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-      <?php echo ucwords("Bienvenido")." ". ucwords($sesion_i);?>
-      <div class="search-box">
-        <input type="search" placeholder="Busquemos algunas cosas...">
-        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-      </div>
-  
-      <ol>
-        <li><a href="login.php" class="">Iniciar sesión</a></li>
-  
-        <li><a href="RegistroUsuarios.php" class="">Registrate</a></li>
-  
-        <li><a href="perfilCliente.php" class=""><ion-icon name="person-circle-outline" class="icon"></ion-icon></a></li>
-  
-        <li><a href="#" class=""><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
-  
-      </ol>
-  
-      <label for="check" class="bar">
-        <span><i class="fas fa-bars" id="bars"></i></span>
-        <span><i class="fas fa-times" id="times"></i></span>
-      </label>
-    </nav>
-  
+  <input type="checkbox" name="" id="check">
+
+  <nav>
+    <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
+    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_e);?>
+
+    <div class="search-box">
+      <input type="search" placeholder="Busquemos algunas cosas..." id="search">
+      <span id="spanbtn"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+
+    <ol>
+    <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
+
+    <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
+
+    <li><a href="sesion_iniciada_Per.php" class="">
+        <ion-icon name="person-circle-outline" class="icon"></ion-icon>
+      </a></li>
+
+      <li><a href="#" class="">
+          <ion-icon name="cart-outline" class="icon"></ion-icon>
+        </a></li>
+
+    </ol>
+
+    <label for="check" class="bar">
+      <span><i class="fas fa-bars" id="bars"></i></span>
+      <span><i class="fas fa-times" id="times"></i></span>
+    </label>
+  </nav>
+
 
   <section class="containerAll">
     <article class="container">
@@ -134,7 +139,7 @@
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="categorias.php?item=Redes/Ruteadores inalámbricos" >Ruteadores inalámbicos</a>
+                    <a href="categorias.php?item=Redes/Ruteadores inalámbricos">Ruteadores inalámbicos</a>
                   </li>
                   <li class="dropdown-link">
                     <a href="categorias.php?item=Redes/Cables de red">Cables de red</a>
@@ -143,7 +148,8 @@
                     <a href="categorias.php?item=Redes/Adaptadores Bluetooth">Adaptadores Bluetooth</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalámbricos">Tarjertas de red y adaptadores inalámbricos</a>
+                    <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalámbricos">Tarjertas de red y
+                      adaptadores inalámbricos</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -363,7 +369,7 @@
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="categorias.php?item=Almacenamiento/M.2" >M.2</a>
+                    <a href="categorias.php?item=Almacenamiento/M.2">M.2</a>
                   </li>
                   <li class="dropdown-link">
                     <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
@@ -392,95 +398,103 @@
     </article>
 
     <section class="container-all">
-        <article id="container-datos-usuario" class="contenedor">
-                <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
-                <br>
-                <br>
-            <h1>Confirmación de datos</h1>
-            <br>
+      <article id="container-datos-usuario" class="contenedor">
+        <!-- <input type="submit" name="boton1" value="Actualizar datos" class="btn"> -->
+        <br>
+        <br>
+        <h1>Confirmación de datos</h1>
+        <br>
 
-            <h3 id="subtitulo">Datos bancarios</h3>
+        <h3 id="subtitulo">Datos bancarios</h3>
 
-            <div class="entrada-2">
-                <div class="input-group">
-                    <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
-                    <input type="text" name="nombreTarjeta" id="nombreTarjeta" class="input" value="<?php echo $nombre;?>" readonly="readonly">
-                    
-                </div>
+        <div class="entrada-2">
+          <div class="input-group">
+            <label for="nombre-tarjeta" class="input-label">Nombre en la tarjeta</label>
+            <input type="text" name="nombreTarjeta" id="nombreTarjeta" class="input" value="<?php echo $nombre;?>"
+              readonly="readonly">
 
-                <div class="input-group">
-                    <input type="text" name="numeroTarjeta" id="numeroTarjeta" class="input" value="<?php echo $no_tar;?>" readonly="readonly">
-                    <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
-                </div>
+          </div>
 
-                <div class="input-group">
-                    <input type="text" name="monthExpiracion" id="monthExpiracion" class="input" value="<?php echo $fecha;?>" readonly="readonly">
-                    <label for="month-expiracion" class="input-label">Mes de expiración</label>
-                </div>
+          <div class="input-group">
+            <input type="text" name="numeroTarjeta" id="numeroTarjeta" class="input" value="<?php echo $no_tar;?>"
+              readonly="readonly">
+            <label for="numero-tarjeta" class="input-label">Número de tarjeta</label>
+          </div>
 
-                <div class="input-group">
-                    <input type="text" name="yearExpiracion" id="yearExpiracion" class="input" value="<?php echo $fecha1;?>" readonly="readonly">
-                    <label for="year-expiracion" class="input-label">Año de expiración</label>
-                </div>
-                <div class="input-group">
-                    <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3" required>
-                    <label for="ccv" class="input-label">CCV</label>
-                </div>
-            </div>
-            <br>
-            <br>
+          <div class="input-group">
+            <input type="text" name="monthExpiracion" id="monthExpiracion" class="input" value="<?php echo $fecha;?>"
+              readonly="readonly">
+            <label for="month-expiracion" class="input-label">Mes de expiración</label>
+          </div>
 
-            <h3 id="subtitulo">Datos de dirección</h3>
-            <div class="entrada-2">
-                <div class="input-group">
-                    <input type="text" name="calle" id="calle" class="input" value="<?php echo $calle;?>" readonly="readonly">
-                    <label for="calle" class="input-label">Calle</label>
-                </div>
+          <div class="input-group">
+            <input type="text" name="yearExpiracion" id="yearExpiracion" class="input" value="<?php echo $fecha1;?>"
+              readonly="readonly">
+            <label for="year-expiracion" class="input-label">Año de expiración</label>
+          </div>
+          <div class="input-group">
+            <input type="text" name="ccv" id="ccv" class="input" maxlength="3" minlength="3" required>
+            <label for="ccv" class="input-label">CCV</label>
+          </div>
+        </div>
+        <br>
+        <br>
 
-                <div class="input-group">
-                    <input type="text" name="numero" id="numero" class="input" value="<?php echo $no_calle;?>" readonly="readonly">
-                    <label for="numero" class="input-label">Número</label>
-                </div>
+        <h3 id="subtitulo">Datos de dirección</h3>
+        <div class="entrada-2">
+          <div class="input-group">
+            <input type="text" name="calle" id="calle" class="input" value="<?php echo $calle;?>" readonly="readonly">
+            <label for="calle" class="input-label">Calle</label>
+          </div>
 
-                <div class="input-group">
-                    <input type="text" name="colonia" id="colonia" class="input" value="<?php echo $colonia;?>" readonly="readonly">
-                    <label for="colonia" class="input-label">Colonia</label>
-                </div>
+          <div class="input-group">
+            <input type="text" name="numero" id="numero" class="input" value="<?php echo $no_calle;?>"
+              readonly="readonly">
+            <label for="numero" class="input-label">Número</label>
+          </div>
 
-                <div class="input-group">
-                  <input type="text" name="estado" id="estado" class="input" value="<?php echo $estado;?>" readonly="readonly">
-                    <label for="colonia" class="input-label">Estado</label>
-                </div>
+          <div class="input-group">
+            <input type="text" name="colonia" id="colonia" class="input" value="<?php echo $colonia;?>"
+              readonly="readonly">
+            <label for="colonia" class="input-label">Colonia</label>
+          </div>
 
-                <div class="input-group">
-                    <input type="text" name="municipio" id="municipio" required class="input" maxlength="20" value=<?php echo $municipio;?> readonly="readonly">
-                    <label for="colonia" class="input-label">Municipio</label>
-                </div>
+          <div class="input-group">
+            <input type="text" name="estado" id="estado" class="input" value="<?php echo $estado;?>"
+              readonly="readonly">
+            <label for="colonia" class="input-label">Estado</label>
+          </div>
 
-                <div class="input-group">
-                    <input type="text" name="codigoPostal" id="codigoPostal" required class="input" 
-                    maxlength="5" minlength="5" value=<?php echo $cp;?> readonly="readonly">
-                    <label for="codigo-postal" class="input-label">Código postal</label>
-                </div>
-            </div>    
-            <br>
-            <br>
+          <div class="input-group">
+            <input type="text" name="municipio" id="municipio" required class="input" maxlength="20" value=<?php echo
+              $municipio;?> readonly="readonly">
+            <label for="colonia" class="input-label">Municipio</label>
+          </div>
 
-            <h3 id="subtitulo">Datos de compra</h3>
+          <div class="input-group">
+            <input type="text" name="codigoPostal" id="codigoPostal" required class="input" maxlength="5" minlength="5"
+              value=<?php echo $cp;?> readonly="readonly">
+            <label for="codigo-postal" class="input-label">Código postal</label>
+          </div>
+        </div>
+        <br>
+        <br>
 
-            <div class="tabla-datos-compra">
-              <table>
-                <thead>
-                  <tr>
-                    <th> <b>Producto</b> </th> 
-                    <td> <b>Precio unitario $</b> </td> 
-                    <td> <b>Cantidad</b> </td> 
-                    <td> <b>Subtotal $</b> </td> 
-                    <td> <b>Descuento $</b> </td> 
-                    <td> <b>Total $</b> </td> 
-                  </tr>
-                </thead>
-                <?php
+        <h3 id="subtitulo">Datos de compra</h3>
+
+        <div class="tabla-datos-compra">
+          <table>
+            <thead>
+              <tr>
+                <th> <b>Producto</b> </th>
+                <td> <b>Precio unitario $</b> </td>
+                <td> <b>Cantidad</b> </td>
+                <td> <b>Subtotal $</b> </td>
+                <td> <b>Descuento $</b> </td>
+                <td> <b>Total $</b> </td>
+              </tr>
+            </thead>
+            <?php
                     $aux=json_encode($arrProd);
                     $longi=count($arrProd);
                   $x=0;
@@ -520,10 +534,10 @@
                     <script>
                       // let auxId= $producto;
                       // let auxCan= $cantiCompra;
-                      let auxNumTar= $auxTar;
-                      let auxCcvTar= $auxCCV;
-                      let auxDinTar= $auxDin;
-                      let auxTot= $totDeCompra;
+                      let auxNumTar = $auxTar;
+                      let auxCcvTar = $auxCCV;
+                      let auxDinTar = $auxDin;
+                      let auxTot = $totDeCompra;
                       let arreglo = $aux;
                       let arreglo2 = $aux;
                       let longi = $longi;
@@ -531,97 +545,99 @@
                         sqlsrv_close($con);
 
                 ?>
-              </table>
-              <?php
+          </table>
+          <?php
               ?>
-            </div>
-            <br>
+        </div>
+        <br>
 
-            <input type="button" name="genCompra" id="genCompra" value="Finalizar compra" onclick="datos();" class="btn">
-            <br>
-            <br>
-            <br>
+        <input type="button" name="genCompra" id="genCompra" value="Finalizar compra" onclick="datos();" class="btn">
+        <br>
+        <br>
+        <br>
 
-            
-        </article>
+
+      </article>
     </section>
 
     <!--    Pie de Pagina    -->
 
     <footer class="pie-pagina">
-        <div class="grupo-1">
-            <div class="box">
-                <figure>
-                    <a href="#">
-                      <img src="css/assets/Logo_inovatec_original.png" alt="">
-                    </a>
-                </figure>
-            </div>
-            <div class="box">
-            <p>Inovación Tecnológica 2000. </p>
-                <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
-                <p>Teléfono: 4371010101</p>
-                <p>fabricaitzas.com/inovatec/</p>
-                <p>Correo electrónico: inovatec2000st@gmail.com</p>
-            </div>
+      <div class="grupo-1">
+        <div class="box">
+          <figure>
+            <a href="#">
+              <img src="css/assets/Logo_inovatec_original.png" alt="">
+            </a>
+          </figure>
         </div>
-        <div class="grupo-2">
-            <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+        <div class="box">
+          <p>Inovación Tecnológica 2000. </p>
+          <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
+          <p>Teléfono: 4371010101</p>
+          <p>fabricaitzas.com/inovatec/</p>
+          <p>Correo electrónico: inovatec2000st@gmail.com</p>
         </div>
-      </footer>
-    
+      </div>
+      <div class="grupo-2">
+        <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
+      </div>
+    </footer>
+
     <script src="js/linkHome.js"></script>
+    <script src="JsPhp/ObtenerBuscador.js"></script>
 </body>
+
 
 </html>
 
 <script>
-//obtengo el valor  de lo que se esta escribiendo en el input de ccv y valido
-ccv.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
+  //obtengo el valor  de lo que se esta escribiendo en el input de ccv y valido
+  ccv.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
 
-	ccv.value = valorInput
-  .replace(/[^0-9]/, "")
+    ccv.value = valorInput
+      .replace(/[^0-9]/, "")
   })
 
   //Valdido que no este vacio y que el numero sea entero, mientras que no sea verdadero el boton esta desactivado
 
   const input = document.querySelector('ccv');
   ccv.addEventListener('input', updateValue);
-  
-  function updateValue(){
+
+  function updateValue() {
     let auxCCV = document.getElementById('ccv').value;
     const comprar = document.getElementById('genCompra');
-    let auxLong=auxCCV.toString();
-    if (auxLong.length!=3){
+    let auxLong = auxCCV.toString();
+    if (auxLong.length != 3) {
       ccv.style.border = "3px solid red";
-      genCompra.disabled=true;
-    }else{
+      genCompra.disabled = true;
+    } else {
       ccv.removeAttribute("style");
-      genCompra.disabled=false;
+      genCompra.disabled = false;
     }
   }
 
-  function datos(){
-    if (auxNumTar==0){
+  function datos() {
+    if (auxNumTar == 0) {
       alert("Número de tarjeta no existente")
-    }else{
+    } else {
       let auxCCV = document.getElementById('ccv').value;
-      if (auxCcvTar!=auxCCV){
+      if (auxCcvTar != auxCCV) {
         alert("CCV incorrecto, favor de verificarlo")
-      }else{
-        if (auxDinTar<auxTot){
+      } else {
+        if (auxDinTar < auxTot) {
           alert("Monto insuficiente")
-        }else{
+        } else {
 
           arreglo[longi] = new Array(1);
           arreglo[1][0] = auxNumTar;
-          location.href="registrarVenta.php?item="+JSON.stringify(arreglo);
-        
-          location.href="ventana_confirmacion.php?item="+JSON.stringify(arreglo2);
+          location.href = "registrarVenta.php?item=" + JSON.stringify(arreglo);
+
+          location.href = "ventana_confirmacion.php?item=" + JSON.stringify(arreglo2);
         }
       }
     }
-    
+
   }
 </script>

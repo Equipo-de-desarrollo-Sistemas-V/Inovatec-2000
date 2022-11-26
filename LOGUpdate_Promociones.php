@@ -46,7 +46,7 @@ class Foto{
                     //echo 'el archivo si es valido'. '<br>';
 
                     //guardar la imagen en la carpeta
-                    if (move_uploaded_file($temp, 'imagenes/' . $archivo)) {
+                    if (move_uploaded_file($temp, 'imgProm/' . $archivo)) {
                         //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
                         chmod('imagenes/' . $archivo, 0777);
 
