@@ -380,7 +380,7 @@ $sesion_e = $_SESSION["Usuario"];
                 <i class="fa-solid fa-bag-shopping"></i>
                 Comprar
                 </a> -->
-                <input type="button" id='agregar' name='agregar' value="Agregar al carrito" class="btn">
+                <input type="button" id='agregar' name='agregar' value="Agregar al carrito" onclick="datos_carrito();" class="btn">
                 <br>
 
                 <input type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
@@ -539,6 +539,26 @@ $resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
           arreProduc[0][1] = canti;
           let envio= arreProduc;
           location.href="datos_venta.php?item="+JSON.stringify(envio);
+          
+        }
+      }
+    }
+  
+    function datos_carrito(){
+    let canti = document.getElementById('cantidadE').value;
+      if (auxExis==0){
+        alert('El stock esta vacío')
+      }else{
+        if (canti>auxExis){
+          alert('Stock insuficiente')
+        }else{
+          //creo un arreglo para mandar el prodcuto y su cantidad
+          var arreProduc = new Array(1);
+          arreProduc[0] = new Array(2);
+          arreProduc[0][0] = auxId;
+          arreProduc[0][1] = canti;
+          let envio= arreProduc;
+          location.href="datos_carrito.php?item="+JSON.stringify(envio);
           
         }
       }
