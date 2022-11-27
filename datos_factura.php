@@ -47,6 +47,8 @@
   }
   $arre = serialize($articulos);
   $arre = urlencode($arre);
+  $pagSiguiente="Factura.php?item=".$arre;
+  //action="Factura.php?item=<?php echo $arre; ? >"
 ?>
 
 <!DOCTYPE html>
@@ -358,7 +360,7 @@
 
         <h3 id="subtitulo">Datos para la factura</h3>
         <br>
-        <form id="formulario" action="Factura.php?item=<?php echo $arre; ?>" class="formularios" method="POST">
+        <form id="formulario"  class="formularios" method="POST">
           <div class="entrada-2">
 
             <!--<form action="Factura.php" class="formularios" method="post">-->
@@ -473,7 +475,7 @@
           <br>
           <br>
           <input id="arrayProd" name="arrayProd" type="hidden" value="<?php echo $articulos;?>">
-          <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
+          <input type="submit" name="boton4" id="boton4" value="Continuar" onclick="abrir('link.php');" class="btn">
           <br>
           <br>
           <br>
@@ -504,19 +506,15 @@
         <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
       </div>
     </footer>
-
+    <script>
+      function abrir(URL){
+        window.open(URL,"",'width=300,height=300,left=320, top=200,toolbar=0,scrollbars=0,statusbar=0,menubar =0,resizable=0');
+      }
+    </script>
     <script src="js/validFactura.js"></script>
     <script src="js/linkHome.js"></script>
     <script src="JsPhp/ObtenerBuscador.js"></script>
 </body>
-<script>
-  function datos() {
 
-    arreglo[longi] = new Array(1);
-    arreglo[1][0] = auxNumTar;
-    window.location.href = "Factura.php?item=" + JSON.stringify(arreglo);
-    alert("Datos enviados");
-  }
-</script>
 
 </html>
