@@ -7,21 +7,21 @@ $con = sqlsrv_connect($serverName, $connectionInfo);
 
 $salida = "";
 //Consulta normal, muetra todos los registros
-$query = "SELECT Productos.id_producto, Productos.precio_com,
+$query = "SELECT Productos.id_producto, Productos.nombre, Productos.precio_com, Apartados.Nombre, Subapartados.SubApartado,
 Productos.precio_ven, Productos.precio_com*0.16 as iva
-FROM Productos";
+FROM Productos, Apartados, Subapartados
+where Apartados.ID_ap = Productos.Apartado AND Subapartados.Id_subap = Productos.Subapartado";
 
 //detecta si se escribio algo en la caja de busqueda
 //Consulta que busca lo que hay dentro de la caja de busqueda, en todas las columnas
 if (isset($_POST['consulta'])) {
     $q = ($_POST['consulta']);
-    $query = "SELECT Productos.id_producto, Productos.precio_com,
+    $query = "SELECT Productos.id_producto,  Productos.nombre, Productos.precio_com, Apartados.Nombre, Subapartados.SubApartado,
     Productos.precio_ven, Productos.precio_com*0.16 as iva
-    FROM Productos
-    where (Productos.id_producto like '%" . $q . "%' or 
-    productos.precio_com like '%$q%' or productos.precio_ven like '%$q%')";
-    //like '%".$q."%'
-
+    FROM Productos, Apartados, Subapartados
+    WHERE (Apartados.ID_ap = Productos.Apartado AND Subapartados.Id_subap = Productos.Subapartado) AND
+    (Productos.id_producto LIKE '%$q%' OR Productos.nombre LIKE '%$q%' OR Productos.precio_com LIKE '%$q%' OR
+    Apartados.Nombre LIKE '%$q%' OR Subapartados.SubApartado LIKE '%$q%' OR Productos.precio_ven LIKE '%$q%')";
 }
 
 
