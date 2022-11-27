@@ -427,7 +427,7 @@ $sesion_i = $_SESSION["Usuario"];
         </div>
       </footer>
     <script src="js/linkHome.js"></script>
-    <script src="JsPhp/ObtenerBuscador.js"></script>
+    <script src="JsPhp/ObtenerBuscador.js"></script> 
 </body>
 
 </html>

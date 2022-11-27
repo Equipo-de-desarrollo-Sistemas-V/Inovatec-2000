@@ -34,7 +34,7 @@
           <ion-icon name="person-circle-outline" class="icon"></ion-icon>
         </a></li>
 
-      <li><a href="#" class="">
+      <li><a href="carritoVentas.php" class="">
           <ion-icon name="cart-outline" class="icon"></ion-icon>
         </a></li>
 
@@ -328,85 +328,17 @@
       <h2 class="subtitulo" id="subtitulo"></h2>
 
       <div class="containerCards">
+        <h2>Tu carrito de compras</h2>
         <div class="listaCarrito">
-          <h2>Carrito de compras</h2>
 
-        <div class="tarjetaCarrito">
-          <img src="imagenes/computadora5.png" alt="" srcset="">
-          
-          <div class="containerDatos">
-            <div class="datos">
-              <h3 class="nombreProducto">Samsung Galaxy S22 Ultra Snapdragon</h3>
-
-              <div class="organizador">
-                <h4 class="precioIndividual">Precio </h4>
-                <span class="valorPrecio">$22999.00</span>
-              </div>
-
-              <div class="organizador">
-                <h4 class="cantidad">Cantidad</h4>
-                <input type="number" name="cajaCantidad" id="cajaCantidad" min="1" max="99" value="1">
-              </div>
-              
-            </div>
-
-            <div class="botones">
-              <button type="button" class="eliminar">
-                <ion-icon name="trash-outline" class="icon"></ion-icon>
-                Eliminar articulo
-              </button>
-
-              <button type="button" class="comprar">
-                <ion-icon name="cart-outline" class="icon"></ion-icon>
-                Volver al producto
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="tarjetaCarrito">
-          <img src="imagenes/computadora1.png" alt="" srcset="">
-          
-          <div class="containerDatos">
-            <div class="datos">
-              <h3 class="nombreProducto">Huawei Matebook X 2022 1TB</h3>
-
-              <div class="organizador">
-                <h4 class="precioIndividual">Precio </h4>
-                <span class="valorPrecio">$31799.00</span>
-                
-              </div>
-
-              <div class="organizador">
-                <h4 class="cantidad">Cantidad</h4>
-                <input type="number" name="cajaCantidad" id="cajaCantidad" min="1" max="99" value="1">
-              </div>
-              
-            </div>
-
-            <div class="botones">
-              <button type="button" class="eliminar">
-                <ion-icon name="trash-outline" class="icon"></ion-icon>
-                Eliminar articulo
-              </button>
-
-              <button type="button" class="comprar">
-                <ion-icon name="cart-outline" class="icon"></ion-icon>
-                Volver al producto
-              </button>
-            </div>
-          </div>
         </div>
       </div>
-        </div>
     </article>
-
-    <!-- <span id="categoria"style="display:none"></span>
-    <span id="subcategoria"style="display:none"></span> -->
   </section>
 </body>
-  <script src="js/ObtenerBuscador.js"></script>
   <script src="js/linkHome.js"></script>
+  <script src="JsPhp/ObtenerBuscador.js"></script>
+  <script src="JsPhp/carritoBridge.js"></script>
 </html>
 
 <!-- <?php

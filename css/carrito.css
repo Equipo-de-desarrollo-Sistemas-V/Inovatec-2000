@@ -619,6 +619,7 @@ a{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    
     width: 175px;
     height: 3.125rem;
     transition: .3s;
@@ -627,4 +628,8 @@ a{
 .comprar:hover{
     background-color: #b24d00;
     font-weight: 700;
+}
+
+.nombreProducto{
+    width: 70%;
 }

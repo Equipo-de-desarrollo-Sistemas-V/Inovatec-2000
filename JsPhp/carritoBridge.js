@@ -1,50 +1,63 @@
 window.onload = function () {
-    let url = "JsPhp/logCarrito.php";
-    categoria = "Computadoras";
-    subcategoria = "Laptop";
+  let url = "JsPhp/logCarritoObtenerProductos.php";
 
-    /* categoria = document.getElementById('categoria').textContent
-    subcategoria = document.getElementById('subcategoria').textContent */
+  let usuario = "TchRui";
 
-    let form = new FormData();
-    form.append("categoria", categoria);
-    form.append("subcategoria", subcategoria);
+  let form = new FormData();
+  form.append("usuario", usuario);
 
-    fetch(url, {
-        method: "POST",
-        body: form
-    })
-        .then(response => response.json())
-        .then(data => arrays(data))
-        .catch(error => console.log(error));
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+      .then(response => response.json())
+      .then(data => arrays(data))
+      .catch(error => console.log(error));
 
-    const arrays = (data) => {
+  const arrays = (data) => {
 
-        let body = '';
+    let body = '';
 
-        let size = Object.keys(data).length;
+    let size = Object.keys(data).length;
 
-        console.log("El tamaño es: " + size);
+    console.log("El tamaño es: " + size);
 
-        let arreglosVariables = Object.values(data);
+    let arreglosVariables = Object.values(data);
 
-        let size2 = Object.keys(arreglosVariables[0]).length;
+    let size2 = Object.keys(arreglosVariables[0]).length;
 
-        for (let i = 0; i < size2; i++) {
-            body += `
-                <div class="cardProducto">
-                    <div class="encabezado">
-                        <h3 class="tituloProducto"><span id="seccion1-producto1">${arreglosVariables[3][i]}</span></h3>
-                        <h3 class="tituloPrecio"><span id="seccion1-precio1">${arreglosVariables[1][i]}</span></h3>
-                    </div>
+    for (let i = 0; i < size2; i++) {
+      body += `
+        <div class="tarjetaCarrito" id="tarjeta${arreglosVariables[4][i]}">
+        <img src="${arreglosVariables[0][i]}" alt="" srcset="">
+          
+          <div class="containerDatos">
+            <div class="datos">
+              <h3 class="nombreProducto">${arreglosVariables[1][i]}</h3>
 
-                <img src="${arreglosVariables[4][i]}" alt="" id="seccion1-imagen1">
+              <div class="organizador">
+                <h4 class="precioIndividual">Precio </h4>
+                <span class="valorPrecio">${arreglosVariables[2][i]}</span>
+              </div>
 
-                <h3 class="nombreProducto"><span id="seccion1-nombre1">${arreglosVariables[0][i]}</span></h3>
-                <a href="producto_individual.php?item=${arreglosVariables[5][i]}" class="btn">Comprar</a>
-                </div>
-            `;
-        }
-        document.querySelector('.containerCards').innerHTML = body;
+              <div class="organizador">
+                <h4 class="cantidad">Cantidad</h4>
+                <input type="number" name="cajaCantidad" id="cajaCantidad" min="1" max="99" value="${arreglosVariables[3][i]}">
+              </div>
+              
+            </div>
+
+            <div class="botones">
+              <button type="button" class="eliminar" onclick="eliminar("${arreglosVariables[4][i]}")>
+                <ion-icon name="trash-outline" class="icon"></ion-icon>
+                Eliminar articulo
+              </button>
+
+              <a href="producto_individual.php?item=${arreglosVariables[4][i]}" type="button" class="comprar");">Volver al producto</a>
+            </div>
+          </div>
+        </div>`;
     }
+    document.querySelector('.listaCarrito').innerHTML = body;
+  }
 } 
