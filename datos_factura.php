@@ -507,11 +507,6 @@
         <small>&copy; 2022 <b>Inovatec</b> - Todos los Derechos Reservados.</small>
       </div>
     </footer>
-    <script>
-      function abrir(URL){
-        window.open(URL,"",'width=300,height=300,left=320, top=200,toolbar=0,scrollbars=0,statusbar=0,menubar =0,resizable=0');
-      }
-    </script>
     <script src="js/validFactura.js"></script>
     <script src="js/linkHome.js"></script>
     <script src="JsPhp/ObtenerBuscador.js"></script>
