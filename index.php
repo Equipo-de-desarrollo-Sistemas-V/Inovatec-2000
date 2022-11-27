@@ -342,188 +342,199 @@ $sesion_e = $_SESSION["Usuario"];
     <aside class="lateral"></aside>
 
     <?php include_once("auxCarrusel.php") ?>
+    
+    
+    <div class="contenido-total">
+      <div class="pagina-facebook">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v15.0" nonce="Qnm5ITKs"></script>
+        <div class="fb-page" data-href="https://www.facebook.com/Inovatec-100088416570916" data-tabs="timeline" data-width="250" data-height="1120" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Inovatec-100088416570916" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Inovatec-100088416570916">Inovatec</a></blockquote></div>      </div>
 
-    <article class="containerProductos">
+      <div class="contenido-all-productos">
+        <article class="containerProductos">
 
-      <div class="containerinfo">
-        <h2 class="subtitulo">Computación y electrónica</span></h2>
-        <a href="#" class="link"></a>
+          <div class="containerinfo">
+            <h2 class="subtitulo">Computación y electrónica</span></h2>
+            <a href="#" class="link"></a>
+          </div>
+
+          <div class="containerCards">
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion1-imagen1">
+
+              <!-- $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>'; -->
+              <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id1" class="btn"> Comprar</a>
+              <!-- <a href='producto_individual.php?item='+compra class="btn">Comprar</a> -->
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion1-producto2"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion1-precio2"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion1-imagen2">
+
+              <h3 class="nombreProducto"><span id="seccion1-nombre2"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id2" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion1-producto3"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion1-precio3"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion1-imagen3">
+
+              <h3 class="nombreProducto"><span id="seccion1-nombre3"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id3" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion1-producto4"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion1-precio4"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion1-imagen4">
+
+              <h3 class="nombreProducto"><span id="seccion1-nombre4"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id4" class="btn"> Comprar</a>
+            </div>
+          </div>
+
+        </article>
+
+        <article class="containerProductos">
+
+          <div class="containerinfo">
+            <h2 class="subtitulo">Procesadores</h2>
+            <a href="#" class="link"></a>
+          </div>
+
+          <div class="containerCards">
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion2-producto1"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion2-precio1"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion2-imagen1">
+
+              <h3 class="nombreProducto"><span id="seccion2-nombre1"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id5" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion2-producto2"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion2-precio2"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion2-imagen2">
+
+              <h3 class="nombreProducto"><span id="seccion2-nombre2"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id6" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion2-producto3"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion2-precio3"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion2-imagen3">
+
+              <h3 class="nombreProducto"><span id="seccion2-nombre3"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id7" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion2-producto4"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion2-precio4"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion2-imagen4">
+
+              <h3 class="nombreProducto"><span id="seccion2-nombre4"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id8" class="btn"> Comprar</a>
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="containerProductos">
+
+          <div class="containerinfo">
+            <h2 class="subtitulo">Placas madre</h2>
+            <a href="#" class="link"></a>
+          </div>
+
+          <div class="containerCards">
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion3-producto1"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion3-precio1"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion3-imagen1">
+
+              <h3 class="nombreProducto"><span id="seccion3-nombre1"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id9" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion3-producto2"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion3-precio2"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion3-imagen2">
+
+              <h3 class="nombreProducto"><span id="seccion3-nombre2"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id10" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion3-producto3"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion3-precio3"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion3-imagen3">
+
+              <h3 class="nombreProducto"><span id="seccion3-nombre3"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id11" class="btn"> Comprar</a>
+            </div>
+
+            <div class="cardProducto">
+              <div class="encabezado">
+                <h3 class="tituloProducto"><span id="seccion3-producto4"></span></h3>
+                <h3 class="tituloPrecio"><span id="seccion3-precio4"></span></h3>
+              </div>
+
+              <img src="" alt="" id="seccion3-imagen4">
+
+              <h3 class="nombreProducto"><span id="seccion3-nombre4"></span></h3>
+              <a onclick="href='producto_individual.php?item='+id12" class="btn"> Comprar</a>
+            </div>
+          </div>
+
+        </article>
       </div>
-
-      <div class="containerCards">
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen1">
-
-          <!-- $salida.='<td>'.'<a href="LOGActualizar.php?item='.$id.'">'.$edi. '</a>'.'</td>'; -->
-          <h3 class="nombreProducto"><span id="seccion1-nombre1"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id1" class="btn"> Comprar</a>
-          <!-- <a href='producto_individual.php?item='+compra class="btn">Comprar</a> -->
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto2"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio2"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen2">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre2"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id2" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto3"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio3"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen3">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre3"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id3" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion1-producto4"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion1-precio4"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion1-imagen4">
-
-          <h3 class="nombreProducto"><span id="seccion1-nombre4"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id4" class="btn"> Comprar</a>
-        </div>
-      </div>
-
-    </article>
-
-    <article class="containerProductos">
-
-      <div class="containerinfo">
-        <h2 class="subtitulo">Procesadores</h2>
-        <a href="#" class="link"></a>
-      </div>
-
-      <div class="containerCards">
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion2-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion2-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion2-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion2-nombre1"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id5" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion2-producto2"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion2-precio2"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion2-imagen2">
-
-          <h3 class="nombreProducto"><span id="seccion2-nombre2"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id6" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion2-producto3"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion2-precio3"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion2-imagen3">
-
-          <h3 class="nombreProducto"><span id="seccion2-nombre3"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id7" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion2-producto4"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion2-precio4"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion2-imagen4">
-
-          <h3 class="nombreProducto"><span id="seccion2-nombre4"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id8" class="btn"> Comprar</a>
-        </div>
-
-      </div>
-
-    </article>
-
-    <article class="containerProductos">
-
-      <div class="containerinfo">
-        <h2 class="subtitulo">Placas madre</h2>
-        <a href="#" class="link"></a>
-      </div>
-
-      <div class="containerCards">
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion3-producto1"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion3-precio1"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion3-imagen1">
-
-          <h3 class="nombreProducto"><span id="seccion3-nombre1"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id9" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion3-producto2"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion3-precio2"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion3-imagen2">
-
-          <h3 class="nombreProducto"><span id="seccion3-nombre2"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id10" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion3-producto3"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion3-precio3"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion3-imagen3">
-
-          <h3 class="nombreProducto"><span id="seccion3-nombre3"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id11" class="btn"> Comprar</a>
-        </div>
-
-        <div class="cardProducto">
-          <div class="encabezado">
-            <h3 class="tituloProducto"><span id="seccion3-producto4"></span></h3>
-            <h3 class="tituloPrecio"><span id="seccion3-precio4"></span></h3>
-          </div>
-
-          <img src="" alt="" id="seccion3-imagen4">
-
-          <h3 class="nombreProducto"><span id="seccion3-nombre4"></span></h3>
-          <a onclick="href='producto_individual.php?item='+id12" class="btn"> Comprar</a>
-        </div>
-
-    </article>
+    </div>
 
     <!--    Pie de Pagina    -->
   </section>
