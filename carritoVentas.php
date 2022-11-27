@@ -339,6 +339,7 @@
   <script src="js/linkHome.js"></script>
   <script src="JsPhp/ObtenerBuscador.js"></script>
   <script src="JsPhp/carritoBridge.js"></script>
+  <script src="JsPhp/funcionesCarrito.js"></script>
 </html>
 
 <!-- <?php

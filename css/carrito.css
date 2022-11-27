@@ -619,10 +619,10 @@ a{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
     width: 175px;
     height: 3.125rem;
     transition: .3s;
+
 }
 
 .comprar:hover{

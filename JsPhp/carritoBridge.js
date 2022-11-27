@@ -28,7 +28,7 @@ window.onload = function () {
 
     for (let i = 0; i < size2; i++) {
       body += `
-        <div class="tarjetaCarrito" id="tarjeta${arreglosVariables[4][i]}">
+        <div class="tarjetaCarrito" id="${arreglosVariables[4][i]}">
         <img src="${arreglosVariables[0][i]}" alt="" srcset="">
           
           <div class="containerDatos">
@@ -48,7 +48,7 @@ window.onload = function () {
             </div>
 
             <div class="botones">
-              <button type="button" class="eliminar" onclick="eliminar("${arreglosVariables[4][i]}")>
+              <button type="button" class="eliminar" onclick="eliminar(${arreglosVariables[4][i]});">
                 <ion-icon name="trash-outline" class="icon"></ion-icon>
                 Eliminar articulo
               </button>
@@ -61,3 +61,4 @@ window.onload = function () {
     document.querySelector('.listaCarrito').innerHTML = body;
   }
 } 
+
