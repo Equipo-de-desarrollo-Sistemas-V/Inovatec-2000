@@ -360,7 +360,7 @@
 
         <h3 id="subtitulo">Datos para la factura</h3>
         <br>
-        <form id="formulario"  class="formularios" method="POST">
+        <form id="formulario" action="Factura.php?item=<?php echo $arre; ?>" target="_blank" class="formularios" method="POST">
           <div class="entrada-2">
 
             <!--<form action="Factura.php" class="formularios" method="post">-->
@@ -475,7 +475,8 @@
           <br>
           <br>
           <input id="arrayProd" name="arrayProd" type="hidden" value="<?php echo $articulos;?>">
-          <input type="submit" name="boton4" id="boton4" value="Continuar" onclick="abrir('link.php');" class="btn">
+          <input type="submit" name="boton4" id="boton4" value="Continuar"  class="btn">
+          
           <br>
           <br>
           <br>
