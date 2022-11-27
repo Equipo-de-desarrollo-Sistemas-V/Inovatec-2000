@@ -48,10 +48,10 @@ class Foto{
                     //guardar la imagen en la carpeta
                     if (move_uploaded_file($temp, 'imgProm/' . $archivo)) {
                         //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-                        chmod('imagenes/' . $archivo, 0777);
+                        chmod('imgProm/' . $archivo, 0777);
 
                         //ruta de la imagen
-                        $ruta = 'imagenes/'. $archivo;
+                        $ruta = 'imgProm/'. $archivo;
                         //Mostramos la imagen subida
                         //echo '<p><img src="imagenes/' . $archivo . '"></p>';
 
