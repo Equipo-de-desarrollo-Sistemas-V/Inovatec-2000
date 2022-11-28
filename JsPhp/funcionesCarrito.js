@@ -3,4 +3,21 @@ function eliminar(id) {
 
   /* Destruye el elemento con el id */
   document.getElementById(id).remove();
+
+  let url = "JsPhp/logCarritoEliminarProducto.php";
+
+  let form = new FormData();
+  form.append("id", id);
+
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+      .then(response => response.json())
+      .then(data => arrays(data))
+      .catch(error => console.log(error));
+
+  const arrays = (data) => {
+    console.log(data);
+  }
 }

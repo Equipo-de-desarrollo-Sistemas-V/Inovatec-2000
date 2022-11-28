@@ -209,8 +209,7 @@ header {
     margin: 15px;
     display: flex;
     flex-direction: column;
-    margin-left: 70px;
-    margin-right: 50px;
+    margin-left: 20px;
     border-radius: 25px;
     margin-bottom: 30px;
 }
@@ -375,7 +374,7 @@ header {
 }
 .pagina-facebook{
     display: flex;
-    margin-left: 50px;
+    margin-left: 10px;
 }
 
 /* Media qwery */

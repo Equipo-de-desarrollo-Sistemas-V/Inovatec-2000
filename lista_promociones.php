@@ -1,3 +1,9 @@
+<?php
+error_reporting(0);
+session_start();
+include("perPromociones.php");
+$sesion_i = $_SESSION["nombres"];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
