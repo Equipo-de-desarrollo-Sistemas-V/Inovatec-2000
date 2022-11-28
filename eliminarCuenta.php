@@ -18,6 +18,10 @@ if($con){
         WHERE Usuario='$usuario'";
     $resultado=sqlsrv_query( $con, $query);
 
+    $query= "DELETE FROM carritoclientes 
+        WHERE Usuario='$usuario'";
+    $resultado=sqlsrv_query( $con, $query);
+
     $query= "DELETE FROM Persona 
         WHERE Usuario='$usuario'";
     $resultado=sqlsrv_query($con, $query);

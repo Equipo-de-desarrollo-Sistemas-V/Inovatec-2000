@@ -6,7 +6,7 @@ $con = sqlsrv_connect($servername, $info);
 $querry_rutas = "SELECT ruta FROM imgpromocion";
 $resultados_rutas = sqlsrv_query($con, $querry_rutas);
 
-$predefinidos = ["imagenes/imagen-1.jpg", "imagenes/imagen-2.jpg", "imagenes/imagen-3.jpg", "imagenes/imagen-4.jpg"];
+$predefinidos = ["imgProm/imagen-1.jpg", "imgProm/imagen-3.jpg", "imgProm/imagen-4.jpg", "imgProm/imagen-5.jpg", "imgProm/imagen-6.jpg"];
 
 $arre = ["1", "2", "3", "4"];
 $salida = '<article class="slider-frame">

@@ -1,4 +1,7 @@
 <?php
+    $producto_carrito = $_POST['auxCanti'];
+    $cantidad_carrito = $_POST['auxProd'];
+
     //Obtencion del usuario logeado
     error_reporting(0);
     session_start();
@@ -11,8 +14,8 @@
 
     //obtengo el arreglo del url de productos para agregar al carrito y su cantidad 
     $arrProd = (array)json_decode($_GET["item"]);
-    $producto_carrito=$arrProd[0][0];
-    $cantidad_carrito=$arrProd[0][1];
+    //$producto_carrito=$arrProd[0][0];
+    //$cantidad_carrito=$arrProd[0][1];
 
     //Verifico si el producto ya esta agregado al carrito, en caso de ser así actualizo solo la cantidad, en caso contrario agrego el producto a la tabla
     $query = "SELECT id_producto,cantidad 
@@ -34,12 +37,14 @@
         where Usuario='$sesion_i' 
         and id_producto='$producto_carrito'";
         $resultado=sqlsrv_query($con, $query_update);
+        echo json_encode("Producto agregado al carrito");
     }
     else{
         $cantidad=$arrProd[0][1];
         $query_insert="INSERT INTO carritoclientes 
         VALUES('$sesion_i','$producto_carrito',$cantidad_carrito)";
         $resultado=sqlsrv_query($con, $query_insert);
+        echo json_encode("Producto agregado al carrito");
     }
 
     //actualizo el stock de inventario (no se si se tenga que actualizar el stock en inventario, por eso lo pongo en comentarios xd)
