@@ -160,10 +160,9 @@ $resultados = sqlsrv_query($con, $querry_producto);
 
 				</form>
 			</article>
-			<!-- <script src="js/validAltaProductos.js"></script> -->
+			<script src="js/validAltaProm.js"></script>
 		</div>
 	</main>
-
 	<script src="js/alertasPromociones.js"></script>
 </body>
 
