@@ -1,4 +1,10 @@
 <?php
+error_reporting(0);
+session_start();
+include("perProveedor.php");
+$sesion_i = $_SESSION["nombres"];
+?>
+<?php
 //informacion para la conexion a base de datos
 $servername = "localhost";
 $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
