@@ -17,6 +17,7 @@ $sesion_e = $_SESSION["Usuario"];
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>Comprar producto</title>
   <!-- Importación de los archivos css para el uso de la página -->
   <link rel="stylesheet" href="css/menuPrincipal.css">
@@ -389,6 +390,8 @@ $sesion_e = $_SESSION["Usuario"];
                   <span>Existentes: </span>
                   <span>0</span>
                 </label>
+                <input type="hidden" id='auxCanti' name='auxCanti' class="btn">
+                <input type="hidden" id='auxProd' name='auxProd' class="btn">
               </form>
 
             </div>
@@ -544,7 +547,7 @@ $resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
       }
     }
   
-    function datos_carrito(){
+  function datos_carrito(){
     let canti = document.getElementById('cantidadE').value;
       if (auxExis==0){
         alert('El stock esta vacío')
@@ -552,13 +555,28 @@ $resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
         if (canti>auxExis){
           alert('Stock insuficiente')
         }else{
+          document.getElementById('auxCanti').value=canti;
+          document.getElementById('auxProd').value=auxId;
           //creo un arreglo para mandar el prodcuto y su cantidad
-          var arreProduc = new Array(1);
+          /*var arreProduc = new Array(1);
           arreProduc[0] = new Array(2);
           arreProduc[0][0] = auxId;
           arreProduc[0][1] = canti;
           let envio= arreProduc;
-          location.href="datos_carrito.php?item="+JSON.stringify(envio);
+          location.href="datos_carrito.php?item="+JSON.stringify(envio);*/
+
+          var auxCanti=document.getElementById("auxCanti").value;
+          var auxProd=document.getElementById("auxProd").value;
+        
+        $.ajax({
+            type: "POST",
+            url: "datos_carrito.php",
+            dataType: "json",
+            data: {"auxCanti":auxCanti, "auxProd":auxProd},
+            success: function(data){
+                alert(data)
+            }
+        });
           
         }
       }
