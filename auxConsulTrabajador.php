@@ -124,9 +124,9 @@ if($resultado==true){
                                     if($ventas===1){
                                         $len=strlen($mensaje);
                                         if (($len==0)){
-                                            $mensaje=$mensaje."Ventas";
+                                            $mensaje=$mensaje."Reportes";
                                         }else{
-                                            $mensaje=$mensaje."<br>"."Ventas";
+                                            $mensaje=$mensaje."<br>"."Reportes";
                                         }
                                     }else{
                                         $ventas1="";

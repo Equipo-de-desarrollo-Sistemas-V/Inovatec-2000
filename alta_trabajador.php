@@ -244,7 +244,7 @@ $resultados_sucursal = sqlsrv_query($con, $querry_sucursal);
 					</div>
 
 					<div class="formulario_grupo-input">
-						<label class="formulario_label-checkbox2"><input type="checkbox" name="cbox4" id="cbox4" value="permiso4"> Acceso a ventas </label>
+						<label class="formulario_label-checkbox2"><input type="checkbox" name="cbox4" id="cbox4" value="permiso4"> Acceso a reportes </label>
 					</div>
 
 					<div class="formulario_grupo-input">
