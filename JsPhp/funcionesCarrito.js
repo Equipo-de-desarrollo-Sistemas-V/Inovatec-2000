@@ -14,10 +14,10 @@ function eliminar(id) {
     body: form
   })
       .then(response => response.json())
-      .then(data => arrays(data))
+      .then(data => fetchEjecuted(data))
       .catch(error => console.log(error));
 
-  const arrays = (data) => {
+  const fetchEjecuted = (data) => {
     console.log(data);
   }
 }
