@@ -48,7 +48,10 @@ $sesion_e = $_SESSION["Usuario"];
           <ion-icon name="person-circle-outline" class="icon"></ion-icon>
         </a></li>
   
-        <li><a href="#" class=""><ion-icon name="cart-outline" class="icon"></ion-icon></a></li>
+        <li><a href="carritoVentas.php" class="">
+            <ion-icon name="cart-outline" class="icon"></ion-icon>
+            </a>
+        </li>
   
       </ol>
   

@@ -45,11 +45,13 @@ $sesion_e = $_SESSION["Usuario"];
 
       <li><a href="sesion_iniciada_Per.php" class="">
           <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-        </a></li>
+        </a>
+      </li>
 
-        <li><a href="#" class="">
+      <li><a href="carritoVentas.php" class="">
             <ion-icon name="cart-outline" class="icon"></ion-icon>
-          </a></li>
+          </a>
+      </li>
 
       </ol>
 
