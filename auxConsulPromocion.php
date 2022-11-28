@@ -48,7 +48,7 @@ if($resultado==true){
         $id=$row["id_producto"];
         $nombre=$row["nombre"];
         $pre_ven=substr($row["precio_ven"],0,-2);
-        $query0="SELECT ruta FROM imagenes WHERE id_prod='$id'";
+        $query0="SELECT ruta FROM imgpromocion WHERE id_prod='$id'";
         $resultados0=sqlsrv_query($con, $query0);
         if( $resultados0 === false) {
             die( print_r( sqlsrv_errors(), true) );
@@ -68,7 +68,7 @@ if($resultado==true){
         $salida.='<td>'."$".$pre_ven.'</td>';
         $salida.='<td>'.$descuento."%".'</td>';
         $salida.='<td>'."$".$oferta.'</td>'; 
-        $salida.='<td>'.'<p><img src="' .$imagen. '" width="50" height="50"></p></td>';
+        $salida.='<td>'.'<p><img src="' .$imagen. '" width="230" height="45"></p></td>';
         $salida.='<td>'.'<a href="LOGActualizar_Promocion.php?item='.$id.'">'.$edi. '</a>'.'</td>';
         $salida.='<td>'.'<a href="logEliminarPromocion.php?item='.$id.'" ; class="table__item_link">'.$eli. '</a>'.'</td>';
 		$salida.='</tr>';
