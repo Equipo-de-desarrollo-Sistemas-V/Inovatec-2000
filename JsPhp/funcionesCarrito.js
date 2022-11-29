@@ -1,3 +1,5 @@
+
+
 function eliminar(id) {
   console.log("El id es: " + id);
 
@@ -52,8 +54,37 @@ function eliminarTodo(){
       for(let i = 0; i < size; i++){
         eliminar(ids[0][i]);
       }
-      
+
     }
 
   }
+}
+
+function alterarCantidad(id){
+  const contador = "cajaCantidad" + id
+
+  let cantidad = document.getElementById(contador).value;
+
+  let url = "JsPhp/logActualizarCanti.php";
+
+  let form = new FormData();
+  form.append("id", id);
+  form.append("cantidad", cantidad);
+
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+      .then(response => response.json())
+      .then(data => fetchEjecuted(data))
+      .catch(error => console.log(error));
+
+  const fetchEjecuted = (data) => {
+    console.log(data);
+  }
+}
+
+function continuar(){
+
+  window.location.href = "datos_venta.php";
 }
