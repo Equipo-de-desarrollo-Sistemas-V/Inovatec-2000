@@ -283,7 +283,6 @@ header {
 
 .input:focus~.input-label,
 .input:valid~.input-label {
-    transform: translate(0, -30px) scale(.8);
     color: #e6b323;
 }
 

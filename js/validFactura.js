@@ -31,7 +31,7 @@ boton.addEventListener("click", (e) => {
 
 const expresiones = {
     cadenas:/^[a-zA-ZÁ-ý0-9\s.,#]{2,20}$/,
-    numero:/^[0-9]{1,10}$/,
+    numero:/^[0-9]{10}$/,
     cp:/^[0-9]{5}$/,
     correo:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/
 }
