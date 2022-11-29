@@ -143,7 +143,7 @@ $ruta=$row["ruta"];
 					<div class="formulario_grupo-input">
 						<label for="descProd" class="formulario_label">Descuento (%)</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="descProd" id="descProd" class="formulario_input" value="<?php echo $descuento;?>" required maxlength="3">
+							<input type="text" name="descProd" id="descProd" class="formulario_input" value="<?php echo $descuento;?>" required maxlength="2">
 						</div>
 					</div>
 					<input id="prodId" name="prodId" type="hidden" value="<?php echo $id;?>">

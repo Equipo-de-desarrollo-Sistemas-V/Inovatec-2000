@@ -143,7 +143,7 @@ $resultados = sqlsrv_query($con, $querry_producto);
 					<div class="formulario_grupo-input">
 						<label for="descProd" class="formulario_label">Descuento</label>
 						<div class="formulario_grupo-input">
-							<input type="text" name="descProd" id="descProd" class="formulario_input" required maxlength="3">
+							<input type="text" name="descProd" id="descProd" class="formulario_input" required maxlength="2">
 						</div>
 					</div>
 

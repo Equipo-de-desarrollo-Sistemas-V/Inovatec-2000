@@ -15,7 +15,7 @@ botonGuardar.addEventListener("click", (e) => {
 
 /*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
-    descuento:/^[0-9]{1,3}$/
+    descuento:/^[0-9]{1,2}$/
 }
 
 /* Input Descuento */
