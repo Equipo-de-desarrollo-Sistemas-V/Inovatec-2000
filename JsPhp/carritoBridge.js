@@ -42,7 +42,7 @@ window.onload = function () {
 
               <div class="organizador">
                 <h4 class="cantidad">Cantidad</h4>
-                <input type="number" name="cajaCantidad" id="cajaCantidad" min="1" max="99" value="${arreglosVariables[3][i]}">
+                <input type="number" name="cajaCantidad" id="cajaCantidad${arreglosVariables[4][i]}" min="1" max="99" value="${arreglosVariables[3][i]}" onclick="alterarCantidad(${arreglosVariables[4][i]}); readonly">
               </div>
               
             </div>
@@ -53,7 +53,10 @@ window.onload = function () {
                 Eliminar articulo
               </button>
 
-              <a href="producto_individual.php?item=${arreglosVariables[4][i]}" type="button" class="comprar"><ion-icon name="pricetags-outline"></ion-icon>Volver al producto</a>
+              <button type="button" class="comprar" onclick="volver(${arreglosVariables[4][i]});">
+                <ion-icon name="pricetags-outline" class="icon"></ion-icon>
+                Volver al producto
+              </button>
             </div>
           </div>
         </div>`;
@@ -61,4 +64,3 @@ window.onload = function () {
     document.querySelector('.listaCarrito').innerHTML = body;
   }
 } 
-

@@ -332,6 +332,25 @@
         <div class="listaCarrito">
 
         </div>
+
+        <div class="containerTotal">
+
+          <h4>Total</h4>
+          <h2><span id="total">$10000,00</span></h2>
+
+          <div class="botones">
+            <button type="button" class="eliminar" onclick="eliminarTodo();">
+              <ion-icon name="trash-outline" class="icon"></ion-icon>
+              Vaciar carrito
+            </button>
+
+            <button type="button" class="comprar" onclick="continuar();">
+              <ion-icon name="bag-check-outline" class="icon"></ion-icon>
+              Continuar
+            </button>
+          </div>
+
+        </div>
       </div>
     </article>
   </section>

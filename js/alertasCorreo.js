@@ -16,14 +16,11 @@ formulario.addEventListener('submit', function(e){
             alert("El correo no se encuentra registrado en el sistema.");
         }else if(data==='correoInvalido'){
             alert("Por favor inserte un correo válido");
+        }else if(data==='correoNo'){
+            alert("No se pudo enviar el correo");
         }else{
             alert('Se ha enviado un correo electrónico con las instrucciones para la recuperación de tu contraseña. Por favor, verifica la información enviada.');
+            location.href="recuperarContraseña.php";
         }
-        /*else if(data==='empleado'){
-            alert("Empleado: recuperar contra");
-        }else if(data==='cliente'){
-            alert("Cliente: recuperar contra");
-        }*/
-        
     })
 })
