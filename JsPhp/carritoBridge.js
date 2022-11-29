@@ -42,7 +42,7 @@ window.onload = function () {
 
               <div class="organizador">
                 <h4 class="cantidad">Cantidad</h4>
-                <input type="number" name="cajaCantidad" id="cajaCantidad" min="1" max="99" value="${arreglosVariables[3][i]}">
+                <input type="number" name="cajaCantidad" id="cajaCantidad${arreglosVariables[4][i]}" min="1" max="99" value="${arreglosVariables[3][i]}" onclick="alterarCantidad(${arreglosVariables[4][i]}); readonly">
               </div>
               
             </div>
