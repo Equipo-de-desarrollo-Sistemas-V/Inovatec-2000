@@ -85,6 +85,5 @@ function alterarCantidad(id){
 }
 
 function continuar(){
-
   window.location.href = "datos_venta.php";
 }
