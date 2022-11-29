@@ -1,6 +1,6 @@
 <?php
-    $producto_carrito = $_POST['auxCanti'];
-    $cantidad_carrito = $_POST['auxProd'];
+    $producto_carrito = $_POST['auxProd'];
+    $cantidad_carrito = $_POST['auxCanti'];
 
     //Obtencion del usuario logeado
     error_reporting(0);
@@ -11,25 +11,47 @@
     $serverName='localhost';
     $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
     $con=sqlsrv_connect($serverName, $connectionInfo);
-    if ($con){
-        //obtengo el arreglo del url de productos para agregar al carrito y su cantidad 
-        $arrProd = (array)json_decode($_GET["item"]);
-        //$producto_carrito=$arrProd[0][0];
-        //$cantidad_carrito=$arrProd[0][1];
 
+    if ($con){
         //Verifico si el producto ya esta agregado al carrito, en caso de ser así actualizo solo la cantidad, en caso contrario agrego el producto a la tabla
-        $query = "SELECT id_producto,cantidad 
+        $query = "SELECT cantidad 
         FROM carritoclientes 
-        WHERE Usuario='$usuario'";
+        WHERE Usuario='$usuario' and id_producto='$producto_carrito'";
         $resultado=sqlsrv_query($con, $query);
-        $cantidad=$row['cantidad'];
+        $row=sqlsrv_fetch_array($resultado);
+        $cant=$row['cantidad'];
+
+        if($cant==''){
+            $query_insert="INSERT INTO carritoclientes 
+            VALUES('$usuario','$producto_carrito',$cantidad_carrito)";
+            $resultado=sqlsrv_query($con, $query_insert);
+            echo json_encode("Producto agregado al carrito");
+
+            
+        }
+        else{
+            $query_update="UPDATE carritoclientes 
+            set cantidad=(cantidad + $cantidad_carrito)
+            where Usuario='$usuario' 
+            and id_producto='$producto_carrito'";
+            $resultado=sqlsrv_query($con, $query_update);
+            echo json_encode("Producto agregado al carrito");
+        }
+        
+
+
+        
+        
+/*
         $band=FALSE;
-        while($row = sqlsrv_fetch_array($resultado)){
+        $conta=0;
+        while($conta = count($cantidad)){
             $producto_clientes=$row('id_producto');
             if ($producto_carrito==$producto_clientes){
                 $band=TRUE;
                 break;
             }
+
         }
         if ($band==TRUE){
             $query_update="UPDATE carritoclientes 
