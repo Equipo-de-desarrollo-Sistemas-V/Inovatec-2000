@@ -30,20 +30,30 @@ function eliminarTodo(){
   console.log("Eliminando todo");
 
   let url = "JsPhp/logCarritoEliminarTodo.php";
+  let form = new FormData();
+  form.append ("usuario", "TchRui");
 
   fetch(url, {
-    method: "GET"
+    method: "POST",
+    body: form
   })
       .then(response => response.json())
       .then(data => fetchEjecuted(data))
       .catch(error => console.log(error));
 
   const fetchEjecuted = (data) => {
-    let size = Object.keys(data).length;
-    let i = 0;
+    let ids = Object.values(data);
+    let size = ids[0].length;
 
-    for(let i = 0; i < size; i++){
-      document.getElementById(data[i]).remove();
+    /* Crea una alerta de si o no que pida confirmar la acción antes de eliminar */
+    let confirmacion = confirm("¿Estás seguro de que quieres eliminar todo?");
+
+    if (confirmacion == true) {
+      for(let i = 0; i < size; i++){
+        eliminar(ids[0][i]);
+      }
+      
     }
+
   }
 }
