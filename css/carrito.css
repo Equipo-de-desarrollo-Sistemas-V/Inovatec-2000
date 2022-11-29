@@ -612,24 +612,19 @@ a{
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-    font-weight: 600;
     font-size: 1.125rem;
     cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-weight: 500;
     width: 175px;
     height: 3.125rem;
     transition: .3s;
-
 }
 
 .comprar:hover{
     background-color: #b24d00;
     font-weight: 700;
-}
-
-.nombreProducto{
-    width: 70%;
 }

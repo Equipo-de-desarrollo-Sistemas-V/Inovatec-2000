@@ -53,7 +53,7 @@ window.onload = function () {
                 Eliminar articulo
               </button>
 
-              <a href="producto_individual.php?item=${arreglosVariables[4][i]}" type="button" class="comprar");">Volver al producto</a>
+              <a href="producto_individual.php?item=${arreglosVariables[4][i]}" type="button" class="comprar"><ion-icon name="pricetags-outline"></ion-icon>Volver al producto</a>
             </div>
           </div>
         </div>`;
