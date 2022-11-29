@@ -344,7 +344,7 @@
               Vaciar carrito
             </button>
 
-            <button type="button" class="comprar" onclick="volver();">
+            <button type="button" class="comprar" onclick="continuar();">
               <ion-icon name="bag-check-outline" class="icon"></ion-icon>
               Continuar
             </button>

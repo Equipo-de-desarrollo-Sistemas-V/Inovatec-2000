@@ -8,7 +8,7 @@
     $cantidad_producto = $_POST['cantidad'];
 
     $resultado = sqlsrv_query($conexion, "UPDATE carritoclientes 
-    SET cantidad='$cantidad'
+    SET cantidad='$cantidad_producto'
     WHERE id_producto = '$id_producto' and usuario = '$usuario'");
 
     /* Verficamos que la consulta se haya realizado de manera correcta */
