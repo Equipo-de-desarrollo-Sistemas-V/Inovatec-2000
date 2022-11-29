@@ -5,7 +5,7 @@ btnbuscar.addEventListener("click", () => {
   console.log(caja.value)
 
   if (caja.value == "") {
-    alert("El campo de busqueda esta vacio")
+    alert("El campo de búsqueda esta vacío")
   }
   else {
     let nueva_direccion = "buscadorResultados.php?item=" + caja.value
