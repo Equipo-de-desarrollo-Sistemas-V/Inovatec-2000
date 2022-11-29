@@ -34,7 +34,7 @@
         /* Recorremos los datos de la consulta que si completan el stock*/
         while($fila = sqlsrv_fetch_array($resultado_carrito, SQLSRV_FETCH_ASSOC)){
             $id_existentes[] = $fila['id_producto'];
-            $cantidad_existentes[] = $fila['carritoclientes.cantidad'];
+            $cantidad_existentes[] = $fila['cantidad'];
         }
 
         /* Recorremos los datos de la consulta donde no se completa el stock*/
