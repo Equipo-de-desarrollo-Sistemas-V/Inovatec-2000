@@ -35,13 +35,13 @@
             <div class="card-login">
                 <form id="formulario">
                     <h2>RECUPERAR CONTRASEÑA</h2>
-                    <p class="subcabecera">Ingresemos tu <span>correo</span> para enviarte un <span>enlace</span>.</p>
+                    <p align="center" class="subcabecera">Ingresemos tu <span>correo</span> para enviarte un <span>código de verificación</span>.</p>
                     <!-- Caja para el email -->
                     <div class="input-group">
                         <input type="email" name="email" id="email" required class="input">
                         <label for="email" class="input-label">Correo electrónico</label>
                     </div>
-                    <input type="submit" value="Enviar ->" class="btn-login">
+                    <input type="submit" value="Enviar" class="btn-login">
                 </form>
             </div>
         </article>

@@ -53,7 +53,10 @@ window.onload = function () {
                 Eliminar articulo
               </button>
 
-              <a href="producto_individual.php?item=${arreglosVariables[4][i]}" type="button" class="comprar");">Volver al producto</a>
+              <button type="button" class="comprar" onclick="volver(${arreglosVariables[4][i]});">
+                <ion-icon name="pricetags-outline" class="icon"></ion-icon>
+                Volver al producto
+              </button>
             </div>
           </div>
         </div>`;
@@ -61,4 +64,3 @@ window.onload = function () {
     document.querySelector('.listaCarrito').innerHTML = body;
   }
 } 
-

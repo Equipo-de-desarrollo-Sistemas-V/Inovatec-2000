@@ -14,10 +14,46 @@ function eliminar(id) {
     body: form
   })
       .then(response => response.json())
-      .then(data => arrays(data))
+      .then(data => fetchEjecuted(data))
       .catch(error => console.log(error));
 
-  const arrays = (data) => {
+  const fetchEjecuted = (data) => {
     console.log(data);
+  }
+}
+
+function volver(id){
+  window.location.href = "producto_individual.php?item=" + id
+}
+
+function eliminarTodo(){
+  console.log("Eliminando todo");
+
+  let url = "JsPhp/logCarritoEliminarTodo.php";
+  let form = new FormData();
+  form.append ("usuario", "TchRui");
+
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+      .then(response => response.json())
+      .then(data => fetchEjecuted(data))
+      .catch(error => console.log(error));
+
+  const fetchEjecuted = (data) => {
+    let ids = Object.values(data);
+    let size = ids[0].length;
+
+    /* Crea una alerta de si o no que pida confirmar la acción antes de eliminar */
+    let confirmacion = confirm("¿Estás seguro de que quieres eliminar todo?");
+
+    if (confirmacion == true) {
+      for(let i = 0; i < size; i++){
+        eliminar(ids[0][i]);
+      }
+      
+    }
+
   }
 }
