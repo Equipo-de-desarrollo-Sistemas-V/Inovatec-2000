@@ -5,10 +5,18 @@
 
     include '../conexiones.php';
 
-    $resultado_carrito = sqlsrv_query($conexion, "SELECT carritoclientes.id_producto, carritoclientes.cantidad, Inventario_suc.cantidad
+    $resultado_inventario = sqlsrv_query($conexion, "SELECT carritoclientes.id_producto, Inventario_suc.cantidad
     FROM $tabla_carrito, $tabla_productos, $tabla_inventario
     WHERE carritoclientes.id_producto = Productos.id_producto and
-    Productos.id_producto = Inventario_suc.id_producto 
+    Productos.id_producto = Inventario_suc.id_producto and 
+    Inventario_suc.cantidad<carritoclientes.cantidad
+    Usuario='$usuario'");
+    
+    $resultado_carrito = sqlsrv_query($conexion, "SELECT carritoclientes.id_producto, carritoclientes.cantidad
+    FROM $tabla_carrito, $tabla_productos, $tabla_inventario
+    WHERE carritoclientes.id_producto = Productos.id_producto and
+    Productos.id_producto = Inventario_suc.id_producto and 
+    Inventario_suc.cantidad>=carritoclientes.cantidad
     Usuario='$usuario'");
 
 
@@ -23,14 +31,15 @@
         $cantidad_existentes = array();
         $id_no_existentes = array();
 
-        /* Recorremos los datos de la consulta */
+        /* Recorremos los datos de la consulta que si completan el stock*/
         while($fila = sqlsrv_fetch_array($resultado_carrito, SQLSRV_FETCH_ASSOC)){
-            if($fila['Inventario_suc.cantidad']>=$fila['carritoclientes.cantidad']){
-                $id_existentes[] = $fila['id_producto'];
-                $cantidad_existentes[] = $fila['carritoclientes.cantidad'];
-            }else{
+            $id_existentes[] = $fila['id_producto'];
+            $cantidad_existentes[] = $fila['carritoclientes.cantidad'];
+        }
+
+        /* Recorremos los datos de la consulta donde no se completa el stock*/
+        while($fila = sqlsrv_fetch_array($resultado_inventario, SQLSRV_FETCH_ASSOC)){
                 $id_no_existentes[] = $fila['id_producto'];
-            }
         }
 
         /* Creamos un arreglo para almacenar los datos de la consulta */
