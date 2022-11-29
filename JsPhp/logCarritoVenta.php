@@ -9,14 +9,14 @@
     FROM $tabla_carrito, $tabla_productos, $tabla_inventario
     WHERE carritoclientes.id_producto = Productos.id_producto and
     Productos.id_producto = Inventario_suc.id_producto and 
-    Inventario_suc.cantidad<carritoclientes.cantidad
+    Inventario_suc.cantidad<carritoclientes.cantidad and
     Usuario='$usuario'");
     
     $resultado_carrito = sqlsrv_query($conexion, "SELECT carritoclientes.id_producto, carritoclientes.cantidad
     FROM $tabla_carrito, $tabla_productos, $tabla_inventario
     WHERE carritoclientes.id_producto = Productos.id_producto and
     Productos.id_producto = Inventario_suc.id_producto and 
-    Inventario_suc.cantidad>=carritoclientes.cantidad
+    Inventario_suc.cantidad>=carritoclientes.cantidad and
     Usuario='$usuario'");
 
 
