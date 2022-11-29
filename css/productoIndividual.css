@@ -89,7 +89,7 @@ header {
     display: none;
 }
 
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 800px) {
     .menu {
         width: 100%;
         max-height: 0;
@@ -115,6 +115,8 @@ header {
     #toggler:checked~.menu {
         max-height: 100%;
     }
+
+    
 }
 
 
@@ -368,6 +370,15 @@ header {
     color: #000;
     margin-top: -5px;
 }
+@media (max-width:850px) {
+    .contenedor{
+        max-width: 100%;
+        margin: 25px 30px 0px 30px;
+    }
+    .imagen_producto{
+        padding: 0%;
+    }
+}
 
 @media (max-width: 415px) {
     .contenedor-titulos{
@@ -383,15 +394,19 @@ header {
     }
 
     p {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
-        color: #000;
+        color: rgb(9, 9, 9);
         margin-top: -5px;
     }
 
     .contenedor {
+        display: flex;
         margin-left: 10px;
         width: 370px;
+    }
+    .imagen_producto{
+        padding: 0%;
     }
 
     .leyenda-1 {
