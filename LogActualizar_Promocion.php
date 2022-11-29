@@ -132,7 +132,7 @@ $ruta=$row["ruta"];
 			<article>
 				<h1 align="center">Modificar promoción</h1>
 				<br>
-				<form action="LOGUpdate_Promociones.php" class="formularios" method="post" enctype="multipart/form-data" >
+				<form action="LOGUpdate_Promociones.php" class="formularios" method="post" enctype="multipart/form-data" id=formulario>
 					<div class="formulario_grupo-input">
 						<label for="idProducto" class="formulario_label">Id producto</label>
 						<div class="formulario_grupo-input">
@@ -168,7 +168,7 @@ $ruta=$row["ruta"];
 
 				</form>
 			</article>
-			<!-- <script src="js/validAltaProductos.js"></script> -->
+			<script src="js/validEditarProm.js"></script> -->
 		</div>
 	</main>
 
