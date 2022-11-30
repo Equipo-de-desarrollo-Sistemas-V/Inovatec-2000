@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/resetPassword.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -41,13 +42,38 @@
                         <input type="email" name="email" id="email" required class="input">
                         <label for="email" class="input-label">Correo electrónico</label>
                     </div>
-                    <input type="submit" value="Enviar" class="btn-login">
+                    <input type="button" value="Enviar" class="btn-login" onclick="datosCorreo();">
                 </form>
             </div>
         </article>
-        <script src="js/alertasCorreo.js"></script>
     </section>
     <script src="js/linkHome.js"></script>
 </body>
 
 </html>
+
+<script>
+    function datosCorreo(){
+        var emailVal=document.getElementById("email").value;
+        if (emailVal==""){
+            alert("Ingresa un correo.")
+        }else{
+            $.ajax({
+                type: "POST",
+                url: "logEnviarCorreo.php",
+                dataType: "json",
+                data: {"emailVal":emailVal},
+                success: function(data){
+                    if (data=='Enviado'){
+                        alert('Se ha enviado un correo electrónico con las instrucciones para la recuperación de tu contraseña. Por favor, verifica la información enviada.')
+                        //mandar a llamar la otra intefaz
+                        //location.href="recuperarContraseña.php";
+                    }else{
+                        alert(data)  
+                    }
+                    
+                }
+            });  
+        }
+    }
+</script>
