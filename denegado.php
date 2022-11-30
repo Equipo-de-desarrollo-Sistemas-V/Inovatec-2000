@@ -66,7 +66,7 @@ $resultados_proveedores = sqlsrv_query($con, $query_proveedores);
 			</div>
 			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
-				<li><a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a></li>
+				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesion</a>
 			</div>
 		</div>
 
