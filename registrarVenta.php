@@ -112,8 +112,16 @@ function registrar($id_producto, $nombreProd, $id_sucrusal, $cantiCompra, $preci
     date_default_timezone_set("America/Mexico_City");
     $fechaActual=date("Y-m-d");
 
-    $totalVenta=$precioVenta*$cantiCompra;
-    $desc=0;
+    //obtengo el descuento
+    $query= "SELECT descuento
+    FROM Productos 
+    where id_producto ='".$id_producto."'";
+      $resultado=sqlsrv_query($con, $query);
+      $row = sqlsrv_fetch_array($resultado);
+      $auxDesc=$row["descuento"];
+    $desc=(($precioVenta*$auxDesc)/100);
+
+    $totalVenta=($precioVenta-$desc)*$cantiCompra;
     $idVenta=strval($ultimaVenta+1)."-".strval($totProd)."-".strval($totSuc);
     //echo "<br> ID DE VENTA", $idVenta, "<br>";
     $query = "INSERT INTO ventas

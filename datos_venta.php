@@ -491,7 +491,7 @@
                 <td> <b>Precio unitario $</b> </td>
                 <td> <b>Cantidad</b> </td>
                 <td> <b>Subtotal $</b> </td>
-                <td> <b>Descuento $</b> </td>
+                <td> <b>Descuento unitario $</b> </td>
                 <td> <b>Total $</b> </td>
               </tr>
             </thead>
@@ -503,16 +503,17 @@
                   for($i=0;$i<$numPro;$i++) {
                       $idProd=$arrProd[$i][0];                        //id del producto
                       $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
-                      $query= "SELECT nombre, precio_ven
+                      $query= "SELECT nombre, precio_ven, descuento
                       FROM Productos 
                       where id_producto ='".$idProd."'";
                         $resultado=sqlsrv_query($con, $query);
                         $row = sqlsrv_fetch_array($resultado);
                         $nomProd=$row['nombre'];                      //nombre del prodcuto
                         $precio=substr($row['precio_ven'],0,-2);      //precio de venta
-                        $descuento=0;                                 // descuento en pesos
+                        $auxDescuento=$row['descuento']; 
+                      $descuento=(($precio*$auxDescuento)/100);                                // descuento en pesos
                       $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
-                      $totProd=$subT-$descuento;                    //Total del producto
+                      $totProd=$subT-($descuento*$cantiProd);                    //Total del producto
                       $totDeCompra+=$totProd;                       //Acumulativo para el total de la compra
                         echo '<tr>
                           <td>'.$nomProd.'</td>
@@ -632,7 +633,7 @@
         } else {
 
           arreglo[longi] = new Array(1);
-          arreglo[1][0] = auxNumTar;
+          arreglo[longi][0] = auxNumTar;
           location.href = "registrarVenta.php?item=" + JSON.stringify(arreglo);
 
           location.href = "ventana_confirmacion.php?item=" + JSON.stringify(arreglo2);
