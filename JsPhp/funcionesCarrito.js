@@ -19,6 +19,7 @@ function eliminar(id) {
 
   const fetchEjecuted = (data) => {
     console.log(data);
+    actualizarTotal();
   }
 }
 
@@ -52,7 +53,8 @@ function eliminarTodo(){
       for(let i = 0; i < size; i++){
         eliminar(ids[0][i]);
       }
-
+      
+      document.getElementById("total").innerHTML = "$0.00";
     }
 
   }
@@ -78,11 +80,12 @@ function alterarCantidad(id){
       .catch(error => console.log(error));
 
   const fetchEjecuted = (data) => {
+    actualizarTotal();
   }
 }
 
 function actualizarTotal(){
-  let url = "JsPhp/logObtenerPrecioCantidad.php"
+  let url = "JsPhp/logCarritoSubTotal.php"
 
   let form = new FormData()
   form.append("Usuario", "TchRui")
@@ -96,7 +99,22 @@ function actualizarTotal(){
     .catch(error => console.log(error));
 
     const fetchEjecuted = (data) =>{
-      
+      /* Separa data en sus dos arreglos y multiplicalos entre si */
+      let arrays = Object.values(data);
+      let precios = arrays[0];
+      let cantidades = arrays[1];
+
+      let size = precios.length;
+      let total = 0;
+
+      for(let i = 0; i < size; i++){
+        total += (precios[i] * cantidades[i]);
+      }
+
+      total = total.toFixed(2);
+      /* Actualiza el total */
+      document.getElementById("total").innerHTML = total;
+
     }
 }
 
