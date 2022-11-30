@@ -30,14 +30,33 @@ class Producto{
                     //include_once('lista_productos.php');
                     header("Location:../Inovatec-2000/lista_productos.php");
                 }else{
-                    $querry = "DELETE FROM imagenes
-                    WHERE id_prod = '$id'";
-                    $stm = sqlsrv_query($con, $querry);
-                    $querry = "DELETE FROM Productos
-                    WHERE id_producto = '$id'";
-                    $stm = sqlsrv_query($con, $querry);
-                    echo"<script>alert('Producto eliminado')</script>";
-                    header("Location:lista_productos.php");
+                    
+                    $query="SELECT COUNT(*) as total
+                    from Productos
+                    where id_producto='$id' and
+                    descuento!=0";
+
+                    $resultado=sqlsrv_query($con, $query);
+                    $row = sqlsrv_fetch_array($resultado); 
+                    $totProm=$row["x"];
+                    if ($totProm==1){
+                        $querry = "UPDATE Productos
+                        SET Estado = 'No surtiendo'
+                        WHERE id_producto = '$id'";
+                        echo"<script>alert('Actualmente el producto se encuentra en una promoción')</script>";
+                        header("Location:../Inovatec-2000/lista_productos.php");
+                    }else{
+                        $querry = "DELETE FROM imagenes
+                        WHERE id_prod = '$id'";
+                        $stm = sqlsrv_query($con, $querry);
+
+                        $querry = "DELETE FROM Productos
+                        WHERE id_producto = '$id'";
+                        $stm = sqlsrv_query($con, $querry);
+                        
+                        echo"<script>alert('Producto eliminado')</script>";
+                        header("Location:lista_productos.php");
+                    }  
                 }
 
 
