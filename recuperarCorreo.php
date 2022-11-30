@@ -64,14 +64,14 @@
                 dataType: "json",
                 data: {"emailVal":emailVal},
                 success: function(data){
+                    console.log(data)
                     if (data=='Enviado'){
                         alert('Se ha enviado un correo electrónico con las instrucciones para la recuperación de tu contraseña. Por favor, verifica la información enviada.')
-                        //mandar a llamar la otra intefaz
-                        //location.href="recuperarContraseña.php";
+                        //mandar a llamar a la otra interfaz
+                        location.href="recuperarContraseña.php?email="+emailVal;
                     }else{
                         alert(data)  
                     }
-                    
                 }
             });  
         }
