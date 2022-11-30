@@ -9,12 +9,13 @@ if($con){
     //verifico que el correo pertenezca a un empleado o cliente
     $query= "SELECT email 
         FROM Persona 
-        where email ='".$correo_destino."'";
+        where email ='$correo_destino'";
     $resultado=sqlsrv_query( $con, $query);
     $arreResul = sqlsrv_fetch_array($resultado);  
-
     if (empty($arreResul)){         //si no encontro coincidencias en clientes, se pasa a empleados
-        $query= "SELECT email FROM Empleados where email ='".$correo_destino."'";
+        $query= "SELECT email 
+        FROM Empleados 
+        where email ='$correo_destino'";
         $resultado=sqlsrv_query($con, $query);
         $arreResul = sqlsrv_fetch_array( $resultado);
 
@@ -23,14 +24,13 @@ if($con){
             echo json_encode('El correo no se encuentra registrado en el sistema.');
         }else{
             sqlsrv_close($con);;
-            crearEmail($correo_destino);
+            //crearEmail($correo_destino);
         }
     }else{
         sqlsrv_close($con);
-            echo json_encode('no jala');
-        /*
+        $msj=crearEmail($correo_destino);
+        echo json_encode($msj);
         
-        crearEmail($correo_destino);*/
     }
 }else{
     sqlsrv_close($con);
@@ -43,11 +43,12 @@ function crearEmail($correo_destino){
     // $destinatario= "tetillamas@gmail.com";
     $destinatario=$correo_destino;
     $asunto = "Código para recuperar tu contraseña";
-    $codigo=random_int(1000,9999);
+    $codigo=random_int(1000,99999);
     $cuerpo="Ingresa el siguiente código para recuperar tu contraseña. ".$codigo;
-    insertarCodigo($codigo, $correo_destino);
 
-    MensajeEmail($remitente,$destinatario,$cuerpo,$asunto);
+    $msj=insertarCodigo($codigo, $correo_destino);
+    $msj=MensajeEmail($remitente,$destinatario,$cuerpo,$asunto);
+    return $msj;
 }
 
 function MensajeEmail($remitente,$destinatario,$cuerpo, $asunto){
@@ -60,12 +61,11 @@ function MensajeEmail($remitente,$destinatario,$cuerpo, $asunto){
     //$resultado = mail($destinatario,$asunto,$cuerpo, $headers);
     $resultado=true;
     if($resultado){
-        echo json_encode('Enviado');
+        return "Enviado";
     }else{
-        echo json_encode('No se pudo enviar el correo. Inténtelo más tarde.');
+        return "No se pudo enviar el correo. Inténtelo más tarde.";
     }   
 }
-
 
 function insertarCodigo($codigo, $correo_destino){
     $servername = "localhost";
@@ -73,27 +73,27 @@ function insertarCodigo($codigo, $correo_destino){
     $con = sqlsrv_connect($servername, $info);
 
     if($con){
+        $usuario="Mari";
         $query="SELECT COUNT(*) as total
         FROM recuperacion 
-        where Usuario ='$correo_destino'";
+        where Usuario ='$usuario'";
         $resultado=sqlsrv_query($con, $query);
         $row = sqlsrv_fetch_array( $resultado);
         if ($row['total']==0){
-            echo json_encode("aaaaaaaaaaaaa");
-            /*"INSERT INTO recuperacion
-            VALUES('Naye', '$codigo')";
-            $resultado=sqlsrv_query($con, $query);*/
+            $query="INSERT INTO recuperacion
+            VALUES('$usuario', '$codigo')";
+            $resultado=sqlsrv_query($con, $query);
         }else{
             $updateQuery ="UPDATE recuperacion 
-            SET Codido='$codigo'
-            WHERE Usuario='$correo_destino'";
+            SET Codigo='$codigo'
+            WHERE Usuario='$usuario'";
             $resultado = sqlsrv_query($con, $updateQuery);
         }
         sqlsrv_close($con);
 
     }else{
         sqlsrv_close($con);
-        echo json_encode("conR");
+        return "Fallo al conectar a la base de datos.";
 }
 }
 

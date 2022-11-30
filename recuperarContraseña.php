@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/resetPassword.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -47,18 +48,51 @@
             </div>
 
             <div class="input-group-2">
-              <input type="password" name="confirmar-contraseña" id="confirmar-contraseña" required class="input"
+              <input type="password" name="confirmarContraseña" id="confirmarContraseña" required class="input"
                 autocomplete="off">
-              <label for="confirmar-contraseña" class="input-label">Confirmar contraseña</label>
+              <label for="confirmarContraseña" class="input-label">Confirmar contraseña</label>
             </div>
+            <input type="hidden" name="correo" id="correo" class="input">
           </div>
-            <input type="submit" value="Siguiente ->" class="btn-login">
+            <input type="button" value="Siguiente ->" class="btn-login" onclick="restablecerContra();">
         </form>
       </div>
     </article>
-
-    <script src="js/alertaContraseña.js"></script>
   </section>
   <script src="js/linkHome.js"></script>
 </body>
 </html>
+
+<?php
+$email=$_GET['email'];
+echo "<script>
+  let correo=$email;
+</script>";
+?>
+
+<script>
+  document.getElementById('correo').value=correo;
+  function restablecerContra(){
+    var contraseña=document.getElementById("contraseña").value;
+    var correo=document.getElementById("correo").value;
+    $.ajax({
+      type: "POST",
+      url: "logRecuperarContra.php",
+      dataType: "json",
+      data: {"contraseña":contraseña, "correo":correo},
+      success: function(data){
+        console.log(data)
+        if (data=='Enviado'){
+          alert('Se ha enviado un correo electrónico con las instrucciones para la recuperación de tu contraseña. Por favor, verifica la información enviada.')
+          //mandar a llamar a la otra interfaz
+          location.href="recuperarContraseña.php?email="+emailVal;
+        }else{
+          alert(data)  
+        }
+      }
+    }); 
+
+  }
+
+
+</script>
