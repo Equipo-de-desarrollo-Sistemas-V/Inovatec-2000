@@ -350,7 +350,6 @@ $sesion_e = $_SESSION["Usuario"];
               <p id="nombre">Nombre del producto</p>
 
                 <img src="" alt=""  id="imagen" class="imagen-producto" height="300" width="300">
-                <!-- <img src="imagenes/computadora1.png" alt="" class="imagen-producto" height="300"> -->
 
             </div>
 
@@ -369,21 +368,7 @@ $sesion_e = $_SESSION["Usuario"];
                   <input type="number" name="cantidadE" id="cantidadE" class="input-cantidad" value="1" min="1" required>
                 </div>
                 <br>
-                
-                <!-- <a align="center" type="submit" name="agregar" id="agregar" value="Agregar" class="btn" disabled>
-                  <i class="fa-solid fa-cart-shopping"></i>
-                  Agregar al carrito
-                </a> -->
                 <br>
-                <!-- <label align="center" onclick="alert('Proveedor actualizado con éxito')" name="comprar" id="comprar" class="btn">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  Comprar
-                </label>   -->
-
-                <!-- <a align="center" type="button" id='comprar' name='comprar' value="Comprar" onclick="datos();" class="btn">
-                <i class="fa-solid fa-bag-shopping"></i>
-                Comprar
-                </a> -->
                 <input type="button" id='agregar' name='agregar' value="Agregar al carrito" onclick="datos_carrito();" class="btn">
                 <br>
 
@@ -476,12 +461,7 @@ $sesion_e = $_SESSION["Usuario"];
 
     $precioProd= "$ ".substr($auxPrecio, 0, -2);
 
-//$cadena = "Esta es la cadena de ejemplo 
-//para sustituir un caracter";
-//echo $cadena;
-//$resultado = str_replace("\n", ",", $cadena);
 $resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
-//echo "La cadena resultante es: " . $resultado;
     
     echo "
     <script>
@@ -521,10 +501,12 @@ $resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
     if (canti=="" || canti%1!=0 || canti<=0){
       cantidadE.style.border = "3px solid red";
       comprar.disabled=true;
+      agregar.disabled=true;
       banCanti=false
     }else{
       cantidadE.removeAttribute("style");
       comprar.disabled=false;
+      agregar.disabled=false;
     }
   }
 
@@ -560,13 +542,6 @@ $resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
         }else{
           document.getElementById('auxCanti').value=canti;
           document.getElementById('auxProd').value=auxId;
-          //creo un arreglo para mandar el prodcuto y su cantidad
-          /*var arreProduc = new Array(1);
-          arreProduc[0] = new Array(2);
-          arreProduc[0][0] = auxId;
-          arreProduc[0][1] = canti;
-          let envio= arreProduc;
-          location.href="datos_carrito.php?item="+JSON.stringify(envio);*/
 
           var auxCanti=document.getElementById("auxCanti").value;
           var auxProd=document.getElementById("auxProd").value;

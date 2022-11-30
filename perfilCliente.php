@@ -409,25 +409,6 @@ else{
                     var respuesta=confirm("¿Estas seguro que deseas eliminar tu cuenta?");
                     if(respuesta==true){
                         location.href="eliminarCuenta.php";
-                         /*
-                        $.ajax({
-                            type: "POST",
-                            url: "eliminarCuenta.php",
-                            dataType: "json",
-                            data: {"deletePassword":passwordE},
-                                success: function(data){
-                                    if(data=="Cuenta eliminada"){
-                                        
-                                        
-                                    }else{
-                                        alert("No se pudo eliminar la cuenta, intente de nuevo.")
-                                    }
-                                    
-                            }
-                        }); */
-                        //location.href="eliminarCuenta.php";
-                        // location.href="eliminarCuenta.php";
-                        // location.href="cerrar.php";
                     }else{
                         document.getElementById("deletePassword").value = "";
                         document.getElementById("confirmDeletePassword").value = "";

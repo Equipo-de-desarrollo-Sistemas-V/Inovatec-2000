@@ -13,7 +13,16 @@
     $con=sqlsrv_connect($serverName, $connectionInfo);
 
     if ($con){
-        //Verifico si el producto ya esta agregado al carrito, en caso de ser así actualizo solo la cantidad, en caso contrario agrego el producto a la tabla
+        $query = "SELECT COUNT(*) as limite 
+        FROM carritoclientes 
+        WHERE Usuario='$usuario'";
+        $resultado=sqlsrv_query($con, $query);
+        $row=sqlsrv_fetch_array($resultado);
+        $totProd=$row['limite'];
+        if ($totProd>24){
+            echo json_encode("Has llegado al límite de productos permitidos en carrito. Por favor vacía el carrito.");
+        }else{
+            //Verifico si el producto ya esta agregado al carrito, en caso de ser así actualizo solo la cantidad, en caso contrario agrego el producto a la tabla
         $query = "SELECT cantidad 
         FROM carritoclientes 
         WHERE Usuario='$usuario' and id_producto='$producto_carrito'";
@@ -37,51 +46,10 @@
             $resultado=sqlsrv_query($con, $query_update);
             echo json_encode("Producto agregado al carrito");
         }
-        
-
-
-        
-        
-/*
-        $band=FALSE;
-        $conta=0;
-        while($conta = count($cantidad)){
-            $producto_clientes=$row('id_producto');
-            if ($producto_carrito==$producto_clientes){
-                $band=TRUE;
-                break;
-            }
-
-        }
-        if ($band==TRUE){
-            $query_update="UPDATE carritoclientes 
-            set cantidad=($cantidad + $cantidad_carrito)
-            where Usuario='$usuario' 
-            and id_producto='$producto_carrito'";
-            $resultado=sqlsrv_query($con, $query_update);
-            echo json_encode("Producto agregado al carrito");
-        }
-        else{
-            $cantidad=$arrProd[0][1];
-            $query_insert="INSERT INTO carritoclientes 
-            VALUES('$usuario','$producto_carrito',$cantidad_carrito)";
-            $resultado=sqlsrv_query($con, $query_insert);
-            echo json_encode("Producto agregado al carrito");
         }
 
-        //actualizo el stock de inventario (no se si se tenga que actualizar el stock en inventario, por eso lo pongo en comentarios xd)
-        /*$query="SELECT cantidad, id_sucursal
-        from Inventario_suc
-        where id_producto='$producto_carrito' order by cantidad";
-        $resultado=sqlsrv_query($con, $query);
-        $row = sqlsrv_fetch_array($resultado);
-        $sucur=$row['id_sucursal'];
 
-        $query_update="UPDATE Inventario_suc
-        SET cantidad=(cantidad-$cantidad_carrito)
-        WHERE id_producto='$producto_carrito' and id_sucursal='$sucur'";
-        $resultado=sqlsrv_query($con, $query_update);
-        */
+
         
     }
     else{
