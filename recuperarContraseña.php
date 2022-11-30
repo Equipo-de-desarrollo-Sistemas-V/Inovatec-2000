@@ -1,3 +1,7 @@
+<?php
+$email=$_GET['email'];
+?>
+
 <!DOCTYPE html>
 <!-- Interfaz para RECUPERAR CONTRASEÑA -->
 <html lang="es">
@@ -41,57 +45,67 @@
           <p class="subcabecera">Ingresa la nueva <span>contraseña</span>. Guardala muy <span>bien</span>.</p>
 
           <div class="passwords">
-            <!-- Caja para el nombre -->
             <div class="input-group">
-              <input type="password" name="contraseña" id="contraseña" required class="input">
+              <input type="input" name="codigoS" id="codigoS" required minlength="4" maxlength="5" class="input">
+              <label for="codigo" class="input-label">Código</label>
+            </div>
+            <div class="input-group">
+              <input type="password" name="contraseñaS" id="contraseñaS" required minlength="8" class="input">
               <label for="contraseña" class="input-label">Contraseña</label>
             </div>
-
             <div class="input-group-2">
-              <input type="password" name="confirmarContraseña" id="confirmarContraseña" required class="input"
+              <input type="password" name="confirmarContraseña" id="confirmarContraseña" required minlength="8" class="input"
                 autocomplete="off">
               <label for="confirmarContraseña" class="input-label">Confirmar contraseña</label>
             </div>
-            <input type="hidden" name="correo" id="correo" class="input">
+            <input type="hidden" name="correo" id="correo" class="input" value="<?php echo $email;?>">
           </div>
-            <input type="button" value="Siguiente ->" class="btn-login" onclick="restablecerContra();">
+            <input type="button"  name="actualizar" id="actualizar" value="Actualizar" class="btn-login" onclick="restablecerContra();">
         </form>
       </div>
     </article>
   </section>
+  <script src="js/validRecuContra.js"></script>
   <script src="js/linkHome.js"></script>
 </body>
 </html>
 
-<?php
-$email=$_GET['email'];
-echo "<script>
-  let correo=$email;
-</script>";
-?>
-
 <script>
-  document.getElementById('correo').value=correo;
   function restablecerContra(){
-    var contraseña=document.getElementById("contraseña").value;
+    var codigo=document.getElementById("codigoS").value;
+    var contraseña=document.getElementById("contraseñaS").value;
+    var confirmarContraseña=document.getElementById("confirmarContraseña").value;
     var correo=document.getElementById("correo").value;
-    $.ajax({
-      type: "POST",
-      url: "logRecuperarContra.php",
-      dataType: "json",
-      data: {"contraseña":contraseña, "correo":correo},
-      success: function(data){
-        console.log(data)
-        if (data=='Enviado'){
-          alert('Se ha enviado un correo electrónico con las instrucciones para la recuperación de tu contraseña. Por favor, verifica la información enviada.')
-          //mandar a llamar a la otra interfaz
-          location.href="recuperarContraseña.php?email="+emailVal;
-        }else{
-          alert(data)  
-        }
+    if (codigo==""){
+      codigoS.style.border = "3px solid red";
+	  }else{
+      codigoS.removeAttribute("style");
+      if(contraseña==""){
+        contraseñaS.style.border = "3px solid red";
+      }else{
+        contraseñaS.removeAttribute("style");
       }
-    }); 
+    }
 
+    
+    if (contraseña!="" && confirmarContraseña!="" &&codigo!=""){
+      $.ajax({
+        type: "POST",
+        url: "logRecuperarContra.php",
+        dataType: "json",
+        data: {"codigo":codigo, "contraseña":contraseña, "correo":correo},
+        success: function(data){
+          console.log(data)
+          if (data=='Actualizado'){
+            alert('Contraseña actualizada, ya puede iniciar sesión.')
+            //mandar a llamar a la otra interfaz
+            location.href="login.php";
+          }else{
+            alert(data)  
+          }
+        }
+      }); 
+    }
   }
 
 
