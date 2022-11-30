@@ -1,5 +1,3 @@
-
-
 function eliminar(id) {
   console.log("El id es: " + id);
 
@@ -80,10 +78,83 @@ function alterarCantidad(id){
       .catch(error => console.log(error));
 
   const fetchEjecuted = (data) => {
-    console.log(data);
   }
 }
 
+function actualizarTotal(){
+  let url = "JsPhp/logObtenerPrecioCantidad.php"
+
+  let form = new FormData()
+  form.append("Usuario", "TchRui")
+
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+    .then(response => response.json())
+    .then(data => fetchEjecuted(data))
+    .catch(error => console.log(error));
+
+    const fetchEjecuted = (data) =>{
+      
+    }
+}
+
 function continuar(){
-  window.location.href = "datos_venta.php";
+  let url = "JsPhp/logCarritoVenta.php";
+
+  let form = new FormData();
+  form.append("Usuario", "TchRui");
+
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+      .then(response => response.json())
+      .then(data => fetchEjecuted(data))
+      .catch(error => console.log(error));
+
+  const fetchEjecuted = (data) => {
+     /* Guarda los elementos de data en diferentes arreglos */
+      let arrays = Object.values(data);
+      let idExistentes = arrays[0];
+      let cantidades = arrays[1];
+      let id_NoExistentes = arrays[2];
+
+      /* Obtener el valor de id_no existentes */
+      let size_noExistentes = id_NoExistentes.length;
+
+      if(size_noExistentes > 0){
+
+        for(let i = 0; i < size_noExistentes; i++){
+          const clase = ".valorPrecio" + id_NoExistentes[i];
+          const valor = document.querySelector(clase);
+          valor.innerHTML = "SIN EXISTENCIAS";
+          valor.style.color = "red";
+          valor.style.textAlign = "center"
+        }
+        alert("Algunos de los productos que has seleccionado no están disponibles en este momento");
+      }
+      else{
+        let nuevaCadena = "["
+        let size_existentes = idExistentes.length;
+
+        for(let i = 0; i < size_existentes; i++){
+
+          if(i <= size_existentes - 2){
+            nuevaCadena = nuevaCadena +'['+idExistentes[i]+','+'\"'+cantidades[i]+'\"'+'],'
+
+          }
+          else{
+            nuevaCadena = nuevaCadena +'['+idExistentes[i]+','+'\"'+cantidades[i]+'\"'+']'
+            
+          }
+        }
+
+        nuevaCadena = nuevaCadena + ']'
+
+        /* window.location.href = "datos_venta.php?item=[[60020,\"10\"],[50200,\"5\"],[50350,\"1\"]]"; */
+        window.location.href = "datos_venta.php?item=" + nuevaCadena;
+      }
+  }
 }

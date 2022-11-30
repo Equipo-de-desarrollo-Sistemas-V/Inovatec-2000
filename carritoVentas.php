@@ -26,11 +26,11 @@
     </div>
 
     <ol>
-      <li><a href="sesion_iniciada_Cli.php" class="">Iniciar sesión</a></li>
+      <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
 
       <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
 
-      <li><a href="perfilCliente.php" class="">
+      <li><a href="sesion_iniciada_Per.php" class="">
           <ion-icon name="person-circle-outline" class="icon"></ion-icon>
         </a></li>
 
@@ -336,7 +336,7 @@
         <div class="containerTotal">
 
           <h4>Total</h4>
-          <h2><span id="total">$10000,00</span></h2>
+          <h2><span id="total" class="total"></span></h2>
 
           <div class="botones">
             <button type="button" class="eliminar" onclick="eliminarTodo();">

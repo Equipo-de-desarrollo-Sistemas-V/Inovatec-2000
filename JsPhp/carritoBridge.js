@@ -37,7 +37,7 @@ window.onload = function () {
 
               <div class="organizador">
                 <h4 class="precioIndividual">Precio </h4>
-                <span class="valorPrecio">${arreglosVariables[2][i]}</span>
+                <span class="valorPrecio valorPrecio${arreglosVariables[4][i]}">${arreglosVariables[2][i]}</span>
               </div>
 
               <div class="organizador">
@@ -62,5 +62,23 @@ window.onload = function () {
         </div>`;
     }
     document.querySelector('.listaCarrito').innerHTML = body;
+
+    let precios = Object.values(data)[2];
+    let cantidades = Object.values(data)[3];
+
+    obtenerTotal(precios, cantidades);
   }
 } 
+
+function obtenerTotal(precios,cantidades){
+  let total = 0;
+  for(let i = 0; i < precios.length; i++){
+    total += (precios[i] * cantidades[i]);
+  }
+
+  /* Recorta los decimales del total a 2 */
+  total = total.toFixed(2);
+  
+  const totalFinal = document.getElementById("total");
+  totalFinal.innerHTML = total;
+}
