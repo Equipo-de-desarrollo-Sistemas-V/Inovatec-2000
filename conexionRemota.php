@@ -6,6 +6,8 @@
 
     $conexion = sqlsrv_connect($servidor, array("UID" => $usuario, "PWD" => $contrasena, "Database" => $bd, "CharacterSet" => "UTF-8"));
 
+    array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
+
     if($conexion){
         echo "Conexión establecida.<br />";
     }else{

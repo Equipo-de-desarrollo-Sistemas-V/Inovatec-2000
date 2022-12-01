@@ -1,6 +1,6 @@
 <!-- How to connect SLQSERVERdb -->
 <?php
-    $serverName = "localhost";
+    $serverName = "inovatecserver.database.windows.net";
     $connectionInfo = array( "Database"=>"db", "UID"=>"sa", "PWD"=>"123456");
     $conn = sqlsrv_connect( $serverName, $connectionInfo);
     

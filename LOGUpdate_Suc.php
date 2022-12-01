@@ -6,7 +6,7 @@ class ActPro{
         $estado=$_POST['estado_ah'];
         //echo $id.$mun.$estado;
         
-        $serverName='localhost';
+        $serverName='inovatecserver.database.windows.net';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
         $updateQuery ="UPDATE Sucursal SET ciudad_est=('$mun'),Estado=('$estado') WHERE id_sucursal='$id'";

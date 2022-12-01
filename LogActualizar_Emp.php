@@ -112,8 +112,8 @@ $sesion_i = $_SESSION["nombres"];
 	<main>
 		<?php
 		//echo "Este dato: " . $_GET["item"] . " lo recibo por URL.";
-		$serverName = 'localhost';
-		$connectionInfo = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+		$serverName = 'inovatecserver.database.windows.net';
+		$connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 		$conn_sis = sqlsrv_connect($serverName, $connectionInfo);
 		$id = $_GET["item"];
 		$query = "SELECT * FROM Empleados where id_empleado='$id'";
@@ -203,8 +203,8 @@ $sesion_i = $_SESSION["nombres"];
 						<div class="formulario_grupo-input">
 							<select type="text" name="idSucursal" id="idSucursal" class="formulario_input">
 								<?php
-								$serverName = 'localhost';
-								$connectionInfo = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+								$serverName = 'inovatecserver.database.windows.net';
+								$connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 								$conn_sis = sqlsrv_connect($serverName, $connectionInfo);
 
 								$getSucursal = "SELECT sucursal.id_sucursal as id_sucursal, estados.Estado as estado, municipios.municipio as municipio 
@@ -240,8 +240,8 @@ $sesion_i = $_SESSION["nombres"];
 						<div class="formulario_grupo-input">
 							<select type="text" name="puesto" id="puesto" class="formulario_input" required>
 								<?php
-								$serverName = 'localhost';
-								$connectionInfo = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+								$serverName = 'inovatecserver.database.windows.net';
+								$connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 								$conn_sis = sqlsrv_connect($serverName, $connectionInfo);
 								$getPuesto = "select * from puestos";
 								$getPuesto2 = sqlsrv_query($conn_sis, $getPuesto);

@@ -39,7 +39,7 @@ $precio=$_POST["pre"];
 $total=$_POST["tot"];*/
 
 //datos de bd
-$serverName='localhost';
+$serverName='inovatecserver.database.windows.net';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 $numPro=count($matriz_completa);

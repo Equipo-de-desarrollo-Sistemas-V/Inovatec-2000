@@ -3,7 +3,7 @@ error_reporting(0);
 session_start();
 $sesion_i = $_SESSION["Usuario"];
 
-$serverName='localhost';
+$serverName='inovatecserver.database.windows.net';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $con = sqlsrv_connect($serverName, $connectionInfo); 
 
@@ -176,7 +176,7 @@ else{
                     <select name="estado" id="estado" name="estado" class="estado">
                     <option value="<?php echo $auxEst;?>"><?php echo $estadoS;?></option>
                                 <?php
-                                $serverName='localhost';
+                                $serverName='inovatecserver.database.windows.net';
                                 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
                                 $con = sqlsrv_connect($serverName, $connectionInfo); 
                                 

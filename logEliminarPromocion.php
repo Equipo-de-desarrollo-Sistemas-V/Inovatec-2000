@@ -1,7 +1,7 @@
 <?php
 //informacion para la conexion a la base de datos
-$servername = "localhost";
-$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$servername = "inovatecserver.database.windows.net";
+$info = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 $con = sqlsrv_connect($servername, $info);
 
 $id = $_GET['item'];

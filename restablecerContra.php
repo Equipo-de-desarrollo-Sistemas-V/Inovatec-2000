@@ -5,7 +5,7 @@ class Recuperar{
     
     //conexion a la base de datos
     function conexion(){
-        $serverName='localhost';
+        $serverName='inovatecserver.database.windows.net';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         try{
             $this->con = sqlsrv_connect($serverName, $connectionInfo); 

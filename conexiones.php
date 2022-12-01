@@ -1,6 +1,6 @@
 <?php
     /* Deifnir las constantes generales de la conexion a la base de datos en SQLServer*/
-    $nombre_servidor = "localhost";
+    $nombre_servidor = "inovatecserver.database.windows.net";
     $nombre_usuario = "usuario";
     $password = "123";
     $nombre_bd = "PagVentas";

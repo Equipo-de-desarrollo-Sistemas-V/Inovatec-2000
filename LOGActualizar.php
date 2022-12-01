@@ -128,7 +128,7 @@ $sesion_i = $_SESSION["nombres"];
 				<br>
                                 <?php
                                 //echo "Este dato: " . $_GET["item"] . " lo recibo por URL.";
-                                $serverName='localhost';
+                                $serverName='inovatecserver.database.windows.net';
                                 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
                                 $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
                                
@@ -181,7 +181,7 @@ $sesion_i = $_SESSION["nombres"];
 						<div class="formulario_grupo-input">
 							<select type="text" name="categoria" id="categoria" class="formulario_input" required>
                                                         <?php
-                                                            $serverName='localhost';
+                                                            $serverName='inovatecserver.database.windows.net';
                                                             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
                                                             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
                                                             $getApartado ="select * from Apartados";
@@ -211,7 +211,7 @@ $sesion_i = $_SESSION["nombres"];
 						<div class="formulario_grupo-input">
 							<select type="text" name="subcategoria" id="subcategoria" class="formulario_input" required>
                                                         <?php
-                                                            $serverName='localhost';
+                                                            $serverName='inovatecserver.database.windows.net';
                                                             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
                                                             $getSubApartado ="select * from SubApartados where id_ap=$cate";
                                                             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
@@ -267,7 +267,7 @@ $sesion_i = $_SESSION["nombres"];
 						<div class="formulario_grupo-input">
 							<select type="text" name="proveedor" id="proveedor" class="formulario_input">
                                                         <?php
-                                                            $serverName='localhost';
+                                                            $serverName='inovatecserver.database.windows.net';
                                                             $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
                                                             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
                                                             $getProveedor ="select * from Proveedores";

@@ -10,7 +10,7 @@ class ActPro{
         $produc = $this->quitarEspacio($id_pro); //quitarle el especio del principio al id delproducto
         $suc = $this->quitarEspacio($id_suc); //quitarle el especio del principio al id de la sucursal
 
-        $serverName='localhost';
+        $serverName='inovatecserver.database.windows.net';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
         //$query= "UPDATE Persona set email = '".$correoPersona."'where Usuario='".$ingreso."'" ;

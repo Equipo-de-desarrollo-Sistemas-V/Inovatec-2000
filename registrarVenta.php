@@ -1,7 +1,7 @@
 <?php
 //[[60020,"10"],[50200,"5"],[50350,"1"],[6654687946549846]]
 //conexion a la BD
-$serverName='localhost';
+$serverName='inovatecserver.database.windows.net';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $con=sqlsrv_connect($serverName, $connectionInfo);
 

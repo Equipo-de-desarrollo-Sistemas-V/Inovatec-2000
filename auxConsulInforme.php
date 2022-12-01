@@ -1,7 +1,7 @@
 <?php
 //echo '<script>alert("Si entra al arcihvo de logica");</script>';
-$serverName = 'localhost';
-$connectionInfo = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$serverName = 'inovatecserver.database.windows.net';
+$connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 $con = sqlsrv_connect($serverName, $connectionInfo);
 
 
@@ -113,8 +113,8 @@ if ($resultado == true) {
 }
 
 function getCantidad($id_prod){
-    $serverName = 'localhost';
-    $connectionInfo = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+    $serverName = 'inovatecserver.database.windows.net';
+    $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
     $con = sqlsrv_connect($serverName, $connectionInfo);
 
 

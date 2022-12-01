@@ -6,7 +6,7 @@ class ActPro{
        
         //echo '<script>alert("'.$id.$descuento.'")</script>';
         
-        $serverName='localhost';
+        $serverName='inovatecserver.database.windows.net';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
         $updateQuery ="UPDATE Productos 
@@ -56,8 +56,8 @@ class Foto{
                         //echo '<p><img src="imagenes/' . $archivo . '"></p>';
 
                         //conectar con la base de datos
-                        $servername = "localhost";
-                        $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+                        $servername = "inovatecserver.database.windows.net";
+                        $info = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
                         $con = sqlsrv_connect($servername, $info);
 
                         //consulta para insertar el link y el id en la base de datos

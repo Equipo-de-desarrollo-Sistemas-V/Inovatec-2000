@@ -14,8 +14,8 @@
             $cp = $_POST["codigoPostal"];
 
             //informacion de la conexion a BD
-            $servername = "localhost";
-            $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+            $servername = "inovatecserver.database.windows.net";
+            $info = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
             $con = sqlsrv_connect($servername, $info);
 
             if ($con) {

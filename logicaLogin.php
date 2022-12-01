@@ -3,7 +3,7 @@ class login{
     function verifica(){
         #Conexion a la base de datos
         $in=new login;
-        $serverName='localhost';
+        $serverName='inovatecserver.database.windows.net';
         $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
         $conn_sis= sqlsrv_connect($serverName, $connectionInfo);
 

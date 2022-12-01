@@ -1,6 +1,6 @@
 <?php
 
-$serverName='localhost';
+$serverName='inovatecserver.database.windows.net';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8", 'ReturnDatesAsStrings'=> true);
 $con = sqlsrv_connect($serverName, $connectionInfo); 
 

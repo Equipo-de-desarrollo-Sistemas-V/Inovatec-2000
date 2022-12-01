@@ -11,6 +11,6 @@
         echo "<h1>Bienvendo Usuario>/h1>";
     }else{
         echo "<h1>Usuario o contraseña incorrectos!>/h1>";
-        header ("refresh:2,url=localhost/Carrito-de-ventas/");
+        header ("refresh:2,url=inovatecserver.database.windows.net/Carrito-de-ventas/");
     }
 ?>

@@ -1,7 +1,7 @@
 <?php
 //informacion para la conexion
-$servername = "localhost";
-$info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$servername = "inovatecserver.database.windows.net";
+$info = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 $con = sqlsrv_connect($servername, $info);
 
 ?>
@@ -114,7 +114,7 @@ $con = sqlsrv_connect($servername, $info);
 		$array1 = explode("/",$aux);
 		$id=$array1[0];
 		$id_Suc=$array1[1];
-		$serverName='localhost';
+		$serverName='inovatecserver.database.windows.net';
 		$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 		$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 		$querry_productos = "SELECT Inventario_suc.id_producto, Productos.nombre, Inventario_suc.id_sucursal 

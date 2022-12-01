@@ -1,7 +1,7 @@
 
 <?php
    
-   $serverName = 'localhost';
+   $serverName = 'inovatecserver.database.windows.net';
    $login = "usuario";
    $paswor = "123";
    $conctioninfo = array("Database"=>"PagVentas", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");

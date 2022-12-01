@@ -2,7 +2,7 @@
 
 session_start();
 $sesion_i = $_SESSION["nombres"];
-$serverName='localhost';
+$serverName='inovatecserver.database.windows.net';
 $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
 $conn_sis= sqlsrv_connect($serverName, $connectionInfo);
 $query="SELECT id_empleado FROM Empleados WHERE nombres='$sesion_i'";
