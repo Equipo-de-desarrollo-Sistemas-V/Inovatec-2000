@@ -14,7 +14,7 @@ class ActPro{
         //echo '<script>alert("'.$proved.'")</script>';
         
         $serverName='inovatecserver.database.windows.net';
-        $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+        $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
         $updateQuery ="UPDATE Productos SET nombre=('$nombreP'),Apartado=('$apar'),precio_com=('$pC'),precio_ven=('$pV'),id_proveedor=('$proved'), descripcion=('$des'),Subapartado=('$subA'), Estado=('$estado') WHERE id_producto=$id";
         $getProv = sqlsrv_query($conn_sis, $updateQuery);

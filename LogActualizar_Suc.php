@@ -122,7 +122,7 @@ $sesion_i = $_SESSION["nombres"];
             <?php
             //echo "Este dato: " . $_GET["item"] . " lo recibo por URL.";
             $serverName='inovatecserver.database.windows.net';
-            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+            $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
             $id=$_GET["item"];            
             $query="SELECT id_sucursal,ciudad_est,Estado FROM sucursal where id_sucursal='$id'";

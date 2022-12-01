@@ -59,7 +59,7 @@ class ActPro{
         //echo $id.$mun.$estado;
         
         $serverName='inovatecserver.database.windows.net';
-        $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+        $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
         $updateQuery ="UPDATE Empleados SET nombres=('$nomEmp'),ap_paterno=('$ap_pat'),ap_materno=('$ap_mat'),sucursal=('$suc'),rfc=('$rfc'),email=('$user'),puesto=('$puesto') WHERE id_empleado='$id'";
         $getProv = sqlsrv_query($conn_sis, $updateQuery);

@@ -11,7 +11,7 @@ class ActPro{
         $suc = $this->quitarEspacio($id_suc); //quitarle el especio del principio al id de la sucursal
 
         $serverName='inovatecserver.database.windows.net';
-        $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+        $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
         //$query= "UPDATE Persona set email = '".$correoPersona."'where Usuario='".$ingreso."'" ;
         $updateQuery ="UPDATE Inventario_suc SET cantidad='".$cantidad."', stock_min='".$stock."' WHERE id_producto='".$produc."' and id_sucursal='".$suc."'";

@@ -431,7 +431,7 @@ $sesion_e = $_SESSION["Usuario"];
 
   //Consulta para obtener los datos del productos seleccionado
   $serverName='inovatecserver.database.windows.net';
-  $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+  $connectionInfo = array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
   $con = sqlsrv_connect($serverName, $connectionInfo); 
 
 

@@ -9,7 +9,7 @@ class updEnt{
         $suc = $this->quitarEspacio($id_suc); //quitarle el especio del principio al id de la sucursal
 
         $serverName='inovatecserver.database.windows.net';
-        $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+        $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
         $conexion=sqlsrv_connect($serverName, $connectionInfo);
         $query="SELECT cantidad FROM Inventario_suc WHERE id_producto='$produc' and id_sucursal='$suc'";
         $resultados = sqlsrv_query($conexion, $query);

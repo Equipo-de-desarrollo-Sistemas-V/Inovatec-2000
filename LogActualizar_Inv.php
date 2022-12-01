@@ -126,7 +126,7 @@ $sesion_i = $_SESSION["nombres"];
         	$id=$array1[0];
 			$id_Suc=$array1[1];
             $serverName='inovatecserver.database.windows.net';
-            $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+            $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
             $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
             $query="SELECT * FROM inventario_suc WHERE id_producto='$id' and id_sucursal='$id_Suc'";
             $res= sqlsrv_query($conn_sis, $query);

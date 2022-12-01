@@ -115,7 +115,7 @@ $con = sqlsrv_connect($servername, $info);
 		$id=$array1[0];
 		$id_Suc=$array1[1];
 		$serverName='inovatecserver.database.windows.net';
-		$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+		$connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 		$conn_sis=sqlsrv_connect($serverName, $connectionInfo);
 		$querry_productos = "SELECT Inventario_suc.id_producto, Productos.nombre, Inventario_suc.id_sucursal 
 		FROM Inventario_suc, Productos

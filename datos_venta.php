@@ -6,7 +6,7 @@
 
 
   $serverName='inovatecserver.database.windows.net';
-  $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+  $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
   $con = sqlsrv_connect($serverName, $connectionInfo); 
 
   $query = "SELECT * 

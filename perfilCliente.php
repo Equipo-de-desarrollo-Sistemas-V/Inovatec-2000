@@ -4,7 +4,7 @@ session_start();
 $sesion_i = $_SESSION["Usuario"];
 
 $serverName='inovatecserver.database.windows.net';
-$connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+$connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
 $con = sqlsrv_connect($serverName, $connectionInfo); 
 
 $query= "SELECT* FROM Persona where usuario ='".$sesion_i."'";
@@ -177,7 +177,7 @@ else{
                     <option value="<?php echo $auxEst;?>"><?php echo $estadoS;?></option>
                                 <?php
                                 $serverName='inovatecserver.database.windows.net';
-                                $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+                                $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
                                 $con = sqlsrv_connect($serverName, $connectionInfo); 
                                 
                                 $query = "SELECT Id, Estado FROM estados";

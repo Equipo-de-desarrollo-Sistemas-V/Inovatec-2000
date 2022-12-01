@@ -4,7 +4,7 @@ class login{
         #Conexion a la base de datos
         $in=new login;
         $serverName='inovatecserver.database.windows.net';
-        $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
+        $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
         $conn_sis= sqlsrv_connect($serverName, $connectionInfo);
 
         $usuario = $_POST["email"];
