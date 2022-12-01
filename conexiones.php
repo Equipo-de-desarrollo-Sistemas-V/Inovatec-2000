@@ -28,8 +28,6 @@
     $connectionInfo = array("Database"=>$nombre_bd, "UID"=>$nombre_usuario, "PWD"=>$password, "CharacterSet" => "UTF-8");
     $conexion = sqlsrv_connect($nombre_servidor, $connectionInfo);
 
-    $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
-
     /* Verificar la conexion a la base de datos */
     if( $conexion === false ) {
         die( print_r( sqlsrv_errors(), true));
