@@ -1,9 +1,9 @@
 <?php
     /* Deifnir las constantes generales de la conexion a la base de datos en SQLServer*/
     $nombre_servidor = "inovatecserver.database.windows.net";
-    $nombre_usuario = "usuario";
-    $password = "123";
-    $nombre_bd = "PagVentas";
+    $nombre_usuario = "Inovatecadm";
+    $password = "ProyectoProgramacion5";
+    $nombre_bd = "InovatecBD";
 
     /* Declarar todas las constantes de todos los nombres para las tablas */
     $tabla_apartados = "Apartados";
