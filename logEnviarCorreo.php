@@ -24,7 +24,8 @@ if($con){
             echo json_encode('El correo no se encuentra registrado en el sistema.');
         }else{
             sqlsrv_close($con);;
-            //crearEmail($correo_destino);
+            $msj=crearEmail($correo_destino);
+            echo json_encode($msj);
         }
     }else{
         sqlsrv_close($con);
@@ -40,7 +41,6 @@ if($con){
 //funcion para crear el correo
 function crearEmail($correo_destino){
     $remitente ="inovatec2000st@gmail.com";
-    // $destinatario= "tetillamas@gmail.com";
     $destinatario=$correo_destino;
     $asunto = "Código para recuperar tu contraseña";
     $codigo=random_int(1000,99999);
@@ -73,20 +73,19 @@ function insertarCodigo($codigo, $correo_destino){
     $con = sqlsrv_connect($servername, $info);
 
     if($con){
-        $usuario="Mari";
         $query="SELECT COUNT(*) as total
         FROM recuperacion 
-        where Usuario ='$usuario'";
+        where Usuario ='$correo_destino'";
         $resultado=sqlsrv_query($con, $query);
         $row = sqlsrv_fetch_array( $resultado);
         if ($row['total']==0){
             $query="INSERT INTO recuperacion
-            VALUES('$usuario', '$codigo')";
+            VALUES('$correo_destino', '$codigo')";
             $resultado=sqlsrv_query($con, $query);
         }else{
             $updateQuery ="UPDATE recuperacion 
             SET Codigo='$codigo'
-            WHERE Usuario='$usuario'";
+            WHERE Usuario='$correo_destino'";
             $resultado = sqlsrv_query($con, $updateQuery);
         }
         sqlsrv_close($con);
