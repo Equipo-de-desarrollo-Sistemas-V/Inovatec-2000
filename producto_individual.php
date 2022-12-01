@@ -435,7 +435,7 @@ $sesion_e = $_SESSION["Usuario"];
   $con = sqlsrv_connect($serverName, $connectionInfo); 
 
 
-  $query="SELECT Productos.nombre, Productos.precio_ven, Productos.descripcion, ruta
+  $query="SELECT Productos.nombre, Productos.precio_ven, Productos.descripcion, descuento, ruta
   FROM [Productos], [imagenes]
   where Productos.id_producto=imagenes.id_prod and Productos.id_producto=$idProducto";
 
@@ -445,29 +445,36 @@ $sesion_e = $_SESSION["Usuario"];
     $nomProd=$row["nombre"];
     $auxPrecio=$row["precio_ven"];
     $desProd=$row["descripcion"];
+    $auxDescuento=$row["descuento"];
     $ruta=$row["ruta"];
+
+
+    if ($auxDescuento!=0){
+      $auxPrecioFinal=$auxPrecio-(($auxPrecio*$auxDescuento)/100);
+      $precioFinal= "$ ".substr($auxPrecioFinal, 0);
+      $descuento= "$ ".substr($auxPrecio, 0, -2);
+    }else{
+      $precioFinal= "$ ".substr($auxPrecio, 0, -2);
+      $descuento="";
+    }
 
     //Obtener el total de existentes del producto, en todas las sucursales.
     $query = "SELECT cantidad FROM Inventario_suc
     WHERE id_producto = $idProducto";
-
     $resultado = sqlsrv_query($con, $query);
 
     $existentes = 0;
-
     while($row = sqlsrv_fetch_array($resultado)){
         $existentes = $existentes + $row["cantidad"];
     }
-
-    $precioProd= "$ ".substr($auxPrecio, 0, -2);
 
 $resultado=preg_replace("[\n|\r|\n\r]", "<br>", $desProd);
     
     echo "
     <script>
       document.getElementById('nombre').innerHTML = '$nomProd';
-      document.getElementById('precio').innerHTML = '$precioProd';
-      document.getElementById('precioDes').innerHTML = '';
+      document.getElementById('precio').innerHTML = '$precioFinal';
+      document.getElementById('precioDes').innerHTML = '<del>$descuento<del>';
       document.getElementById('existencia').innerHTML = 'Existentes: $existentes';
       document.getElementById('descripcion').innerHTML = '$resultado';
       document.getElementById('imagen').src= '$ruta';
