@@ -19,6 +19,10 @@ formulario.addEventListener('submit', function (e)
             else if (data === 'conexion BD') {
                 alert("Se produjo un problema al conectar con la base de datos");
             }
+                
+            else if (data === 'descuento') {
+                alert("El descuento debe ser mayor al 0%");
+            }
 
             else if (data === 'consulta BD') {
                 alert("Se produjo un problema en la consulta a la base de datos");

@@ -1,17 +1,17 @@
 <?php
-  error_reporting(0);
-  session_start();
-  include("no_iniciada_cli.php");
-  $sesion_e = $_SESSION["Usuario"];
+error_reporting(0);
+session_start();
+include("no_iniciada_cli.php");
+$sesion_e = $_SESSION["Usuario"];
 
-  $serverName='localhost';
-  $connectionInfo=array("Database"=>"PagVentas", "UID"=>"usuario", "PWD"=>"123", "CharacterSet"=>"UTF-8");
-  $conn_sis=sqlsrv_connect($serverName, $connectionInfo);
+$serverName = 'localhost';
+$connectionInfo = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
+$conn_sis = sqlsrv_connect($serverName, $connectionInfo);
 
-  //$id=$_GET["item"];
+//$id=$_GET["item"];
 
-  //if (isset($_POST('Actualizar')))
-  /*$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
+//if (isset($_POST('Actualizar')))
+/*$query="SELECT nombre,Apartado,precio_ven FROM Productos where id_producto=$id";
   $res= sqlsrv_query($conn_sis, $query);
   if( $res === false) {
     die( print_r( sqlsrv_errors(), true) );
@@ -27,28 +27,28 @@
 
 
 
-  $arrProd = (array)json_decode($_GET["item"]);
-  $numPro=count($arrProd);
-  //echo '<script>alert("'.$arre[1][1].'")</script>';
-  $fecha= date("d/m/Y");
-  //$total=$pre_ven*1;
-  //$str = serialize((array)json_decode($_GET["item"], true));
-  //$products = json_decode($_GET["item"], true);
-  $articulos=[];
+$arrProd = (array)json_decode($_GET["item"]);
+$numPro = count($arrProd);
+//echo '<script>alert("'.$arre[1][1].'")</script>';
+$fecha = date("d/m/Y");
+//$total=$pre_ven*1;
+//$str = serialize((array)json_decode($_GET["item"], true));
+//$products = json_decode($_GET["item"], true);
+$articulos = [];
 
-  $conta=0;
-  for($i=0;$i<$numPro;$i++) {
-    $idProd=$arrProd[$i][0];                         //id del producto
-    $articulos[]=$idProd;
-    $conta++;
-    $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
-    $articulos[]=$cantiProd;
-    $conta++;  
-  }
-  $arre = serialize($articulos);
-  $arre = urlencode($arre);
-  $pagSiguiente="Factura.php?item=".$arre;
-  //action="Factura.php?item=<?php echo $arre; ? >"
+$conta = 0;
+for ($i = 0; $i < $numPro; $i++) {
+  $idProd = $arrProd[$i][0];                         //id del producto
+  $articulos[] = $idProd;
+  $conta++;
+  $cantiProd = $arrProd[$i][1];                     //cantidad que se va a comprar
+  $articulos[] = $cantiProd;
+  $conta++;
+}
+$arre = serialize($articulos);
+$arre = urlencode($arre);
+$pagSiguiente = "Factura.php?item=" . $arre;
+//action="Factura.php?item=<?php echo $arre; ? >"
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +77,7 @@
 
   <nav>
     <img src="css/assets/Logo_Integrado.svg" required class="logo" id="logo">
-    <?php echo ucwords("Bienvenido")." ". ucwords($sesion_e);?>
+    <?php echo ucwords("Bienvenido") . " " . ucwords($sesion_e); ?>
 
     <div class="search-box">
       <input type="search" placeholder="Busquemos algunas cosas..." id="search">
@@ -85,15 +85,15 @@
     </div>
 
     <ol>
-    <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
+      <li><a href="sesion_iniciada_login.php" class="">Iniciar sesión</a></li>
 
-    <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
+      <li><a href="sesion_iniciada_Reg.php" class="">Registrate</a></li>
 
-    <li><a href="sesion_iniciada_Per.php" class="">
-        <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-      </a></li>
+      <li><a href="sesion_iniciada_Per.php" class="">
+          <ion-icon name="person-circle-outline" class="icon"></ion-icon>
+        </a></li>
 
-      <li><a href="#" class="">
+      <li><a href="carritoVentas.php" class="">
           <ion-icon name="cart-outline" class="icon"></ion-icon>
         </a></li>
 
@@ -365,8 +365,7 @@
 
             <!--<form action="Factura.php" class="formularios" method="post">-->
             <div class="input-group">
-              <input type="text" name="nombreDenominación" id="nombreDenominación" required class="input"
-                maxlength="100" minlength="3">
+              <input type="text" name="nombreDenominación" id="nombreDenominación" required class="input" maxlength="100" minlength="3">
               <label for="nombre-denominación" class="input-label">Nombre denominación o razón social</label>
             </div>
 
@@ -376,8 +375,7 @@
             </div>
 
             <div class="input-group">
-              <input type="text" name="usoComprobante" id="usoComprobante" required class="input" maxlength="100"
-                minlength="3">
+              <input type="text" name="usoComprobante" id="usoComprobante" required class="input" maxlength="100" minlength="3">
               <label for="uso-comprobante" class="input-label">Uso del comprobante</label>
             </div>
 
@@ -386,8 +384,7 @@
               <label for="uso-comprobante" class="input-label">Dirección</label>
             </div>
             <div class="input-group">
-              <input type="text" name="codigoPostal" id="codigoPostal" required class="input" minlength="5"
-                maxlength="5">
+              <input type="text" name="codigoPostal" id="codigoPostal" required class="input" minlength="5" maxlength="5">
               <label for="codigo-postal" class="input-label">Código postal del domicilio fiscal</label>
             </div>
 
@@ -419,47 +416,47 @@
                 </tr>
               </thead>
               <?php
-                    $conta=0;
-                    $aux=json_encode($arrProd);
-                    $longi=count($arrProd);
-                    for($i=0;$i<$numPro;$i++) {
-                      $idProd=$arrProd[$i][0];                         //id del producto
-                      $articulos[]=$idProd;
-                      $conta++;
-                      $cantiProd=$arrProd[$i][1];                     //cantidad que se va a comprar
-                      $articulos[]=$cantiProd;
-                      $conta++;
-                      //echo'<script>alert("'.$idProd.'")</script>';
-                      //echo'<script>alert("'.$cantiProd.'")</script>';
-                      $query= "SELECT nombre, precio_ven,descuento
+              $conta = 0;
+              $aux = json_encode($arrProd);
+              $longi = count($arrProd);
+              for ($i = 0; $i < $numPro; $i++) {
+                $idProd = $arrProd[$i][0];                         //id del producto
+                $articulos[] = $idProd;
+                $conta++;
+                $cantiProd = $arrProd[$i][1];                     //cantidad que se va a comprar
+                $articulos[] = $cantiProd;
+                $conta++;
+                //echo'<script>alert("'.$idProd.'")</script>';
+                //echo'<script>alert("'.$cantiProd.'")</script>';
+                $query = "SELECT nombre, precio_ven,descuento
                       FROM Productos 
-                      where id_producto ='".$idProd."'";
-                        $resultado=sqlsrv_query($conn_sis, $query);
-                        $row = sqlsrv_fetch_array($resultado);
-                        $nomProd=$row['nombre'];                      //nombre del prodcuto
-                        $precio=substr($row['precio_ven'],0,-2);      //precio de venta
-                        $descuento=$row['descuento'];                                 // descuento en pesos
-                      $subT=$precio*((int)$cantiProd);                //subtotal a pagar por producto
-                      $totProd=$subT-$descuento;                    //
-                      $totDeCompra+=$totProd;
-                        echo '<tr>
-                          <td>'.$nomProd.'</td>
-                          <td>'.$cantiProd.'</td>
-                          <td>'.$precio.'</td>
-                          <td>'.$fecha.'</td>
-                          <td>'.$totProd.'</td>
+                      where id_producto ='" . $idProd . "'";
+                $resultado = sqlsrv_query($conn_sis, $query);
+                $row = sqlsrv_fetch_array($resultado);
+                $nomProd = $row['nombre'];                      //nombre del prodcuto
+                $precio = substr($row['precio_ven'], 0, -2);      //precio de venta
+                $descuento = $row['descuento'];                                 // descuento en pesos
+                $subT = $precio * ((int)$cantiProd);                //subtotal a pagar por producto
+                $totProd = $subT - $descuento;                    //
+                $totDeCompra += $totProd;
+                echo '<tr>
+                          <td>' . $nomProd . '</td>
+                          <td>' . $cantiProd . '</td>
+                          <td>' . $precio . '</td>
+                          <td>' . $fecha . '</td>
+                          <td>' . $totProd . '</td>
                           </tr>';
-                  }
-                  //echo '<script>alert("'.$articulos[0].'")</script>';
-                  //echo '<script>alert("'.$conta.'")</script>';
-                  echo '<tr>
-                          <td>'."".'</td>
-                          <td>'."".'</td>
-                          <td>'."".'</td>
-                          <td>'."Total a pagar $".'</td>
-                          <td>'.$totDeCompra.'</td>
+              }
+              //echo '<script>alert("'.$articulos[0].'")</script>';
+              //echo '<script>alert("'.$conta.'")</script>';
+              echo '<tr>
+                          <td>' . "" . '</td>
+                          <td>' . "" . '</td>
+                          <td>' . "" . '</td>
+                          <td>' . "Total a pagar $" . '</td>
+                          <td>' . $totDeCompra . '</td>
                           </tr>';
-                  echo "
+              echo "
                           <script>
                             // let auxId= $producto;
                             // let auxCan= $cantiCompra;
@@ -467,16 +464,16 @@
                             let arreglo = $aux;
                             let arreglo2 = $aux;
                             let longi = $longi;
-                          </script>"; 
-                          sqlsrv_close($conn_sis);?>
+                          </script>";
+              sqlsrv_close($conn_sis); ?>
             </table>
           </div>
 
           <br>
           <br>
-          <input id="arrayProd" name="arrayProd" type="hidden" value="<?php echo $articulos;?>">
-          <input type="submit" name="boton4" id="boton4" value="Continuar"  class="btn">
-          
+          <input id="arrayProd" name="arrayProd" type="hidden" value="<?php echo $articulos; ?>">
+          <input type="submit" name="boton4" id="boton4" value="Continuar" class="btn">
+
           <br>
           <br>
           <br>
@@ -499,7 +496,7 @@
           <p>Inovación Tecnológica 2000. </p>
           <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
           <p>Teléfono: 4371010101</p>
-          <p>fabricaitzas.com/inovatec/</p>
+          <p>fabricaitszas.com/inovatec/</p>
           <p>Correo electrónico: inovatec2000st@gmail.com</p>
         </div>
       </div>

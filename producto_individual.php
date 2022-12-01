@@ -411,7 +411,7 @@ $sesion_e = $_SESSION["Usuario"];
             <p>Inovación Tecnológica 2000. </p>
                 <p> Av. Tecnológico #100, Col. Las Moritas, Tlaltenango de Sánchez Román, Zac. 99700</p>
                 <p>Teléfono: 4371010101</p>
-                <p>fabricaitzas.com/inovatec/</p>
+                <p>fabricaitszas.com/inovatec/</p>
                 <p>Correo electrónico: inovatec2000st@gmail.com</p>
             </div>
         </div>
