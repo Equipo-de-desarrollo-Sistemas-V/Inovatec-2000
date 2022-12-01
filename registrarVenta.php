@@ -102,8 +102,26 @@ $updateQuery ="UPDATE banco
 SET dineros=(dineros-$totVenta) 
 WHERE noTarjeta='".$tarjetaCliente."'";
 $getProv = sqlsrv_query($con, $updateQuery);
-sqlsrv_close($con);
 
+
+
+//obtengo el usuario
+error_reporting(0);
+session_start();
+$usuario = $_SESSION["Usuario"];
+
+//Si se hizo una compra multiple, es decir, desde carrito, se vacia el carrito
+$longi=count($arrProd);
+if ($longi!=2){
+    for($z=0;$z<($longi-1);$z++){
+        $idProd=$arrProd[$z][0]; 
+        $updateQuery ="DELETE FROM carritoclientes
+        WHERE id_producto = '$idProd' and usuario = '$usuario'";
+        $eliminar = sqlsrv_query($con, $updateQuery);
+    }
+}
+
+sqlsrv_close($con);
 
 function registrar($id_producto, $nombreProd, $id_sucrusal, $cantiCompra, $precioVenta, $ultimaVenta, $totProd, $totSuc, $con){           //funcion para registrar las ventas
     //echo $id_producto."  ".$nombreProd."  ".$id_sucrusal."  ".$cantiCompra."  ".$precioVenta."  ".$ultimaVenta."  ".$totProd."  ".$totSuc;
