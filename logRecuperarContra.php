@@ -10,7 +10,7 @@ if($con){
 
     $query= "SELECT Codigo
         FROM recuperacion 
-        where usuario ='Mari'";
+        where usuario ='$correo'";
     $resultado=sqlsrv_query($con, $query);
     $row = sqlsrv_fetch_array($resultado);
     $codigoBD=$row['Codigo'];
@@ -43,13 +43,26 @@ if($con){
             sqlsrv_close($con);
             echo json_encode('La nueva contraseña debe contener números, mayúsculas, minúsculas y caracteres especiales');
         }else{
-            $clave = password_hash($newPassword, PASSWORD_DEFAULT);
-            $query= "UPDATE Persona set Contra_us = '".$clave."'
-                where Usuario='".$usuario."'" ;
-            $resultado=sqlsrv_query( $con, $query);
 
-            $query= "DELETE FROM recuperacion
+            $clave = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            $query= "SELECT COUNT(*) as tot
+            FROM Empleados 
+            where email ='$correo'";
+            $resultado=sqlsrv_query($con, $query);
+            $row = sqlsrv_fetch_array($resultado);
+            $x=$row['tot'];
+            if ($x!=0){
+                $query= "UPDATE Empleados set contra_em = '$clave'
+                where email ='$correo'" ;
+                $resultado=sqlsrv_query( $con, $query);
+            }else{
+                $query= "UPDATE Persona set Contra_us = '".$clave."'
                 where Usuario='".$usuario."'" ;
+                $resultado=sqlsrv_query( $con, $query);
+            }
+            $query= "DELETE FROM recuperacion
+            where usuario ='$correo'" ;
             $resultado=sqlsrv_query( $con, $query);
 
             sqlsrv_close($con);
