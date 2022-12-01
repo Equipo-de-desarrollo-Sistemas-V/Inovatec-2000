@@ -109,6 +109,7 @@ $pagSiguiente = "Factura.php?item=" . $arre;
     <article class="container">
       <input type="checkbox" name="" id="check">
 
+
       <div class="nav-btn">
         <div class="nav-links">
           <ul>
@@ -125,19 +126,17 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Ruteadores inalámbicos</a>
+                    <a href="categorias.php?item=Redes/Ruteadores inalámbricos">Ruteadores inalámbicos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Cables de red</a>
+                    <a href="categorias.php?item=Redes/Cables de red">Cables de red</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Adaptadores Bluetooth</a>
+                    <a href="categorias.php?item=Redes/Adaptadores Bluetooth">Adaptadores Bluetooth</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Tarjertas de red</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="">Adaptadores inalámbricos</a>
+                    <a href="categorias.php?item=Redes/Tarjetas y adaptadores inalámbricos">Tarjertas de red y
+                      adaptadores inalámbricos</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -157,13 +156,16 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Antivirus y seguridad</a>
+                    <a href="categorias.php?item=Software/Antivirus y seguridad">Antivirus y seguridad</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Sistemas operativos</a>
+                    <a href="categorias.php?item=Software/Sistemas operativos">Sistemas operativos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Ofimatica</a>
+                    <a href="categorias.php?item=Software/Software punto de venta">Software punto de venta</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Software/Microsoft Office">Microsoft Office</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -183,13 +185,16 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Accesorios de servidores</a>
+                    <a href="categorias.php?item=Servidores/Accesorios para servidores">Accesorios de servidores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Redes</a>
+                    <a href="categorias.php?item=Servidores/Redes">Redes</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Energía</a>
+                    <a href="categorias.php?item=Servidores/Energía">Energía</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Servidores/Servidores">Servidores</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -209,18 +214,22 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Consumibles y articulos</a>
+                    <a href="categorias.php?item=Impresión/Consumibles">Consumibles y articulos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Impresoras</a>
+                    <a href="categorias.php?item=Impresión/Impresoras">Impresoras</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Scanners de cama</a>
+                    <a href="categorias.php?item=Impresión/Scanner de cama">Scanners de cama</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Impresión/Punto de venta">Punto de venta</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- COMPUTADORAS -->
             <li class="nav-link" style="--i: .85s">
 
@@ -234,21 +243,22 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Desktops</a>
+                    <a href="categorias.php?item=computadoras/Desktops">Desktops</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Laptops</a>
+                    <a href="categorias.php?item=computadoras/laptop">Laptops</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Smartphones</a>
+                    <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Tablets</a>
+                    <a href="categorias.php?item=computadoras/Tablet">Tablets</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- HARDWARE -->
             <li class="nav-link" style="--i: .85s">
 
@@ -262,21 +272,22 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Discos duros</a>
+                    <a href="categorias.php?item=Hardware/Disco duro">Discos duros</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Procesadores</a>
+                    <a href="categorias.php?item=Hardware/Procesadores">Procesadores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Memorias</a>
+                    <a href="categorias.php?item=Hardware/Memorias">Memorias</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Motherboards</a>
+                    <a href="categorias.php?item=Hardware/Tarjeta Madre">Motherboards</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- ACCESORIOS -->
             <li class="nav-link" style="--i: .85s">
 
@@ -290,24 +301,22 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Perifericos</a>
+                    <a href="categorias.php?item=Accesorios/Periféricos">Periféricos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Cables</a>
+                    <a href="categorias.php?item=Accesorios/Cables y adaptadores">Cables y adaptadores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Adaptadores</a>
+                    <a href="categorias.php?item=Accesorios/Herramientas">Herramientas</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Herramientas</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="">Limpieza</a>
+                    <a href="categorias.php?item=Accesorios/Limpieza">Limpieza</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
               </div>
             </li>
+
             <!-- ELECTRONICA -->
             <li class="nav-link" style="--i: .85s">
 
@@ -321,19 +330,45 @@ $pagSiguiente = "Factura.php?item=" . $arre;
 
                 <ul>
                   <li class="dropdown-link">
-                    <a href="">Monitores</a>
+                    <a href="categorias.php?item=Electrónica/Monitores">Monitores</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Audifonos</a>
+                    <a href="categorias.php?item=Electrónica/Audífonos">Audífonos</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Micrófonos</a>
+                    <a href="categorias.php?item=Electrónica/Bocinas">Bocinas</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Bocinas</a>
+                    <a href="categorias.php?item=Electrónica/Capturadora de video">Capturadoras de video</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+
+            <!-- ALMACENAMIENTO -->
+            <li class="nav-link" style="--i: .85s">
+
+              <a href="#">
+                <ion-icon name="cloud-circle-outline"></ion-icon>
+                Almacenamiento
+                <i class="fas fa-caret-down"></i>
+              </a>
+
+              <div class="dropdown">
+
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/M.2">M.2</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="">Capturadoras de video</a>
+                    <a href="categorias.php?item=Almacenamiento/SSD">SSD</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/HDD">HDD</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="categorias.php?item=Almacenamiento/Memoria RAM">Memoria RAM</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
