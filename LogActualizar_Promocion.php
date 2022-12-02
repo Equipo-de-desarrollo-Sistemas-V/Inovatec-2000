@@ -1,4 +1,10 @@
 <?php
+error_reporting(0);
+session_start();
+$sesion_i = $_SESSION["nombres"];
+?>
+
+<?php
 //informacion para la conexion a base de datos
 $servername = "inovatecserver.database.windows.net";
 $info = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
@@ -57,6 +63,7 @@ $ruta=$row["ruta"];
 					<img src="assets-administrativo/Nombre.svg" alt="">
 				</div>
 			</div>
+			<?php echo ucwords("Bienvenid@")." ". ucwords($sesion_i);?>
 			<div class="btn-header">
 				<a class="btn-cerrar-session" type="button" href="cerrar.php">Cerrar sesión</a>
 			</div>
@@ -111,13 +118,6 @@ $ruta=$row["ruta"];
 							<ul>
 								<li><a id="menuVentas1" href="registro_ventas.php">Ventas</a></li>
 								<li><a id="menuVentas2" href="informe_ventas.php">Productos</a></li>
-							</ul>
-						</li>
-
-						<li><a href="#">Promociones</a>
-							<ul>
-								<li><a id="menuVentas1" href="registro_promocion.php">Nueva promoción</a></li>
-								<li><a id="menuVentas2" href="lista_promociones.php">Lista de promociones</a></li>
 							</ul>
 						</li>
 

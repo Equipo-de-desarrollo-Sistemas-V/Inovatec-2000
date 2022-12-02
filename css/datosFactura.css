@@ -89,6 +89,7 @@ header {
     display: none;
 }
 
+
 @media screen and (max-width: 765px) {
     .menu {
         width: 100%;
@@ -360,6 +361,12 @@ tr:nth-child(even){
     font-weight: 600;
     color: #000;
     margin-top: -5px;
+}
+@media screen and (max-width: 1250px){
+    .contenedor{
+        margin: 30px 0 -5px 5px;
+    }
+
 }
 
 @media (max-width: 415px) {

@@ -19,7 +19,7 @@
         $resultado=sqlsrv_query($con, $query);
         $row=sqlsrv_fetch_array($resultado);
         $totProd=$row['limite'];
-        if ($totProd>24){
+        if ($totProd==24){
             echo json_encode("Has llegado al límite de productos permitidos en carrito. Por favor vacía el carrito.");
         }else{
             //Verifico si el producto ya esta agregado al carrito, en caso de ser así actualizo solo la cantidad, en caso contrario agrego el producto a la tabla

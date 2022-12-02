@@ -9,15 +9,23 @@ class ActPro{
         $serverName='inovatecserver.database.windows.net';
         $connectionInfo = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
         $conn_sis=sqlsrv_connect($serverName, $connectionInfo) ;
-        $updateQuery ="UPDATE Productos 
-        SET  descuento=('$descuento') 
-        WHERE id_producto=$id";
-        $getProv = sqlsrv_query($conn_sis, $updateQuery);
-        if( $getProv === false) {
-            die( print_r( sqlsrv_errors(), true) );
+
+        if($descuento >= 1){
+            $updateQuery ="UPDATE Productos 
+            SET  descuento=('$descuento') 
+            WHERE id_producto=$id";
+            $getProv = sqlsrv_query($conn_sis, $updateQuery);
+            if( $getProv === false) {
+                die( print_r( sqlsrv_errors(), true) );
+            }
+            header("location:lista_promociones.php");
+            //echo '<script>alert("Producto actualizado con éxito")</script>';
         }
-        header("location:lista_promociones.php");
-        //echo '<script>alert("Producto actualizado con éxito")</script>';
+
+        else{
+            header("location:LOGActualizar_Promocion.php?item=$id");
+        }
+        
     }
 }
 class Foto{
