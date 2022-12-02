@@ -58,7 +58,21 @@
 .pie-pagina .grupo-2 small{
     font-size: 14px;
 }
-@media screen and (max-width:800px){
+@media screen and (max-width:1250px){
+    .pie-pagina{
+        width: 100%;
+    }
+    .pie-pagina .grupo-1{
+        width: 90%;
+        grid-gap:30px;
+        padding: 35px 0px;
+    }
+}
+
+@media screen and (max-width:415px){
+    .pie-pagina{
+        width: 130%;
+    }
     .pie-pagina .grupo-1{
         width: 90%;
         grid-template-columns: repeat(1, 1fr);

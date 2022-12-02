@@ -26,7 +26,6 @@ $sesion_e = $_SESSION["Usuario"];
 </head>
 
 <body>
-  <header>
     <input type="checkbox" name="" id="check">
 
     <nav>
@@ -60,7 +59,6 @@ $sesion_e = $_SESSION["Usuario"];
         <span><i class="fas fa-times" id="times"></i></span>
       </label>
     </nav>
-  </header>
 
   <section class="containerAll">
     <article class="container">
