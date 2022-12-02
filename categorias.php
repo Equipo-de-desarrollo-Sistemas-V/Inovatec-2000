@@ -192,7 +192,7 @@
                     <a href="categorias.php?item=computadoras/Desktops">Desktops</a>
                   </li>
                   <li class="dropdown-link">
-                    <a href="categorias.php?item=computadoras/laptop">Laptops</a>
+                    <a href="categorias.php?item=computadoras/Laptop">Laptops</a>
                   </li>
                   <li class="dropdown-link">
                     <a href="categorias.php?item=computadoras/Smartphones">Smartphones</a>
