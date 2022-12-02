@@ -139,7 +139,7 @@ a{
 }
 
 .container{
-    max-width: 95rem;
+    max-width: 100%;
     padding: 0 2rem;
     margin: 0 auto;
     display: flex;
