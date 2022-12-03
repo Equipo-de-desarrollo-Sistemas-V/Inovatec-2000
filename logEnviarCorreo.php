@@ -58,8 +58,8 @@ function MensajeEmail($remitente,$destinatario,$cuerpo, $asunto){
     $headers = "From:" . $remitente . " \r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-type: text/html\r\n";
-    //$resultado = mail($destinatario,$asunto,$cuerpo, $headers);
-    $resultado=true;
+    $resultado = mail($destinatario,$asunto,$cuerpo, $headers);
+    //$resultado=true;
     if($resultado){
         return "Enviado";
     }else{
