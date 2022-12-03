@@ -502,7 +502,6 @@ a{
 .listaCarrito{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     margin: 20px;
@@ -650,4 +649,25 @@ a{
 #total{
     font-weight: 700;
     color: #ff7400;
+}
+@media (max-width: 28.125rem) {
+    .containerTotal{
+        width: 80%;
+    }
+
+    .tarjetaCarrito{
+        width: 100%;
+        flex-direction: column;
+    }
+    .listaCarrito{
+        width: 80%;
+    }
+    .datos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .botones{
+        flex-direction: column;
+    }
 }
