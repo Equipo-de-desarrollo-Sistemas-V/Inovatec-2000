@@ -5,7 +5,7 @@ $sesion_e = $_SESSION["Usuario"];
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -345,16 +345,18 @@ $sesion_e = $_SESSION["Usuario"];
     
     
     <div class="contenido-total">
+
       <div class="pagina-facebook">
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v15.0" nonce="Qnm5ITKs"></script>
-        <div class="fb-page" data-href="https://www.facebook.com/Inovatec-100088416570916" data-tabs="timeline" data-width="250" data-height="1120" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Inovatec-100088416570916" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Inovatec-100088416570916">Inovatec</a></blockquote></div>      </div>
+        <div class="fb-page" data-href="https://www.facebook.com/Inovatec-100088416570916" data-tabs="timeline" data-width="250" data-height="1120" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Inovatec-100088416570916" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Inovatec-100088416570916">Inovatec</a></blockquote></div>
+      </div>
 
       <div class="contenido-all-productos">
         <article class="containerProductos">
 
           <div class="containerinfo">
-            <h2 class="subtitulo">Computación y electrónica</span></h2>
+            <h2 class="subtitulo">Computación</span></h2>
             <a href="#" class="link"></a>
           </div>
 

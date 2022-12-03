@@ -6,7 +6,7 @@ $sesion_e = $_SESSION["Usuario"];
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
