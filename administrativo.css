@@ -1,314 +1,313 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body{
-	font-family: 'Montserrat', sans-serif;
-	background-color: rgb(255, 255, 255);
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(255, 255, 255);
 }
 *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
-	text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
 }
 h1{
-	font-weight: 700;
+    font-weight: 700;
 }
 p{
-	font-weight: 500;
+    font-weight: 500;
 
 }
 header{
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
 }
 
 /*HEADER SUPERIOR*/
 
 .header_superior{
-	max-width: 1200px;
-	margin: auto;
-	display: flex;
-	align-items: center;
-	justify-content:space-between
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content:space-between
 
 }
 .titulo{
-	font-size: 12px;
-	padding: 0px 50px;
+    font-size: 12px;
+    padding: 0px 50px;
 }
 
 .logo{
-	width: 150px;
+    width: 150px;
 }
 .logo:hover{
     cursor: pointer;
 }
 
 .btn-cerrar-session{
-	align-items: right;
-	text-decoration: none;
-	color: #ffffff;
-	margin: 0 20px 0 20px;
-	font-weight: 600;
-	background-color: #ff0019;
-	padding: 10px 20px;
-	border-radius: 1rem;
-	font-size: 14px;
-	cursor: pointer;
-	transition: 0.2s ease-in-out all;  
+    align-items: right;
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 20px 0 20px;
+    font-weight: 600;
+    background-color: #ff0019;
+    padding: 10px 20px;
+    border-radius: 1rem;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out all;  
 }
 
 .btn-cerrar-session:hover {
-	cursor: pointer;
-	background-color: #af0112;
-	color: #fff;
+    cursor: pointer;
+    background-color: #af0112;
+    color: #fff;
   }
 
   /*Barra Menu*/
 .container_menu{
-	width: 100%;
-	height: 70px;
-	background: #023877;
-	padding: 0px 20px;
-	
+    width: 100%;
+    height: 70px;
+    background: #023877;
+    padding: 0px 20px;
+    
   }
 
 .menu{
-	max-width: 800px;
-	margin-left: 18%;
-	height: 100%;
-	
+    max-width: 800px;
+    margin-left: 18%;
+    height: 100%;
+    
 }
 
 nav{
-	height: 100%;
+    height: 100%;
 }
 
 nav > ul{
-	height: 100%;
-	display: flex;
+    height: 100%;
+    display: flex;
 }
 
 nav  ul  li{
-	height: 100%;
-	list-style: none;
-	position: relative;
+    height: 100%;
+    list-style: none;
+    position: relative;
 }
 
 nav > ul > li > a{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	padding: 14px;
-	text-transform: uppercase;
-	font-size: 16px;
-	transition: all 300ms ease;
-	color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: all 300ms ease;
+    color: #fff;
 }
 
 nav > ul > li > a:hover{
-	transform: scale(1.1);
-	background: #2773cb;
-	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    transform: scale(1.1);
+    background: #2773cb;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
 }
 
 /*SUBMENU*/
 
 nav ul li ul{
-	width: 250px;
-	display: flex;
-	flex-direction: column;
-	background: #fff;
-	position: absolute;
-	top: 100px;
-	left: -5px;
-	padding: 14px 0px;
-	visibility: hidden;
-	opacity: 0;
-	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-	z-index: 10;
-	transition: all 300ms ease;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 100px;
+    left: -5px;
+    padding: 14px 0px;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    z-index: 10;
+    transition: all 300ms ease;
 }
 
 nav ul li:hover ul{
-	visibility: visible;
-	opacity: 1;
-	top: 70px;
+    visibility: visible;
+    opacity: 1;
+    top: 70px;
 }
 
 nav ul li ul::before{
-	content: '';
-	width: 0;
-	height: 0;
-	border-left:12px solid transparent ;
-	border-right: 12px solid transparent;
-	border-bottom: 12px solid white;
-	position: absolute;
-	top: -12px;
-	left: 12px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left:12px solid transparent ;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid white;
+    position: absolute;
+    top: -12px;
+    left: 12px;
 }
 
 nav ul li ul li a{
-	display: block;
-	color: #0099e9;
-	padding: 6px;
-	padding-left: 14px;
-	margin-top: 15px;
-	font-size: 14px;
-	text-transform: uppercase;
-	transition: all 300ms ease;
+    display: block;
+    color: #0099e9;
+    padding: 6px;
+    padding-left: 14px;
+    margin-top: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all 300ms ease;
 }
 
 nav ul li ul li a:hover{
-	background: #0099e9;
-	color: #fff;
-	transform: scale(1.1);
-	padding-left: 30px;
-	font-size: 14px;
+    background: #0099e9;
+    color: #fff;
+    transform: scale(1.1);
+    padding-left: 30px;
+    font-size: 14px;
 }
 
 /*Contenedores*/
 
 main{
-	padding: 40px 20px;
-	margin-top:120px;
-	justify-content: center;
+    padding: 40px 20px;
+    margin-top:120px;
+    justify-content: center;
     align-items: center;
 }
 
 article{
-	margin: 20px auto;
-	padding: 10px;
-	width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    width: 1200px;
     background-color: rgba(145, 145, 145, 0.2);
     box-shadow: 0 0 10px #0575FF;
     border-radius: 20px;
 }
 .article-tablas article{
-	margin: 20px auto;
-	padding: 10px;
-	width: 1500px;
+    margin: 20px auto;
+    padding: 10px;
+    width: 1500px;
     background-color: rgba(145, 145, 145, 0.2);
     box-shadow: 0 0 10px #0575FF;
     border-radius: 20px;
 }
 /*Estilos para los formularios de datos*/
 textarea{
-	height: 10px;
-	overflow: scroll;
+    height: 10px;
+    overflow: scroll;
     resize: none;
 }
 .formulario_input-textarea{
-	font-size: 16px;
-	font-weight: 450;
-	width: 100%;
-	background: #fff;
-	border: 3px solid #CCC;
-	border-radius: 3px;
-	height: 85px;
-	line-height: 30px;
-	transition: .3s ease all;
+    font-size: 16px;
+    font-weight: 450;
+    width: 100%;
+    background: #fff;
+    border: 3px solid #CCC;
+    border-radius: 3px;
+    height: 85px;
+    line-height: 30px;
+    transition: .3s ease all;
 }
 
 .formulario_input-textarea:focus{
-	border: 3px solid #0575FF;
-	outline: none;
-	box-shadow: 3px 0px 30px rgb(163, 163, 163, 0.4);
+    border: 3px solid #0575FF;
+    outline: none;
+    box-shadow: 3px 0px 30px rgb(163, 163, 163, 0.4);
 
 }
 
-
 .formularios{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .formulario_label{
-	color: #0567e0;
-	font-size: 18px;
-	text-align: center;
-	display: block;
-	font-weight: 550;
-	padding: 10px;
-	cursor: pointer;
+    color: #0567e0;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    font-weight: 550;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .formulario_input{
-	padding: 10px;
-	font-size: 16px;
-	font-weight: 450;
-	width: 100%;
-	background: #fff;
-	border: 3px solid #CCC;
-	border-radius: 3px;
-	height: 45px;
-	line-height: 45px;
-	transition: .3s ease all;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 450;
+    width: 100%;
+    background: #fff;
+    border: 3px solid #CCC;
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    transition: .3s ease all;
 }
 .select2{
-	font-size: 16px;
-	font-weight: 450;
-	width: 100%;
-	background: #fff;
-	border: 3px solid #CCC;
-	border-radius: 3px;
-	height: 45px;
-	line-height: 45px;
-	transition: .3s ease all;
+    font-size: 16px;
+    font-weight: 450;
+    width: 100%;
+    background: #fff;
+    border: 3px solid #CCC;
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    transition: .3s ease all;
 }
 .select2-container .select2-selection--single{
-	height: 45px;
+    height: 45px;
 }
 
 .formulario_label-checkbox1{
-	display: block;
-	text-align: right;
-	font-size: 16px;
-	font-weight: 350;
-	width: 100%;
-	height: 10px;
-	line-height: 10px;
-	cursor: pointer;
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 350;
+    width: 100%;
+    height: 10px;
+    line-height: 10px;
+    cursor: pointer;
 
 }
 
 .formulario_label-checkbox2{
-	display: block;
-	text-align: left;
-	font-size: 16px;
-	font-weight: 350;
-	width: 100%;
-	height: 10px;
-	line-height: 10px;
-	cursor: pointer;
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 350;
+    width: 100%;
+    height: 10px;
+    line-height: 10px;
+    cursor: pointer;
 
 }
 
 .formulario_input:focus{
-	border: 3px solid #0575FF;
-	outline: none;
-	box-shadow: 3px 0px 30px rgb(163, 163, 163, 0.4);
+    border: 3px solid #0575FF;
+    outline: none;
+    box-shadow: 3px 0px 30px rgb(163, 163, 163, 0.4);
 
 }
 
 .btn_enviar,.photo,.formulario_grupo-input2{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: span 2;
 }
 
 /*Boton Submit*/
 .btn_submit{
-	width: 200px;
-	height: 50px;
-	border-radius: 1rem;
+    width: 200px;
+    height: 50px;
+    border-radius: 1rem;
     border: 2px solid #F25C05;
     line-height: 1.6rem;
     font-size: 1.3rem;
@@ -319,8 +318,8 @@ textarea{
 }
 
 .btn_submit:hover {
-	border: 2px solid #bc4805;
-	cursor: pointer;
+    border: 2px solid #bc4805;
+    cursor: pointer;
     background-color: #bc4805;
     color: #ffffff;
   }
@@ -341,80 +340,79 @@ textarea{
 }
 
 .prevPhoto label{
-	cursor: pointer;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 2;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .prevPhoto img{
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .upimg, .notBlock{
-	display: none !important;
+    display: none !important;
 }
 
 .errorArchivo{
-	font-size: 16px;
-	font-family: arial;
-	color: #cc0000;
-	text-align: center;
-	font-weight: bold; 
-	margin-top: 10px;
+    font-size: 16px;
+    font-family: arial;
+    color: #cc0000;
+    text-align: center;
+    font-weight: bold; 
+    margin-top: 10px;
 }
 
 .delPhoto{
-	color: #FFF;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	width: 25px;
-	height: 25px;
-	background: red;
-	position: absolute;
-	right: -10px;
-	top: -10px;
-	z-index: 10;
+    color: #FFF;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: red;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 10;
 }
 
-
 .imgProductoDelete{
-	width: 175px;
+    width: 175px;
 }
 
 /* Estilos para las tablas*/
 table{
-	width: 100%;
-	background-color: #fff;
-	text-align: center;
-	border-collapse: collapse;
-	
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border-collapse: collapse;
+    
 }
 
 th,td{
-	width: 80px;
-	padding: 8px 8px;
+    width: 80px;
+    padding: 8px 8px;
 }
 
 thead{
-	background-color:#0558b8;
-	color: #FFF;
-	font-size: 15px;
-	border-bottom: solid 5px #023877;
+    background-color:#0558b8;
+    color: #FFF;
+    font-size: 15px;
+    border-bottom: solid 5px #023877;
 }
 
 tr:nth-child(even){
-	background-color: #ddd;
+    background-color: #ddd;
 }
 
 /*Estilos para la barra de busqueda*/
@@ -434,14 +432,14 @@ tr:nth-child(even){
     border-radius: 30px;
   }
   .contenido-barra-buscar input:focus{
-	border: 3px solid #0575FF;
-	outline: none;
-	box-shadow: 3px 0px 30px rgb(163, 163, 163, 0.4);
+    border: 3px solid #0575FF;
+    outline: none;
+    box-shadow: 3px 0px 30px rgb(163, 163, 163, 0.4);
   
   }
   
   .btn-buscar {
-	border-radius: 1rem;
+    border-radius: 1rem;
     border: 2px solid #023877;
     width: 45px;
     height: 45px;
@@ -456,94 +454,159 @@ tr:nth-child(even){
     cursor: pointer;
   }
 
-
 /*Responsive*/
 .icon__menu{
-	font-size: 40px;
-	color: #fff;
-	cursor: pointer;
-	width: 26px;
-	height: 100%;
-	display: none;
-	align-items: center;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    width: 26px;
+    height: 100%;
+    display: none;
+    align-items: center;
 }
 
 .label__check{
-	width: 26px;
-	height: 100%;
-	display: none;
+    width: 26px;
+    height: 100%;
+    display: none;
 }
 
 #check__menu{
-	display: none;
+    display: none;
 }
 
 @media screen and (max-width: 800px){
-	.btn-cerrar-session{
-		display: flex;
-	}
+    .btn-cerrar-session{
+        display: flex;
+    }
 
-	.header_superior{
-		padding: 10px;
-	}
-	.titulo{
-		font-size: 8px;
-	}
-	.logo{
-		width: 125px;
-	}
+    .header_superior{
+        padding: 10px;
+    }
+    .titulo{
+        font-size: 8px;
+    }
+    .logo{
+        width: 125px;
+    }
 
-	nav > ul{
-		flex-direction: column;
-		background-color: #023877;
-		position: fixed;
-		left: 0;
-		top: 135px;
-		width: 100%;
-		height: 0px;
-		transition: all 300ms ease;
-		z-index: 100;
-		opacity: 0;
-		*visibility: hidden;
-	}
-	
-	nav > ul > li > a:hover{
-		transform: scale(1);
-	}
-	
-	nav ul li ul{
-		left: 80px;
-	}
+    nav > ul{
+        flex-direction: column;
+        background-color: #023877;
+        position: fixed;
+        left: 0;
+        top: 135px;
+        width: 100%;
+        height: 0px;
+        transition: all 300ms ease;
+        z-index: 100;
+        opacity: 0;
+        *visibility: hidden;
+    }
+    
+    nav > ul > li > a:hover{
+        transform: scale(1);
+    }
+    
+    nav ul li ul{
+        left: 80px;
+    }
 
-	nav > ul > li:hover ul{
-		top: 50px;
-	}
+    nav > ul > li:hover ul{
+        top: 50px;
+    }
 
-	nav > ul > li:first-child a{
-		background-position: 20px;
-	}
+    nav > ul > li:first-child a{
+        background-position: 20px;
+    }
 
-	#selected{
-		transform: scale(1);
+    #selected{
+        transform: scale(1);
 
-	}
+    }
 
-	.icon__menu{
-		display: flex;
-	}
+    .icon__menu{
+        display: flex;
+    }
 
-	#check__menu:checked ~ nav > ul{
-		height: 300px;
-		visibility: visible;
-		opacity: 1;
-	}
+    #check__menu:checked ~ nav > ul{
+        height: 300px;
+        visibility: visible;
+        opacity: 1;
+    }
 
-	.formularios{
-		display: block;
-		gap: 20px;
-	}
+    .formularios{
+        display: block;
+        gap: 20px;
+    }
 
-	.btn_enviar,.photo{
-		gap: 20px;
-	}
+    .btn_enviar,.photo{
+        gap: 20px;
+    }
+    table{
+        display: block;
+        width: 100%;
+    }
+    thead,
+    tbody,
+    thead th{
+        display: block;
+    }
+    thead th:last-child{
+        border-bottom: none;
+    }
+    thead{
+        float: left;
+    }
+    tbody{
+        width: auto;
+        overflow-x: auto;
+    }
+    td{
+        padding: 20px .625em .625em .65em;
+        height: 140px;
+        vertical-align: middle;
+        vertical-align: middle; box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 140px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    thead th {
+        text-align: center;
+        height: 140px;
+        width: 120px;
+        text-align: left;
+        border-bottom: solid 3px #023877;
+
+    }
+
+    tbody tr {
+    display: table-cell;
+    }
+
+    tbody tr:nth-child(odd) {
+        background: none
+    }
+
+    tr:nth-child(even){
+        background: transparent;
+    }
+
+    tr td:nth-child(odd){
+        background: #f8f8f8;
+        border-right: 1px solid #1a2929;
+    }
+
+    tr td:nth-child(even){
+        background: #ddd;
+        border-right: 1px solid #1a2929;
+    }
+
+    tbody td{
+        display: block;
+        text-align: center;
+    }
+
 }
