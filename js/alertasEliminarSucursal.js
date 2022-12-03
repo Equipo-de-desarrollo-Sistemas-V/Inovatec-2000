@@ -1,6 +1,6 @@
 function confirmDesabled(e)
 {
-    if (confirm("¿Estas seguro de eliminar la sucursal?\nPuede que el producto se encuentre relacionado con la sección de inventario, o alguna otra sección, de ser así, se procederá a cambiar el estatus de dicha sucursal.")) {
+    if (confirm("¿Estas seguro de eliminar la sucursal?\nPuede que se encuentre relacionada con alguna otra sección, de ser así, se cambiará el estatus de dicha sucursal.")) {
         return true
         //alertas();
     }
