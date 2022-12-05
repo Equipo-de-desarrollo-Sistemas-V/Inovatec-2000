@@ -1,9 +1,9 @@
 
 <?php
     $serverName = 'localhost';
-    $login = "Inovatecadm";
-    $paswor = "ProyectoProgramacion5";
-    $conctioninfo = array("Database"=>"InovatecBD", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
+    $login = "usuario";
+    $paswor = "123";
+    $conctioninfo = array("Database"=>"PagVentas", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
     $conn_sis = sqlsrv_connect($serverName,$conctioninfo);
 
 
