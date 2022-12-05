@@ -1,11 +1,10 @@
 
 <?php
-   
-   $serverName = 'inovatecserver.database.windows.net';
-   $login = "usuario";
-   $paswor = "123";
-   $conctioninfo = array("Database"=>"PagVentas", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
-   $conn_sis = sqlsrv_connect($serverName,$conctioninfo);
+    $serverName = 'inovatecserver.database.windows.net';
+    $login = "Inovatecadm";
+    $paswor = "ProyectoProgramacion5";
+    $conctioninfo = array("Database"=>"InovatecBD", "UID"=>$login, "PWD"=>$paswor, "CharacterSet"=>"UTF-8");
+    $conn_sis = sqlsrv_connect($serverName,$conctioninfo);
 
 
     $Eliminar_id=$_GET['id'];

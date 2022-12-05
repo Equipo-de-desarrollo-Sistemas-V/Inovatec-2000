@@ -30,6 +30,6 @@
         window.location.href='consulta_inventario.php';  
         </script>";
     }
-    sqlsrv_close($conn_sis);
+    sqlsrv_close($con );
 
 ?>
