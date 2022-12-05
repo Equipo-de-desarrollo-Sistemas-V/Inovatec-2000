@@ -44,22 +44,21 @@ function crearEmail($correo_destino){
     $destinatario=$correo_destino;
     $asunto = "Código para recuperar tu contraseña";
     $codigo=random_int(1000,99999);
-    //$cuerpo="Ingresa el siguiente código para recuperar tu contraseña. ".$codigo;
-    $cuerpo=$codigo;
+    $cuerpo="Ingresa el siguiente código para recuperar tu contraseña. ".$codigo;
 
-    //$msj=insertarCodigo($codigo, $correo_destino);
+    $msj=insertarCodigo($codigo, $correo_destino);
     $msj=MensajeEmail($remitente,$destinatario,$cuerpo,$asunto);
     return $msj;
 }
 
-function MensajeEmail($remitente,$destinatario,$cuerpo,$asunto){
+function MensajeEmail($remitente,$destinatario,$cuerpo, $asunto){
     //manda el correo electronico
-    ini_set('display_errors',1);
-    error_reporting(E_ALL);
-    $headers = "From:".$remitente."\r\n";
+    ini_set( 'display_errors', 1 );
+    error_reporting( E_ALL );
+    $headers = "From:" . $remitente . " \r\n";
     $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type:text/html\r\n";
-    $resultado = mail($destinatario,$asunto,$cuerpo,$headers);
+    $headers .= "Content-type: text/html\r\n";
+    $resultado = mail($destinatario,$asunto,$cuerpo, $headers);
     //$resultado=true;
     if($resultado){
         return "Enviado";
