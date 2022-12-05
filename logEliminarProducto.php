@@ -3,9 +3,9 @@
 class Producto{
     function eliminar(){
        //informacion para la conexion a la base de datos
-       $servername = "localhost";
-       $info = array("Database" => "PagVentas", "UID" => "usuario", "PWD" => "123", "CharacterSet" => "UTF-8");
-       $con = sqlsrv_connect($servername, $info);
+        $servername = "inovatecserver.database.windows.net";
+        $info = array("Database" => "InovatecBD", "UID" => "Inovatecadm", "PWD" => "ProyectoProgramacion5", "CharacterSet" => "UTF-8");
+        $con = sqlsrv_connect($servername, $info);
             
         if($con){
             $id=$_GET['item'];
@@ -28,7 +28,7 @@ class Producto{
                     $stm_des = sqlsrv_query($con, $querry);
                     echo"<script>alert('Se ha cambiado el status del producto')</script>";
                     //include_once('lista_productos.php');
-                    header("Location:../Inovatec-2000/lista_productos.php");
+                    header("Location:/lista_productos.php");
                 }else{
                     
                     $query="SELECT COUNT(*) as total
