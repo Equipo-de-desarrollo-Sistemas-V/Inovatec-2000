@@ -370,10 +370,11 @@ header {
     color: #000;
     margin-top: -5px;
 }
-@media (max-width:850px) {
-    .contenedor{
-        max-width: 100%;
-        margin: 25px 30px 0px 30px;
+@media (max-width:900px) {
+    .contenedor {
+        display: flex;
+        margin-left: 10px;
+        width: 100%;
     }
     .imagen_producto{
         padding: 0%;
