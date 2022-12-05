@@ -44,9 +44,10 @@ function crearEmail($correo_destino){
     $destinatario=$correo_destino;
     $asunto = "Código para recuperar tu contraseña";
     $codigo=random_int(1000,99999);
-    $cuerpo="Ingresa el siguiente código para recuperar tu contraseña. ".$codigo;
+    //$cuerpo="Ingresa el siguiente código para recuperar tu contraseña. ".$codigo;
+    $cuerpo=$codigo;
 
-    $msj=insertarCodigo($codigo, $correo_destino);
+    //$msj=insertarCodigo($codigo, $correo_destino);
     $msj=MensajeEmail($remitente,$destinatario,$cuerpo,$asunto);
     return $msj;
 }
