@@ -139,11 +139,13 @@ function continuar(){
       let cantidades = arrays[1];
       let id_NoExistentes = arrays[2];
 
-      /* Obtener el valor de id_no existentes */
+      let size = idExistentes.length;
+      
+      if(size > 0){
+        /* Obtener el valor de id_no existentes */
       let size_noExistentes = id_NoExistentes.length;
 
       if(size_noExistentes > 0){
-
         for(let i = 0; i < size_noExistentes; i++){
           const clase = ".valorPrecio" + id_NoExistentes[i];
           const valor = document.querySelector(clase);
@@ -173,6 +175,9 @@ function continuar(){
 
         /* window.location.href = "datos_venta.php?item=[[60020,\"10\"],[50200,\"5\"],[50350,\"1\"]]"; */
         window.location.href = "datos_venta.php?item=" + nuevaCadena;
+      }
+      }else{
+        alert("No hay productos en el carrito");
       }
   }
 }
